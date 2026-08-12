@@ -30,40 +30,57 @@ Not implemented:
 
 ```mermaid
 flowchart LR
-    User[Browser user] --> UI[streamlit_app.py]
-    UI --> Sources[sources.py]
-    UI --> Hardware[hardware.py]
-    UI --> Contracts[models.py]
-    UI --> Jobs[jobs.py]
+    User[Browser user] --> UI[streamlit_app.py navigation]
+    UI --> Pages[app_pages]
+    Pages --> Sources[sources.py]
+    Pages --> Hardware[hardware.py]
+    Pages --> Contracts[models.py]
+    Pages --> Jobs[jobs.py]
     Jobs --> Worker[worker.py process]
     Worker --> Training[training.py]
     Training --> HF[Hugging Face Hub]
     Training --> Runs[.runs/run-id/output]
-    UI --> Inference[inference.py]
+    Pages --> Inference[inference.py]
     Inference --> Runs
     Inference --> HF
-    UI --> Ollama[ollama.py]
+    Pages --> Ollama[ollama.py]
     Ollama --> LocalOllama[localhost:11434]
 ```
 
-The Streamlit script owns presentation and orchestration. Long-running training is isolated in a
-child Python process. The UI and worker exchange serializable configuration and status through the
-run directory.
+The entrypoint initializes shared session state and native sidebar navigation. Eight direct page
+scripts own their focused UI. Long-running training is isolated in a child Python process; pages
+and the worker exchange serializable configuration and status through the run directory.
 
 ## Module map
 
 | Module | Responsibility |
 | --- | --- |
-| `streamlit_app.py` | Page composition, session state, source inspection, configuration, job controls, evaluation, and Ollama UI |
+| `streamlit_app.py` | Page configuration, shared session initialization, token fallback, and sidebar navigation |
+| `app_pages/` | System, dataset, model, GPU memory, training, review, monitor, and Ollama page scripts |
 | `models.py` | Shared enums and dataclasses for hardware, datasets, training, job status, presets, and run paths |
 | `sources.py` | Token access, Hugging Face URL validation, metadata, uploads, dataset loading, and shape inspection |
-| `hardware.py` | CUDA, GPU, VRAM, RAM, disk, and BF16 detection plus conservative size guidance |
+| `hardware.py` | Read-only OS/runtime/software inventory, CUDA and resource detection, memory cleanup, and conservative size guidance |
 | `jobs.py` | Run creation, atomic status files, worker launch, active-job detection, cancellation, resume, and log tails |
 | `worker.py` | Child-process entry point and terminal completed/failed status handling |
 | `training.py` | Dataset normalization/split, model/tokenizer loading, PEFT configuration, SFT, metrics, and artifacts |
 | `inference.py` | Sequential four-bit base and adapter generation for comparison |
 | `ollama.py` | Small standard-library client for the local Ollama tags and generate endpoints |
 | `cli.py` | Installed `lora-finetune-studio` console entry point for Streamlit |
+
+## System readiness scan
+
+`scan_system` reads platform metadata, logical CPU count, currently available RAM, free workspace
+disk, command presence, the active virtual environment, and installed package versions. It does
+not execute installers, modify drivers, or return credential values. Hugging Face status is
+reduced to configured or not configured in the UI.
+
+The supported runtime is native Windows or Linux with CPython 3.14 in the uv-managed project
+`.venv` and the PyTorch CUDA 13.0 wheel index. Both platform launchers and CI select Python 3.14
+explicitly.
+
+The System page compares live free CUDA memory with a 3.5 GB minimum for the smallest supported
+QLoRA jobs. This is a readiness warning rather than a guarantee: model architecture, sequence
+length, batch settings, and other GPU processes still affect actual use.
 
 ## Shared contracts
 
@@ -149,12 +166,17 @@ twelve-character run ID, assigns the output directory, and atomically writes `co
 initial `status.json`.
 
 `launch_run` starts `python -m lora_finetune_studio.worker <config>` with output appended to
-`training.log`. Windows uses `CREATE_NO_WINDOW`. The Streamlit fragment reads status every two
-seconds.
+`training.log`. Windows uses `CREATE_NO_WINDOW`; Linux uses the normal detached child process.
+The Streamlit fragment reads status every two seconds.
 
-Cancellation terminates the PID, waits ten seconds, and kills it if necessary. Resume sorts
-`checkpoint-*` directories numerically, stores the newest path in the existing configuration, and
-launches the same run again.
+Cancellation first verifies that the stored PID command is this run's
+`lora_finetune_studio.worker` with the expected configuration path. It then terminates the PID,
+waits ten seconds, and kills it if necessary. Resume sorts `checkpoint-*` directories numerically,
+stores the newest path in the existing configuration, and launches the same run again.
+
+The global sidebar shutdown control uses the same verified cancellation path, then schedules the
+Streamlit process to exit after a short delay so the final status message can render. It does not
+terminate Ollama or any process outside this application boundary.
 
 ## Training implementation
 
@@ -198,16 +220,24 @@ the matching base-model ID and revision.
 
 `generate_text` loads the base model in four-bit NF4, runs deterministic generation, and optionally
 attaches `PeftModel.from_pretrained(adapter_path)`. The UI calls it separately for the base and
-adapter, allowing each model to be released and CUDA memory cleared between calls.
+adapter. Cleanup runs in a `finally` block so model references and unused CUDA cache are released
+after successful generation and loading or inference failures.
 
-The Ollama panel is independent. It calls `GET /api/tags` and `POST /api/generate` on
+The GPU memory page reads global free/total VRAM with `torch.cuda.mem_get_info` and process-local allocated
+and reserved memory with PyTorch's allocator metrics. Its cleanup action runs `gc.collect()` and
+`torch.cuda.empty_cache()`. It does not free live tensors or CUDA memory owned by the isolated
+training worker, Ollama, or unrelated processes. The action is disabled while training is active;
+terminating that worker through the existing cancellation control releases its CUDA context.
+
+The Ollama playground page is independent. It calls `GET /api/tags` and `POST /api/generate` on
 `http://localhost:11434`; it neither reads the run adapter nor creates an Ollama model.
 
 ## Credentials and network boundaries
 
 `HF_TOKEN` is read from the process environment. The Streamlit UI can fall back to the ignored
 local secrets file and places the value into the process environment for downstream calls. The
-launcher also reads the persistent Windows user variable without printing it.
+Windows launcher also reads the persistent Windows user variable without printing it; Linux
+inherits `HF_TOKEN` from the launching shell.
 
 Network access may include:
 
@@ -225,7 +255,7 @@ Tests cover the Streamlit startup path, hardware warnings, configuration round-t
 validation, run-path safety, job creation, Hugging Face URL parsing, upload validation, dataset
 inspection, normalization, and small-dataset splitting.
 
-GitHub Actions runs on `windows-latest` with Python 3.12:
+GitHub Actions runs on `windows-latest` with Python 3.14:
 
 ```powershell
 uv run ruff format --check .

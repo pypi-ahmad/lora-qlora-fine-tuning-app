@@ -6,12 +6,15 @@ on:
 
 jobs:
   quality:
-    runs-on: windows-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
         with:
-          python-version: "3.12"
+          python-version: "3.14"
           enable-cache: true
       - run: uv sync --group dev
       - run: uv run ruff format --check .
