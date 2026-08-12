@@ -2,13 +2,138 @@
 
 from __future__ import annotations
 
+import gc
+import os
+import platform
 import shutil
+import sys
+from dataclasses import dataclass
+from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
 import psutil
 import torch
 
 from .models import HardwareProfile, PeftMode
+
+MIN_QLORA_FREE_VRAM_GB = 3.5
+REQUIRED_CUDA_VERSION = "13.0"
+SUPPORTED_PYTHON = (3, 14)
+SUPPORTED_OPERATING_SYSTEMS = ("Linux", "Windows")
+
+
+@dataclass(frozen=True, slots=True)
+class CudaMemoryStats:
+    """Current CUDA memory usage for the first GPU."""
+
+    free_gb: float
+    total_gb: float
+    allocated_gb: float
+    reserved_gb: float
+
+
+@dataclass(frozen=True, slots=True)
+class SoftwareStatus:
+    """Presence and version detail for one local integration."""
+
+    name: str
+    available: bool
+    detail: str
+
+
+@dataclass(frozen=True, slots=True)
+class SystemScan:
+    """Read-only local system and runtime inventory."""
+
+    os_name: str
+    os_release: str
+    os_version: str
+    python_version: str
+    cuda_version: str | None
+    cpu_threads: int
+    available_ram_gb: float
+    free_disk_gb: float
+    native_runtime: str
+    uv_venv_active: bool
+    software: tuple[SoftwareStatus, ...]
+
+
+def _package_status(display_name: str, package_name: str) -> SoftwareStatus:
+    try:
+        installed_version = version(package_name)
+    except PackageNotFoundError:
+        return SoftwareStatus(display_name, False, "Not installed")
+    return SoftwareStatus(display_name, True, installed_version)
+
+
+def scan_system(workspace: Path | None = None) -> SystemScan:
+    """Inspect local resources and installed software without changing the system."""
+    workspace = workspace or Path.cwd()
+    os_name = platform.system() or "Unknown"
+    cuda_version = torch.version.cuda
+    uv_venv_active = sys.prefix != sys.base_prefix and Path(sys.prefix).name == ".venv"
+    software = (
+        SoftwareStatus("Python", True, platform.python_version()),
+        SoftwareStatus(
+            "uv",
+            shutil.which("uv") is not None,
+            "Command available" if shutil.which("uv") else "Not found",
+        ),
+        SoftwareStatus(
+            "uv project environment",
+            uv_venv_active,
+            ".venv active" if uv_venv_active else ".venv not active",
+        ),
+        _package_status("PyTorch", "torch"),
+        SoftwareStatus(
+            "CUDA runtime",
+            cuda_version is not None,
+            cuda_version or "Not available",
+        ),
+        _package_status("bitsandbytes", "bitsandbytes"),
+        _package_status("Transformers", "transformers"),
+        _package_status("PEFT", "peft"),
+        _package_status("TRL", "trl"),
+        SoftwareStatus(
+            "Ollama",
+            shutil.which("ollama") is not None,
+            "Command available" if shutil.which("ollama") else "Not found",
+        ),
+    )
+    return SystemScan(
+        os_name=os_name,
+        os_release=platform.release() or "Unknown",
+        os_version=platform.version() or "Unknown",
+        python_version=platform.python_version(),
+        cuda_version=cuda_version,
+        cpu_threads=os.cpu_count() or 1,
+        available_ram_gb=psutil.virtual_memory().available / 1024**3,
+        free_disk_gb=shutil.disk_usage(workspace).free / 1024**3,
+        native_runtime=f"Native {os_name}",
+        uv_venv_active=uv_venv_active,
+        software=software,
+    )
+
+
+def cuda_memory_stats() -> CudaMemoryStats:
+    """Return global and process-local CUDA memory figures for GPU 0."""
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA GPU is not available.")
+    free_bytes, total_bytes = torch.cuda.mem_get_info(0)
+    return CudaMemoryStats(
+        free_gb=free_bytes / 1024**3,
+        total_gb=total_bytes / 1024**3,
+        allocated_gb=torch.cuda.memory_allocated(0) / 1024**3,
+        reserved_gb=torch.cuda.memory_reserved(0) / 1024**3,
+    )
+
+
+def release_unused_cuda_memory() -> None:
+    """Release unreachable objects and unused PyTorch CUDA cache blocks."""
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA GPU is not available.")
+    gc.collect()
+    torch.cuda.empty_cache()
 
 
 def detect_hardware(workspace: Path | None = None) -> HardwareProfile:

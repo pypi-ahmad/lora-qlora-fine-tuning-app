@@ -8,8 +8,8 @@ context, open the [zero-to-hero handbook](docs/index.html). For implementation d
 
 Required:
 
-- Windows 11 x86-64
-- NVIDIA GPU with a current driver
+- Native Windows 11 or x86-64 Linux
+- NVIDIA GPU with a CUDA 13-compatible driver
 - Internet access for installation and Hugging Face downloads
 - enough disk space for dependencies, model cache, checkpoints, and adapters
 
@@ -21,10 +21,18 @@ more memory. Ollama is optional and does not participate in training.
 Public repositories work without authentication. A token is required for gated/private
 repositories and Hub uploads.
 
-Create a token in Hugging Face settings, then store it as a persistent Windows user variable:
+Create a token in Hugging Face settings, then store it in your user environment.
+
+Windows PowerShell:
 
 ```powershell
 [Environment]::SetEnvironmentVariable("HF_TOKEN", "hf_your_token", "User")
+```
+
+Linux shell (add this to your shell profile to persist it):
+
+```bash
+export HF_TOKEN="hf_your_token"
 ```
 
 Use a read token for downloads. Grant write access only when you intentionally push an adapter.
@@ -40,18 +48,25 @@ Never commit that file or paste a real token into an issue, screenshot, log, or 
 
 ## 3. Launch the application
 
-### One-click launch
+### Platform launch
 
-Double-click `Launch LoRA Studio.cmd` in the repository root.
+On Windows, double-click `Launch LoRA Studio.cmd` in the repository root. On Linux, run:
+
+```bash
+bash "Launch LoRA Studio.sh"
+```
 
 The launcher:
 
 1. checks for the project manifest, lockfile, and Streamlit entry point;
-2. installs `uv` for the Windows user when missing;
-3. synchronizes Python 3.12 and locked runtime dependencies;
+2. installs `uv` for the current user when missing;
+3. synchronizes Python 3.14 and locked CUDA 13 runtime dependencies into `.venv`;
 4. starts Streamlit as a hidden background process;
 5. waits for the health endpoint; and
-6. opens `http://localhost:8501`.
+6. opens `http://localhost:8504`.
+
+Launching again replaces the previous LoRA Studio server, so browser session state starts fresh.
+An isolated training worker continues running and can be monitored after the new server starts.
 
 If setup or startup fails, the console remains visible. Read:
 
@@ -60,27 +75,43 @@ If setup or startup fails, the console remains visible. Read:
 
 ### Manual launch
 
-```powershell
+```bash
 uv sync --group dev
-uv run streamlit run streamlit_app.py
+uv run streamlit run streamlit_app.py --server.port=8504
 ```
 
 The installed console entry point is also available after synchronization:
 
-```powershell
+```bash
 uv run lora-finetune-studio
 ```
 
-## 4. Read the hardware panel
+## 4. Read the System and GPU memory pages
 
-The sidebar reports:
+The **System** page reports:
 
-- CUDA availability;
+- operating system release and build;
+- logical CPU threads and currently available RAM;
+- CUDA availability and accelerator details;
 - GPU model and total VRAM;
-- system RAM;
 - free disk space;
 - BF16 support; and
-- a conservative maximum model size.
+- a conservative maximum model size;
+- native Windows or Linux and uv `.venv` runtime status; and
+- installed Python, uv, PyTorch, CUDA, bitsandbytes, Transformers, PEFT, TRL, Ollama, and
+  Hugging Face integration status.
+
+The scan is read-only. It never installs drivers or runtimes and never displays token values. If
+current free VRAM is below 3.5 GB, the page warns that even the smallest supported QLoRA jobs need
+attention before training.
+
+The separate **GPU memory** page shows free VRAM plus memory currently allocated and reserved by
+the Streamlit process. Select **Clear unused VRAM** to run Python garbage collection and release
+unused PyTorch CUDA cache blocks. The button is disabled while a training worker is active; use
+**Cancel training** on **Monitor** when you intend to stop that job and release its memory.
+
+This control cannot unload a live model or release memory owned by the training worker, Ollama, or
+another GPU application. Those processes must release or exit themselves.
 
 | VRAM | Suggested maximum | Mode |
 | --- | ---: | --- |
@@ -92,11 +123,11 @@ The sidebar reports:
 These warnings are estimates, not guarantees. Other GPU applications, sequence length, batch size,
 architecture, and driver overhead affect the real limit.
 
-## 5. Select a model and dataset
+## 5. Select a dataset and model
 
 ### Model
 
-Enter either:
+Open **Model**, then enter either:
 
 - a Hugging Face repository ID such as `Qwen/Qwen3-0.6B`; or
 - its repository-root URL, such as `https://huggingface.co/Qwen/Qwen3-0.6B`.
@@ -106,17 +137,18 @@ strings, and fragments are rejected.
 
 ### Hugging Face dataset
 
-Select **Hugging Face**, then enter a dataset repository ID or root URL. Add a configuration name
-only when the dataset has multiple configurations, and select the required split.
+Open **Dataset**, select **Hugging Face**, then enter a dataset repository ID or root URL. Add a
+configuration name only when the dataset has multiple configurations, and select the required
+split.
 
 ### Uploaded dataset
 
-Select **Upload** and choose a CSV, JSON, or JSONL file no larger than 200 MB. The app stores it
-under `.uploads` using a content hash.
+On **Dataset**, select **Upload** and choose a CSV, JSON, or JSONL file no larger than 200 MB. The
+app stores it under `.uploads` using a content hash.
 
 ### Inspect before continuing
 
-Select the inspection action and verify:
+Inspect each source on its page and verify:
 
 - total rows and columns;
 - previewed content;
@@ -147,6 +179,9 @@ When column names differ, map the source columns in the UI. Verify that every sa
 the output expected in production.
 
 ## 6. Configure training
+
+Open **Training**, choose the settings below, then select **Save training settings**. Starting a
+worker is intentionally reserved for **Review & run**.
 
 ### Choose PEFT mode
 
@@ -184,8 +219,8 @@ tokenizer, not a merged full model.
 
 ## 7. Start and monitor a run
 
-Review warnings, acknowledge an above-recommendation model when applicable, then start training.
-Only one worker may be active.
+Open **Review & run**, review warnings, acknowledge an above-recommendation model when applicable,
+then start training. The app switches to **Monitor** automatically. Only one worker may be active.
 
 The monitor refreshes every two seconds and shows:
 
@@ -202,6 +237,16 @@ durable status files.
 
 Use **Cancel training**. The job manager requests termination, waits up to ten seconds, then forces
 the process to stop if required. Existing checkpoints remain.
+
+### Stop LoRA Studio
+
+Select **Stop LoRA Studio** at the bottom of the sidebar, review the warning, then select
+**Confirm stop**. The app verifies and cancels its active training worker before stopping the
+Streamlit server. If process ownership cannot be verified, shutdown is refused and the app remains
+available. Ollama, the browser, and unrelated processes are not stopped.
+
+The browser tab disconnects after shutdown and can be closed manually. Launch the app again to
+start a fresh Streamlit session; saved runs, checkpoints, and adapters remain on disk.
 
 ### Resume
 
@@ -228,8 +273,9 @@ base model.
 
 ## 9. Compare base and adapter
 
-After a completed run, enter a representative prompt. The app generates a deterministic response
-from the quantized base model, then from the same base model with the adapter attached.
+On **Monitor**, after a completed run, enter a representative prompt. The app generates a
+deterministic response from the quantized base model, then from the same base model with the
+adapter attached.
 
 This is a spot check. Use a held-out dataset and task-specific rubric before claiming an
 improvement. Evaluate accuracy, formatting, hallucination, safety, latency, and regressions.
@@ -245,12 +291,13 @@ The playground does not import, convert, merge, or test the adapter created by t
 
 ### The launcher cannot install `uv`
 
-Check internet, proxy, antivirus, and PowerShell policy. Organizations that block remote installer
-scripts should install `uv` using an approved method, then launch again.
+Check internet, proxy, antivirus, PowerShell policy, and the availability of `curl` or `wget` on
+Linux. Organizations that block remote installer scripts should install `uv` using an approved
+method, then launch again.
 
 ### The browser does not open
 
-Read `.runs/streamlit.err.log`. Confirm no other process owns port `8501`, then relaunch.
+Read `.runs/streamlit.err.log`. Confirm no other process owns port `8504`, then relaunch.
 
 ### Hugging Face returns 401 or 403
 
@@ -266,14 +313,16 @@ that can be mapped to prompt and completion.
 
 Confirm an NVIDIA GPU and current driver are installed:
 
-```powershell
+```bash
 uv run python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'No CUDA GPU')"
 ```
 
 ### CUDA runs out of memory
 
 Use QLoRA, choose a smaller model, reduce maximum sequence length, keep batch size at one, and close
-other GPU applications. Restart the app after an out-of-memory failure if GPU memory remains held.
+other GPU applications. After a failed comparison, select **Clear unused VRAM** on **GPU memory**.
+Cancel an active training job or stop the owning external application when the memory is not owned
+by Streamlit. Restart the app only if its process still holds memory after cleanup.
 
 ### Resume says no checkpoint is available
 

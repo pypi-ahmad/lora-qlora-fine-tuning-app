@@ -7,6 +7,30 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-12
+
+### Added
+
+- A dedicated GPU memory page with metrics and safe Streamlit-process VRAM cleanup.
+- A read-only System readiness scan covering OS, CPU threads, available RAM, disk, accelerators,
+  QLoRA free-VRAM readiness, uv `.venv`, and installed software integrations.
+- Native left-sidebar navigation for System, Dataset, Model, GPU memory, Training, Review & run,
+  Monitor, and Ollama playground.
+- Native Linux launcher and Linux CI coverage.
+- A confirmed sidebar shutdown control that safely cancels the owned training worker before
+  stopping Streamlit.
+
+### Changed
+
+- Platform launchers now replace the previous LoRA Studio server to create a fresh Streamlit
+  session on every launch.
+- Adapter comparison now releases model references and unused CUDA cache after both successful and
+  failed inference attempts.
+- Model and dataset inspection, training configuration, launch review, monitoring, and Ollama now
+  run only on their focused pages while sharing session state.
+- The supported runtime is now native Windows or Linux with Python 3.14 in a uv-managed `.venv`
+  and the PyTorch CUDA 13.0 wheel index.
+
 ## [0.1.0] - 2026-08-12
 
 ### Added
@@ -24,7 +48,7 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - One-click Windows launcher that prepares Python and dependencies before starting the app.
 - Interactive zero-to-hero handbook, user guide, technical reference, contribution guide, security
   policy, and community code of conduct.
-- Windows CI for formatting, linting, type checking, and tests.
+- Windows and Linux CI for formatting, linting, type checking, and tests.
 
 ### Security
 
@@ -34,5 +58,6 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Limited dataset uploads to approved formats and 200 MB.
 - Added path validation and atomic run-status updates.
 
-[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases/tag/v0.1.0

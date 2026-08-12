@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-import gc
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+
+from .hardware import release_unused_cuda_memory
 
 
 def generate_text(
@@ -22,6 +23,32 @@ def generate_text(
 ) -> str:
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA GPU is required for model comparison.")
+    try:
+        return _generate_text(
+            model_id,
+            prompt,
+            token=token,
+            revision=revision,
+            adapter_path=adapter_path,
+            max_new_tokens=max_new_tokens,
+        )
+    finally:
+        try:
+            release_unused_cuda_memory()
+        except RuntimeError:
+            pass
+
+
+def _generate_text(
+    model_id: str,
+    prompt: str,
+    *,
+    token: str | None,
+    revision: str,
+    adapter_path: str | None,
+    max_new_tokens: int,
+) -> str:
+    """Generate text in a short-lived frame so model references are released."""
     dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
     quantization = BitsAndBytesConfig(
         load_in_4bit=True,
@@ -50,10 +77,9 @@ def generate_text(
         output = model.generate(
             **inputs, max_new_tokens=max_new_tokens, do_sample=False
         )
-    text = tokenizer.decode(
-        output[0][inputs["input_ids"].shape[1] :], skip_special_tokens=True
+    return cast(
+        str,
+        tokenizer.decode(
+            output[0][inputs["input_ids"].shape[1] :], skip_special_tokens=True
+        ),
     )
-    del model, tokenizer, inputs, output
-    gc.collect()
-    torch.cuda.empty_cache()
-    return text
