@@ -20,8 +20,8 @@ if not defined UV_EXE (
 
 if not defined UV_EXE goto :uv_failed
 
-echo Preparing Python 3.12 and project dependencies...
-"%UV_EXE%" sync --locked --no-dev
+echo Preparing Python 3.14, .venv, and project dependencies...
+"%UV_EXE%" sync --locked --no-dev --python 3.14
 if errorlevel 1 goto :sync_failed
 
 if not exist ".venv\Scripts\pythonw.exe" goto :sync_failed
@@ -36,13 +36,20 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$token=[Environment]::GetEnvironmentVariable('HF_TOKEN','Process');" ^
   "if (-not $token) {$token=[Environment]::GetEnvironmentVariable('HF_TOKEN','User')};" ^
   "if ($token) {$env:HF_TOKEN=$token};" ^
-  "$arguments='-m streamlit run streamlit_app.py --server.headless=true --server.port=8501';" ^
+  "$listeners=Get-NetTCPConnection -LocalPort 8504 -State Listen -ErrorAction SilentlyContinue;" ^
+  "foreach ($listener in $listeners) {" ^
+  "  $existing=Get-CimInstance Win32_Process -Filter ('ProcessId = ' + $listener.OwningProcess);" ^
+  "  if ($existing.CommandLine -notlike '*streamlit_app.py*') {Write-Error 'Port 8504 is used by another application.'; exit 1};" ^
+  "  Stop-Process -Id $listener.OwningProcess -Force;" ^
+  "  Wait-Process -Id $listener.OwningProcess -ErrorAction SilentlyContinue" ^
+  "};" ^
+  "$arguments='-m streamlit run streamlit_app.py --server.headless=true --server.port=8504';" ^
   "$process=Start-Process -FilePath $pythonw -ArgumentList $arguments -WorkingDirectory $root -WindowStyle Hidden -RedirectStandardOutput $stdout -RedirectStandardError $stderr -PassThru;" ^
   "$deadline=(Get-Date).AddSeconds(90);" ^
   "do {" ^
   "  Start-Sleep -Milliseconds 500;" ^
   "  if ($process.HasExited) {Write-Error ('Streamlit stopped during startup. Read ' + $stderr); exit 1};" ^
-  "  try {$response=Invoke-WebRequest 'http://localhost:8501/_stcore/health' -UseBasicParsing -TimeoutSec 2; if ($response.StatusCode -eq 200) {Start-Process 'http://localhost:8501'; exit 0}} catch {}" ^
+  "  try {$response=Invoke-WebRequest 'http://localhost:8504/_stcore/health' -UseBasicParsing -TimeoutSec 2; if ($response.StatusCode -eq 200) {Start-Process 'http://localhost:8504'; exit 0}} catch {}" ^
   "} while ((Get-Date) -lt $deadline);" ^
   "Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue;" ^
   "Write-Error ('Streamlit did not become ready within 90 seconds. Read ' + $stderr); exit 1"

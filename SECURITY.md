@@ -23,7 +23,7 @@ the maintainer to provide a private channel. Do not include exploit details in t
 Include only the information needed to investigate:
 
 - affected version or commit;
-- Windows, Python, GPU, and driver versions when relevant;
+- operating system, Python, GPU, and driver versions when relevant;
 - the vulnerable boundary and potential impact;
 - the smallest safe reproduction;
 - whether exploitation requires local access, a malicious model/dataset, or network exposure;
@@ -71,9 +71,10 @@ These controls reduce risk; they do not make arbitrary models or datasets trustw
 ## Safe operation
 
 - Run the application only on a trusted computer and user account.
-- Do not expose port `8501` to the public internet or an untrusted local network. The application
+- Do not expose port `8504` to the public internet or an untrusted local network. The application
   has no authentication.
-- Keep Windows, the NVIDIA driver, Ollama, `uv`, Python dependencies, and this project updated.
+- Keep the operating system, NVIDIA driver, Ollama, `uv`, Python dependencies, and this project
+  updated.
 - Inspect the one-click launcher before executing it if organizational policy prohibits remote
   installation scripts. Install `uv` manually when required by policy.
 - Use the least-privileged Hugging Face token: read access for downloads and write access only for

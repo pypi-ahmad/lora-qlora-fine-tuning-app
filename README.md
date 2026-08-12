@@ -9,11 +9,15 @@ QLoRA. It guides a user from hardware inspection and dataset validation through 
 checkpoint recovery, adapter evaluation, and optional Hugging Face Hub upload.
 
 This is a local, single-user educational tool. GitHub hosts its source; training runs on the
-Windows machine that launches the app.
+Windows or Linux machine that launches the app.
 
 ## Features
 
 - Detects CUDA, GPU VRAM, RAM, disk space, and BF16 support.
+- Runs a read-only readiness scan for OS, CPU threads, available RAM, runtimes, and integrations.
+- Shows live CUDA memory usage and can release unused PyTorch VRAM safely.
+- Provides a confirmed shutdown control for the app and its active training worker.
+- Organizes the workflow into eight focused pages in the left navigation.
 - Accepts Hugging Face model and dataset repositories or CSV, JSON, and JSONL uploads.
 - Validates and previews conversational, plain-text, and prompt/completion datasets.
 - Trains PEFT adapters with LoRA or four-bit QLoRA using TRL supervised fine-tuning.
@@ -24,48 +28,97 @@ Windows machine that launches the app.
 
 ## Requirements
 
-- Windows 11 x86-64
-- NVIDIA GPU with a current driver; at least 6 GB VRAM is recommended
+- Windows 11 or x86-64 Linux, running natively
+- NVIDIA GPU with a CUDA 13-compatible driver; at least 6 GB VRAM is recommended
+- Git for cloning the repository
 - Internet access for first setup and Hugging Face downloads
 - Hugging Face token for gated/private repositories or Hub uploads
 - Ollama only when using the optional playground
 
 Local training requires CUDA. CPU-only computers can open the interface but cannot start a run.
 
-## Quick start
+## Install from GitHub
 
-1. Download or clone this repository.
-2. Set a persistent Hugging Face user environment variable:
+Repository: <https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app>
 
-   ```powershell
-   [Environment]::SetEnvironmentVariable("HF_TOKEN", "hf_your_token", "User")
-   ```
+### 1. Clone the repository
 
-3. Double-click **`Launch LoRA Studio.cmd`**.
+Open PowerShell on Windows or a terminal on Linux:
 
-The launcher installs `uv` when missing, prepares Python 3.12 and the locked dependencies, starts
-Streamlit in the background, and opens `http://localhost:8501`. First setup can take several
-minutes. Startup logs are written to `.runs/streamlit.out.log` and
+```bash
+git clone https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app.git
+cd lora-qlora-fine-tuning-app
+```
+
+If Git is unavailable, download **Code → Download ZIP** from the repository page and extract it.
+
+### 2. Configure Hugging Face access
+
+Public models and datasets do not require a token. For gated/private repositories or Hub uploads,
+create a token in your Hugging Face settings and configure `HF_TOKEN`.
+
+Windows PowerShell:
+
+```powershell
+[Environment]::SetEnvironmentVariable("HF_TOKEN", "hf_your_token", "User")
+```
+
+Linux shell:
+
+```bash
+echo 'export HF_TOKEN="hf_your_token"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Replace `hf_your_token` with your token. Never save a real token in this repository.
+
+### 3. Install and launch
+
+Windows: double-click **`Launch LoRA Studio.cmd`** in File Explorer, or run:
+
+```powershell
+& ".\Launch LoRA Studio.cmd"
+```
+
+Linux:
+
+```bash
+bash "Launch LoRA Studio.sh"
+```
+
+The platform launcher installs `uv` when missing, prepares Python 3.14 and the locked CUDA 13 dependencies
+inside the project `.venv`, starts Streamlit in the background, and opens
+`http://localhost:8504`. First setup can take several minutes. Startup logs are written to
+`.runs/streamlit.out.log` and
 `.runs/streamlit.err.log`.
+
+Launching again stops the previous LoRA Studio server and starts a fresh Streamlit session. An
+active training worker is separate and continues until it completes or is cancelled from Monitor.
+
+To shut down from the UI, select **Stop LoRA Studio** in the sidebar and then **Confirm stop**. This
+cancels the active training worker before stopping Streamlit. Ollama and unrelated applications
+are never terminated.
 
 Public Hugging Face repositories work without a token. Use a read token for downloads and grant
 write access only when pushing an adapter.
 
-### Manual launch
+### Manual setup and launch
 
-```powershell
-uv sync --group dev
-uv run streamlit run streamlit_app.py
+If `uv` is already installed, prepare the project environment directly:
+
+```bash
+uv sync --locked --no-dev --python 3.14
+uv run streamlit run streamlit_app.py --server.port=8504
 ```
 
 ## First training run
 
-1. Enter `Qwen/Qwen3-0.6B` as the model.
-2. Upload `examples/sft_sample.jsonl`.
-3. Select **QLoRA** and **Smoke test**.
-4. Inspect the detected dataset format and column mapping.
-5. Start training and follow the live status.
-6. After completion, compare the base model with the adapter.
+1. Confirm CUDA and Hugging Face access on **System**.
+2. Upload `examples/sft_sample.jsonl` on **Dataset** and inspect its format.
+3. Inspect `Qwen/Qwen3-0.6B` on **Model**.
+4. Select **QLoRA** and **Smoke test** on **Training**, then save the settings.
+5. Validate the summary and start from **Review & run**.
+6. Follow the job and compare the completed adapter on **Monitor**.
 7. Find the adapter under `.runs/<run-id>/output/adapter`.
 
 The smoke preset proves that the pipeline works; it does not prove production model quality.
@@ -98,13 +151,14 @@ or map equivalent columns in the interface. Uploads are limited to CSV, JSON, or
 - The current trainer implements SFT, not DPO, RLHF, or RLAIF.
 - Only one local training job can run at a time.
 - Training and adapter comparison require an NVIDIA CUDA GPU.
+- The VRAM cleanup control cannot free live models or memory owned by Ollama or other processes.
 - The app has no authentication and must not be exposed to an untrusted network.
 - The Ollama playground does not convert or import the trained adapter.
 - GitHub Pages and Streamlit Community Cloud cannot access a user's local GPU or Ollama service.
 
 ## Development
 
-```powershell
+```bash
 uv sync --group dev
 uv run ruff format --check .
 uv run ruff check .

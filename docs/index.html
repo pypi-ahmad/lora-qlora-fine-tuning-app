@@ -280,7 +280,7 @@
 
         <h3>What it is not</h3>
         <div class="card-grid">
-          <article class="card"><span class="card-kicker">Not a hosted trainer</span><p>GitHub hosts the source. Training happens on the Windows computer running the app.</p></article>
+          <article class="card"><span class="card-kicker">Not a hosted trainer</span><p>GitHub hosts the source. Training happens on the Windows or Linux computer running the app.</p></article>
           <article class="card"><span class="card-kicker">Not an RLHF system</span><p>The current implementation trains SFT adapters. DPO, RLHF and RLAIF are learning context, not app features.</p></article>
           <article class="card"><span class="card-kicker">Not an Ollama converter</span><p>The playground talks to models already installed in Ollama. It does not import the newly trained adapter.</p></article>
         </div>
@@ -360,7 +360,7 @@
 
         <h3>Requirements</h3>
         <ul>
-          <li>Windows 11 x86-64.</li>
+          <li>Windows 11 or x86-64 Linux.</li>
           <li>NVIDIA CUDA GPU; at least 6 GB VRAM is recommended.</li>
           <li>Internet access for first setup and Hugging Face downloads.</li>
           <li>Enough disk for the base model, dependency cache, dataset, checkpoints and adapter.</li>
@@ -373,8 +373,8 @@
           <li><h3>Set the Hugging Face token</h3><p>Create a read token for downloads. Use a write token only if you will push adapters.</p>
             <div class="codebox"><header>PowerShell · persistent user variable<button class="copy" type="button">Copy</button></header><pre><code>[Environment]::SetEnvironmentVariable("HF_TOKEN", "hf_your_token", "User")</code></pre></div>
           </li>
-          <li><h3>Double-click the launcher</h3><p>Open <code>Launch LoRA Studio.cmd</code>. First launch installs <code>uv</code>, Python 3.12 and locked project dependencies. The console closes after the app becomes healthy.</p></li>
-          <li><h3>Use the browser</h3><p>The app opens at <code>http://localhost:8501</code>. Closing the browser tab does not necessarily stop the background server.</p></li>
+          <li><h3>Run the platform launcher</h3><p>On Windows, open <code>Launch LoRA Studio.cmd</code>. On Linux, run <code>bash "Launch LoRA Studio.sh"</code>. First launch installs <code>uv</code>, Python 3.14 and locked CUDA 13 dependencies inside <code>.venv</code>.</p></li>
+          <li><h3>Use the browser</h3><p>The app opens at <code>http://localhost:8504</code>. Closing the browser tab does not necessarily stop the background server.</p></li>
         </ol>
 
         <h3>Manual developer launch</h3>
@@ -390,13 +390,13 @@ uv run streamlit run streamlit_app.py</code></pre></div>
         <p class="chapter-intro">Use the included sample and smallest preset first. The goal is to validate the whole pipeline before spending hours on real data.</p>
 
         <ol class="step-list">
-          <li><h3>Confirm the hardware panel</h3><p>CUDA should be detected. Note GPU name, VRAM, RAM, free disk and BF16 support. Without CUDA, the app allows exploration but disables local training.</p></li>
-          <li><h3>Select the model</h3><p>Enter <code>Qwen/Qwen3-0.6B</code>. A repository-root URL such as <code>https://huggingface.co/Qwen/Qwen3-0.6B</code> also works.</p></li>
-          <li><h3>Upload the sample dataset</h3><p>Choose <code>examples/sft_sample.jsonl</code>. The app stores an upload by content hash and previews its rows.</p></li>
+          <li><h3>Open System</h3><p>Review the read-only OS, CPU, available RAM, disk, accelerator, runtime and software scan. The scan never installs drivers or exposes token values. QLoRA needs at least 3.5 GB of currently free VRAM for the smallest supported jobs.</p></li>
+          <li><h3>Open Dataset</h3><p>Upload <code>examples/sft_sample.jsonl</code>. The app stores it by content hash and previews its rows.</p></li>
+          <li><h3>Open Model</h3><p>Inspect <code>Qwen/Qwen3-0.6B</code>. A repository-root URL such as <code>https://huggingface.co/Qwen/Qwen3-0.6B</code> also works.</p></li>
           <li><h3>Inspect before training</h3><p>Confirm the detected format and columns. Fix mapping errors now; training cannot compensate for incorrect examples.</p></li>
-          <li><h3>Choose QLoRA</h3><p>QLoRA loads the base model in 4-bit form. It is the conservative choice for local GPUs.</p></li>
+          <li><h3>Configure Training</h3><p>Choose QLoRA and save the settings. QLoRA is the conservative choice for local GPUs.</p></li>
           <li><h3>Choose Smoke test</h3><p>This preset uses 512-token sequences, up to 100 samples, 20 steps, accumulation 4 and no evaluation split.</p></li>
-          <li><h3>Start and watch</h3><p>The UI starts a separate worker. Status refreshes every two seconds; expand Training log for raw output.</p></li>
+          <li><h3>Review, start and watch</h3><p>Start on <strong>Review &amp; run</strong>; the app opens <strong>Monitor</strong>, where status refreshes every two seconds.</p></li>
           <li><h3>Compare responses</h3><p>After completion, enter one prompt. The app generates once with the quantized base model and once with the same base plus your adapter.</p></li>
         </ol>
 
@@ -504,7 +504,8 @@ uv run streamlit run streamlit_app.py</code></pre></div>
     └── training_config.json</div>
 
         <h3>Cancellation and recovery</h3>
-        <p>Cancel first asks the process to terminate, waits up to ten seconds, then kills it if necessary. Resume works only when a checkpoint exists. Only one live worker is allowed; the job manager checks stored PIDs before creating another run.</p>
+        <p>Cancel first verifies that the PID belongs to the selected training worker, asks it to terminate, waits up to ten seconds, then kills it if necessary. Resume works only when a checkpoint exists. Only one live worker is allowed; the job manager checks stored PIDs before creating another run.</p>
+        <p><strong>Stop LoRA Studio</strong> in the sidebar requires confirmation, cancels the verified training worker, and then stops Streamlit. It never terminates Ollama or unrelated applications.</p>
       </section>
 
       <section class="chapter" id="evaluate">
@@ -546,21 +547,22 @@ uv run streamlit run streamlit_app.py</code></pre></div>
         <div class="diagram" data-diagram>
           <div class="diagram-head"><strong>Runtime architecture</strong><span>Select a component to locate its responsibility.</span></div>
           <div class="diagram-track architecture-track">
-            <button class="diagram-node" type="button" aria-pressed="true" data-title="Streamlit UI" data-copy="streamlit_app.py owns user input, session state, preview, validation, job controls, comparison and the Ollama panel.">UI<small>streamlit_app.py</small></button>
+            <button class="diagram-node" type="button" aria-pressed="true" data-title="Streamlit UI" data-copy="streamlit_app.py initializes shared state and navigation; app_pages contains eight focused page scripts.">UI<small>streamlit_app.py · app_pages/</small></button>
             <button class="diagram-node" type="button" aria-pressed="false" data-title="Sources and hardware" data-copy="sources.py validates Hugging Face repository roots and uploads; hardware.py detects CUDA resources and produces conservative model-size warnings.">Boundaries<small>sources.py · hardware.py</small></button>
             <button class="diagram-node" type="button" aria-pressed="false" data-title="Shared contracts" data-copy="models.py defines DatasetSpec, TrainingConfig, JobStatus, enums, presets and run-path validation shared across processes.">Contracts<small>models.py</small></button>
             <button class="diagram-node" type="button" aria-pressed="false" data-title="Process manager" data-copy="jobs.py creates run directories, atomically writes JSON, launches one worker, reads status and logs, cancels processes and resumes checkpoints.">Jobs<small>jobs.py · worker.py</small></button>
             <button class="diagram-node" type="button" aria-pressed="false" data-title="Trainer" data-copy="training.py loads and normalizes the dataset, configures quantization and LoRA, runs TRL SFTTrainer, reports progress and saves artifacts.">Training<small>training.py</small></button>
             <button class="diagram-node" type="button" aria-pressed="false" data-title="Post-training adapters" data-copy="inference.py compares base and adapter. ollama.py is an independent standard-library HTTP client for the local Ollama service.">Use<small>inference.py · ollama.py</small></button>
           </div>
-          <div class="diagram-output" aria-live="polite"><strong>Streamlit UI</strong><p>streamlit_app.py owns user input, session state, preview, validation, job controls, comparison and the Ollama panel.</p></div>
+          <div class="diagram-output" aria-live="polite"><strong>Streamlit UI</strong><p>streamlit_app.py initializes shared state and navigation; app_pages contains eight focused page scripts.</p></div>
         </div>
 
         <h3>File map</h3>
         <table class="comparison">
           <thead><tr><th>Path</th><th>Responsibility</th></tr></thead>
           <tbody>
-            <tr><td><code>streamlit_app.py</code></td><td>Complete page composition and orchestration.</td></tr>
+            <tr><td><code>streamlit_app.py</code></td><td>Shared state initialization and native sidebar navigation.</td></tr>
+            <tr><td><code>app_pages/</code></td><td>Eight focused workflow and playground page scripts.</td></tr>
             <tr><td><code>src/lora_finetune_studio/models.py</code></td><td>Serializable data contracts, enums, presets and validation.</td></tr>
             <tr><td><code>sources.py</code></td><td>HF token access, safe repository parsing, uploads, dataset loading and inspection.</td></tr>
             <tr><td><code>hardware.py</code></td><td>CUDA, VRAM, RAM, disk and BF16 detection; size warnings.</td></tr>
@@ -589,12 +591,14 @@ uv run streamlit run streamlit_app.py</code></pre></div>
       <section class="chapter" id="developer">
         <span class="chapter-number">Chapter 11 · Maintain the project</span>
         <h2>Small modules, explicit contracts, narrow tests.</h2>
-        <p class="chapter-intro">The package uses Python 3.12, <code>uv</code>, a locked CUDA PyTorch index, Ruff, ty and pytest.</p>
+        <p class="chapter-intro">The package uses native Windows or Linux, Python 3.14, a uv-managed <code>.venv</code>, the PyTorch CUDA 13.0 index, Ruff, ty and pytest.</p>
 
         <h3>Repository shape</h3>
         <div class="tree" role="img" aria-label="Repository file tree">lora-qlora-fine-tuning-app/
 ├── Launch LoRA Studio.cmd
+├── Launch LoRA Studio.sh
 ├── streamlit_app.py
+├── app_pages/ (8 sidebar pages)
 ├── pyproject.toml / uv.lock / .python-version
 ├── .streamlit/config.toml
 ├── examples/sft_sample.jsonl
@@ -670,8 +674,8 @@ uv run pytest</code></pre></div>
         <table class="comparison">
           <thead><tr><th>Symptom</th><th>Likely boundary</th><th>Next action</th></tr></thead>
           <tbody>
-            <tr><td>Launcher cannot install <code>uv</code></td><td>Network or PowerShell policy</td><td>Check internet, proxy and policy; run the official installer manually.</td></tr>
-            <tr><td>Browser never opens</td><td>Streamlit startup</td><td>Read <code>.runs/streamlit.err.log</code>; confirm port 8501 is free.</td></tr>
+            <tr><td>Launcher cannot install <code>uv</code></td><td>Network or shell policy</td><td>Check internet, proxy and policy; on Linux also confirm <code>curl</code> or <code>wget</code> is installed.</td></tr>
+            <tr><td>Browser never opens</td><td>Streamlit startup</td><td>Read <code>.runs/streamlit.err.log</code>; confirm port 8504 is free.</td></tr>
             <tr><td>HF token not found</td><td>Environment</td><td>Set the persistent user variable, close the app, then relaunch.</td></tr>
             <tr><td>401/403 or gated model error</td><td>Hugging Face access</td><td>Accept the model terms and verify token scope.</td></tr>
             <tr><td>Dataset format error</td><td>Source/inspection</td><td>Use CSV/JSON/JSONL and map text or prompt/completion columns.</td></tr>

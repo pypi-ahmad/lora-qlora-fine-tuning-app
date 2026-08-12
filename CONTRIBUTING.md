@@ -18,15 +18,15 @@ vulnerabilities through the private process in [SECURITY.md](SECURITY.md), not a
 
 Requirements:
 
-- Windows 11
+- Windows 11 or x86-64 Linux
 - Git and authenticated GitHub CLI
 - `uv`
-- Python 3.12, installed automatically by `uv`
+- Python 3.14, installed automatically by `uv` into the project `.venv`
 - NVIDIA CUDA GPU only for real training or adapter-comparison tests
 
 Prepare the development environment:
 
-```powershell
+```bash
 git clone https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app.git
 cd lora-qlora-fine-tuning-app
 uv sync --group dev

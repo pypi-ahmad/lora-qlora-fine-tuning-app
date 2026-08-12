@@ -35,6 +35,28 @@ def read_status(run_id: str) -> JobStatus:
     return JobStatus.from_dict(json.loads(path.read_text(encoding="utf-8")))
 
 
+def read_config(run_id: str) -> TrainingConfig:
+    path = run_path(run_id, RUNS_ROOT) / "config.json"
+    return TrainingConfig.from_dict(json.loads(path.read_text(encoding="utf-8")))
+
+
+def _is_training_worker(pid: int, config_path: Path) -> bool:
+    """Return whether a PID is this run's isolated training worker."""
+    try:
+        command = psutil.Process(pid).cmdline()
+    except psutil.AccessDenied, psutil.NoSuchProcess, psutil.ZombieProcess:
+        return False
+    expected_config = os.path.normcase(str(config_path.resolve()))
+    normalized_command = {
+        os.path.normcase(str(Path(item).resolve())) for item in command
+    }
+    return (
+        "lora_finetune_studio.worker" in command
+        and "-m" in command
+        and expected_config in normalized_command
+    )
+
+
 def active_run() -> str | None:
     if not RUNS_ROOT.exists():
         return None
@@ -43,7 +65,7 @@ def active_run() -> str | None:
             status = JobStatus.from_dict(
                 json.loads(status_path.read_text(encoding="utf-8"))
             )
-        except (OSError, ValueError, TypeError):
+        except OSError, ValueError, TypeError:
             continue
         if (
             status.state in {JobState.QUEUED, JobState.RUNNING}
@@ -103,6 +125,11 @@ def launch_run(run_id: str) -> int:
 def cancel_run(run_id: str) -> None:
     status = read_status(run_id)
     if status.pid and psutil.pid_exists(status.pid):
+        config_path = run_path(run_id, RUNS_ROOT) / "config.json"
+        if not _is_training_worker(status.pid, config_path):
+            raise RuntimeError(
+                "Refusing to stop a process that is not this run's training worker."
+            )
         process = psutil.Process(status.pid)
         process.terminate()
         try:
@@ -113,6 +140,14 @@ def cancel_run(run_id: str) -> None:
     status.message = "Cancelled by user"
     status.progress = 0.0
     write_json_atomic(run_path(run_id, RUNS_ROOT) / "status.json", status.to_dict())
+
+
+def cancel_active_run() -> str | None:
+    """Cancel the active owned training worker, if one exists."""
+    run_id = active_run()
+    if run_id:
+        cancel_run(run_id)
+    return run_id
 
 
 def resume_run(run_id: str) -> int:
