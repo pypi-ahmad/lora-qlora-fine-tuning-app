@@ -1,0 +1,10 @@
+{"messages":[{"role":"user","content":"What is LoRA?"},{"role":"assistant","content":"LoRA fine-tunes small adapter matrices while keeping the base model frozen."}]}
+{"messages":[{"role":"user","content":"What is QLoRA?"},{"role":"assistant","content":"QLoRA combines LoRA adapters with a 4-bit quantized base model to reduce memory use."}]}
+{"messages":[{"role":"user","content":"When should I use supervised fine-tuning?"},{"role":"assistant","content":"Use supervised fine-tuning when you have examples of the inputs and responses you want the model to imitate."}]}
+{"messages":[{"role":"user","content":"Why keep evaluation examples separate?"},{"role":"assistant","content":"Separate evaluation examples measure whether the model generalizes beyond the data it trained on."}]}
+{"messages":[{"role":"user","content":"What does an epoch mean?"},{"role":"assistant","content":"One epoch is one complete pass through the training dataset."}]}
+{"messages":[{"role":"user","content":"What is gradient accumulation?"},{"role":"assistant","content":"Gradient accumulation combines several small batches before updating weights, reducing peak memory use."}]}
+{"messages":[{"role":"user","content":"What is a checkpoint?"},{"role":"assistant","content":"A checkpoint stores training state so a run can be inspected or resumed later."}]}
+{"messages":[{"role":"user","content":"Why use a small smoke test first?"},{"role":"assistant","content":"A smoke test catches dataset, model, and memory problems before a long training run spends time and resources."}]}
+{"messages":[{"role":"user","content":"What is PEFT?"},{"role":"assistant","content":"Parameter-efficient fine-tuning updates a small part of a model instead of every weight."}]}
+{"messages":[{"role":"user","content":"What is a Hugging Face adapter?"},{"role":"assistant","content":"An adapter is a small set of learned weights loaded together with its original base model."}]}
