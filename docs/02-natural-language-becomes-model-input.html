@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="You will understand common NLP tasks, corpora, tokens, vocabulary, context windows, tokenization, and why this application does not require a separate embedding model.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 2 - Natural language becomes model input | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="02-natural-language-becomes-model-input.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html" class="active" aria-current="page"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 02 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:2;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-2-natural-language-becomes-model-input">Module 2 - Natural language becomes model input</h2>
+<h3 id="objectives">Objectives</h3>
+<p>You will understand common NLP tasks, corpora, tokens, vocabulary, context windows,
+tokenization, and why this application does not require a separate embedding model.</p>
+<h3 id="what-nlp-systems-do">What NLP systems do</h3>
+<p>Natural language processing covers tasks such as classification, information
+extraction, search, translation, summarization, question answering, and open-ended
+generation. A causal language model reduces many of these tasks to one operation:
+predict the next token given all previous tokens.</p>
+<p>For tokens <code>x_1 ... x_T</code>, the model represents a sequence probability as:</p>
+<pre><code class="language-text">P(x_1, ..., x_T) = product from t=1 to T of P(x_t | x_1, ..., x_(t-1))
+</code></pre>
+<p>Generation repeatedly samples or selects from the next-token distribution, appends the
+new token, and runs again until a stopping condition.</p>
+<h3 id="corpus-example-field-and-label">Corpus, example, field, and label</h3>
+<p>A <strong>corpus</strong> is a collection of language data. A <strong>training example</strong> is one unit shown
+to the optimizer. Examples contain <strong>fields</strong> such as <code>prompt</code>, <code>completion</code>, <code>chosen</code>,
+or <code>rejected</code>. A <strong>label</strong> is the desired prediction target. In causal language
+modeling, the next tokens themselves act as labels; in Reward Modeling, the objective
+learns which response in a pair should receive the higher score.</p>
+<h3 id="tokenization">Tokenization</h3>
+<p>Models do not consume raw strings. A tokenizer maps text to integer token IDs using a
+fixed vocabulary. Tokens may represent a whole word, part of a word, punctuation,
+whitespace patterns, or bytes. Therefore:</p>
+<ul>
+<li>one word is not necessarily one token;</li>
+<li>token counts vary by tokenizer and language;</li>
+<li>unusual formatting and code can tokenize differently from prose; and</li>
+<li>character length is not a reliable estimate of GPU sequence length.</li>
+</ul>
+<p>Special tokens can mark sequence boundaries, padding, roles, or control instructions.
+Chat models also use a <strong>chat template</strong> that converts structured messages into the
+exact tokenizable text the model expects. In this repository, conversational SFT data
+is formatted with the selected tokenizer's chat template.</p>
+<h3 id="vocabulary-and-context">Vocabulary and context</h3>
+<p>The <strong>vocabulary</strong> is the finite token-to-ID mapping. The <strong>context window</strong> is the
+maximum number of tokens the architecture and runtime can consider in one sequence.
+The app's <code>max_length</code> is a training cap from 128 to 8192; it does not expand a model's
+architectural context window. A chosen value must fit both the model and the GPU.</p>
+<p>Longer sequences cost more memory and computation because activations grow with token
+count and self-attention compares token positions. Packing more useful examples into a
+shorter clean format is often better than blindly increasing maximum length.</p>
+<h3 id="embeddings-two-meanings-people-confuse">Embeddings: two meanings people confuse</h3>
+<p>An <strong>embedding layer</strong> inside the language model maps each token ID to a dense vector.
+If the vocabulary has <code>V</code> tokens and the hidden size is <code>d</code>, the embedding table has
+shape <code>V x d</code>. Every model in this application already contains such an embedding
+layer.</p>
+<p>An <strong>embedding model</strong> commonly means a separate model that converts a sentence or
+document into one vector for search, clustering, or retrieval-augmented generation.
+This fine-tuning application does not perform semantic search or RAG, so it does not
+need a separate embedding model. You would add one in a retrieval system outside this
+training pipeline.</p>
+<h3 id="data-is-behavior-specification">Data is behavior specification</h3>
+<p>Examples teach patterns, not intentions hidden in your head. If desired answers are
+concise but the dataset contains verbose answers, the model learns verbosity. If role
+labels are inconsistent, the model learns inconsistent turn structure. If private or
+copyrighted text is included without authorization, training does not remove that risk.</p>
+<h3 id="mini-exercise-estimate-tokens">Mini exercise: estimate tokens</h3>
+<p>Take three examples from <code>examples/sft_sample.jsonl</code> and predict which will produce the
+most tokens. Later, inspect them with the selected model tokenizer. Record why your
+character-based prediction was right or wrong.</p>
+<h3 id="checkpoint">Checkpoint</h3>
+<ol>
+<li>What is the difference between a token and a word?</li>
+<li>Why does this app need token embeddings but not a separate embedding model?</li>
+<li>What can go wrong when the dataset's chat format differs from the base model's
+   expected template?</li>
+</ol></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="01-learn-the-map-before-the-territory.html"><span>Previous</span><strong>Module 1 - Learn the map before the territory</strong></a><a rel="next" href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>Next</span><strong>Module 3 - Neural networks learn with vectors and gradients</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A chapter in the Zero-to-Mastery course.">
+  <meta name="theme-color" content="#171a26">
+  <title>Appendix A - Checkpoint answers | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="18-checkpoint-answers.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html" class="active" aria-current="page"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 18 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:18;--total:22"></span></div></header>
+  <div class="prose"><h2 id="appendix-a-checkpoint-answers">Appendix A - Checkpoint answers</h2>
+<h3 id="module-1">Module 1</h3>
+<ol>
+<li>It contains only learned adapter parameters and configuration; base weights remain
+   external.</li>
+<li>SFT/Reward/DPO/KTO/ORPO are objectives; LoRA/QLoRA/OFT/QOFT are methods.</li>
+<li>Evaluation defines success and prevents optimizing only for training loss.</li>
+</ol>
+<h3 id="module-2">Module 2</h3>
+<ol>
+<li>Tokens are vocabulary units and can be smaller or larger than words.</li>
+<li>The language model already embeds token IDs; a separate embedding model is needed
+   for retrieval/vector-search workflows, not this trainer.</li>
+<li>Roles or separators can be misinterpreted, targets can be trained incorrectly, and
+   inference formatting can mismatch training.</li>
+</ol>
+<h3 id="module-3">Module 3</h3>
+<ol>
+<li>A step updates parameters; an epoch passes through the dataset.</li>
+<li>It processes microbatches sequentially and updates only after gradients accumulate.</li>
+<li>Activations, adapter gradients, optimizer state, kernels, and other processes still
+   consume memory.</li>
+</ol>
+<h3 id="module-4">Module 4</h3>
+<ol>
+<li>Without it, a training position could copy future target tokens.</li>
+<li>Queries seek, keys advertise, and values carry the mixed information.</li>
+<li>They contain the block's learned transformations and can be adapted efficiently.</li>
+</ol>
+<h3 id="module-5">Module 5</h3>
+<ol>
+<li>When answers depend on current/private attributable knowledge rather than stable
+   behavior.</li>
+<li>SFT supplies targets; preference data supplies relative judgments.</li>
+<li>It requires broad corpora and compute far beyond the local post-training pipeline.</li>
+</ol>
+<h3 id="module-6">Module 6</h3>
+<ol>
+<li>Base weights, activations, kernels, adapter gradients, and optimizer state.</li>
+<li>The frozen base is unchanged; each task stores only its adapter.</li>
+<li>Method controls trainable parameterization; objective controls the loss/data meaning.</li>
+</ol>
+<h3 id="module-7">Module 7</h3>
+<ol>
+<li>Adapter capacity and trainable parameter count.</li>
+<li>Frozen base weights are four-bit; adapter weights train with floating-point compute.</li>
+<li>Vector norms and angles.</li>
+</ol>
+<h3 id="module-8">Module 8</h3>
+<ol>
+<li>Concatenation and the selected trainer require one compatible schema.</li>
+<li>No; contribution follows row count.</li>
+<li>Random splits can leak related examples and do not represent a final external test.</li>
+</ol>
+<h3 id="module-9">Module 9</h3>
+<ol>
+<li>It produces scalar scores rather than a causal text-generation policy.</li>
+<li>DPO uses offline pairs directly; PPO requires rollouts and additional models/state.</li>
+<li>Preference pressure relative to the reference/objective formulation.</li>
+</ol>
+<h3 id="module-10">Module 10</h3>
+<ol>
+<li>Its pinned Python/PyTorch stack differs from the main app.</li>
+<li>No; it only authenticates repository access.</li>
+<li>Real memory depends on architecture, settings, kernels, fragmentation, and processes.</li>
+</ol>
+<h3 id="module-11">Module 11</h3>
+<ol>
+<li>The explicit 20-step cap.</li>
+<li>It produces a deterministic representative subset rather than always taking the
+   first rows.</li>
+<li>Sequence length and per-device batch size.</li>
+</ol>
+<h3 id="module-14">Module 14</h3>
+<ol>
+<li>The optimized likelihood can diverge from product behavior or overfit.</li>
+<li>Their mathematical scales and meanings differ.</li>
+<li>Repeated tuning based on its results.</li>
+</ol>
+<h3 id="module-15">Module 15</h3>
+<ol>
+<li>The worker is a separate operating-system process.</li>
+<li>Readers cannot observe partially written JSON.</li>
+<li>It lowers simultaneous VRAM use.</li>
+</ol>
+<h3 id="module-16">Module 16</h3>
+<ol>
+<li>It is the serialized UI-to-worker contract.</li>
+<li>Inspection/mapping and worker normalization.</li>
+<li>App support also requires data, validation, model, controls, artifacts, tests, and UI.</li>
+</ol></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="17-capstone-train-a-defensible-specialist.html"><span>Previous</span><strong>Module 17 - Capstone: train a defensible specialist</strong></a><a rel="next" href="19-formula-and-settings-reference.html"><span>Next</span><strong>Appendix B - Formula and settings reference</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>

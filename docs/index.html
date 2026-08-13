@@ -3,783 +3,275 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Zero-to-hero handbook, user manual, business guide, and code tour for LoRA Fine-tune Studio.">
-  <title>LoRA Fine-tune Studio — Zero-to-Hero Handbook</title>
-  <style>
-    :root {
-      --paper: #f7f9fc;
-      --surface: #ffffff;
-      --ink: #172033;
-      --muted: #5d687c;
-      --line: #dce3ef;
-      --cobalt: #2457d6;
-      --violet: #7548d8;
-      --cyan: #087f83;
-      --amber: #a96000;
-      --red: #b4233d;
-      --green: #18794e;
-      --shadow: 0 18px 50px rgba(36, 57, 99, .10);
-      --display: Bahnschrift, "Arial Narrow", "Segoe UI", sans-serif;
-      --body: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
-      --mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
-      color-scheme: light;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        linear-gradient(90deg, transparent 31px, rgba(36, 87, 214, .045) 32px, transparent 33px),
-        var(--paper);
-      font-family: var(--body);
-      line-height: 1.68;
-    }
-    a { color: var(--cobalt); text-underline-offset: .18em; }
-    a:hover { text-decoration-thickness: 2px; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    :focus-visible { outline: 3px solid #f4aa3a; outline-offset: 3px; }
-    code, pre { font-family: var(--mono); }
-    code:not(pre code) { padding: .12rem .36rem; border: 1px solid var(--line); border-radius: .35rem; background: #f0f4fa; font-size: .9em; }
-    img, svg { max-width: 100%; }
-
-    .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: .65rem 1rem; background: var(--ink); color: #fff; }
-    .skip-link:focus { top: 1rem; }
-    .progress { position: fixed; inset: 0 0 auto; z-index: 90; height: 4px; background: transparent; }
-    .progress span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--cobalt), var(--violet), var(--cyan)); }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 80;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 4rem;
-      padding: .65rem clamp(1rem, 4vw, 3rem);
-      border-bottom: 1px solid rgba(220, 227, 239, .85);
-      background: rgba(247, 249, 252, .92);
-      backdrop-filter: blur(15px);
-    }
-    .brand { display: flex; align-items: center; gap: .75rem; color: var(--ink); text-decoration: none; font-family: var(--display); font-weight: 700; letter-spacing: .01em; }
-    .brand-mark { display: grid; grid-template-columns: repeat(2, .55rem); gap: .18rem; transform: skewY(-8deg); }
-    .brand-mark i { width: .55rem; height: .55rem; border-radius: .12rem; background: var(--line); }
-    .brand-mark i:nth-child(2), .brand-mark i:nth-child(3) { background: var(--violet); }
-    .topbar-note { color: var(--muted); font: 600 .75rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
-    .nav-toggle { display: none; border: 1px solid var(--line); border-radius: .55rem; background: var(--surface); padding: .5rem .7rem; color: var(--ink); font: 700 .85rem var(--body); }
-
-    .shell { display: grid; grid-template-columns: 17rem minmax(0, 1fr); max-width: 98rem; margin: 0 auto; }
-    .toc { position: sticky; top: 4rem; height: calc(100vh - 4rem); padding: 2rem 1.25rem 2rem 2rem; overflow: auto; border-right: 1px solid var(--line); }
-    .toc-label { margin: 0 0 .8rem; color: var(--muted); font: 700 .7rem var(--mono); text-transform: uppercase; letter-spacing: .12em; }
-    .toc ol { list-style: none; margin: 0; padding: 0; }
-    .toc li { margin: .12rem 0; }
-    .toc a { display: block; padding: .38rem .55rem; border-left: 2px solid transparent; color: var(--muted); text-decoration: none; font-size: .88rem; line-height: 1.3; }
-    .toc a:hover, .toc a.active { border-left-color: var(--violet); color: var(--ink); background: rgba(117, 72, 216, .06); }
-
-    main { min-width: 0; padding-bottom: 8rem; }
-    .hero { position: relative; overflow: hidden; min-height: 38rem; padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 7vw, 7rem) 5rem; border-bottom: 1px solid var(--line); }
-    .hero::before { content: ""; position: absolute; width: 38rem; height: 38rem; right: -18rem; top: -12rem; border: 6rem solid rgba(117, 72, 216, .06); border-radius: 50%; }
-    .eyebrow { color: var(--violet); font: 750 .78rem var(--mono); text-transform: uppercase; letter-spacing: .14em; }
-    h1, h2, h3 { font-family: var(--display); line-height: 1.08; text-wrap: balance; }
-    h1 { max-width: 13ch; margin: .8rem 0 1.2rem; font-size: clamp(3.1rem, 8vw, 7.6rem); font-weight: 760; letter-spacing: -.055em; }
-    h1 .adapter-word { position: relative; color: var(--violet); }
-    h1 .adapter-word::after { content: ""; position: absolute; left: .03em; right: 0; bottom: -.06em; height: .12em; border-radius: 1rem; background: linear-gradient(90deg, var(--violet), var(--cyan)); transform: rotate(-1deg); }
-    .hero-lede { max-width: 46rem; margin: 0; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.35rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
-    .button { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.8rem; padding: .65rem 1rem; border: 1px solid var(--ink); border-radius: .55rem; color: #fff; background: var(--ink); text-decoration: none; font-weight: 700; }
-    .button.secondary { color: var(--ink); background: var(--surface); border-color: var(--line); }
-    .hero-rail { display: grid; grid-template-columns: repeat(5, minmax(7rem, 1fr)); max-width: 64rem; margin-top: 4rem; align-items: center; }
-    .hero-stop { position: relative; padding-top: 1.25rem; color: var(--muted); font: 700 .72rem var(--mono); text-transform: uppercase; letter-spacing: .05em; }
-    .hero-stop::before { content: ""; position: absolute; left: 0; top: 0; width: .78rem; height: .78rem; border: 3px solid var(--surface); border-radius: 50%; background: var(--cobalt); box-shadow: 0 0 0 2px var(--cobalt); }
-    .hero-stop::after { content: ""; position: absolute; left: .8rem; right: 0; top: .34rem; height: 3px; background: var(--line); }
-    .hero-stop:nth-child(4)::before { background: var(--violet); box-shadow: 0 0 0 2px var(--violet); }
-    .hero-stop:last-child::after { display: none; }
-
-    .chapter { width: min(76rem, calc(100% - 2.4rem)); margin: 0 auto; padding: clamp(4rem, 8vw, 7rem) 0; border-bottom: 1px solid var(--line); }
-    .chapter:last-child { border-bottom: 0; }
-    .chapter-number { display: inline-flex; align-items: center; gap: .55rem; color: var(--cobalt); font: 750 .75rem var(--mono); text-transform: uppercase; letter-spacing: .12em; }
-    .chapter-number::before { content: ""; width: 2.2rem; height: 3px; background: currentColor; }
-    h2 { max-width: 19ch; margin: .65rem 0 1rem; font-size: clamp(2.2rem, 5vw, 4.6rem); letter-spacing: -.035em; }
-    .chapter-intro { max-width: 48rem; margin: 0 0 2.5rem; color: var(--muted); font-size: 1.12rem; }
-    h3 { margin: 2.4rem 0 .7rem; font-size: clamp(1.35rem, 2.2vw, 1.8rem); letter-spacing: -.015em; }
-    h4 { margin: 1.5rem 0 .5rem; font-size: 1rem; }
-    p { max-width: 72ch; }
-    ul, ol { max-width: 72ch; padding-left: 1.35rem; }
-    li + li { margin-top: .38rem; }
-
-    .lens-grid, .card-grid, .metrics-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-    .lens, .card, .metric { border: 1px solid var(--line); border-radius: .8rem; background: rgba(255, 255, 255, .78); padding: 1.15rem; box-shadow: 0 8px 30px rgba(36, 57, 99, .045); }
-    .lens strong, .card-kicker { display: block; margin-bottom: .4rem; font: 750 .72rem var(--mono); text-transform: uppercase; letter-spacing: .09em; }
-    .lens.everyone strong { color: var(--cyan); }
-    .lens.business strong { color: var(--amber); }
-    .lens.technical strong { color: var(--violet); }
-    .lens p, .card p { margin: 0; color: var(--muted); font-size: .95rem; }
-
-    .callout { margin: 1.5rem 0; padding: 1rem 1.2rem; border-left: 4px solid var(--cobalt); background: #edf3ff; }
-    .callout.warning { border-color: var(--amber); background: #fff7e8; }
-    .callout.success { border-color: var(--green); background: #ecf8f1; }
-    .callout.danger { border-color: var(--red); background: #fff0f2; }
-    .callout strong { display: block; margin-bottom: .2rem; }
-    .callout p { margin: 0; }
-
-    .comparison { width: 100%; margin: 1.5rem 0; border-collapse: collapse; border: 1px solid var(--line); background: var(--surface); font-size: .94rem; }
-    .comparison th, .comparison td { padding: .8rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-    .comparison th { color: var(--muted); background: #eef2f8; font: 750 .72rem var(--mono); text-transform: uppercase; letter-spacing: .06em; }
-    .comparison tr:last-child td { border-bottom: 0; }
-
-    .codebox { position: relative; margin: 1rem 0 1.5rem; border: 1px solid #26314a; border-radius: .75rem; overflow: hidden; background: #111827; color: #e8edf7; box-shadow: var(--shadow); }
-    .codebox header { display: flex; justify-content: space-between; align-items: center; min-height: 2.5rem; padding: .45rem .7rem .45rem 1rem; border-bottom: 1px solid #2c3852; color: #aebbd2; font: 700 .7rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
-    .copy { border: 1px solid #465471; border-radius: .4rem; padding: .35rem .55rem; background: #1d2941; color: #e8edf7; font: 700 .7rem var(--body); cursor: pointer; }
-    pre { margin: 0; padding: 1.1rem; overflow: auto; font-size: .86rem; line-height: 1.6; tab-size: 2; }
-
-    details { margin: 1rem 0; border: 1px solid var(--line); border-radius: .7rem; background: var(--surface); }
-    summary { padding: .85rem 1rem; cursor: pointer; font-weight: 750; }
-    details > div { padding: 0 1rem 1rem; color: var(--muted); }
-    details p:last-child { margin-bottom: 0; }
-
-    .diagram { margin: 2rem 0; border: 1px solid var(--line); border-radius: 1rem; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
-    .diagram-head { padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); }
-    .diagram-head strong { display: block; font-family: var(--display); font-size: 1.25rem; }
-    .diagram-head span { color: var(--muted); font-size: .9rem; }
-    .diagram-track { display: grid; grid-template-columns: repeat(5, minmax(7rem, 1fr)); padding: 1.4rem; overflow-x: auto; }
-    .diagram-node { position: relative; min-height: 6rem; margin-right: 1.3rem; padding: .8rem; border: 1px solid var(--line); border-radius: .7rem; background: #f8faff; color: var(--ink); text-align: left; font: 750 .86rem var(--body); cursor: pointer; }
-    .diagram-node::after { content: "→"; position: absolute; right: -1.05rem; top: 2.1rem; color: var(--muted); }
-    .diagram-node:last-child { margin-right: 0; }
-    .diagram-node:last-child::after { display: none; }
-    .diagram-node small { display: block; margin-top: .4rem; color: var(--muted); font: 500 .7rem var(--mono); }
-    .diagram-node[aria-pressed="true"] { border-color: var(--violet); background: #f2edff; box-shadow: inset 0 0 0 2px rgba(117, 72, 216, .12); }
-    .diagram-output { min-height: 6.5rem; padding: 1rem 1.2rem; border-top: 1px solid var(--line); background: #f5f7fb; }
-    .diagram-output strong { color: var(--violet); }
-    .diagram-output p { margin: .35rem 0 0; }
-    .state-track { grid-template-columns: repeat(5, minmax(8.5rem, 1fr)); }
-    .architecture-track { grid-template-columns: repeat(6, minmax(8.5rem, 1fr)); }
-
-    .step-list { counter-reset: steps; list-style: none; padding: 0; }
-    .step-list > li { counter-increment: steps; position: relative; max-width: 68rem; margin: 0; padding: 0 0 2rem 4rem; }
-    .step-list > li::before { content: counter(steps); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 2.35rem; height: 2.35rem; border-radius: .6rem; background: var(--ink); color: #fff; font: 750 .9rem var(--mono); }
-    .step-list > li::after { content: ""; position: absolute; left: 1.12rem; top: 2.55rem; bottom: .25rem; width: 2px; background: var(--line); }
-    .step-list > li:last-child::after { display: none; }
-    .step-list h3 { margin: 0 0 .4rem; }
-
-    .tree { margin: 1.2rem 0; padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--surface); overflow: auto; font: .86rem/1.65 var(--mono); white-space: pre; }
-    .tag { display: inline-block; margin: .1rem; padding: .15rem .42rem; border-radius: 99rem; background: #edf1f7; color: var(--muted); font: 700 .68rem var(--mono); }
-    .tag.live { background: #e9f7ef; color: var(--green); }
-    .tag.context { background: #fff2d8; color: var(--amber); }
-    .tag.no { background: #ffedf0; color: var(--red); }
-    .metric strong { display: block; color: var(--violet); font: 800 1.6rem var(--display); }
-    .metric span { color: var(--muted); font-size: .88rem; }
-
-    .checklist { list-style: none; padding: 0; }
-    .checklist li { position: relative; padding-left: 1.65rem; }
-    .checklist li::before { content: "□"; position: absolute; left: 0; color: var(--cobalt); font: 800 1.05rem var(--mono); }
-
-    .footer { width: min(76rem, calc(100% - 2.4rem)); margin: 0 auto; padding: 3rem 0 5rem; color: var(--muted); }
-    .footer strong { color: var(--ink); }
-
-    @media (max-width: 1050px) {
-      .shell { grid-template-columns: 1fr; }
-      .toc { position: fixed; z-index: 70; top: 4rem; left: 0; width: min(21rem, 88vw); transform: translateX(-105%); transition: transform .2s ease; background: var(--paper); box-shadow: var(--shadow); }
-      .toc.open { transform: translateX(0); }
-      .nav-toggle { display: inline-flex; }
-      .topbar-note { display: none; }
-    }
-    @media (max-width: 760px) {
-      body { background: var(--paper); }
-      .hero { min-height: auto; padding-top: 4rem; }
-      .hero-rail { grid-template-columns: 1fr; gap: .45rem; margin-top: 2.5rem; }
-      .hero-stop { padding: .2rem 0 .2rem 1.8rem; }
-      .hero-stop::before { top: .32rem; }
-      .hero-stop::after { left: .35rem; top: 1.1rem; bottom: -.65rem; width: 3px; height: auto; }
-      .lens-grid, .card-grid, .metrics-grid { grid-template-columns: 1fr; }
-      .comparison { display: block; overflow-x: auto; }
-      .chapter { width: min(100% - 2rem, 76rem); }
-      .diagram-track { grid-template-columns: 12rem 12rem 12rem 12rem 12rem; }
-      .architecture-track { grid-template-columns: repeat(6, 12rem); }
-      h1 { font-size: clamp(3rem, 17vw, 5.4rem); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-    }
-    @media print {
-      .topbar, .toc, .progress, .hero-actions, .copy { display: none !important; }
-      .shell { display: block; }
-      .hero, .chapter, .footer { width: 100%; min-height: auto; padding: 1.5rem 0; break-inside: auto; }
-      body { background: #fff; color: #000; font-size: 10.5pt; }
-      details > div { display: block; }
-      .diagram, .codebox, .lens, .card { box-shadow: none; break-inside: avoid; }
-      a { color: inherit; text-decoration: none; }
-    }
-  </style>
+  <meta name="description" content="NLP, transformers, parameter-efficient fine-tuning, preference optimization, evaluation, and this repository">
+  <meta name="theme-color" content="#171a26">
+  <title>LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to handbook</a>
-  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
-
+<body class="home-page" data-page="index.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="LoRA Fine-tune Studio handbook home">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      LoRA Fine-tune Studio
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
     </a>
-    <span class="topbar-note">Zero-to-hero field manual · v0.1</span>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="toc">Contents</button>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
   </header>
-
-  <div class="shell" id="top">
-    <nav class="toc" id="toc" aria-label="Handbook chapters">
-      <p class="toc-label">Field manual</p>
-      <ol>
-        <li><a href="#orientation">1 · Orientation</a></li>
-        <li><a href="#foundations">2 · Fine-tuning foundations</a></li>
-        <li><a href="#decide">3 · Should you fine-tune?</a></li>
-        <li><a href="#setup">4 · Install and launch</a></li>
-        <li><a href="#first-run">5 · First training run</a></li>
-        <li><a href="#data">6 · Prepare the dataset</a></li>
-        <li><a href="#controls">7 · Understand the controls</a></li>
-        <li><a href="#monitor">8 · Monitor and recover</a></li>
-        <li><a href="#evaluate">9 · Evaluate and use results</a></li>
-        <li><a href="#architecture">10 · Code architecture</a></li>
-        <li><a href="#developer">11 · Developer guide</a></li>
-        <li><a href="#business">12 · Business playbook</a></li>
-        <li><a href="#troubleshooting">13 · Troubleshooting</a></li>
-        <li><a href="#glossary">14 · Glossary and FAQ</a></li>
-      </ol>
-    </nav>
-
-    <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="eyebrow">The complete local fine-tuning handbook</p>
-        <h1 id="hero-title">Turn a base model into a useful <span class="adapter-word">specialist.</span></h1>
-        <p class="hero-lede">Start with no machine-learning background. Finish knowing how to prepare data, train a LoRA or QLoRA adapter, judge the result, explain the business case, and navigate every important file in this repository.</p>
-        <div class="hero-actions">
-          <a class="button" href="#first-run">Run the 20-step smoke test →</a>
-          <a class="button secondary" href="#architecture">Tour the code</a>
-        </div>
-        <div class="hero-rail" aria-label="Fine-tuning journey">
-          <span class="hero-stop">Base model</span>
-          <span class="hero-stop">Examples</span>
-          <span class="hero-stop">SFT</span>
-          <span class="hero-stop">Adapter</span>
-          <span class="hero-stop">Evaluation</span>
-        </div>
-      </section>
-
-      <section class="chapter" id="orientation">
-        <span class="chapter-number">Chapter 1 · Start here</span>
-        <h2>One handbook, three levels of meaning.</h2>
-        <p class="chapter-intro">Every chapter starts with the practical idea, connects it to cost or risk, then exposes the implementation. Read straight through or use the contents to solve the problem in front of you.</p>
-
-        <div class="lens-grid">
-          <article class="lens everyone"><strong>For everyone</strong><p>Plain language, exact clicks, safe defaults, and explanations of unfamiliar terms.</p></article>
-          <article class="lens business"><strong>For decision makers</strong><p>Where fine-tuning creates value, what it costs, what can fail, and how to measure a pilot.</p></article>
-          <article class="lens technical"><strong>For builders</strong><p>Data contracts, process boundaries, source files, artifacts, tests, and extension points.</p></article>
-        </div>
-
-        <h3>What this project is</h3>
-        <p>LoRA Fine-tune Studio is a local, single-user Streamlit application for supervised fine-tuning of causal language models. It downloads models and datasets from Hugging Face, or accepts a local CSV/JSON/JSONL dataset, then trains a parameter-efficient adapter on an NVIDIA CUDA GPU.</p>
-
-        <h3>What it is not</h3>
-        <div class="card-grid">
-          <article class="card"><span class="card-kicker">Not a hosted trainer</span><p>GitHub hosts the source. Training happens on the Windows or Linux computer running the app.</p></article>
-          <article class="card"><span class="card-kicker">Not an RLHF system</span><p>The current implementation trains SFT adapters. DPO, RLHF and RLAIF are learning context, not app features.</p></article>
-          <article class="card"><span class="card-kicker">Not an Ollama converter</span><p>The playground talks to models already installed in Ollama. It does not import the newly trained adapter.</p></article>
-        </div>
-
-        <div class="callout success"><strong>Outcome</strong><p>A completed run produces a small adapter, tokenizer files, metrics and the exact training configuration under <code>.runs/&lt;run-id&gt;/output/</code>.</p></div>
-      </section>
-
-      <section class="chapter" id="foundations">
-        <span class="chapter-number">Chapter 2 · Mental model</span>
-        <h2>Change less of the model.</h2>
-        <p class="chapter-intro">A large model already knows language. Fine-tuning changes its behavior with examples. PEFT methods avoid retraining every weight.</p>
-
-        <h3>The five objects that matter</h3>
-        <table class="comparison">
-          <thead><tr><th>Object</th><th>Plain meaning</th><th>In this app</th></tr></thead>
-          <tbody>
-            <tr><td>Base model</td><td>The general-purpose model you start with.</td><td>A Hugging Face causal-language-model repository such as <code>Qwen/Qwen3-0.6B</code>.</td></tr>
-            <tr><td>Tokenizer</td><td>Turns text into numeric tokens the model processes.</td><td>Loaded from the same model repository and saved with the adapter.</td></tr>
-            <tr><td>Dataset</td><td>Examples of the behavior you want.</td><td>Hugging Face dataset or uploaded CSV, JSON or JSONL.</td></tr>
-            <tr><td>Training</td><td>Repeatedly measures error and adjusts learnable weights.</td><td>TRL <code>SFTTrainer</code> with PEFT and optional evaluation split.</td></tr>
-            <tr><td>Adapter</td><td>The small learned difference layered onto the base model.</td><td>Saved under the run's <code>output/adapter</code> directory.</td></tr>
-          </tbody>
-        </table>
-
-        <div class="diagram" data-diagram>
-          <div class="diagram-head"><strong>The training signal path</strong><span>Select a stage to see what crosses that boundary.</span></div>
-          <div class="diagram-track">
-            <button class="diagram-node" type="button" aria-pressed="true" data-title="Examples" data-copy="Rows demonstrate the answers, tone or format the model should produce. Better examples usually matter more than aggressive settings.">Dataset<small>messages · text · prompt/completion</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Inspection" data-copy="The app previews rows, detects the dataset shape and lets you map columns before any training job starts.">Inspect<small>shape · columns · preview</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Tokenization" data-copy="The tokenizer converts text to token IDs. Maximum sequence length controls how much of each example fits in a training sequence.">Tokenizer<small>text → token IDs</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="PEFT training" data-copy="The base model stays mostly fixed. LoRA matrices learn a compact update; QLoRA also loads the base weights in four-bit form to reduce VRAM.">Base + LoRA<small>SFT loss · gradients</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Adapter artifact" data-copy="The result is not a full model copy. Load the original base model, then attach this adapter for the specialized behavior.">Adapter<small>weights · tokenizer · metrics</small></button>
-          </div>
-          <div class="diagram-output" aria-live="polite"><strong>Examples</strong><p>Rows demonstrate the answers, tone or format the model should produce. Better examples usually matter more than aggressive settings.</p></div>
-        </div>
-
-        <h3>LoRA and QLoRA</h3>
-        <table class="comparison">
-          <thead><tr><th></th><th>LoRA</th><th>QLoRA</th></tr></thead>
-          <tbody>
-            <tr><td>What changes</td><td>Small trainable low-rank matrices.</td><td>The same low-rank matrices.</td></tr>
-            <tr><td>Base model in memory</td><td>Usually 16-bit.</td><td>4-bit NF4 with double quantization.</td></tr>
-            <tr><td>VRAM</td><td>Higher.</td><td>Lower; default recommendation here.</td></tr>
-            <tr><td>Trade-off</td><td>Simpler numerical path.</td><td>More quantization complexity for much better memory efficiency.</td></tr>
-          </tbody>
-        </table>
-        <p>The code uses LoRA rank 16, alpha 32, dropout 0.05 and targets all linear layers. QLoRA adds BitsAndBytes 4-bit NF4 loading; both use the same adapter configuration.</p>
-
-        <details><summary>How SFT, DPO, RLHF and RLAIF differ</summary><div>
-          <p><strong>SFT</strong> learns from correct examples. <strong>DPO</strong> learns from chosen/rejected answer pairs. <strong>RLHF</strong> trains a preference or reward signal and then optimizes a policy. <strong>RLAIF</strong> uses AI-generated feedback instead of only human judgments.</p>
-          <p>This repository implements SFT only. Adding a preference method requires new dataset contracts, trainer configuration, evaluation and UI controls; selecting it is not currently possible.</p>
-        </div></details>
-      </section>
-
-      <section class="chapter" id="decide">
-        <span class="chapter-number">Chapter 3 · Choose the right tool</span>
-        <h2>Fine-tuning is not the first answer to every problem.</h2>
-        <p class="chapter-intro">Use the cheapest intervention that produces reliable behavior. Fine-tuning is strongest when many examples express a stable pattern.</p>
-
-        <table class="comparison">
-          <thead><tr><th>Need</th><th>Start with</th><th>Why</th></tr></thead>
-          <tbody>
-            <tr><td>A better instruction or output format</td><td>Prompting</td><td>Fast, reversible, and requires no training.</td></tr>
-            <tr><td>Current private facts with citations</td><td>RAG</td><td>Knowledge stays outside the weights and can be updated.</td></tr>
-            <tr><td>Consistent tone, schema, workflow or domain behavior</td><td>SFT/LoRA</td><td>Examples can teach a repeated behavior compactly.</td></tr>
-            <tr><td>Choose preferred answers among plausible alternatives</td><td>DPO or RLHF</td><td>Preference data expresses relative quality; not supported here.</td></tr>
-          </tbody>
-        </table>
-
-        <div class="callout warning"><strong>Do not fine-tune secrets into weights</strong><p>Removing a training file does not remove memorized content. Keep personal, licensed and confidential data out unless governance explicitly permits it.</p></div>
-      </section>
-
-      <section class="chapter" id="setup">
-        <span class="chapter-number">Chapter 4 · Prepare the machine</span>
-        <h2>Install once. Launch by double-click.</h2>
-        <p class="chapter-intro">The launcher prepares Python and locked dependencies automatically. Training still requires a compatible NVIDIA GPU and current driver.</p>
-
-        <h3>Requirements</h3>
-        <ul>
-          <li>Windows 11 or x86-64 Linux.</li>
-          <li>NVIDIA CUDA GPU; at least 6 GB VRAM is recommended.</li>
-          <li>Internet access for first setup and Hugging Face downloads.</li>
-          <li>Enough disk for the base model, dependency cache, dataset, checkpoints and adapter.</li>
-          <li>Ollama only if you want the separate local-model playground.</li>
-        </ul>
-
-        <h3>Fast path</h3>
-        <ol class="step-list">
-          <li><h3>Get the repository</h3><p>Use GitHub's Code → Download ZIP, or clone it with Git. Extract it to a normal writable folder.</p></li>
-          <li><h3>Set the Hugging Face token</h3><p>Create a read token for downloads. Use a write token only if you will push adapters.</p>
-            <div class="codebox"><header>PowerShell · persistent user variable<button class="copy" type="button">Copy</button></header><pre><code>[Environment]::SetEnvironmentVariable("HF_TOKEN", "hf_your_token", "User")</code></pre></div>
-          </li>
-          <li><h3>Run the platform launcher</h3><p>On Windows, open <code>Launch LoRA Studio.cmd</code>. On Linux, run <code>bash "Launch LoRA Studio.sh"</code>. First launch installs <code>uv</code>, Python 3.14 and locked CUDA 13 dependencies inside <code>.venv</code>.</p></li>
-          <li><h3>Use the browser</h3><p>The app opens at <code>http://localhost:8504</code>. Closing the browser tab does not necessarily stop the background server.</p></li>
-        </ol>
-
-        <h3>Manual developer launch</h3>
-        <div class="codebox"><header>PowerShell<button class="copy" type="button">Copy</button></header><pre><code>uv sync --group dev
-uv run streamlit run streamlit_app.py</code></pre></div>
-
-        <div class="callout"><strong>Token safety</strong><p>The app reads <code>HF_TOKEN</code> from the process environment. It does not save the token inside run configuration, logs, the HTML handbook or repository files.</p></div>
-      </section>
-
-      <section class="chapter" id="first-run">
-        <span class="chapter-number">Chapter 5 · Guided lab</span>
-        <h2>Complete a small training run.</h2>
-        <p class="chapter-intro">Use the included sample and smallest preset first. The goal is to validate the whole pipeline before spending hours on real data.</p>
-
-        <ol class="step-list">
-          <li><h3>Open System</h3><p>Review the read-only OS, CPU, available RAM, disk, accelerator, runtime and software scan. The scan never installs drivers or exposes token values. QLoRA needs at least 3.5 GB of currently free VRAM for the smallest supported jobs.</p></li>
-          <li><h3>Open Dataset</h3><p>Upload <code>examples/sft_sample.jsonl</code>. The app stores it by content hash and previews its rows.</p></li>
-          <li><h3>Open Model</h3><p>Inspect <code>Qwen/Qwen3-0.6B</code>. A repository-root URL such as <code>https://huggingface.co/Qwen/Qwen3-0.6B</code> also works.</p></li>
-          <li><h3>Inspect before training</h3><p>Confirm the detected format and columns. Fix mapping errors now; training cannot compensate for incorrect examples.</p></li>
-          <li><h3>Configure Training</h3><p>Choose QLoRA and save the settings. QLoRA is the conservative choice for local GPUs.</p></li>
-          <li><h3>Choose Smoke test</h3><p>This preset uses 512-token sequences, up to 100 samples, 20 steps, accumulation 4 and no evaluation split.</p></li>
-          <li><h3>Review, start and watch</h3><p>Start on <strong>Review &amp; run</strong>; the app opens <strong>Monitor</strong>, where status refreshes every two seconds.</p></li>
-          <li><h3>Compare responses</h3><p>After completion, enter one prompt. The app generates once with the quantized base model and once with the same base plus your adapter.</p></li>
-        </ol>
-
-        <div class="callout success"><strong>Success means pipeline health, not model quality</strong><p>A smoke test proves that downloads, data, CUDA, training, artifacts and inference work together. Use a held-out evaluation set before claiming an improvement.</p></div>
-      </section>
-
-      <section class="chapter" id="data">
-        <span class="chapter-number">Chapter 6 · Dataset engineering</span>
-        <h2>The examples are the product specification.</h2>
-        <p class="chapter-intro">A clean small dataset can beat a large contradictory one. Each row should demonstrate the behavior you want at inference time.</p>
-
-        <h3>Supported sources</h3>
-        <ul>
-          <li>Hugging Face dataset repository ID or HTTPS repository-root URL.</li>
-          <li>Uploaded <code>.csv</code>, <code>.json</code> or <code>.jsonl</code>, up to 200 MB.</li>
-        </ul>
-
-        <h3>Supported shapes</h3>
-        <div class="codebox"><header>Conversational JSONL<button class="copy" type="button">Copy</button></header><pre><code>{"messages":[
-  {"role":"user","content":"Explain LoRA simply."},
-  {"role":"assistant","content":"LoRA trains small adapter matrices..."}
-]}</code></pre></div>
-        <div class="codebox"><header>Plain text JSONL<button class="copy" type="button">Copy</button></header><pre><code>{"text":"A complete training example as one text sequence."}</code></pre></div>
-        <div class="codebox"><header>Prompt and completion JSONL<button class="copy" type="button">Copy</button></header><pre><code>{"prompt":"Write a support reply:","completion":"Thanks for reporting this..."}</code></pre></div>
-
-        <h3>Quality checklist</h3>
-        <ul class="checklist">
-          <li>Every answer is correct enough to imitate.</li>
-          <li>Formatting matches the intended production output.</li>
-          <li>Duplicate and contradictory rows are removed.</li>
-          <li>Important cases and failure cases are represented.</li>
-          <li>Evaluation examples are separated from training examples.</li>
-          <li>Licenses allow model training and downstream use.</li>
-          <li>Personal and confidential data has an approved basis for use.</li>
-        </ul>
-
-        <details><summary>What the normalization code does</summary><div>
-          <p>A chosen text column is renamed to <code>text</code>. Prompt/completion columns are mapped into canonical <code>prompt</code> and <code>completion</code> fields. If <code>max_samples</code> is set, the dataset is shuffled with the configured seed before selection.</p>
-          <p>Evaluation is skipped when disabled or when the dataset has fewer than ten rows. Otherwise <code>train_test_split</code> uses the evaluation ratio and seed.</p>
-        </div></details>
-      </section>
-
-      <section class="chapter" id="controls">
-        <span class="chapter-number">Chapter 7 · Training controls</span>
-        <h2>Start conservative, then change one variable.</h2>
-        <p class="chapter-intro">Presets bundle sensible values. Advanced controls exist for deliberate experiments, not random tuning.</p>
-
-        <table class="comparison">
-          <thead><tr><th>Preset</th><th>Sequence</th><th>Epochs</th><th>Limit</th><th>Accumulation</th><th>Evaluation</th></tr></thead>
-          <tbody>
-            <tr><td>Smoke test</td><td>512</td><td>1</td><td>20 steps / 100 rows</td><td>4</td><td>Off</td></tr>
-            <tr><td>Standard</td><td>1024</td><td>2</td><td>No fixed limit</td><td>8</td><td>On</td></tr>
-            <tr><td>Quality</td><td>2048</td><td>3</td><td>No fixed limit</td><td>16</td><td>On</td></tr>
-          </tbody>
-        </table>
-
-        <div class="card-grid">
-          <article class="card"><span class="card-kicker">Maximum length</span><p>More context costs more memory and compute. The validated range is 128–8192 tokens.</p></article>
-          <article class="card"><span class="card-kicker">Learning rate</span><p>Controls update size. Too high destabilizes training; too low may learn little.</p></article>
-          <article class="card"><span class="card-kicker">Epochs</span><p>Passes over the data. More is not automatically better; overfitting can copy examples.</p></article>
-          <article class="card"><span class="card-kicker">Batch and accumulation</span><p>Accumulation simulates a larger effective batch across several smaller GPU batches.</p></article>
-          <article class="card"><span class="card-kicker">Gradient checkpointing</span><p>Saves VRAM by recomputing intermediate values, trading speed for memory.</p></article>
-          <article class="card"><span class="card-kicker">Seed</span><p>Makes shuffling and splitting more repeatable. GPU training may still have nondeterminism.</p></article>
-        </div>
-
-        <h3>Hardware recommendations encoded in the app</h3>
-        <table class="comparison">
-          <thead><tr><th>Detected VRAM</th><th>Conservative maximum</th><th>Mode</th></tr></thead>
-          <tbody>
-            <tr><td>Below 6 GB</td><td>1B parameters</td><td>QLoRA</td></tr>
-            <tr><td>6–9.9 GB</td><td>3B parameters</td><td>QLoRA</td></tr>
-            <tr><td>10–15.9 GB</td><td>7B parameters</td><td>QLoRA</td></tr>
-            <tr><td>16 GB or more</td><td>13B parameters</td><td>QLoRA</td></tr>
-          </tbody>
-        </table>
-        <p>These are warnings, not capacity guarantees. Context length, batch size, architecture, driver overhead and other processes also consume VRAM.</p>
-      </section>
-
-      <section class="chapter" id="monitor">
-        <span class="chapter-number">Chapter 8 · Job operations</span>
-        <h2>The browser supervises; the worker trains.</h2>
-        <p class="chapter-intro">Training runs in a separate process so Streamlit reruns do not destroy it. Durable JSON status and logs connect the two processes.</p>
-
-        <div class="diagram" data-diagram>
-          <div class="diagram-head"><strong>Training-job lifecycle</strong><span>Select a state to see the available action.</span></div>
-          <div class="diagram-track state-track">
-            <button class="diagram-node" type="button" aria-pressed="true" data-title="Queued" data-copy="create_run writes config.json and an initial status.json inside a unique twelve-character run directory.">Queued<small>configuration saved</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Running" data-copy="launch_run starts the worker without a Windows console. Trainer callbacks atomically replace status.json with progress and selected metrics.">Running<small>PID · progress · metrics</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Completed" data-copy="The adapter, tokenizer, metrics and training configuration are saved. Comparison becomes available in the UI.">Completed<small>artifacts ready</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Cancelled or failed" data-copy="Cancellation terminates the worker. Failures retain an error and training log. Existing checkpoints remain in the run output directory.">Cancelled / failed<small>inspect the log</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Resume" data-copy="Resume finds the numerically latest checkpoint, writes its absolute path into config.json, and launches the same run again.">Resume<small>latest checkpoint</small></button>
-          </div>
-          <div class="diagram-output" aria-live="polite"><strong>Queued</strong><p>create_run writes config.json and an initial status.json inside a unique twelve-character run directory.</p></div>
-        </div>
-
-        <h3>Run directory</h3>
-        <div class="tree" role="img" aria-label="Training run directory tree">.runs/&lt;run-id&gt;/
-├── config.json          # worker input; never contains HF_TOKEN
-├── status.json          # state, progress, PID, metrics, errors
-├── training.log         # worker stdout and stderr
-└── output/
-    ├── checkpoint-*/    # resumable trainer checkpoints
-    ├── adapter/         # PEFT adapter and tokenizer
-    ├── metrics.json
-    └── training_config.json</div>
-
-        <h3>Cancellation and recovery</h3>
-        <p>Cancel first verifies that the PID belongs to the selected training worker, asks it to terminate, waits up to ten seconds, then kills it if necessary. Resume works only when a checkpoint exists. Only one live worker is allowed; the job manager checks stored PIDs before creating another run.</p>
-        <p><strong>Stop LoRA Studio</strong> in the sidebar requires confirmation, cancels the verified training worker, and then stops Streamlit. It never terminates Ollama or unrelated applications.</p>
-      </section>
-
-      <section class="chapter" id="evaluate">
-        <span class="chapter-number">Chapter 9 · Evidence</span>
-        <h2>A lower loss is not the same as a better product.</h2>
-        <p class="chapter-intro">Measure the behavior users care about on examples the model did not train on.</p>
-
-        <h3>Built-in comparison</h3>
-        <p>The app loads the base model in four-bit form, generates a deterministic response, releases GPU memory, then loads the same base with the completed PEFT adapter and generates again. This is a useful spot check, not a statistically valid evaluation.</p>
-
-        <h3>Evaluation ladder</h3>
-        <ol>
-          <li><strong>Pipeline:</strong> did the run finish and save valid artifacts?</li>
-          <li><strong>Offline quality:</strong> does the adapter improve a held-out test set?</li>
-          <li><strong>Regression:</strong> did safety, general ability or formatting get worse?</li>
-          <li><strong>Human review:</strong> do domain experts prefer the result?</li>
-          <li><strong>Operational:</strong> are latency, memory and failure rate acceptable?</li>
-          <li><strong>Business:</strong> does the improvement change cost, time, conversion or risk?</li>
-        </ol>
-
-        <div class="metrics-grid">
-          <div class="metric"><strong>Quality</strong><span>Task accuracy, rubric score, preference win rate</span></div>
-          <div class="metric"><strong>Safety</strong><span>Hallucination, leakage, harmful or disallowed behavior</span></div>
-          <div class="metric"><strong>Operations</strong><span>Latency, GPU memory, throughput, failure rate</span></div>
-        </div>
-
-        <h3>Publishing to Hugging Face</h3>
-        <p>Enable Hub upload, provide a destination repository and use an <code>HF_TOKEN</code> with write permission. The trainer pushes the adapter model and tokenizer, not a merged full-model copy.</p>
-
-        <h3>Ollama playground boundary</h3>
-        <p>The app calls Ollama's local <code>/api/tags</code> and <code>/api/generate</code> endpoints. It lists and tests models already installed in Ollama. Converting or importing the trained PEFT adapter is a separate workflow not implemented here.</p>
-      </section>
-
-      <section class="chapter" id="architecture">
-        <span class="chapter-number">Chapter 10 · Repository tour</span>
-        <h2>Follow the data, not just the folders.</h2>
-        <p class="chapter-intro">The core boundary is simple: Streamlit builds a serializable configuration; a worker consumes it and writes durable artifacts.</p>
-
-        <div class="diagram" data-diagram>
-          <div class="diagram-head"><strong>Runtime architecture</strong><span>Select a component to locate its responsibility.</span></div>
-          <div class="diagram-track architecture-track">
-            <button class="diagram-node" type="button" aria-pressed="true" data-title="Streamlit UI" data-copy="streamlit_app.py initializes shared state and navigation; app_pages contains eight focused page scripts.">UI<small>streamlit_app.py · app_pages/</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Sources and hardware" data-copy="sources.py validates Hugging Face repository roots and uploads; hardware.py detects CUDA resources and produces conservative model-size warnings.">Boundaries<small>sources.py · hardware.py</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Shared contracts" data-copy="models.py defines DatasetSpec, TrainingConfig, JobStatus, enums, presets and run-path validation shared across processes.">Contracts<small>models.py</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Process manager" data-copy="jobs.py creates run directories, atomically writes JSON, launches one worker, reads status and logs, cancels processes and resumes checkpoints.">Jobs<small>jobs.py · worker.py</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Trainer" data-copy="training.py loads and normalizes the dataset, configures quantization and LoRA, runs TRL SFTTrainer, reports progress and saves artifacts.">Training<small>training.py</small></button>
-            <button class="diagram-node" type="button" aria-pressed="false" data-title="Post-training adapters" data-copy="inference.py compares base and adapter. ollama.py is an independent standard-library HTTP client for the local Ollama service.">Use<small>inference.py · ollama.py</small></button>
-          </div>
-          <div class="diagram-output" aria-live="polite"><strong>Streamlit UI</strong><p>streamlit_app.py initializes shared state and navigation; app_pages contains eight focused page scripts.</p></div>
-        </div>
-
-        <h3>File map</h3>
-        <table class="comparison">
-          <thead><tr><th>Path</th><th>Responsibility</th></tr></thead>
-          <tbody>
-            <tr><td><code>streamlit_app.py</code></td><td>Shared state initialization and native sidebar navigation.</td></tr>
-            <tr><td><code>app_pages/</code></td><td>Eight focused workflow and playground page scripts.</td></tr>
-            <tr><td><code>src/lora_finetune_studio/models.py</code></td><td>Serializable data contracts, enums, presets and validation.</td></tr>
-            <tr><td><code>sources.py</code></td><td>HF token access, safe repository parsing, uploads, dataset loading and inspection.</td></tr>
-            <tr><td><code>hardware.py</code></td><td>CUDA, VRAM, RAM, disk and BF16 detection; size warnings.</td></tr>
-            <tr><td><code>jobs.py</code></td><td>Single-job process manager and durable run state.</td></tr>
-            <tr><td><code>worker.py</code></td><td>Process entry point that translates exceptions into final status.</td></tr>
-            <tr><td><code>training.py</code></td><td>Dataset normalization, model/tokenizer loading, LoRA/QLoRA and SFT.</td></tr>
-            <tr><td><code>inference.py</code></td><td>On-demand base-versus-adapter generation.</td></tr>
-            <tr><td><code>ollama.py</code></td><td>Minimal local Ollama HTTP client without another dependency.</td></tr>
-            <tr><td><code>cli.py</code></td><td>Installed console entry point for Streamlit.</td></tr>
-            <tr><td><code>tests/</code></td><td>Contracts for parsing, uploads, models, hardware, jobs, training transforms and app startup.</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Security boundaries</h3>
-        <ul>
-          <li>Only Hugging Face repository-root IDs or HTTPS URLs are accepted; arbitrary download URLs are rejected.</li>
-          <li>Remote model code is disabled with <code>trust_remote_code=False</code>.</li>
-          <li>Model loading requires safetensors.</li>
-          <li>Uploads are type-checked, size-limited and saved by content hash.</li>
-          <li>Run IDs reject traversal characters.</li>
-          <li>JSON status updates use temporary files and atomic replacement.</li>
-          <li>The Hugging Face token is read at runtime, not serialized into run state.</li>
-        </ul>
-      </section>
-
-      <section class="chapter" id="developer">
-        <span class="chapter-number">Chapter 11 · Maintain the project</span>
-        <h2>Small modules, explicit contracts, narrow tests.</h2>
-        <p class="chapter-intro">The package uses native Windows or Linux, Python 3.14, a uv-managed <code>.venv</code>, the PyTorch CUDA 13.0 index, Ruff, ty and pytest.</p>
-
-        <h3>Repository shape</h3>
-        <div class="tree" role="img" aria-label="Repository file tree">lora-qlora-fine-tuning-app/
-├── Launch LoRA Studio.cmd
-├── Launch LoRA Studio.sh
-├── streamlit_app.py
-├── app_pages/ (8 sidebar pages)
-├── pyproject.toml / uv.lock / .python-version
-├── .streamlit/config.toml
-├── examples/sft_sample.jsonl
-├── docs/index.html
-├── src/lora_finetune_studio/
-│   ├── models.py · sources.py · hardware.py
-│   ├── jobs.py · worker.py · training.py
-│   └── inference.py · ollama.py · cli.py
-└── tests/</div>
-
-        <h3>Quality commands</h3>
-        <div class="codebox"><header>PowerShell<button class="copy" type="button">Copy</button></header><pre><code>uv run ruff format --check .
-uv run ruff check .
-uv run ty check src
-uv run pytest</code></pre></div>
-
-        <h3>Where to make common changes</h3>
-        <table class="comparison">
-          <thead><tr><th>Change</th><th>Start here</th><th>Verify</th></tr></thead>
-          <tbody>
-            <tr><td>Add a training setting</td><td><code>TrainingConfig</code>, Streamlit form, then <code>SFTConfig</code></td><td>Round-trip and validation tests</td></tr>
-            <tr><td>Add a dataset shape</td><td><code>inspect_dataset</code> and <code>_normalize_dataset</code></td><td>Source and normalization tests</td></tr>
-            <tr><td>Change job behavior</td><td><code>jobs.py</code> and <code>worker.py</code></td><td>Lifecycle and path-safety tests</td></tr>
-            <tr><td>Add preference training</td><td>New contracts and trainer path before UI controls</td><td>Dataset, trainer, artifact and UI contracts</td></tr>
-            <tr><td>Change hardware guidance</td><td><code>detect_hardware</code> / <code>model_size_warning</code></td><td>Boundary-value tests</td></tr>
-          </tbody>
-        </table>
-
-        <details><summary>Why training uses another process</summary><div><p>Streamlit reruns the script whenever controls change. A child process isolates long-running GPU work from that lifecycle. Files provide simple durable coordination without a database or message broker, which matches the app's local single-user scope.</p></div></details>
-      </section>
-
-      <section class="chapter" id="business">
-        <span class="chapter-number">Chapter 12 · Pilot responsibly</span>
-        <h2>Define value before buying GPU hours.</h2>
-        <p class="chapter-intro">A fine-tuning pilot succeeds when it changes a measurable workflow, not when training loss merely goes down.</p>
-
-        <h3>Good pilot candidates</h3>
-        <ul>
-          <li>A repeated task with stable inputs, outputs and quality criteria.</li>
-          <li>Enough approved examples to show the desired behavior.</li>
-          <li>A baseline prompt or model to compare against.</li>
-          <li>Domain reviewers who can score held-out outputs.</li>
-          <li>A deployment path capable of loading the base model and adapter.</li>
-        </ul>
-
-        <h3>Cost map</h3>
-        <table class="comparison">
-          <thead><tr><th>Cost</th><th>What drives it</th><th>Control</th></tr></thead>
-          <tbody>
-            <tr><td>People</td><td>Data cleaning, labeling, review and governance</td><td>Start with one narrow task and a written rubric.</td></tr>
-            <tr><td>Compute</td><td>Model size, tokens, epochs, experiments</td><td>Use QLoRA and smoke tests before full runs.</td></tr>
-            <tr><td>Risk</td><td>Bad data, leakage, licenses, regressions</td><td>Approval gates and held-out evaluation.</td></tr>
-            <tr><td>Operations</td><td>Serving base weights plus adapters</td><td>Benchmark target hardware before rollout.</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Four-stage pilot</h3>
-        <ol class="step-list">
-          <li><h3>Baseline</h3><p>Write 30–100 representative test cases. Score the unmodified model and best prompt.</p></li>
-          <li><h3>Dataset proof</h3><p>Build a small reviewed training set. Run the smoke preset and inspect failures.</p></li>
-          <li><h3>Controlled experiment</h3><p>Train one standard configuration. Change one variable per later run and retain exact configs.</p></li>
-          <li><h3>Go/no-go</h3><p>Compare quality, safety, latency and full operational cost against the baseline and agreed threshold.</p></li>
-        </ol>
-
-        <div class="callout danger"><strong>Production boundary</strong><p>This repository is an educational local trainer, not a multi-user production platform. It has no role-based access, audit service, remote job queue, distributed training or production model registry.</p></div>
-      </section>
-
-      <section class="chapter" id="troubleshooting">
-        <span class="chapter-number">Chapter 13 · Diagnose by boundary</span>
-        <h2>Find which stage failed.</h2>
-        <p class="chapter-intro">Setup, source access, data shape, GPU memory, worker state and inference are separate boundaries. Read the closest error before changing settings.</p>
-
-        <table class="comparison">
-          <thead><tr><th>Symptom</th><th>Likely boundary</th><th>Next action</th></tr></thead>
-          <tbody>
-            <tr><td>Launcher cannot install <code>uv</code></td><td>Network or shell policy</td><td>Check internet, proxy and policy; on Linux also confirm <code>curl</code> or <code>wget</code> is installed.</td></tr>
-            <tr><td>Browser never opens</td><td>Streamlit startup</td><td>Read <code>.runs/streamlit.err.log</code>; confirm port 8504 is free.</td></tr>
-            <tr><td>HF token not found</td><td>Environment</td><td>Set the persistent user variable, close the app, then relaunch.</td></tr>
-            <tr><td>401/403 or gated model error</td><td>Hugging Face access</td><td>Accept the model terms and verify token scope.</td></tr>
-            <tr><td>Dataset format error</td><td>Source/inspection</td><td>Use CSV/JSON/JSONL and map text or prompt/completion columns.</td></tr>
-            <tr><td>CUDA GPU required</td><td>Hardware/PyTorch</td><td>Confirm NVIDIA driver and CUDA-enabled PyTorch detect the GPU.</td></tr>
-            <tr><td>CUDA out of memory</td><td>Training configuration</td><td>Use QLoRA, smaller model, shorter sequence or batch size 1; close GPU apps.</td></tr>
-            <tr><td>No checkpoint available</td><td>Resume</td><td>The run stopped before its first save; start a new run.</td></tr>
-            <tr><td>Ollama list is empty</td><td>Optional local service</td><td>Start Ollama and install a model; training remains independent.</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Useful checks</h3>
-        <div class="codebox"><header>PowerShell<button class="copy" type="button">Copy</button></header><pre><code>uv run python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'No CUDA GPU')"
-uv run pytest
-Get-Content .runs\streamlit.err.log -Tail 100</code></pre></div>
-      </section>
-
-      <section class="chapter" id="glossary">
-        <span class="chapter-number">Chapter 14 · Reference</span>
-        <h2>Terms without the fog.</h2>
-        <div class="card-grid">
-          <article class="card"><span class="card-kicker">Adapter</span><p>Small learned weights applied on top of a specific base model.</p></article>
-          <article class="card"><span class="card-kicker">Checkpoint</span><p>Intermediate training state that can resume an interrupted run.</p></article>
-          <article class="card"><span class="card-kicker">Epoch</span><p>One pass through the selected training dataset.</p></article>
-          <article class="card"><span class="card-kicker">Gradient</span><p>Signal describing how learnable weights should change to reduce loss.</p></article>
-          <article class="card"><span class="card-kicker">Inference</span><p>Using a trained model to generate an answer.</p></article>
-          <article class="card"><span class="card-kicker">Loss</span><p>Training objective measuring mismatch with expected examples.</p></article>
-          <article class="card"><span class="card-kicker">PEFT</span><p>Parameter-efficient fine-tuning: train a small subset instead of every weight.</p></article>
-          <article class="card"><span class="card-kicker">Quantization</span><p>Represent weights with fewer bits to reduce memory and often speed loading.</p></article>
-          <article class="card"><span class="card-kicker">VRAM</span><p>GPU memory holding weights, activations, gradients and optimizer state.</p></article>
-        </div>
-
-        <h3>Frequently asked questions</h3>
-        <details><summary>Does the Hugging Face API key pay for training?</summary><div><p>No. The token authenticates downloads and optional uploads. Training compute runs on your local NVIDIA GPU.</p></div></details>
-        <details><summary>Can I train without a GPU?</summary><div><p>Not with the current training path. The UI may open, but <code>train()</code> requires CUDA.</p></div></details>
-        <details><summary>Is QLoRA always better than LoRA?</summary><div><p>No. QLoRA primarily solves memory pressure. LoRA avoids four-bit base-weight quantization but needs more VRAM.</p></div></details>
-        <details><summary>Can I paste any download URL?</summary><div><p>No. For safety, model and dataset inputs accept Hugging Face repository IDs or repository-root HTTPS URLs only.</p></div></details>
-        <details><summary>Can Ollama run my completed adapter?</summary><div><p>Not automatically. The included Ollama panel only tests models already installed in Ollama.</p></div></details>
-        <details><summary>Where is my trained result?</summary><div><p>Open <code>.runs/&lt;run-id&gt;/output/adapter</code>. Keep the matching base-model ID and revision with the adapter.</p></div></details>
-      </section>
-
-      <footer class="footer">
-        <p><strong>LoRA Fine-tune Studio handbook.</strong> Generated from the repository's current implementation and test contracts. When code and handbook disagree, treat code and passing tests as the source of truth, then update this document.</p>
-        <p><span class="tag live">Implemented</span> SFT · LoRA · QLoRA · local jobs · adapter comparison &nbsp; <span class="tag context">Concept only</span> DPO · RLHF · RLAIF &nbsp; <span class="tag no">Not included</span> production hosting · Ollama adapter import</p>
-      </footer>
-    </main>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">An applied local-LLM curriculum</p>
+    <h1>From first token<br>to defensible adapter.</h1>
+    <p>NLP, transformers, parameter-efficient fine-tuning, preference optimization, evaluation, and this repository.</p>
+    <div class="hero-actions"><a class="primary-action" href="01-learn-the-map-before-the-territory.html">Start the course</a><a href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Read offline</a></div>
   </div>
-
-  <script>
-    (() => {
-      const progress = document.querySelector('#progress-bar');
-      const updateProgress = () => {
-        const height = document.documentElement.scrollHeight - innerHeight;
-        progress.style.width = `${height > 0 ? (scrollY / height) * 100 : 0}%`;
-      };
-      addEventListener('scroll', updateProgress, { passive: true });
-      updateProgress();
-
-      const toggle = document.querySelector('.nav-toggle');
-      const toc = document.querySelector('#toc');
-      toggle.addEventListener('click', () => {
-        const open = toc.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
-      });
-      toc.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-        toc.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }));
-
-      const links = new Map([...toc.querySelectorAll('a')].map(link => [link.getAttribute('href').slice(1), link]));
-      const observer = new IntersectionObserver(entries => {
-        const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        links.forEach(link => link.classList.remove('active'));
-        links.get(visible.target.id)?.classList.add('active');
-      }, { rootMargin: '-15% 0px -65% 0px', threshold: [0, .1, .5] });
-      document.querySelectorAll('.chapter').forEach(section => observer.observe(section));
-
-      document.querySelectorAll('[data-diagram]').forEach(diagram => {
-        const output = diagram.querySelector('.diagram-output');
-        diagram.querySelectorAll('.diagram-node').forEach(node => node.addEventListener('click', () => {
-          diagram.querySelectorAll('.diagram-node').forEach(item => item.setAttribute('aria-pressed', 'false'));
-          node.setAttribute('aria-pressed', 'true');
-          output.innerHTML = `<strong>${node.dataset.title}</strong><p>${node.dataset.copy}</p>`;
-        }));
-      });
-
-      const fallbackCopy = text => {
-        const area = document.createElement('textarea');
-        area.value = text;
-        area.style.position = 'fixed';
-        area.style.opacity = '0';
-        document.body.append(area);
-        area.select();
-        document.execCommand('copy');
-        area.remove();
-      };
-      document.querySelectorAll('.copy').forEach(button => button.addEventListener('click', async () => {
-        const text = button.closest('.codebox').querySelector('code').innerText;
-        try { await navigator.clipboard.writeText(text); } catch { fallbackCopy(text); }
-        const previous = button.textContent;
-        button.textContent = 'Copied';
-        setTimeout(() => { button.textContent = previous; }, 1400);
-      }));
-    })();
-  </script>
+  <div class="token-ribbon" aria-label="Course progression from text to adapter">
+    <span>text</span><i>→</i><span>tokens</span><i>→</i><span>vectors</span><i>→</i><span>attention</span><i>→</i><span>loss</span><i>→</i><span>adapter</span>
+  </div>
+</section>
+<section class="course-intro prose"><h1 id="lora-fine-tune-studio-zero-to-mastery">LoRA Fine-tune Studio: Zero to Mastery</h1>
+<p>An applied course in natural language processing, transformers, parameter-efficient
+fine-tuning, preference optimization, evaluation, and the implementation of this
+repository.</p>
+<p>This handbook is designed for three readers at once:</p>
+<ul>
+<li>a beginner who needs every important term explained;</li>
+<li>an ML practitioner who wants to design and evaluate useful training runs; and</li>
+<li>a maintainer who needs to understand how the application turns UI choices into
+  durable artifacts.</li>
+</ul>
+<p>The course is cumulative. Complete Modules 1-5 before running the labs if transformers
+and fine-tuning are new to you. Experienced readers can use the module objectives and
+checkpoints to skip familiar material.</p>
+<blockquote>
+<p><strong>Implementation labels</strong></p>
+<p><strong>Implemented</strong> means the current application exposes and tests the behavior.
+<strong>Context only</strong> means the idea is taught because it helps you reason about LLMs, but
+the application does not implement it. When this handbook and the repository differ,
+the code and passing tests are authoritative.</p>
+</blockquote></section>
+<section class="course-map" aria-labelledby="course-map-title">
+  <div class="section-heading"><p class="eyebrow">Course map</p><h2 id="course-map-title">Learn, run, measure, and maintain.</h2></div>
+  <div class="chapter-grid"><article class="chapter-card">
+  <a href="01-learn-the-map-before-the-territory.html">
+    <span class="chapter-index">01</span>
+    <h2>Module 1 - Learn the map before the territory</h2>
+    <p>By the end of this module, you can explain what this application produces, identify the stages of an LLM project, and choose an appropriate path through the course.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="02-natural-language-becomes-model-input.html">
+    <span class="chapter-index">02</span>
+    <h2>Module 2 - Natural language becomes model input</h2>
+    <p>You will understand common NLP tasks, corpora, tokens, vocabulary, context windows, tokenization, and why this application does not require a separate embedding model.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="03-neural-networks-learn-with-vectors-and-gradients.html">
+    <span class="chapter-index">03</span>
+    <h2>Module 3 - Neural networks learn with vectors and gradients</h2>
+    <p>You will understand tensors, parameters, forward passes, losses, gradients, optimizers, learning rate, batches, epochs, and the memory used during training.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="04-build-a-transformer-from-attention-blocks.html">
+    <span class="chapter-index">04</span>
+    <h2>Module 4 - Build a transformer from attention blocks</h2>
+    <p>You will follow a token through a decoder-only transformer and understand attention, causal masking, multi-head projections, residual streams, normalization, MLPs, and generation.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="05-understand-the-llm-lifecycle.html">
+    <span class="chapter-index">05</span>
+    <h2>Module 5 - Understand the LLM lifecycle</h2>
+    <p>You will distinguish pre-training, instruction tuning, preference optimization, inference, prompting, RAG, and fine-tuning, then choose the cheapest suitable technique.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="06-choose-a-tuning-family.html">
+    <span class="chapter-index">06</span>
+    <h2>Module 6 - Choose a tuning family</h2>
+    <p>You will compare full tuning, freeze tuning, and PEFT, then explain why adapters fit local single-GPU experimentation.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="07-master-lora-qlora-oft-and-qoft.html">
+    <span class="chapter-index">07</span>
+    <h2>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</h2>
+    <p>You will understand the mathematics and implementation tradeoffs of all four methods available in the app.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="08-engineer-datasets-that-teach-the-intended-behavior.html">
+    <span class="chapter-index">08</span>
+    <h2>Module 8 - Engineer datasets that teach the intended behavior</h2>
+    <p>You will create supported schemas, inspect and normalize data, combine sources, avoid leakage, and build a small but credible evaluation set.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="09-select-the-post-training-objective.html">
+    <span class="chapter-index">09</span>
+    <h2>Module 9 - Select the post-training objective</h2>
+    <p>You will distinguish SFT, Reward Modeling, DPO, KTO, ORPO, and PPO and understand how their losses change model behavior.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="10-prepare-the-local-training-system.html">
+    <span class="chapter-index">10</span>
+    <h2>Module 10 - Prepare the local training system</h2>
+    <p>You will understand the two runtimes, hardware scan, Hugging Face boundary, Unsloth integration, and conservative capacity planning.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="11-translate-intent-into-app-settings.html">
+    <span class="chapter-index">11</span>
+    <h2>Module 11 - Translate intent into app settings</h2>
+    <p>You will navigate the eight pages and understand every training control and validation boundary.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="12-lab-a-complete-an-sft-smoke-run.html">
+    <span class="chapter-index">12</span>
+    <h2>Module 12 - Lab A: complete an SFT smoke run</h2>
+    <p>Validate the entire local pipeline with a small model and the included instructional dataset. This lab proves mechanics, not production quality.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="13-lab-b-preference-training-safely.html">
+    <span class="chapter-index">13</span>
+    <h2>Module 13 - Lab B: preference training safely</h2>
+    <p>Understand preference data and complete one small DPO pipeline. Reward, KTO, and ORPO variations demonstrate how the same source schema supports different objectives.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="14-evaluate-like-an-experimenter.html">
+    <span class="chapter-index">14</span>
+    <h2>Module 14 - Evaluate like an experimenter</h2>
+    <p>You will build evaluation sets, choose metrics, interpret curves, diagnose overfitting, and make defensible iteration decisions.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="15-operate-jobs-and-use-artifacts.html">
+    <span class="chapter-index">15</span>
+    <h2>Module 15 - Operate jobs and use artifacts</h2>
+    <p>You will understand process isolation, status files, cancellation, recovery, adapter inference, Hub publishing, and Ollama&#x27;s separate role.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="16-read-and-extend-the-repository.html">
+    <span class="chapter-index">16</span>
+    <h2>Module 16 - Read and extend the repository</h2>
+    <p>You will trace configuration from UI to trainer, understand security boundaries, and make changes at the narrowest responsible layer.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="17-capstone-train-a-defensible-specialist.html">
+    <span class="chapter-index">17</span>
+    <h2>Module 17 - Capstone: train a defensible specialist</h2>
+    <p>Design, execute, and report one complete adapter experiment. Mastery means making defensible decisions and recognizing uncertainty, not merely finishing a GPU run.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="18-checkpoint-answers.html">
+    <span class="chapter-index">18</span>
+    <h2>Appendix A - Checkpoint answers</h2>
+    <p>A chapter in the Zero-to-Mastery course.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="19-formula-and-settings-reference.html">
+    <span class="chapter-index">19</span>
+    <h2>Appendix B - Formula and settings reference</h2>
+    <p>A chapter in the Zero-to-Mastery course.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="20-troubleshooting-by-boundary.html">
+    <span class="chapter-index">20</span>
+    <h2>Appendix C - Troubleshooting by boundary</h2>
+    <p>A chapter in the Zero-to-Mastery course.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="21-glossary.html">
+    <span class="chapter-index">21</span>
+    <h2>Appendix D - Glossary</h2>
+    <p>Activation: Intermediate tensor produced during a forward pass.</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article>
+<article class="chapter-card">
+  <a href="22-official-references.html">
+    <span class="chapter-index">22</span>
+    <h2>Appendix E - Official references</h2>
+    <p>The repository implementation and tests define app behavior. These official sources provide broader theory and library details:</p>
+    <strong>Open chapter <span aria-hidden="true">→</span></strong>
+  </a>
+</article></div>
+</section></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
 </body>
 </html>

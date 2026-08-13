@@ -4,184 +4,141 @@
 [![Release](https://img.shields.io/github/v/release/pypi-ahmad/lora-qlora-fine-tuning-app)](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2457D6.svg)](LICENSE)
 
-A local Streamlit application for supervised fine-tuning, reward modeling, and preference
-optimization with LoRA, QLoRA, OFT, or QOFT. It guides a user from hardware inspection and dataset validation through training,
-checkpoint recovery, adapter evaluation, and optional Hugging Face Hub upload.
+A local, guided Streamlit application for parameter-efficient LLM post-training on NVIDIA GPUs.
+Prepare datasets, configure a supported recipe, train an adapter, monitor the run, and compare the
+result with the base model from one interface.
 
-This is a local, single-user educational tool. GitHub hosts its source; training runs on the
-Windows or Linux machine that launches the app.
+> [!NOTE]
+> LoRA Fine-tune Studio is designed for local, single-user learning and experimentation. It is not
+> a hosted training service or a multi-user production platform.
 
-## Features
+## Highlights
 
-- Detects CUDA, GPU VRAM, RAM, disk space, and BF16 support.
-- Runs a read-only readiness scan for OS, CPU threads, available RAM, runtimes, and integrations.
-- Shows live CUDA memory usage and can release unused PyTorch VRAM safely.
-- Provides a confirmed shutdown control for the app and its active training worker.
-- Organizes the workflow into eight focused pages in the left navigation.
-- Combines multiple Hugging Face or uploaded CSV, JSON, and JSONL datasets in one training run.
-- Validates conversational, plain-text, prompt/completion, and paired preference datasets.
-- Trains SFT, Reward, DPO, KTO, and ORPO recipes with LoRA, QLoRA, OFT, or QOFT.
-- Optionally accelerates LoRA and QLoRA on Windows with Unsloth Core.
-- Runs one isolated worker with live progress, logs, cancellation, and checkpoint resume.
-- Saves adapters, tokenizer files, metrics, and the exact training configuration locally.
-- Compares base and adapter responses after training.
-- Includes a separate playground for models already installed in Ollama.
+- Guides users through system checks, dataset preparation, model inspection, training, monitoring,
+  and adapter review.
+- Combines multiple Hugging Face or uploaded CSV, JSON, and JSONL datasets in one deterministic
+  training run.
+- Validates conversational, text, prompt/completion, and paired-preference schemas before training.
+- Provides Smoke test, Standard, and High quality presets with optional controls for learning rate,
+  epochs, sample limits, gradient norm, precision, sequence length, and batching.
+- Runs training in an isolated worker with live logs, cancellation, checkpoint recovery, and saved
+  configuration and metrics.
+- Supports optional native Windows acceleration through a repository-managed Unsloth Core runtime.
+- Saves portable PEFT adapters locally and can optionally upload completed adapters to the
+  Hugging Face Hub.
+- Includes base-versus-adapter comparison and a separate playground for models already installed
+  in Ollama.
+
+## Training support
+
+| Approach | Expected dataset |
+| --- | --- |
+| Supervised Fine-Tuning | Conversations, plain text, or prompt/completion pairs |
+| Reward Modeling | Prompt with chosen and rejected responses |
+| DPO Training | Prompt with chosen and rejected responses |
+| KTO Training | Prompt with chosen and rejected responses |
+| ORPO Training | Prompt with chosen and rejected responses |
+
+Every listed approach supports **LoRA**, **QLoRA**, **OFT**, and **QOFT**. Native Unsloth
+acceleration is available on Windows for LoRA and QLoRA; OFT and QOFT use the standard PEFT/TRL
+backend.
+
+## Workflow
+
+1. **System** — verify the operating system, CUDA GPU, memory, storage, and integrations.
+2. **Dataset** — inspect, map, and combine compatible local or Hugging Face datasets.
+3. **Model** — inspect the base model and estimate whether it fits the available VRAM.
+4. **GPU memory** — review live CUDA use and release unused PyTorch cache when safe.
+5. **Training** — select the approach, adapter method, backend, preset, and optional overrides.
+6. **Review & run** — validate the complete configuration before starting the worker.
+7. **Monitor** — follow progress, logs, metrics, cancellation, and checkpoint recovery.
+8. **Ollama playground** — chat with models already served by a local Ollama installation.
 
 ## Requirements
 
-- Windows 11 or x86-64 Linux, running natively
-- NVIDIA GPU with a CUDA 13-compatible driver; at least 6 GB VRAM is recommended
-- Git for cloning the repository
-- Internet access for first setup and Hugging Face downloads
-- Hugging Face token for gated/private repositories or Hub uploads
-- Ollama only when using the optional playground
+- Native Windows 11 or x86-64 Linux
+- NVIDIA CUDA-capable GPU with a CUDA 13-compatible driver
+- At least 6 GB VRAM recommended
+- Git and internet access for initial setup and model downloads
+- Hugging Face token only for gated/private repositories or Hub uploads
 
-Local training requires CUDA. CPU-only computers can open the interface but cannot start a run.
+The interface can open without a GPU, but training and adapter comparison require CUDA. See the
+[complete setup guide](SETUP.md) for driver requirements, dependencies, disk recommendations,
+manual installation, and troubleshooting.
 
-## Install from GitHub
+## Quick start
 
-Repository: <https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app>
-
-### 1. Clone the repository
-
-Open PowerShell on Windows or a terminal on Linux:
+Clone the repository:
 
 ```bash
 git clone https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app.git
 cd lora-qlora-fine-tuning-app
 ```
 
-If Git is unavailable, download **Code → Download ZIP** from the repository page and extract it.
-
-### 2. Configure Hugging Face access
-
-Public models and datasets do not require a token. For gated/private repositories or Hub uploads,
-create a token in your Hugging Face settings and configure `HF_TOKEN`.
-
-Windows PowerShell:
-
-```powershell
-[Environment]::SetEnvironmentVariable("HF_TOKEN", "hf_your_token", "User")
-```
-
-Linux shell:
-
-```bash
-echo 'export HF_TOKEN="hf_your_token"' >> ~/.bashrc
-source ~/.bashrc
-```
-
-Replace `hf_your_token` with your token. Never save a real token in this repository.
-
-### 3. Install and launch
-
-Windows: double-click **`Launch LoRA Studio.cmd`** in File Explorer, or run:
+Launch on Windows:
 
 ```powershell
 & ".\Launch LoRA Studio.cmd"
 ```
 
-Linux:
+Launch on Linux:
 
 ```bash
 bash "Launch LoRA Studio.sh"
 ```
 
-The platform launcher installs `uv` when missing, prepares Python 3.14 and the locked CUDA 13 dependencies
-inside the project `.venv`, and on Windows prepares Unsloth in `.venv-unsloth` with Python 3.13.
-It then starts Streamlit in the background and opens
-`http://localhost:8504`. First setup can take several minutes. Startup logs are written to
-`.runs/streamlit.out.log` and
-`.runs/streamlit.err.log`.
+The platform launcher installs `uv` when needed, prepares the locked project environment, starts
+Streamlit in the background, and opens <http://localhost:8504>. On Windows it also prepares the
+isolated Python 3.13 Unsloth runtime.
 
-Launching again stops the previous LoRA Studio server and starts a fresh Streamlit session. An
-active training worker is separate and continues until it completes or is cancelled from Monitor.
+For manual setup, token configuration, update instructions, and a full dependency inventory, read
+[SETUP.md](SETUP.md).
 
-To shut down from the UI, select **Stop LoRA Studio** in the sidebar and then **Confirm stop**. This
-cancels the active training worker before stopping Streamlit. Ollama and unrelated applications
-are never terminated.
+## First smoke test
 
-Public Hugging Face repositories work without a token. Use a read token for downloads and grant
-write access only when pushing an adapter.
-
-### Manual setup and launch
-
-If `uv` is already installed, prepare the project environment directly:
-
-```bash
-uv sync --locked --no-dev --python 3.14
-uv run streamlit run streamlit_app.py --server.port=8504
-```
-
-## First training run
-
-1. Confirm CUDA and Hugging Face access on **System**.
+1. Confirm the readiness checks on **System**.
 2. Upload `examples/sft_sample.jsonl` on **Dataset**, inspect it, and select **Add dataset**.
 3. Inspect `Qwen/Qwen3-0.6B` on **Model**.
-4. Select **Supervised Fine-Tuning**, **QLoRA**, **Smoke test**, and whether to use Unsloth on
-   **Training**, then save the settings.
-5. Validate the summary and start from **Review & run**.
-6. Follow the job and compare the completed adapter on **Monitor**.
-7. Find the adapter under `.runs/<run-id>/output/adapter`.
+4. Select **Supervised Fine-Tuning**, **QLoRA**, and **Smoke test** on **Training**.
+5. On Windows, optionally enable **Use Unsloth** after the runtime reports ready.
+6. Validate the configuration on **Review & run**, then start training.
+7. Follow the run on **Monitor** and find the adapter under
+   `.runs/<run-id>/output/adapter`.
 
-The smoke preset proves that the pipeline works; it does not prove production model quality.
-
-## Dataset formats
-
-Conversational JSONL:
-
-```json
-{"messages":[{"role":"user","content":"Question"},{"role":"assistant","content":"Answer"}]}
-```
-
-Plain-text datasets use a `text` column. Prompt/completion datasets use `prompt` and `completion`,
-Preference datasets for Reward, DPO, KTO, and ORPO use `prompt`, `chosen`, and `rejected`, or map
-equivalent columns in the interface. Uploads are limited to CSV, JSON, or JSONL and 200 MB.
-Every dataset in one run must use the same detected or mapped format. The worker concatenates all
-rows, shuffles them with the configured seed, and applies `max_samples` as a global cap.
+The Smoke test preset verifies that the pipeline works; it is not intended to produce a
+production-quality adapter.
 
 ## Documentation
 
 | Document | Purpose |
 | --- | --- |
-| [Zero-to-hero handbook](docs/index.html) | Interactive tutorial for users, engineers, and business readers |
-| [Usage guide](USAGE.md) | Complete operating manual and troubleshooting |
+| [Setup guide](SETUP.md) | Windows, Linux, dependencies, verification, and troubleshooting |
+| [Usage guide](USAGE.md) | Complete application workflow and operational guidance |
 | [Technical reference](TECHNICAL.md) | Architecture, contracts, lifecycle, storage, and extension points |
-| [Contributing](CONTRIBUTING.md) | Development workflow and pull-request requirements |
-| [Security policy](SECURITY.md) | Supported versions, hardening, and private vulnerability reporting |
-| [Code of Conduct](CODE_OF_CONDUCT.md) | Community expectations and enforcement |
+| [Zero-to-Mastery course](TUTORIAL.md) | Canonical NLP, transformer, fine-tuning, labs, evaluation, and capstone curriculum |
+| [Interactive handbook](docs/index.html) | Searchable multipage course for local reading or GitHub Pages |
+| [PDF handbook](docs/downloads/lora-finetune-studio-zero-to-mastery.pdf) | Complete 50-page course for offline reading |
+| [Contributing guide](CONTRIBUTING.md) | Development workflow, checks, and pull-request requirements |
+| [Security policy](SECURITY.md) | Security model and private vulnerability reporting |
 | [Changelog](CHANGELOG.md) | User-visible release history |
 
 ## Project boundaries
 
-- PPO, full tuning, freeze tuning, and distributed training are not implemented.
-- KTO uses a minimum per-device batch size of two.
-- OFT and QOFT use standard PEFT/TRL; Unsloth acceleration supports LoRA and QLoRA.
-- Native Unsloth integration currently targets Windows; Linux continues to use the standard backend.
+- PPO, full tuning, freeze tuning, pre-training, and distributed training are not implemented.
+- Native Unsloth integration currently targets Windows; Linux uses the standard backend.
 - Only one local training job can run at a time.
-- Training and adapter comparison require an NVIDIA CUDA GPU.
-- The VRAM cleanup control cannot free live models or memory owned by Ollama or other processes.
-- The app has no authentication and must not be exposed to an untrusted network.
-- The Ollama playground does not convert or import the trained adapter.
+- The application has no authentication and must not be exposed to an untrusted network.
+- The Ollama playground does not merge, convert, or import trained adapters.
 - GitHub Pages and Streamlit Community Cloud cannot access a user's local GPU or Ollama service.
 
-## Development
+## Help and contributing
 
-```bash
-uv sync --group dev
-uv run ruff format --check .
-uv run ruff check .
-uv run ty check src
-uv run pytest
-```
+Use [GitHub Issues](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/issues) for reproducible
+bugs and focused feature requests. Before contributing, read [CONTRIBUTING.md](CONTRIBUTING.md) and
+the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
-
-## Security
-
-Do not place tokens in source code or commit `.streamlit/secrets.toml`. Review model licenses,
-dataset licenses, and sensitive training data before use. Report vulnerabilities privately as
-described in [SECURITY.md](SECURITY.md).
+Do not publish vulnerabilities or credentials in an issue. Follow [SECURITY.md](SECURITY.md) for
+private vulnerability reporting.
 
 ## License
 

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="You will navigate the eight pages and understand every training control and validation boundary.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 11 - Translate intent into app settings | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="11-translate-intent-into-app-settings.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html" class="active" aria-current="page"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 11 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:11;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-11-translate-intent-into-app-settings">Module 11 - Translate intent into app settings</h2>
+<h3 id="objectives">Objectives</h3>
+<p>You will navigate the eight pages and understand every training control and validation
+boundary.</p>
+<h3 id="the-eight-page-workflow">The eight-page workflow</h3>
+<ol>
+<li><strong>System:</strong> inspect readiness.</li>
+<li><strong>Dataset:</strong> load, preview, map, add, edit, remove, and order sources.</li>
+<li><strong>Model:</strong> validate repository/revision and inspect parameter count.</li>
+<li><strong>GPU memory:</strong> view global and process-local CUDA memory.</li>
+<li><strong>Training:</strong> select approach, method, backend, preset, and controls.</li>
+<li><strong>Review &amp; run:</strong> inspect effective settings and resolve blockers.</li>
+<li><strong>Monitor:</strong> follow status/logs, cancel, resume, and evaluate.</li>
+<li><strong>Ollama playground:</strong> use models already installed in local Ollama.</li>
+</ol>
+<h3 id="presets">Presets</h3>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th style="text-align: right;">Length</th>
+<th style="text-align: right;">Epochs</th>
+<th style="text-align: right;">Max steps</th>
+<th style="text-align: right;">Max samples</th>
+<th style="text-align: right;">Accumulation</th>
+<th>Eval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Smoke test</td>
+<td style="text-align: right;">512</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">4</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td style="text-align: right;">1024</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">Unlimited</td>
+<td style="text-align: right;">All</td>
+<td style="text-align: right;">8</td>
+<td>On</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td style="text-align: right;">2048</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">Unlimited</td>
+<td style="text-align: right;">All</td>
+<td style="text-align: right;">16</td>
+<td>On</td>
+</tr>
+</tbody>
+</table>
+<p>Use Smoke to validate the pipeline, not to claim final quality. Standard is a reasonable
+baseline. Quality increases cost and is not guaranteed to improve a small or noisy
+dataset.</p>
+<h3 id="core-controls">Core controls</h3>
+<p><strong>Approach and method</strong> are linked. The method dropdown contains only methods registered
+for the selected recipe. All current recipes expose all four standard methods.</p>
+<p><strong>Learning rate</strong> controls update scale. Default mode follows the recipe; Custom accepts
+<code>1e-7</code> through <code>1e-2</code>.</p>
+<p><strong>Epochs</strong> controls passes through the dataset unless <code>max_steps</code> stops first. Custom
+accepts values above zero through 20, including fractional epochs.</p>
+<p><strong>Maximum samples</strong> is a global cap applied after datasets are combined and shuffled.
+It is useful for smoke tests and controlled experiments.</p>
+<p><strong>Maximum gradient norm</strong> clips gradients above the threshold. The default is 1.0;
+zero disables clipping.</p>
+<p><strong>Compute type</strong> resolves Auto/BF16 to BF16 when supported and otherwise FP16. FP32
+uses the standard backend.</p>
+<h3 id="advanced-controls">Advanced controls</h3>
+<p><strong>Maximum sequence length</strong> affects truncation/padding behavior, activation memory, and
+attention cost. Use the shortest value that preserves task-relevant information.</p>
+<p><strong>Beta</strong> controls preference/reference strength for DPO, KTO, and ORPO. Treat it as an
+objective-specific hyperparameter, not a generic quality slider.</p>
+<p><strong>Per-device batch size</strong> directly affects peak VRAM. KTO requires at least 2 in this
+app; other recipes default to 1.</p>
+<p><strong>Gradient accumulation</strong> increases effective batch size without placing all examples
+on the GPU at once.</p>
+<p><strong>Gradient checkpointing</strong> reduces activation memory through recomputation and should
+usually remain enabled on constrained GPUs.</p>
+<h3 id="review-time-blockers">Review-time blockers</h3>
+<p>Review prevents launch when configuration validation fails, CUDA is missing, a large
+model warning is unacknowledged, Unsloth is requested but unavailable, Hub publishing
+lacks a token, or another owned job is active.</p>
+<p>The Review page displays requested and effective compute types. Read the entire JSON
+summary before starting because that saved configuration becomes the durable run
+contract.</p>
+<h3 id="one-variable-experiments">One-variable experiments</h3>
+<p>Hold model, data, seed, and evaluation fixed. Change one important variable per run.
+Record the hypothesis before training. A useful order is:</p>
+<ol>
+<li>prove the pipeline with Smoke;</li>
+<li>establish Standard baseline;</li>
+<li>change data quality or coverage;</li>
+<li>tune learning rate or epochs;</li>
+<li>tune length/batch only when the task requires it; and</li>
+<li>compare adapter/backend methods only after evaluation is stable.</li>
+</ol>
+<h3 id="checkpoint">Checkpoint</h3>
+<ol>
+<li>Which limit wins in the Smoke preset: epochs or maximum steps?</li>
+<li>Why is maximum samples applied after seeded shuffle?</li>
+<li>Which settings most directly increase peak activation memory?</li>
+</ol></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="10-prepare-the-local-training-system.html"><span>Previous</span><strong>Module 10 - Prepare the local training system</strong></a><a rel="next" href="12-lab-a-complete-an-sft-smoke-run.html"><span>Next</span><strong>Module 12 - Lab A: complete an SFT smoke run</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>
