@@ -64,9 +64,16 @@ entrypoint-local `demo/requirements.txt` installs only Streamlit. No secrets are
 | KTO Training | Prompt with chosen and rejected responses |
 | ORPO Training | Prompt with chosen and rejected responses |
 
-Every listed approach supports **LoRA**, **QLoRA**, **OFT**, and **QOFT**. Native Unsloth
-acceleration is available on Windows for LoRA and QLoRA; OFT and QOFT use the standard PEFT/TRL
-backend.
+| Approach | LoRA | QLoRA | OFT | QOFT |
+| --- | :---: | :---: | :---: | :---: |
+| Supervised Fine-Tuning | ✅ | ✅ | ✅ | ✅ |
+| Reward Modeling | ✅ | ✅ | ✅ | ✅ |
+| DPO Training | ✅ | ✅ | ✅ | ✅ |
+| KTO Training | ✅ | ✅ | ✅ | ✅ |
+| ORPO Training | ✅ | ✅ | ✅ | ✅ |
+
+PPO is not implemented. Native Unsloth acceleration is available on Windows for LoRA and QLoRA;
+OFT and QOFT use the standard PEFT/TRL backend.
 
 ## Workflow
 
