@@ -90,6 +90,11 @@ def test_generated_manifest_matches_files() -> None:
         assert sha256(path) == expected_digest, relative
 
 
+def test_generated_text_assets_use_portable_line_endings() -> None:
+    for relative in ("assets/site.css", "assets/site.js"):
+        assert b"\r" not in (DOCS / relative).read_bytes(), relative
+
+
 def test_generated_pages_have_valid_local_links() -> None:
     pages = sorted(DOCS.glob("*.html"))
     assert len(pages) == 23

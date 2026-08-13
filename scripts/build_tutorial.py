@@ -361,8 +361,9 @@ def build_site_files(
             page_class="chapter-page",
         )
         files[chapter.filename] = page.encode("utf-8")
-    files["assets/site.css"] = (ASSET_SOURCE / "site.css").read_bytes()
-    files["assets/site.js"] = (ASSET_SOURCE / "site.js").read_bytes()
+    for asset_name in ("site.css", "site.js"):
+        asset_text = (ASSET_SOURCE / asset_name).read_text(encoding="utf-8")
+        files[f"assets/{asset_name}"] = asset_text.replace("\r\n", "\n").encode("utf-8")
     files["assets/search-index.js"] = build_search_index(chapters).encode("utf-8")
     files[f"downloads/{PDF_NAME}"] = pdf_bytes
     return files
