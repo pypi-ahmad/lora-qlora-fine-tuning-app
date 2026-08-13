@@ -866,6 +866,13 @@ def write_site(files: dict[str, bytes], root: Path) -> None:
             stale.unlink()
 
 
+def portable_text_bytes(data: bytes, relative: str) -> bytes:
+    """Normalize text so Windows checkouts compare equal to committed LF bytes."""
+    if Path(relative).suffix.lower() in {".html", ".css", ".js", ".json"}:
+        return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return data
+
+
 def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
     complete = dict(expected)
     complete[MANIFEST_NAME] = manifest_bytes(complete)
@@ -874,7 +881,9 @@ def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
         current = root / relative
         if not current.is_file():
             differences.append(f"missing: {current.relative_to(ROOT)}")
-        elif current.read_bytes() != data:
+        elif portable_text_bytes(current.read_bytes(), relative) != portable_text_bytes(
+            data, relative
+        ):
             differences.append(f"stale: {current.relative_to(ROOT)}")
     for relative in sorted(read_manifest(root).difference(complete)):
         differences.append(

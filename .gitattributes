@@ -1,6 +1,4 @@
+* text=auto eol=lf
 *.pdf binary
-docs/*.html -text
-docs/.tutorial-build.json -text
-docs/assets/*.css -text
-docs/assets/*.js -text
+*.png binary
 /.codegraph/codegraph.db filter=lfs diff=lfs merge=lfs -text
