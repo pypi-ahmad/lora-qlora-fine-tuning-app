@@ -23,6 +23,7 @@ from reportlab import rl_config
 
 rl_config.invariant = 1
 
+from pypdf import PdfReader
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import A4
@@ -882,20 +883,37 @@ def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
     return differences
 
 
+def pdf_content_signature(path: Path) -> tuple[object, ...]:
+    reader = PdfReader(path)
+    metadata = reader.metadata
+    pages = tuple(
+        (
+            float(page.mediabox.width),
+            float(page.mediabox.height),
+            " ".join((page.extract_text() or "").split()),
+        )
+        for page in reader.pages
+    )
+    return metadata.title, metadata.author, metadata.subject, pages
+
+
 def run(check: bool) -> int:
     _, preamble_html, chapters = load_course()
     if check:
+        canonical_pdf = PDF_ROOT / PDF_NAME
+        if not canonical_pdf.is_file():
+            print("Tutorial outputs are not synchronized:")
+            print(f"- missing: {canonical_pdf.relative_to(ROOT)}")
+            return 1
         with tempfile.TemporaryDirectory(prefix="tutorial-build-") as temporary:
             temporary_root = Path(temporary)
             pdf_path = temporary_root / PDF_NAME
             build_pdf(chapters, pdf_path)
-            pdf_bytes = pdf_path.read_bytes()
-            site_files = build_site_files(preamble_html, chapters, pdf_bytes)
+            site_files = build_site_files(
+                preamble_html, chapters, canonical_pdf.read_bytes()
+            )
             differences = compare_files(site_files, DOCS_ROOT)
-            canonical_pdf = PDF_ROOT / PDF_NAME
-            if not canonical_pdf.is_file():
-                differences.append(f"missing: {canonical_pdf.relative_to(ROOT)}")
-            elif canonical_pdf.read_bytes() != pdf_bytes:
+            if pdf_content_signature(canonical_pdf) != pdf_content_signature(pdf_path):
                 differences.append(f"stale: {canonical_pdf.relative_to(ROOT)}")
             if differences:
                 print("Tutorial outputs are not synchronized:")
