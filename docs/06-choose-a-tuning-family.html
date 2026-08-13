@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="You will compare full tuning, freeze tuning, and PEFT, then explain why adapters fit local single-GPU experimentation.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 6 - Choose a tuning family | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="06-choose-a-tuning-family.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html" class="active" aria-current="page"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 06 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:6;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-6-choose-a-tuning-family">Module 6 - Choose a tuning family</h2>
+<h3 id="objectives">Objectives</h3>
+<p>You will compare full tuning, freeze tuning, and PEFT, then explain why adapters fit
+local single-GPU experimentation.</p>
+<h3 id="full-tuning">Full tuning</h3>
+<p>Full tuning updates all base-model parameters. It provides maximum flexibility but
+requires gradients and optimizer state for every trainable weight. It also creates a
+full model artifact for every task. On an 8 GB RTX 4060, full tuning modern LLMs is
+usually impractical.</p>
+<p>Full tuning is <strong>context only</strong> here.</p>
+<h3 id="freeze-tuning">Freeze tuning</h3>
+<p>Freeze tuning updates selected existing layers while leaving the rest frozen. It can
+reduce cost, but the selected full layers may still contain many parameters and each
+task still modifies part of the base model directly.</p>
+<p>Freeze tuning is <strong>context only</strong> here.</p>
+<h3 id="parameter-efficient-fine-tuning">Parameter-efficient fine-tuning</h3>
+<p>PEFT freezes original weights and adds or selects a small trainable parameter set. Its
+advantages include:</p>
+<ul>
+<li>fewer trainable parameters and optimizer states;</li>
+<li>smaller task-specific artifacts;</li>
+<li>multiple adapters can share one base model; and</li>
+<li>the original model remains available for comparison.</li>
+</ul>
+<p>PEFT does not eliminate the need to load the base model. Base-weight precision and
+activations still dominate memory for many workloads.</p>
+<h3 id="adapter-lifecycle">Adapter lifecycle</h3>
+<pre><code class="language-text">Base model + adapter configuration -&gt; train adapter -&gt; save adapter
+Base model + saved adapter -&gt; inference or evaluation
+</code></pre>
+<p>An adapter configuration records the base-model identifier, PEFT type, target modules,
+rank or transformation settings, and other compatibility data. Keep it with the adapter
+weights and training configuration.</p>
+<h3 id="method-and-objective-are-independent-axes">Method and objective are independent axes</h3>
+<p>SFT does not mean LoRA, and QLoRA does not mean DPO. The objective defines the loss and
+dataset; the adapter method defines trainable parameterization. The app's recipe table
+allows every implemented objective with LoRA, QLoRA, OFT, or QOFT.</p>
+<h3 id="decision-table">Decision table</h3>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Starting choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6-10 GB VRAM</td>
+<td>QLoRA, small model, Smoke preset</td>
+</tr>
+<tr>
+<td>More VRAM and avoid 4-bit base loading</td>
+<td>LoRA</td>
+</tr>
+<tr>
+<td>Explore orthogonal transformations</td>
+<td>OFT</td>
+</tr>
+<tr>
+<td>Need OFT with reduced base-weight memory</td>
+<td>QOFT</td>
+</tr>
+<tr>
+<td>Need native Windows acceleration</td>
+<td>Unsloth with LoRA/QLoRA</td>
+</tr>
+<tr>
+<td>Need maximum base-weight flexibility</td>
+<td>Different full-tuning system</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checkpoint">Checkpoint</h3>
+<ol>
+<li>Which memory components remain even with PEFT?</li>
+<li>Why can many adapters share one base model?</li>
+<li>What is the difference between a method and an objective?</li>
+</ol></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="05-understand-the-llm-lifecycle.html"><span>Previous</span><strong>Module 5 - Understand the LLM lifecycle</strong></a><a rel="next" href="07-master-lora-qlora-oft-and-qoft.html"><span>Next</span><strong>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>

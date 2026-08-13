@@ -7,8 +7,14 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-13
+
 ### Added
 
+- A Zero-to-Mastery course with a canonical Markdown source, 22-chapter searchable website, 50-page
+  PDF, preference-training sample data, reproducible documentation builder, and CI drift checks.
+- Comprehensive setup and technical handbooks for Windows and Linux users.
+- A training-interface screenshot for project documentation.
 - Linked Approach and Method dropdowns backed by one support registry for SFT, Reward, DPO, KTO,
   and ORPO with LoRA, QLoRA, OFT, and QOFT.
 - Paired preference dataset detection, mapping, compatibility checks, and remapping.
@@ -71,6 +77,7 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Limited dataset uploads to approved formats and 200 MB.
 - Added path validation and atomic run-status updates.
 
-[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases/tag/v0.1.0

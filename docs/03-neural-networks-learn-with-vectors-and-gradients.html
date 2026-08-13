@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="You will understand tensors, parameters, forward passes, losses, gradients, optimizers, learning rate, batches, epochs, and the memory used during training.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 3 - Neural networks learn with vectors and gradients | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="03-neural-networks-learn-with-vectors-and-gradients.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html" class="active" aria-current="page"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 03 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:3;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-3-neural-networks-learn-with-vectors-and-gradients">Module 3 - Neural networks learn with vectors and gradients</h2>
+<h3 id="objectives">Objectives</h3>
+<p>You will understand tensors, parameters, forward passes, losses, gradients, optimizers,
+learning rate, batches, epochs, and the memory used during training.</p>
+<h3 id="tensors-and-linear-layers">Tensors and linear layers</h3>
+<p>A tensor is a multidimensional array. Language models use tensors for token IDs,
+embeddings, activations, weights, gradients, and optimizer state. A linear layer maps
+an input vector <code>x</code> to an output vector:</p>
+<pre><code class="language-text">y = W x + b
+</code></pre>
+<p><code>W</code> and <code>b</code> are parameters learned during training. Transformer models contain many
+linear projections arranged into repeated blocks.</p>
+<h3 id="forward-pass-and-loss">Forward pass and loss</h3>
+<p>The <strong>forward pass</strong> applies the current parameters to a batch and produces logits.
+Logits are unnormalized scores for each vocabulary token. Softmax converts them into a
+probability distribution:</p>
+<pre><code class="language-text">softmax(z_i) = exp(z_i) / sum_j exp(z_j)
+</code></pre>
+<p>For a target token <code>y</code>, cross-entropy loss is the negative log probability assigned to
+that target:</p>
+<pre><code class="language-text">L = -log P(y | context)
+</code></pre>
+<p>A lower training loss means the model predicts training targets with greater
+confidence. It does not automatically mean outputs are factually correct, safe, or
+useful on unseen inputs.</p>
+<h3 id="backpropagation-and-gradient-descent">Backpropagation and gradient descent</h3>
+<p>Backpropagation applies the chain rule to compute a gradient for each trainable
+parameter. A basic update is:</p>
+<pre><code class="language-text">theta_(t+1) = theta_t - learning_rate * gradient(L(theta_t))
+</code></pre>
+<p>Real trainers use optimizers such as AdamW, which maintain additional statistics and
+adapt updates. The learning rate still controls update scale:</p>
+<ul>
+<li>too small can make learning impractically slow;</li>
+<li>too large can cause unstable loss or destroy useful behavior; and</li>
+<li>the best scale depends on objective, model, adapter, batch, and data.</li>
+</ul>
+<p>The app therefore uses different defaults: <code>2e-4</code> for SFT, <code>1e-3</code> for Reward Modeling,
+and <code>1e-5</code> for DPO, KTO, and ORPO.</p>
+<h3 id="batches-accumulation-steps-and-epochs">Batches, accumulation, steps, and epochs</h3>
+<p>The <strong>per-device batch size</strong> is the number of examples processed together in one
+forward/backward pass on the GPU. <strong>Gradient accumulation</strong> delays the optimizer update
+and adds gradients across several small batches.</p>
+<pre><code class="language-text">effective batch size = per-device batch size * accumulation steps * number of devices
+</code></pre>
+<p>This app uses one device, so batch size 1 with accumulation 8 behaves like an effective
+batch of 8 for optimizer-update frequency, while usually needing far less peak VRAM
+than processing 8 examples simultaneously.</p>
+<p>A <strong>step</strong> usually means one optimizer update. An <strong>epoch</strong> is one pass through the
+selected training rows. The approximate number of optimizer steps is:</p>
+<pre><code class="language-text">steps per epoch ~= ceil(number of training examples / effective batch size)
+total steps ~= steps per epoch * epochs
+</code></pre>
+<p>Dynamic padding, distributed behavior, and trainer details can modify the exact count.
+The Smoke preset uses an explicit maximum of 20 steps, which takes priority over
+completing all requested epochs.</p>
+<h3 id="gradient-clipping-and-checkpointing">Gradient clipping and checkpointing</h3>
+<p>The gradient norm summarizes gradient magnitude. <strong>Gradient clipping</strong> rescales overly
+large gradients to reduce unstable updates. <code>max_grad_norm=1.0</code> is the app default; zero
+disables clipping.</p>
+<p><strong>Gradient checkpointing</strong> saves memory by discarding selected forward activations and
+recomputing them during backpropagation. It trades additional computation for lower
+activation memory. This is different from a disk <strong>training checkpoint</strong>, which saves
+adapter, optimizer, scheduler, RNG, and trainer state for recovery.</p>
+<h3 id="where-gpu-memory-goes">Where GPU memory goes</h3>
+<p>Training can allocate memory for:</p>
+<ul>
+<li>frozen base weights;</li>
+<li>trainable adapter weights and their gradients;</li>
+<li>optimizer state for trainable weights;</li>
+<li>forward activations;</li>
+<li>temporary kernels and quantization metadata; and</li>
+<li>CUDA allocator reservations.</li>
+</ul>
+<p>QLoRA reduces the largest component - frozen base weights - but does not remove the
+other components. Sequence length and batch size can still cause out-of-memory errors.</p>
+<h3 id="checkpoint">Checkpoint</h3>
+<ol>
+<li>What is the difference between an optimizer step and an epoch?</li>
+<li>Why can accumulation reduce peak memory without changing effective batch size?</li>
+<li>Why does QLoRA not guarantee that any model fits a particular GPU?</li>
+</ol></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="02-natural-language-becomes-model-input.html"><span>Previous</span><strong>Module 2 - Natural language becomes model input</strong></a><a rel="next" href="04-build-a-transformer-from-attention-blocks.html"><span>Next</span><strong>Module 4 - Build a transformer from attention blocks</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>
