@@ -1,0 +1,71 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "Begin with the README to understand LoRA Fine-tune Studio as a local Streamlit workflow for LoRA and QLoRA supervised fine-tuning. It introduces the hardware expectations, Hugging Face access, launchers, and the path from setup to a first training run. This gives the rest of the tour its operational context.",
+    "nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "Application Startup",
+    "description": "The Streamlit entry point establishes session state, handles token fallback, provides sidebar navigation, and coordinates the safe whole-studio shutdown flow. It is the best top-level view of how the separate task pages become one local application. The installed CLI offers the matching console route for launching this same UI.",
+    "nodeIds": ["file:streamlit_app.py", "file:src/lora_finetune_studio/cli.py"]
+  },
+  {
+    "order": 3,
+    "title": "Runtime Configuration",
+    "description": "The project manifest fixes the Python 3.14 package environment, Streamlit entry point, CUDA 13 PyTorch package source, and the tools used to validate the application. Streamlit configuration then supplies the local server and visual defaults. Read these before changing dependencies or assuming how the local runtime is assembled.",
+    "nodeIds": ["config:pyproject.toml", "config:.streamlit/config.toml"],
+    "languageLesson": "TOML keeps Python package metadata, dependency sources, and tool configuration in one declarative file; changing a dependency should be followed by regenerating the locked environment rather than editing the virtual environment directly."
+  },
+  {
+    "order": 4,
+    "title": "Shared Training Contracts",
+    "description": "The domain models define the typed vocabulary shared by the UI and worker: training configuration, PEFT choices, hardware information, presets, and durable job status. These contracts make the multi-page interface and isolated training process agree on what a run means. Understanding them makes later job and training code easier to follow.",
+    "nodeIds": ["file:src/lora_finetune_studio/models.py"],
+    "languageLesson": "Python dataclasses and enums are useful boundary contracts: they make configuration explicit and keep run states constrained to known values instead of loose dictionaries and strings."
+  },
+  {
+    "order": 5,
+    "title": "Hardware Readiness",
+    "description": "The hardware module inspects the native runtime and CUDA capabilities, reports memory, derives model-size guidance, and can safely release cached PyTorch VRAM. This is the foundation for deciding whether a selected LoRA or QLoRA job is practical before creating it. Its information is surfaced by the System and GPU-memory parts of the UI.",
+    "nodeIds": ["file:src/lora_finetune_studio/hardware.py"]
+  },
+  {
+    "order": 6,
+    "title": "Data and Model Sources",
+    "description": "The sources module validates Hugging Face repository references and uploaded datasets, then loads and inspects data without exposing credentials. This is where user-provided model and dataset choices become safe, structured inputs for a run. It connects the setup pages to the typed configuration from the previous step.",
+    "nodeIds": ["file:src/lora_finetune_studio/sources.py"]
+  },
+  {
+    "order": 7,
+    "title": "Durable Job Lifecycle",
+    "description": "The job manager owns one local training run at a time and persists token-free configuration and status artifacts. It safely launches, resumes, and cancels the isolated worker, so UI restarts do not erase the record of a run. This is the reliability boundary between configuration in the UI and computation in a subprocess.",
+    "nodeIds": ["file:src/lora_finetune_studio/jobs.py", "file:src/lora_finetune_studio/worker.py"]
+  },
+  {
+    "order": 8,
+    "title": "Fine-Tuning Execution",
+    "description": "The training implementation performs CUDA-only TRL supervised fine-tuning with either LoRA or QLoRA, reports progress, evaluates output, writes artifacts, and can publish to the Hub. The worker from the previous step calls into this runtime after the job manager has created a durable run. This is the core compute path the review and monitor screens describe.",
+    "nodeIds": ["file:src/lora_finetune_studio/training.py"]
+  },
+  {
+    "order": 9,
+    "title": "Try the Result",
+    "description": "The inference module loads a Hugging Face causal language model, can attach a PEFT adapter, generates text, and releases CUDA cache afterwards. The Ollama module is a separate lightweight local-model route for listing models and producing chat responses. Together they show how the studio supports checking a result without making Ollama part of training lifecycle management.",
+    "nodeIds": ["file:src/lora_finetune_studio/inference.py", "file:src/lora_finetune_studio/ollama.py"]
+  },
+  {
+    "order": 10,
+    "title": "Operating Safely",
+    "description": "The usage guide translates the architecture into a practical sequence: readiness scan, credentials, dataset and model selection, training, monitoring, shutdown, and troubleshooting. The security policy explains the supported versions, private reporting route, and the safeguards around local operation. Read these together before sharing or deploying the project beyond a personal machine.",
+    "nodeIds": ["document:USAGE.md", "document:SECURITY.md"]
+  },
+  {
+    "order": 11,
+    "title": "Quality and Contribution",
+    "description": "The contribution guide documents the development environment, expected quality checks, and pull-request workflow for changes to the studio. The GitHub Actions workflow turns those expectations into automated checks on both Ubuntu and Windows for pushes and pull requests. This closes the tour by showing how the project remains maintainable across its supported platforms.",
+    "nodeIds": ["document:CONTRIBUTING.md", "pipeline:.github/workflows/ci.yml"],
+    "languageLesson": "GitHub Actions workflows organize automation into triggers, jobs, and steps; an operating-system matrix makes platform support verifiable rather than only documented."
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'document:CHANGELOG.md' has no edges (orphan)",
+    "Node 'document:CODE_OF_CONDUCT.md' has no edges (orphan)",
+    "Node 'file:.python-version' has no edges (orphan)",
+    "Node 'file:app_pages/dataset.py' has no edges (orphan)",
+    "Node 'file:app_pages/gpu_memory.py' has no edges (orphan)",
+    "Node 'file:app_pages/model.py' has no edges (orphan)",
+    "Node 'file:app_pages/ollama.py' has no edges (orphan)",
+    "Node 'file:app_pages/review.py' has no edges (orphan)",
+    "Node 'file:app_pages/system.py' has no edges (orphan)",
+    "Node 'file:examples/sft_sample.jsonl' has no edges (orphan)",
+    "Node 'file:src/lora_finetune_studio/__init__.py' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 118,
+    "totalEdges": 208,
+    "totalLayers": 5,
+    "tourSteps": 11,
+    "nodeTypes": {
+      "file": 33,
+      "function": 62,
+      "class": 13,
+      "pipeline": 1,
+      "document": 7,
+      "config": 2
+    },
+    "edgeTypes": {
+      "imports": 10,
+      "exports": 75,
+      "contains": 75,
+      "calls": 21,
+      "triggers": 2,
+      "documents": 14,
+      "configures": 2,
+      "depends_on": 4,
+      "tested_by": 5
+    }
+  }
+}

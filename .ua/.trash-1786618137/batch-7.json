@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "file:docs/20-troubleshooting-by-boundary.html",
+      "type": "file",
+      "name": "20-troubleshooting-by-boundary.html",
+      "filePath": "docs/20-troubleshooting-by-boundary.html",
+      "summary": "Appendix C of the Zero to Mastery handbook organizes troubleshooting guidance by the local training-system boundary where a failure occurs.",
+      "tags": ["documentation", "troubleshooting", "training", "handbook"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/21-glossary.html",
+      "type": "file",
+      "name": "21-glossary.html",
+      "filePath": "docs/21-glossary.html",
+      "summary": "Appendix D provides a concise glossary of concepts and terms used throughout the LoRA Fine-tune Studio learning handbook.",
+      "tags": ["documentation", "glossary", "llm", "handbook"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/22-official-references.html",
+      "type": "file",
+      "name": "22-official-references.html",
+      "filePath": "docs/22-official-references.html",
+      "summary": "Appendix E lists official framework documentation and foundational papers supporting the handbook's guidance on fine-tuning and preference optimization.",
+      "tags": ["documentation", "references", "fine-tuning", "handbook"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "docs/index.html",
+      "summary": "Landing page for the Zero to Mastery handbook, presenting its learning path, module descriptions, navigation, search interface, and PDF download.",
+      "tags": ["documentation", "entry-point", "handbook", "navigation"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": []
+}

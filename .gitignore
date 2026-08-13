@@ -8,26 +8,3 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .coverage
-
-# Local analysis artifacts: keep portable graph outputs, ignore machine-local state.
-.codegraph/*
-!.codegraph/.gitignore
-.code-review-graph/*
-!.code-review-graph/.gitignore
-
-.ua/*
-!.ua/.understandignore
-!.ua/config.json
-!.ua/fingerprints.json
-!.ua/knowledge-graph.json
-!.ua/meta.json
-!.ua/intermediate/
-.ua/intermediate/*
-!.ua/intermediate/scan-result.json
-
-graphify-out/*
-!graphify-out/GRAPH_REPORT.md
-!graphify-out/cost.json
-!graphify-out/graph.html
-!graphify-out/graph.json
-!graphify-out/manifest.json

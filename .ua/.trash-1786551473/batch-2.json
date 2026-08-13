@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {
+      "id": "pipeline:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "ci.yml",
+      "filePath": ".github/workflows/ci.yml",
+      "summary": "GitHub Actions quality workflow that runs the development environment checks on Ubuntu and Windows for push and pull-request events.",
+      "tags": ["ci-cd", "quality", "testing", "cross-platform"],
+      "complexity": "simple",
+      "languageNotes": "The workflow uses a matrix to run the same uv-managed Python 3.14 checks on two operating systems."
+    }
+  ],
+  "edges": [
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_sources.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_training.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

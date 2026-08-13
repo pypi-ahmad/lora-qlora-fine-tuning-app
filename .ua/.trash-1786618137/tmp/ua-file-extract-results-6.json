@@ -1,0 +1,64 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 1,
+  "filesSkipped": [
+    "docs/01-learn-the-map-before-the-territory.html",
+    "docs/02-natural-language-becomes-model-input.html",
+    "docs/03-neural-networks-learn-with-vectors-and-gradients.html",
+    "docs/04-build-a-transformer-from-attention-blocks.html",
+    "docs/05-understand-the-llm-lifecycle.html",
+    "docs/06-choose-a-tuning-family.html",
+    "docs/07-master-lora-qlora-oft-and-qoft.html",
+    "docs/08-engineer-datasets-that-teach-the-intended-behavior.html",
+    "docs/09-select-the-post-training-objective.html",
+    "docs/10-prepare-the-local-training-system.html",
+    "docs/11-translate-intent-into-app-settings.html",
+    "docs/12-lab-a-complete-an-sft-smoke-run.html",
+    "docs/13-lab-b-preference-training-safely.html",
+    "docs/14-evaluate-like-an-experimenter.html",
+    "docs/15-operate-jobs-and-use-artifacts.html",
+    "docs/16-read-and-extend-the-repository.html",
+    "docs/17-capstone-train-a-defensible-specialist.html",
+    "docs/18-checkpoint-answers.html",
+    "docs/19-formula-and-settings-reference.html"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 1,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "results": [
+    {
+      "path": "docs/.tutorial-build.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 33,
+      "nonEmptyLines": 33,
+      "sections": [
+        {
+          "heading": "files",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "source",
+          "level": 1,
+          "line": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    }
+  ]
+}

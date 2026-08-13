@@ -1,0 +1,844 @@
+{
+  "fileNodes": [
+    {
+      "id": "document:CODE_OF_CONDUCT.md",
+      "type": "document",
+      "name": "CODE_OF_CONDUCT.md",
+      "filePath": "CODE_OF_CONDUCT.md",
+      "summary": "Defines community expectations, incident reporting, and enforcement for project contributors and participants.",
+      "tags": [
+        "documentation",
+        "community",
+        "governance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.streamlit/config.toml",
+      "type": "config",
+      "name": "config.toml",
+      "filePath": ".streamlit/config.toml",
+      "summary": "Configures Streamlit's visual theme and server behavior for the local studio.",
+      "tags": [
+        "configuration",
+        "streamlit",
+        "theme"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:examples/sft_sample.jsonl",
+      "type": "file",
+      "name": "sft_sample.jsonl",
+      "filePath": "examples/sft_sample.jsonl",
+      "summary": "Provides small JSONL examples for supervised fine-tuning dataset preparation.",
+      "tags": [
+        "example-data",
+        "sft",
+        "dataset",
+        "jsonl"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/lora_finetune_studio/__init__.py",
+      "summary": "Marks the LoRA Fine-tune Studio source directory as a Python package.",
+      "tags": [
+        "python",
+        "package",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/cli.py",
+      "type": "file",
+      "name": "cli.py",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "summary": "Provides the console entry point that starts Streamlit with the repository's main application file.",
+      "tags": [
+        "python",
+        "cli",
+        "entry-point",
+        "streamlit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "summary": "Implements small HTTP helpers for listing locally installed Ollama models and generating chat responses.",
+      "tags": [
+        "ollama",
+        "http-client",
+        "inference",
+        "local-models"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/jobs.py",
+      "type": "file",
+      "name": "jobs.py",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "summary": "Manages durable, single-worker training jobs, their FIFO queue, status files, subprocess lifecycle, cancellation, and resumption.",
+      "tags": [
+        "job-queue",
+        "process-management",
+        "persistence",
+        "training",
+        "tested"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "summary": "Defines training, dataset, hardware, and job data contracts plus validation, presets, and path helpers.",
+      "tags": [
+        "data-model",
+        "configuration",
+        "validation",
+        "training",
+        "tested"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/sources.py",
+      "type": "file",
+      "name": "sources.py",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "summary": "Handles Hugging Face authentication, repository parsing, model sizing, dataset uploads, loading, and inspection.",
+      "tags": [
+        "huggingface",
+        "dataset",
+        "validation",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/training.py",
+      "type": "file",
+      "name": "training.py",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "summary": "Implements recipe-driven local TRL training: dataset normalization, PEFT and quantization setup, optional Unsloth acceleration, callbacks, evaluation, and artifact publishing.",
+      "tags": [
+        "training",
+        "trl",
+        "peft",
+        "unsloth"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/worker.py",
+      "type": "file",
+      "name": "worker.py",
+      "filePath": "src/lora_finetune_studio/worker.py",
+      "summary": "Provides the isolated subprocess entry point that updates durable run status around training and hands control to the next queued job.",
+      "tags": [
+        "entry-point",
+        "worker",
+        "job-queue",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "pipeline:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "ci.yml",
+      "filePath": ".github/workflows/ci.yml",
+      "summary": "GitHub Actions quality workflow that runs on pushes and pull requests across Ubuntu and Windows. It installs Python dependencies with uv, then verifies formatting, linting, type checks, tests, and tutorial generation.",
+      "tags": [
+        "ci-cd",
+        "quality-gates",
+        "github-actions",
+        "cross-platform"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses a GitHub Actions matrix to run the same uv-based validation commands on Ubuntu and Windows runners."
+    },
+    {
+      "id": "document:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "CHANGELOG.md",
+      "summary": "Records released versions and user-visible changes to LoRA Fine-tune Studio, including the queue and Unsloth additions.",
+      "tags": [
+        "documentation",
+        "changelog",
+        "releases"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING.md",
+      "filePath": "CONTRIBUTING.md",
+      "summary": "Defines the development setup, contribution workflow, engineering expectations, and required checks for repository contributors.",
+      "tags": [
+        "documentation",
+        "development",
+        "contributing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Launch LoRA Studio.cmd",
+      "type": "file",
+      "name": "Launch LoRA Studio.cmd",
+      "filePath": "Launch LoRA Studio.cmd",
+      "summary": "Windows launcher that verifies the repository, provisions the standard and native Unsloth environments with uv, then starts and health-checks the Streamlit app.",
+      "tags": [
+        "launcher",
+        "windows",
+        "streamlit",
+        "automation"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Batch control flow uses labels for failure paths and delegates process management to an embedded PowerShell command."
+    },
+    {
+      "id": "file:Launch LoRA Studio.sh",
+      "type": "file",
+      "name": "Launch LoRA Studio.sh",
+      "filePath": "Launch LoRA Studio.sh",
+      "summary": "Linux launcher that installs or locates uv, synchronizes the project environment, and starts the Streamlit app with PID and health-check management.",
+      "tags": [
+        "launcher",
+        "linux",
+        "streamlit",
+        "automation"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "The shell script uses strict mode and manages the background Streamlit process through a PID file."
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview with supported training recipes, requirements, platform-specific quick start steps, and a small smoke-test workflow.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "overview",
+        "quick-start"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "States supported versions, private vulnerability reporting guidance, local trust boundaries, and safe operating practices for the application.",
+      "tags": [
+        "documentation",
+        "security",
+        "policy"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:TECHNICAL.md",
+      "type": "document",
+      "name": "TECHNICAL.md",
+      "filePath": "TECHNICAL.md",
+      "summary": "Comprehensive technical handbook covering the application architecture, data and training pipelines, job lifecycle, hardware behavior, testing, and extension paths.",
+      "tags": [
+        "documentation",
+        "architecture",
+        "training",
+        "reference"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:USAGE.md",
+      "type": "document",
+      "name": "USAGE.md",
+      "filePath": "USAGE.md",
+      "summary": "Step-by-step user guide for configuring access, launching the app, preparing datasets, configuring training, managing runs, and troubleshooting.",
+      "tags": [
+        "documentation",
+        "user-guide",
+        "training",
+        "troubleshooting"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "Defines package metadata, Python and ML dependencies, the installed CLI entry point, uv CUDA package source, and development/documentation dependency groups.",
+      "tags": [
+        "configuration",
+        "python",
+        "dependencies",
+        "build-system"
+      ],
+      "complexity": "simple",
+      "languageNotes": "The uv source override selects the CUDA-enabled PyTorch index while project dependencies retain bounded version ranges."
+    },
+    {
+      "id": "file:.python-version",
+      "type": "file",
+      "name": ".python-version",
+      "filePath": ".python-version",
+      "summary": "Pins the Python version expected by the project tooling.",
+      "tags": [
+        "python",
+        "version-pin",
+        "tooling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/dataset.py",
+      "type": "file",
+      "name": "dataset.py",
+      "filePath": "app_pages/dataset.py",
+      "summary": "Provides the Streamlit dataset page and helpers for identifying, validating, and saving pending dataset selections into session state.",
+      "tags": [
+        "streamlit",
+        "dataset",
+        "validation",
+        "ui"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:app_pages/gpu_memory.py",
+      "type": "file",
+      "name": "gpu_memory.py",
+      "filePath": "app_pages/gpu_memory.py",
+      "summary": "Renders the Streamlit page that displays CUDA memory statistics and exposes cache-release controls.",
+      "tags": [
+        "streamlit",
+        "gpu",
+        "cuda",
+        "monitoring"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/model.py",
+      "type": "file",
+      "name": "model.py",
+      "filePath": "app_pages/model.py",
+      "summary": "Renders the Streamlit model-selection page and persists model configuration in session state.",
+      "tags": [
+        "streamlit",
+        "model-selection",
+        "configuration",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/monitor.py",
+      "type": "file",
+      "name": "monitor.py",
+      "filePath": "app_pages/monitor.py",
+      "summary": "Renders training-run status, queued jobs, progress, logs, and cancel or resume controls in the Streamlit UI.",
+      "tags": [
+        "streamlit",
+        "job-queue",
+        "monitoring",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "app_pages/ollama.py",
+      "summary": "Renders the optional Ollama integration page for local model inference.",
+      "tags": [
+        "streamlit",
+        "ollama",
+        "inference",
+        "ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/review.py",
+      "type": "file",
+      "name": "review.py",
+      "filePath": "app_pages/review.py",
+      "summary": "Renders the review page that presents configured training choices before a run is created.",
+      "tags": [
+        "streamlit",
+        "training",
+        "review",
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/system.py",
+      "type": "file",
+      "name": "system.py",
+      "filePath": "app_pages/system.py",
+      "summary": "Renders system, dependency, and hardware diagnostics for the local fine-tuning environment.",
+      "tags": [
+        "streamlit",
+        "hardware",
+        "diagnostics",
+        "environment"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/training.py",
+      "type": "file",
+      "name": "training.py",
+      "filePath": "app_pages/training.py",
+      "summary": "Renders training approach, PEFT method, compute type, presets, and hyperparameter controls in the Streamlit workflow.",
+      "tags": [
+        "streamlit",
+        "training",
+        "peft",
+        "configuration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:docs/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "docs/index.html",
+      "summary": "Comprehensive static HTML edition of the project's zero-to-mastery handbook and supporting documentation.",
+      "tags": [
+        "documentation",
+        "html",
+        "tutorial",
+        "training"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/hardware.py",
+      "type": "file",
+      "name": "hardware.py",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "summary": "Provides local system scanning, CUDA memory statistics, GPU cleanup, and model-size guidance for the application.",
+      "tags": [
+        "hardware",
+        "cuda",
+        "diagnostics",
+        "utility",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/inference.py",
+      "type": "file",
+      "name": "inference.py",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "summary": "Loads a base model and optional adapter to generate text locally while releasing CUDA resources after execution.",
+      "tags": [
+        "inference",
+        "transformers",
+        "peft",
+        "cuda",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/lifecycle.py",
+      "type": "file",
+      "name": "lifecycle.py",
+      "filePath": "src/lora_finetune_studio/lifecycle.py",
+      "summary": "Provides a small lifecycle helper for scheduling a safe application shutdown.",
+      "tags": [
+        "lifecycle",
+        "shutdown",
+        "utility",
+        "tested"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:streamlit_app.py",
+      "type": "file",
+      "name": "streamlit_app.py",
+      "filePath": "streamlit_app.py",
+      "summary": "Application entry point that initializes shared state and assembles the Streamlit fine-tuning workflow.",
+      "tags": [
+        "entry-point",
+        "streamlit",
+        "training",
+        "ui",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_app.py",
+      "type": "file",
+      "name": "test_app.py",
+      "filePath": "tests/test_app.py",
+      "summary": "End-to-end Streamlit test covering application startup, navigation, configuration editing, and shutdown behavior.",
+      "tags": [
+        "test",
+        "streamlit",
+        "integration",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_hardware.py",
+      "type": "file",
+      "name": "test_hardware.py",
+      "filePath": "tests/test_hardware.py",
+      "summary": "Unit tests for hardware detection, CUDA-memory helpers, and model-size warning behavior.",
+      "tags": [
+        "test",
+        "hardware",
+        "cuda",
+        "unit-test"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_inference.py",
+      "type": "file",
+      "name": "test_inference.py",
+      "filePath": "tests/test_inference.py",
+      "summary": "Unit test ensuring inference cleans up CUDA memory when model loading fails.",
+      "tags": [
+        "test",
+        "inference",
+        "cuda",
+        "unit-test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_jobs.py",
+      "type": "file",
+      "name": "test_jobs.py",
+      "filePath": "tests/test_jobs.py",
+      "summary": "Unit tests for persistent training-run creation, FIFO dispatch, cancellation, worker handling, and Unsloth runtime selection.",
+      "tags": [
+        "test",
+        "job-queue",
+        "training",
+        "unit-test"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/test_lifecycle.py",
+      "type": "file",
+      "name": "test_lifecycle.py",
+      "filePath": "tests/test_lifecycle.py",
+      "summary": "Unit test for the asynchronous application-exit scheduler.",
+      "tags": [
+        "test",
+        "lifecycle",
+        "shutdown",
+        "unit-test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_models.py",
+      "type": "file",
+      "name": "test_models.py",
+      "filePath": "tests/test_models.py",
+      "summary": "Unit tests for training configuration serialization, compatibility rules, bounds, and preset validation.",
+      "tags": [
+        "test",
+        "configuration",
+        "validation",
+        "unit-test"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/test_sources.py",
+      "type": "file",
+      "name": "test_sources.py",
+      "filePath": "tests/test_sources.py",
+      "summary": "Tests dataset-source parsing, format inspection, and secure upload validation helpers.",
+      "tags": [
+        "test",
+        "dataset-sources",
+        "validation",
+        "uploads"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_training.py",
+      "type": "file",
+      "name": "test_training.py",
+      "filePath": "tests/test_training.py",
+      "summary": "Exercises training data preparation, PEFT choices, Unsloth loading, trainer selection, and compute settings.",
+      "tags": [
+        "test",
+        "training",
+        "peft",
+        "unsloth",
+        "configuration"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "importEdges": [
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/jobs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/sources.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/jobs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/sources.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/training.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "file:src/lora_finetune_studio/hardware.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ],
+  "allEdges": [
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/jobs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/sources.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/jobs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/sources.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/training.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:Launch LoRA Studio.cmd",
+      "target": "config:pyproject.toml",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:Launch LoRA Studio.sh",
+      "target": "config:pyproject.toml",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:Launch LoRA Studio.cmd",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:Launch LoRA Studio.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:Launch LoRA Studio.cmd",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:Launch LoRA Studio.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TECHNICAL.md",
+      "target": "config:pyproject.toml",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "file:src/lora_finetune_studio/hardware.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:streamlit_app.py",
+      "target": "file:tests/test_app.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "file:tests/test_hardware.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "file:tests/test_inference.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/lifecycle.py",
+      "target": "file:tests/test_lifecycle.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "file:tests/test_jobs.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "file:tests/test_models.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

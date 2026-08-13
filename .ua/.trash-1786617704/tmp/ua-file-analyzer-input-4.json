@@ -1,0 +1,31 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path": ".python-version", "language": "unknown", "sizeLines": 1, "fileCategory": "code"},
+    {"path": "app_pages/dataset.py", "language": "python", "sizeLines": 156, "fileCategory": "code"},
+    {"path": "app_pages/gpu_memory.py", "language": "python", "sizeLines": 56, "fileCategory": "code"},
+    {"path": "app_pages/model.py", "language": "python", "sizeLines": 59, "fileCategory": "code"},
+    {"path": "app_pages/monitor.py", "language": "python", "sizeLines": 103, "fileCategory": "code"},
+    {"path": "app_pages/ollama.py", "language": "python", "sizeLines": 41, "fileCategory": "code"},
+    {"path": "app_pages/review.py", "language": "python", "sizeLines": 95, "fileCategory": "code"},
+    {"path": "app_pages/system.py", "language": "python", "sizeLines": 127, "fileCategory": "code"},
+    {"path": "app_pages/training.py", "language": "python", "sizeLines": 168, "fileCategory": "code"},
+    {"path": "docs/index.html", "language": "html", "sizeLines": 785, "fileCategory": "markup"},
+    {"path": "src/lora_finetune_studio/hardware.py", "language": "python", "sizeLines": 192, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/inference.py", "language": "python", "sizeLines": 85, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/lifecycle.py", "language": "python", "sizeLines": 17, "fileCategory": "code"},
+    {"path": "streamlit_app.py", "language": "python", "sizeLines": 138, "fileCategory": "code"},
+    {"path": "tests/test_app.py", "language": "python", "sizeLines": 62, "fileCategory": "code"},
+    {"path": "tests/test_hardware.py", "language": "python", "sizeLines": 118, "fileCategory": "code"},
+    {"path": "tests/test_inference.py", "language": "python", "sizeLines": 25, "fileCategory": "code"},
+    {"path": "tests/test_jobs.py", "language": "python", "sizeLines": 105, "fileCategory": "code"},
+    {"path": "tests/test_lifecycle.py", "language": "python", "sizeLines": 25, "fileCategory": "code"},
+    {"path": "tests/test_models.py", "language": "python", "sizeLines": 38, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    ".python-version": [], "app_pages/dataset.py": [], "app_pages/gpu_memory.py": [], "app_pages/model.py": [], "app_pages/monitor.py": [], "app_pages/ollama.py": [], "app_pages/review.py": [], "app_pages/system.py": [], "app_pages/training.py": [], "docs/index.html": [],
+    "src/lora_finetune_studio/hardware.py": ["src/lora_finetune_studio/models.py"],
+    "src/lora_finetune_studio/inference.py": ["src/lora_finetune_studio/hardware.py"],
+    "src/lora_finetune_studio/lifecycle.py": [], "streamlit_app.py": [], "tests/test_app.py": [], "tests/test_hardware.py": [], "tests/test_inference.py": [], "tests/test_jobs.py": [], "tests/test_lifecycle.py": [], "tests/test_models.py": []
+  }
+}

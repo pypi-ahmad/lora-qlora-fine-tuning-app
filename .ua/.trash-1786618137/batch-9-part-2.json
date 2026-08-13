@@ -1,0 +1,1220 @@
+{
+  "nodes": [
+    {
+      "id": "file:tests/test_queue_dispatcher.py",
+      "type": "file",
+      "name": "test_queue_dispatcher.py",
+      "filePath": "tests/test_queue_dispatcher.py",
+      "summary": "Tests the process handoff helper that waits for a parent worker and then resumes queue dispatch with the base interpreter.",
+      "tags": [
+        "test",
+        "job-queue",
+        "processes",
+        "dispatch"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_queue_dispatcher.py:test_handoff_waits_for_parent_exit_before_dispatch",
+      "type": "function",
+      "name": "test_handoff_waits_for_parent_exit_before_dispatch",
+      "filePath": "tests/test_queue_dispatcher.py",
+      "lineRange": [
+        4,
+        22
+      ],
+      "summary": "Verifies queue handoff waits for the parent worker before dispatching the next run.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_queue_dispatcher.py:test_schedule_handoff_uses_base_project_interpreter",
+      "type": "function",
+      "name": "test_schedule_handoff_uses_base_project_interpreter",
+      "filePath": "tests/test_queue_dispatcher.py",
+      "lineRange": [
+        25,
+        41
+      ],
+      "summary": "Verifies queue handoff uses the base project interpreter rather than the training runtime.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_queue_ui.py",
+      "type": "file",
+      "name": "test_queue_ui.py",
+      "filePath": "tests/test_queue_ui.py",
+      "summary": "Streamlit integration test confirming that a new training request is queued while another worker remains active.",
+      "tags": [
+        "test",
+        "streamlit",
+        "job-queue",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_queue_ui.py:test_review_adds_training_to_queue_while_worker_is_active",
+      "type": "function",
+      "name": "test_review_adds_training_to_queue_while_worker_is_active",
+      "filePath": "tests/test_queue_ui.py",
+      "lineRange": [
+        11,
+        65
+      ],
+      "summary": "Verifies review adds training to queue while worker is active.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_sources.py",
+      "type": "file",
+      "name": "test_sources.py",
+      "filePath": "tests/test_sources.py",
+      "summary": "Tests Hugging Face repository parsing plus dataset inspection, upload validation, and content-addressed upload storage.",
+      "tags": [
+        "test",
+        "datasets",
+        "huggingface",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_parse_hf_repo",
+      "type": "function",
+      "name": "test_parse_hf_repo",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        26,
+        27
+      ],
+      "summary": "Verifies parse hf repo.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "function",
+      "name": "test_parse_hf_repo_rejects_unsafe_locations",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        39,
+        41
+      ],
+      "summary": "Verifies parse hf repo rejects unsafe locations.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_inspect_dataset_detects_messages",
+      "type": "function",
+      "name": "test_inspect_dataset_detects_messages",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        44,
+        50
+      ],
+      "summary": "Verifies inspect dataset detects messages.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_inspect_dataset_detects_preference_before_prompt_completion",
+      "type": "function",
+      "name": "test_inspect_dataset_detects_preference_before_prompt_completion",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        53,
+        65
+      ],
+      "summary": "Verifies inspect dataset detects preference before prompt completion.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_upload_validation_and_content_addressing",
+      "type": "function",
+      "name": "test_upload_validation_and_content_addressing",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        68,
+        74
+      ],
+      "summary": "Verifies upload validation and content addressing.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_upload_rejects_unknown_type",
+      "type": "function",
+      "name": "test_upload_rejects_unknown_type",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        77,
+        79
+      ],
+      "summary": "Verifies upload rejects unknown type.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_training.py",
+      "type": "file",
+      "name": "test_training.py",
+      "filePath": "tests/test_training.py",
+      "summary": "Tests dataset normalization and combination, PEFT and Unsloth loading, trainer configuration, compute dtypes, and conversation formatting.",
+      "tags": [
+        "test",
+        "training",
+        "unsloth",
+        "peft"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/test_training.py:test_normalize_prompt_completion_columns",
+      "type": "function",
+      "name": "test_normalize_prompt_completion_columns",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        31,
+        44
+      ],
+      "summary": "Verifies normalize prompt completion columns.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_normalize_preference_columns_preserves_conversations",
+      "type": "function",
+      "name": "test_normalize_preference_columns_preserves_conversations",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        47,
+        70
+      ],
+      "summary": "Verifies normalize preference columns preserves conversations.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_small_dataset_skips_eval_split",
+      "type": "function",
+      "name": "test_small_dataset_skips_eval_split",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        73,
+        80
+      ],
+      "summary": "Verifies small dataset skips eval split.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_combine_datasets_preserves_all_rows_and_shuffles",
+      "type": "function",
+      "name": "test_combine_datasets_preserves_all_rows_and_shuffles",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        83,
+        105
+      ],
+      "summary": "Verifies combine datasets preserves all rows and shuffles.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_combined_max_samples_is_global_and_deterministic",
+      "type": "function",
+      "name": "test_combined_max_samples_is_global_and_deterministic",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        108,
+        131
+      ],
+      "summary": "Verifies combined max samples is global and deterministic.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_combine_datasets_reports_incompatible_normalized_schemas",
+      "type": "function",
+      "name": "test_combine_datasets_reports_incompatible_normalized_schemas",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        134,
+        157
+      ],
+      "summary": "Verifies combine datasets reports incompatible normalized schemas.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_combine_datasets_identifies_source_load_failure",
+      "type": "function",
+      "name": "test_combine_datasets_identifies_source_load_failure",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        160,
+        176
+      ],
+      "summary": "Verifies combine datasets identifies source load failure.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_unsloth_loader_uses_optimized_qlora_settings",
+      "type": "function",
+      "name": "test_unsloth_loader_uses_optimized_qlora_settings",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        179,
+        221
+      ],
+      "summary": "Checks that the Unsloth model loader applies its optimized QLoRA configuration.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_training.py:test_unsloth_reward_loader_keeps_score_head",
+      "type": "function",
+      "name": "test_unsloth_reward_loader_keeps_score_head",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        224,
+        256
+      ],
+      "summary": "Checks that reward-model loading preserves the score head when using Unsloth.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_training.py:test_peft_methods_build_expected_adapter_and_quantization",
+      "type": "function",
+      "name": "test_peft_methods_build_expected_adapter_and_quantization",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        268,
+        277
+      ],
+      "summary": "Verifies peft methods build expected adapter and quantization.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_reward_peft_config_preserves_score_head",
+      "type": "function",
+      "name": "test_reward_peft_config_preserves_score_head",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        280,
+        290
+      ],
+      "summary": "Verifies reward peft config preserves score head.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_qoft_compatibility_passes_dispatcher_config",
+      "type": "function",
+      "name": "test_qoft_compatibility_passes_dispatcher_config",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        293,
+        316
+      ],
+      "summary": "Verifies qoft compatibility passes dispatcher config.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_every_approach_resolves_installed_trainer",
+      "type": "function",
+      "name": "test_every_approach_resolves_installed_trainer",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        320,
+        324
+      ],
+      "summary": "Verifies every approach resolves installed trainer.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_alignment_trainer_config_includes_beta",
+      "type": "function",
+      "name": "test_alignment_trainer_config_includes_beta",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        331,
+        343
+      ],
+      "summary": "Verifies alignment trainer config includes beta.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_resolve_compute_dtype",
+      "type": "function",
+      "name": "test_resolve_compute_dtype",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        356,
+        361
+      ],
+      "summary": "Verifies resolve compute dtype.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_fp32_trainer_config_disables_mixed_precision_flags",
+      "type": "function",
+      "name": "test_fp32_trainer_config_disables_mixed_precision_flags",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        364,
+        370
+      ],
+      "summary": "Verifies fp32 trainer config disables mixed precision flags.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_format_conversations_applies_chat_template_to_single_and_batch",
+      "type": "function",
+      "name": "test_format_conversations_applies_chat_template_to_single_and_batch",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        373,
+        384
+      ],
+      "summary": "Verifies format conversations applies chat template to single and batch.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_tutorial.py",
+      "type": "file",
+      "name": "test_tutorial.py",
+      "filePath": "tests/test_tutorial.py",
+      "summary": "Validates the generated zero-to-mastery tutorial, linked HTML pages, manifest hashes, reference dataset, and matching PDF artifacts.",
+      "tags": [
+        "test",
+        "documentation",
+        "tutorial",
+        "artifacts"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:sha256",
+      "type": "function",
+      "name": "sha256",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        36,
+        37
+      ],
+      "summary": "Verifies sha256.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_tutorial_has_complete_progression",
+      "type": "function",
+      "name": "test_tutorial_has_complete_progression",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        40,
+        62
+      ],
+      "summary": "Verifies tutorial has complete progression.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_preference_lab_dataset_is_well_formed",
+      "type": "function",
+      "name": "test_preference_lab_dataset_is_well_formed",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        65,
+        77
+      ],
+      "summary": "Verifies preference lab dataset is well formed.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_generated_manifest_matches_files",
+      "type": "function",
+      "name": "test_generated_manifest_matches_files",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        80,
+        90
+      ],
+      "summary": "Verifies generated manifest matches files.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_generated_text_assets_use_portable_line_endings",
+      "type": "function",
+      "name": "test_generated_text_assets_use_portable_line_endings",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        93,
+        95
+      ],
+      "summary": "Verifies generated text assets use portable line endings.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_generated_pages_have_valid_local_links",
+      "type": "function",
+      "name": "test_generated_pages_have_valid_local_links",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        98,
+        115
+      ],
+      "summary": "Verifies generated pages have valid local links.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_published_and_canonical_pdfs_are_identical",
+      "type": "function",
+      "name": "test_published_and_canonical_pdfs_are_identical",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        118,
+        124
+      ],
+      "summary": "Verifies published and canonical pdfs are identical.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/test_tutorial.py:PageParser",
+      "type": "class",
+      "name": "PageParser",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        16,
+        33
+      ],
+      "summary": "HTML parser helper that collects page anchors and local links for tutorial validation.",
+      "tags": [
+        "test",
+        "helper",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_worker.py",
+      "type": "file",
+      "name": "test_worker.py",
+      "filePath": "tests/test_worker.py",
+      "summary": "Tests that the training worker schedules queue handoff after both successful and failed terminal runs.",
+      "tags": [
+        "test",
+        "worker",
+        "job-queue",
+        "failure-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_worker.py:test_worker_schedules_queue_handoff_after_terminal_status",
+      "type": "function",
+      "name": "test_worker_schedules_queue_handoff_after_terminal_status",
+      "filePath": "tests/test_worker.py",
+      "lineRange": [
+        10,
+        33
+      ],
+      "summary": "Verifies a successful worker completion schedules the next queued job.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_worker.py:test_worker_failure_still_schedules_queue_handoff",
+      "type": "function",
+      "name": "test_worker_failure_still_schedules_queue_handoff",
+      "filePath": "tests/test_worker.py",
+      "lineRange": [
+        36,
+        63
+      ],
+      "summary": "Verifies a failed worker completion still schedules the next queued job.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:unsloth-runtime/pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "unsloth-runtime/pyproject.toml",
+      "summary": "UV project configuration for the isolated Python 3.13 Unsloth runtime, pinning CUDA-enabled PyTorch, TorchAO, torchvision, and Unsloth.",
+      "tags": [
+        "configuration",
+        "unsloth",
+        "uv",
+        "dependencies"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:tests/test_queue_dispatcher.py",
+      "target": "function:tests/test_queue_dispatcher.py:test_handoff_waits_for_parent_exit_before_dispatch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_queue_dispatcher.py",
+      "target": "function:tests/test_queue_dispatcher.py:test_handoff_waits_for_parent_exit_before_dispatch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_queue_dispatcher.py",
+      "target": "function:tests/test_queue_dispatcher.py:test_schedule_handoff_uses_base_project_interpreter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_queue_dispatcher.py",
+      "target": "function:tests/test_queue_dispatcher.py:test_schedule_handoff_uses_base_project_interpreter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_queue_ui.py",
+      "target": "function:tests/test_queue_ui.py:test_review_adds_training_to_queue_while_worker_is_active",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_queue_ui.py",
+      "target": "function:tests/test_queue_ui.py:test_review_adds_training_to_queue_while_worker_is_active",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_parse_hf_repo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_parse_hf_repo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_inspect_dataset_detects_messages",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_inspect_dataset_detects_messages",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_inspect_dataset_detects_preference_before_prompt_completion",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_inspect_dataset_detects_preference_before_prompt_completion",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_upload_validation_and_content_addressing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_upload_validation_and_content_addressing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_upload_rejects_unknown_type",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_upload_rejects_unknown_type",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_normalize_prompt_completion_columns",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_normalize_prompt_completion_columns",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_normalize_preference_columns_preserves_conversations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_normalize_preference_columns_preserves_conversations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_small_dataset_skips_eval_split",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_small_dataset_skips_eval_split",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_preserves_all_rows_and_shuffles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_preserves_all_rows_and_shuffles",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combined_max_samples_is_global_and_deterministic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combined_max_samples_is_global_and_deterministic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_reports_incompatible_normalized_schemas",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_reports_incompatible_normalized_schemas",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_identifies_source_load_failure",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_identifies_source_load_failure",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_unsloth_loader_uses_optimized_qlora_settings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_unsloth_loader_uses_optimized_qlora_settings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_unsloth_reward_loader_keeps_score_head",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_unsloth_reward_loader_keeps_score_head",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_peft_methods_build_expected_adapter_and_quantization",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_peft_methods_build_expected_adapter_and_quantization",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_reward_peft_config_preserves_score_head",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_reward_peft_config_preserves_score_head",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_qoft_compatibility_passes_dispatcher_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_qoft_compatibility_passes_dispatcher_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_every_approach_resolves_installed_trainer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_every_approach_resolves_installed_trainer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_alignment_trainer_config_includes_beta",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_alignment_trainer_config_includes_beta",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_resolve_compute_dtype",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_resolve_compute_dtype",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_fp32_trainer_config_disables_mixed_precision_flags",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_fp32_trainer_config_disables_mixed_precision_flags",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_format_conversations_applies_chat_template_to_single_and_batch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_format_conversations_applies_chat_template_to_single_and_batch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:sha256",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:sha256",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_tutorial_has_complete_progression",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_tutorial_has_complete_progression",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_preference_lab_dataset_is_well_formed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_preference_lab_dataset_is_well_formed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_manifest_matches_files",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_manifest_matches_files",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_text_assets_use_portable_line_endings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_text_assets_use_portable_line_endings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_pages_have_valid_local_links",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_pages_have_valid_local_links",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_published_and_canonical_pdfs_are_identical",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_published_and_canonical_pdfs_are_identical",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "class:tests/test_tutorial.py:PageParser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "class:tests/test_tutorial.py:PageParser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_worker.py",
+      "target": "function:tests/test_worker.py:test_worker_schedules_queue_handoff_after_terminal_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_worker.py",
+      "target": "function:tests/test_worker.py:test_worker_schedules_queue_handoff_after_terminal_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_worker.py",
+      "target": "function:tests/test_worker.py:test_worker_failure_still_schedules_queue_handoff",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_worker.py",
+      "target": "function:tests/test_worker.py:test_worker_failure_still_schedules_queue_handoff",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

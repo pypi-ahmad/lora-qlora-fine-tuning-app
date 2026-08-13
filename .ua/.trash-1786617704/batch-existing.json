@@ -1,0 +1,211 @@
+{
+  "nodes": [
+    {
+      "id": "document:CODE_OF_CONDUCT.md",
+      "type": "document",
+      "name": "CODE_OF_CONDUCT.md",
+      "filePath": "CODE_OF_CONDUCT.md",
+      "summary": "Defines community expectations, incident reporting, and enforcement for project contributors and participants.",
+      "tags": [
+        "documentation",
+        "community",
+        "governance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.streamlit/config.toml",
+      "type": "config",
+      "name": "config.toml",
+      "filePath": ".streamlit/config.toml",
+      "summary": "Configures Streamlit's visual theme and server behavior for the local studio.",
+      "tags": [
+        "configuration",
+        "streamlit",
+        "theme"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:examples/sft_sample.jsonl",
+      "type": "file",
+      "name": "sft_sample.jsonl",
+      "filePath": "examples/sft_sample.jsonl",
+      "summary": "Provides small JSONL examples for supervised fine-tuning dataset preparation.",
+      "tags": [
+        "example-data",
+        "sft",
+        "dataset",
+        "jsonl"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/lora_finetune_studio/__init__.py",
+      "summary": "Marks the LoRA Fine-tune Studio source directory as a Python package.",
+      "tags": [
+        "python",
+        "package",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/cli.py",
+      "type": "file",
+      "name": "cli.py",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "summary": "Provides the console entry point that starts Streamlit with the repository's main application file.",
+      "tags": [
+        "python",
+        "cli",
+        "entry-point",
+        "streamlit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "lineRange": [
+        11,
+        14
+      ],
+      "summary": "Invokes Streamlit's CLI with the resolved project application path.",
+      "tags": [
+        "cli",
+        "entry-point",
+        "streamlit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "summary": "Implements small HTTP helpers for listing locally installed Ollama models and generating chat responses.",
+      "tags": [
+        "ollama",
+        "http-client",
+        "inference",
+        "local-models"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "function",
+      "name": "_request",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        11,
+        22
+      ],
+      "summary": "Sends a JSON request to the configured local Ollama endpoint and decodes its JSON response.",
+      "tags": [
+        "http-client",
+        "ollama",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "function",
+      "name": "list_models",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        25,
+        27
+      ],
+      "summary": "Returns names of models reported by Ollama's local tags endpoint.",
+      "tags": [
+        "ollama",
+        "model-list",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "function",
+      "name": "generate",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        30,
+        34
+      ],
+      "summary": "Requests a non-streaming local Ollama generation and returns its response text.",
+      "tags": [
+        "ollama",
+        "inference",
+        "chat"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/lora_finetune_studio/cli.py",
+      "target": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/cli.py",
+      "target": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

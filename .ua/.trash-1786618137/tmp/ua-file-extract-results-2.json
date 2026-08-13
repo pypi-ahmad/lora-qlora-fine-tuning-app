@@ -1,0 +1,755 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "src/lora_finetune_studio/queue_dispatcher.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 53,
+      "functions": [
+        {
+          "name": "schedule_queue_handoff",
+          "startLine": 17,
+          "endLine": 35,
+          "params": [
+            "parent_pid"
+          ]
+        },
+        {
+          "name": "wait_for_parent_and_dispatch",
+          "startLine": 38,
+          "endLine": 50,
+          "params": [
+            "parent_pid"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 53,
+          "endLine": 62,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "schedule_queue_handoff",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "wait_for_parent_and_dispatch",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 53,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "schedule_queue_handoff",
+          "callee": "os.environ.get",
+          "lineNumber": 19
+        },
+        {
+          "caller": "schedule_queue_handoff",
+          "callee": "subprocess.Popen",
+          "lineNumber": 21
+        },
+        {
+          "caller": "schedule_queue_handoff",
+          "callee": "str",
+          "lineNumber": 26
+        },
+        {
+          "caller": "schedule_queue_handoff",
+          "callee": "Path.cwd",
+          "lineNumber": 32
+        },
+        {
+          "caller": "schedule_queue_handoff",
+          "callee": "os.environ.copy",
+          "lineNumber": 34
+        },
+        {
+          "caller": "wait_for_parent_and_dispatch",
+          "callee": "psutil.Process(parent_pid).wait",
+          "lineNumber": 41
+        },
+        {
+          "caller": "wait_for_parent_and_dispatch",
+          "callee": "psutil.Process",
+          "lineNumber": 41
+        },
+        {
+          "caller": "wait_for_parent_and_dispatch",
+          "callee": "dispatch_next_run",
+          "lineNumber": 47
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 54
+        },
+        {
+          "caller": "main",
+          "callee": "int",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "wait_for_parent_and_dispatch",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/sources.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 107,
+      "functions": [
+        {
+          "name": "get_hf_token",
+          "startLine": 26,
+          "endLine": 27,
+          "params": []
+        },
+        {
+          "name": "parse_hf_repo",
+          "startLine": 30,
+          "endLine": 57,
+          "params": [
+            "value",
+            "repo_type"
+          ]
+        },
+        {
+          "name": "token_identity",
+          "startLine": 60,
+          "endLine": 64,
+          "params": [
+            "token"
+          ]
+        },
+        {
+          "name": "model_parameter_count",
+          "startLine": 67,
+          "endLine": 74,
+          "params": [
+            "repo_id",
+            "revision",
+            "token"
+          ]
+        },
+        {
+          "name": "validate_upload",
+          "startLine": 77,
+          "endLine": 83,
+          "params": [
+            "filename",
+            "size"
+          ]
+        },
+        {
+          "name": "save_upload",
+          "startLine": 86,
+          "endLine": 93,
+          "params": [
+            "filename",
+            "content",
+            "root"
+          ]
+        },
+        {
+          "name": "load_training_dataset",
+          "startLine": 96,
+          "endLine": 112,
+          "params": [
+            "repo_id",
+            "local_path",
+            "config_name",
+            "split",
+            "token"
+          ]
+        },
+        {
+          "name": "inspect_dataset",
+          "startLine": 115,
+          "endLine": 130,
+          "params": [
+            "dataset",
+            "limit"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "DatasetInspection",
+          "startLine": 19,
+          "endLine": 23,
+          "methods": [],
+          "properties": [
+            "columns",
+            "format",
+            "rows",
+            "preview"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "DatasetInspection",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "get_hf_token",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "parse_hf_repo",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "token_identity",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "model_parameter_count",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "validate_upload",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "save_upload",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "load_training_dataset",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "inspect_dataset",
+          "line": 115,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get_hf_token",
+          "callee": "os.getenv",
+          "lineNumber": 27
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "value.strip().rstrip",
+          "lineNumber": 31
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "value.strip",
+          "lineNumber": 31
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 33
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "candidate.split",
+          "lineNumber": 35
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "len",
+          "lineNumber": 36
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "all",
+          "lineNumber": 36
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 38
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "urlparse",
+          "lineNumber": 40
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 45
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "unquote",
+          "lineNumber": 46
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "parsed.path.split",
+          "lineNumber": 46
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 51
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "len",
+          "lineNumber": 53
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 54
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "\"/\".join",
+          "lineNumber": 57
+        },
+        {
+          "caller": "token_identity",
+          "callee": "HfApi(token=token).whoami",
+          "lineNumber": 63
+        },
+        {
+          "caller": "token_identity",
+          "callee": "HfApi",
+          "lineNumber": 63
+        },
+        {
+          "caller": "token_identity",
+          "callee": "str",
+          "lineNumber": 64
+        },
+        {
+          "caller": "token_identity",
+          "callee": "details.get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "token_identity",
+          "callee": "details.get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "model_parameter_count",
+          "callee": "HfApi(token=token).model_info",
+          "lineNumber": 70
+        },
+        {
+          "caller": "model_parameter_count",
+          "callee": "HfApi",
+          "lineNumber": 70
+        },
+        {
+          "caller": "model_parameter_count",
+          "callee": "int",
+          "lineNumber": 74
+        },
+        {
+          "caller": "validate_upload",
+          "callee": "Path(filename).suffix.lower",
+          "lineNumber": 78
+        },
+        {
+          "caller": "validate_upload",
+          "callee": "Path",
+          "lineNumber": 78
+        },
+        {
+          "caller": "validate_upload",
+          "callee": "ValueError",
+          "lineNumber": 80
+        },
+        {
+          "caller": "validate_upload",
+          "callee": "ValueError",
+          "lineNumber": 82
+        },
+        {
+          "caller": "save_upload",
+          "callee": "Path",
+          "lineNumber": 86
+        },
+        {
+          "caller": "save_upload",
+          "callee": "validate_upload",
+          "lineNumber": 87
+        },
+        {
+          "caller": "save_upload",
+          "callee": "len",
+          "lineNumber": 87
+        },
+        {
+          "caller": "save_upload",
+          "callee": "root.mkdir",
+          "lineNumber": 88
+        },
+        {
+          "caller": "save_upload",
+          "callee": "hashlib.sha256(content).hexdigest",
+          "lineNumber": 89
+        },
+        {
+          "caller": "save_upload",
+          "callee": "hashlib.sha256",
+          "lineNumber": 89
+        },
+        {
+          "caller": "save_upload",
+          "callee": "path.exists",
+          "lineNumber": 91
+        },
+        {
+          "caller": "save_upload",
+          "callee": "path.write_bytes",
+          "lineNumber": 92
+        },
+        {
+          "caller": "save_upload",
+          "callee": "path.resolve",
+          "lineNumber": 93
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "load_dataset",
+          "lineNumber": 105
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "ValueError",
+          "lineNumber": 107
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "Path(local_path).resolve",
+          "lineNumber": 108
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "Path",
+          "lineNumber": 108
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "path.is_file",
+          "lineNumber": 109
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "path.suffix.lower",
+          "lineNumber": 109
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "ValueError",
+          "lineNumber": 110
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "path.suffix.lower",
+          "lineNumber": 111
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "load_dataset",
+          "lineNumber": 112
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "str",
+          "lineNumber": 112
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "list",
+          "lineNumber": 116
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "{\"prompt\", \"chosen\", \"rejected\"}.issubset",
+          "lineNumber": 117
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "{\"prompt\", \"completion\"}.issubset",
+          "lineNumber": 123
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "dict",
+          "lineNumber": 127
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "range",
+          "lineNumber": 127
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "min",
+          "lineNumber": 127
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "len",
+          "lineNumber": 127
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "DatasetInspection",
+          "lineNumber": 128
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "len",
+          "lineNumber": 129
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 9,
+        "functionCount": 8,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/worker.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 17,
+          "endLine": 75,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 18
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 19
+        },
+        {
+          "caller": "main",
+          "callee": "Path(sys.argv[1]).resolve",
+          "lineNumber": 21
+        },
+        {
+          "caller": "main",
+          "callee": "Path",
+          "lineNumber": 21
+        },
+        {
+          "caller": "main",
+          "callee": "config_path.with_name",
+          "lineNumber": 22
+        },
+        {
+          "caller": "main",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 23
+        },
+        {
+          "caller": "main",
+          "callee": "json.loads",
+          "lineNumber": 24
+        },
+        {
+          "caller": "main",
+          "callee": "config_path.read_text",
+          "lineNumber": 24
+        },
+        {
+          "caller": "main",
+          "callee": "write_json_atomic",
+          "lineNumber": 26
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus(\r\n            state=JobState.RUNNING,\r\n            message=\"Loading model and dataset\",\r\n            pid=os.getpid(),\r\n            artifact_dir=config.output_dir,\r\n        ).to_dict",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 31
+        },
+        {
+          "caller": "main",
+          "callee": "__import__",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "train",
+          "lineNumber": 40
+        },
+        {
+          "caller": "main",
+          "callee": "get_hf_token",
+          "lineNumber": 42
+        },
+        {
+          "caller": "main",
+          "callee": "str(error).replace",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "write_json_atomic",
+          "lineNumber": 44
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus(\r\n                state=JobState.FAILED,\r\n                message=\"Training failed\",\r\n                pid=os.getpid(),\r\n                error=message,\r\n                artifact_dir=config.output_dir,\r\n            ).to_dict",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 49
+        },
+        {
+          "caller": "main",
+          "callee": "traceback.print_exc",
+          "lineNumber": 54
+        },
+        {
+          "caller": "main",
+          "callee": "schedule_queue_handoff",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "traceback.print_exc",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "write_json_atomic",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus(\r\n            state=JobState.COMPLETED,\r\n            message=\"Training completed\",\r\n            progress=1.0,\r\n            pid=os.getpid(),\r\n            metrics=metrics,\r\n            artifact_dir=config.output_dir,\r\n        ).to_dict",
+          "lineNumber": 62
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus",
+          "lineNumber": 62
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "schedule_queue_handoff",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "traceback.print_exc",
+          "lineNumber": 74
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path":"src/lora_finetune_studio/ollama.py","language":"python","sizeLines":34,"fileCategory":"code"},
+    {"path":"streamlit_app.py","language":"python","sizeLines":179,"fileCategory":"code"},
+    {"path":"tests/test_app.py","language":"python","sizeLines":196,"fileCategory":"code"},
+    {"path":"tests/test_hardware.py","language":"python","sizeLines":118,"fileCategory":"code"},
+    {"path":"tests/test_inference.py","language":"python","sizeLines":25,"fileCategory":"code"},
+    {"path":"tests/test_jobs.py","language":"python","sizeLines":435,"fileCategory":"code"},
+    {"path":"tests/test_lifecycle.py","language":"python","sizeLines":25,"fileCategory":"code"},
+    {"path":"tests/test_models.py","language":"python","sizeLines":260,"fileCategory":"code"},
+    {"path":"tests/test_queue_dispatcher.py","language":"python","sizeLines":41,"fileCategory":"code"},
+    {"path":"tests/test_queue_ui.py","language":"python","sizeLines":65,"fileCategory":"code"},
+    {"path":"tests/test_sources.py","language":"python","sizeLines":79,"fileCategory":"code"},
+    {"path":"tests/test_training.py","language":"python","sizeLines":384,"fileCategory":"code"},
+    {"path":"tests/test_tutorial.py","language":"python","sizeLines":124,"fileCategory":"code"},
+    {"path":"tests/test_worker.py","language":"python","sizeLines":63,"fileCategory":"code"},
+    {"path":"unsloth-runtime/pyproject.toml","language":"toml","sizeLines":22,"fileCategory":"config"}
+  ],
+  "batchImportData": {
+    "src/lora_finetune_studio/ollama.py":[],"streamlit_app.py":[],"tests/test_app.py":[],"tests/test_hardware.py":[],"tests/test_inference.py":[],"tests/test_jobs.py":[],"tests/test_lifecycle.py":[],"tests/test_models.py":[],"tests/test_queue_dispatcher.py":[],"tests/test_queue_ui.py":[],"tests/test_sources.py":[],"tests/test_training.py":[],"tests/test_tutorial.py":[],"tests/test_worker.py":[],"unsloth-runtime/pyproject.toml":[]
+  }
+}
