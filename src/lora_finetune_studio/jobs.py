@@ -14,8 +14,15 @@ from typing import Any
 import psutil
 
 from .models import JobState, JobStatus, TrainingConfig, run_path
+from .unsloth_runtime import PROJECT_ROOT, inspect_unsloth_runtime
 
 RUNS_ROOT = Path(".runs")
+PROCESS_LOOKUP_ERRORS = (
+    psutil.AccessDenied,
+    psutil.NoSuchProcess,
+    psutil.ZombieProcess,
+)
+STATUS_READ_ERRORS = (OSError, ValueError, TypeError)
 
 
 def write_json_atomic(path: Path, data: dict[str, Any]) -> None:
@@ -44,7 +51,7 @@ def _is_training_worker(pid: int, config_path: Path) -> bool:
     """Return whether a PID is this run's isolated training worker."""
     try:
         command = psutil.Process(pid).cmdline()
-    except psutil.AccessDenied, psutil.NoSuchProcess, psutil.ZombieProcess:
+    except PROCESS_LOOKUP_ERRORS:
         return False
     expected_config = os.path.normcase(str(config_path.resolve()))
     normalized_command = {
@@ -65,7 +72,7 @@ def active_run() -> str | None:
             status = JobStatus.from_dict(
                 json.loads(status_path.read_text(encoding="utf-8"))
             )
-        except OSError, ValueError, TypeError:
+        except STATUS_READ_ERRORS:
             continue
         if (
             status.state in {JobState.QUEUED, JobState.RUNNING}
@@ -100,9 +107,26 @@ def launch_run(run_id: str) -> int:
         raise FileNotFoundError("Training configuration was not found.")
     log_handle = (directory / "training.log").open("a", encoding="utf-8")
     creation_flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
+    config = read_config(run_id)
+    worker_python = sys.executable
+    worker_environment = None
+    if config.use_unsloth:
+        runtime = inspect_unsloth_runtime()
+        if not runtime.available:
+            log_handle.close()
+            raise RuntimeError(runtime.detail)
+        worker_python = str(runtime.python)
+        worker_environment = os.environ.copy()
+        source_path = str(PROJECT_ROOT / "src")
+        existing_python_path = worker_environment.get("PYTHONPATH")
+        worker_environment["PYTHONPATH"] = (
+            source_path
+            if not existing_python_path
+            else os.pathsep.join((source_path, existing_python_path))
+        )
     process = subprocess.Popen(
         [
-            sys.executable,
+            worker_python,
             "-m",
             "lora_finetune_studio.worker",
             str(config_path.resolve()),
@@ -112,6 +136,7 @@ def launch_run(run_id: str) -> int:
         creationflags=creation_flags,
         cwd=Path.cwd(),
         close_fds=True,
+        env=worker_environment,
     )
     log_handle.close()
     status = read_status(run_id)

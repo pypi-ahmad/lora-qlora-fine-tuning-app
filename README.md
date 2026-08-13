@@ -4,8 +4,8 @@
 [![Release](https://img.shields.io/github/v/release/pypi-ahmad/lora-qlora-fine-tuning-app)](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2457D6.svg)](LICENSE)
 
-A local Streamlit application for supervised fine-tuning of causal language models with LoRA or
-QLoRA. It guides a user from hardware inspection and dataset validation through training,
+A local Streamlit application for supervised fine-tuning, reward modeling, and preference
+optimization with LoRA, QLoRA, OFT, or QOFT. It guides a user from hardware inspection and dataset validation through training,
 checkpoint recovery, adapter evaluation, and optional Hugging Face Hub upload.
 
 This is a local, single-user educational tool. GitHub hosts its source; training runs on the
@@ -18,9 +18,10 @@ Windows or Linux machine that launches the app.
 - Shows live CUDA memory usage and can release unused PyTorch VRAM safely.
 - Provides a confirmed shutdown control for the app and its active training worker.
 - Organizes the workflow into eight focused pages in the left navigation.
-- Accepts Hugging Face model and dataset repositories or CSV, JSON, and JSONL uploads.
-- Validates and previews conversational, plain-text, and prompt/completion datasets.
-- Trains PEFT adapters with LoRA or four-bit QLoRA using TRL supervised fine-tuning.
+- Combines multiple Hugging Face or uploaded CSV, JSON, and JSONL datasets in one training run.
+- Validates conversational, plain-text, prompt/completion, and paired preference datasets.
+- Trains SFT, Reward, DPO, KTO, and ORPO recipes with LoRA, QLoRA, OFT, or QOFT.
+- Optionally accelerates LoRA and QLoRA on Windows with Unsloth Core.
 - Runs one isolated worker with live progress, logs, cancellation, and checkpoint resume.
 - Saves adapters, tokenizer files, metrics, and the exact training configuration locally.
 - Compares base and adapter responses after training.
@@ -87,7 +88,8 @@ bash "Launch LoRA Studio.sh"
 ```
 
 The platform launcher installs `uv` when missing, prepares Python 3.14 and the locked CUDA 13 dependencies
-inside the project `.venv`, starts Streamlit in the background, and opens
+inside the project `.venv`, and on Windows prepares Unsloth in `.venv-unsloth` with Python 3.13.
+It then starts Streamlit in the background and opens
 `http://localhost:8504`. First setup can take several minutes. Startup logs are written to
 `.runs/streamlit.out.log` and
 `.runs/streamlit.err.log`.
@@ -114,9 +116,10 @@ uv run streamlit run streamlit_app.py --server.port=8504
 ## First training run
 
 1. Confirm CUDA and Hugging Face access on **System**.
-2. Upload `examples/sft_sample.jsonl` on **Dataset** and inspect its format.
+2. Upload `examples/sft_sample.jsonl` on **Dataset**, inspect it, and select **Add dataset**.
 3. Inspect `Qwen/Qwen3-0.6B` on **Model**.
-4. Select **QLoRA** and **Smoke test** on **Training**, then save the settings.
+4. Select **Supervised Fine-Tuning**, **QLoRA**, **Smoke test**, and whether to use Unsloth on
+   **Training**, then save the settings.
 5. Validate the summary and start from **Review & run**.
 6. Follow the job and compare the completed adapter on **Monitor**.
 7. Find the adapter under `.runs/<run-id>/output/adapter`.
@@ -132,7 +135,10 @@ Conversational JSONL:
 ```
 
 Plain-text datasets use a `text` column. Prompt/completion datasets use `prompt` and `completion`,
-or map equivalent columns in the interface. Uploads are limited to CSV, JSON, or JSONL and 200 MB.
+Preference datasets for Reward, DPO, KTO, and ORPO use `prompt`, `chosen`, and `rejected`, or map
+equivalent columns in the interface. Uploads are limited to CSV, JSON, or JSONL and 200 MB.
+Every dataset in one run must use the same detected or mapped format. The worker concatenates all
+rows, shuffles them with the configured seed, and applies `max_samples` as a global cap.
 
 ## Documentation
 
@@ -148,7 +154,10 @@ or map equivalent columns in the interface. Uploads are limited to CSV, JSON, or
 
 ## Project boundaries
 
-- The current trainer implements SFT, not DPO, RLHF, or RLAIF.
+- PPO, full tuning, freeze tuning, and distributed training are not implemented.
+- KTO uses a minimum per-device batch size of two.
+- OFT and QOFT use standard PEFT/TRL; Unsloth acceleration supports LoRA and QLoRA.
+- Native Unsloth integration currently targets Windows; Linux continues to use the standard backend.
 - Only one local training job can run at a time.
 - Training and adapter comparison require an NVIDIA CUDA GPU.
 - The VRAM cleanup control cannot free live models or memory owned by Ollama or other processes.

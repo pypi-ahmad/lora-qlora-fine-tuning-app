@@ -25,6 +25,17 @@ echo Preparing Python 3.14, .venv, and project dependencies...
 if errorlevel 1 goto :sync_failed
 
 if not exist ".venv\Scripts\pythonw.exe" goto :sync_failed
+
+echo Preparing Python 3.13, .venv-unsloth, and native Unsloth dependencies...
+set "UV_PROJECT_ENVIRONMENT=%CD%\.venv-unsloth"
+"%UV_EXE%" sync --project "unsloth-runtime" --locked --no-dev --python 3.13.13
+if errorlevel 1 (
+    set "UV_PROJECT_ENVIRONMENT="
+    goto :unsloth_sync_failed
+)
+set "UV_PROJECT_ENVIRONMENT="
+
+if not exist ".venv-unsloth\Scripts\python.exe" goto :unsloth_sync_failed
 if not exist ".runs" mkdir ".runs"
 
 echo Starting LoRA Fine-tune Studio...
@@ -67,6 +78,10 @@ goto :failed
 
 :sync_failed
 echo Python or project dependencies could not be prepared.
+goto :failed
+
+:unsloth_sync_failed
+echo The native Windows Unsloth runtime could not be prepared.
 goto :failed
 
 :launch_failed

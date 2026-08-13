@@ -1,0 +1,22 @@
+[project]
+name = "lora-finetune-studio-unsloth-runtime"
+version = "0.1.0"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "torch==2.10.0",
+    "torchao==0.16.0",
+    "torchvision==0.25.0",
+    "unsloth[cu130-torch2100]==2026.8.15",
+]
+
+[tool.uv]
+package = false
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu130" }
+torchvision = { index = "pytorch-cu130" }

@@ -1,7 +1,7 @@
 [project]
 name = "lora-finetune-studio"
 version = "0.2.0"
-description = "Local Streamlit studio for LoRA and QLoRA supervised fine-tuning"
+description = "Local Streamlit studio for parameter-efficient LLM post-training"
 readme = "README.md"
 authors = [
     { name = "Ahmad Mujtaba", email = "72138709+pypi-ahmad@users.noreply.github.com" }

@@ -1,18 +1,18 @@
 # Technical Reference
 
-This document describes the implemented architecture of LoRA Fine-tune Studio `0.1.x`. For
+This document describes the implemented architecture of LoRA Fine-tune Studio `0.2.x`. For
 operating instructions, see [USAGE.md](USAGE.md). For contribution requirements, see
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Goals and boundaries
 
-The project provides a transparent local workflow for supervised parameter-efficient fine-tuning.
+The project provides a transparent local workflow for parameter-efficient post-training.
 It favors inspectable files and one worker process over databases, queues, or hosted services.
 
 Implemented:
 
-- supervised fine-tuning with TRL `SFTTrainer`;
-- LoRA and four-bit QLoRA adapters for causal language models;
+- SFT, Reward, DPO, KTO, and ORPO trainers;
+- LoRA, QLoRA, OFT, and QOFT adapters;
 - Hugging Face or uploaded datasets;
 - one durable local training job;
 - checkpoint cancellation and resume;
@@ -21,7 +21,7 @@ Implemented:
 
 Not implemented:
 
-- DPO, RLHF, RLAIF, reward modeling, or distributed training;
+- PPO, full tuning, freeze tuning, or distributed training;
 - CPU training or multi-GPU orchestration;
 - multi-user access, authentication, quotas, or remote job execution;
 - model registry, production serving, or adapter conversion for Ollama.
@@ -74,9 +74,10 @@ disk, command presence, the active virtual environment, and installed package ve
 not execute installers, modify drivers, or return credential values. Hugging Face status is
 reduced to configured or not configured in the UI.
 
-The supported runtime is native Windows or Linux with CPython 3.14 in the uv-managed project
-`.venv` and the PyTorch CUDA 13.0 wheel index. Both platform launchers and CI select Python 3.14
-explicitly.
+The UI and standard backend use CPython 3.14 in the uv-managed project `.venv` and the PyTorch
+CUDA 13.0 wheel index. On Windows, `unsloth-runtime/uv.lock` supplies a separate CPython 3.13
+runtime in `.venv-unsloth`. The Windows launcher synchronizes both environments; Linux retains
+the standard backend.
 
 The System page compares live free CUDA memory with a 3.5 GB minimum for the smallest supported
 QLoRA jobs. This is a readiness warning rather than a guarantee: model architecture, sequence
@@ -92,20 +93,30 @@ reconstructed by the worker.
 - `source`: `hub` or `upload`
 - Hub fields: `repo_id`, optional `config_name`, and `split`
 - Upload field: absolute `local_path`
-- Format fields: `format`, `text_column`, `prompt_column`, and `completion_column`
+- Format fields: `format`, `text_column`, `prompt_column`, `completion_column`, `chosen_column`,
+  and `rejected_column`
 
 ### `TrainingConfig`
+
+`datasets` is an ordered list of `DatasetSpec` values. Deserialization migrates the legacy
+single `dataset` object into a one-item list so existing run configurations remain resumable.
 
 Important defaults:
 
 | Setting | Default |
 | --- | --- |
 | Model revision | `main` |
+| Approach | Supervised Fine-Tuning |
 | PEFT mode | QLoRA |
+| Use Unsloth | Disabled in the data contract; enabled by default in the UI when available |
 | Preset | Standard |
 | Maximum length | 1024 |
 | Epochs | 2 |
+| Maximum samples | Unlimited |
 | Learning rate | `2e-4` |
+| Maximum gradient norm | 1.0 |
+| Compute type | Auto |
+| Beta | 0.1 |
 | Train batch size | 1 |
 | Gradient accumulation | 8 |
 | Gradient checkpointing | Enabled |
@@ -113,8 +124,10 @@ Important defaults:
 | Seed | 42 |
 | Hub upload | Disabled |
 
-Validation requires a model, a valid source, sequence length from 128 through 8192, epochs above
-zero and no greater than 20, and a destination repository when Hub upload is enabled.
+Validation requires a model, at least one unique dataset source, one shared canonical dataset
+format compatible with the selected recipe, sequence length from 128 through 8192, epochs above
+zero and no greater than 20, a positive maximum-sample limit when present, a finite non-negative
+maximum gradient norm, and a destination repository when Hub upload is enabled.
 
 ### Presets
 
@@ -124,7 +137,8 @@ zero and no greater than 20, and a destination repository when Hub upload is ena
 | Standard | 1024 | 2 | Unlimited | Unlimited | 8 | On |
 | Quality | 2048 | 3 | Unlimited | Unlimited | 16 | On |
 
-Advanced UI values can override the selected preset before the configuration is saved.
+Default/Custom controls can override preset epochs and sample limits before the configuration is
+saved. Preset changes restore those defaults.
 
 ## Source and dataset flow
 
@@ -137,15 +151,18 @@ Uploads accept CSV, JSON, and JSONL up to 200 MB. `save_upload` hashes the conte
 
 Inspection recognizes these shapes:
 
-1. `messages`
-2. `text`
-3. `prompt` plus `completion`
-4. unknown columns requiring mapping
+1. `prompt`, `chosen`, and `rejected`
+2. `messages`
+3. `text`
+4. `prompt` plus `completion`
+5. unknown columns requiring mapping
 
-Before training, a selected text column is renamed to `text`, or chosen prompt/completion columns
-are mapped to their canonical names. `max_samples` shuffles deterministically before selection.
-Datasets with fewer than ten rows skip evaluation; otherwise the configured ratio produces a
-seeded train/test split.
+Before training, each source is reduced to the canonical columns for its common format. The worker
+concatenates every normalized source, shuffles multiple sources with the configured seed, and then
+applies `max_samples` as a global cap. This preserves every row once per epoch and makes source
+contribution proportional to row count. Incompatible normalized schemas fail with the source
+position in the error. Combined datasets with fewer than ten rows skip evaluation; otherwise the
+configured ratio produces a seeded train/test split.
 
 ## Job lifecycle
 
@@ -166,8 +183,9 @@ twelve-character run ID, assigns the output directory, and atomically writes `co
 initial `status.json`.
 
 `launch_run` starts `python -m lora_finetune_studio.worker <config>` with output appended to
-`training.log`. Windows uses `CREATE_NO_WINDOW`; Linux uses the normal detached child process.
-The Streamlit fragment reads status every two seconds.
+`training.log`. Standard jobs use the app interpreter. Unsloth jobs use the repository-local
+Python 3.13 interpreter and receive `src` through `PYTHONPATH`. Windows uses `CREATE_NO_WINDOW`;
+Linux uses the normal detached child process. The Streamlit fragment reads status every two seconds.
 
 Cancellation first verifies that the stored PID command is this run's
 `lora_finetune_studio.worker` with the expected configuration path. It then terminates the PID,
@@ -180,21 +198,28 @@ terminate Ollama or any process outside this application boundary.
 
 ## Training implementation
 
-Training requires `torch.cuda.is_available()`. Compute uses BF16 when supported and FP16 otherwise.
-Remote model code is disabled, and model loading requires safetensors.
+Training requires `torch.cuda.is_available()`. Auto compute uses BF16 when supported and FP16
+otherwise. Users can explicitly request BF16, FP16, or FP32; unsupported BF16 resolves to FP16.
+FP32 uses the standard backend because Unsloth's optimized kernels require FP16 or BF16. Remote
+model code is disabled, and model loading requires safetensors.
 
-QLoRA adds a `BitsAndBytesConfig` with:
+QLoRA and QOFT add a `BitsAndBytesConfig` with:
 
 - four-bit loading;
 - NF4 quantization;
 - double quantization; and
-- BF16 or FP16 compute matching the GPU.
+- the resolved BF16, FP16, or FP32 compute type.
 
-Both PEFT modes use `LoraConfig` for causal language modeling with rank 16, alpha 32, dropout 0.05,
-and all linear target modules. TRL `SFTTrainer` performs optimization, logs every step, evaluates by
-epoch when an evaluation set exists, saves by epoch, and retains at most two trainer checkpoints.
+The standard backend uses `LoraConfig` or `OFTConfig` with all linear target modules. QOFT includes
+a narrow compatibility bridge for PEFT 0.20's mismatched four-bit OFT dispatcher argument. The
+Unsloth backend imports Unsloth before TRL, loads QLoRA in four-bit or LoRA in 16-bit,
+and injects rank-16 adapters with alpha 32, zero dropout, optimized gradient checkpointing, and the
+standard attention/MLP projections. It uses the eight-bit AdamW optimizer and one Windows dataset
+process. The recipe registry selects `SFTTrainer`, `RewardTrainer`, `DPOTrainer`, `KTOTrainer`, or
+`ORPOTrainer`. Reward runs load a one-label sequence-classification head and preserve `score` in
+the adapter. All paths preserve the same run artifacts and retain at most two trainer checkpoints.
 
-The status callback persists `loss`, `eval_loss`, `learning_rate`, and `epoch` when reported.
+The status callback persists numeric metrics reported by the selected trainer.
 
 ## Storage layout
 

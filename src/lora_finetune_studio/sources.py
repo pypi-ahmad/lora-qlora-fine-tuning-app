@@ -114,7 +114,9 @@ def load_training_dataset(
 
 def inspect_dataset(dataset: Dataset, limit: int = 5) -> DatasetInspection:
     columns = list(dataset.column_names)
-    if "messages" in columns:
+    if {"prompt", "chosen", "rejected"}.issubset(columns):
+        detected = "preference"
+    elif "messages" in columns:
         detected = "messages"
     elif "text" in columns:
         detected = "text"

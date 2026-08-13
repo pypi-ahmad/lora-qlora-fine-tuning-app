@@ -4,7 +4,9 @@ import streamlit as st
 
 from lora_finetune_studio.hardware import model_size_warning
 from lora_finetune_studio.jobs import active_run, create_run, launch_run
+from lora_finetune_studio.models import resolve_compute_type
 from lora_finetune_studio.sources import get_hf_token
+from lora_finetune_studio.unsloth_runtime import inspect_unsloth_runtime
 
 st.caption(
     "Review the exact configuration, resolve blockers, and launch one local job."
@@ -15,24 +17,48 @@ if config is None:
     st.info("Save training settings on the Training page before starting a run.")
     st.stop()
 
+profile = st.session_state.hardware_profile
+effective_compute_type = resolve_compute_type(
+    config.compute_type, bf16_supported=profile.bf16_supported
+)
+
 with st.container(border=True):
     st.subheader("Model")
     st.write(f"`{config.model_id}` at revision `{config.model_revision}`")
-    st.subheader("Dataset")
-    source = config.dataset.repo_id or config.dataset.local_path or "Not configured"
-    st.write(f"`{source}` · format `{config.dataset.format}`")
+    st.subheader("Datasets")
+    st.dataframe(
+        [
+            {
+                "Source": dataset.repo_id or dataset.local_path or "Not configured",
+                "Configuration": dataset.config_name or "Default",
+                "Split": dataset.split,
+                "Format": dataset.format,
+            }
+            for dataset in config.datasets
+        ],
+        hide_index=True,
+        width="stretch",
+    )
     st.subheader("Training")
     st.json(
         {
-            "peft_mode": config.peft_mode,
+            "backend": "Unsloth" if config.use_unsloth else "Transformers/TRL",
+            "approach": config.approach,
+            "method": config.peft_mode,
+            "compute_type_requested": config.compute_type,
+            "compute_type_effective": effective_compute_type,
             "preset": config.preset,
             "max_length": config.max_length,
             "epochs": config.epochs,
             "max_steps": config.max_steps,
             "max_samples": config.max_samples,
             "learning_rate": config.learning_rate,
+            "beta": config.beta
+            if config.approach.name in {"DPO", "KTO", "ORPO"}
+            else None,
             "batch_size": config.batch_size,
             "gradient_accumulation_steps": config.gradient_accumulation_steps,
+            "max_grad_norm": config.max_grad_norm,
             "gradient_checkpointing": config.gradient_checkpointing,
             "evaluation": config.eval_enabled,
             "push_to_hub": config.push_to_hub,
@@ -40,7 +66,6 @@ with st.container(border=True):
         }
     )
 
-profile = st.session_state.hardware_profile
 warning = model_size_warning(st.session_state.model_parameters, profile)
 if warning:
     st.warning(warning, icon=":material/warning:")
@@ -53,6 +78,10 @@ else:
     acknowledge_large_model = True
 
 errors = config.validate()
+if config.use_unsloth:
+    unsloth_runtime = inspect_unsloth_runtime()
+    if not unsloth_runtime.available:
+        errors.append(unsloth_runtime.detail)
 if not profile.cuda_available:
     errors.append("CUDA GPU is required.")
 if warning and not acknowledge_large_model:

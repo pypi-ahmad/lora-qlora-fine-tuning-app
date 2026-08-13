@@ -11,7 +11,6 @@ from pathlib import Path
 from .jobs import write_json_atomic
 from .models import JobState, JobStatus, TrainingConfig
 from .sources import get_hf_token
-from .training import train
 
 
 def main() -> int:
@@ -33,6 +32,10 @@ def main() -> int:
         ).to_dict(),
     )
     try:
+        if config.use_unsloth:
+            __import__("unsloth")
+        from .training import train
+
         metrics = train(config, status_path)
     except Exception as error:  # noqa: BLE001
         token = get_hf_token()

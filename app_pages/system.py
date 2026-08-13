@@ -11,10 +11,12 @@ from lora_finetune_studio.hardware import (
     scan_system,
 )
 from lora_finetune_studio.sources import get_hf_token, token_identity
+from lora_finetune_studio.unsloth_runtime import inspect_unsloth_runtime
 
 profile = st.session_state.hardware_profile
 scan = scan_system()
 token = get_hf_token()
+unsloth_runtime = inspect_unsloth_runtime()
 
 st.caption(
     "Read-only readiness scan. It never installs drivers, changes runtimes, or displays secret values."
@@ -103,6 +105,13 @@ integration_rows = [
     }
     for item in scan.software
 ]
+integration_rows.append(
+    {
+        "Software": "Unsloth Core",
+        "Status": "Available" if unsloth_runtime.available else "Missing",
+        "Version or detail": unsloth_runtime.version or unsloth_runtime.detail,
+    }
+)
 integration_rows.append(
     {
         "Software": "Hugging Face token",

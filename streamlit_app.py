@@ -9,7 +9,12 @@ import streamlit as st
 from lora_finetune_studio.hardware import detect_hardware
 from lora_finetune_studio.jobs import cancel_active_run
 from lora_finetune_studio.lifecycle import schedule_application_exit
-from lora_finetune_studio.models import PeftMode
+from lora_finetune_studio.models import (
+    TRAINING_RECIPES,
+    ComputeType,
+    PeftMode,
+    TrainingApproach,
+)
 from lora_finetune_studio.sources import get_hf_token
 
 st.set_page_config(
@@ -19,12 +24,37 @@ st.set_page_config(
 )
 
 st.session_state.setdefault("inspection", None)
-st.session_state.setdefault("dataset_spec", None)
+if (
+    "dataset_specs" not in st.session_state
+    or "dataset_inspections" not in st.session_state
+):
+    legacy_dataset = st.session_state.get("dataset_spec")
+    legacy_inspection = st.session_state.get("inspection")
+    if legacy_dataset and legacy_inspection:
+        st.session_state.dataset_specs = [legacy_dataset]
+        st.session_state.dataset_inspections = [legacy_inspection]
+    else:
+        st.session_state.dataset_specs = []
+        st.session_state.dataset_inspections = []
+st.session_state.setdefault("pending_dataset_spec", None)
+st.session_state.setdefault("pending_dataset_inspection", None)
 st.session_state.setdefault("model_id", "Qwen/Qwen3-0.6B")
 st.session_state.setdefault("model_revision", "main")
 st.session_state.setdefault("model_parameters", None)
 st.session_state.setdefault("model_ready", False)
 st.session_state.setdefault("training_config", None)
+st.session_state.setdefault("training_approach", TrainingApproach.SFT)
+st.session_state.setdefault(
+    "training_learning_rate", TRAINING_RECIPES[TrainingApproach.SFT].learning_rate
+)
+st.session_state.setdefault("training_learning_rate_mode", "Default")
+st.session_state.setdefault("training_epochs_mode", "Default")
+st.session_state.setdefault("training_max_samples_mode", "Default")
+st.session_state.setdefault("training_max_samples", 100)
+st.session_state.setdefault("training_max_grad_norm_mode", "Default")
+st.session_state.setdefault("training_max_grad_norm", 1.0)
+st.session_state.setdefault("training_compute_type", ComputeType.AUTO)
+st.session_state.setdefault("training_beta", 0.1)
 st.session_state.setdefault("run_id", None)
 st.session_state.setdefault("ollama_messages", [])
 st.session_state.setdefault("acknowledge_large_model", False)

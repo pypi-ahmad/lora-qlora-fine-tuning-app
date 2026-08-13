@@ -1,6 +1,8 @@
 .venv/
+.venv-unsloth/
 .runs/
 .uploads/
+unsloth_compiled_cache/
 .streamlit/secrets.toml
 __pycache__/
 .pytest_cache/

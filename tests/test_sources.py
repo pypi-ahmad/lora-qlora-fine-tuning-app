@@ -50,6 +50,21 @@ def test_inspect_dataset_detects_messages() -> None:
     assert result.rows == 1
 
 
+def test_inspect_dataset_detects_preference_before_prompt_completion() -> None:
+    dataset = Dataset.from_dict(
+        {
+            "prompt": ["Why?"],
+            "chosen": ["Because."],
+            "rejected": ["No reason."],
+            "completion": ["Unused"],
+        }
+    )
+
+    result = inspect_dataset(dataset)
+
+    assert result.format == "preference"
+
+
 def test_upload_validation_and_content_addressing(tmp_path: Path) -> None:
     content = b'{"text":"hello"}\n'
 
