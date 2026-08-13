@@ -1,0 +1,59 @@
+{
+  "training_config": {
+    "model_id": "Qwen/Qwen3-0.6B",
+    "model_revision": "main",
+    "datasets": [
+      {
+        "source": "upload",
+        "local_path": "examples/sft_sample.jsonl",
+        "format": "messages"
+      }
+    ],
+    "approach": "Supervised Fine-Tuning",
+    "peft_mode": "QLoRA",
+    "use_unsloth": false,
+    "compute_type": "Default (Auto)",
+    "preset": "Smoke test",
+    "output_dir": ".runs/demo/output",
+    "max_length": 512,
+    "epochs": 1.0,
+    "max_steps": 20,
+    "max_samples": 100,
+    "learning_rate": 0.0002,
+    "beta": 0.1,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "max_grad_norm": 1.0,
+    "gradient_checkpointing": true,
+    "eval_enabled": false,
+    "eval_ratio": 0.1,
+    "seed": 42,
+    "push_to_hub": false
+  },
+  "job_status": {
+    "state": "completed",
+    "message": "Synthetic preview complete",
+    "progress": 1.0,
+    "metrics": {},
+    "artifact_dir": ".runs/demo/output"
+  },
+  "dataset_preview": [
+    {
+      "user": "What is LoRA?",
+      "assistant": "LoRA fine-tunes small adapter matrices while keeping the base model frozen."
+    },
+    {
+      "user": "What is QLoRA?",
+      "assistant": "QLoRA combines LoRA adapters with a 4-bit quantized base model to reduce memory use."
+    },
+    {
+      "user": "When should I use supervised fine-tuning?",
+      "assistant": "Use supervised fine-tuning when you have examples of the inputs and responses you want the model to imitate."
+    },
+    {
+      "user": "Why keep evaluation examples separate?",
+      "assistant": "Separate evaluation examples measure whether the model generalizes beyond the data it trained on."
+    }
+  ],
+  "relative_loss": [1.0, 0.93, 0.89, 0.82, 0.78, 0.73, 0.69, 0.66]
+}
