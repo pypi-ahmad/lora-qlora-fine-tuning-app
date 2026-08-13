@@ -1,0 +1,808 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "tests/test_sources.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 59,
+      "functions": [
+        {
+          "name": "test_parse_hf_repo",
+          "startLine": 26,
+          "endLine": 27,
+          "params": [
+            "value",
+            "repo_type",
+            "expected"
+          ]
+        },
+        {
+          "name": "test_parse_hf_repo_rejects_unsafe_locations",
+          "startLine": 39,
+          "endLine": 41,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "test_inspect_dataset_detects_messages",
+          "startLine": 44,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "test_inspect_dataset_detects_preference_before_prompt_completion",
+          "startLine": 53,
+          "endLine": 65,
+          "params": []
+        },
+        {
+          "name": "test_upload_validation_and_content_addressing",
+          "startLine": 68,
+          "endLine": 74,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_upload_rejects_unknown_type",
+          "startLine": 77,
+          "endLine": 79,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_parse_hf_repo",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "test_parse_hf_repo_rejects_unsafe_locations",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "test_inspect_dataset_detects_messages",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "test_inspect_dataset_detects_preference_before_prompt_completion",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "test_upload_validation_and_content_addressing",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "test_upload_rejects_unknown_type",
+          "line": 77,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_parse_hf_repo",
+          "callee": "parse_hf_repo",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_parse_hf_repo_rejects_unsafe_locations",
+          "callee": "pytest.raises",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_parse_hf_repo_rejects_unsafe_locations",
+          "callee": "parse_hf_repo",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_inspect_dataset_detects_messages",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_inspect_dataset_detects_messages",
+          "callee": "inspect_dataset",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_inspect_dataset_detects_preference_before_prompt_completion",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_inspect_dataset_detects_preference_before_prompt_completion",
+          "callee": "inspect_dataset",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_upload_validation_and_content_addressing",
+          "callee": "save_upload",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_upload_validation_and_content_addressing",
+          "callee": "path.read_bytes",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_upload_validation_and_content_addressing",
+          "callee": "validate_upload",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_upload_validation_and_content_addressing",
+          "callee": "len",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_upload_rejects_unknown_type",
+          "callee": "pytest.raises",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_upload_rejects_unknown_type",
+          "callee": "validate_upload",
+          "lineNumber": 79
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_training.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 384,
+      "nonEmptyLines": 310,
+      "functions": [
+        {
+          "name": "test_normalize_prompt_completion_columns",
+          "startLine": 31,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "test_normalize_preference_columns_preserves_conversations",
+          "startLine": 47,
+          "endLine": 70,
+          "params": []
+        },
+        {
+          "name": "test_small_dataset_skips_eval_split",
+          "startLine": 73,
+          "endLine": 80,
+          "params": []
+        },
+        {
+          "name": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "startLine": 83,
+          "endLine": 105,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_combined_max_samples_is_global_and_deterministic",
+          "startLine": 108,
+          "endLine": 131,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "startLine": 134,
+          "endLine": 157,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_combine_datasets_identifies_source_load_failure",
+          "startLine": 160,
+          "endLine": 176,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "startLine": 179,
+          "endLine": 221,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_unsloth_reward_loader_keeps_score_head",
+          "startLine": 224,
+          "endLine": 256,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_peft_methods_build_expected_adapter_and_quantization",
+          "startLine": 268,
+          "endLine": 277,
+          "params": [
+            "method",
+            "expected_type",
+            "quantized"
+          ]
+        },
+        {
+          "name": "test_reward_peft_config_preserves_score_head",
+          "startLine": 280,
+          "endLine": 290,
+          "params": []
+        },
+        {
+          "name": "test_qoft_compatibility_passes_dispatcher_config",
+          "startLine": 293,
+          "endLine": 316,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_every_approach_resolves_installed_trainer",
+          "startLine": 320,
+          "endLine": 324,
+          "params": [
+            "approach"
+          ]
+        },
+        {
+          "name": "test_alignment_trainer_config_includes_beta",
+          "startLine": 331,
+          "endLine": 343,
+          "params": [
+            "approach"
+          ]
+        },
+        {
+          "name": "test_resolve_compute_dtype",
+          "startLine": 356,
+          "endLine": 361,
+          "params": [
+            "compute_type",
+            "bf16_supported",
+            "expected"
+          ]
+        },
+        {
+          "name": "test_fp32_trainer_config_disables_mixed_precision_flags",
+          "startLine": 364,
+          "endLine": 370,
+          "params": []
+        },
+        {
+          "name": "test_format_conversations_applies_chat_template_to_single_and_batch",
+          "startLine": 373,
+          "endLine": 384,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_normalize_prompt_completion_columns",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "test_normalize_preference_columns_preserves_conversations",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "test_small_dataset_skips_eval_split",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "test_combined_max_samples_is_global_and_deterministic",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "test_combine_datasets_identifies_source_load_failure",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "test_unsloth_reward_loader_keeps_score_head",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "test_peft_methods_build_expected_adapter_and_quantization",
+          "line": 259,
+          "isDefault": false
+        },
+        {
+          "name": "test_reward_peft_config_preserves_score_head",
+          "line": 280,
+          "isDefault": false
+        },
+        {
+          "name": "test_qoft_compatibility_passes_dispatcher_config",
+          "line": 293,
+          "isDefault": false
+        },
+        {
+          "name": "test_every_approach_resolves_installed_trainer",
+          "line": 319,
+          "isDefault": false
+        },
+        {
+          "name": "test_alignment_trainer_config_includes_beta",
+          "line": 327,
+          "isDefault": false
+        },
+        {
+          "name": "test_resolve_compute_dtype",
+          "line": 346,
+          "isDefault": false
+        },
+        {
+          "name": "test_fp32_trainer_config_disables_mixed_precision_flags",
+          "line": 364,
+          "isDefault": false
+        },
+        {
+          "name": "test_format_conversations_applies_chat_template_to_single_and_batch",
+          "line": 373,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_normalize_prompt_completion_columns",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_normalize_prompt_completion_columns",
+          "callee": "DatasetSpec",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_normalize_prompt_completion_columns",
+          "callee": "_normalize_dataset",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_normalize_preference_columns_preserves_conversations",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_normalize_preference_columns_preserves_conversations",
+          "callee": "DatasetSpec",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_normalize_preference_columns_preserves_conversations",
+          "callee": "_normalize_dataset",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_small_dataset_skips_eval_split",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_small_dataset_skips_eval_split",
+          "callee": "TrainingConfig",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_small_dataset_skips_eval_split",
+          "callee": "_split_dataset",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_small_dataset_skips_eval_split",
+          "callee": "len",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "callee": "TrainingConfig",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "callee": "DatasetSpec",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "callee": "_load_and_combine_datasets",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "callee": "len",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "callee": "set",
+          "lineNumber": 104
+        },
+        {
+          "caller": "test_combined_max_samples_is_global_and_deterministic",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_combined_max_samples_is_global_and_deterministic",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 111
+        },
+        {
+          "caller": "test_combined_max_samples_is_global_and_deterministic",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_combined_max_samples_is_global_and_deterministic",
+          "callee": "TrainingConfig",
+          "lineNumber": 118
+        },
+        {
+          "caller": "test_combined_max_samples_is_global_and_deterministic",
+          "callee": "DatasetSpec",
+          "lineNumber": 121
+        },
+        {
+          "caller": "test_combined_max_samples_is_global_and_deterministic",
+          "callee": "_load_and_combine_datasets",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_combined_max_samples_is_global_and_deterministic",
+          "callee": "_load_and_combine_datasets",
+          "lineNumber": 128
+        },
+        {
+          "caller": "test_combined_max_samples_is_global_and_deterministic",
+          "callee": "len",
+          "lineNumber": 130
+        },
+        {
+          "caller": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "callee": "Dataset.from_list",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "callee": "Dataset.from_list",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "callee": "TrainingConfig",
+          "lineNumber": 148
+        },
+        {
+          "caller": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "callee": "DatasetSpec",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "callee": "pytest.raises",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "callee": "_load_and_combine_datasets",
+          "lineNumber": 157
+        },
+        {
+          "caller": "fail_second",
+          "callee": "OSError",
+          "lineNumber": 163
+        },
+        {
+          "caller": "fail_second",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 164
+        },
+        {
+          "caller": "test_combine_datasets_identifies_source_load_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 166
+        },
+        {
+          "caller": "test_combine_datasets_identifies_source_load_failure",
+          "callee": "TrainingConfig",
+          "lineNumber": 167
+        },
+        {
+          "caller": "test_combine_datasets_identifies_source_load_failure",
+          "callee": "DatasetSpec",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_combine_datasets_identifies_source_load_failure",
+          "callee": "DatasetSpec",
+          "lineNumber": 171
+        },
+        {
+          "caller": "test_combine_datasets_identifies_source_load_failure",
+          "callee": "pytest.raises",
+          "lineNumber": 175
+        },
+        {
+          "caller": "test_combine_datasets_identifies_source_load_failure",
+          "callee": "_load_and_combine_datasets",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "callee": "SimpleNamespace",
+          "lineNumber": 181
+        },
+        {
+          "caller": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "callee": "object",
+          "lineNumber": 182
+        },
+        {
+          "caller": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "callee": "object",
+          "lineNumber": 183
+        },
+        {
+          "caller": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "callee": "ModuleType",
+          "lineNumber": 197
+        },
+        {
+          "caller": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "callee": "monkeypatch.setitem",
+          "lineNumber": 199
+        },
+        {
+          "caller": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "callee": "TrainingConfig",
+          "lineNumber": 200
+        },
+        {
+          "caller": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "callee": "_load_model_and_tokenizer",
+          "lineNumber": 208
+        },
+        {
+          "caller": "test_unsloth_reward_loader_keeps_score_head",
+          "callee": "SimpleNamespace",
+          "lineNumber": 226
+        },
+        {
+          "caller": "from_pretrained",
+          "callee": "object",
+          "lineNumber": 232
+        },
+        {
+          "caller": "test_unsloth_reward_loader_keeps_score_head",
+          "callee": "ModuleType",
+          "lineNumber": 239
+        },
+        {
+          "caller": "test_unsloth_reward_loader_keeps_score_head",
+          "callee": "monkeypatch.setitem",
+          "lineNumber": 241
+        },
+        {
+          "caller": "test_unsloth_reward_loader_keeps_score_head",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 242
+        },
+        {
+          "caller": "test_unsloth_reward_loader_keeps_score_head",
+          "callee": "TrainingConfig",
+          "lineNumber": 245
+        },
+        {
+          "caller": "test_unsloth_reward_loader_keeps_score_head",
+          "callee": "_load_model_and_tokenizer",
+          "lineNumber": 252
+        },
+        {
+          "caller": "test_peft_methods_build_expected_adapter_and_quantization",
+          "callee": "TrainingConfig",
+          "lineNumber": 271
+        },
+        {
+          "caller": "test_peft_methods_build_expected_adapter_and_quantization",
+          "callee": "_peft_config",
+          "lineNumber": 273
+        },
+        {
+          "caller": "test_peft_methods_build_expected_adapter_and_quantization",
+          "callee": "training._quantization_config",
+          "lineNumber": 274
+        },
+        {
+          "caller": "test_peft_methods_build_expected_adapter_and_quantization",
+          "callee": "isinstance",
+          "lineNumber": 276
+        },
+        {
+          "caller": "test_reward_peft_config_preserves_score_head",
+          "callee": "TrainingConfig",
+          "lineNumber": 281
+        },
+        {
+          "caller": "test_reward_peft_config_preserves_score_head",
+          "callee": "_peft_config",
+          "lineNumber": 287
+        },
+        {
+          "caller": "test_reward_peft_config_preserves_score_head",
+          "callee": "isinstance",
+          "lineNumber": 289
+        },
+        {
+          "caller": "original",
+          "callee": "calls.update",
+          "lineNumber": 299
+        },
+        {
+          "caller": "test_qoft_compatibility_passes_dispatcher_config",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 308
+        },
+        {
+          "caller": "test_qoft_compatibility_passes_dispatcher_config",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 309
+        },
+        {
+          "caller": "test_qoft_compatibility_passes_dispatcher_config",
+          "callee": "OFTConfig",
+          "lineNumber": 310
+        },
+        {
+          "caller": "test_qoft_compatibility_passes_dispatcher_config",
+          "callee": "_patch_qoft_peft_compatibility",
+          "lineNumber": 312
+        },
+        {
+          "caller": "test_qoft_compatibility_passes_dispatcher_config",
+          "callee": "Linear4bit.__init__",
+          "lineNumber": 313
+        },
+        {
+          "caller": "test_qoft_compatibility_passes_dispatcher_config",
+          "callee": "object",
+          "lineNumber": 313
+        },
+        {
+          "caller": "test_every_approach_resolves_installed_trainer",
+          "callee": "_trainer_components",
+          "lineNumber": 321
+        },
+        {
+          "caller": "test_every_approach_resolves_installed_trainer",
+          "callee": "config_class.__name__.endswith",
+          "lineNumber": 323
+        },
+        {
+          "caller": "test_every_approach_resolves_installed_trainer",
+          "callee": "trainer_class.__name__.endswith",
+          "lineNumber": 324
+        },
+        {
+          "caller": "test_alignment_trainer_config_includes_beta",
+          "callee": "TrainingConfig",
+          "lineNumber": 332
+        },
+        {
+          "caller": "test_alignment_trainer_config_includes_beta",
+          "callee": "_trainer_config",
+          "lineNumber": 339
+        },
+        {
+          "caller": "test_resolve_compute_dtype",
+          "callee": "_resolve_compute_dtype",
+          "lineNumber": 360
+        },
+        {
+          "caller": "test_fp32_trainer_config_disables_mixed_precision_flags",
+          "callee": "TrainingConfig",
+          "lineNumber": 365
+        },
+        {
+          "caller": "test_fp32_trainer_config_disables_mixed_precision_flags",
+          "callee": "_trainer_config",
+          "lineNumber": 367
+        },
+        {
+          "caller": "test_format_conversations_applies_chat_template_to_single_and_batch",
+          "callee": "SimpleNamespace",
+          "lineNumber": 374
+        },
+        {
+          "caller": "test_format_conversations_applies_chat_template_to_single_and_batch",
+          "callee": "_format_conversations",
+          "lineNumber": 380
+        },
+        {
+          "caller": "test_format_conversations_applies_chat_template_to_single_and_batch",
+          "callee": "_format_conversations",
+          "lineNumber": 381
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 17,
+        "functionCount": 17,
+        "classCount": 0
+      }
+    }
+  ]
+}

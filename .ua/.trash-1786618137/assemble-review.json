@@ -1,0 +1,13 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "All 289 nodes and 473 edges are internally consistent; no nodes lack IDs, no dangling edges, and all node types and complexity values are valid.",
+    "All 12 import relationships in the 90-entry import map already have matching file-level imports edges.",
+    "The merge report contained no unfixable items. No graph changes were required."
+  ]
+}

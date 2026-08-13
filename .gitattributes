@@ -3,3 +3,4 @@ docs/*.html -text
 docs/.tutorial-build.json -text
 docs/assets/*.css -text
 docs/assets/*.js -text
+/.codegraph/codegraph.db filter=lfs diff=lfs merge=lfs -text

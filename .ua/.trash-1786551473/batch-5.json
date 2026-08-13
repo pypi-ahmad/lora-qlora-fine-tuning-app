@@ -1,0 +1,110 @@
+{
+  "nodes": [
+    {
+      "id": "file:tests/test_sources.py",
+      "type": "file",
+      "name": "test_sources.py",
+      "filePath": "tests/test_sources.py",
+      "summary": "Tests Hugging Face repository parsing, dataset inspection, and safe uploaded-dataset storage and validation.",
+      "tags": ["test", "dataset", "hugging-face", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_parse_hf_repo",
+      "type": "function",
+      "name": "test_parse_hf_repo",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [26, 27],
+      "summary": "Checks that model and dataset repository identifiers are normalized from accepted Hugging Face URLs and slugs.",
+      "tags": ["test", "hugging-face", "parsing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "function",
+      "name": "test_parse_hf_repo_rejects_unsafe_locations",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [39, 41],
+      "summary": "Verifies that non-Hugging-Face and path-like repository locations are rejected.",
+      "tags": ["test", "validation", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_inspect_dataset_detects_messages",
+      "type": "function",
+      "name": "test_inspect_dataset_detects_messages",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [44, 50],
+      "summary": "Verifies message-format detection and row counting for an in-memory dataset.",
+      "tags": ["test", "dataset", "format-detection"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_upload_validation_and_content_addressing",
+      "type": "function",
+      "name": "test_upload_validation_and_content_addressing",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [53, 59],
+      "summary": "Tests that uploaded JSONL data is saved unchanged and receives its allowed file extension.",
+      "tags": ["test", "uploads", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_upload_rejects_unknown_type",
+      "type": "function",
+      "name": "test_upload_rejects_unknown_type",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [62, 64],
+      "summary": "Ensures unsupported upload extensions raise a clear validation error.",
+      "tags": ["test", "uploads", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_training.py",
+      "type": "file",
+      "name": "test_training.py",
+      "filePath": "tests/test_training.py",
+      "summary": "Tests dataset normalization for prompt-completion training and the small-dataset evaluation-split behavior.",
+      "tags": ["test", "training", "dataset", "normalization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_normalize_prompt_completion_columns",
+      "type": "function",
+      "name": "test_normalize_prompt_completion_columns",
+      "filePath": "tests/test_training.py",
+      "lineRange": [7, 23],
+      "summary": "Verifies conversion of configured prompt and completion columns into the trainer's canonical schema.",
+      "tags": ["test", "training", "normalization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_small_dataset_skips_eval_split",
+      "type": "function",
+      "name": "test_small_dataset_skips_eval_split",
+      "filePath": "tests/test_training.py",
+      "lineRange": [26, 33],
+      "summary": "Verifies that a dataset below the evaluation threshold remains entirely in the training split.",
+      "tags": ["test", "training", "dataset-split"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_parse_hf_repo", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_inspect_dataset_detects_messages", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_upload_validation_and_content_addressing", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_upload_rejects_unknown_type", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_parse_hf_repo", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_inspect_dataset_detects_messages", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_upload_validation_and_content_addressing", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:tests/test_sources.py", "target": "function:tests/test_sources.py:test_upload_rejects_unknown_type", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/lora_finetune_studio/sources.py", "target": "file:tests/test_sources.py", "type": "tested_by", "direction": "forward", "weight": 0.5},
+    {"source": "file:tests/test_training.py", "target": "function:tests/test_training.py:test_normalize_prompt_completion_columns", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:tests/test_training.py", "target": "function:tests/test_training.py:test_small_dataset_skips_eval_split", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:tests/test_training.py", "target": "function:tests/test_training.py:test_normalize_prompt_completion_columns", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:tests/test_training.py", "target": "function:tests/test_training.py:test_small_dataset_skips_eval_split", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/lora_finetune_studio/training.py", "target": "file:tests/test_training.py", "type": "tested_by", "direction": "forward", "weight": 0.5}
+  ]
+}

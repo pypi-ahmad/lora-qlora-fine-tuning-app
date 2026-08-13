@@ -1,0 +1,25 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path": "CHANGELOG.md", "language": "markdown", "sizeLines": 60, "fileCategory": "docs"},
+    {"path": "CONTRIBUTING.md", "language": "markdown", "sizeLines": 97, "fileCategory": "docs"},
+    {"path": "Launch LoRA Studio.cmd", "language": "batch", "sizeLines": 80, "fileCategory": "script"},
+    {"path": "Launch LoRA Studio.sh", "language": "shell", "sizeLines": 84, "fileCategory": "script"},
+    {"path": "README.md", "language": "markdown", "sizeLines": 179, "fileCategory": "docs"},
+    {"path": "SECURITY.md", "language": "markdown", "sizeLines": 98, "fileCategory": "docs"},
+    {"path": "TECHNICAL.md", "language": "markdown", "sizeLines": 277, "fileCategory": "docs"},
+    {"path": "USAGE.md", "language": "markdown", "sizeLines": 342, "fileCategory": "docs"},
+    {"path": "pyproject.toml", "language": "toml", "sizeLines": 43, "fileCategory": "config"}
+  ],
+  "batchImportData": {
+    "CHANGELOG.md": [],
+    "CONTRIBUTING.md": [],
+    "Launch LoRA Studio.cmd": [],
+    "Launch LoRA Studio.sh": [],
+    "README.md": [],
+    "SECURITY.md": [],
+    "TECHNICAL.md": [],
+    "USAGE.md": [],
+    "pyproject.toml": []
+  }
+}

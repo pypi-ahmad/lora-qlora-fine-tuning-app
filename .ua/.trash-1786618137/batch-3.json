@@ -1,0 +1,107 @@
+{
+  "nodes": [
+    {
+      "id": "pipeline:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "ci.yml",
+      "filePath": ".github/workflows/ci.yml",
+      "summary": "GitHub Actions continuous-integration workflow that validates the project on Ubuntu and Windows for pushes and pull requests. It installs the locked environment, runs Ruff and ty checks, executes pytest, and verifies tutorial documentation generation.",
+      "tags": ["ci-cd", "quality-checks", "cross-platform", "testing"],
+      "complexity": "simple",
+      "languageNotes": "Uses a GitHub Actions OS matrix and uv's dependency synchronization and cache support."
+    }
+  ],
+  "edges": [
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_app.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_hardware.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_inference.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_jobs.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_lifecycle.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_models.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_queue_dispatcher.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_queue_ui.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_sources.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_training.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_tutorial.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:tests/test_worker.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "pipeline:.github/workflows/ci.yml",
+      "target": "file:scripts/build_tutorial.py",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

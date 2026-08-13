@@ -1,0 +1,59 @@
+{
+  "nodes": [
+    {
+      "id": "config:.firecrawl/search-unsloth-auto-docstring.json",
+      "type": "config",
+      "name": "search-unsloth-auto-docstring.json",
+      "filePath": ".firecrawl/search-unsloth-auto-docstring.json",
+      "summary": "Stores Firecrawl search results used to research Unsloth automatic documentation generation.",
+      "tags": ["configuration", "research", "firecrawl"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.firecrawl/search-unsloth-windows-nodeps.json",
+      "type": "config",
+      "name": "search-unsloth-windows-nodeps.json",
+      "filePath": ".firecrawl/search-unsloth-windows-nodeps.json",
+      "summary": "Stores Firecrawl search results about using Unsloth on Windows without optional dependencies.",
+      "tags": ["configuration", "research", "windows"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.firecrawl/search-unsloth-windows-torchao.json",
+      "type": "config",
+      "name": "search-unsloth-windows-torchao.json",
+      "filePath": ".firecrawl/search-unsloth-windows-torchao.json",
+      "summary": "Stores Firecrawl search results about Unsloth's Windows support and TorchAO integration.",
+      "tags": ["configuration", "research", "torchao"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.firecrawl/search-unsloth-windows-versions.json",
+      "type": "config",
+      "name": "search-unsloth-windows-versions.json",
+      "filePath": ".firecrawl/search-unsloth-windows-versions.json",
+      "summary": "Stores Firecrawl search results about compatible Unsloth and Windows package versions.",
+      "tags": ["configuration", "research", "versioning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
+      "type": "document",
+      "name": "unsloth.ai-docs-get-started-install-pip-install.md",
+      "filePath": ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
+      "summary": "Captured Unsloth installation documentation covering Desktop and Studio, Windows PowerShell, developer and nightly installs, and Unsloth Core installation and removal.",
+      "tags": ["documentation", "unsloth", "installation", "windows"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md",
+      "type": "document",
+      "name": "unsloth.ai-docs-get-started-install-windows-installation.md",
+      "filePath": ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md",
+      "summary": "Captured Unsloth Windows installation guide covering Desktop, manual and Conda installation, Docker and WSL alternatives, troubleshooting, and uninstall procedures.",
+      "tags": ["documentation", "unsloth", "windows", "installation"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": []
+}

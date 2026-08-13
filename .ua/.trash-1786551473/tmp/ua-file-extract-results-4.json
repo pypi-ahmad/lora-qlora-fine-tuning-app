@@ -1,0 +1,2098 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 22,
+  "filesSkipped": [
+    ".python-version",
+    "docs/index.html",
+    "examples/sft_sample.jsonl"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 22,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 21,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "results": [
+    {
+      "path": ".streamlit/config.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 9,
+      "nonEmptyLines": 8,
+      "sections": [
+        {
+          "heading": "theme",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "server",
+          "level": 1,
+          "line": 8
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": "app_pages/dataset.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 156,
+      "nonEmptyLines": 149,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/gpu_memory.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 50,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/model.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/monitor.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 93,
+      "functions": [
+        {
+          "name": "training_monitor",
+          "startLine": 31,
+          "endLine": 67,
+          "params": [
+            "selected_run_id"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "training_monitor",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "training_monitor",
+          "callee": "read_status",
+          "lineNumber": 33
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 35
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.container",
+          "lineNumber": 37
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.badge",
+          "lineNumber": 38
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.write",
+          "lineNumber": 42
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.progress",
+          "lineNumber": 43
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.json",
+          "lineNumber": 45
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 47
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.button",
+          "lineNumber": 48
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "cancel_run",
+          "lineNumber": 51
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.rerun",
+          "lineNumber": 52
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.button",
+          "lineNumber": 53
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "resume_run",
+          "lineNumber": 57
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.rerun",
+          "lineNumber": 58
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 60
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "str",
+          "lineNumber": 60
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.expander",
+          "lineNumber": 61
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.code",
+          "lineNumber": 64
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "read_log",
+          "lineNumber": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/ollama.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/review.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 84,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/system.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 127,
+      "nonEmptyLines": 116,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/training.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 168,
+      "nonEmptyLines": 156,
+      "functions": [
+        {
+          "name": "apply_preset_defaults",
+          "startLine": 36,
+          "endLine": 42,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "apply_preset_defaults",
+          "line": 36,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "int",
+          "lineNumber": 38
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "float",
+          "lineNumber": 39
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "int",
+          "lineNumber": 40
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/cli.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 9,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 11,
+          "endLine": 14,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Path",
+          "lineNumber": 12
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 13
+        },
+        {
+          "caller": "main",
+          "callee": "SystemExit",
+          "lineNumber": 14
+        },
+        {
+          "caller": "main",
+          "callee": "stcli.main",
+          "lineNumber": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/hardware.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 192,
+      "nonEmptyLines": 163,
+      "functions": [
+        {
+          "name": "_package_status",
+          "startLine": 61,
+          "endLine": 66,
+          "params": [
+            "display_name",
+            "package_name"
+          ]
+        },
+        {
+          "name": "scan_system",
+          "startLine": 69,
+          "endLine": 115,
+          "params": [
+            "workspace"
+          ]
+        },
+        {
+          "name": "cuda_memory_stats",
+          "startLine": 118,
+          "endLine": 128,
+          "params": []
+        },
+        {
+          "name": "release_unused_cuda_memory",
+          "startLine": 131,
+          "endLine": 136,
+          "params": []
+        },
+        {
+          "name": "detect_hardware",
+          "startLine": 139,
+          "endLine": 178,
+          "params": [
+            "workspace"
+          ]
+        },
+        {
+          "name": "model_size_warning",
+          "startLine": 181,
+          "endLine": 192,
+          "params": [
+            "parameter_count",
+            "profile"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CudaMemoryStats",
+          "startLine": 26,
+          "endLine": 32,
+          "methods": [],
+          "properties": [
+            "free_gb",
+            "total_gb",
+            "allocated_gb",
+            "reserved_gb"
+          ]
+        },
+        {
+          "name": "SoftwareStatus",
+          "startLine": 36,
+          "endLine": 41,
+          "methods": [],
+          "properties": [
+            "name",
+            "available",
+            "detail"
+          ]
+        },
+        {
+          "name": "SystemScan",
+          "startLine": 45,
+          "endLine": 58,
+          "methods": [],
+          "properties": [
+            "os_name",
+            "os_release",
+            "os_version",
+            "python_version",
+            "cuda_version",
+            "cpu_threads",
+            "available_ram_gb",
+            "free_disk_gb",
+            "native_runtime",
+            "uv_venv_active",
+            "software"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CudaMemoryStats",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "SoftwareStatus",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "SystemScan",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "_package_status",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "scan_system",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "cuda_memory_stats",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "release_unused_cuda_memory",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "detect_hardware",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "model_size_warning",
+          "line": 181,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_package_status",
+          "callee": "version",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_package_status",
+          "callee": "SoftwareStatus",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_package_status",
+          "callee": "SoftwareStatus",
+          "lineNumber": 66
+        },
+        {
+          "caller": "scan_system",
+          "callee": "Path.cwd",
+          "lineNumber": 71
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.system",
+          "lineNumber": 72
+        },
+        {
+          "caller": "scan_system",
+          "callee": "Path",
+          "lineNumber": 74
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 76
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.python_version",
+          "lineNumber": 76
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 77
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 79
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 80
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 82
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 87
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 88
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 93
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 94
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 95
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 96
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 97
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 99
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 100
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SystemScan",
+          "lineNumber": 103
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.release",
+          "lineNumber": 105
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.version",
+          "lineNumber": 106
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.python_version",
+          "lineNumber": 107
+        },
+        {
+          "caller": "scan_system",
+          "callee": "os.cpu_count",
+          "lineNumber": 109
+        },
+        {
+          "caller": "scan_system",
+          "callee": "psutil.virtual_memory",
+          "lineNumber": 110
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.disk_usage",
+          "lineNumber": 111
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 120
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "RuntimeError",
+          "lineNumber": 121
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.mem_get_info",
+          "lineNumber": 122
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "CudaMemoryStats",
+          "lineNumber": 123
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.memory_allocated",
+          "lineNumber": 126
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.memory_reserved",
+          "lineNumber": 127
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 133
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "RuntimeError",
+          "lineNumber": 134
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "gc.collect",
+          "lineNumber": 135
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "torch.cuda.empty_cache",
+          "lineNumber": 136
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "Path.cwd",
+          "lineNumber": 140
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 141
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.get_device_properties",
+          "lineNumber": 146
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.is_bf16_supported",
+          "lineNumber": 149
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "psutil.virtual_memory",
+          "lineNumber": 151
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "shutil.disk_usage",
+          "lineNumber": 152
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "HardwareProfile",
+          "lineNumber": 168
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 171
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 172
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 173
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 9,
+        "functionCount": 6,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/inference.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 85,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "generate_text",
+          "startLine": 15,
+          "endLine": 39,
+          "params": [
+            "model_id",
+            "prompt",
+            "token",
+            "revision",
+            "adapter_path",
+            "max_new_tokens"
+          ]
+        },
+        {
+          "name": "_generate_text",
+          "startLine": 42,
+          "endLine": 85,
+          "params": [
+            "model_id",
+            "prompt",
+            "token",
+            "revision",
+            "adapter_path",
+            "max_new_tokens"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "generate_text",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "_generate_text",
+          "line": 42,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "generate_text",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 24
+        },
+        {
+          "caller": "generate_text",
+          "callee": "RuntimeError",
+          "lineNumber": 25
+        },
+        {
+          "caller": "generate_text",
+          "callee": "_generate_text",
+          "lineNumber": 27
+        },
+        {
+          "caller": "generate_text",
+          "callee": "release_unused_cuda_memory",
+          "lineNumber": 37
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.cuda.is_bf16_supported",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "BitsAndBytesConfig",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "AutoTokenizer.from_pretrained",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "AutoModelForCausalLM.from_pretrained",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.cuda.current_device",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "PeftModel.from_pretrained",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "Path",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer(prompt, return_tensors=\"pt\").to",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.inference_mode",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "model.generate",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "cast",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer.decode",
+          "lineNumber": 82
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 13,
+      "functions": [
+        {
+          "name": "schedule_application_exit",
+          "startLine": 10,
+          "endLine": 17,
+          "params": [
+            "delay_seconds",
+            "exit_function"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "schedule_application_exit",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "schedule_application_exit",
+          "callee": "threading.Timer",
+          "lineNumber": 15
+        },
+        {
+          "caller": "schedule_application_exit",
+          "callee": "timer.start",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/ollama.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 25,
+      "functions": [
+        {
+          "name": "_request",
+          "startLine": 11,
+          "endLine": 22,
+          "params": [
+            "path",
+            "payload",
+            "timeout"
+          ]
+        },
+        {
+          "name": "list_models",
+          "startLine": 25,
+          "endLine": 27,
+          "params": []
+        },
+        {
+          "name": "generate",
+          "startLine": 30,
+          "endLine": 34,
+          "params": [
+            "model",
+            "prompt"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_request",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "list_models",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "generate",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_request",
+          "callee": "json.dumps(payload).encode",
+          "lineNumber": 14
+        },
+        {
+          "caller": "_request",
+          "callee": "json.dumps",
+          "lineNumber": 14
+        },
+        {
+          "caller": "_request",
+          "callee": "Request",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_request",
+          "callee": "urlopen",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_request",
+          "callee": "json.loads",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_request",
+          "callee": "response.read",
+          "lineNumber": 22
+        },
+        {
+          "caller": "list_models",
+          "callee": "_request",
+          "lineNumber": 26
+        },
+        {
+          "caller": "list_models",
+          "callee": "str",
+          "lineNumber": 27
+        },
+        {
+          "caller": "list_models",
+          "callee": "response.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "generate",
+          "callee": "_request",
+          "lineNumber": 31
+        },
+        {
+          "caller": "generate",
+          "callee": "str",
+          "lineNumber": 34
+        },
+        {
+          "caller": "generate",
+          "callee": "response.get",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "streamlit_app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 127,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 53,
+      "functions": [
+        {
+          "name": "test_app_starts_without_ollama",
+          "startLine": 8,
+          "endLine": 62,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_app_starts_without_ollama",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "Path",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "AppTest.from_file(app_path, default_timeout=60).run",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "AppTest.from_file",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "stop_button.click().run",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "stop_button.click",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "keep_running.click().run",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "keep_running.click",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "scheduled_exits.append",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\n        button for button in app.button if button.label == \"Stop LoRA Studio\"\n    ).click().run",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\n        button for button in app.button if button.label == \"Stop LoRA Studio\"\n    ).click",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\n        button for button in app.button if button.label == \"Confirm stop\"\n    ).click().run",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\n        button for button in app.button if button.label == \"Confirm stop\"\n    ).click",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "pages.items",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page(path).run",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page(\"app_pages/gpu_memory.py\").run",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_hardware.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 94,
+      "functions": [
+        {
+          "name": "test_model_size_warning_uses_detected_limit",
+          "startLine": 15,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "startLine": 31,
+          "endLine": 47,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "startLine": 50,
+          "endLine": 60,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "startLine": 63,
+          "endLine": 69,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_system_scan_reports_live_resources_without_installing",
+          "startLine": 72,
+          "endLine": 106,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_system_scan_recognizes_native_linux",
+          "startLine": 109,
+          "endLine": 118,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_model_size_warning_uses_detected_limit",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "test_system_scan_reports_live_resources_without_installing",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "test_system_scan_recognizes_native_linux",
+          "line": 109,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_model_size_warning_uses_detected_limit",
+          "callee": "HardwareProfile",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_model_size_warning_uses_detected_limit",
+          "callee": "model_size_warning",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_model_size_warning_uses_detected_limit",
+          "callee": "model_size_warning",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "cuda_memory_stats",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "calls.append",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "calls.append",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "release_unused_cuda_memory",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "pytest.raises",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "cuda_memory_stats",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "pytest.raises",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "release_unused_cuda_memory",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "SimpleNamespace",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "SimpleNamespace",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "str",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "str",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "scan_system",
+          "lineNumber": 95
+        },
+        {
+          "caller": "test_system_scan_recognizes_native_linux",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_system_scan_recognizes_native_linux",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 111
+        },
+        {
+          "caller": "test_system_scan_recognizes_native_linux",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_system_scan_recognizes_native_linux",
+          "callee": "scan_system",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_inference.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 20,
+      "functions": [
+        {
+          "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "startLine": 6,
+          "endLine": 25,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 10
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "object",
+          "lineNumber": 10
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "(_ for _ in ()).throw",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "ValueError",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "cleanup_calls.append",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "pytest.raises",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "inference.generate_text",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_jobs.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "test_create_run_persists_safe_config",
+          "startLine": 9,
+          "endLine": 26,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_atomic_json_replaces_existing_file",
+          "startLine": 29,
+          "endLine": 34,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "_running_test_run",
+          "startLine": 52,
+          "endLine": 64,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cancel_run_stops_only_its_training_worker",
+          "startLine": 67,
+          "endLine": 83,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cancel_run_rejects_unrelated_process",
+          "startLine": 86,
+          "endLine": 96,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cancel_active_run_delegates_to_active_run",
+          "startLine": 99,
+          "endLine": 105,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeWorkerProcess",
+          "startLine": 37,
+          "endLine": 49,
+          "methods": [
+            "__init__",
+            "cmdline",
+            "terminate",
+            "wait"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_create_run_persists_safe_config",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "test_atomic_json_replaces_existing_file",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "FakeWorkerProcess",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "_running_test_run",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "test_cancel_run_stops_only_its_training_worker",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "test_cancel_run_rejects_unrelated_process",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "test_cancel_active_run_delegates_to_active_run",
+          "line": 99,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 10
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "TrainingConfig",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "DatasetSpec",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "jobs.create_run",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "jobs.read_status",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "jobs.read_config",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "(tmp_path / run_id / \"config.json\").is_file",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "(tmp_path / run_id / \"config.json\").read_text",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "path.read_text(encoding=\"utf-8\").strip().endswith",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "path.read_text(encoding=\"utf-8\").strip",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "path.read_text",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "jobs.create_run",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "TrainingConfig",
+          "lineNumber": 55
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "DatasetSpec",
+          "lineNumber": 57
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "jobs.read_status",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "status.to_dict",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "_running_test_run",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "FakeWorkerProcess",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "str",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "config_path.resolve",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "jobs.cancel_run",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "jobs.read_status",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "_running_test_run",
+          "lineNumber": 87
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "FakeWorkerProcess",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "pytest.raises",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "jobs.cancel_run",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "jobs.read_status",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_cancel_active_run_delegates_to_active_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_cancel_active_run_delegates_to_active_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 102
+        },
+        {
+          "caller": "test_cancel_active_run_delegates_to_active_run",
+          "callee": "jobs.cancel_active_run",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 6,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/test_lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 17,
+      "functions": [
+        {
+          "name": "test_schedule_application_exit_uses_daemon_timer",
+          "startLine": 4,
+          "endLine": 25,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_schedule_application_exit_uses_daemon_timer",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "scheduled.update",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_schedule_application_exit_uses_daemon_timer",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_schedule_application_exit_uses_daemon_timer",
+          "callee": "lifecycle.schedule_application_exit",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 25,
+      "functions": [
+        {
+          "name": "test_config_round_trip",
+          "startLine": 8,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "test_config_requires_push_destination",
+          "startLine": 20,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "test_run_path_rejects_traversal",
+          "startLine": 32,
+          "endLine": 34,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_preset_values_are_bounded",
+          "startLine": 37,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_config_round_trip",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_requires_push_destination",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "test_run_path_rejects_traversal",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "test_preset_values_are_bounded",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_config_round_trip",
+          "callee": "TrainingConfig",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_config_round_trip",
+          "callee": "DatasetSpec",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_config_round_trip",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_config_round_trip",
+          "callee": "original.to_dict",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_config_round_trip",
+          "callee": "restored.validate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_config_requires_push_destination",
+          "callee": "TrainingConfig",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_config_requires_push_destination",
+          "callee": "DatasetSpec",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_config_requires_push_destination",
+          "callee": "config.validate",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_run_path_rejects_traversal",
+          "callee": "pytest.raises",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_run_path_rejects_traversal",
+          "callee": "run_path",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_preset_values_are_bounded",
+          "callee": "set",
+          "lineNumber": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    }
+  ]
+}

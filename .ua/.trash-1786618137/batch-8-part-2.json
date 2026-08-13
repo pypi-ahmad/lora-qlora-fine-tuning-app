@@ -1,0 +1,1581 @@
+{
+  "nodes": [
+    {
+      "id": "file:docs/assets/site.css",
+      "type": "file",
+      "name": "site.css",
+      "filePath": "docs/assets/site.css",
+      "summary": "Provides the styling shared by the generated tutorial documentation site.",
+      "tags": [
+        "documentation",
+        "static-site",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/assets/site.js",
+      "type": "file",
+      "name": "site.js",
+      "filePath": "docs/assets/site.js",
+      "summary": "Provides client-side navigation, theme, and search behavior for the generated tutorial site.",
+      "tags": [
+        "documentation",
+        "static-site",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:examples/preference_sample.jsonl",
+      "type": "file",
+      "name": "preference_sample.jsonl",
+      "filePath": "examples/preference_sample.jsonl",
+      "summary": "Supplies a small preference-pair dataset example for alignment-training workflows.",
+      "tags": [
+        "example-data",
+        "training-data",
+        "jsonl"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:examples/sft_sample.jsonl",
+      "type": "file",
+      "name": "sft_sample.jsonl",
+      "filePath": "examples/sft_sample.jsonl",
+      "summary": "Supplies a small supervised fine-tuning dataset example for quick application tests.",
+      "tags": [
+        "example-data",
+        "training-data",
+        "jsonl"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/build_tutorial.py",
+      "type": "file",
+      "name": "build_tutorial.py",
+      "filePath": "scripts/build_tutorial.py",
+      "summary": "Builds the Zero to Mastery tutorial into a multi-page HTML site and a verified PDF handbook.",
+      "tags": [
+        "tutorial",
+        "build-tool",
+        "documentation",
+        "automation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:slugify",
+      "type": "function",
+      "name": "slugify",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        85,
+        88
+      ],
+      "summary": "Converts text into a URL-safe chapter slug.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:split_source",
+      "type": "function",
+      "name": "split_source",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        91,
+        102
+      ],
+      "summary": "Separates a source reference into display components.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:render_markdown",
+      "type": "function",
+      "name": "render_markdown",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        105,
+        111
+      ],
+      "summary": "Renders Markdown input as HTML.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:plain_text",
+      "type": "function",
+      "name": "plain_text",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        114,
+        115
+      ],
+      "summary": "Removes markup for text-only output.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:pdf_safe",
+      "type": "function",
+      "name": "pdf_safe",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        118,
+        134
+      ],
+      "summary": "Normalizes rendered text for the PDF renderer.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:chapter_summary",
+      "type": "function",
+      "name": "chapter_summary",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        137,
+        143
+      ],
+      "summary": "Extracts a concise summary from rendered chapter content.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:load_course",
+      "type": "function",
+      "name": "load_course",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        146,
+        175
+      ],
+      "summary": "Loads and parses the tutorial source into chapter records.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:nav_items",
+      "type": "function",
+      "name": "nav_items",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        178,
+        189
+      ],
+      "summary": "Builds navigation links for tutorial chapters.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:site_shell",
+      "type": "function",
+      "name": "site_shell",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        192,
+        250
+      ],
+      "summary": "Wraps page content in the shared HTML site shell.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:index_content",
+      "type": "function",
+      "name": "index_content",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        253,
+        280
+      ],
+      "summary": "Builds the tutorial landing-page content.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:chapter_content",
+      "type": "function",
+      "name": "chapter_content",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        283,
+        301
+      ],
+      "summary": "Builds the content for one tutorial chapter page.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:rewrite_root_links",
+      "type": "function",
+      "name": "rewrite_root_links",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        304,
+        317
+      ],
+      "summary": "Rewrites root-relative links for generated pages.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:build_search_index",
+      "type": "function",
+      "name": "build_search_index",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        320,
+        338
+      ],
+      "summary": "Builds the browser search index from tutorial chapters.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:build_site_files",
+      "type": "function",
+      "name": "build_site_files",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        341,
+        370
+      ],
+      "summary": "Assembles generated HTML, assets, manifest, and PDF files.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:pdf_styles",
+      "type": "function",
+      "name": "pdf_styles",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        441,
+        531
+      ],
+      "summary": "Defines ReportLab styles used by the tutorial PDF.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:inline_markup",
+      "type": "function",
+      "name": "inline_markup",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        534,
+        549
+      ],
+      "summary": "Converts inline HTML markup into PDF flowables.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:paragraph_from_tag",
+      "type": "function",
+      "name": "paragraph_from_tag",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        552,
+        554
+      ],
+      "summary": "Converts an HTML tag to a ReportLab paragraph.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:table_flowable",
+      "type": "function",
+      "name": "table_flowable",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        557,
+        596
+      ],
+      "summary": "Converts an HTML table into a ReportLab table.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:list_flowable",
+      "type": "function",
+      "name": "list_flowable",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        599,
+        629
+      ],
+      "summary": "Converts an HTML list into ReportLab flowables.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:html_to_flowables",
+      "type": "function",
+      "name": "html_to_flowables",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        632,
+        702
+      ],
+      "summary": "Converts rendered tutorial HTML into PDF flowable elements.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:cover_flowables",
+      "type": "function",
+      "name": "cover_flowables",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        705,
+        773
+      ],
+      "summary": "Builds the tutorial PDF cover pages.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:build_pdf",
+      "type": "function",
+      "name": "build_pdf",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        776,
+        825
+      ],
+      "summary": "Generates the tutorial handbook PDF from parsed chapters.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:file_digest",
+      "type": "function",
+      "name": "file_digest",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        828,
+        829
+      ],
+      "summary": "Calculates a content digest for a generated file.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:manifest_bytes",
+      "type": "function",
+      "name": "manifest_bytes",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        832,
+        841
+      ],
+      "summary": "Serializes the generated-site file manifest.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:read_manifest",
+      "type": "function",
+      "name": "read_manifest",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        844,
+        852
+      ],
+      "summary": "Reads a prior generated-site manifest.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:write_site",
+      "type": "function",
+      "name": "write_site",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        855,
+        866
+      ],
+      "summary": "Writes generated tutorial files to the output directory.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:compare_files",
+      "type": "function",
+      "name": "compare_files",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        869,
+        883
+      ],
+      "summary": "Compares generated files with the checked-in output.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:pdf_content_signature",
+      "type": "function",
+      "name": "pdf_content_signature",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        886,
+        897
+      ],
+      "summary": "Extracts a stable signature for PDF verification.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:run",
+      "type": "function",
+      "name": "run",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        900,
+        932
+      ],
+      "summary": "Builds or verifies tutorial artifacts and reports mismatches.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        935,
+        943
+      ],
+      "summary": "Parses command-line arguments and invokes the tutorial build workflow.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:scripts/build_tutorial.py:Chapter",
+      "type": "class",
+      "name": "Chapter",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        72,
+        82
+      ],
+      "summary": "Stores parsed tutorial chapter metadata and its source filename.",
+      "tags": [
+        "python",
+        "class",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:scripts/build_tutorial.py:HandbookDocTemplate",
+      "type": "class",
+      "name": "HandbookDocTemplate",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        373,
+        438
+      ],
+      "summary": "Customizes ReportLab document metadata, cover pages, headers, and footers for the handbook.",
+      "tags": [
+        "python",
+        "class",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/tutorial_assets/site.css",
+      "type": "file",
+      "name": "site.css",
+      "filePath": "scripts/tutorial_assets/site.css",
+      "summary": "Stores source CSS copied into the generated tutorial website.",
+      "tags": [
+        "tutorial",
+        "build-tool",
+        "documentation",
+        "automation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/tutorial_assets/site.js",
+      "type": "file",
+      "name": "site.js",
+      "filePath": "scripts/tutorial_assets/site.js",
+      "summary": "Stores source JavaScript copied into the generated tutorial website.",
+      "tags": [
+        "tutorial",
+        "build-tool",
+        "documentation",
+        "automation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/lora_finetune_studio/__init__.py",
+      "summary": "Defines the lora_finetune_studio Python package namespace.",
+      "tags": [
+        "python",
+        "service",
+        "local-runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/cli.py",
+      "type": "file",
+      "name": "cli.py",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "summary": "Provides the console entry point that launches the Streamlit application.",
+      "tags": [
+        "python",
+        "service",
+        "local-runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "lineRange": [
+        11,
+        14
+      ],
+      "summary": "Parses command-line arguments and invokes the tutorial build workflow.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/hardware.py",
+      "type": "file",
+      "name": "hardware.py",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "summary": "Detects local hardware and software readiness, reports CUDA memory, and makes conservative model-size recommendations.",
+      "tags": [
+        "python",
+        "service",
+        "local-runtime"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:_package_status",
+      "type": "function",
+      "name": "_package_status",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        61,
+        66
+      ],
+      "summary": "Reports whether a named optional package is installed and its version.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "function",
+      "name": "scan_system",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        69,
+        115
+      ],
+      "summary": "Collects a read-only operating-system, runtime, resource, and integration inventory.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "function",
+      "name": "cuda_memory_stats",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        118,
+        128
+      ],
+      "summary": "Reads current first-GPU CUDA memory statistics.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "type": "function",
+      "name": "release_unused_cuda_memory",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        131,
+        136
+      ],
+      "summary": "Requests garbage collection and clears unused PyTorch CUDA cache.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "function",
+      "name": "detect_hardware",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        139,
+        178
+      ],
+      "summary": "Builds the hardware profile used to constrain training choices.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "function",
+      "name": "model_size_warning",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        181,
+        192
+      ],
+      "summary": "Returns a warning when a model is unsuitable for the detected hardware.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats",
+      "type": "class",
+      "name": "CudaMemoryStats",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        26,
+        32
+      ],
+      "summary": "Immutable value object for first-GPU CUDA memory measurements.",
+      "tags": [
+        "python",
+        "class",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:SoftwareStatus",
+      "type": "class",
+      "name": "SoftwareStatus",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        36,
+        41
+      ],
+      "summary": "Immutable value object for optional integration availability and version detail.",
+      "tags": [
+        "python",
+        "class",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:SystemScan",
+      "type": "class",
+      "name": "SystemScan",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        45,
+        58
+      ],
+      "summary": "Immutable record of local operating-system, runtime, resource, and software scan results.",
+      "tags": [
+        "python",
+        "class",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/inference.py",
+      "type": "file",
+      "name": "inference.py",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "summary": "Runs short-lived, quantized adapter inference for comparing a completed training run.",
+      "tags": [
+        "python",
+        "service",
+        "local-runtime"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "function",
+      "name": "generate_text",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "lineRange": [
+        15,
+        39
+      ],
+      "summary": "Runs adapter inference and ensures CUDA cache cleanup afterward.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "function",
+      "name": "_generate_text",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "lineRange": [
+        42,
+        85
+      ],
+      "summary": "Loads a quantized causal model and optional adapter, then generates a response.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/lifecycle.py",
+      "type": "file",
+      "name": "lifecycle.py",
+      "filePath": "src/lora_finetune_studio/lifecycle.py",
+      "summary": "Provides a delayed process-exit helper so Streamlit can render shutdown feedback.",
+      "tags": [
+        "python",
+        "service",
+        "local-runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/lifecycle.py:schedule_application_exit",
+      "type": "function",
+      "name": "schedule_application_exit",
+      "filePath": "src/lora_finetune_studio/lifecycle.py",
+      "lineRange": [
+        10,
+        17
+      ],
+      "summary": "Schedules a daemon timer to end the application process after a short delay.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:slugify",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:slugify",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:split_source",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:split_source",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:render_markdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:render_markdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:plain_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:plain_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:pdf_safe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:pdf_safe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:chapter_summary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:chapter_summary",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:load_course",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:load_course",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:nav_items",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:nav_items",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:site_shell",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:site_shell",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:index_content",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:index_content",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:chapter_content",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:chapter_content",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:rewrite_root_links",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:rewrite_root_links",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:build_search_index",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:build_search_index",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:build_site_files",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:build_site_files",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:pdf_styles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:pdf_styles",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:inline_markup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:inline_markup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:paragraph_from_tag",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:paragraph_from_tag",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:table_flowable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:table_flowable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:list_flowable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:list_flowable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:html_to_flowables",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:html_to_flowables",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:cover_flowables",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:cover_flowables",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:build_pdf",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:build_pdf",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:file_digest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:file_digest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:manifest_bytes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:manifest_bytes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:read_manifest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:read_manifest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:write_site",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:write_site",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:compare_files",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:compare_files",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:pdf_content_signature",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:pdf_content_signature",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "class:scripts/build_tutorial.py:Chapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "class:scripts/build_tutorial.py:Chapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "class:scripts/build_tutorial.py:HandbookDocTemplate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "class:scripts/build_tutorial.py:HandbookDocTemplate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/cli.py",
+      "target": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/cli.py",
+      "target": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:_package_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:_package_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:SoftwareStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:SoftwareStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:SystemScan",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:SystemScan",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "file:src/lora_finetune_studio/hardware.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/lifecycle.py",
+      "target": "function:src/lora_finetune_studio/lifecycle.py:schedule_application_exit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lora_finetune_studio/lifecycle.py",
+      "target": "function:src/lora_finetune_studio/lifecycle.py:schedule_application_exit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "target": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

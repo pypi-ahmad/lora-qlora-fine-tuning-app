@@ -1,0 +1,362 @@
+{
+  "scriptCompleted": true,
+  "directoryGroups": {
+    "root": [
+      "document:CODE_OF_CONDUCT.md",
+      "document:CHANGELOG.md",
+      "document:CONTRIBUTING.md",
+      "file:Launch LoRA Studio.cmd",
+      "file:Launch LoRA Studio.sh",
+      "document:README.md",
+      "document:SECURITY.md",
+      "document:TECHNICAL.md",
+      "document:USAGE.md",
+      "file:.python-version",
+      "file:streamlit_app.py"
+    ],
+    ".streamlit": [
+      "config:.streamlit/config.toml"
+    ],
+    "examples": [
+      "file:examples/sft_sample.jsonl"
+    ],
+    "src": [
+      "file:src/lora_finetune_studio/__init__.py",
+      "file:src/lora_finetune_studio/cli.py",
+      "file:src/lora_finetune_studio/ollama.py",
+      "file:src/lora_finetune_studio/jobs.py",
+      "file:src/lora_finetune_studio/models.py",
+      "file:src/lora_finetune_studio/sources.py",
+      "file:src/lora_finetune_studio/training.py",
+      "file:src/lora_finetune_studio/worker.py",
+      "file:src/lora_finetune_studio/hardware.py",
+      "file:src/lora_finetune_studio/inference.py",
+      "file:src/lora_finetune_studio/lifecycle.py"
+    ],
+    ".github": [
+      "pipeline:.github/workflows/ci.yml"
+    ],
+    "config": [
+      "config:pyproject.toml"
+    ],
+    "app_pages": [
+      "file:app_pages/dataset.py",
+      "file:app_pages/gpu_memory.py",
+      "file:app_pages/model.py",
+      "file:app_pages/monitor.py",
+      "file:app_pages/ollama.py",
+      "file:app_pages/review.py",
+      "file:app_pages/system.py",
+      "file:app_pages/training.py"
+    ],
+    "docs": [
+      "file:docs/index.html"
+    ],
+    "tests": [
+      "file:tests/test_app.py",
+      "file:tests/test_hardware.py",
+      "file:tests/test_inference.py",
+      "file:tests/test_jobs.py",
+      "file:tests/test_lifecycle.py",
+      "file:tests/test_models.py",
+      "file:tests/test_sources.py",
+      "file:tests/test_training.py"
+    ]
+  },
+  "nodeTypeGroups": {
+    "document": [
+      "document:CODE_OF_CONDUCT.md",
+      "document:CHANGELOG.md",
+      "document:CONTRIBUTING.md",
+      "document:README.md",
+      "document:SECURITY.md",
+      "document:TECHNICAL.md",
+      "document:USAGE.md"
+    ],
+    "config": [
+      "config:.streamlit/config.toml",
+      "config:pyproject.toml"
+    ],
+    "file": [
+      "file:examples/sft_sample.jsonl",
+      "file:src/lora_finetune_studio/__init__.py",
+      "file:src/lora_finetune_studio/cli.py",
+      "file:src/lora_finetune_studio/ollama.py",
+      "file:src/lora_finetune_studio/jobs.py",
+      "file:src/lora_finetune_studio/models.py",
+      "file:src/lora_finetune_studio/sources.py",
+      "file:src/lora_finetune_studio/training.py",
+      "file:src/lora_finetune_studio/worker.py",
+      "file:Launch LoRA Studio.cmd",
+      "file:Launch LoRA Studio.sh",
+      "file:.python-version",
+      "file:app_pages/dataset.py",
+      "file:app_pages/gpu_memory.py",
+      "file:app_pages/model.py",
+      "file:app_pages/monitor.py",
+      "file:app_pages/ollama.py",
+      "file:app_pages/review.py",
+      "file:app_pages/system.py",
+      "file:app_pages/training.py",
+      "file:docs/index.html",
+      "file:src/lora_finetune_studio/hardware.py",
+      "file:src/lora_finetune_studio/inference.py",
+      "file:src/lora_finetune_studio/lifecycle.py",
+      "file:streamlit_app.py",
+      "file:tests/test_app.py",
+      "file:tests/test_hardware.py",
+      "file:tests/test_inference.py",
+      "file:tests/test_jobs.py",
+      "file:tests/test_lifecycle.py",
+      "file:tests/test_models.py",
+      "file:tests/test_sources.py",
+      "file:tests/test_training.py"
+    ],
+    "pipeline": [
+      "pipeline:.github/workflows/ci.yml"
+    ]
+  },
+  "crossCategoryEdges": [
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "imports",
+      "count": 10
+    },
+    {
+      "fromType": "file",
+      "toType": "config",
+      "edgeType": "depends_on",
+      "count": 2
+    },
+    {
+      "fromType": "document",
+      "toType": "file",
+      "edgeType": "documents",
+      "count": 4
+    },
+    {
+      "fromType": "document",
+      "toType": "config",
+      "edgeType": "documents",
+      "count": 1
+    },
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "tested_by",
+      "count": 6
+    }
+  ],
+  "interGroupImports": [
+    {
+      "from": "src",
+      "to": "src",
+      "count": 10
+    }
+  ],
+  "intraGroupDensity": {
+    "root": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    ".streamlit": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "examples": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "src": {
+      "internalEdges": 10,
+      "totalEdges": 20,
+      "density": 0.5
+    },
+    ".github": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "config": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "app_pages": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "docs": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "tests": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    }
+  },
+  "patternMatches": {
+    "root": "root",
+    ".streamlit": "unclassified",
+    "examples": "unclassified",
+    "src": "unclassified",
+    ".github": "ci-cd",
+    "config": "config",
+    "app_pages": "unclassified",
+    "docs": "documentation",
+    "tests": "test"
+  },
+  "deploymentTopology": {
+    "hasDockerfile": false,
+    "hasCompose": false,
+    "hasK8s": false,
+    "hasTerraform": false,
+    "hasCI": true,
+    "infraFiles": [
+      ".github/workflows/ci.yml"
+    ]
+  },
+  "dataPipeline": {
+    "schemaFiles": [],
+    "migrationFiles": [],
+    "dataModelFiles": [
+      "src/lora_finetune_studio/models.py",
+      "app_pages/dataset.py",
+      "tests/test_models.py"
+    ],
+    "apiHandlerFiles": []
+  },
+  "docCoverage": {
+    "groupsWithDocs": 1,
+    "totalGroups": 9,
+    "coverageRatio": 0.1111111111111111,
+    "undocumentedGroups": [
+      ".streamlit",
+      "examples",
+      "src",
+      ".github",
+      "config",
+      "app_pages",
+      "docs",
+      "tests"
+    ]
+  },
+  "dependencyDirection": [],
+  "fileStats": {
+    "totalFileNodes": 43,
+    "filesPerGroup": {
+      "root": 11,
+      ".streamlit": 1,
+      "examples": 1,
+      "src": 11,
+      ".github": 1,
+      "config": 1,
+      "app_pages": 8,
+      "docs": 1,
+      "tests": 8
+    },
+    "nodeTypeCounts": {
+      "document": 7,
+      "config": 2,
+      "file": 33,
+      "pipeline": 1
+    }
+  },
+  "fileFanIn": {
+    "document:CODE_OF_CONDUCT.md": 0,
+    "config:.streamlit/config.toml": 0,
+    "file:examples/sft_sample.jsonl": 0,
+    "file:src/lora_finetune_studio/__init__.py": 0,
+    "file:src/lora_finetune_studio/cli.py": 0,
+    "file:src/lora_finetune_studio/ollama.py": 0,
+    "file:src/lora_finetune_studio/jobs.py": 2,
+    "file:src/lora_finetune_studio/models.py": 4,
+    "file:src/lora_finetune_studio/sources.py": 2,
+    "file:src/lora_finetune_studio/training.py": 1,
+    "file:src/lora_finetune_studio/worker.py": 0,
+    "pipeline:.github/workflows/ci.yml": 0,
+    "document:CHANGELOG.md": 0,
+    "document:CONTRIBUTING.md": 0,
+    "file:Launch LoRA Studio.cmd": 0,
+    "file:Launch LoRA Studio.sh": 0,
+    "document:README.md": 0,
+    "document:SECURITY.md": 0,
+    "document:TECHNICAL.md": 0,
+    "document:USAGE.md": 0,
+    "config:pyproject.toml": 0,
+    "file:.python-version": 0,
+    "file:app_pages/dataset.py": 0,
+    "file:app_pages/gpu_memory.py": 0,
+    "file:app_pages/model.py": 0,
+    "file:app_pages/monitor.py": 0,
+    "file:app_pages/ollama.py": 0,
+    "file:app_pages/review.py": 0,
+    "file:app_pages/system.py": 0,
+    "file:app_pages/training.py": 0,
+    "file:docs/index.html": 0,
+    "file:src/lora_finetune_studio/hardware.py": 1,
+    "file:src/lora_finetune_studio/inference.py": 0,
+    "file:src/lora_finetune_studio/lifecycle.py": 0,
+    "file:streamlit_app.py": 0,
+    "file:tests/test_app.py": 0,
+    "file:tests/test_hardware.py": 0,
+    "file:tests/test_inference.py": 0,
+    "file:tests/test_jobs.py": 0,
+    "file:tests/test_lifecycle.py": 0,
+    "file:tests/test_models.py": 0,
+    "file:tests/test_sources.py": 0,
+    "file:tests/test_training.py": 0
+  },
+  "fileFanOut": {
+    "document:CODE_OF_CONDUCT.md": 0,
+    "config:.streamlit/config.toml": 0,
+    "file:examples/sft_sample.jsonl": 0,
+    "file:src/lora_finetune_studio/__init__.py": 0,
+    "file:src/lora_finetune_studio/cli.py": 0,
+    "file:src/lora_finetune_studio/ollama.py": 0,
+    "file:src/lora_finetune_studio/jobs.py": 1,
+    "file:src/lora_finetune_studio/models.py": 0,
+    "file:src/lora_finetune_studio/sources.py": 0,
+    "file:src/lora_finetune_studio/training.py": 3,
+    "file:src/lora_finetune_studio/worker.py": 4,
+    "pipeline:.github/workflows/ci.yml": 0,
+    "document:CHANGELOG.md": 0,
+    "document:CONTRIBUTING.md": 0,
+    "file:Launch LoRA Studio.cmd": 0,
+    "file:Launch LoRA Studio.sh": 0,
+    "document:README.md": 0,
+    "document:SECURITY.md": 0,
+    "document:TECHNICAL.md": 0,
+    "document:USAGE.md": 0,
+    "config:pyproject.toml": 0,
+    "file:.python-version": 0,
+    "file:app_pages/dataset.py": 0,
+    "file:app_pages/gpu_memory.py": 0,
+    "file:app_pages/model.py": 0,
+    "file:app_pages/monitor.py": 0,
+    "file:app_pages/ollama.py": 0,
+    "file:app_pages/review.py": 0,
+    "file:app_pages/system.py": 0,
+    "file:app_pages/training.py": 0,
+    "file:docs/index.html": 0,
+    "file:src/lora_finetune_studio/hardware.py": 1,
+    "file:src/lora_finetune_studio/inference.py": 1,
+    "file:src/lora_finetune_studio/lifecycle.py": 0,
+    "file:streamlit_app.py": 0,
+    "file:tests/test_app.py": 0,
+    "file:tests/test_hardware.py": 0,
+    "file:tests/test_inference.py": 0,
+    "file:tests/test_jobs.py": 0,
+    "file:tests/test_lifecycle.py": 0,
+    "file:tests/test_models.py": 0,
+    "file:tests/test_sources.py": 0,
+    "file:tests/test_training.py": 0
+  }
+}

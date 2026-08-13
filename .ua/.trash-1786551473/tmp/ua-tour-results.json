@@ -1,0 +1,939 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "document:README.md",
+      "score": 7,
+      "name": "README.md",
+      "summary": "Project overview and primary onboarding guide covering features, hardware requirements, GitHub installation, Hugging Face access, launchers, first training, and project boundaries."
+    },
+    {
+      "id": "document:CHANGELOG.md",
+      "score": 2,
+      "name": "CHANGELOG.md",
+      "summary": "Records user-visible additions, runtime changes, and security updates for LoRA Fine-tune Studio releases."
+    },
+    {
+      "id": "document:CODE_OF_CONDUCT.md",
+      "score": 2,
+      "name": "CODE_OF_CONDUCT.md",
+      "summary": "Defines community expectations, incident reporting, and enforcement for project contributors and participants."
+    },
+    {
+      "id": "document:CONTRIBUTING.md",
+      "score": 2,
+      "name": "CONTRIBUTING.md",
+      "summary": "Describes the local development setup, required quality checks, workflow, and pull-request expectations."
+    },
+    {
+      "id": "document:SECURITY.md",
+      "score": 2,
+      "name": "SECURITY.md",
+      "summary": "States supported versions, private vulnerability reporting, security controls, and safe operating guidance for the local training application."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:streamlit_app.py",
+      "fanIn": 7,
+      "name": "streamlit_app.py"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:TrainingConfig",
+      "fanIn": 5,
+      "name": "TrainingConfig"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "fanIn": 5,
+      "name": "pyproject.toml"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:write_json_atomic",
+      "fanIn": 5,
+      "name": "write_json_atomic"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/models.py",
+      "fanIn": 4,
+      "name": "models.py"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:get_hf_token",
+      "fanIn": 4,
+      "name": "get_hf_token"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:JobStatus",
+      "fanIn": 3,
+      "name": "JobStatus"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "fanIn": 3,
+      "name": "release_unused_cuda_memory"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "fanIn": 3,
+      "name": "_generate_text"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:_is_training_worker",
+      "fanIn": 3,
+      "name": "_is_training_worker"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:active_run",
+      "fanIn": 3,
+      "name": "active_run"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:cancel_run",
+      "fanIn": 3,
+      "name": "cancel_run"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:launch_run",
+      "fanIn": 3,
+      "name": "launch_run"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:read_status",
+      "fanIn": 3,
+      "name": "read_status"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:load_training_dataset",
+      "fanIn": 3,
+      "name": "load_training_dataset"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:validate_upload",
+      "fanIn": 3,
+      "name": "validate_upload"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_normalize_dataset",
+      "fanIn": 3,
+      "name": "_normalize_dataset"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_split_dataset",
+      "fanIn": 3,
+      "name": "_split_dataset"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:train",
+      "fanIn": 3,
+      "name": "train"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats",
+      "fanIn": 2,
+      "name": "CudaMemoryStats"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:src/lora_finetune_studio/jobs.py",
+      "fanOut": 23,
+      "name": "jobs.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/hardware.py",
+      "fanOut": 20,
+      "name": "hardware.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/sources.py",
+      "fanOut": 19,
+      "name": "sources.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/models.py",
+      "fanOut": 18,
+      "name": "models.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/training.py",
+      "fanOut": 12,
+      "name": "training.py"
+    },
+    {
+      "id": "file:tests/test_hardware.py",
+      "fanOut": 12,
+      "name": "test_hardware.py"
+    },
+    {
+      "id": "file:tests/test_jobs.py",
+      "fanOut": 10,
+      "name": "test_jobs.py"
+    },
+    {
+      "id": "file:tests/test_sources.py",
+      "fanOut": 10,
+      "name": "test_sources.py"
+    },
+    {
+      "id": "document:README.md",
+      "fanOut": 6,
+      "name": "README.md"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/inference.py",
+      "fanOut": 6,
+      "name": "inference.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/ollama.py",
+      "fanOut": 6,
+      "name": "ollama.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/worker.py",
+      "fanOut": 6,
+      "name": "worker.py"
+    },
+    {
+      "id": "file:tests/test_models.py",
+      "fanOut": 4,
+      "name": "test_models.py"
+    },
+    {
+      "id": "file:tests/test_training.py",
+      "fanOut": 4,
+      "name": "test_training.py"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:train",
+      "fanOut": 4,
+      "name": "train"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/worker.py:main",
+      "fanOut": 4,
+      "name": "main"
+    },
+    {
+      "id": "document:USAGE.md",
+      "fanOut": 3,
+      "name": "USAGE.md"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/lifecycle.py",
+      "fanOut": 3,
+      "name": "lifecycle.py"
+    },
+    {
+      "id": "document:TECHNICAL.md",
+      "fanOut": 2,
+      "name": "TECHNICAL.md"
+    },
+    {
+      "id": "file:app_pages/monitor.py",
+      "fanOut": 2,
+      "name": "monitor.py"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": null,
+    "order": [],
+    "depthMap": {},
+    "byDepth": {}
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:CHANGELOG.md",
+        "name": "CHANGELOG.md",
+        "type": "document",
+        "summary": "Records user-visible additions, runtime changes, and security updates for LoRA Fine-tune Studio releases."
+      },
+      {
+        "id": "document:CODE_OF_CONDUCT.md",
+        "name": "CODE_OF_CONDUCT.md",
+        "type": "document",
+        "summary": "Defines community expectations, incident reporting, and enforcement for project contributors and participants."
+      },
+      {
+        "id": "document:CONTRIBUTING.md",
+        "name": "CONTRIBUTING.md",
+        "type": "document",
+        "summary": "Describes the local development setup, required quality checks, workflow, and pull-request expectations."
+      },
+      {
+        "id": "document:README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Project overview and primary onboarding guide covering features, hardware requirements, GitHub installation, Hugging Face access, launchers, first training, and project boundaries."
+      },
+      {
+        "id": "document:SECURITY.md",
+        "name": "SECURITY.md",
+        "type": "document",
+        "summary": "States supported versions, private vulnerability reporting, security controls, and safe operating guidance for the local training application."
+      },
+      {
+        "id": "document:TECHNICAL.md",
+        "name": "TECHNICAL.md",
+        "type": "document",
+        "summary": "Technical reference for the Streamlit architecture, data and job lifecycles, training implementation, storage, inference, credential boundaries, and testing strategy."
+      },
+      {
+        "id": "document:USAGE.md",
+        "name": "USAGE.md",
+        "type": "document",
+        "summary": "End-user operating guide for system readiness, Hugging Face access, launch, data and model selection, training, monitoring, shutdown, and troubleshooting."
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "pipeline:.github/workflows/ci.yml",
+        "name": "ci.yml",
+        "type": "pipeline",
+        "summary": "GitHub Actions quality workflow that runs the development environment checks on Ubuntu and Windows for push and pull-request events."
+      }
+    ],
+    "data": [],
+    "config": [
+      {
+        "id": "config:pyproject.toml",
+        "name": "pyproject.toml",
+        "type": "config",
+        "summary": "Defines the Python 3.14 package, Streamlit console entry point, CUDA 13 PyTorch index, runtime dependencies, build backend, and development tools."
+      },
+      {
+        "id": "config:.streamlit/config.toml",
+        "name": "config.toml",
+        "type": "config",
+        "summary": "Configures Streamlit's visual theme and server behavior for the local studio."
+      }
+    ]
+  },
+  "clusters": [],
+  "layers": {
+    "count": 5,
+    "list": [
+      {
+        "id": "layer:streamlit-ui",
+        "name": "Streamlit User Interface",
+        "description": "The Streamlit entry point and task-oriented pages that guide users through system checks, model and dataset setup, training, monitoring, review, GPU memory, and Ollama use."
+      },
+      {
+        "id": "layer:training-domain",
+        "name": "Training Domain and Runtime",
+        "description": "LoRA and QLoRA configuration, data and model acquisition, hardware inspection, job lifecycle management, worker execution, inference, and Ollama integration."
+      },
+      {
+        "id": "layer:runtime-configuration",
+        "name": "Runtime Configuration and Launchers",
+        "description": "Cross-platform launch scripts and project settings that establish the uv-managed Python environment and Streamlit runtime."
+      },
+      {
+        "id": "layer:quality-automation",
+        "name": "Quality and Automation",
+        "description": "Pytest coverage for the UI and training runtime plus the GitHub Actions workflow that validates the project on supported platforms."
+      },
+      {
+        "id": "layer:documentation",
+        "name": "Documentation and Project Guidance",
+        "description": "User, technical, contribution, security, conduct, release, and web handbook materials for operating and evolving LoRA Studio."
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:src/lora_finetune_studio/jobs.py": {
+      "name": "jobs.py",
+      "type": "file",
+      "summary": "Manages one durable local training run at a time, persisting token-free configuration and status files while safely launching, resuming, and cancelling its worker process."
+    },
+    "function:src/lora_finetune_studio/jobs.py:write_json_atomic": {
+      "name": "write_json_atomic",
+      "type": "function",
+      "summary": "Atomically writes JSON data to a run artifact path."
+    },
+    "function:src/lora_finetune_studio/jobs.py:read_status": {
+      "name": "read_status",
+      "type": "function",
+      "summary": "Loads and deserializes a training run status."
+    },
+    "function:src/lora_finetune_studio/jobs.py:read_config": {
+      "name": "read_config",
+      "type": "function",
+      "summary": "Loads and deserializes a training run configuration."
+    },
+    "function:src/lora_finetune_studio/jobs.py:_is_training_worker": {
+      "name": "_is_training_worker",
+      "type": "function",
+      "summary": "Verifies that a PID belongs to the expected isolated training worker and configuration."
+    },
+    "function:src/lora_finetune_studio/jobs.py:active_run": {
+      "name": "active_run",
+      "type": "function",
+      "summary": "Finds the active queued or running training run from persisted statuses."
+    },
+    "function:src/lora_finetune_studio/jobs.py:create_run": {
+      "name": "create_run",
+      "type": "function",
+      "summary": "Creates a new run directory and durable initial configuration and status records."
+    },
+    "function:src/lora_finetune_studio/jobs.py:launch_run": {
+      "name": "launch_run",
+      "type": "function",
+      "summary": "Starts the subprocess training worker and records its PID and startup status."
+    },
+    "function:src/lora_finetune_studio/jobs.py:cancel_run": {
+      "name": "cancel_run",
+      "type": "function",
+      "summary": "Safely terminates an owned worker and marks the run as cancelled."
+    },
+    "function:src/lora_finetune_studio/jobs.py:cancel_active_run": {
+      "name": "cancel_active_run",
+      "type": "function",
+      "summary": "Cancels the current owned training run when one exists."
+    },
+    "function:src/lora_finetune_studio/jobs.py:resume_run": {
+      "name": "resume_run",
+      "type": "function",
+      "summary": "Finds the latest checkpoint, updates configuration, and restarts the run."
+    },
+    "function:src/lora_finetune_studio/jobs.py:read_log": {
+      "name": "read_log",
+      "type": "function",
+      "summary": "Returns a bounded tail of a run's training log."
+    },
+    "file:src/lora_finetune_studio/models.py": {
+      "name": "models.py",
+      "type": "file",
+      "summary": "Defines the typed configuration, status, hardware, PEFT, and preset contracts shared by the Streamlit UI and training worker."
+    },
+    "class:src/lora_finetune_studio/models.py:PeftMode": {
+      "name": "PeftMode",
+      "type": "class",
+      "summary": "Enumerates supported parameter-efficient fine-tuning modes."
+    },
+    "class:src/lora_finetune_studio/models.py:Preset": {
+      "name": "Preset",
+      "type": "class",
+      "summary": "Enumerates available training-quality presets."
+    },
+    "class:src/lora_finetune_studio/models.py:JobState": {
+      "name": "JobState",
+      "type": "class",
+      "summary": "Enumerates durable training job lifecycle states."
+    },
+    "class:src/lora_finetune_studio/models.py:HardwareProfile": {
+      "name": "HardwareProfile",
+      "type": "class",
+      "summary": "Carries detected accelerator and capacity recommendations for the UI."
+    },
+    "class:src/lora_finetune_studio/models.py:DatasetSpec": {
+      "name": "DatasetSpec",
+      "type": "class",
+      "summary": "Describes a Hugging Face or uploaded dataset and its column mapping."
+    },
+    "class:src/lora_finetune_studio/models.py:TrainingConfig": {
+      "name": "TrainingConfig",
+      "type": "class",
+      "summary": "Validates and serializes all settings needed for a local fine-tuning run."
+    },
+    "class:src/lora_finetune_studio/models.py:JobStatus": {
+      "name": "JobStatus",
+      "type": "class",
+      "summary": "Serializes the progress, process identity, errors, and artifacts of a training run."
+    },
+    "function:src/lora_finetune_studio/models.py:apply_preset": {
+      "name": "apply_preset",
+      "type": "function",
+      "summary": "Applies the selected preset values to a training configuration."
+    },
+    "function:src/lora_finetune_studio/models.py:run_path": {
+      "name": "run_path",
+      "type": "function",
+      "summary": "Builds a validated path for a training run identifier."
+    },
+    "file:src/lora_finetune_studio/sources.py": {
+      "name": "sources.py",
+      "type": "file",
+      "summary": "Validates Hugging Face repository inputs and uploaded datasets, then loads and inspects training data without exposing credentials."
+    },
+    "class:src/lora_finetune_studio/sources.py:DatasetInspection": {
+      "name": "DatasetInspection",
+      "type": "class",
+      "summary": "Represents detected dataset columns, format, size, and preview rows."
+    },
+    "function:src/lora_finetune_studio/sources.py:get_hf_token": {
+      "name": "get_hf_token",
+      "type": "function",
+      "summary": "Reads the Hugging Face token from the process environment."
+    },
+    "function:src/lora_finetune_studio/sources.py:parse_hf_repo": {
+      "name": "parse_hf_repo",
+      "type": "function",
+      "summary": "Accepts a safe Hugging Face repository ID or root URL and normalizes it."
+    },
+    "function:src/lora_finetune_studio/sources.py:token_identity": {
+      "name": "token_identity",
+      "type": "function",
+      "summary": "Returns a non-secret identity for a provided Hugging Face token."
+    },
+    "function:src/lora_finetune_studio/sources.py:model_parameter_count": {
+      "name": "model_parameter_count",
+      "type": "function",
+      "summary": "Reads a model's safetensor parameter count from the Hugging Face Hub."
+    },
+    "function:src/lora_finetune_studio/sources.py:validate_upload": {
+      "name": "validate_upload",
+      "type": "function",
+      "summary": "Restricts uploaded datasets to approved formats and a 200 MB size limit."
+    },
+    "function:src/lora_finetune_studio/sources.py:save_upload": {
+      "name": "save_upload",
+      "type": "function",
+      "summary": "Content-addresses and safely stores a validated local dataset upload."
+    },
+    "function:src/lora_finetune_studio/sources.py:load_training_dataset": {
+      "name": "load_training_dataset",
+      "type": "function",
+      "summary": "Loads a configured Hub or local CSV, JSON, or JSONL dataset."
+    },
+    "function:src/lora_finetune_studio/sources.py:inspect_dataset": {
+      "name": "inspect_dataset",
+      "type": "function",
+      "summary": "Detects common training formats and returns a bounded preview of a dataset."
+    },
+    "file:src/lora_finetune_studio/training.py": {
+      "name": "training.py",
+      "type": "file",
+      "summary": "Implements CUDA-only TRL supervised fine-tuning with LoRA or QLoRA, progress reporting, evaluation, artifacts, and optional Hub publishing."
+    },
+    "class:src/lora_finetune_studio/training.py:StatusCallback": {
+      "name": "StatusCallback",
+      "type": "class",
+      "summary": "Persists selected trainer metrics and progress whenever TRL logs an update."
+    },
+    "function:src/lora_finetune_studio/training.py:_normalize_dataset": {
+      "name": "_normalize_dataset",
+      "type": "function",
+      "summary": "Maps configured text or prompt-completion columns into trainer-ready data and caps sample count."
+    },
+    "function:src/lora_finetune_studio/training.py:_split_dataset": {
+      "name": "_split_dataset",
+      "type": "function",
+      "summary": "Creates an evaluation split when enabled and enough examples are available."
+    },
+    "function:src/lora_finetune_studio/training.py:train": {
+      "name": "train",
+      "type": "function",
+      "summary": "Runs model loading, PEFT configuration, supervised training, artifact saving, evaluation, and optional Hub publishing."
+    },
+    "file:src/lora_finetune_studio/worker.py": {
+      "name": "worker.py",
+      "type": "file",
+      "summary": "Provides the subprocess entry point that transitions a run through running, failed, or completed durable statuses."
+    },
+    "function:src/lora_finetune_studio/worker.py:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "Loads one run configuration, invokes training, redacts tokens from errors, and writes final status."
+    },
+    "pipeline:.github/workflows/ci.yml": {
+      "name": "ci.yml",
+      "type": "pipeline",
+      "summary": "GitHub Actions quality workflow that runs the development environment checks on Ubuntu and Windows for push and pull-request events."
+    },
+    "document:CHANGELOG.md": {
+      "name": "CHANGELOG.md",
+      "type": "document",
+      "summary": "Records user-visible additions, runtime changes, and security updates for LoRA Fine-tune Studio releases."
+    },
+    "document:CODE_OF_CONDUCT.md": {
+      "name": "CODE_OF_CONDUCT.md",
+      "type": "document",
+      "summary": "Defines community expectations, incident reporting, and enforcement for project contributors and participants."
+    },
+    "document:CONTRIBUTING.md": {
+      "name": "CONTRIBUTING.md",
+      "type": "document",
+      "summary": "Describes the local development setup, required quality checks, workflow, and pull-request expectations."
+    },
+    "file:Launch LoRA Studio.cmd": {
+      "name": "Launch LoRA Studio.cmd",
+      "type": "file",
+      "summary": "Windows one-click launcher that installs uv when needed, synchronizes the Python 3.14 environment, safely replaces the LoRA Studio server on port 8504, and opens the application."
+    },
+    "file:Launch LoRA Studio.sh": {
+      "name": "Launch LoRA Studio.sh",
+      "type": "file",
+      "summary": "Linux launcher that installs uv when needed, creates the locked Python 3.14 environment, replaces a prior LoRA Studio server, and starts Streamlit on port 8504."
+    },
+    "document:README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Project overview and primary onboarding guide covering features, hardware requirements, GitHub installation, Hugging Face access, launchers, first training, and project boundaries."
+    },
+    "document:SECURITY.md": {
+      "name": "SECURITY.md",
+      "type": "document",
+      "summary": "States supported versions, private vulnerability reporting, security controls, and safe operating guidance for the local training application."
+    },
+    "document:TECHNICAL.md": {
+      "name": "TECHNICAL.md",
+      "type": "document",
+      "summary": "Technical reference for the Streamlit architecture, data and job lifecycles, training implementation, storage, inference, credential boundaries, and testing strategy."
+    },
+    "document:USAGE.md": {
+      "name": "USAGE.md",
+      "type": "document",
+      "summary": "End-user operating guide for system readiness, Hugging Face access, launch, data and model selection, training, monitoring, shutdown, and troubleshooting."
+    },
+    "config:pyproject.toml": {
+      "name": "pyproject.toml",
+      "type": "config",
+      "summary": "Defines the Python 3.14 package, Streamlit console entry point, CUDA 13 PyTorch index, runtime dependencies, build backend, and development tools."
+    },
+    "file:.python-version": {
+      "name": ".python-version",
+      "type": "file",
+      "summary": "Pins the uv-managed project interpreter to Python 3.14."
+    },
+    "config:.streamlit/config.toml": {
+      "name": "config.toml",
+      "type": "config",
+      "summary": "Configures Streamlit's visual theme and server behavior for the local studio."
+    },
+    "file:app_pages/dataset.py": {
+      "name": "dataset.py",
+      "type": "file",
+      "summary": "Renders the dataset setup page, supporting Hugging Face datasets and local uploads, previewing rows, and saving column mappings for training."
+    },
+    "file:app_pages/gpu_memory.py": {
+      "name": "gpu_memory.py",
+      "type": "file",
+      "summary": "Renders live CUDA memory metrics and safely clears unused cache owned by the Streamlit process when no training job is active."
+    },
+    "file:app_pages/model.py": {
+      "name": "model.py",
+      "type": "file",
+      "summary": "Renders model selection and metadata inspection, recording the selected Hugging Face model and warning when it exceeds detected hardware guidance."
+    },
+    "file:app_pages/monitor.py": {
+      "name": "monitor.py",
+      "type": "file",
+      "summary": "Renders the training monitor, live job status, cancellation and resume controls, logs, and completed-adapter comparison generation."
+    },
+    "function:app_pages/monitor.py:training_monitor": {
+      "name": "training_monitor",
+      "type": "function",
+      "summary": "Refreshes and renders a selected training run's state, metrics, log, cancellation control, and checkpoint-resume control."
+    },
+    "file:app_pages/ollama.py": {
+      "name": "ollama.py",
+      "type": "file",
+      "summary": "Provides an independent Streamlit chat playground for models already installed in local Ollama."
+    },
+    "file:app_pages/review.py": {
+      "name": "review.py",
+      "type": "file",
+      "summary": "Shows the saved training configuration, applies runtime and model-size guards, and launches one local training run."
+    },
+    "file:app_pages/system.py": {
+      "name": "system.py",
+      "type": "file",
+      "summary": "Renders a read-only runtime readiness scan covering native platform, Python, CUDA, VRAM, integrations, and Hugging Face token access."
+    },
+    "file:app_pages/training.py": {
+      "name": "training.py",
+      "type": "file",
+      "summary": "Renders PEFT and trainer settings, applies presets, validates prerequisites, and saves a TrainingConfig for review."
+    },
+    "function:app_pages/training.py:apply_preset_defaults": {
+      "name": "apply_preset_defaults",
+      "type": "function",
+      "summary": "Copies the selected preset's sequence length, epochs, and accumulation values into Streamlit session state."
+    },
+    "file:docs/index.html": {
+      "name": "index.html",
+      "type": "file",
+      "summary": "Standalone zero-to-hero HTML handbook for users, engineers, and business stakeholders of the fine-tuning studio."
+    },
+    "file:examples/sft_sample.jsonl": {
+      "name": "sft_sample.jsonl",
+      "type": "file",
+      "summary": "Provides small JSONL examples for supervised fine-tuning dataset preparation."
+    },
+    "file:src/lora_finetune_studio/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Marks the LoRA Fine-tune Studio source directory as a Python package."
+    },
+    "file:src/lora_finetune_studio/cli.py": {
+      "name": "cli.py",
+      "type": "file",
+      "summary": "Provides the console entry point that starts Streamlit with the repository's main application file."
+    },
+    "function:src/lora_finetune_studio/cli.py:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "Invokes Streamlit's CLI with the resolved project application path."
+    },
+    "file:src/lora_finetune_studio/hardware.py": {
+      "name": "hardware.py",
+      "type": "file",
+      "summary": "Detects host runtime and CUDA capabilities, reports memory, safely releases cached PyTorch VRAM, and derives model-size recommendations."
+    },
+    "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats": {
+      "name": "CudaMemoryStats",
+      "type": "class",
+      "summary": "Stores global GPU free and total memory alongside memory allocated and reserved by this process."
+    },
+    "class:src/lora_finetune_studio/hardware.py:SoftwareStatus": {
+      "name": "SoftwareStatus",
+      "type": "class",
+      "summary": "Represents one detected software integration and its availability detail."
+    },
+    "class:src/lora_finetune_studio/hardware.py:SystemScan": {
+      "name": "SystemScan",
+      "type": "class",
+      "summary": "Captures operating-system, interpreter, CUDA, resource, runtime, and integration readiness data."
+    },
+    "function:src/lora_finetune_studio/hardware.py:_package_status": {
+      "name": "_package_status",
+      "type": "function",
+      "summary": "Checks whether a Python package is installed and returns a displayable availability record."
+    },
+    "function:src/lora_finetune_studio/hardware.py:scan_system": {
+      "name": "scan_system",
+      "type": "function",
+      "summary": "Performs a read-only scan of platform, Python, CUDA, resources, uv environment, and supported integrations."
+    },
+    "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats": {
+      "name": "cuda_memory_stats",
+      "type": "function",
+      "summary": "Returns current CUDA memory totals and this process's allocated and reserved memory, failing clearly without CUDA."
+    },
+    "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory": {
+      "name": "release_unused_cuda_memory",
+      "type": "function",
+      "summary": "Runs garbage collection and clears unused PyTorch CUDA cache when a CUDA device is available."
+    },
+    "function:src/lora_finetune_studio/hardware.py:detect_hardware": {
+      "name": "detect_hardware",
+      "type": "function",
+      "summary": "Builds a HardwareProfile from the detected CUDA device, BF16 capability, VRAM, RAM, disk, and runtime recommendation."
+    },
+    "function:src/lora_finetune_studio/hardware.py:model_size_warning": {
+      "name": "model_size_warning",
+      "type": "function",
+      "summary": "Returns a warning when a selected model exceeds the detected hardware's recommended parameter limit."
+    },
+    "file:src/lora_finetune_studio/inference.py": {
+      "name": "inference.py",
+      "type": "file",
+      "summary": "Loads a Hugging Face causal language model, optionally attaches a PEFT adapter, generates text, and releases process CUDA cache afterward."
+    },
+    "function:src/lora_finetune_studio/inference.py:generate_text": {
+      "name": "generate_text",
+      "type": "function",
+      "summary": "Runs text generation with guaranteed CUDA cache cleanup after model loading and inference."
+    },
+    "function:src/lora_finetune_studio/inference.py:_generate_text": {
+      "name": "_generate_text",
+      "type": "function",
+      "summary": "Builds quantized model and tokenizer instances, optionally loads an adapter, and decodes a generated completion."
+    },
+    "file:src/lora_finetune_studio/lifecycle.py": {
+      "name": "lifecycle.py",
+      "type": "file",
+      "summary": "Schedules a delayed process exit so Streamlit can render shutdown feedback before the server terminates."
+    },
+    "function:src/lora_finetune_studio/lifecycle.py:schedule_application_exit": {
+      "name": "schedule_application_exit",
+      "type": "function",
+      "summary": "Starts a daemon timer that exits the application process after a short configurable delay."
+    },
+    "file:src/lora_finetune_studio/ollama.py": {
+      "name": "ollama.py",
+      "type": "file",
+      "summary": "Implements small HTTP helpers for listing locally installed Ollama models and generating chat responses."
+    },
+    "function:src/lora_finetune_studio/ollama.py:_request": {
+      "name": "_request",
+      "type": "function",
+      "summary": "Sends a JSON request to the configured local Ollama endpoint and decodes its JSON response."
+    },
+    "function:src/lora_finetune_studio/ollama.py:list_models": {
+      "name": "list_models",
+      "type": "function",
+      "summary": "Returns names of models reported by Ollama's local tags endpoint."
+    },
+    "function:src/lora_finetune_studio/ollama.py:generate": {
+      "name": "generate",
+      "type": "function",
+      "summary": "Requests a non-streaming local Ollama generation and returns its response text."
+    },
+    "file:streamlit_app.py": {
+      "name": "streamlit_app.py",
+      "type": "file",
+      "summary": "Bootstraps application session state, token fallback, sidebar navigation, and safe whole-studio shutdown confirmation."
+    },
+    "file:tests/test_app.py": {
+      "name": "test_app.py",
+      "type": "file",
+      "summary": "Exercises Streamlit navigation, shared state, UI controls, and shutdown confirmation without requiring Ollama."
+    },
+    "function:tests/test_app.py:test_app_starts_without_ollama": {
+      "name": "test_app_starts_without_ollama",
+      "type": "function",
+      "summary": "Validates all app pages render and key Streamlit interactions work when Ollama is unavailable."
+    },
+    "file:tests/test_hardware.py": {
+      "name": "test_hardware.py",
+      "type": "file",
+      "summary": "Tests hardware recommendation, CUDA-memory safety, read-only system scanning, and native Linux recognition."
+    },
+    "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit": {
+      "name": "test_model_size_warning_uses_detected_limit",
+      "type": "function",
+      "summary": "Verifies hardware-aware model-size warnings use the detected parameter limit."
+    },
+    "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage": {
+      "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "function",
+      "summary": "Verifies CUDA memory reporting combines device memory with process allocation and reservation values."
+    },
+    "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache": {
+      "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "function",
+      "summary": "Verifies unused CUDA cache cleanup calls garbage collection and PyTorch cache clearing."
+    },
+    "function:tests/test_hardware.py:test_cuda_memory_helpers_reject_cpu_only_system": {
+      "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+      "type": "function",
+      "summary": "Ensures CUDA helpers fail predictably when no CUDA device is available."
+    },
+    "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing": {
+      "name": "test_system_scan_reports_live_resources_without_installing",
+      "type": "function",
+      "summary": "Verifies the readiness scan reports live resources and integrations without changing machine state."
+    },
+    "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux": {
+      "name": "test_system_scan_recognizes_native_linux",
+      "type": "function",
+      "summary": "Verifies the system scan identifies Linux as a supported native runtime."
+    },
+    "file:tests/test_inference.py": {
+      "name": "test_inference.py",
+      "type": "file",
+      "summary": "Tests that inference always releases CUDA cache after model-loading failure."
+    },
+    "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure": {
+      "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "function",
+      "summary": "Asserts generation cleanup runs after a loading error."
+    },
+    "file:tests/test_jobs.py": {
+      "name": "test_jobs.py",
+      "type": "file",
+      "summary": "Tests run persistence and cancellation safeguards, including rejection of unrelated worker processes."
+    },
+    "function:tests/test_jobs.py:test_create_run_persists_safe_config": {
+      "name": "test_create_run_persists_safe_config",
+      "type": "function",
+      "summary": "Verifies run creation persists a sanitized configuration and initial status."
+    },
+    "class:tests/test_jobs.py:FakeWorkerProcess": {
+      "name": "FakeWorkerProcess",
+      "type": "class",
+      "summary": "Provides a controllable fake worker process for cancellation tests."
+    },
+    "function:tests/test_jobs.py:_running_test_run": {
+      "name": "_running_test_run",
+      "type": "function",
+      "summary": "Creates a persisted running test job with a synthetic worker PID."
+    },
+    "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker": {
+      "name": "test_cancel_run_stops_only_its_training_worker",
+      "type": "function",
+      "summary": "Verifies job cancellation only terminates a worker whose command belongs to the recorded training run."
+    },
+    "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process": {
+      "name": "test_cancel_run_rejects_unrelated_process",
+      "type": "function",
+      "summary": "Verifies cancellation refuses to terminate a process that is not the recorded training worker."
+    },
+    "file:tests/test_lifecycle.py": {
+      "name": "test_lifecycle.py",
+      "type": "file",
+      "summary": "Tests delayed application exit scheduling without exiting the test runner."
+    },
+    "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer": {
+      "name": "test_schedule_application_exit_uses_daemon_timer",
+      "type": "function",
+      "summary": "Verifies application exit scheduling uses a daemon timer with the expected callback and delay."
+    },
+    "file:tests/test_models.py": {
+      "name": "test_models.py",
+      "type": "file",
+      "summary": "Tests training configuration serialization, validation, safe run paths, and bounded preset values."
+    },
+    "function:tests/test_models.py:test_config_round_trip": {
+      "name": "test_config_round_trip",
+      "type": "function",
+      "summary": "Verifies training configurations serialize, deserialize, and validate consistently."
+    },
+    "function:tests/test_models.py:test_config_requires_push_destination": {
+      "name": "test_config_requires_push_destination",
+      "type": "function",
+      "summary": "Verifies Hub upload configuration requires an output repository destination."
+    },
+    "file:tests/test_sources.py": {
+      "name": "test_sources.py",
+      "type": "file",
+      "summary": "Tests Hugging Face repository parsing, dataset inspection, and safe uploaded-dataset storage and validation."
+    },
+    "function:tests/test_sources.py:test_parse_hf_repo": {
+      "name": "test_parse_hf_repo",
+      "type": "function",
+      "summary": "Checks that model and dataset repository identifiers are normalized from accepted Hugging Face URLs and slugs."
+    },
+    "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations": {
+      "name": "test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "function",
+      "summary": "Verifies that non-Hugging-Face and path-like repository locations are rejected."
+    },
+    "function:tests/test_sources.py:test_inspect_dataset_detects_messages": {
+      "name": "test_inspect_dataset_detects_messages",
+      "type": "function",
+      "summary": "Verifies message-format detection and row counting for an in-memory dataset."
+    },
+    "function:tests/test_sources.py:test_upload_validation_and_content_addressing": {
+      "name": "test_upload_validation_and_content_addressing",
+      "type": "function",
+      "summary": "Tests that uploaded JSONL data is saved unchanged and receives its allowed file extension."
+    },
+    "function:tests/test_sources.py:test_upload_rejects_unknown_type": {
+      "name": "test_upload_rejects_unknown_type",
+      "type": "function",
+      "summary": "Ensures unsupported upload extensions raise a clear validation error."
+    },
+    "file:tests/test_training.py": {
+      "name": "test_training.py",
+      "type": "file",
+      "summary": "Tests dataset normalization for prompt-completion training and the small-dataset evaluation-split behavior."
+    },
+    "function:tests/test_training.py:test_normalize_prompt_completion_columns": {
+      "name": "test_normalize_prompt_completion_columns",
+      "type": "function",
+      "summary": "Verifies conversion of configured prompt and completion columns into the trainer's canonical schema."
+    },
+    "function:tests/test_training.py:test_small_dataset_skips_eval_split": {
+      "name": "test_small_dataset_skips_eval_split",
+      "type": "function",
+      "summary": "Verifies that a dataset below the evaluation threshold remains entirely in the training split."
+    }
+  },
+  "totalNodes": 118,
+  "totalEdges": 208
+}

@@ -1,0 +1,4997 @@
+{
+  "nodes": [
+    {
+      "id": "document:CODE_OF_CONDUCT.md",
+      "type": "document",
+      "name": "CODE_OF_CONDUCT.md",
+      "filePath": "CODE_OF_CONDUCT.md",
+      "summary": "Defines community expectations, incident reporting, and enforcement for project contributors and participants.",
+      "tags": [
+        "documentation",
+        "community",
+        "governance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.streamlit/config.toml",
+      "type": "config",
+      "name": "config.toml",
+      "filePath": ".streamlit/config.toml",
+      "summary": "Configures Streamlit's visual theme and server behavior for the local studio.",
+      "tags": [
+        "configuration",
+        "streamlit",
+        "theme"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:examples/sft_sample.jsonl",
+      "type": "file",
+      "name": "sft_sample.jsonl",
+      "filePath": "examples/sft_sample.jsonl",
+      "summary": "Provides small JSONL examples for supervised fine-tuning dataset preparation.",
+      "tags": [
+        "example-data",
+        "sft",
+        "dataset",
+        "jsonl"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/lora_finetune_studio/__init__.py",
+      "summary": "Marks the LoRA Fine-tune Studio source directory as a Python package.",
+      "tags": [
+        "python",
+        "package",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/cli.py",
+      "type": "file",
+      "name": "cli.py",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "summary": "Provides the console entry point that starts Streamlit with the repository's main application file.",
+      "tags": [
+        "python",
+        "cli",
+        "entry-point",
+        "streamlit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "lineRange": [
+        11,
+        14
+      ],
+      "summary": "Invokes Streamlit's CLI with the resolved project application path.",
+      "tags": [
+        "cli",
+        "entry-point",
+        "streamlit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "summary": "Implements small HTTP helpers for listing locally installed Ollama models and generating chat responses.",
+      "tags": [
+        "ollama",
+        "http-client",
+        "inference",
+        "local-models"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "function",
+      "name": "_request",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        11,
+        22
+      ],
+      "summary": "Sends a JSON request to the configured local Ollama endpoint and decodes its JSON response.",
+      "tags": [
+        "http-client",
+        "ollama",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "function",
+      "name": "list_models",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        25,
+        27
+      ],
+      "summary": "Returns names of models reported by Ollama's local tags endpoint.",
+      "tags": [
+        "ollama",
+        "model-list",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "function",
+      "name": "generate",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        30,
+        34
+      ],
+      "summary": "Requests a non-streaming local Ollama generation and returns its response text.",
+      "tags": [
+        "ollama",
+        "inference",
+        "chat"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/jobs.py",
+      "type": "file",
+      "name": "jobs.py",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "summary": "Manages durable, single-worker training jobs, their FIFO queue, status files, subprocess lifecycle, cancellation, and resumption.",
+      "tags": [
+        "job-queue",
+        "process-management",
+        "persistence",
+        "training",
+        "tested"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:write_json_atomic",
+      "type": "function",
+      "name": "write_json_atomic",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        32,
+        41
+      ],
+      "summary": "Atomically writes JSON data by replacing a temporary file.",
+      "tags": [
+        "utility",
+        "json",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:_queue_lock",
+      "type": "function",
+      "name": "_queue_lock",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        45,
+        69
+      ],
+      "summary": "Provides a cross-platform exclusive lock for durable queue operations.",
+      "tags": [
+        "locking",
+        "concurrency",
+        "queue"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:_write_queue_unlocked",
+      "type": "function",
+      "name": "_write_queue_unlocked",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        72,
+        76
+      ],
+      "summary": "Persists the ordered run identifier queue while the caller holds the lock.",
+      "tags": [
+        "queue",
+        "persistence",
+        "internal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:_read_queue_unlocked",
+      "type": "function",
+      "name": "_read_queue_unlocked",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        79,
+        121
+      ],
+      "summary": "Reconciles persisted queue metadata with queued run status files and returns FIFO run IDs.",
+      "tags": [
+        "queue",
+        "recovery",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:queued_runs",
+      "type": "function",
+      "name": "queued_runs",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        124,
+        127
+      ],
+      "summary": "Returns queued run IDs in durable first-in-first-out order.",
+      "tags": [
+        "queue",
+        "query",
+        "concurrency"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:list_runs",
+      "type": "function",
+      "name": "list_runs",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        130,
+        149
+      ],
+      "summary": "Orders active, queued, and historical runs for display.",
+      "tags": [
+        "job-queue",
+        "status",
+        "query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:read_status",
+      "type": "function",
+      "name": "read_status",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        152,
+        154
+      ],
+      "summary": "Loads and validates one run status record.",
+      "tags": [
+        "status",
+        "json",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:read_config",
+      "type": "function",
+      "name": "read_config",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        157,
+        159
+      ],
+      "summary": "Loads and validates one persisted training configuration.",
+      "tags": [
+        "configuration",
+        "json",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:_is_training_worker",
+      "type": "function",
+      "name": "_is_training_worker",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        162,
+        176
+      ],
+      "summary": "Verifies that a process belongs to the expected isolated training worker.",
+      "tags": [
+        "process-management",
+        "validation",
+        "security"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:active_run",
+      "type": "function",
+      "name": "active_run",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        179,
+        195
+      ],
+      "summary": "Finds the currently live training worker from persisted status files.",
+      "tags": [
+        "job-queue",
+        "process-management",
+        "status"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:create_run",
+      "type": "function",
+      "name": "create_run",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        198,
+        216
+      ],
+      "summary": "Creates a queued run directory with persisted configuration and initial status.",
+      "tags": [
+        "job-queue",
+        "persistence",
+        "factory"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:launch_run",
+      "type": "function",
+      "name": "launch_run",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        219,
+        263
+      ],
+      "summary": "Starts a worker subprocess, selecting the Unsloth runtime when configured, then records its PID.",
+      "tags": [
+        "process-management",
+        "unsloth",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:dispatch_next_run",
+      "type": "function",
+      "name": "dispatch_next_run",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        266,
+        291
+      ],
+      "summary": "Launches the first waiting run when no valid training worker is active.",
+      "tags": [
+        "job-queue",
+        "dispatcher",
+        "recovery"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:enqueue_run",
+      "type": "function",
+      "name": "enqueue_run",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        294,
+        298
+      ],
+      "summary": "Persists a new job and dispatches it immediately when the queue is idle.",
+      "tags": [
+        "job-queue",
+        "dispatcher",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:_fail_stale_running_jobs_unlocked",
+      "type": "function",
+      "name": "_fail_stale_running_jobs_unlocked",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        301,
+        319
+      ],
+      "summary": "Marks abandoned running jobs as failed after verifying their worker process is gone.",
+      "tags": [
+        "recovery",
+        "status",
+        "process-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:cancel_run",
+      "type": "function",
+      "name": "cancel_run",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        322,
+        345
+      ],
+      "summary": "Safely terminates an owned queued or running worker and updates durable status.",
+      "tags": [
+        "cancellation",
+        "process-management",
+        "job-queue"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:cancel_active_run",
+      "type": "function",
+      "name": "cancel_active_run",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        348,
+        353
+      ],
+      "summary": "Cancels the active owned training worker when present.",
+      "tags": [
+        "cancellation",
+        "job-queue",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:resume_run",
+      "type": "function",
+      "name": "resume_run",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        356,
+        384
+      ],
+      "summary": "Queues a run to resume from its most recent saved checkpoint.",
+      "tags": [
+        "resumption",
+        "checkpointing",
+        "job-queue"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:read_log",
+      "type": "function",
+      "name": "read_log",
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "lineRange": [
+        387,
+        392
+      ],
+      "summary": "Returns the trailing portion of a run's worker log.",
+      "tags": [
+        "logging",
+        "status",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "summary": "Defines training, dataset, hardware, and job data contracts plus validation, presets, and path helpers.",
+      "tags": [
+        "data-model",
+        "configuration",
+        "validation",
+        "training",
+        "tested"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:PeftMode",
+      "type": "class",
+      "name": "PeftMode",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        12,
+        16
+      ],
+      "summary": "Enumerates supported parameter-efficient fine-tuning methods.",
+      "tags": [
+        "enum",
+        "peft",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:TrainingApproach",
+      "type": "class",
+      "name": "TrainingApproach",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        19,
+        24
+      ],
+      "summary": "Enumerates the supported training objectives.",
+      "tags": [
+        "enum",
+        "training",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:ComputeType",
+      "type": "class",
+      "name": "ComputeType",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        27,
+        31
+      ],
+      "summary": "Enumerates selectable training compute precisions.",
+      "tags": [
+        "enum",
+        "precision",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/models.py:resolve_compute_type",
+      "type": "function",
+      "name": "resolve_compute_type",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        34,
+        39
+      ],
+      "summary": "Resolves automatic compute precision against BF16 hardware support.",
+      "tags": [
+        "utility",
+        "precision",
+        "hardware"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:TrainingRecipe",
+      "type": "class",
+      "name": "TrainingRecipe",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        43,
+        48
+      ],
+      "summary": "Stores supported methods, dataset formats, and defaults for a training approach.",
+      "tags": [
+        "data-model",
+        "training",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:Preset",
+      "type": "class",
+      "name": "Preset",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        85,
+        88
+      ],
+      "summary": "Enumerates smoke-test, standard, and quality training presets.",
+      "tags": [
+        "enum",
+        "preset",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:JobState",
+      "type": "class",
+      "name": "JobState",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        91,
+        96
+      ],
+      "summary": "Enumerates durable lifecycle states for training jobs.",
+      "tags": [
+        "enum",
+        "job-queue",
+        "status"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:HardwareProfile",
+      "type": "class",
+      "name": "HardwareProfile",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        100,
+        109
+      ],
+      "summary": "Captures detected GPU, memory, disk, and recommendation information.",
+      "tags": [
+        "data-model",
+        "hardware",
+        "diagnostics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:DatasetSpec",
+      "type": "class",
+      "name": "DatasetSpec",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        113,
+        124
+      ],
+      "summary": "Describes a Hub or uploaded dataset and its column mapping.",
+      "tags": [
+        "data-model",
+        "dataset",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:TrainingConfig",
+      "type": "class",
+      "name": "TrainingConfig",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        128,
+        285
+      ],
+      "summary": "Represents a full training request and validates model, dataset, method, runtime, and publishing options.",
+      "tags": [
+        "data-model",
+        "validation",
+        "training",
+        "configuration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:JobStatus",
+      "type": "class",
+      "name": "JobStatus",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        289,
+        305
+      ],
+      "summary": "Represents persisted state, progress, errors, metrics, and artifacts for a job.",
+      "tags": [
+        "data-model",
+        "job-queue",
+        "status"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/models.py:apply_preset",
+      "type": "function",
+      "name": "apply_preset",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        336,
+        340
+      ],
+      "summary": "Applies selected preset defaults to a training configuration.",
+      "tags": [
+        "preset",
+        "configuration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/models.py:run_path",
+      "type": "function",
+      "name": "run_path",
+      "filePath": "src/lora_finetune_studio/models.py",
+      "lineRange": [
+        343,
+        348
+      ],
+      "summary": "Validates a run identifier and returns its directory path.",
+      "tags": [
+        "validation",
+        "filesystem",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/sources.py",
+      "type": "file",
+      "name": "sources.py",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "summary": "Handles Hugging Face authentication, repository parsing, model sizing, dataset uploads, loading, and inspection.",
+      "tags": [
+        "huggingface",
+        "dataset",
+        "validation",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/sources.py:DatasetInspection",
+      "type": "class",
+      "name": "DatasetInspection",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        19,
+        23
+      ],
+      "summary": "Stores dataset columns, detected format, row count, and preview rows.",
+      "tags": [
+        "data-model",
+        "dataset",
+        "inspection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:get_hf_token",
+      "type": "function",
+      "name": "get_hf_token",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        26,
+        27
+      ],
+      "summary": "Reads the Hugging Face token from the environment.",
+      "tags": [
+        "authentication",
+        "huggingface",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:parse_hf_repo",
+      "type": "function",
+      "name": "parse_hf_repo",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        30,
+        57
+      ],
+      "summary": "Parses and validates a Hugging Face repository identifier or URL.",
+      "tags": [
+        "validation",
+        "huggingface",
+        "parsing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:token_identity",
+      "type": "function",
+      "name": "token_identity",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        60,
+        64
+      ],
+      "summary": "Retrieves the authenticated Hugging Face user identity.",
+      "tags": [
+        "authentication",
+        "huggingface",
+        "integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:model_parameter_count",
+      "type": "function",
+      "name": "model_parameter_count",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        67,
+        74
+      ],
+      "summary": "Fetches a model's parameter count from Hub metadata.",
+      "tags": [
+        "huggingface",
+        "model",
+        "inspection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:validate_upload",
+      "type": "function",
+      "name": "validate_upload",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        77,
+        83
+      ],
+      "summary": "Validates allowed local dataset upload files.",
+      "tags": [
+        "validation",
+        "dataset",
+        "upload"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:save_upload",
+      "type": "function",
+      "name": "save_upload",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        86,
+        93
+      ],
+      "summary": "Stores a validated uploaded dataset under the managed uploads directory.",
+      "tags": [
+        "upload",
+        "dataset",
+        "filesystem"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:load_training_dataset",
+      "type": "function",
+      "name": "load_training_dataset",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        96,
+        112
+      ],
+      "summary": "Loads a training split from the Hub or an approved local CSV or JSON file.",
+      "tags": [
+        "dataset",
+        "huggingface",
+        "loading"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:inspect_dataset",
+      "type": "function",
+      "name": "inspect_dataset",
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "lineRange": [
+        115,
+        130
+      ],
+      "summary": "Detects supported dataset schema and produces a small row preview.",
+      "tags": [
+        "dataset",
+        "inspection",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/training.py",
+      "type": "file",
+      "name": "training.py",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "summary": "Implements recipe-driven local TRL training: dataset normalization, PEFT and quantization setup, optional Unsloth acceleration, callbacks, evaluation, and artifact publishing.",
+      "tags": [
+        "training",
+        "trl",
+        "peft",
+        "unsloth"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/training.py:StatusCallback",
+      "type": "class",
+      "name": "StatusCallback",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        38,
+        58
+      ],
+      "summary": "Publishes trainer log metrics and fractional progress to the durable job status file.",
+      "tags": [
+        "callback",
+        "status",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_normalize_dataset",
+      "type": "function",
+      "name": "_normalize_dataset",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        61,
+        98
+      ],
+      "summary": "Maps supported dataset formats into the schema required by each training recipe.",
+      "tags": [
+        "dataset",
+        "normalization",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_dataset_label",
+      "type": "function",
+      "name": "_dataset_label",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        101,
+        102
+      ],
+      "summary": "Returns a human-readable dataset source label for errors.",
+      "tags": [
+        "dataset",
+        "utility",
+        "errors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_load_and_combine_datasets",
+      "type": "function",
+      "name": "_load_and_combine_datasets",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        105,
+        138
+      ],
+      "summary": "Loads, normalizes, combines, shuffles, and limits every configured dataset.",
+      "tags": [
+        "dataset",
+        "loading",
+        "normalization",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_split_dataset",
+      "type": "function",
+      "name": "_split_dataset",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        141,
+        147
+      ],
+      "summary": "Creates an evaluation split when enabled and sufficiently sized.",
+      "tags": [
+        "dataset",
+        "evaluation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_format_conversations",
+      "type": "function",
+      "name": "_format_conversations",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        150,
+        162
+      ],
+      "summary": "Formats chat-message examples with the selected tokenizer template.",
+      "tags": [
+        "dataset",
+        "tokenization",
+        "chat"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_quantization_config",
+      "type": "function",
+      "name": "_quantization_config",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        165,
+        173
+      ],
+      "summary": "Builds 4-bit BitsAndBytes configuration for QLoRA and QOFT.",
+      "tags": [
+        "quantization",
+        "qlora",
+        "peft"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_peft_config",
+      "type": "function",
+      "name": "_peft_config",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        176,
+        196
+      ],
+      "summary": "Builds LoRA or OFT configuration for causal language modeling or reward modeling.",
+      "tags": [
+        "peft",
+        "lora",
+        "oft",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_patch_qoft_peft_compatibility",
+      "type": "function",
+      "name": "_patch_qoft_peft_compatibility",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        199,
+        229
+      ],
+      "summary": "Applies a one-time compatibility patch for PEFT 4-bit OFT dispatching.",
+      "tags": [
+        "qoft",
+        "peft",
+        "compatibility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_load_model_and_tokenizer",
+      "type": "function",
+      "name": "_load_model_and_tokenizer",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        232,
+        312
+      ],
+      "summary": "Loads a base or reward model and tokenizer with PEFT, quantization, or Unsloth options.",
+      "tags": [
+        "model-loading",
+        "peft",
+        "unsloth",
+        "huggingface"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_apply_unsloth_trainer_patch",
+      "type": "function",
+      "name": "_apply_unsloth_trainer_patch",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        315,
+        325
+      ],
+      "summary": "Applies optional Unsloth patches for DPO and KTO trainers.",
+      "tags": [
+        "unsloth",
+        "trl",
+        "compatibility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_trainer_components",
+      "type": "function",
+      "name": "_trainer_components",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        328,
+        343
+      ],
+      "summary": "Resolves the TRL configuration and trainer classes for the selected approach.",
+      "tags": [
+        "trl",
+        "training",
+        "factory"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_trainer_config",
+      "type": "function",
+      "name": "_trainer_config",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        346,
+        381
+      ],
+      "summary": "Translates application configuration into TRL trainer options.",
+      "tags": [
+        "trl",
+        "configuration",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:_resolve_compute_dtype",
+      "type": "function",
+      "name": "_resolve_compute_dtype",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        384,
+        392
+      ],
+      "summary": "Maps the configured compute mode to a Torch dtype.",
+      "tags": [
+        "precision",
+        "torch",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/training.py:train",
+      "type": "function",
+      "name": "train",
+      "filePath": "src/lora_finetune_studio/training.py",
+      "lineRange": [
+        395,
+        471
+      ],
+      "summary": "Validates a request and orchestrates local model training, checkpointing, metrics, adapter saving, and optional Hub publishing.",
+      "tags": [
+        "training",
+        "orchestration",
+        "trl",
+        "huggingface"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/worker.py",
+      "type": "file",
+      "name": "worker.py",
+      "filePath": "src/lora_finetune_studio/worker.py",
+      "summary": "Provides the isolated subprocess entry point that updates durable run status around training and hands control to the next queued job.",
+      "tags": [
+        "entry-point",
+        "worker",
+        "job-queue",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/worker.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "src/lora_finetune_studio/worker.py",
+      "lineRange": [
+        17,
+        75
+      ],
+      "summary": "Loads a persisted configuration, executes training, records completion or sanitized failure status, and schedules queue handoff.",
+      "tags": [
+        "entry-point",
+        "worker",
+        "training",
+        "error-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "pipeline:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "ci.yml",
+      "filePath": ".github/workflows/ci.yml",
+      "summary": "GitHub Actions quality workflow that runs on pushes and pull requests across Ubuntu and Windows. It installs Python dependencies with uv, then verifies formatting, linting, type checks, tests, and tutorial generation.",
+      "tags": [
+        "ci-cd",
+        "quality-gates",
+        "github-actions",
+        "cross-platform"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses a GitHub Actions matrix to run the same uv-based validation commands on Ubuntu and Windows runners."
+    },
+    {
+      "id": "document:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "CHANGELOG.md",
+      "summary": "Records released versions and user-visible changes to LoRA Fine-tune Studio, including the queue and Unsloth additions.",
+      "tags": [
+        "documentation",
+        "changelog",
+        "releases"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING.md",
+      "filePath": "CONTRIBUTING.md",
+      "summary": "Defines the development setup, contribution workflow, engineering expectations, and required checks for repository contributors.",
+      "tags": [
+        "documentation",
+        "development",
+        "contributing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Launch LoRA Studio.cmd",
+      "type": "file",
+      "name": "Launch LoRA Studio.cmd",
+      "filePath": "Launch LoRA Studio.cmd",
+      "summary": "Windows launcher that verifies the repository, provisions the standard and native Unsloth environments with uv, then starts and health-checks the Streamlit app.",
+      "tags": [
+        "launcher",
+        "windows",
+        "streamlit",
+        "automation"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Batch control flow uses labels for failure paths and delegates process management to an embedded PowerShell command."
+    },
+    {
+      "id": "file:Launch LoRA Studio.sh",
+      "type": "file",
+      "name": "Launch LoRA Studio.sh",
+      "filePath": "Launch LoRA Studio.sh",
+      "summary": "Linux launcher that installs or locates uv, synchronizes the project environment, and starts the Streamlit app with PID and health-check management.",
+      "tags": [
+        "launcher",
+        "linux",
+        "streamlit",
+        "automation"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "The shell script uses strict mode and manages the background Streamlit process through a PID file."
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview with supported training recipes, requirements, platform-specific quick start steps, and a small smoke-test workflow.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "overview",
+        "quick-start"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "States supported versions, private vulnerability reporting guidance, local trust boundaries, and safe operating practices for the application.",
+      "tags": [
+        "documentation",
+        "security",
+        "policy"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:TECHNICAL.md",
+      "type": "document",
+      "name": "TECHNICAL.md",
+      "filePath": "TECHNICAL.md",
+      "summary": "Comprehensive technical handbook covering the application architecture, data and training pipelines, job lifecycle, hardware behavior, testing, and extension paths.",
+      "tags": [
+        "documentation",
+        "architecture",
+        "training",
+        "reference"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:USAGE.md",
+      "type": "document",
+      "name": "USAGE.md",
+      "filePath": "USAGE.md",
+      "summary": "Step-by-step user guide for configuring access, launching the app, preparing datasets, configuring training, managing runs, and troubleshooting.",
+      "tags": [
+        "documentation",
+        "user-guide",
+        "training",
+        "troubleshooting"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "Defines package metadata, Python and ML dependencies, the installed CLI entry point, uv CUDA package source, and development/documentation dependency groups.",
+      "tags": [
+        "configuration",
+        "python",
+        "dependencies",
+        "build-system"
+      ],
+      "complexity": "simple",
+      "languageNotes": "The uv source override selects the CUDA-enabled PyTorch index while project dependencies retain bounded version ranges."
+    },
+    {
+      "id": "file:.python-version",
+      "type": "file",
+      "name": ".python-version",
+      "filePath": ".python-version",
+      "summary": "Pins the Python version expected by the project tooling.",
+      "tags": [
+        "python",
+        "version-pin",
+        "tooling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/dataset.py",
+      "type": "file",
+      "name": "dataset.py",
+      "filePath": "app_pages/dataset.py",
+      "summary": "Provides the Streamlit dataset page and helpers for identifying, validating, and saving pending dataset selections into session state.",
+      "tags": [
+        "streamlit",
+        "dataset",
+        "validation",
+        "ui"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:app_pages/dataset.py:source_identity",
+      "type": "function",
+      "name": "source_identity",
+      "filePath": "app_pages/dataset.py",
+      "lineRange": [
+        39,
+        48
+      ],
+      "summary": "Builds a stable identity for a dataset source so duplicate or incompatible selections can be detected.",
+      "tags": [
+        "dataset",
+        "identity",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/dataset.py:save_pending_dataset",
+      "type": "function",
+      "name": "save_pending_dataset",
+      "filePath": "app_pages/dataset.py",
+      "lineRange": [
+        65,
+        88
+      ],
+      "summary": "Validates the pending dataset and inspection before appending them to Streamlit session state.",
+      "tags": [
+        "dataset",
+        "validation",
+        "session-state"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/gpu_memory.py",
+      "type": "file",
+      "name": "gpu_memory.py",
+      "filePath": "app_pages/gpu_memory.py",
+      "summary": "Renders the Streamlit page that displays CUDA memory statistics and exposes cache-release controls.",
+      "tags": [
+        "streamlit",
+        "gpu",
+        "cuda",
+        "monitoring"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/model.py",
+      "type": "file",
+      "name": "model.py",
+      "filePath": "app_pages/model.py",
+      "summary": "Renders the Streamlit model-selection page and persists model configuration in session state.",
+      "tags": [
+        "streamlit",
+        "model-selection",
+        "configuration",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/monitor.py",
+      "type": "file",
+      "name": "monitor.py",
+      "filePath": "app_pages/monitor.py",
+      "summary": "Renders training-run status, queued jobs, progress, logs, and cancel or resume controls in the Streamlit UI.",
+      "tags": [
+        "streamlit",
+        "job-queue",
+        "monitoring",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app_pages/monitor.py:training_monitor",
+      "type": "function",
+      "name": "training_monitor",
+      "filePath": "app_pages/monitor.py",
+      "lineRange": [
+        67,
+        141
+      ],
+      "summary": "Displays queued and active training runs, dispatches waiting work, and provides controls for terminal or recoverable jobs.",
+      "tags": [
+        "streamlit",
+        "job-queue",
+        "progress",
+        "monitoring"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "app_pages/ollama.py",
+      "summary": "Renders the optional Ollama integration page for local model inference.",
+      "tags": [
+        "streamlit",
+        "ollama",
+        "inference",
+        "ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/review.py",
+      "type": "file",
+      "name": "review.py",
+      "filePath": "app_pages/review.py",
+      "summary": "Renders the review page that presents configured training choices before a run is created.",
+      "tags": [
+        "streamlit",
+        "training",
+        "review",
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/system.py",
+      "type": "file",
+      "name": "system.py",
+      "filePath": "app_pages/system.py",
+      "summary": "Renders system, dependency, and hardware diagnostics for the local fine-tuning environment.",
+      "tags": [
+        "streamlit",
+        "hardware",
+        "diagnostics",
+        "environment"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/training.py",
+      "type": "file",
+      "name": "training.py",
+      "filePath": "app_pages/training.py",
+      "summary": "Renders training approach, PEFT method, compute type, presets, and hyperparameter controls in the Streamlit workflow.",
+      "tags": [
+        "streamlit",
+        "training",
+        "peft",
+        "configuration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:app_pages/training.py:approach_changed",
+      "type": "function",
+      "name": "approach_changed",
+      "filePath": "app_pages/training.py",
+      "lineRange": [
+        40,
+        50
+      ],
+      "summary": "Updates session-state defaults when the selected training approach changes.",
+      "tags": [
+        "streamlit",
+        "training",
+        "session-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "function",
+      "name": "apply_preset_defaults",
+      "filePath": "app_pages/training.py",
+      "lineRange": [
+        125,
+        134
+      ],
+      "summary": "Copies bounded preset values into editable Streamlit training settings.",
+      "tags": [
+        "preset",
+        "training",
+        "session-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:docs/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "docs/index.html",
+      "summary": "Comprehensive static HTML edition of the project's zero-to-mastery handbook and supporting documentation.",
+      "tags": [
+        "documentation",
+        "html",
+        "tutorial",
+        "training"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/hardware.py",
+      "type": "file",
+      "name": "hardware.py",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "summary": "Provides local system scanning, CUDA memory statistics, GPU cleanup, and model-size guidance for the application.",
+      "tags": [
+        "hardware",
+        "cuda",
+        "diagnostics",
+        "utility",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/inference.py",
+      "type": "file",
+      "name": "inference.py",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "summary": "Loads a base model and optional adapter to generate text locally while releasing CUDA resources after execution.",
+      "tags": [
+        "inference",
+        "transformers",
+        "peft",
+        "cuda",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/lifecycle.py",
+      "type": "file",
+      "name": "lifecycle.py",
+      "filePath": "src/lora_finetune_studio/lifecycle.py",
+      "summary": "Provides a small lifecycle helper for scheduling a safe application shutdown.",
+      "tags": [
+        "lifecycle",
+        "shutdown",
+        "utility",
+        "tested"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:streamlit_app.py",
+      "type": "file",
+      "name": "streamlit_app.py",
+      "filePath": "streamlit_app.py",
+      "summary": "Application entry point that initializes shared state and assembles the Streamlit fine-tuning workflow.",
+      "tags": [
+        "entry-point",
+        "streamlit",
+        "training",
+        "ui",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_app.py",
+      "type": "file",
+      "name": "test_app.py",
+      "filePath": "tests/test_app.py",
+      "summary": "End-to-end Streamlit test covering application startup, navigation, configuration editing, and shutdown behavior.",
+      "tags": [
+        "test",
+        "streamlit",
+        "integration",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_hardware.py",
+      "type": "file",
+      "name": "test_hardware.py",
+      "filePath": "tests/test_hardware.py",
+      "summary": "Unit tests for hardware detection, CUDA-memory helpers, and model-size warning behavior.",
+      "tags": [
+        "test",
+        "hardware",
+        "cuda",
+        "unit-test"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_inference.py",
+      "type": "file",
+      "name": "test_inference.py",
+      "filePath": "tests/test_inference.py",
+      "summary": "Unit test ensuring inference cleans up CUDA memory when model loading fails.",
+      "tags": [
+        "test",
+        "inference",
+        "cuda",
+        "unit-test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_jobs.py",
+      "type": "file",
+      "name": "test_jobs.py",
+      "filePath": "tests/test_jobs.py",
+      "summary": "Unit tests for persistent training-run creation, FIFO dispatch, cancellation, worker handling, and Unsloth runtime selection.",
+      "tags": [
+        "test",
+        "job-queue",
+        "training",
+        "unit-test"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/test_lifecycle.py",
+      "type": "file",
+      "name": "test_lifecycle.py",
+      "filePath": "tests/test_lifecycle.py",
+      "summary": "Unit test for the asynchronous application-exit scheduler.",
+      "tags": [
+        "test",
+        "lifecycle",
+        "shutdown",
+        "unit-test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_models.py",
+      "type": "file",
+      "name": "test_models.py",
+      "filePath": "tests/test_models.py",
+      "summary": "Unit tests for training configuration serialization, compatibility rules, bounds, and preset validation.",
+      "tags": [
+        "test",
+        "configuration",
+        "validation",
+        "unit-test"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "function",
+      "name": "scan_system",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        69,
+        115
+      ],
+      "summary": "Collects operating-system, package, command, and resource information without installing dependencies.",
+      "tags": [
+        "utility",
+        "training",
+        "cuda"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "function",
+      "name": "cuda_memory_stats",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        118,
+        128
+      ],
+      "summary": "Returns global and process CUDA memory usage, rejecting systems without an available GPU.",
+      "tags": [
+        "utility",
+        "training",
+        "cuda"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "function",
+      "name": "detect_hardware",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        139,
+        178
+      ],
+      "summary": "Builds the application hardware profile from CUDA, memory, disk, and processor information.",
+      "tags": [
+        "utility",
+        "training",
+        "cuda"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "function",
+      "name": "model_size_warning",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        181,
+        192
+      ],
+      "summary": "Returns a warning when a selected model exceeds the detected GPU-memory budget.",
+      "tags": [
+        "utility",
+        "training",
+        "cuda"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "function",
+      "name": "generate_text",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "lineRange": [
+        15,
+        39
+      ],
+      "summary": "Runs local generation and guarantees CUDA cleanup after the attempt.",
+      "tags": [
+        "utility",
+        "training",
+        "cuda"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "function",
+      "name": "_generate_text",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "lineRange": [
+        42,
+        85
+      ],
+      "summary": "Loads tokenizer, base model, and optional PEFT adapter before decoding generated text.",
+      "tags": [
+        "utility",
+        "training",
+        "cuda"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "function",
+      "name": "test_app_starts_without_ollama",
+      "filePath": "tests/test_app.py",
+      "lineRange": [
+        11,
+        196
+      ],
+      "summary": "Exercises the Streamlit application when the optional Ollama runtime is unavailable.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "function",
+      "name": "test_model_size_warning_uses_detected_limit",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        15,
+        28
+      ],
+      "summary": "Verifies model-size guidance respects the detected hardware limit.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "function",
+      "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        31,
+        47
+      ],
+      "summary": "Verifies reported CUDA metrics include global and process allocations.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "function",
+      "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        50,
+        60
+      ],
+      "summary": "Verifies GPU cleanup triggers collection and CUDA cache release.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "function",
+      "name": "test_system_scan_reports_live_resources_without_installing",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        72,
+        106
+      ],
+      "summary": "Verifies system scanning reports installed tools and live resource values.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "function",
+      "name": "test_system_scan_recognizes_native_linux",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        109,
+        118
+      ],
+      "summary": "Verifies platform detection identifies native Linux correctly.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "function",
+      "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+      "filePath": "tests/test_inference.py",
+      "lineRange": [
+        6,
+        25
+      ],
+      "summary": "Verifies inference releases CUDA memory when model loading raises an error.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "function",
+      "name": "test_create_run_persists_safe_config",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        11,
+        28
+      ],
+      "summary": "Verifies queued runs persist a safe serialized training configuration.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_create_run_appends_jobs_in_fifo_order",
+      "type": "function",
+      "name": "test_create_run_appends_jobs_in_fifo_order",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        31,
+        41
+      ],
+      "summary": "Verifies newly created runs are queued in FIFO order.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_dispatch_starts_only_first_waiting_run",
+      "type": "function",
+      "name": "test_dispatch_starts_only_first_waiting_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        44,
+        66
+      ],
+      "summary": "Verifies dispatch launches only the first waiting training run.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancelling_running_job_starts_next_waiting_run",
+      "type": "function",
+      "name": "test_cancelling_running_job_starts_next_waiting_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        69,
+        110
+      ],
+      "summary": "Verifies cancellation advances the queue to the next waiting run.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_dispatch_marks_dead_worker_failed_before_continuing",
+      "type": "function",
+      "name": "test_dispatch_marks_dead_worker_failed_before_continuing",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        113,
+        134
+      ],
+      "summary": "Verifies stale workers are failed before the dispatcher continues.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "type": "function",
+      "name": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        137,
+        164
+      ],
+      "summary": "Verifies checkpoint resumes join the queue while another worker is active.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_list_runs_orders_active_then_waiting_then_history",
+      "type": "function",
+      "name": "test_list_runs_orders_active_then_waiting_then_history",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        167,
+        190
+      ],
+      "summary": "Verifies run listing orders active, waiting, and historical jobs.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_dispatch_marks_launch_failure_and_continues_queue",
+      "type": "function",
+      "name": "test_dispatch_marks_launch_failure_and_continues_queue",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        193,
+        216
+      ],
+      "summary": "Verifies a launch failure is recorded without blocking later work.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "type": "function",
+      "name": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        219,
+        242
+      ],
+      "summary": "Verifies dispatch waits for terminal worker processes to exit.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:_running_test_run",
+      "type": "function",
+      "name": "_running_test_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        268,
+        280
+      ],
+      "summary": "Creates a persisted running run fixture for process-cancellation tests.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "function",
+      "name": "test_cancel_run_stops_only_its_training_worker",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        283,
+        299
+      ],
+      "summary": "Verifies cancellation terminates only the matching training worker.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "function",
+      "name": "test_cancel_run_rejects_unrelated_process",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        302,
+        312
+      ],
+      "summary": "Verifies cancellation rejects a process unrelated to the selected run.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancel_active_run_delegates_to_active_run",
+      "type": "function",
+      "name": "test_cancel_active_run_delegates_to_active_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        315,
+        325
+      ],
+      "summary": "Verifies active-run cancellation delegates to the selected run handler.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "type": "function",
+      "name": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        328,
+        358
+      ],
+      "summary": "Verifies Unsloth jobs launch through the configured runtime and source path.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "type": "function",
+      "name": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        361,
+        383
+      ],
+      "summary": "Verifies standard jobs keep the current Python interpreter.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "type": "function",
+      "name": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        386,
+        412
+      ],
+      "summary": "Verifies worker handoffs preserve the base interpreter selection.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_launch_run_rejects_missing_unsloth_runtime",
+      "type": "function",
+      "name": "test_launch_run_rejects_missing_unsloth_runtime",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        415,
+        435
+      ],
+      "summary": "Verifies launch rejects enabled Unsloth mode without a valid runtime.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "function",
+      "name": "test_schedule_application_exit_uses_daemon_timer",
+      "filePath": "tests/test_lifecycle.py",
+      "lineRange": [
+        4,
+        25
+      ],
+      "summary": "Verifies scheduled shutdown uses a daemon timer.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_round_trip",
+      "type": "function",
+      "name": "test_config_round_trip",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        18,
+        31
+      ],
+      "summary": "Verifies training configuration survives serialization and validation.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_old_config_migrates_single_dataset_and_standard_backend",
+      "type": "function",
+      "name": "test_old_config_migrates_single_dataset_and_standard_backend",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        34,
+        54
+      ],
+      "summary": "Verifies legacy configurations migrate to current dataset and backend fields.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "function",
+      "name": "test_config_requires_push_destination",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        57,
+        66
+      ],
+      "summary": "Verifies hub push configuration requires a destination.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_mixed_and_duplicate_datasets",
+      "type": "function",
+      "name": "test_config_rejects_mixed_and_duplicate_datasets",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        69,
+        83
+      ],
+      "summary": "Verifies incompatible or duplicate datasets are rejected.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_recipe_matrix_accepts_all_advertised_pairs",
+      "type": "function",
+      "name": "test_recipe_matrix_accepts_all_advertised_pairs",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        88,
+        116
+      ],
+      "summary": "Verifies every advertised approach and method pairing validates.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "type": "function",
+      "name": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        119,
+        138
+      ],
+      "summary": "Verifies invalid approach datasets and Unsloth OFT combinations are rejected.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_unsloth_fp32",
+      "type": "function",
+      "name": "test_config_rejects_unsloth_fp32",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        141,
+        156
+      ],
+      "summary": "Verifies Unsloth mode rejects unsupported FP32 computation.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_kto_requires_actual_batch_size_above_one",
+      "type": "function",
+      "name": "test_kto_requires_actual_batch_size_above_one",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        159,
+        179
+      ],
+      "summary": "Verifies KTO requires an effective batch size greater than one.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_learning_rate_outside_supported_range",
+      "type": "function",
+      "name": "test_config_rejects_learning_rate_outside_supported_range",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        183,
+        199
+      ],
+      "summary": "Verifies learning-rate bounds are enforced.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_invalid_maximum_samples",
+      "type": "function",
+      "name": "test_config_rejects_invalid_maximum_samples",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        203,
+        217
+      ],
+      "summary": "Verifies maximum sample count must be valid.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_invalid_maximum_gradient_norm",
+      "type": "function",
+      "name": "test_config_rejects_invalid_maximum_gradient_norm",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        221,
+        235
+      ],
+      "summary": "Verifies gradient-norm bounds are enforced.",
+      "tags": [
+        "test",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "class",
+      "name": "FakeWorkerProcess",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        253,
+        265
+      ],
+      "summary": "Minimal worker-process double used to test cancellation and process handling.",
+      "tags": [
+        "test",
+        "process",
+        "fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_sources.py",
+      "type": "file",
+      "name": "test_sources.py",
+      "filePath": "tests/test_sources.py",
+      "summary": "Tests dataset-source parsing, format inspection, and secure upload validation helpers.",
+      "tags": [
+        "test",
+        "dataset-sources",
+        "validation",
+        "uploads"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_parse_hf_repo",
+      "type": "function",
+      "name": "test_parse_hf_repo",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        26,
+        27
+      ],
+      "summary": "Checks accepted Hugging Face model and dataset repository identifiers.",
+      "tags": [
+        "test",
+        "hugging-face",
+        "repository-parsing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "function",
+      "name": "test_parse_hf_repo_rejects_unsafe_locations",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        39,
+        41
+      ],
+      "summary": "Verifies unsafe or malformed Hugging Face repository locations are rejected.",
+      "tags": [
+        "test",
+        "validation",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_inspect_dataset_detects_messages",
+      "type": "function",
+      "name": "test_inspect_dataset_detects_messages",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        44,
+        50
+      ],
+      "summary": "Confirms message-column datasets are identified with the correct row count.",
+      "tags": [
+        "test",
+        "dataset-format",
+        "messages"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_inspect_dataset_detects_preference_before_prompt_completion",
+      "type": "function",
+      "name": "test_inspect_dataset_detects_preference_before_prompt_completion",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        53,
+        65
+      ],
+      "summary": "Ensures preference data takes precedence when prompt-completion columns also exist.",
+      "tags": [
+        "test",
+        "dataset-format",
+        "preference-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_upload_validation_and_content_addressing",
+      "type": "function",
+      "name": "test_upload_validation_and_content_addressing",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        68,
+        74
+      ],
+      "summary": "Verifies uploads retain their bytes and allowed JSONL extensions validate.",
+      "tags": [
+        "test",
+        "uploads",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_sources.py:test_upload_rejects_unknown_type",
+      "type": "function",
+      "name": "test_upload_rejects_unknown_type",
+      "filePath": "tests/test_sources.py",
+      "lineRange": [
+        77,
+        79
+      ],
+      "summary": "Checks unsupported upload file types raise a clear validation error.",
+      "tags": [
+        "test",
+        "uploads",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_training.py",
+      "type": "file",
+      "name": "test_training.py",
+      "filePath": "tests/test_training.py",
+      "summary": "Exercises training data preparation, PEFT choices, Unsloth loading, trainer selection, and compute settings.",
+      "tags": [
+        "test",
+        "training",
+        "peft",
+        "unsloth",
+        "configuration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/test_training.py:test_normalize_prompt_completion_columns",
+      "type": "function",
+      "name": "test_normalize_prompt_completion_columns",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        31,
+        44
+      ],
+      "summary": "Tests remapping custom prompt and completion columns to the trainer schema.",
+      "tags": [
+        "test",
+        "dataset-normalization",
+        "sft"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_normalize_preference_columns_preserves_conversations",
+      "type": "function",
+      "name": "test_normalize_preference_columns_preserves_conversations",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        47,
+        70
+      ],
+      "summary": "Tests preference-column normalization while preserving conversation structures.",
+      "tags": [
+        "test",
+        "dataset-normalization",
+        "preference-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_small_dataset_skips_eval_split",
+      "type": "function",
+      "name": "test_small_dataset_skips_eval_split",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        73,
+        80
+      ],
+      "summary": "Ensures datasets below the split threshold remain entirely in training.",
+      "tags": [
+        "test",
+        "dataset-splitting",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_combine_datasets_preserves_all_rows_and_shuffles",
+      "type": "function",
+      "name": "test_combine_datasets_preserves_all_rows_and_shuffles",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        83,
+        105
+      ],
+      "summary": "Tests combining multiple datasets preserves records and shuffles their order.",
+      "tags": [
+        "test",
+        "multi-dataset",
+        "data-loading"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_combined_max_samples_is_global_and_deterministic",
+      "type": "function",
+      "name": "test_combined_max_samples_is_global_and_deterministic",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        108,
+        131
+      ],
+      "summary": "Verifies a global sample limit is applied deterministically across combined datasets.",
+      "tags": [
+        "test",
+        "multi-dataset",
+        "sampling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_combine_datasets_reports_incompatible_normalized_schemas",
+      "type": "function",
+      "name": "test_combine_datasets_reports_incompatible_normalized_schemas",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        134,
+        157
+      ],
+      "summary": "Ensures incompatible normalized message schemas report a clear error.",
+      "tags": [
+        "test",
+        "multi-dataset",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_combine_datasets_identifies_source_load_failure",
+      "type": "function",
+      "name": "test_combine_datasets_identifies_source_load_failure",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        160,
+        176
+      ],
+      "summary": "Checks source loading failures name the failing dataset position and identifier.",
+      "tags": [
+        "test",
+        "data-loading",
+        "error-handling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_unsloth_loader_uses_optimized_qlora_settings",
+      "type": "function",
+      "name": "test_unsloth_loader_uses_optimized_qlora_settings",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        179,
+        221
+      ],
+      "summary": "Tests the Unsloth QLoRA loader uses four-bit settings and optimized checkpointing.",
+      "tags": [
+        "test",
+        "unsloth",
+        "qlora",
+        "model-loading"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_training.py:test_unsloth_reward_loader_keeps_score_head",
+      "type": "function",
+      "name": "test_unsloth_reward_loader_keeps_score_head",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        224,
+        256
+      ],
+      "summary": "Tests Unsloth reward-model loading retains the single-label score head.",
+      "tags": [
+        "test",
+        "unsloth",
+        "reward-modeling",
+        "model-loading"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_training.py:test_peft_methods_build_expected_adapter_and_quantization",
+      "type": "function",
+      "name": "test_peft_methods_build_expected_adapter_and_quantization",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        268,
+        277
+      ],
+      "summary": "Checks LoRA, QLoRA, OFT, and QOFT produce the expected adapter and quantization choices.",
+      "tags": [
+        "test",
+        "peft",
+        "quantization",
+        "adapters"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_reward_peft_config_preserves_score_head",
+      "type": "function",
+      "name": "test_reward_peft_config_preserves_score_head",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        280,
+        290
+      ],
+      "summary": "Verifies reward-model PEFT configuration preserves the score module.",
+      "tags": [
+        "test",
+        "peft",
+        "reward-modeling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_qoft_compatibility_passes_dispatcher_config",
+      "type": "function",
+      "name": "test_qoft_compatibility_passes_dispatcher_config",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        293,
+        316
+      ],
+      "summary": "Tests the QOFT compatibility patch forwards the adapter configuration to PEFT's dispatcher.",
+      "tags": [
+        "test",
+        "qoft",
+        "peft",
+        "compatibility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_every_approach_resolves_installed_trainer",
+      "type": "function",
+      "name": "test_every_approach_resolves_installed_trainer",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        320,
+        324
+      ],
+      "summary": "Checks each supported training approach resolves an installed TRL trainer and config class.",
+      "tags": [
+        "test",
+        "trainer-selection",
+        "trl"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_alignment_trainer_config_includes_beta",
+      "type": "function",
+      "name": "test_alignment_trainer_config_includes_beta",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        331,
+        343
+      ],
+      "summary": "Verifies alignment trainer options include beta, gradient clipping, and disabled evaluation when appropriate.",
+      "tags": [
+        "test",
+        "alignment",
+        "trainer-configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_resolve_compute_dtype",
+      "type": "function",
+      "name": "test_resolve_compute_dtype",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        356,
+        361
+      ],
+      "summary": "Tests automatic and requested compute-type resolution across BF16, FP16, and FP32.",
+      "tags": [
+        "test",
+        "precision",
+        "compute-type"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_fp32_trainer_config_disables_mixed_precision_flags",
+      "type": "function",
+      "name": "test_fp32_trainer_config_disables_mixed_precision_flags",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        364,
+        370
+      ],
+      "summary": "Ensures FP32 training disables BF16 and FP16 trainer flags.",
+      "tags": [
+        "test",
+        "precision",
+        "trainer-configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_training.py:test_format_conversations_applies_chat_template_to_single_and_batch",
+      "type": "function",
+      "name": "test_format_conversations_applies_chat_template_to_single_and_batch",
+      "filePath": "tests/test_training.py",
+      "lineRange": [
+        373,
+        384
+      ],
+      "summary": "Tests chat-template formatting for both single conversation and batched message inputs.",
+      "tags": [
+        "test",
+        "chat-template",
+        "dataset-format"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/lora_finetune_studio/cli.py",
+      "target": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/cli.py",
+      "target": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:write_json_atomic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:write_json_atomic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_queue_lock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_queue_lock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_write_queue_unlocked",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_write_queue_unlocked",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_read_queue_unlocked",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_read_queue_unlocked",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:queued_runs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:queued_runs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:list_runs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:list_runs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:read_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:read_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:read_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:read_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_is_training_worker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_is_training_worker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:active_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:active_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:create_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:create_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:launch_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:launch_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:dispatch_next_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:dispatch_next_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:enqueue_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:enqueue_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_fail_stale_running_jobs_unlocked",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:_fail_stale_running_jobs_unlocked",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:cancel_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:cancel_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:cancel_active_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:cancel_active_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:resume_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:resume_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:read_log",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "function:src/lora_finetune_studio/jobs.py:read_log",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:PeftMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:PeftMode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:TrainingApproach",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:TrainingApproach",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:ComputeType",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:ComputeType",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "function:src/lora_finetune_studio/models.py:resolve_compute_type",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "function:src/lora_finetune_studio/models.py:resolve_compute_type",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:TrainingRecipe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:TrainingRecipe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:Preset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:Preset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:JobState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:JobState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:HardwareProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:HardwareProfile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:DatasetSpec",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:DatasetSpec",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:TrainingConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:TrainingConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:JobStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "class:src/lora_finetune_studio/models.py:JobStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "function:src/lora_finetune_studio/models.py:apply_preset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "function:src/lora_finetune_studio/models.py:apply_preset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "function:src/lora_finetune_studio/models.py:run_path",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "function:src/lora_finetune_studio/models.py:run_path",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "class:src/lora_finetune_studio/sources.py:DatasetInspection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "class:src/lora_finetune_studio/sources.py:DatasetInspection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:get_hf_token",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:get_hf_token",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:parse_hf_repo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:parse_hf_repo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:token_identity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:token_identity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:model_parameter_count",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:model_parameter_count",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:validate_upload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:validate_upload",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:save_upload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:save_upload",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:load_training_dataset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:load_training_dataset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:inspect_dataset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/sources.py",
+      "target": "function:src/lora_finetune_studio/sources.py:inspect_dataset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/jobs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "file:src/lora_finetune_studio/sources.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/jobs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/sources.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "file:src/lora_finetune_studio/training.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "class:src/lora_finetune_studio/training.py:StatusCallback",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "class:src/lora_finetune_studio/training.py:StatusCallback",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_normalize_dataset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_normalize_dataset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_dataset_label",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_dataset_label",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_load_and_combine_datasets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_load_and_combine_datasets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_split_dataset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_split_dataset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_format_conversations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_format_conversations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_quantization_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_quantization_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_peft_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_peft_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_patch_qoft_peft_compatibility",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_patch_qoft_peft_compatibility",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_load_model_and_tokenizer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_load_model_and_tokenizer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_apply_unsloth_trainer_patch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_apply_unsloth_trainer_patch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_trainer_components",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_trainer_components",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_trainer_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_trainer_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_resolve_compute_dtype",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:_resolve_compute_dtype",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:train",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/training.py",
+      "target": "function:src/lora_finetune_studio/training.py:train",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "function:src/lora_finetune_studio/worker.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/worker.py",
+      "target": "function:src/lora_finetune_studio/worker.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/lora_finetune_studio/training.py:train",
+      "target": "function:src/lora_finetune_studio/jobs.py:write_json_atomic",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/lora_finetune_studio/training.py:train",
+      "target": "function:src/lora_finetune_studio/sources.py:get_hf_token",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/lora_finetune_studio/training.py:_load_and_combine_datasets",
+      "target": "function:src/lora_finetune_studio/sources.py:load_training_dataset",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/lora_finetune_studio/worker.py:main",
+      "target": "function:src/lora_finetune_studio/jobs.py:write_json_atomic",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/lora_finetune_studio/worker.py:main",
+      "target": "function:src/lora_finetune_studio/training.py:train",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/lora_finetune_studio/worker.py:main",
+      "target": "function:src/lora_finetune_studio/sources.py:get_hf_token",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:Launch LoRA Studio.cmd",
+      "target": "config:pyproject.toml",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:Launch LoRA Studio.sh",
+      "target": "config:pyproject.toml",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:Launch LoRA Studio.cmd",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:Launch LoRA Studio.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:Launch LoRA Studio.cmd",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:Launch LoRA Studio.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TECHNICAL.md",
+      "target": "config:pyproject.toml",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:source_identity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:source_identity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:save_pending_dataset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:save_pending_dataset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/monitor.py",
+      "target": "function:app_pages/monitor.py:training_monitor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app_pages/monitor.py",
+      "target": "function:app_pages/monitor.py:training_monitor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:approach_changed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:approach_changed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_inference.py",
+      "target": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_inference.py",
+      "target": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_appends_jobs_in_fifo_order",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_appends_jobs_in_fifo_order",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_starts_only_first_waiting_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_starts_only_first_waiting_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancelling_running_job_starts_next_waiting_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancelling_running_job_starts_next_waiting_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_marks_dead_worker_failed_before_continuing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_marks_dead_worker_failed_before_continuing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_list_runs_orders_active_then_waiting_then_history",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_list_runs_orders_active_then_waiting_then_history",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_marks_launch_failure_and_continues_queue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_marks_launch_failure_and_continues_queue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:_running_test_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:_running_test_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_active_run_delegates_to_active_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_active_run_delegates_to_active_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_rejects_missing_unsloth_runtime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_rejects_missing_unsloth_runtime",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_lifecycle.py",
+      "target": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_lifecycle.py",
+      "target": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_round_trip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_round_trip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_old_config_migrates_single_dataset_and_standard_backend",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_old_config_migrates_single_dataset_and_standard_backend",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_mixed_and_duplicate_datasets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_mixed_and_duplicate_datasets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_recipe_matrix_accepts_all_advertised_pairs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_recipe_matrix_accepts_all_advertised_pairs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_unsloth_fp32",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_unsloth_fp32",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_kto_requires_actual_batch_size_above_one",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_kto_requires_actual_batch_size_above_one",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_learning_rate_outside_supported_range",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_learning_rate_outside_supported_range",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_invalid_maximum_samples",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_invalid_maximum_samples",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_invalid_maximum_gradient_norm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_invalid_maximum_gradient_norm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "file:src/lora_finetune_studio/hardware.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:streamlit_app.py",
+      "target": "file:tests/test_app.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "file:tests/test_hardware.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "file:tests/test_inference.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/lifecycle.py",
+      "target": "file:tests/test_lifecycle.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/jobs.py",
+      "target": "file:tests/test_jobs.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "file:tests/test_models.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_parse_hf_repo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_parse_hf_repo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_inspect_dataset_detects_messages",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_inspect_dataset_detects_messages",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_inspect_dataset_detects_preference_before_prompt_completion",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_inspect_dataset_detects_preference_before_prompt_completion",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_upload_validation_and_content_addressing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_upload_validation_and_content_addressing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_upload_rejects_unknown_type",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_sources.py",
+      "target": "function:tests/test_sources.py:test_upload_rejects_unknown_type",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_normalize_prompt_completion_columns",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_normalize_prompt_completion_columns",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_normalize_preference_columns_preserves_conversations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_normalize_preference_columns_preserves_conversations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_small_dataset_skips_eval_split",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_small_dataset_skips_eval_split",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_preserves_all_rows_and_shuffles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_preserves_all_rows_and_shuffles",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combined_max_samples_is_global_and_deterministic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combined_max_samples_is_global_and_deterministic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_reports_incompatible_normalized_schemas",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_reports_incompatible_normalized_schemas",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_identifies_source_load_failure",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_combine_datasets_identifies_source_load_failure",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_unsloth_loader_uses_optimized_qlora_settings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_unsloth_loader_uses_optimized_qlora_settings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_unsloth_reward_loader_keeps_score_head",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_unsloth_reward_loader_keeps_score_head",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_peft_methods_build_expected_adapter_and_quantization",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_peft_methods_build_expected_adapter_and_quantization",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_reward_peft_config_preserves_score_head",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_reward_peft_config_preserves_score_head",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_qoft_compatibility_passes_dispatcher_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_qoft_compatibility_passes_dispatcher_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_every_approach_resolves_installed_trainer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_every_approach_resolves_installed_trainer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_alignment_trainer_config_includes_beta",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_alignment_trainer_config_includes_beta",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_resolve_compute_dtype",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_resolve_compute_dtype",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_fp32_trainer_config_disables_mixed_precision_flags",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_fp32_trainer_config_disables_mixed_precision_flags",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_format_conversations_applies_chat_template_to_single_and_batch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_training.py",
+      "target": "function:tests/test_training.py:test_format_conversations_applies_chat_template_to_single_and_batch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:streamlit-ui",
+      "name": "Streamlit User Interface",
+      "description": "The Streamlit entry point and workflow pages that collect training choices, present diagnostics, and monitor local jobs.",
+      "nodeIds": [
+        "file:streamlit_app.py",
+        "file:app_pages/dataset.py",
+        "file:app_pages/gpu_memory.py",
+        "file:app_pages/model.py",
+        "file:app_pages/monitor.py",
+        "file:app_pages/ollama.py",
+        "file:app_pages/review.py",
+        "file:app_pages/system.py",
+        "file:app_pages/training.py"
+      ]
+    },
+    {
+      "id": "layer:training-domain",
+      "name": "Training Domain and Runtime",
+      "description": "Python package modules and sample data that implement model access, validation, queueing, training, inference, hardware handling, and worker execution.",
+      "nodeIds": [
+        "file:examples/sft_sample.jsonl",
+        "file:src/lora_finetune_studio/__init__.py",
+        "file:src/lora_finetune_studio/cli.py",
+        "file:src/lora_finetune_studio/ollama.py",
+        "file:src/lora_finetune_studio/jobs.py",
+        "file:src/lora_finetune_studio/models.py",
+        "file:src/lora_finetune_studio/sources.py",
+        "file:src/lora_finetune_studio/training.py",
+        "file:src/lora_finetune_studio/worker.py",
+        "file:src/lora_finetune_studio/hardware.py",
+        "file:src/lora_finetune_studio/inference.py",
+        "file:src/lora_finetune_studio/lifecycle.py"
+      ]
+    },
+    {
+      "id": "layer:runtime-configuration",
+      "name": "Runtime Configuration and Launchers",
+      "description": "Project and Streamlit settings, Python version pinning, and platform launchers that provision and start the local studio.",
+      "nodeIds": [
+        "config:.streamlit/config.toml",
+        "config:pyproject.toml",
+        "file:.python-version",
+        "file:Launch LoRA Studio.cmd",
+        "file:Launch LoRA Studio.sh"
+      ]
+    },
+    {
+      "id": "layer:quality-automation",
+      "name": "Quality and Automation",
+      "description": "Cross-platform continuous integration and tests that verify the Streamlit workflow and local training runtime.",
+      "nodeIds": [
+        "pipeline:.github/workflows/ci.yml",
+        "file:tests/test_app.py",
+        "file:tests/test_hardware.py",
+        "file:tests/test_inference.py",
+        "file:tests/test_jobs.py",
+        "file:tests/test_lifecycle.py",
+        "file:tests/test_models.py",
+        "file:tests/test_sources.py",
+        "file:tests/test_training.py"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "Documentation and Project Guidance",
+      "description": "User, contributor, security, release, technical, and tutorial materials for installing and operating the fine-tuning studio.",
+      "nodeIds": [
+        "document:CODE_OF_CONDUCT.md",
+        "document:CHANGELOG.md",
+        "document:CONTRIBUTING.md",
+        "document:README.md",
+        "document:SECURITY.md",
+        "document:TECHNICAL.md",
+        "document:USAGE.md",
+        "file:docs/index.html"
+      ]
+    }
+  ]
+}

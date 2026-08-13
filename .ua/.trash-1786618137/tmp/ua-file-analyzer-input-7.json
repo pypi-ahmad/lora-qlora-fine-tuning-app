@@ -1,0 +1,15 @@
+{
+  "projectRoot": "D:/AI/Github/lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path":"docs/20-troubleshooting-by-boundary.html","language":"html","sizeLines":142,"fileCategory":"markup"},
+    {"path":"docs/21-glossary.html","language":"html","sizeLines":114,"fileCategory":"markup"},
+    {"path":"docs/22-official-references.html","language":"html","sizeLines":98,"fileCategory":"markup"},
+    {"path":"docs/index.html","language":"html","sizeLines":277,"fileCategory":"markup"}
+  ],
+  "batchImportData": {
+    "docs/20-troubleshooting-by-boundary.html": [],
+    "docs/21-glossary.html": [],
+    "docs/22-official-references.html": [],
+    "docs/index.html": []
+  }
+}

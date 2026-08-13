@@ -1,0 +1,186 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {
+      "path": ".gitattributes",
+      "language": "unknown",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".python-version",
+      "language": "unknown",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".streamlit/config.toml",
+      "language": "toml",
+      "sizeLines": 9,
+      "fileCategory": "config"
+    },
+    {
+      "path": "app_pages/dataset.py",
+      "language": "python",
+      "sizeLines": 360,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app_pages/gpu_memory.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app_pages/model.py",
+      "language": "python",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app_pages/monitor.py",
+      "language": "python",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app_pages/ollama.py",
+      "language": "python",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app_pages/review.py",
+      "language": "python",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app_pages/system.py",
+      "language": "python",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app_pages/training.py",
+      "language": "python",
+      "sizeLines": 364,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/.nojekyll",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/assets/search-index.js",
+      "language": "javascript",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/assets/site.css",
+      "language": "css",
+      "sizeLines": 303,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/assets/site.js",
+      "language": "javascript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/preference_sample.jsonl",
+      "language": "jsonl",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/sft_sample.jsonl",
+      "language": "jsonl",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/build_tutorial.py",
+      "language": "python",
+      "sizeLines": 947,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/tutorial_assets/site.css",
+      "language": "css",
+      "sizeLines": 303,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "scripts/tutorial_assets/site.js",
+      "language": "javascript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/lora_finetune_studio/__init__.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/lora_finetune_studio/cli.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/lora_finetune_studio/hardware.py",
+      "language": "python",
+      "sizeLines": 192,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/lora_finetune_studio/inference.py",
+      "language": "python",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/lora_finetune_studio/lifecycle.py",
+      "language": "python",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    ".gitattributes": [],
+    ".python-version": [],
+    ".streamlit/config.toml": [],
+    "app_pages/dataset.py": [],
+    "app_pages/gpu_memory.py": [],
+    "app_pages/model.py": [],
+    "app_pages/monitor.py": [],
+    "app_pages/ollama.py": [],
+    "app_pages/review.py": [],
+    "app_pages/system.py": [],
+    "app_pages/training.py": [],
+    "docs/.nojekyll": [],
+    "docs/assets/search-index.js": [],
+    "docs/assets/site.css": [],
+    "docs/assets/site.js": [],
+    "examples/preference_sample.jsonl": [],
+    "examples/sft_sample.jsonl": [],
+    "scripts/build_tutorial.py": [],
+    "scripts/tutorial_assets/site.css": [],
+    "scripts/tutorial_assets/site.js": [],
+    "src/lora_finetune_studio/__init__.py": [],
+    "src/lora_finetune_studio/cli.py": [],
+    "src/lora_finetune_studio/hardware.py": [
+      "src/lora_finetune_studio/models.py"
+    ],
+    "src/lora_finetune_studio/inference.py": [
+      "src/lora_finetune_studio/hardware.py"
+    ],
+    "src/lora_finetune_studio/lifecycle.py": []
+  }
+}
