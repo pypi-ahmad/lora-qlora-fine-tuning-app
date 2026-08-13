@@ -12,6 +12,23 @@ result with the base model from one interface.
 > LoRA Fine-tune Studio is designed for local, single-user learning and experimentation. It is not
 > a hosted training service or a multi-user production platform.
 
+## Interactive showcase
+
+[![LoRA Fine-tune Studio model configuration](docs/images/training-studio.png)](demo/streamlit_app.py)
+
+The deployment-ready showcase presents the dataset, configuration, review, and monitor workflow
+with synthetic fixtures. It is read-only: it performs no training, model downloads, uploads,
+network requests, or persistence.
+
+Run the lightweight showcase without installing the CUDA training stack:
+
+```powershell
+uvx --from streamlit==1.61.1 streamlit run demo/streamlit_app.py
+```
+
+For Streamlit Community Cloud, select `main`, `demo/streamlit_app.py`, and Python 3.12. The
+entrypoint-local `demo/requirements.txt` installs only Streamlit. No secrets are required.
+
 ## Highlights
 
 - Guides users through system checks, dataset preparation, model inspection, training, monitoring,

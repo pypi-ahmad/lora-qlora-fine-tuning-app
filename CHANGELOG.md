@@ -7,6 +7,10 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- A deployment-ready, read-only Streamlit showcase backed by contract-checked synthetic fixtures.
+
 ## [0.4.0] - 2026-08-13
 
 ### Added
