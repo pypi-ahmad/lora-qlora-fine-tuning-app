@@ -81,16 +81,22 @@ the main interpreter; Unsloth jobs use <code>.venv-unsloth</code> with repositor
 <p>Status JSON is written to a temporary file and atomically replaced, so the two-second
 Monitor poll does not read half-written state.</p>
 <h3 id="state-machine">State machine</h3>
-<pre><code class="language-text">queued -&gt; running -&gt; completed
-                  -&gt; failed -&gt; resume newest checkpoint -&gt; running
-                  -&gt; cancelled -&gt; resume newest checkpoint -&gt; running
+<pre><code class="language-text">queued -&gt; running -&gt; completed -&gt; dispatch next queued run
+                  -&gt; failed ----&gt; dispatch next queued run
+                  -&gt; cancelled -&gt; dispatch next queued run
+
+failed/cancelled -&gt; queue newest checkpoint -&gt; queued
 </code></pre>
 <p>Only one owned training PID can be active. Before cancellation, the app verifies that
 the stored PID command line is the expected worker with the expected config path. It
 terminates, waits ten seconds, and kills only after timeout.</p>
-<p>Resume chooses the numerically latest <code>checkpoint-*</code>, writes its absolute path into the
-existing config, and launches the same run ID. Resume cannot recover work done before
-the first saved checkpoint.</p>
+<p>Queue order is stored in <code>.runs/queue.json</code> under an OS-level file lock. After a terminal status, a
+lightweight handoff waits for the old worker to exit and release VRAM before launching the next
+run. The queue survives app restarts and continues after failures. Confirmed app shutdown cancels
+the active worker without starting another; waiting runs resume when the app starts again.</p>
+<p>Resume chooses the numerically latest <code>checkpoint-*</code>, writes its absolute path into the existing
+config, and appends the same run ID to the queue. Resume cannot recover work done before the first
+saved checkpoint.</p>
 <h3 id="logs-and-error-handling">Logs and error handling</h3>
 <p>Worker stdout/stderr append to <code>training.log</code>. The status stores a short error with the
 exact HF token redacted; the log receives the traceback. Treat logs as potentially
