@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="You will distinguish SFT, Reward Modeling, DPO, KTO, ORPO, and PPO and understand how their losses change model behavior.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 9 - Select the post-training objective | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="09-select-the-post-training-objective.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html" class="active" aria-current="page"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 09 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:9;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-9-select-the-post-training-objective">Module 9 - Select the post-training objective</h2>
+<h3 id="objectives">Objectives</h3>
+<p>You will distinguish SFT, Reward Modeling, DPO, KTO, ORPO, and PPO and understand how
+their losses change model behavior.</p>
+<h3 id="supervised-fine-tuning">Supervised Fine-Tuning</h3>
+<p>SFT minimizes token-level cross-entropy on desired text. Conceptually:</p>
+<pre><code class="language-text">L_SFT = -sum over target tokens of log pi_theta(token | prior context)
+</code></pre>
+<p>It answers: "What should the model say for this input?" Use it when you can provide a
+good target response directly.</p>
+<h3 id="reward-modeling">Reward Modeling</h3>
+<p>A reward model maps a prompt-response pair to a scalar score. For a chosen response
+<code>y_w</code> and rejected response <code>y_l</code>, a common pairwise objective encourages:</p>
+<pre><code class="language-text">r_theta(x, y_w) &gt; r_theta(x, y_l)
+</code></pre>
+<p>with a logistic loss such as:</p>
+<pre><code class="language-text">L_RM = -log sigmoid(r_theta(x, y_w) - r_theta(x, y_l))
+</code></pre>
+<p>This repository loads a one-label sequence-classification model and preserves its
+<code>score</code> module in the adapter. The result scores responses; it is not directly a text
+generator, so Monitor does not offer base-versus-adapter generation for reward runs.</p>
+<h3 id="direct-preference-optimization">Direct Preference Optimization</h3>
+<p>DPO updates the policy from preference pairs without first training a separate reward
+model and running an online reinforcement-learning loop. It compares how the trainable
+policy and a reference policy favor chosen versus rejected responses. <code>beta</code> controls
+the strength of the preference/reference tradeoff.</p>
+<p>Use DPO after SFT when the model can already respond but must choose consistently better
+behavior. Preference labels should reflect a clear rubric, not arbitrary taste.</p>
+<h3 id="kto">KTO</h3>
+<p>KTO uses a prospect-theoretic preference objective designed to learn from desirable and
+undesirable outcomes. The current UI uses the shared preference-pair schema and requires
+per-device batch size at least 2. It also passes <code>beta</code> to the trainer.</p>
+<h3 id="orpo">ORPO</h3>
+<p>ORPO combines supervised likelihood and an odds-ratio preference penalty in one
+objective. It can teach the chosen response while separating it from the rejected one,
+without the same explicit reference-model arrangement as DPO. The app uses preference
+data and exposes <code>beta</code>.</p>
+<h3 id="ppo-and-the-classic-rlhf-pipeline">PPO and the classic RLHF pipeline</h3>
+<p>Proximal Policy Optimization is an online reinforcement-learning algorithm. A classic
+RLHF pipeline can be summarized as:</p>
+<pre><code class="language-text">SFT policy -&gt; reward model -&gt; generate samples -&gt; score samples
+    -&gt; PPO policy updates constrained against a reference
+</code></pre>
+<p>This involves policy, reference, reward, and often value models plus rollout
+generation. It is substantially more complex and memory-intensive than the offline
+recipes in this app. PPO is <strong>context only</strong> here.</p>
+<h3 id="simpo-and-other-objectives">SimPO and other objectives</h3>
+<p>TRL and the research literature contain additional preference objectives such as
+SimPO, CPO, GRPO, and online DPO. Availability in an installed library is not enough to
+claim application support. A correct integration also needs a dataset contract, model
+path, controls, artifacts, tests, and documentation. These methods are <strong>context only</strong>.</p>
+<h3 id="recipe-table-implemented-by-the-app">Recipe table implemented by the app</h3>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>TRL trainer</th>
+<th>Data</th>
+<th style="text-align: right;">Default LR</th>
+<th>Beta</th>
+<th style="text-align: right;">Minimum batch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SFT</td>
+<td><code>SFTTrainer</code></td>
+<td>messages/text/prompt-completion</td>
+<td style="text-align: right;"><code>2e-4</code></td>
+<td>No</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Reward</td>
+<td><code>RewardTrainer</code></td>
+<td>preference</td>
+<td style="text-align: right;"><code>1e-3</code></td>
+<td>No</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>DPO</td>
+<td><code>DPOTrainer</code></td>
+<td>preference</td>
+<td style="text-align: right;"><code>1e-5</code></td>
+<td>Yes</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>KTO</td>
+<td><code>KTOTrainer</code></td>
+<td>preference</td>
+<td style="text-align: right;"><code>1e-5</code></td>
+<td>Yes</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>ORPO</td>
+<td><code>ORPOTrainer</code></td>
+<td>preference</td>
+<td style="text-align: right;"><code>1e-5</code></td>
+<td>Yes</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="objective-selection">Objective selection</h3>
+<ol>
+<li>Start with SFT when desired answers can be demonstrated.</li>
+<li>Establish an SFT baseline before preference tuning unless the base model already has
+   adequate response behavior.</li>
+<li>Use Reward Modeling when an explicit scorer is part of the system design.</li>
+<li>Use DPO/KTO/ORPO when comparative judgments are easier or more reliable than writing
+   one perfect answer.</li>
+<li>Evaluate outputs, not just objective loss.</li>
+</ol>
+<h3 id="checkpoint">Checkpoint</h3>
+<ol>
+<li>Why can a Reward Modeling adapter not be evaluated with the current generation UI?</li>
+<li>How does DPO differ operationally from reward-model-plus-PPO training?</li>
+<li>What does <code>beta</code> influence?</li>
+</ol></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>Previous</span><strong>Module 8 - Engineer datasets that teach the intended behavior</strong></a><a rel="next" href="10-prepare-the-local-training-system.html"><span>Next</span><strong>Module 10 - Prepare the local training system</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>

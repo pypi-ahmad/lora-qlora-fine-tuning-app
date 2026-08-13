@@ -9,6 +9,9 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- A Zero-to-Mastery course with a canonical Markdown source, 22-chapter searchable website, 50-page
+  PDF, preference-training sample data, reproducible documentation builder, and CI drift checks.
+- Comprehensive setup and technical handbooks for Windows and Linux users.
 - Linked Approach and Method dropdowns backed by one support registry for SFT, Reward, DPO, KTO,
   and ORPO with LoRA, QLoRA, OFT, and QOFT.
 - Paired preference dataset detection, mapping, compatibility checks, and remapping.

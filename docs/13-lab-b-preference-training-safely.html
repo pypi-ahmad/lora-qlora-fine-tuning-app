@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Understand preference data and complete one small DPO pipeline. Reward, KTO, and ORPO variations demonstrate how the same source schema supports different objectives.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 13 - Lab B: preference training safely | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="13-lab-b-preference-training-safely.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html" class="active" aria-current="page"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 13 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:13;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-13-lab-b-preference-training-safely">Module 13 - Lab B: preference training safely</h2>
+<h3 id="goal">Goal</h3>
+<p>Understand preference data and complete one small DPO pipeline. Reward, KTO, and ORPO
+variations demonstrate how the same source schema supports different objectives.</p>
+<h3 id="important-limitation">Important limitation</h3>
+<p><code>examples/preference_sample.jsonl</code> is a tiny synthetic teaching file. It verifies the
+pipeline and illustrates clear preferences. It is not large or diverse enough for a
+production-quality alignment claim.</p>
+<h3 id="step-1-inspect-preference-quality">Step 1: inspect preference quality</h3>
+<p>For each row, ask:</p>
+<ul>
+<li>Is the chosen response clearly better under a written rubric?</li>
+<li>Is the rejected response plausible enough to provide learning signal?</li>
+<li>Does the pair differ in the behavior of interest rather than irrelevant wording?</li>
+<li>Are safety and factual claims defensible?</li>
+</ul>
+<p>Write the rubric before training. Example dimensions are correctness, directness,
+operational safety, and honesty about limitations.</p>
+<h3 id="step-2-create-a-preference-baseline">Step 2: create a preference baseline</h3>
+<p>Prepare five held-out prompts covering different rubric dimensions. Generate the base
+model's answer. If possible, create two candidate answers per prompt and label them
+blindly before seeing which system produced each.</p>
+<h3 id="step-3-run-dpo">Step 3: run DPO</h3>
+<p>Use:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td><code>Qwen/Qwen3-0.6B</code></td>
+</tr>
+<tr>
+<td>Dataset</td>
+<td><code>examples/preference_sample.jsonl</code></td>
+</tr>
+<tr>
+<td>Approach</td>
+<td>DPO Training</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>QLoRA</td>
+</tr>
+<tr>
+<td>Preset</td>
+<td>Smoke test</td>
+</tr>
+<tr>
+<td>Learning rate</td>
+<td>Default <code>1e-5</code></td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>Default <code>0.1</code></td>
+</tr>
+<tr>
+<td>Compute</td>
+<td>Auto</td>
+</tr>
+</tbody>
+</table>
+<p>Inspect, add, save, review, and launch exactly as in Lab A. Confirm the dataset format
+is <code>preference</code>, not prompt/completion.</p>
+<h3 id="step-4-evaluate-dpo">Step 4: evaluate DPO</h3>
+<p>Use held-out prompts and the same rubric. Pairwise blind comparison is more reliable
+than asking whether an output "looks better." Track preference win rate as:</p>
+<pre><code class="language-text">win rate = adapter-preferred comparisons / decisive comparisons
+</code></pre>
+<p>Also record ties and regressions. With five examples, this is a diagnostic, not a
+statistically strong conclusion.</p>
+<h3 id="variation-a-reward-modeling">Variation A: Reward Modeling</h3>
+<p>Select Reward Modeling with default learning rate <code>1e-3</code>. The model path changes to a
+one-label sequence classifier. After training, inspect artifacts and metrics. The
+Monitor page will explain that generative comparison is unavailable. A complete reward
+evaluation tool would score held-out chosen/rejected pairs and measure ranking accuracy;
+that UI is not implemented.</p>
+<h3 id="variation-b-kto">Variation B: KTO</h3>
+<p>Select KTO and observe that the minimum per-device batch becomes 2. Keep accumulation
+and memory constraints in mind. Compare trainer behavior and metrics, but do not assume
+loss values are directly comparable across different objectives.</p>
+<h3 id="variation-c-orpo">Variation C: ORPO</h3>
+<p>Select ORPO and keep the shared preference mapping. Review the objective distinction:
+ORPO combines supervised and preference pressure rather than reproducing DPO's exact
+reference-policy formulation.</p>
+<h3 id="preference-data-failure-modes">Preference-data failure modes</h3>
+<ul>
+<li>annotators use different rubrics;</li>
+<li>chosen answers are longer and length becomes an unintended shortcut;</li>
+<li>rejected answers are absurdly bad and teach little;</li>
+<li>pairs differ in factual content that reviewers did not verify;</li>
+<li>preference direction is accidentally reversed;</li>
+<li>demographic or cultural preferences are treated as universal; and</li>
+<li>training/evaluation pairs share templates or facts.</li>
+</ul>
+<h3 id="lab-report">Lab report</h3>
+<p>Compare at least two objectives conceptually even if hardware time permits only one
+run. State what each artifact predicts, how it would be evaluated, and why trainer loss
+cannot be compared as a universal quality score.</p></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="12-lab-a-complete-an-sft-smoke-run.html"><span>Previous</span><strong>Module 12 - Lab A: complete an SFT smoke run</strong></a><a rel="next" href="14-evaluate-like-an-experimenter.html"><span>Next</span><strong>Module 14 - Evaluate like an experimenter</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>
