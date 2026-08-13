@@ -1,0 +1,422 @@
+{
+  "Launch LoRA Studio.sh": {
+    "mtime": 1786552103.5632362,
+    "ast_hash": "9b2fe7f4dfc0ec5ed9e1cba7a199fc53",
+    "semantic_hash": "9b2fe7f4dfc0ec5ed9e1cba7a199fc53"
+  },
+  "app_pages/dataset.py": {
+    "mtime": 1786607102.6553001,
+    "ast_hash": "fbad1fd5a30942d328c13b2bfc5edc37",
+    "semantic_hash": "fbad1fd5a30942d328c13b2bfc5edc37"
+  },
+  "app_pages/gpu_memory.py": {
+    "mtime": 1786552103.5701263,
+    "ast_hash": "b995ed6ce2b23ae87362dee208cd43d7",
+    "semantic_hash": "b995ed6ce2b23ae87362dee208cd43d7"
+  },
+  "app_pages/model.py": {
+    "mtime": 1786552103.5711255,
+    "ast_hash": "857ad81d96af9a7fb09ca27074af33b3",
+    "semantic_hash": "857ad81d96af9a7fb09ca27074af33b3"
+  },
+  "app_pages/monitor.py": {
+    "mtime": 1786616928.0498514,
+    "ast_hash": "019f0d3943ccac7b5b3702ce34ab44ad",
+    "semantic_hash": "019f0d3943ccac7b5b3702ce34ab44ad"
+  },
+  "app_pages/ollama.py": {
+    "mtime": 1786552103.5721316,
+    "ast_hash": "3ca456dcda829356b3477427bfbe18c7",
+    "semantic_hash": "3ca456dcda829356b3477427bfbe18c7"
+  },
+  "app_pages/review.py": {
+    "mtime": 1786616928.0498514,
+    "ast_hash": "db035f966401022c0c91bb3f6b348935",
+    "semantic_hash": "db035f966401022c0c91bb3f6b348935"
+  },
+  "app_pages/system.py": {
+    "mtime": 1786605755.8580482,
+    "ast_hash": "ae93c1f06309d48b29fe94feebca0bcb",
+    "semantic_hash": "ae93c1f06309d48b29fe94feebca0bcb"
+  },
+  "app_pages/training.py": {
+    "mtime": 1786608922.3099012,
+    "ast_hash": "ac91a353489b33ac29c2ace6518cfdba",
+    "semantic_hash": "ac91a353489b33ac29c2ace6518cfdba"
+  },
+  "pyproject.toml": {
+    "mtime": 1786616928.0568538,
+    "ast_hash": "3ce5eda724818e2e71826c1a70934412",
+    "semantic_hash": "3ce5eda724818e2e71826c1a70934412"
+  },
+  "src/lora_finetune_studio/__init__.py": {
+    "mtime": 1786543568.079884,
+    "ast_hash": "b6e8f3e54ad58c3b4a5753706fb8ae34",
+    "semantic_hash": "b6e8f3e54ad58c3b4a5753706fb8ae34"
+  },
+  "src/lora_finetune_studio/cli.py": {
+    "mtime": 1786543597.6575522,
+    "ast_hash": "06e2022e31593a1ca9f22e38ddb3b579",
+    "semantic_hash": "06e2022e31593a1ca9f22e38ddb3b579"
+  },
+  "src/lora_finetune_studio/hardware.py": {
+    "mtime": 1786552103.5795004,
+    "ast_hash": "b9566a52db92c669015334862a2dc500",
+    "semantic_hash": "b9566a52db92c669015334862a2dc500"
+  },
+  "src/lora_finetune_studio/inference.py": {
+    "mtime": 1786552103.5810115,
+    "ast_hash": "d03bed90e48eec2fc5631c7f1ed7cb61",
+    "semantic_hash": "d03bed90e48eec2fc5631c7f1ed7cb61"
+  },
+  "src/lora_finetune_studio/jobs.py": {
+    "mtime": 1786616928.0578494,
+    "ast_hash": "e2a6d828b9822c2105221c39e5be6dfe",
+    "semantic_hash": "e2a6d828b9822c2105221c39e5be6dfe"
+  },
+  "src/lora_finetune_studio/lifecycle.py": {
+    "mtime": 1786552103.5830207,
+    "ast_hash": "e90130d2bd8f9e5c708aa6872311aaa1",
+    "semantic_hash": "e90130d2bd8f9e5c708aa6872311aaa1"
+  },
+  "src/lora_finetune_studio/models.py": {
+    "mtime": 1786608922.3099012,
+    "ast_hash": "e60fb2d317880ef5b9382b12844436de",
+    "semantic_hash": "e60fb2d317880ef5b9382b12844436de"
+  },
+  "src/lora_finetune_studio/ollama.py": {
+    "mtime": 1786543674.1782265,
+    "ast_hash": "c090ec5fce178d71ef8a248a98468723",
+    "semantic_hash": "c090ec5fce178d71ef8a248a98468723"
+  },
+  "src/lora_finetune_studio/sources.py": {
+    "mtime": 1786607072.5289297,
+    "ast_hash": "a99e411ac0990e673743a9b41ccf86a5",
+    "semantic_hash": "a99e411ac0990e673743a9b41ccf86a5"
+  },
+  "src/lora_finetune_studio/training.py": {
+    "mtime": 1786608774.984364,
+    "ast_hash": "285dd0cc3cdd48d52b6e30889d85ec0d",
+    "semantic_hash": "285dd0cc3cdd48d52b6e30889d85ec0d"
+  },
+  "src/lora_finetune_studio/worker.py": {
+    "mtime": 1786616928.0588498,
+    "ast_hash": "c654270fd19e9e0a43b8897703fa7fe3",
+    "semantic_hash": "c654270fd19e9e0a43b8897703fa7fe3"
+  },
+  "streamlit_app.py": {
+    "mtime": 1786616928.060356,
+    "ast_hash": "7b5a2c011d6a2e5faedca1f0c79c4f13",
+    "semantic_hash": "7b5a2c011d6a2e5faedca1f0c79c4f13"
+  },
+  "tests/test_app.py": {
+    "mtime": 1786616928.060356,
+    "ast_hash": "bdf5b0320b8d256f52c6f551ac0ea9fc",
+    "semantic_hash": "bdf5b0320b8d256f52c6f551ac0ea9fc"
+  },
+  "tests/test_hardware.py": {
+    "mtime": 1786552103.5865488,
+    "ast_hash": "cea87a427d59db7de150b3363627ed6a",
+    "semantic_hash": "cea87a427d59db7de150b3363627ed6a"
+  },
+  "tests/test_inference.py": {
+    "mtime": 1786552103.5875497,
+    "ast_hash": "052feb93566bb86c06b0883616454037",
+    "semantic_hash": "052feb93566bb86c06b0883616454037"
+  },
+  "tests/test_jobs.py": {
+    "mtime": 1786616928.061363,
+    "ast_hash": "1a17163f3dec1f512c05e6106dca29ac",
+    "semantic_hash": "1a17163f3dec1f512c05e6106dca29ac"
+  },
+  "tests/test_lifecycle.py": {
+    "mtime": 1786552103.5895498,
+    "ast_hash": "bb65a16b4dd5ffab06f8ff583fac6f1b",
+    "semantic_hash": "bb65a16b4dd5ffab06f8ff583fac6f1b"
+  },
+  "tests/test_models.py": {
+    "mtime": 1786608922.311901,
+    "ast_hash": "9dbd565db18ad2a6b51312ebf806e3ab",
+    "semantic_hash": "9dbd565db18ad2a6b51312ebf806e3ab"
+  },
+  "tests/test_sources.py": {
+    "mtime": 1786607191.9871848,
+    "ast_hash": "6daa31e1dd38e5a8bcd767637b9d7199",
+    "semantic_hash": "6daa31e1dd38e5a8bcd767637b9d7199"
+  },
+  "tests/test_training.py": {
+    "mtime": 1786608774.9865797,
+    "ast_hash": "2802aa6aa6fb0eef17bfe8d5ac01afdc",
+    "semantic_hash": "2802aa6aa6fb0eef17bfe8d5ac01afdc"
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1786614053.9707487,
+    "ast_hash": "ddfc623709506681b67fac8a0341ea18",
+    "semantic_hash": "ddfc623709506681b67fac8a0341ea18"
+  },
+  "CHANGELOG.md": {
+    "mtime": 1786616928.044841,
+    "ast_hash": "af86ae4e113a15ad1429a540958e548f",
+    "semantic_hash": "af86ae4e113a15ad1429a540958e548f"
+  },
+  "CODE_OF_CONDUCT.md": {
+    "mtime": 1786545739.8529594,
+    "ast_hash": "1c3c949e0b315314b0546f9fc2ee7548",
+    "semantic_hash": "1c3c949e0b315314b0546f9fc2ee7548"
+  },
+  "CONTRIBUTING.md": {
+    "mtime": 1786552103.5617292,
+    "ast_hash": "89e0e27c225d848dfca49713d45e5e57",
+    "semantic_hash": "89e0e27c225d848dfca49713d45e5e57"
+  },
+  "README.md": {
+    "mtime": 1786616928.0458477,
+    "ast_hash": "1295f019e8e7bbe82fa28a24290fade5",
+    "semantic_hash": "1295f019e8e7bbe82fa28a24290fade5"
+  },
+  "SECURITY.md": {
+    "mtime": 1786552103.5662575,
+    "ast_hash": "3f876b1f934280ce11b3969723ec94e4",
+    "semantic_hash": "3f876b1f934280ce11b3969723ec94e4"
+  },
+  "TECHNICAL.md": {
+    "mtime": 1786616928.04785,
+    "ast_hash": "8d6dab5faefeff10d93f7e71be233d5c",
+    "semantic_hash": "8d6dab5faefeff10d93f7e71be233d5c"
+  },
+  "USAGE.md": {
+    "mtime": 1786616928.0488496,
+    "ast_hash": "957e3c944c96b24e3577b50a5c7856bd",
+    "semantic_hash": "957e3c944c96b24e3577b50a5c7856bd"
+  },
+  "docs/index.html": {
+    "mtime": 1786616528.2340038,
+    "ast_hash": "0b4f7b051b23a07d291367435cda55a4",
+    "semantic_hash": "0b4f7b051b23a07d291367435cda55a4"
+  },
+  ".firecrawl/search-unsloth-auto-docstring.json": {
+    "mtime": 1786604416.2024548,
+    "ast_hash": "ab2c4738bb2f7fe2b7cbb0017a4976b1",
+    "semantic_hash": "ab2c4738bb2f7fe2b7cbb0017a4976b1"
+  },
+  ".firecrawl/search-unsloth-windows-nodeps.json": {
+    "mtime": 1786604467.71231,
+    "ast_hash": "d87559d540ba9aea6aa57cc4abc4cb87",
+    "semantic_hash": "d87559d540ba9aea6aa57cc4abc4cb87"
+  },
+  ".firecrawl/search-unsloth-windows-torchao.json": {
+    "mtime": 1786604402.7860272,
+    "ast_hash": "d51100a91866a9f03f4339461525c2b4",
+    "semantic_hash": "d51100a91866a9f03f4339461525c2b4"
+  },
+  ".firecrawl/search-unsloth-windows-versions.json": {
+    "mtime": 1786604424.791964,
+    "ast_hash": "5ab82af599de813b56c57ea437ac2d1d",
+    "semantic_hash": "5ab82af599de813b56c57ea437ac2d1d"
+  },
+  "docs/.tutorial-build.json": {
+    "mtime": 1786616928.0508494,
+    "ast_hash": "335be5ad42319e9999d219c8cd0ea797",
+    "semantic_hash": "335be5ad42319e9999d219c8cd0ea797"
+  },
+  "docs/assets/search-index.js": {
+    "mtime": 1786616928.0528514,
+    "ast_hash": "90800e95f07339ed98cd2ced568ee7d7",
+    "semantic_hash": "90800e95f07339ed98cd2ced568ee7d7"
+  },
+  "docs/assets/site.js": {
+    "mtime": 1786616528.2473867,
+    "ast_hash": "1c33b67086777600e22b52eaabb0106d",
+    "semantic_hash": "1c33b67086777600e22b52eaabb0106d"
+  },
+  "scripts/build_tutorial.py": {
+    "mtime": 1786616928.0568538,
+    "ast_hash": "0facff8c22ac2b331c51bdded3885c56",
+    "semantic_hash": "0facff8c22ac2b331c51bdded3885c56"
+  },
+  "scripts/tutorial_assets/site.js": {
+    "mtime": 1786614053.9932072,
+    "ast_hash": "1e2422da0496e81bfc61936f1e59a6c9",
+    "semantic_hash": "1e2422da0496e81bfc61936f1e59a6c9"
+  },
+  "src/lora_finetune_studio/queue_dispatcher.py": {
+    "mtime": 1786616928.0588498,
+    "ast_hash": "932ea278e131252efdcf8e40d94bee48",
+    "semantic_hash": "932ea278e131252efdcf8e40d94bee48"
+  },
+  "src/lora_finetune_studio/unsloth_runtime.py": {
+    "mtime": 1786605691.3282976,
+    "ast_hash": "9902717cdd655becfcf2e622cdd981c7",
+    "semantic_hash": "9902717cdd655becfcf2e622cdd981c7"
+  },
+  "tests/test_queue_dispatcher.py": {
+    "mtime": 1786616928.061363,
+    "ast_hash": "f1bd14c2af8080e761a1059c4bc95c26",
+    "semantic_hash": "f1bd14c2af8080e761a1059c4bc95c26"
+  },
+  "tests/test_queue_ui.py": {
+    "mtime": 1786616928.062377,
+    "ast_hash": "d4418f7a746b9bf99a9016bbc09fc350",
+    "semantic_hash": "d4418f7a746b9bf99a9016bbc09fc350"
+  },
+  "tests/test_tutorial.py": {
+    "mtime": 1786616928.062377,
+    "ast_hash": "9194a31c5242a4d973547b491b4cd161",
+    "semantic_hash": "9194a31c5242a4d973547b491b4cd161"
+  },
+  "tests/test_worker.py": {
+    "mtime": 1786616928.0637016,
+    "ast_hash": "572bda60a9c249e17559fbd28b674166",
+    "semantic_hash": "572bda60a9c249e17559fbd28b674166"
+  },
+  "unsloth-runtime/pyproject.toml": {
+    "mtime": 1786605659.0347016,
+    "ast_hash": "c748afc854417efc3f12cf121982ac20",
+    "semantic_hash": "c748afc854417efc3f12cf121982ac20"
+  },
+  ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md": {
+    "mtime": 1786603510.0784452,
+    "ast_hash": "5bfb033dc214f481e518616c853c509c",
+    "semantic_hash": "5bfb033dc214f481e518616c853c509c"
+  },
+  ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md": {
+    "mtime": 1786603514.0810292,
+    "ast_hash": "feee529e4d4df81c1cd8b7fd803d20ce",
+    "semantic_hash": "feee529e4d4df81c1cd8b7fd803d20ce"
+  },
+  "SETUP.md": {
+    "mtime": 1786616928.0468478,
+    "ast_hash": "12f1d5739d0a57e2153326bd368d6aaf",
+    "semantic_hash": "12f1d5739d0a57e2153326bd368d6aaf"
+  },
+  "TUTORIAL.md": {
+    "mtime": 1786616928.0488496,
+    "ast_hash": "df9265eeac7c80968f6ee2379c546800",
+    "semantic_hash": "df9265eeac7c80968f6ee2379c546800"
+  },
+  "docs/01-learn-the-map-before-the-territory.html": {
+    "mtime": 1786616528.2349997,
+    "ast_hash": "87d57cc3915e3518d96a2684c3c68d2b",
+    "semantic_hash": "87d57cc3915e3518d96a2684c3c68d2b"
+  },
+  "docs/02-natural-language-becomes-model-input.html": {
+    "mtime": 1786616528.2349997,
+    "ast_hash": "dc851579453340ef2f490ba25af70307",
+    "semantic_hash": "dc851579453340ef2f490ba25af70307"
+  },
+  "docs/03-neural-networks-learn-with-vectors-and-gradients.html": {
+    "mtime": 1786616528.236004,
+    "ast_hash": "7f347a8cec42815c9b9f3cd0fb6cd451",
+    "semantic_hash": "7f347a8cec42815c9b9f3cd0fb6cd451"
+  },
+  "docs/04-build-a-transformer-from-attention-blocks.html": {
+    "mtime": 1786616528.236004,
+    "ast_hash": "330349cee3be5e42a8a89a085776c3db",
+    "semantic_hash": "330349cee3be5e42a8a89a085776c3db"
+  },
+  "docs/05-understand-the-llm-lifecycle.html": {
+    "mtime": 1786616528.236004,
+    "ast_hash": "2c284795d7782a8cd233d3e3629db452",
+    "semantic_hash": "2c284795d7782a8cd233d3e3629db452"
+  },
+  "docs/06-choose-a-tuning-family.html": {
+    "mtime": 1786616528.2375093,
+    "ast_hash": "aa8947b496aec4d39b7e8088073eeab2",
+    "semantic_hash": "aa8947b496aec4d39b7e8088073eeab2"
+  },
+  "docs/07-master-lora-qlora-oft-and-qoft.html": {
+    "mtime": 1786616528.2375093,
+    "ast_hash": "2e2c8ccd764d4a7b60b766221f9ae3f9",
+    "semantic_hash": "2e2c8ccd764d4a7b60b766221f9ae3f9"
+  },
+  "docs/08-engineer-datasets-that-teach-the-intended-behavior.html": {
+    "mtime": 1786616528.2388217,
+    "ast_hash": "465ef80935b79cd486c8df81d7b87f0f",
+    "semantic_hash": "465ef80935b79cd486c8df81d7b87f0f"
+  },
+  "docs/09-select-the-post-training-objective.html": {
+    "mtime": 1786616528.2388217,
+    "ast_hash": "b9644cd9cbc664b973a89d477db0ce76",
+    "semantic_hash": "b9644cd9cbc664b973a89d477db0ce76"
+  },
+  "docs/10-prepare-the-local-training-system.html": {
+    "mtime": 1786616528.2398422,
+    "ast_hash": "86cc2f08f4bf0eeb73dbf884509096e7",
+    "semantic_hash": "86cc2f08f4bf0eeb73dbf884509096e7"
+  },
+  "docs/11-translate-intent-into-app-settings.html": {
+    "mtime": 1786616928.0518486,
+    "ast_hash": "f8fe1f56a34c3247ab35daf1553065cd",
+    "semantic_hash": "f8fe1f56a34c3247ab35daf1553065cd"
+  },
+  "docs/12-lab-a-complete-an-sft-smoke-run.html": {
+    "mtime": 1786616928.0518486,
+    "ast_hash": "4cbce8df943fb924c3ecf9402eec9e38",
+    "semantic_hash": "4cbce8df943fb924c3ecf9402eec9e38"
+  },
+  "docs/13-lab-b-preference-training-safely.html": {
+    "mtime": 1786616528.2418416,
+    "ast_hash": "cb423f710c712c341741562d44ecb56e",
+    "semantic_hash": "cb423f710c712c341741562d44ecb56e"
+  },
+  "docs/14-evaluate-like-an-experimenter.html": {
+    "mtime": 1786616528.2418416,
+    "ast_hash": "cebf99dd82a91c73979d32b4250fcede",
+    "semantic_hash": "cebf99dd82a91c73979d32b4250fcede"
+  },
+  "docs/15-operate-jobs-and-use-artifacts.html": {
+    "mtime": 1786616928.0528514,
+    "ast_hash": "05f2c8619e55de930661557f04a6fb2d",
+    "semantic_hash": "05f2c8619e55de930661557f04a6fb2d"
+  },
+  "docs/16-read-and-extend-the-repository.html": {
+    "mtime": 1786616528.2433481,
+    "ast_hash": "9570baff8b5a2509acf8497e44dca9f6",
+    "semantic_hash": "9570baff8b5a2509acf8497e44dca9f6"
+  },
+  "docs/17-capstone-train-a-defensible-specialist.html": {
+    "mtime": 1786616528.2433481,
+    "ast_hash": "4b77985d728234c6deb6e6663cd38804",
+    "semantic_hash": "4b77985d728234c6deb6e6663cd38804"
+  },
+  "docs/18-checkpoint-answers.html": {
+    "mtime": 1786616528.2443857,
+    "ast_hash": "925e65c84c4594a3109ad107502548a2",
+    "semantic_hash": "925e65c84c4594a3109ad107502548a2"
+  },
+  "docs/19-formula-and-settings-reference.html": {
+    "mtime": 1786616528.2443857,
+    "ast_hash": "19a14883d5ec41e7689bce8da1a28f09",
+    "semantic_hash": "19a14883d5ec41e7689bce8da1a28f09"
+  },
+  "docs/20-troubleshooting-by-boundary.html": {
+    "mtime": 1786616528.2453866,
+    "ast_hash": "8b63a9475fa63429a76ee180647ce3a8",
+    "semantic_hash": "8b63a9475fa63429a76ee180647ce3a8"
+  },
+  "docs/21-glossary.html": {
+    "mtime": 1786616528.2463846,
+    "ast_hash": "2637f041eb7aaf1947830c64f47e4b1c",
+    "semantic_hash": "2637f041eb7aaf1947830c64f47e4b1c"
+  },
+  "docs/22-official-references.html": {
+    "mtime": 1786616528.2463846,
+    "ast_hash": "2fc7b90c575b83190e5ce791246cecbc",
+    "semantic_hash": "2fc7b90c575b83190e5ce791246cecbc"
+  },
+  "docs/downloads/lora-finetune-studio-zero-to-mastery.pdf": {
+    "mtime": 1786616928.0548546,
+    "ast_hash": "9dbb2eebac6b1cd6b1a253728b0b0bee",
+    "semantic_hash": "9dbb2eebac6b1cd6b1a253728b0b0bee"
+  },
+  "output/pdf/lora-finetune-studio-zero-to-mastery.pdf": {
+    "mtime": 1786616928.055854,
+    "ast_hash": "9dbb2eebac6b1cd6b1a253728b0b0bee",
+    "semantic_hash": "9dbb2eebac6b1cd6b1a253728b0b0bee"
+  },
+  "docs/images/training-studio.png": {
+    "mtime": 1786614053.7937124,
+    "ast_hash": "f4f7a12776756f2a015a09960b9b381b",
+    "semantic_hash": "f4f7a12776756f2a015a09960b9b381b"
+  }
+}
