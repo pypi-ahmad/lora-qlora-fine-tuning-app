@@ -48,6 +48,23 @@ Never commit that file or paste a real token into an issue, screenshot, log, or 
 
 ## 3. Launch the application
 
+### Read-only showcase
+
+To inspect the dataset, configuration, review, and monitor workflow without CUDA, a Hugging Face
+token, or the training stack, run the isolated showcase:
+
+```powershell
+uvx --from streamlit==1.61.1 streamlit run demo/streamlit_app.py
+```
+
+The showcase loads `demo/fixtures/showcase.json`. That fixture is checked against the production
+`TrainingConfig` and `JobStatus` contracts. The **Start training** control stays disabled. The
+monitor curve is synthetic and is not a measured training result.
+
+On Streamlit Community Cloud, set the entry point to `demo/streamlit_app.py` and the Python
+version to 3.12 so `demo/requirements.txt` can install Streamlit only. Do not point Community Cloud
+at `streamlit_app.py`; that path needs the CUDA training environment.
+
 ### Platform launch
 
 On Windows, double-click `Launch LoRA Studio.cmd` in the repository root. On Linux, run:
@@ -382,7 +399,9 @@ Start Ollama and install a model. This does not affect Hugging Face training.
 
 ## Safe use
 
-- Do not expose the unauthenticated Streamlit server to an untrusted network.
+- Do not expose the unauthenticated production Streamlit server to an untrusted network.
+- The Community Cloud showcase is read-only fixture UI. It still must not be treated as a
+  multi-user training service.
 - Do not train secrets or restricted personal data into model weights.
 - Review model and dataset licenses before training or redistribution.
 - Protect `.uploads`, `.runs`, model caches, checkpoints, adapters, and logs.

@@ -78,6 +78,19 @@ uv run ty check src
 uv run pytest
 ```
 
+When changing `TUTORIAL.md`, `scripts/build_tutorial.py`, or generated `docs/` output, also run:
+
+```powershell
+uv sync --group docs
+uv run --group docs python scripts/build_tutorial.py --check
+```
+
+If the handbook is stale, rebuild with `uv run --group docs python scripts/build_tutorial.py` and
+commit the generated website, manifest, and PDF copies. Do not edit generated HTML by hand.
+
+Showcase changes belong under `demo/` and `tests/test_demo.py`. Keep that entry point free of CUDA,
+Hugging Face, and worker imports.
+
 Changes to training or inference should also receive a proportionate CUDA smoke test when suitable
 hardware is available. State clearly in the pull request when hardware verification was not run.
 

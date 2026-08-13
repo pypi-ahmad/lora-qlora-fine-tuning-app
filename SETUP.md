@@ -3,7 +3,8 @@
 This guide explains how to clone, install, verify, run, update, and troubleshoot LoRA Fine-tune
 Studio on native Windows 11 and x86-64 Linux. It covers the normal application runtime, the
 optional Windows Unsloth runtime, Hugging Face access, development tools, and every direct project
-dependency.
+dependency. To inspect the guided workflow without a GPU or the CUDA stack, use the
+[read-only showcase](#41-read-only-showcase-no-cuda) after cloning.
 
 Repository: <https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app>
 
@@ -157,11 +158,26 @@ Confirm that these files exist in the project root before continuing:
 pyproject.toml
 uv.lock
 streamlit_app.py
+demo/streamlit_app.py
+demo/requirements.txt
 Launch LoRA Studio.cmd
 Launch LoRA Studio.sh
 unsloth-runtime/pyproject.toml
 unsloth-runtime/uv.lock
 ```
+
+### 4.1 Read-only showcase, no CUDA
+
+After the clone, reviewers can run the isolated showcase without creating `.venv` or installing
+PyTorch:
+
+```powershell
+uvx --from streamlit==1.61.1 streamlit run demo/streamlit_app.py
+```
+
+That process uses only Streamlit and `demo/fixtures/showcase.json`. It does not read `HF_TOKEN`,
+download models, start a worker, or write `.runs`. Continue with the rest of this guide only when
+you need the production training application.
 
 ## 5. Configure Hugging Face access
 
@@ -402,6 +418,17 @@ These are installed only for contributors:
 | `ruff` | `>=0.15,<1` | 0.16.2 | Formatting and linting |
 | `ty` | `>=0.0.19,<1` | 0.0.70 | Static type checking |
 
+### Documentation dependencies
+
+Installed only with `--group docs` when regenerating or checking the handbook:
+
+| Dependency | Declared range | Purpose |
+| --- | --- | --- |
+| `beautifulsoup4` | `>=4.13,<5` | HTML rewrite and link checks for generated chapters |
+| `markdown` | `>=3.8,<4` | `TUTORIAL.md` to HTML |
+| `pypdf` | `>=6,<7` | Portable PDF content comparison |
+| `reportlab` | `>=4.4,<5` | Deterministic handbook PDF generation |
+
 ## 9. Verify the installation
 
 ### Main interpreter and packages
@@ -473,6 +500,9 @@ A successful smoke test writes an adapter under `.runs/<run-id>/output/adapter`.
 | `.runs/streamlit.pid` | Linux background server PID |
 | `.runs/<run-id>` | Saved run configuration, status, logs, checkpoints, and output |
 | `.uploads` | App-managed uploaded datasets |
+| `demo/` | Isolated read-only showcase, fixture, and Community Cloud requirements |
+| `docs/` | Generated Zero-to-Mastery website and published PDF |
+| `output/pdf/` | Canonical handbook PDF used by the tutorial check |
 | `unsloth_compiled_cache` | Generated Unsloth compilation cache |
 | `8504` | Local Streamlit port used by both launchers |
 
@@ -646,15 +676,18 @@ uv run --locked streamlit run streamlit_app.py --server.port=8504
 Run all required checks before submitting a change:
 
 ```text
+uv sync --locked --group dev --group docs --python 3.14
 uv run ruff format --check .
 uv run ruff check .
 uv run ty check src
 uv run pytest
+uv run --group docs python scripts/build_tutorial.py --check
 ```
 
-Unit and Streamlit startup tests do not require a GPU. Changes to real training or inference should
-also receive an appropriate CUDA smoke test. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening
-a pull request.
+Unit, showcase, and Streamlit startup tests do not require a GPU. The tutorial `--check` compares
+generated HTML after newline normalization and PDF metadata, page size, and text so Windows and
+Linux checkouts stay in sync. Changes to real training or inference should also receive an
+appropriate CUDA smoke test. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 
 ## 16. Security notes
 

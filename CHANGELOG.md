@@ -7,6 +7,11 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Documented the read-only showcase, Community Cloud entry point, and portable tutorial checks in
+  the README, setup, usage, technical, security, contributing, and Zero-to-Mastery guides.
+
 ## [0.5.0] - 2026-08-13
 
 ### Added

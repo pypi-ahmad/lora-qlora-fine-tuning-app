@@ -1,7 +1,7 @@
 {
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "01-learn-the-map-before-the-territory.html": "75d44d9c292ebfc7dbf38ecd6bc07d9441f0ba09bfb2e2ace098a98e17e74776",
+    "01-learn-the-map-before-the-territory.html": "11683434c9bf5e1361721bebf4c633cd3771356c118527742206be111a81cc93",
     "02-natural-language-becomes-model-input.html": "03ac4625f4055069ae299de64d87a8689c9b27fa2c628f7563ef050124e388c7",
     "03-neural-networks-learn-with-vectors-and-gradients.html": "d28f17687a1868191a59704cfb5bec1e466acc04b146f991673ba50a49252ede",
     "04-build-a-transformer-from-attention-blocks.html": "5b3224143f91d3578d3e6b9ed9d35f5309575fbf3c1957cb596de1067ecc3356",
@@ -16,17 +16,17 @@
     "13-lab-b-preference-training-safely.html": "104195a6be4036d1333633a7477068778b12ac3cef489bd47c6111ebb134a4e4",
     "14-evaluate-like-an-experimenter.html": "52773d45911fc83325ed282f773cb614220f2da3bc872244918cd7d055087ab4",
     "15-operate-jobs-and-use-artifacts.html": "bd949329fca3eaab9bb2f9b4f58e142923c7ac7d5eb6a65a2927c7a283aa3b9d",
-    "16-read-and-extend-the-repository.html": "ac814e8c7e7cafa6514d0053d07601975273a9d2913935130d582b6fb4688c47",
+    "16-read-and-extend-the-repository.html": "9d4969328371e547d1db415e318d2a6353b1d6de2c429ab7766c23df017a1722",
     "17-capstone-train-a-defensible-specialist.html": "41d945262cef62a70cc7481f1497d44540a9ce7bc613d1a9478386e9957125af",
     "18-checkpoint-answers.html": "5cbd3b5c8a40d1b5226869426e70348c5b8b3d2b9a33bbc300ebc836a14c291d",
     "19-formula-and-settings-reference.html": "6eb17d8ed0562b149a770381fbb4a88d3dab6b6b788a31f63afb2716ed2f8b34",
     "20-troubleshooting-by-boundary.html": "1162b9d4cabeeb22bbaf8f31020f7cd9ad907bb0354d66a779e08b038d34c94a",
     "21-glossary.html": "a7228bc0c0777e89c864b079e262d4705b0e69358db4b4603fb9b84c8a596c97",
     "22-official-references.html": "0c10733b52fceb21ff4a39c813e69abc01c1af58825ac9da52220035112ff108",
-    "assets/search-index.js": "8502ce08b7aa3a0d5d15e85992112e05af4b006f6add4283c7571cace73da14c",
+    "assets/search-index.js": "48594c9683a375f6093961be1a0580b40b7ab399f0a4b7b44d0e2d6b6ffe3986",
     "assets/site.css": "0a3c0afa2bd4bf918a2a7920a727eeade0612e95a9183c89875d6ec6957663cb",
     "assets/site.js": "c209f03719b5cbe0f51971f767258d953ef61391f8f062c47fbbd337cabe9a75",
-    "downloads/lora-finetune-studio-zero-to-mastery.pdf": "8401da7b02954ccfd76ec0cd67923f041173b9bad5416bacb747f27adc9920ca",
+    "downloads/lora-finetune-studio-zero-to-mastery.pdf": "7998af0f1b5ee375b403d8d01b755bae75b5e4c57a15b27ac06b3a1cdbaf2779",
     "index.html": "c7caf3797a8b3944a01adb09c32a481dc47ee8401d68c29b447ab304bdda7b7d"
   },
   "source": "TUTORIAL.md"

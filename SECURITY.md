@@ -2,11 +2,11 @@
 
 ## Supported versions
 
-Security fixes are provided for the latest `0.1.x` release and the current `main` branch.
+Security fixes are provided for the latest `0.5.x` release and the current `main` branch.
 
 | Version | Supported |
 | --- | --- |
-| `0.1.x` | Yes |
+| `0.5.x` | Yes |
 | Older versions | No |
 
 Update to the latest release before confirming or reporting a problem.
@@ -46,8 +46,10 @@ The application crosses these trust boundaries:
 - accepts local CSV, JSON, and JSONL dataset uploads;
 - writes uploads, worker configuration, logs, checkpoints, metrics, and adapters to local disk;
 - starts a local Streamlit web server and a hidden training worker;
-- optionally calls Ollama at `http://localhost:11434`; and
-- downloads the `uv` installer when the one-click launcher cannot find `uv`.
+- optionally calls Ollama at `http://localhost:11434`;
+- downloads the `uv` installer when the one-click launcher cannot find `uv`; and
+- can host `demo/streamlit_app.py` as a read-only Community Cloud showcase that loads only
+  committed synthetic fixtures and does not accept uploads, tokens, or training starts.
 
 Vulnerabilities in an upstream model, dataset, Ollama, PyTorch, CUDA driver, or another dependency
 should also be reported to that upstream project through its security process.
@@ -71,8 +73,11 @@ These controls reduce risk; they do not make arbitrary models or datasets trustw
 ## Safe operation
 
 - Run the application only on a trusted computer and user account.
-- Do not expose port `8504` to the public internet or an untrusted local network. The application
-  has no authentication.
+- Do not expose the production app on port `8504` to the public internet or an untrusted local
+  network. The application has no authentication.
+- If you deploy the showcase, keep the Community Cloud entry point on `demo/streamlit_app.py`.
+  Pointing that host at `streamlit_app.py` would require the CUDA stack and would expose an
+  unauthenticated training UI.
 - Keep the operating system, NVIDIA driver, Ollama, `uv`, Python dependencies, and this project
   updated.
 - Inspect the one-click launcher before executing it if organizational policy prohibits remote

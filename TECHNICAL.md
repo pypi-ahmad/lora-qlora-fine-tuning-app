@@ -1,6 +1,6 @@
 # Technical Handbook
 
-This is the implementation reference for LoRA Fine-tune Studio `0.2.x`. It begins
+This is the implementation reference for LoRA Fine-tune Studio `0.5.x`. It begins
 with the concepts needed to understand the application and ends with the contracts,
 flows, and extension points needed to maintain it.
 
@@ -30,7 +30,9 @@ Implemented capabilities:
 - durable job status, logs, cancellation, and checkpoint resume;
 - optional adapter publishing to the Hugging Face Hub;
 - local base-versus-adapter generation; and
-- a separate playground for models already installed in Ollama.
+- a separate playground for models already installed in Ollama; and
+- a CUDA-free, read-only Streamlit showcase that renders synthetic fixtures without starting a
+  worker.
 
 Deliberate boundaries:
 
@@ -138,6 +140,10 @@ The application deliberately uses JSON files, an atomically updated local queue 
 GPU worker instead of a database or message broker. This keeps local operation inspectable and
 recoverable.
 
+`demo/streamlit_app.py` is a separate Streamlit entry point. It reads
+`demo/fixtures/showcase.json`, validates that payload against `TrainingConfig` and `JobStatus` in
+tests, and never imports the job manager, worker, Hugging Face clients, or CUDA stack.
+
 ## 5. Repository map
 
 | Path | Responsibility |
@@ -155,7 +161,10 @@ recoverable.
 | `src/lora_finetune_studio/unsloth_runtime.py` | Discovery and version check for `.venv-unsloth` |
 | `src/lora_finetune_studio/lifecycle.py` | Delayed Streamlit process exit |
 | `src/lora_finetune_studio/cli.py` | Installed `lora-finetune-studio` console entry point |
-| `tests/` | CPU-safe contract, boundary, UI-startup, and orchestration tests |
+| `src/lora_finetune_studio/queue_dispatcher.py` | FIFO handoff after a terminal job |
+| `demo/` | Isolated read-only showcase entry point, fixture, and Community Cloud requirements |
+| `scripts/build_tutorial.py` | Handbook website and PDF builder, with portable `--check` comparison |
+| `tests/` | CPU-safe contract, boundary, UI-startup, showcase, tutorial, and orchestration tests |
 | `unsloth-runtime/` | Independent Windows Unsloth project and lockfile |
 
 `.uploads/`, `.runs/`, `.venv/`, `.venv-unsloth/`, and
@@ -220,6 +229,11 @@ The Windows launcher:
 The Linux launcher performs the equivalent root sync and health check, tracks the
 Streamlit PID in `.runs/streamlit.pid`, and uses `xdg-open` when available. The console
 entry point calls Streamlit directly and does not perform the launcher preparation.
+
+The showcase is a third startup path: `uvx --from streamlit==1.61.1 streamlit run
+demo/streamlit_app.py`. It does not run a launcher, create `.venv`, or listen only on
+the production port convention. Community Cloud should use that file plus
+`demo/requirements.txt`, not `streamlit_app.py`.
 
 `.streamlit/config.toml` supplies the dark theme and a 200 MB server upload limit.
 
@@ -725,17 +739,27 @@ Tests are organized by boundary:
 | `test_training.py` | Normalization, combination, splitting, PEFT/quantization, trainers, and patches |
 | `test_inference.py` | Loading, generation, adapter attachment, and cleanup |
 | `test_lifecycle.py` | Delayed process-exit scheduling |
+| `test_queue_dispatcher.py` | FIFO continuation after a terminal job |
+| `test_queue_ui.py` | Monitor queue presentation |
+| `test_demo.py` | Showcase fixture contracts and read-only Streamlit startup |
+| `test_tutorial.py` | Handbook structure, portable generated-asset hashes, and local links |
+| `test_worker.py` | Child-process entry behavior |
 
 GitHub Actions runs the following on both `ubuntu-latest` and `windows-latest` with
 Python 3.14:
 
 ```powershell
-uv sync --group dev
+uv sync --group dev --group docs
 uv run ruff format --check .
 uv run ruff check .
 uv run ty check src
 uv run pytest
+uv run --group docs python scripts/build_tutorial.py --check
 ```
+
+`--check` rebuilds the handbook PDF in a temporary directory and compares metadata, page
+dimensions, and extracted text rather than raw PDF bytes. Generated HTML, CSS, JS, and
+JSON are compared after newline normalization so Windows CRLF checkouts do not fail.
 
 The automated suite mocks expensive or external boundaries and does not prove that a
 particular GPU, model architecture, dataset, or Unsloth release can finish training.

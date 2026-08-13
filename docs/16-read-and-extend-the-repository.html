@@ -70,6 +70,9 @@ make changes at the narrowest responsible layer.</p>
 </code></pre>
 <p><code>streamlit_app.py</code> initializes shared per-session state and eight <code>st.Page</code> entries.
 Page files own UI, while reusable and testable behavior lives in the package.</p>
+<p>The public showcase is a separate <strong>Implemented</strong> entry point: <code>demo/streamlit_app.py</code> reads
+<code>demo/fixtures/showcase.json</code> and never starts <code>jobs.py</code>, <code>worker.py</code>, or a CUDA stack. Tests
+confirm that fixture still satisfies <code>TrainingConfig</code> and <code>JobStatus</code>.</p>
 <h3 id="contract-first-flow">Contract-first flow</h3>
 <p><code>TrainingConfig</code> is the central process contract. UI values are converted to enums and
 dataclasses, validated, serialized to JSON, reconstructed by the worker, and mapped to
@@ -145,10 +148,20 @@ logs harmless. Use normal supply-chain, privacy, and access-control practices.</
 <td><code>test_app.py</code></td>
 <td>Streamlit startup and UI contracts</td>
 </tr>
+<tr>
+<td><code>test_demo.py</code></td>
+<td>showcase fixture contracts and read-only startup</td>
+</tr>
+<tr>
+<td><code>test_tutorial.py</code></td>
+<td>handbook completeness and portable generated-asset hashes</td>
+</tr>
 </tbody>
 </table>
-<p>CI runs formatting, linting, type checking, and tests on Windows and Ubuntu. GPU model
-loading and full training need an additional hardware smoke test.</p>
+<p>CI runs formatting, linting, type checking, tests, and <code>scripts/build_tutorial.py --check</code> on
+Windows and Ubuntu. The check compares handbook text after newline normalization and PDF
+metadata, page size, and extracted text. GPU model loading and full training need an additional
+hardware smoke test.</p>
 <h3 id="maintainer-exercise">Maintainer exercise</h3>
 <p>Trace <code>learning_rate</code> from its recipe default through Streamlit session state, the
 saved <code>TrainingConfig</code>, <code>config.json</code>, worker deserialization, TRL config, and

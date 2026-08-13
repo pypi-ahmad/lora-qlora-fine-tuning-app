@@ -79,6 +79,7 @@ deployment constraints usually determine whether the project is valuable.
 
 | Goal | Recommended modules |
 | --- | --- |
+| Inspect the workflow without a GPU | Run `demo/streamlit_app.py`, then modules 1, 11, and 15 |
 | Run a safe first experiment | 1, 2, 5, 8, 10, 11, 12, 15 |
 | Understand transformer mechanics | 2, 3, 4, 5, 7 |
 | Build a preference-training project | 2-10, 13-15, 17 |
@@ -1478,6 +1479,10 @@ Browser
 `streamlit_app.py` initializes shared per-session state and eight `st.Page` entries.
 Page files own UI, while reusable and testable behavior lives in the package.
 
+The public showcase is a separate **Implemented** entry point: `demo/streamlit_app.py` reads
+`demo/fixtures/showcase.json` and never starts `jobs.py`, `worker.py`, or a CUDA stack. Tests
+confirm that fixture still satisfies `TrainingConfig` and `JobStatus`.
+
 ### Contract-first flow
 
 `TrainingConfig` is the central process contract. UI values are converted to enums and
@@ -1536,9 +1541,13 @@ logs harmless. Use normal supply-chain, privacy, and access-control practices.
 | `test_hardware.py` | scans, capacity guidance, allocator behavior |
 | `test_inference.py` | adapter loading, generation, cleanup |
 | `test_app.py` | Streamlit startup and UI contracts |
+| `test_demo.py` | showcase fixture contracts and read-only startup |
+| `test_tutorial.py` | handbook completeness and portable generated-asset hashes |
 
-CI runs formatting, linting, type checking, and tests on Windows and Ubuntu. GPU model
-loading and full training need an additional hardware smoke test.
+CI runs formatting, linting, type checking, tests, and `scripts/build_tutorial.py --check` on
+Windows and Ubuntu. The check compares handbook text after newline normalization and PDF
+metadata, page size, and extracted text. GPU model loading and full training need an additional
+hardware smoke test.
 
 ### Maintainer exercise
 

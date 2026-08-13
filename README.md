@@ -26,6 +26,8 @@ Run the lightweight showcase without installing the CUDA training stack:
 uvx --from streamlit==1.61.1 streamlit run demo/streamlit_app.py
 ```
 
+The same command works in Bash after `uv` is installed.
+
 For Streamlit Community Cloud, select `main`, `demo/streamlit_app.py`, and Python 3.12. The
 entrypoint-local `demo/requirements.txt` installs only Streamlit. No secrets are required.
 
@@ -45,6 +47,8 @@ entrypoint-local `demo/requirements.txt` installs only Streamlit. No secrets are
   Hugging Face Hub.
 - Includes base-versus-adapter comparison and a separate playground for models already installed
   in Ollama.
+- Ships a CUDA-free, read-only Streamlit showcase for reviewers who only need to inspect the
+  guided workflow.
 
 ## Training support
 
@@ -131,7 +135,8 @@ production-quality adapter.
 | Document | Purpose |
 | --- | --- |
 | [Setup guide](SETUP.md) | Windows, Linux, dependencies, verification, and troubleshooting |
-| [Usage guide](USAGE.md) | Complete application workflow and operational guidance |
+| [Usage guide](USAGE.md) | Complete application workflow, showcase, and operational guidance |
+| [Read-only showcase](demo/streamlit_app.py) | CUDA-free Streamlit walkthrough of dataset, configure, review, and monitor |
 | [Technical reference](TECHNICAL.md) | Architecture, contracts, lifecycle, storage, and extension points |
 | [Zero-to-Mastery course](TUTORIAL.md) | Canonical NLP, transformer, fine-tuning, labs, evaluation, and capstone curriculum |
 | [Interactive handbook](docs/index.html) | Searchable multipage course for local reading or GitHub Pages |
