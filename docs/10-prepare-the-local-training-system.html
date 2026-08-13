@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="You will understand the two runtimes, hardware scan, Hugging Face boundary, Unsloth integration, and conservative capacity planning.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 10 - Prepare the local training system | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="10-prepare-the-local-training-system.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html" class="active" aria-current="page"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 10 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:10;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-10-prepare-the-local-training-system">Module 10 - Prepare the local training system</h2>
+<h3 id="objectives">Objectives</h3>
+<p>You will understand the two runtimes, hardware scan, Hugging Face boundary, Unsloth
+integration, and conservative capacity planning.</p>
+<h3 id="supported-environment">Supported environment</h3>
+<p>The standard application supports native Windows 11 and x86-64 Linux with an NVIDIA
+GPU, CUDA-enabled PyTorch, and Python 3.14 in the uv-managed <code>.venv</code>.</p>
+<p>Windows can also use <code>.venv-unsloth</code>, an isolated Python 3.13.13 environment pinned to
+the repository's Unsloth stack. The separation prevents incompatible Python/PyTorch
+requirements from contaminating the Streamlit runtime.</p>
+<p>Use <a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/SETUP.md">SETUP.md</a> for installation commands. The conceptual dependency chain is:</p>
+<pre><code class="language-text">NVIDIA driver -&gt; CUDA-enabled PyTorch -&gt; Transformers/Datasets
+    -&gt; PEFT + TRL + bitsandbytes -&gt; optional Unsloth -&gt; Streamlit app
+</code></pre>
+<h3 id="what-the-system-page-checks">What the System page checks</h3>
+<p>The read-only scan reports operating system, Python, CPU threads, available RAM, free
+disk, CUDA runtime, GPU, total/free VRAM, BF16 support, package versions, uv, Ollama,
+Unsloth, and whether a Hugging Face token is configured. It does not install drivers or
+display token values.</p>
+<h3 id="conservative-gpu-recommendations">Conservative GPU recommendations</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Total VRAM</th>
+<th>App recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">Below 6 GB</td>
+<td>QLoRA up to about 1B parameters</td>
+</tr>
+<tr>
+<td style="text-align: right;">6 to below 10 GB</td>
+<td>QLoRA up to about 3B</td>
+</tr>
+<tr>
+<td style="text-align: right;">10 to below 16 GB</td>
+<td>QLoRA up to about 7B</td>
+</tr>
+<tr>
+<td style="text-align: right;">16 GB or more</td>
+<td>QLoRA up to about 13B</td>
+</tr>
+</tbody>
+</table>
+<p>The System page also looks for at least 3.5 GB currently free for the smallest QLoRA
+jobs. These thresholds are warnings, not proofs. Start with <code>Qwen/Qwen3-0.6B</code> and the
+Smoke preset on an 8 GB GPU.</p>
+<h3 id="hugging-face-access">Hugging Face access</h3>
+<p>Public repositories can work without a token. Gated/private downloads and Hub uploads
+require <code>HF_TOKEN</code> with suitable permissions. A token authenticates network access; it
+does not provide GPU compute or pay for training.</p>
+<p>Tokens are read from the environment or ignored Streamlit secrets. They are not stored
+inside run configuration or training artifact JSON.</p>
+<h3 id="standard-backend-versus-unsloth">Standard backend versus Unsloth</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Standard</th>
+<th>Repository Unsloth integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform</td>
+<td>Windows and Linux</td>
+<td>Native Windows only</td>
+</tr>
+<tr>
+<td>Methods</td>
+<td>LoRA, QLoRA, OFT, QOFT</td>
+<td>LoRA, QLoRA</td>
+</tr>
+<tr>
+<td>Compute</td>
+<td>Auto/BF16/FP16/FP32</td>
+<td>Auto/BF16/FP16</td>
+</tr>
+<tr>
+<td>Interpreter</td>
+<td>Main <code>.venv</code></td>
+<td><code>.venv-unsloth</code></td>
+</tr>
+<tr>
+<td>Model loading</td>
+<td>Transformers</td>
+<td><code>FastLanguageModel</code></td>
+</tr>
+<tr>
+<td>Optimizer override</td>
+<td>Trainer default</td>
+<td><code>adamw_8bit</code></td>
+</tr>
+<tr>
+<td>Dataset workers</td>
+<td>Trainer default</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>The toggle becomes unavailable when the runtime check fails, OFT/QOFT is selected, or
+FP32 compute is selected. Unsloth support is also model-architecture dependent; a green
+runtime check cannot guarantee every model loads.</p>
+<h3 id="before-any-lab">Before any lab</h3>
+<ol>
+<li>Open System and resolve runtime blockers.</li>
+<li>Close unrelated GPU-heavy applications.</li>
+<li>confirm adequate disk for model cache, checkpoints, and artifacts.</li>
+<li>Verify gated-model access if applicable.</li>
+<li>Keep the machine powered and avoid driver updates during training.</li>
+</ol>
+<h3 id="checkpoint">Checkpoint</h3>
+<ol>
+<li>Why does Unsloth use another Python environment?</li>
+<li>Does a configured HF token mean training happens in the cloud?</li>
+<li>Why are VRAM recommendations conservative rather than exact?</li>
+</ol></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="09-select-the-post-training-objective.html"><span>Previous</span><strong>Module 9 - Select the post-training objective</strong></a><a rel="next" href="11-translate-intent-into-app-settings.html"><span>Next</span><strong>Module 11 - Translate intent into app settings</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="You will build evaluation sets, choose metrics, interpret curves, diagnose overfitting, and make defensible iteration decisions.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 14 - Evaluate like an experimenter | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="14-evaluate-like-an-experimenter.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html" class="active" aria-current="page"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 14 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:14;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-14-evaluate-like-an-experimenter">Module 14 - Evaluate like an experimenter</h2>
+<h3 id="objectives">Objectives</h3>
+<p>You will build evaluation sets, choose metrics, interpret curves, diagnose overfitting,
+and make defensible iteration decisions.</p>
+<h3 id="evaluation-starts-with-a-product-claim">Evaluation starts with a product claim</h3>
+<p>Replace "make the model better" with a falsifiable claim such as:</p>
+<blockquote>
+<p>On held-out support questions, the adapter follows the required three-section format
+and avoids unsupported troubleshooting steps more often than the prompted base model.</p>
+</blockquote>
+<p>The claim determines data, rubric, metrics, and reviewers.</p>
+<h3 id="three-evaluation-layers">Three evaluation layers</h3>
+<ol>
+<li><strong>Pipeline checks:</strong> files load, shapes match, loss is finite, artifacts reopen.</li>
+<li><strong>Task metrics:</strong> exact match, classification accuracy, format compliance, ranking
+   accuracy, or rubric scores.</li>
+<li><strong>Behavioral review:</strong> correctness, safety, usefulness, robustness, and regressions
+   on realistic inputs.</li>
+</ol>
+<h3 id="training-validation-and-test">Training, validation, and test</h3>
+<ul>
+<li>Training data updates parameters.</li>
+<li>Validation data guides iteration and hyperparameters.</li>
+<li>Test data is reserved for the final estimate.</li>
+</ul>
+<p>Repeatedly checking the test set and tuning to it turns it into validation data. Keep a
+final blind set or collect new cases before a release claim.</p>
+<h3 id="read-loss-curves-carefully">Read loss curves carefully</h3>
+<table>
+<thead>
+<tr>
+<th>Observation</th>
+<th>Possible interpretation</th>
+<th>Next check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training and validation loss decrease</td>
+<td>Learning signal generalizes so far</td>
+<td>Evaluate task outputs</td>
+</tr>
+<tr>
+<td>Training decreases, validation worsens</td>
+<td>Overfitting or distribution mismatch</td>
+<td>Stop earlier, improve data, regularize</td>
+</tr>
+<tr>
+<td>Both remain flat</td>
+<td>Weak signal, wrong mapping, LR too low, frozen path issue</td>
+<td>Inspect examples and gradients/logs</td>
+</tr>
+<tr>
+<td>Loss spikes or becomes non-finite</td>
+<td>LR/precision instability, bad values</td>
+<td>Lower LR, inspect data and compute type</td>
+</tr>
+<tr>
+<td>Loss decreases but outputs regress</td>
+<td>Objective misaligned with product metric</td>
+<td>Fix rubric/data, not just optimizer</td>
+</tr>
+</tbody>
+</table>
+<p>Different objectives produce different loss scales. Do not compare SFT loss 1.2 and DPO
+loss 0.7 as if the smaller number identifies the better model.</p>
+<h3 id="useful-metrics">Useful metrics</h3>
+<ul>
+<li><strong>Perplexity</strong> is <code>exp(cross_entropy)</code> for language modeling; lower means targets are
+  less surprising, not necessarily more useful.</li>
+<li><strong>Format compliance</strong> checks required structure programmatically.</li>
+<li><strong>Pairwise win rate</strong> records blinded human or judge preferences.</li>
+<li><strong>Reward ranking accuracy</strong> checks whether chosen items score above rejected items.</li>
+<li><strong>Safety violation rate</strong> counts rubric-defined failures.</li>
+<li><strong>Latency and memory</strong> measure deployment feasibility.</li>
+</ul>
+<p>Automated LLM judges can scale review but introduce model bias, prompt sensitivity, and
+correlated errors. Calibrate them against human labels.</p>
+<h3 id="hyperparameter-strategy">Hyperparameter strategy</h3>
+<p>Use a small, fixed evaluation suite and change one variable. Recommended search order:</p>
+<ol>
+<li>verify labels and formatting;</li>
+<li>improve coverage and remove contradictions;</li>
+<li>tune learning rate by a small multiplicative grid;</li>
+<li>adjust epochs/steps based on validation behavior;</li>
+<li>adjust length only for truncation evidence;</li>
+<li>adjust effective batch for stability; and</li>
+<li>compare adapter methods/backends after the recipe is stable.</li>
+</ol>
+<h3 id="reproducibility-record">Reproducibility record</h3>
+<p>Store:</p>
+<ul>
+<li>model ID and immutable revision when possible;</li>
+<li>dataset IDs, configurations, splits, and file hashes;</li>
+<li>exact <code>training_config.json</code>;</li>
+<li>package lockfiles, GPU, driver, and CUDA information;</li>
+<li>seed and evaluation prompts;</li>
+<li>artifact checksums; and</li>
+<li>reviewer rubric and raw scores.</li>
+</ul>
+<p>The same seed does not guarantee bit-identical GPU results across drivers, kernels,
+hardware, or package versions.</p>
+<h3 id="exercise-design-an-evaluation-card">Exercise: design an evaluation card</h3>
+<p>Write one page containing task claim, excluded claims, baseline, sample source, split
+policy, metrics, rubric, reviewer process, minimum improvement threshold, safety gates,
+and known limitations.</p>
+<h3 id="checkpoint">Checkpoint</h3>
+<ol>
+<li>Why can validation loss improve while product quality gets worse?</li>
+<li>Why must objective losses not be compared across trainers?</li>
+<li>What turns a test set into a validation set?</li>
+</ol></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="13-lab-b-preference-training-safely.html"><span>Previous</span><strong>Module 13 - Lab B: preference training safely</strong></a><a rel="next" href="15-operate-jobs-and-use-artifacts.html"><span>Next</span><strong>Module 15 - Operate jobs and use artifacts</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>

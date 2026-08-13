@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Validate the entire local pipeline with a small model and the included instructional dataset. This lab proves mechanics, not production quality.">
+  <meta name="theme-color" content="#171a26">
+  <title>Module 12 - Lab A: complete an SFT smoke run | LoRA Fine-tune Studio: Zero to Mastery</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/search-index.js"></script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body class="chapter-page" data-page="12-lab-a-complete-an-sft-smoke-run.html">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zero to Mastery home">
+      <span class="brand-mark" aria-hidden="true">A<sub>r</sub></span>
+      <span><strong>LoRA Studio</strong><small>Zero to Mastery</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="search-button" type="button" data-search-open aria-haspopup="dialog">
+        <span aria-hidden="true">⌕</span> Search <kbd>Ctrl K</kbd>
+      </button>
+      <a class="pdf-link" href="downloads/lora-finetune-studio-zero-to-mastery.pdf">Download PDF</a>
+      <button class="nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="course-nav">Contents</button>
+    </div>
+  </header>
+  <div class="site-grid">
+    <aside class="course-nav" id="course-nav">
+      <div class="course-meter"><span>Course progress</span><strong data-course-progress>0%</strong><div><i data-course-progress-bar></i></div></div>
+      <nav aria-label="Course chapters"><ol><li><a href="01-learn-the-map-before-the-territory.html"><span>01</span>Module 1 - Learn the map before the territory</a></li>
+<li><a href="02-natural-language-becomes-model-input.html"><span>02</span>Module 2 - Natural language becomes model input</a></li>
+<li><a href="03-neural-networks-learn-with-vectors-and-gradients.html"><span>03</span>Module 3 - Neural networks learn with vectors and gradients</a></li>
+<li><a href="04-build-a-transformer-from-attention-blocks.html"><span>04</span>Module 4 - Build a transformer from attention blocks</a></li>
+<li><a href="05-understand-the-llm-lifecycle.html"><span>05</span>Module 5 - Understand the LLM lifecycle</a></li>
+<li><a href="06-choose-a-tuning-family.html"><span>06</span>Module 6 - Choose a tuning family</a></li>
+<li><a href="07-master-lora-qlora-oft-and-qoft.html"><span>07</span>Module 7 - Master LoRA, QLoRA, OFT, and QOFT</a></li>
+<li><a href="08-engineer-datasets-that-teach-the-intended-behavior.html"><span>08</span>Module 8 - Engineer datasets that teach the intended behavior</a></li>
+<li><a href="09-select-the-post-training-objective.html"><span>09</span>Module 9 - Select the post-training objective</a></li>
+<li><a href="10-prepare-the-local-training-system.html"><span>10</span>Module 10 - Prepare the local training system</a></li>
+<li><a href="11-translate-intent-into-app-settings.html"><span>11</span>Module 11 - Translate intent into app settings</a></li>
+<li><a href="12-lab-a-complete-an-sft-smoke-run.html" class="active" aria-current="page"><span>12</span>Module 12 - Lab A: complete an SFT smoke run</a></li>
+<li><a href="13-lab-b-preference-training-safely.html"><span>13</span>Module 13 - Lab B: preference training safely</a></li>
+<li><a href="14-evaluate-like-an-experimenter.html"><span>14</span>Module 14 - Evaluate like an experimenter</a></li>
+<li><a href="15-operate-jobs-and-use-artifacts.html"><span>15</span>Module 15 - Operate jobs and use artifacts</a></li>
+<li><a href="16-read-and-extend-the-repository.html"><span>16</span>Module 16 - Read and extend the repository</a></li>
+<li><a href="17-capstone-train-a-defensible-specialist.html"><span>17</span>Module 17 - Capstone: train a defensible specialist</a></li>
+<li><a href="18-checkpoint-answers.html"><span>18</span>Appendix A - Checkpoint answers</a></li>
+<li><a href="19-formula-and-settings-reference.html"><span>19</span>Appendix B - Formula and settings reference</a></li>
+<li><a href="20-troubleshooting-by-boundary.html"><span>20</span>Appendix C - Troubleshooting by boundary</a></li>
+<li><a href="21-glossary.html"><span>21</span>Appendix D - Glossary</a></li>
+<li><a href="22-official-references.html"><span>22</span>Appendix E - Official references</a></li></ol></nav>
+      <div class="nav-meta"><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TUTORIAL.md">Markdown source</a><a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/TECHNICAL.md">Technical reference</a></div>
+    </aside>
+    <main id="main-content" tabindex="-1"><article class="chapter">
+  <header class="chapter-hero"><p class="eyebrow">Chapter 12 of 22</p><div class="chapter-signal" aria-hidden="true"><span style="--chapter:12;--total:22"></span></div></header>
+  <div class="prose"><h2 id="module-12-lab-a-complete-an-sft-smoke-run">Module 12 - Lab A: complete an SFT smoke run</h2>
+<h3 id="goal">Goal</h3>
+<p>Validate the entire local pipeline with a small model and the included instructional
+dataset. This lab proves mechanics, not production quality.</p>
+<h3 id="lab-configuration">Lab configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td><code>Qwen/Qwen3-0.6B</code> at <code>main</code></td>
+</tr>
+<tr>
+<td>Dataset</td>
+<td><code>examples/sft_sample.jsonl</code></td>
+</tr>
+<tr>
+<td>Approach</td>
+<td>Supervised Fine-Tuning</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>QLoRA</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td>Standard first; optional Unsloth comparison on Windows</td>
+</tr>
+<tr>
+<td>Preset</td>
+<td>Smoke test</td>
+</tr>
+<tr>
+<td>Compute</td>
+<td>Auto</td>
+</tr>
+<tr>
+<td>Other controls</td>
+<td>Defaults</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-1-define-a-baseline">Step 1: define a baseline</h3>
+<p>Before training, write five prompts about the dataset's target behavior. Do not copy
+training prompts. Save the exact wording and the base model's answers. Score each answer
+from 0-2 for correctness, relevance, and clarity.</p>
+<h3 id="step-2-inspect-the-dataset">Step 2: inspect the dataset</h3>
+<p>Open Dataset, choose upload, and select <code>examples/sft_sample.jsonl</code>. Confirm:</p>
+<ul>
+<li>detected format is <code>messages</code>;</li>
+<li>every row has valid user and assistant roles;</li>
+<li>examples match the intended educational behavior; and</li>
+<li>no evaluation prompt is duplicated in the training rows.</li>
+</ul>
+<p>Add the inspected source to the dataset collection.</p>
+<h3 id="step-3-inspect-the-model">Step 3: inspect the model</h3>
+<p>Open Model and inspect <code>Qwen/Qwen3-0.6B</code>. Record the revision, parameter count if
+available, and the app's capacity warning. A model ID or repository-root HTTPS URL is
+accepted; arbitrary file URLs are not.</p>
+<h3 id="step-4-save-training-settings">Step 4: save training settings</h3>
+<p>Choose SFT and QLoRA. Select Smoke and Auto compute. Use the standard backend for the
+first run so the exercise applies to Windows and Linux. Save the settings.</p>
+<h3 id="step-5-review-and-launch">Step 5: review and launch</h3>
+<p>On Review &amp; run, verify model, dataset, backend, effective compute type, method, length,
+20-step cap, sample cap, learning rate, batching, and Hub upload disabled. Acknowledge a
+model-size warning only after understanding it.</p>
+<p>Start training. The browser switches to Monitor while a child process runs.</p>
+<h3 id="step-6-read-the-monitor">Step 6: read the monitor</h3>
+<p>Observe state, message, progress, metrics, and <code>training.log</code>. Identify:</p>
+<ul>
+<li>when model and dataset loading finish;</li>
+<li>the first reported training loss;</li>
+<li>whether all 20 steps run; and</li>
+<li>the final artifact directory.</li>
+</ul>
+<p>If the run fails, diagnose the nearest boundary before changing random settings.</p>
+<h3 id="step-7-compare-outputs">Step 7: compare outputs</h3>
+<p>After completion, run the five held-out prompts through base-versus-adapter comparison.
+Use the same rubric and deterministic prompt text. Record wins, ties, regressions, and
+unexpected style changes.</p>
+<h3 id="step-8-inspect-artifacts">Step 8: inspect artifacts</h3>
+<p>Open <code>.runs/&lt;run-id&gt;/output/</code> and identify:</p>
+<ul>
+<li><code>adapter/</code>;</li>
+<li><code>metrics.json</code>;</li>
+<li><code>training_config.json</code>; and</li>
+<li>any <code>checkpoint-*</code> directory.</li>
+</ul>
+<p>Explain why <code>adapter_model.safetensors</code> is much smaller than the base model and why it
+cannot generate by itself.</p>
+<h3 id="optional-experiment-unsloth">Optional experiment: Unsloth</h3>
+<p>On native Windows with a ready runtime, repeat the same configuration with Unsloth.
+Do not compare quality from different random or data settings. Compare:</p>
+<ul>
+<li>successful model compatibility;</li>
+<li>elapsed time;</li>
+<li>peak VRAM;</li>
+<li>logs and artifact shape; and</li>
+<li>held-out output scores.</li>
+</ul>
+<p>One small run cannot establish a general performance claim.</p>
+<h3 id="lab-report">Lab report</h3>
+<p>Record configuration, environment, baseline table, final metrics, evaluation table,
+failures, and one next experiment. A screenshot of decreasing loss is not a lab report.</p></div>
+  <nav class="chapter-pagination" aria-label="Adjacent chapters"><a rel="prev" href="11-translate-intent-into-app-settings.html"><span>Previous</span><strong>Module 11 - Translate intent into app settings</strong></a><a rel="next" href="13-lab-b-preference-training-safely.html"><span>Next</span><strong>Module 13 - Lab B: preference training safely</strong></a></nav>
+</article></main>
+  </div>
+  <footer class="site-footer"><p>Generated from <code>TUTORIAL.md</code>. Repository code and passing tests define app behavior.</p></footer>
+  <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+    <form method="dialog"><button aria-label="Close search">Close</button></form>
+    <h2 id="search-title">Search the handbook</h2>
+    <input type="search" data-search-input placeholder="Try attention, QLoRA, beta, checkpoint..." autocomplete="off">
+    <p class="search-hint">Search chapter titles, headings, and course text.</p>
+    <ol data-search-results></ol>
+  </dialog>
+</body>
+</html>
