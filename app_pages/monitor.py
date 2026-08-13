@@ -13,7 +13,7 @@ from lora_finetune_studio.jobs import (
     read_status,
     resume_run,
 )
-from lora_finetune_studio.models import JobState
+from lora_finetune_studio.models import JobState, TrainingApproach
 from lora_finetune_studio.sources import get_hf_token
 
 st.caption(
@@ -74,12 +74,18 @@ try:
 except OSError, ValueError:
     status = None
 if status and status.state is JobState.COMPLETED and status.artifact_dir:
+    run_config = read_config(run_id)
+    if run_config.approach is TrainingApproach.REWARD:
+        st.info(
+            "Reward-model adapters produce preference scores rather than text, "
+            "so generative comparison is unavailable."
+        )
+        st.stop()
     st.subheader("Evaluate adapter")
     prompt = st.text_area(
         "Comparison prompt", placeholder="Write a concise explanation of LoRA."
     )
     if st.button("Compare base and adapter", disabled=not bool(prompt)):
-        run_config = read_config(run_id)
         adapter_path = str(Path(status.artifact_dir) / "adapter")
         with st.spinner("Generating base response..."):
             base_response = generate_text(

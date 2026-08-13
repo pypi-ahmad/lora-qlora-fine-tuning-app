@@ -7,6 +7,19 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Linked Approach and Method dropdowns backed by one support registry for SFT, Reward, DPO, KTO,
+  and ORPO with LoRA, QLoRA, OFT, and QOFT.
+- Paired preference dataset detection, mapping, compatibility checks, and remapping.
+- Optional native Windows Unsloth acceleration for LoRA and QLoRA recipes, with a repository-local
+  locked Python 3.13 runtime and an explicit training-page toggle.
+- Multiple compatible datasets per run, with inspection, removal, proportional merging, and
+  deterministic shuffling.
+- Default and custom learning-rate controls with approach-specific recommendations.
+- Default and custom epoch, maximum-sample, and maximum-gradient-norm controls, plus selectable
+  Auto, BF16, FP16, and FP32 compute types.
+
 ## [0.2.0] - 2026-08-12
 
 ### Added

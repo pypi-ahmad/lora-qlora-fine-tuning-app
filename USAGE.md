@@ -61,9 +61,10 @@ The launcher:
 1. checks for the project manifest, lockfile, and Streamlit entry point;
 2. installs `uv` for the current user when missing;
 3. synchronizes Python 3.14 and locked CUDA 13 runtime dependencies into `.venv`;
-4. starts Streamlit as a hidden background process;
-5. waits for the health endpoint; and
-6. opens `http://localhost:8504`.
+4. on Windows, synchronizes Python 3.13 and the locked native Unsloth stack into `.venv-unsloth`;
+5. starts Streamlit as a hidden background process;
+6. waits for the health endpoint; and
+7. opens `http://localhost:8504`.
 
 Launching again replaces the previous LoRA Studio server, so browser session state starts fresh.
 An isolated training worker continues running and can be monitored after the new server starts.
@@ -139,12 +140,13 @@ strings, and fragments are rejected.
 
 Open **Dataset**, select **Hugging Face**, then enter a dataset repository ID or root URL. Add a
 configuration name only when the dataset has multiple configurations, and select the required
-split.
+split. Inspect the source, then select **Add dataset**.
 
 ### Uploaded dataset
 
 On **Dataset**, select **Upload** and choose a CSV, JSON, or JSONL file no larger than 200 MB. The
 app stores it under `.uploads` using a content hash.
+Inspect and add each file separately.
 
 ### Inspect before continuing
 
@@ -175,20 +177,46 @@ Prompt/completion:
 {"prompt":"Write a reply:","completion":"Thanks for contacting us."}
 ```
 
+Paired preference data for Reward, DPO, KTO, and ORPO:
+
+```json
+{"prompt":"Write a reply:","chosen":"Thanks for contacting us.","rejected":"No."}
+```
+
 When column names differ, map the source columns in the UI. Verify that every sample demonstrates
-the output expected in production.
+the output expected in production. Selected datasets appear together with row counts and can be
+removed or remapped before training. SFT accepts `messages`, `text`, or `prompt_completion`;
+preference approaches require `prompt`, `chosen`, and `rejected`.
+
+The worker uses every row once per epoch and shuffles the combined dataset deterministically.
+Larger datasets therefore contribute proportionally more examples. A preset's `max_samples` value
+caps the combined dataset, not each source individually.
 
 ## 6. Configure training
 
 Open **Training**, choose the settings below, then select **Save training settings**. Starting a
 worker is intentionally reserved for **Review & run**.
 
-### Choose PEFT mode
+### Choose Approach and Method
+
+The support table, Approach dropdown, and linked Method dropdown share one compatibility registry.
+Available approaches are Supervised Fine-Tuning, Reward Modeling, DPO, KTO, and ORPO. PPO is not
+included because it requires additional policy, reference, reward, and value models.
 
 - **LoRA** trains small low-rank adapter matrices while loading the base model at normal training
   precision. It requires more VRAM.
 - **QLoRA** trains the same type of adapter while loading the base model in four-bit NF4. It is the
   default recommendation for local GPUs.
+- **OFT** trains orthogonal adapters at normal training precision.
+- **QOFT** combines OFT with four-bit NF4 loading.
+
+### Choose the training backend
+
+**Use Unsloth acceleration** defaults on when the native Windows runtime is ready. Disable it to
+use the original Transformers/TRL backend. The saved choice is also used for checkpoint resume;
+the app never silently switches backends. If Unsloth is unavailable, the toggle is disabled and
+the page explains how to prepare it.
+Selecting OFT or QOFT turns Unsloth off because those methods use the standard PEFT/TRL backend.
 
 ### Choose a preset
 
@@ -201,15 +229,28 @@ worker is intentionally reserved for **Review & run**.
 Use **Show advanced controls** only when an experiment has a stated reason. Important controls:
 
 - maximum sequence length: context per training sample;
-- epochs: passes over selected samples;
-- maximum steps/samples: hard limits for experiments;
-- learning rate: adapter update size;
+- maximum steps: the preset's hard training-step limit;
+- beta: preference strength for DPO, KTO, and ORPO;
 - batch size and gradient accumulation: effective batch versus VRAM;
 - gradient checkpointing: lower VRAM in exchange for recomputation;
 - evaluation ratio: held-out portion when the dataset has at least ten rows; and
 - seed: repeatable sampling and splitting.
 
-The app validates sequence length from 128 through 8192 and epochs above zero through 20.
+**Learning rate** defaults to the recommended value for the selected Approach. Choose **Custom** to
+enter a value from `1e-7` through `1e-2`. Changing Approach restores its recommended default.
+
+**Epochs** and **Maximum samples** default to the preset values. Custom epochs accept `0.1` through
+`20`; custom sample limits accept positive integers and cap the combined shuffled dataset. Changing
+Preset restores both defaults.
+
+**Maximum gradient norm** defaults to `1.0`. Choose **Custom** to set any non-negative finite value;
+`0` disables gradient clipping. **Compute type** defaults to Auto, which uses BF16 when supported
+and FP16 otherwise. Explicit BF16 falls back to FP16 when necessary. FP32 is available for systems
+with sufficient VRAM, is never selected automatically, and uses the standard Transformers/TRL
+backend because Unsloth's optimized kernels require FP16 or BF16.
+
+The app validates these values before a job can start.
+KTO requires a per-device batch size of at least two.
 
 ### Optional Hub upload
 
