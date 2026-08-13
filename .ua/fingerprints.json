@@ -1,0 +1,4411 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "973f3b540d60de8f09325ed3a135f19b74e84370",
+  "generatedAt": "2026-08-13T10:48:51.073Z",
+  "files": {
+    ".firecrawl/search-unsloth-auto-docstring.json": {
+      "filePath": ".firecrawl/search-unsloth-auto-docstring.json",
+      "contentHash": "189de581189469ad7ceacc356ad19fbbc2061f121f287fd025e3816ffe32b80e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    ".firecrawl/search-unsloth-windows-nodeps.json": {
+      "filePath": ".firecrawl/search-unsloth-windows-nodeps.json",
+      "contentHash": "aa798b8dfc8dededda11750f17b9d6ea4401de5c3c8d518ea05bacb46f9e152d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    ".firecrawl/search-unsloth-windows-torchao.json": {
+      "filePath": ".firecrawl/search-unsloth-windows-torchao.json",
+      "contentHash": "a8fee6cf2354118644fd56e74ea14f65eaa1011a6d7901f57534091de727d197",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    ".firecrawl/search-unsloth-windows-versions.json": {
+      "filePath": ".firecrawl/search-unsloth-windows-versions.json",
+      "contentHash": "d35697f29bba4b83a7f8b6510e8fc8e7c0d5c3919c6d5a862b17605e7f1fb433",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md": {
+      "filePath": ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
+      "contentHash": "f33494f5d255d3b6145fe9c28eed889d1b1583e794d0eb30e01298fac9a3660a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 396,
+      "hasStructuralAnalysis": true
+    },
+    ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md": {
+      "filePath": ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md",
+      "contentHash": "bb8588cf1fcb54ebc7222a9b823b09abc29b498b11263e143c8795ebb9380185",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 513,
+      "hasStructuralAnalysis": true
+    },
+    ".gitattributes": {
+      "filePath": ".gitattributes",
+      "contentHash": "a7907bafca6bad71b49b20a8f229ceefde0b871f42dc5986277d26bbea76cb85",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": false
+    },
+    ".github/workflows/ci.yml": {
+      "filePath": ".github/workflows/ci.yml",
+      "contentHash": "667e651fdff8afc6d30aaa3419372d88dc53893172c4cae0cef44b93a57ecff6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    ".python-version": {
+      "filePath": ".python-version",
+      "contentHash": "73880611a18bf211ab229c2a2d93ec11a622693e79532c0b797b91fd056704dc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    ".streamlit/config.toml": {
+      "filePath": ".streamlit/config.toml",
+      "contentHash": "42dc04a504a3057f107679664102f5768f2fc0c41ee46efcc69fc5c9a636acfd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 10,
+      "hasStructuralAnalysis": true
+    },
+    "CHANGELOG.md": {
+      "filePath": "CHANGELOG.md",
+      "contentHash": "d5f640f38b92dd2ce260f36bc0ecebb8a18f78d33daa8822b71b60ad3ccacb76",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 93,
+      "hasStructuralAnalysis": true
+    },
+    "CODE_OF_CONDUCT.md": {
+      "filePath": "CODE_OF_CONDUCT.md",
+      "contentHash": "2200e62852ea5065e68f8c0a4f7d27b65e1822da82c943528e56d4c2fb6a7188",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 75,
+      "hasStructuralAnalysis": true
+    },
+    "CONTRIBUTING.md": {
+      "filePath": "CONTRIBUTING.md",
+      "contentHash": "530a4388f6e6518f55fd5e3c8c2d93178bb912bb0091fb01ae64f76d5a900e02",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 98,
+      "hasStructuralAnalysis": true
+    },
+    "Launch LoRA Studio.cmd": {
+      "filePath": "Launch LoRA Studio.cmd",
+      "contentHash": "80e114f7fb6f1eb97baa036a9ef794dc5f6e7d397cdd7f9a44172d28ad6904c5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 96,
+      "hasStructuralAnalysis": false
+    },
+    "Launch LoRA Studio.sh": {
+      "filePath": "Launch LoRA Studio.sh",
+      "contentHash": "b8bf441eba23584bbe47bccb64d6264468547177b3c46711744c778711e5480a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 85,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "955906f3e7ea1a2eec6443e94f55d7715f9514d08ff32eec67f21d8738c09dcc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 147,
+      "hasStructuralAnalysis": true
+    },
+    "SECURITY.md": {
+      "filePath": "SECURITY.md",
+      "contentHash": "4c9971fefeb5412ef016aa3cf4e8e1ec1f59a27d13b27711007c3a9ae52b3829",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
+    "SETUP.md": {
+      "filePath": "SETUP.md",
+      "contentHash": "47c81f457799dae70eb266b9e7bb73edf2c1c77834caea8b6241d923c6a9cc86",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 690,
+      "hasStructuralAnalysis": true
+    },
+    "TECHNICAL.md": {
+      "filePath": "TECHNICAL.md",
+      "contentHash": "9bf60e913ef52feea7c0f34ec51767c1e8006be1bc14660bbfcc25cda2fa1b6d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 819,
+      "hasStructuralAnalysis": true
+    },
+    "TUTORIAL.md": {
+      "filePath": "TUTORIAL.md",
+      "contentHash": "65e1b56a0d35bda5771e5c51634e7da2651e8b4b846fd6b3400b729c5b606ca1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1882,
+      "hasStructuralAnalysis": true
+    },
+    "USAGE.md": {
+      "filePath": "USAGE.md",
+      "contentHash": "46f3d0e59319ccc6b5ff8f40393cb053ae834759c47187a948b2d1d0abafc2ac",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 390,
+      "hasStructuralAnalysis": true
+    },
+    "app_pages/dataset.py": {
+      "filePath": "app_pages/dataset.py",
+      "contentHash": "ad966b5e56348b280ed9b77d965637ed65073e9c59359eca6cb9c0a96814659a",
+      "functions": [
+        {
+          "name": "source_label",
+          "params": [
+            "spec"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "source_identity",
+          "params": [
+            "spec"
+          ],
+          "returnType": "tuple[str, str | None, str | None, str | None, str]",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "source_key",
+          "params": [
+            "spec"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "is_compatible",
+          "params": [
+            "spec"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "clear_pending",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "save_pending_dataset",
+          "params": [
+            "spec",
+            "inspection"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "replace"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "TRAINING_RECIPES",
+            "DatasetSpec",
+            "TrainingApproach"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.sources",
+          "specifiers": [
+            "DatasetInspection",
+            "get_hf_token",
+            "inspect_dataset",
+            "load_training_dataset",
+            "parse_hf_repo",
+            "save_upload"
+          ]
+        }
+      ],
+      "exports": [
+        "source_label",
+        "source_identity",
+        "source_key",
+        "is_compatible",
+        "clear_pending",
+        "save_pending_dataset"
+      ],
+      "totalLines": 361,
+      "hasStructuralAnalysis": true
+    },
+    "app_pages/gpu_memory.py": {
+      "filePath": "app_pages/gpu_memory.py",
+      "contentHash": "8b24c35a6388c9ab1c1ab208802ab07bc64ad242864cca7229cf8b3946964467",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.hardware",
+          "specifiers": [
+            "cuda_memory_stats",
+            "release_unused_cuda_memory"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.jobs",
+          "specifiers": [
+            "active_run"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "app_pages/model.py": {
+      "filePath": "app_pages/model.py",
+      "contentHash": "7f5c3d7e96b6b08c90a40e70a9c27c41f3b2774ff8135a5143e0ad0614ac2f5d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.hardware",
+          "specifiers": [
+            "model_size_warning"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.sources",
+          "specifiers": [
+            "get_hf_token",
+            "model_parameter_count",
+            "parse_hf_repo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "app_pages/monitor.py": {
+      "filePath": "app_pages/monitor.py",
+      "contentHash": "e9e5a5625f46c16b49f33ccebd76ad9d8961e4f10e6c4f386e1adc4d0b3e52ff",
+      "functions": [
+        {
+          "name": "training_monitor",
+          "params": [
+            "selected_run_id"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 75
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.inference",
+          "specifiers": [
+            "generate_text"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.jobs",
+          "specifiers": [
+            "active_run",
+            "cancel_run",
+            "dispatch_next_run",
+            "list_runs",
+            "queued_runs",
+            "read_config",
+            "read_log",
+            "read_status",
+            "resume_run"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "JobState",
+            "TrainingApproach"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.sources",
+          "specifiers": [
+            "get_hf_token"
+          ]
+        }
+      ],
+      "exports": [
+        "training_monitor"
+      ],
+      "totalLines": 184,
+      "hasStructuralAnalysis": true
+    },
+    "app_pages/ollama.py": {
+      "filePath": "app_pages/ollama.py",
+      "contentHash": "8a1e39b508b77aedfad79caa0e0cd6f930948a290d80c2f67af8dce4ab3e5fd3",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "urllib.error",
+          "specifiers": [
+            "URLError"
+          ]
+        },
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.ollama",
+          "specifiers": [
+            "ollama_generate"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.ollama",
+          "specifiers": [
+            "list_models"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "app_pages/review.py": {
+      "filePath": "app_pages/review.py",
+      "contentHash": "204137d6ea411e2f3f1a2df63c8452d24593a1db1ba35d476ead0102557feac5",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.hardware",
+          "specifiers": [
+            "model_size_warning"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.jobs",
+          "specifiers": [
+            "active_run",
+            "enqueue_run",
+            "queued_runs"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "resolve_compute_type"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.sources",
+          "specifiers": [
+            "get_hf_token"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.unsloth_runtime",
+          "specifiers": [
+            "inspect_unsloth_runtime"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 138,
+      "hasStructuralAnalysis": true
+    },
+    "app_pages/system.py": {
+      "filePath": "app_pages/system.py",
+      "contentHash": "f52abd9369fe54d1e45dfc84dfc5498dc1f404481af72a0b5d5e62372df1bb6d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.hardware",
+          "specifiers": [
+            "MIN_QLORA_FREE_VRAM_GB",
+            "REQUIRED_CUDA_VERSION",
+            "SUPPORTED_OPERATING_SYSTEMS",
+            "SUPPORTED_PYTHON",
+            "cuda_memory_stats",
+            "scan_system"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.sources",
+          "specifiers": [
+            "get_hf_token",
+            "token_identity"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.unsloth_runtime",
+          "specifiers": [
+            "inspect_unsloth_runtime"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 137,
+      "hasStructuralAnalysis": true
+    },
+    "app_pages/training.py": {
+      "filePath": "app_pages/training.py",
+      "contentHash": "cc6404e4a321dcff655bb834004bec08fe8bff887ff494fddf42e84a56878702",
+      "functions": [
+        {
+          "name": "approach_changed",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "method_changed",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "compute_type_changed",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "apply_preset_defaults",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "PRESETS",
+            "TRAINING_RECIPES",
+            "ComputeType",
+            "PeftMode",
+            "Preset",
+            "TrainingApproach",
+            "TrainingConfig"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.unsloth_runtime",
+          "specifiers": [
+            "inspect_unsloth_runtime"
+          ]
+        }
+      ],
+      "exports": [
+        "approach_changed",
+        "method_changed",
+        "compute_type_changed",
+        "apply_preset_defaults"
+      ],
+      "totalLines": 365,
+      "hasStructuralAnalysis": true
+    },
+    "docs/.nojekyll": {
+      "filePath": "docs/.nojekyll",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": false
+    },
+    "docs/.tutorial-build.json": {
+      "filePath": "docs/.tutorial-build.json",
+      "contentHash": "a339dca9b974daca8776c8109f26b56f6fe4620cd48237c55ecdebbd250b00dd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "docs/01-learn-the-map-before-the-territory.html": {
+      "filePath": "docs/01-learn-the-map-before-the-territory.html",
+      "contentHash": "75d44d9c292ebfc7dbf38ecd6bc07d9441f0ba09bfb2e2ace098a98e17e74776",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 164,
+      "hasStructuralAnalysis": false
+    },
+    "docs/02-natural-language-becomes-model-input.html": {
+      "filePath": "docs/02-natural-language-becomes-model-input.html",
+      "contentHash": "03ac4625f4055069ae299de64d87a8689c9b27fa2c628f7563ef050124e388c7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 139,
+      "hasStructuralAnalysis": false
+    },
+    "docs/03-neural-networks-learn-with-vectors-and-gradients.html": {
+      "filePath": "docs/03-neural-networks-learn-with-vectors-and-gradients.html",
+      "contentHash": "d28f17687a1868191a59704cfb5bec1e466acc04b146f991673ba50a49252ede",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 153,
+      "hasStructuralAnalysis": false
+    },
+    "docs/04-build-a-transformer-from-attention-blocks.html": {
+      "filePath": "docs/04-build-a-transformer-from-attention-blocks.html",
+      "contentHash": "5b3224143f91d3578d3e6b9ed9d35f5309575fbf3c1957cb596de1067ecc3356",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 152,
+      "hasStructuralAnalysis": false
+    },
+    "docs/05-understand-the-llm-lifecycle.html": {
+      "filePath": "docs/05-understand-the-llm-lifecycle.html",
+      "contentHash": "674a17d33f1c42823161944bc54d9943f2535a1c3d015ac6f7d448a556579fae",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 147,
+      "hasStructuralAnalysis": false
+    },
+    "docs/06-choose-a-tuning-family.html": {
+      "filePath": "docs/06-choose-a-tuning-family.html",
+      "contentHash": "c4f208868174df9c6c4a3d847d41ffb308c3d84d7c4f540b465a15446f7d98a4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 149,
+      "hasStructuralAnalysis": false
+    },
+    "docs/07-master-lora-qlora-oft-and-qoft.html": {
+      "filePath": "docs/07-master-lora-qlora-oft-and-qoft.html",
+      "contentHash": "2caf37805eed040ca9840d4ad7d0cec2f09fcd756db0404648c2230f116d28ce",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 198,
+      "hasStructuralAnalysis": false
+    },
+    "docs/08-engineer-datasets-that-teach-the-intended-behavior.html": {
+      "filePath": "docs/08-engineer-datasets-that-teach-the-intended-behavior.html",
+      "contentHash": "40202aacbddbaf402408f7053e0a46f2a77e4666aeb19949eded88ead17d6da8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 159,
+      "hasStructuralAnalysis": false
+    },
+    "docs/09-select-the-post-training-objective.html": {
+      "filePath": "docs/09-select-the-post-training-objective.html",
+      "contentHash": "b2246e3b459db48e4428e23dfc9b48fa340687144fa6bb84d6cbb958cef170a3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 193,
+      "hasStructuralAnalysis": false
+    },
+    "docs/10-prepare-the-local-training-system.html": {
+      "filePath": "docs/10-prepare-the-local-training-system.html",
+      "contentHash": "94ce110ba1715197adf04960916b4347b2d7446fc6d8927ee32a37cec9941bc8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 190,
+      "hasStructuralAnalysis": false
+    },
+    "docs/11-translate-intent-into-app-settings.html": {
+      "filePath": "docs/11-translate-intent-into-app-settings.html",
+      "contentHash": "c2e7e64b9650823b085178fa1eeccdfbccdc5af7bce6646d72368884100f159f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 180,
+      "hasStructuralAnalysis": false
+    },
+    "docs/12-lab-a-complete-an-sft-smoke-run.html": {
+      "filePath": "docs/12-lab-a-complete-an-sft-smoke-run.html",
+      "contentHash": "f25b0f60de29f383bce220d7ebd74be3b1ecb7af68fa2fc83d7a5901dba35c1f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 183,
+      "hasStructuralAnalysis": false
+    },
+    "docs/13-lab-b-preference-training-safely.html": {
+      "filePath": "docs/13-lab-b-preference-training-safely.html",
+      "contentHash": "104195a6be4036d1333633a7477068778b12ac3cef489bd47c6111ebb134a4e4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 174,
+      "hasStructuralAnalysis": false
+    },
+    "docs/14-evaluate-like-an-experimenter.html": {
+      "filePath": "docs/14-evaluate-like-an-experimenter.html",
+      "contentHash": "52773d45911fc83325ed282f773cb614220f2da3bc872244918cd7d055087ab4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 183,
+      "hasStructuralAnalysis": false
+    },
+    "docs/15-operate-jobs-and-use-artifacts.html": {
+      "filePath": "docs/15-operate-jobs-and-use-artifacts.html",
+      "contentHash": "bd949329fca3eaab9bb2f9b4f58e142923c7ac7d5eb6a65a2927c7a283aa3b9d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 142,
+      "hasStructuralAnalysis": false
+    },
+    "docs/16-read-and-extend-the-repository.html": {
+      "filePath": "docs/16-read-and-extend-the-repository.html",
+      "contentHash": "ac814e8c7e7cafa6514d0053d07601975273a9d2913935130d582b6fb4688c47",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 176,
+      "hasStructuralAnalysis": false
+    },
+    "docs/17-capstone-train-a-defensible-specialist.html": {
+      "filePath": "docs/17-capstone-train-a-defensible-specialist.html",
+      "contentHash": "41d945262cef62a70cc7481f1497d44540a9ce7bc613d1a9478386e9957125af",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 158,
+      "hasStructuralAnalysis": false
+    },
+    "docs/18-checkpoint-answers.html": {
+      "filePath": "docs/18-checkpoint-answers.html",
+      "contentHash": "5cbd3b5c8a40d1b5226869426e70348c5b8b3d2b9a33bbc300ebc836a14c291d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 162,
+      "hasStructuralAnalysis": false
+    },
+    "docs/19-formula-and-settings-reference.html": {
+      "filePath": "docs/19-formula-and-settings-reference.html",
+      "contentHash": "6eb17d8ed0562b149a770381fbb4a88d3dab6b6b788a31f63afb2716ed2f8b34",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 172,
+      "hasStructuralAnalysis": false
+    },
+    "docs/20-troubleshooting-by-boundary.html": {
+      "filePath": "docs/20-troubleshooting-by-boundary.html",
+      "contentHash": "1162b9d4cabeeb22bbaf8f31020f7cd9ad907bb0354d66a779e08b038d34c94a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 143,
+      "hasStructuralAnalysis": false
+    },
+    "docs/21-glossary.html": {
+      "filePath": "docs/21-glossary.html",
+      "contentHash": "a7228bc0c0777e89c864b079e262d4705b0e69358db4b4603fb9b84c8a596c97",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 115,
+      "hasStructuralAnalysis": false
+    },
+    "docs/22-official-references.html": {
+      "filePath": "docs/22-official-references.html",
+      "contentHash": "0c10733b52fceb21ff4a39c813e69abc01c1af58825ac9da52220035112ff108",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 99,
+      "hasStructuralAnalysis": false
+    },
+    "docs/assets/search-index.js": {
+      "filePath": "docs/assets/search-index.js",
+      "contentHash": "8502ce08b7aa3a0d5d15e85992112e05af4b006f6add4283c7571cace73da14c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "docs/assets/site.css": {
+      "filePath": "docs/assets/site.css",
+      "contentHash": "0a3c0afa2bd4bf918a2a7920a727eeade0612e95a9183c89875d6ec6957663cb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 304,
+      "hasStructuralAnalysis": false
+    },
+    "docs/assets/site.js": {
+      "filePath": "docs/assets/site.js",
+      "contentHash": "c209f03719b5cbe0f51971f767258d953ef61391f8f062c47fbbd337cabe9a75",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "docs/index.html": {
+      "filePath": "docs/index.html",
+      "contentHash": "c7caf3797a8b3944a01adb09c32a481dc47ee8401d68c29b447ab304bdda7b7d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 278,
+      "hasStructuralAnalysis": false
+    },
+    "examples/preference_sample.jsonl": {
+      "filePath": "examples/preference_sample.jsonl",
+      "contentHash": "593b484939c944e7bd1858101a3c7ee5cd86dff1e4774a57d38ca70a2d1cc17a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": false
+    },
+    "examples/sft_sample.jsonl": {
+      "filePath": "examples/sft_sample.jsonl",
+      "contentHash": "395d42d13fee0e7e9f44d5be2716f3ca29781066289f8fc6a2d630d570d0f5a3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": false
+    },
+    "pyproject.toml": {
+      "filePath": "pyproject.toml",
+      "contentHash": "917093eccf83999b5f0babbdd9189fa69e70a94926a6f547ecf27fa5a43514e6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/build_tutorial.py": {
+      "filePath": "scripts/build_tutorial.py",
+      "contentHash": "0fb6864fd4a6a8631bb72e1d19d342ba09f116acc6c7c01c070bc2b2817baf77",
+      "functions": [
+        {
+          "name": "slugify",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "split_source",
+          "params": [
+            "source"
+          ],
+          "returnType": "tuple[str, list[tuple[str, str]]]",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "render_markdown",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "plain_text",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "pdf_safe",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "chapter_summary",
+          "params": [
+            "rendered"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "load_course",
+          "params": [],
+          "returnType": "tuple[str, str, list[Chapter]]",
+          "exported": true,
+          "lineCount": 30
+        },
+        {
+          "name": "nav_items",
+          "params": [
+            "chapters",
+            "current"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "site_shell",
+          "params": [
+            "title",
+            "description",
+            "content",
+            "chapters",
+            "current",
+            "page_class"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 59
+        },
+        {
+          "name": "index_content",
+          "params": [
+            "preamble_html",
+            "chapters"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 28
+        },
+        {
+          "name": "chapter_content",
+          "params": [
+            "chapter",
+            "chapters"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "rewrite_root_links",
+          "params": [
+            "rendered"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "build_search_index",
+          "params": [
+            "chapters"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "build_site_files",
+          "params": [
+            "preamble_html",
+            "chapters",
+            "pdf_bytes"
+          ],
+          "returnType": "dict[str, bytes]",
+          "exported": true,
+          "lineCount": 30
+        },
+        {
+          "name": "pdf_styles",
+          "params": [],
+          "returnType": "dict[str, ParagraphStyle]",
+          "exported": true,
+          "lineCount": 91
+        },
+        {
+          "name": "inline_markup",
+          "params": [
+            "node"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "paragraph_from_tag",
+          "params": [
+            "tag",
+            "style"
+          ],
+          "returnType": "Paragraph",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "table_flowable",
+          "params": [
+            "table_tag",
+            "styles",
+            "width"
+          ],
+          "returnType": "Table",
+          "exported": true,
+          "lineCount": 40
+        },
+        {
+          "name": "list_flowable",
+          "params": [
+            "tag",
+            "styles"
+          ],
+          "returnType": "ListFlowable",
+          "exported": true,
+          "lineCount": 31
+        },
+        {
+          "name": "html_to_flowables",
+          "params": [
+            "rendered",
+            "styles",
+            "width",
+            "bookmark_prefix"
+          ],
+          "returnType": "list[Any]",
+          "exported": true,
+          "lineCount": 71
+        },
+        {
+          "name": "cover_flowables",
+          "params": [
+            "styles",
+            "chapter_count"
+          ],
+          "returnType": "list[Any]",
+          "exported": true,
+          "lineCount": 69
+        },
+        {
+          "name": "build_pdf",
+          "params": [
+            "chapters",
+            "target"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 50
+        },
+        {
+          "name": "file_digest",
+          "params": [
+            "data"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "manifest_bytes",
+          "params": [
+            "files"
+          ],
+          "returnType": "bytes",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "read_manifest",
+          "params": [
+            "root"
+          ],
+          "returnType": "set[str]",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "write_site",
+          "params": [
+            "files",
+            "root"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "compare_files",
+          "params": [
+            "expected",
+            "root"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "pdf_content_signature",
+          "params": [
+            "path"
+          ],
+          "returnType": "tuple[object, ...]",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "run",
+          "params": [
+            "check"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [
+        {
+          "name": "Chapter",
+          "methods": [
+            "filename"
+          ],
+          "properties": [
+            "number",
+            "title",
+            "slug",
+            "markdown",
+            "html",
+            "summary"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "HandbookDocTemplate",
+          "methods": [
+            "__init__",
+            "_metadata",
+            "_cover_page",
+            "_body_page",
+            "afterFlowable"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 66
+        }
+      ],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "html",
+          "specifiers": [
+            "html"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "tempfile",
+          "specifiers": [
+            "tempfile"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "bs4",
+          "specifiers": [
+            "BeautifulSoup",
+            "NavigableString",
+            "Tag"
+          ]
+        },
+        {
+          "source": "markdown",
+          "specifiers": [
+            "markdown"
+          ]
+        },
+        {
+          "source": "reportlab",
+          "specifiers": [
+            "rl_config"
+          ]
+        },
+        {
+          "source": "pypdf",
+          "specifiers": [
+            "PdfReader"
+          ]
+        },
+        {
+          "source": "reportlab.lib",
+          "specifiers": [
+            "colors"
+          ]
+        },
+        {
+          "source": "reportlab.lib.enums",
+          "specifiers": [
+            "TA_CENTER",
+            "TA_LEFT"
+          ]
+        },
+        {
+          "source": "reportlab.lib.pagesizes",
+          "specifiers": [
+            "A4"
+          ]
+        },
+        {
+          "source": "reportlab.lib.styles",
+          "specifiers": [
+            "ParagraphStyle",
+            "getSampleStyleSheet"
+          ]
+        },
+        {
+          "source": "reportlab.lib.units",
+          "specifiers": [
+            "mm"
+          ]
+        },
+        {
+          "source": "reportlab.pdfbase.pdfmetrics",
+          "specifiers": [
+            "stringWidth"
+          ]
+        },
+        {
+          "source": "reportlab.platypus",
+          "specifiers": [
+            "BaseDocTemplate",
+            "Frame",
+            "HRFlowable",
+            "ListFlowable",
+            "ListItem",
+            "NextPageTemplate",
+            "PageBreak",
+            "PageTemplate",
+            "Paragraph",
+            "Spacer",
+            "Table",
+            "TableStyle",
+            "XPreformatted"
+          ]
+        },
+        {
+          "source": "reportlab.platypus.tableofcontents",
+          "specifiers": [
+            "TableOfContents"
+          ]
+        }
+      ],
+      "exports": [
+        "Chapter",
+        "slugify",
+        "split_source",
+        "render_markdown",
+        "plain_text",
+        "pdf_safe",
+        "chapter_summary",
+        "load_course",
+        "nav_items",
+        "site_shell",
+        "index_content",
+        "chapter_content",
+        "rewrite_root_links",
+        "build_search_index",
+        "build_site_files",
+        "HandbookDocTemplate",
+        "pdf_styles",
+        "inline_markup",
+        "paragraph_from_tag",
+        "table_flowable",
+        "list_flowable",
+        "html_to_flowables",
+        "cover_flowables",
+        "build_pdf",
+        "file_digest",
+        "manifest_bytes",
+        "read_manifest",
+        "write_site",
+        "compare_files",
+        "pdf_content_signature",
+        "run",
+        "main"
+      ],
+      "totalLines": 948,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/tutorial_assets/site.css": {
+      "filePath": "scripts/tutorial_assets/site.css",
+      "contentHash": "3d940eeb03929cf0b287529a6a2f339762b06519b788514831f98d2dbd77a685",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 304,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/tutorial_assets/site.js": {
+      "filePath": "scripts/tutorial_assets/site.js",
+      "contentHash": "5b727cec6d6f3dd2869049fb1936d46f85b34ecf496e2f142a732f4c72539fe6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/__init__.py": {
+      "filePath": "src/lora_finetune_studio/__init__.py",
+      "contentHash": "1f60b3098d673b662c45aae42d5712d62957e46b123c465d52511020a84cd043",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/cli.py": {
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "contentHash": "da0bbdc7c16ae9e775419bd7a15c9b9fc959a9ab0ce37f236643239558e92edf",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "streamlit.web",
+          "specifiers": [
+            "stcli"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/hardware.py": {
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "contentHash": "7f2d6b8f7035c75e0acb82fc429ed3e79cfd26c15f8eeca2d54f36c233d4e18d",
+      "functions": [
+        {
+          "name": "_package_status",
+          "params": [
+            "display_name",
+            "package_name"
+          ],
+          "returnType": "SoftwareStatus",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "scan_system",
+          "params": [
+            "workspace"
+          ],
+          "returnType": "SystemScan",
+          "exported": true,
+          "lineCount": 47
+        },
+        {
+          "name": "cuda_memory_stats",
+          "params": [],
+          "returnType": "CudaMemoryStats",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "release_unused_cuda_memory",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "detect_hardware",
+          "params": [
+            "workspace"
+          ],
+          "returnType": "HardwareProfile",
+          "exported": true,
+          "lineCount": 40
+        },
+        {
+          "name": "model_size_warning",
+          "params": [
+            "parameter_count",
+            "profile"
+          ],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [
+        {
+          "name": "CudaMemoryStats",
+          "methods": [],
+          "properties": [
+            "free_gb",
+            "total_gb",
+            "allocated_gb",
+            "reserved_gb"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "SoftwareStatus",
+          "methods": [],
+          "properties": [
+            "name",
+            "available",
+            "detail"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "SystemScan",
+          "methods": [],
+          "properties": [
+            "os_name",
+            "os_release",
+            "os_version",
+            "python_version",
+            "cuda_version",
+            "cpu_threads",
+            "available_ram_gb",
+            "free_disk_gb",
+            "native_runtime",
+            "uv_venv_active",
+            "software"
+          ],
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "imports": [
+        {
+          "source": "gc",
+          "specifiers": [
+            "gc"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "platform",
+          "specifiers": [
+            "platform"
+          ]
+        },
+        {
+          "source": "shutil",
+          "specifiers": [
+            "shutil"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "importlib.metadata",
+          "specifiers": [
+            "PackageNotFoundError",
+            "version"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "psutil",
+          "specifiers": [
+            "psutil"
+          ]
+        },
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "HardwareProfile",
+            "PeftMode"
+          ]
+        }
+      ],
+      "exports": [
+        "CudaMemoryStats",
+        "SoftwareStatus",
+        "SystemScan",
+        "_package_status",
+        "scan_system",
+        "cuda_memory_stats",
+        "release_unused_cuda_memory",
+        "detect_hardware",
+        "model_size_warning"
+      ],
+      "totalLines": 193,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/inference.py": {
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "contentHash": "1989468379bc463071c7fa2239ba0aadcfb4af99111c9e5848784723c343fbcd",
+      "functions": [
+        {
+          "name": "generate_text",
+          "params": [
+            "model_id",
+            "prompt",
+            "token",
+            "revision",
+            "adapter_path",
+            "max_new_tokens"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "_generate_text",
+          "params": [
+            "model_id",
+            "prompt",
+            "token",
+            "revision",
+            "adapter_path",
+            "max_new_tokens"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "cast"
+          ]
+        },
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "peft",
+          "specifiers": [
+            "PeftModel"
+          ]
+        },
+        {
+          "source": "transformers",
+          "specifiers": [
+            "AutoModelForCausalLM",
+            "AutoTokenizer",
+            "BitsAndBytesConfig"
+          ]
+        },
+        {
+          "source": ".hardware",
+          "specifiers": [
+            "release_unused_cuda_memory"
+          ]
+        }
+      ],
+      "exports": [
+        "generate_text",
+        "_generate_text"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/jobs.py": {
+      "filePath": "src/lora_finetune_studio/jobs.py",
+      "contentHash": "32a3360965a0c3a9d8f59a3e67f311c16523280bb318947d4c9534f21b7cd80b",
+      "functions": [
+        {
+          "name": "write_json_atomic",
+          "params": [
+            "path",
+            "data"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_queue_lock",
+          "params": [],
+          "returnType": "Iterator[None]",
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "_write_queue_unlocked",
+          "params": [
+            "run_ids"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_read_queue_unlocked",
+          "params": [],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 43
+        },
+        {
+          "name": "queued_runs",
+          "params": [],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "list_runs",
+          "params": [],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "read_status",
+          "params": [
+            "run_id"
+          ],
+          "returnType": "JobStatus",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "read_config",
+          "params": [
+            "run_id"
+          ],
+          "returnType": "TrainingConfig",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_is_training_worker",
+          "params": [
+            "pid",
+            "config_path"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "active_run",
+          "params": [],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "create_run",
+          "params": [
+            "config"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "launch_run",
+          "params": [
+            "run_id"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 45
+        },
+        {
+          "name": "dispatch_next_run",
+          "params": [],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "enqueue_run",
+          "params": [
+            "config"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_fail_stale_running_jobs_unlocked",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "cancel_run",
+          "params": [
+            "run_id",
+            "dispatch_next"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "cancel_active_run",
+          "params": [
+            "dispatch_next"
+          ],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "resume_run",
+          "params": [
+            "run_id"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "read_log",
+          "params": [
+            "run_id",
+            "max_chars"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "tempfile",
+          "specifiers": [
+            "tempfile"
+          ]
+        },
+        {
+          "source": "uuid",
+          "specifiers": [
+            "uuid"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Iterator"
+          ]
+        },
+        {
+          "source": "contextlib",
+          "specifiers": [
+            "contextmanager"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "psutil",
+          "specifiers": [
+            "psutil"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "JobState",
+            "JobStatus",
+            "TrainingConfig",
+            "run_path"
+          ]
+        },
+        {
+          "source": ".unsloth_runtime",
+          "specifiers": [
+            "PROJECT_ROOT",
+            "inspect_unsloth_runtime"
+          ]
+        }
+      ],
+      "exports": [
+        "write_json_atomic",
+        "_queue_lock",
+        "_write_queue_unlocked",
+        "_read_queue_unlocked",
+        "queued_runs",
+        "list_runs",
+        "read_status",
+        "read_config",
+        "_is_training_worker",
+        "active_run",
+        "create_run",
+        "launch_run",
+        "dispatch_next_run",
+        "enqueue_run",
+        "_fail_stale_running_jobs_unlocked",
+        "cancel_run",
+        "cancel_active_run",
+        "resume_run",
+        "read_log"
+      ],
+      "totalLines": 393,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/lifecycle.py": {
+      "filePath": "src/lora_finetune_studio/lifecycle.py",
+      "contentHash": "9c255b27df9e2588e1f4bd156ba060bcc8f41eea30d7eb58684e3f49a42b974e",
+      "functions": [
+        {
+          "name": "schedule_application_exit",
+          "params": [
+            "delay_seconds",
+            "exit_function"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Callable"
+          ]
+        }
+      ],
+      "exports": [
+        "schedule_application_exit"
+      ],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/models.py": {
+      "filePath": "src/lora_finetune_studio/models.py",
+      "contentHash": "10141f0622357ff812a76e7a88ca94f424c8ff4810c63054f09e9d4ab2eab9f1",
+      "functions": [
+        {
+          "name": "resolve_compute_type",
+          "params": [
+            "compute_type",
+            "bf16_supported"
+          ],
+          "returnType": "ComputeType",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "apply_preset",
+          "params": [
+            "config",
+            "preset"
+          ],
+          "returnType": "TrainingConfig",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "run_path",
+          "params": [
+            "run_id",
+            "root"
+          ],
+          "returnType": "Path",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [
+        {
+          "name": "PeftMode",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "TrainingApproach",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "ComputeType",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "TrainingRecipe",
+          "methods": [],
+          "properties": [
+            "methods",
+            "dataset_formats",
+            "learning_rate",
+            "uses_beta",
+            "minimum_batch_size"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "Preset",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "JobState",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "HardwareProfile",
+          "methods": [],
+          "properties": [
+            "cuda_available",
+            "gpu_name",
+            "vram_gb",
+            "ram_gb",
+            "free_disk_gb",
+            "bf16_supported",
+            "recommended_mode",
+            "recommended_max_billions",
+            "warning"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "DatasetSpec",
+          "methods": [],
+          "properties": [
+            "source",
+            "repo_id",
+            "local_path",
+            "config_name",
+            "split",
+            "format",
+            "text_column",
+            "prompt_column",
+            "completion_column",
+            "chosen_column",
+            "rejected_column"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "TrainingConfig",
+          "methods": [
+            "to_dict",
+            "from_dict",
+            "validate"
+          ],
+          "properties": [
+            "model_id",
+            "model_revision",
+            "datasets",
+            "approach",
+            "peft_mode",
+            "use_unsloth",
+            "compute_type",
+            "preset",
+            "output_dir",
+            "max_length",
+            "epochs",
+            "max_steps",
+            "max_samples",
+            "learning_rate",
+            "beta",
+            "batch_size",
+            "gradient_accumulation_steps",
+            "max_grad_norm",
+            "gradient_checkpointing",
+            "eval_enabled",
+            "eval_ratio",
+            "seed",
+            "push_to_hub",
+            "hub_model_id",
+            "resume_from_checkpoint"
+          ],
+          "exported": true,
+          "lineCount": 158
+        },
+        {
+          "name": "JobStatus",
+          "methods": [
+            "to_dict",
+            "from_dict"
+          ],
+          "properties": [
+            "state",
+            "message",
+            "progress",
+            "pid",
+            "metrics",
+            "error",
+            "artifact_dir"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "asdict",
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "StrEnum"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        }
+      ],
+      "exports": [
+        "PeftMode",
+        "TrainingApproach",
+        "ComputeType",
+        "resolve_compute_type",
+        "TrainingRecipe",
+        "Preset",
+        "JobState",
+        "HardwareProfile",
+        "DatasetSpec",
+        "TrainingConfig",
+        "JobStatus",
+        "apply_preset",
+        "run_path"
+      ],
+      "totalLines": 349,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/ollama.py": {
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "contentHash": "a0e4836df150e0931f481698fa608b67f6ec2b7a52e64900a54193f555284ae9",
+      "functions": [
+        {
+          "name": "_request",
+          "params": [
+            "path",
+            "payload",
+            "timeout"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "list_models",
+          "params": [],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "generate",
+          "params": [
+            "model",
+            "prompt"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "urllib.request",
+          "specifiers": [
+            "Request",
+            "urlopen"
+          ]
+        }
+      ],
+      "exports": [
+        "_request",
+        "list_models",
+        "generate"
+      ],
+      "totalLines": 35,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/queue_dispatcher.py": {
+      "filePath": "src/lora_finetune_studio/queue_dispatcher.py",
+      "contentHash": "09b48d444d6a64cf06a688c7207494f78bf94810be2296ceda528a8fac531025",
+      "functions": [
+        {
+          "name": "schedule_queue_handoff",
+          "params": [
+            "parent_pid"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "wait_for_parent_and_dispatch",
+          "params": [
+            "parent_pid"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "psutil",
+          "specifiers": [
+            "psutil"
+          ]
+        },
+        {
+          "source": ".jobs",
+          "specifiers": [
+            "dispatch_next_run"
+          ]
+        }
+      ],
+      "exports": [
+        "schedule_queue_handoff",
+        "wait_for_parent_and_dispatch",
+        "main"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/sources.py": {
+      "filePath": "src/lora_finetune_studio/sources.py",
+      "contentHash": "d3ab7d1c661f27c785c0df97a6bf5ea6b7ab4c9754c1be81325ffd2d4ee387b9",
+      "functions": [
+        {
+          "name": "get_hf_token",
+          "params": [],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "parse_hf_repo",
+          "params": [
+            "value",
+            "repo_type"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 28
+        },
+        {
+          "name": "token_identity",
+          "params": [
+            "token"
+          ],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "model_parameter_count",
+          "params": [
+            "repo_id",
+            "revision",
+            "token"
+          ],
+          "returnType": "int | None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "validate_upload",
+          "params": [
+            "filename",
+            "size"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "save_upload",
+          "params": [
+            "filename",
+            "content",
+            "root"
+          ],
+          "returnType": "Path",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "load_training_dataset",
+          "params": [
+            "repo_id",
+            "local_path",
+            "config_name",
+            "split",
+            "token"
+          ],
+          "returnType": "Dataset",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "inspect_dataset",
+          "params": [
+            "dataset",
+            "limit"
+          ],
+          "returnType": "DatasetInspection",
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [
+        {
+          "name": "DatasetInspection",
+          "methods": [],
+          "properties": [
+            "columns",
+            "format",
+            "rows",
+            "preview"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "urllib.parse",
+          "specifiers": [
+            "unquote",
+            "urlparse"
+          ]
+        },
+        {
+          "source": "datasets",
+          "specifiers": [
+            "Dataset",
+            "load_dataset"
+          ]
+        },
+        {
+          "source": "huggingface_hub",
+          "specifiers": [
+            "HfApi"
+          ]
+        }
+      ],
+      "exports": [
+        "DatasetInspection",
+        "get_hf_token",
+        "parse_hf_repo",
+        "token_identity",
+        "model_parameter_count",
+        "validate_upload",
+        "save_upload",
+        "load_training_dataset",
+        "inspect_dataset"
+      ],
+      "totalLines": 131,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/training.py": {
+      "filePath": "src/lora_finetune_studio/training.py",
+      "contentHash": "aeb176d57094a1594ec0164a0af71fa99ef4599c3c40f7920b2797365caf9690",
+      "functions": [
+        {
+          "name": "_normalize_dataset",
+          "params": [
+            "dataset",
+            "spec"
+          ],
+          "returnType": "Dataset",
+          "exported": true,
+          "lineCount": 38
+        },
+        {
+          "name": "_dataset_label",
+          "params": [
+            "spec"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_load_and_combine_datasets",
+          "params": [
+            "config",
+            "token"
+          ],
+          "returnType": "Dataset",
+          "exported": true,
+          "lineCount": 34
+        },
+        {
+          "name": "_split_dataset",
+          "params": [
+            "dataset",
+            "config"
+          ],
+          "returnType": "tuple[Dataset, Dataset | None]",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_format_conversations",
+          "params": [
+            "examples",
+            "tokenizer"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "_quantization_config",
+          "params": [
+            "config",
+            "dtype"
+          ],
+          "returnType": "Any | None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_peft_config",
+          "params": [
+            "config"
+          ],
+          "returnType": "LoraConfig | OFTConfig",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "_patch_qoft_peft_compatibility",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 31
+        },
+        {
+          "name": "_load_model_and_tokenizer",
+          "params": [
+            "config",
+            "token",
+            "compute_dtype"
+          ],
+          "returnType": "tuple[Any, Any, LoraConfig | OFTConfig | None]",
+          "exported": true,
+          "lineCount": 81
+        },
+        {
+          "name": "_apply_unsloth_trainer_patch",
+          "params": [
+            "approach"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "_trainer_components",
+          "params": [
+            "approach"
+          ],
+          "returnType": "tuple[type, type]",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "_trainer_config",
+          "params": [
+            "config",
+            "compute_dtype",
+            "has_evaluation"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 36
+        },
+        {
+          "name": "_resolve_compute_dtype",
+          "params": [
+            "compute_type",
+            "bf16_supported"
+          ],
+          "returnType": "torch.dtype",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "train",
+          "params": [
+            "config",
+            "status_path"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 77
+        }
+      ],
+      "classes": [
+        {
+          "name": "StatusCallback",
+          "methods": [
+            "__init__",
+            "on_log"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "importlib",
+          "specifiers": [
+            "import_module"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "cast"
+          ]
+        },
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "datasets",
+          "specifiers": [
+            "Dataset",
+            "concatenate_datasets"
+          ]
+        },
+        {
+          "source": "peft",
+          "specifiers": [
+            "LoraConfig",
+            "OFTConfig",
+            "get_peft_model"
+          ]
+        },
+        {
+          "source": "transformers",
+          "specifiers": [
+            "AutoModelForCausalLM",
+            "AutoModelForSequenceClassification",
+            "AutoTokenizer",
+            "BitsAndBytesConfig",
+            "TrainerCallback"
+          ]
+        },
+        {
+          "source": ".jobs",
+          "specifiers": [
+            "write_json_atomic"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "ComputeType",
+            "DatasetSpec",
+            "JobState",
+            "JobStatus",
+            "PeftMode",
+            "TrainingApproach",
+            "TrainingConfig",
+            "resolve_compute_type"
+          ]
+        },
+        {
+          "source": ".sources",
+          "specifiers": [
+            "get_hf_token",
+            "load_training_dataset"
+          ]
+        }
+      ],
+      "exports": [
+        "StatusCallback",
+        "_normalize_dataset",
+        "_dataset_label",
+        "_load_and_combine_datasets",
+        "_split_dataset",
+        "_format_conversations",
+        "_quantization_config",
+        "_peft_config",
+        "_patch_qoft_peft_compatibility",
+        "_load_model_and_tokenizer",
+        "_apply_unsloth_trainer_patch",
+        "_trainer_components",
+        "_trainer_config",
+        "_resolve_compute_dtype",
+        "train"
+      ],
+      "totalLines": 472,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/unsloth_runtime.py": {
+      "filePath": "src/lora_finetune_studio/unsloth_runtime.py",
+      "contentHash": "112cde43332baca5caddce723a72fa2f7ee6d932008ff5ee934e0cb0416eb8dc",
+      "functions": [
+        {
+          "name": "inspect_unsloth_runtime",
+          "params": [],
+          "returnType": "UnslothRuntimeStatus",
+          "exported": true,
+          "lineCount": 38
+        }
+      ],
+      "classes": [
+        {
+          "name": "UnslothRuntimeStatus",
+          "methods": [],
+          "properties": [
+            "available",
+            "python",
+            "version",
+            "detail"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "functools",
+          "specifiers": [
+            "lru_cache"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        }
+      ],
+      "exports": [
+        "UnslothRuntimeStatus",
+        "inspect_unsloth_runtime"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "src/lora_finetune_studio/worker.py": {
+      "filePath": "src/lora_finetune_studio/worker.py",
+      "contentHash": "c5bce0159ad36f3a3bed543dbed8c8d3d1d6302a094e281aba1b55cfaf059074",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 59
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "traceback",
+          "specifiers": [
+            "traceback"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": ".jobs",
+          "specifiers": [
+            "write_json_atomic"
+          ]
+        },
+        {
+          "source": ".models",
+          "specifiers": [
+            "JobState",
+            "JobStatus",
+            "TrainingConfig"
+          ]
+        },
+        {
+          "source": ".queue_dispatcher",
+          "specifiers": [
+            "schedule_queue_handoff"
+          ]
+        },
+        {
+          "source": ".sources",
+          "specifiers": [
+            "get_hf_token"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 80,
+      "hasStructuralAnalysis": true
+    },
+    "streamlit_app.py": {
+      "filePath": "streamlit_app.py",
+      "contentHash": "c8e715a649f3dbee1e3d9441fb36db2c232e19919462977ef532830a69bebee7",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.hardware",
+          "specifiers": [
+            "detect_hardware"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.jobs",
+          "specifiers": [
+            "cancel_active_run",
+            "dispatch_next_run"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.lifecycle",
+          "specifiers": [
+            "schedule_application_exit"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "TRAINING_RECIPES",
+            "ComputeType",
+            "PeftMode",
+            "TrainingApproach"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.sources",
+          "specifiers": [
+            "get_hf_token"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 180,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_app.py": {
+      "filePath": "tests/test_app.py",
+      "contentHash": "e45bd5182e2095ba48509e04f14c646e0cca1a7e1d8ac50ba1fbc6ee1260e3a3",
+      "functions": [
+        {
+          "name": "test_app_starts_without_ollama",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 186
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "streamlit.testing.v1",
+          "specifiers": [
+            "AppTest"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "jobs",
+            "lifecycle",
+            "ollama",
+            "unsloth_runtime"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "ComputeType",
+            "DatasetSpec",
+            "TrainingApproach"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.sources",
+          "specifiers": [
+            "DatasetInspection"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.unsloth_runtime",
+          "specifiers": [
+            "UnslothRuntimeStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "test_app_starts_without_ollama"
+      ],
+      "totalLines": 197,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_hardware.py": {
+      "filePath": "tests/test_hardware.py",
+      "contentHash": "bef9b4e8dc512aec3cc1393fa466350fb9d9da144738f8d38f63cbcc114fe5f4",
+      "functions": [
+        {
+          "name": "test_model_size_warning_uses_detected_limit",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_system_scan_reports_live_resources_without_installing",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "test_system_scan_recognizes_native_linux",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "types",
+          "specifiers": [
+            "SimpleNamespace"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "hardware"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.hardware",
+          "specifiers": [
+            "cuda_memory_stats",
+            "model_size_warning",
+            "release_unused_cuda_memory",
+            "scan_system"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "HardwareProfile",
+            "PeftMode"
+          ]
+        }
+      ],
+      "exports": [
+        "test_model_size_warning_uses_detected_limit",
+        "test_cuda_memory_stats_reports_global_and_process_usage",
+        "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+        "test_cuda_memory_helpers_reject_cpu_only_system",
+        "test_system_scan_reports_live_resources_without_installing",
+        "test_system_scan_recognizes_native_linux"
+      ],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_inference.py": {
+      "filePath": "tests/test_inference.py",
+      "contentHash": "0834c3a7b5af48c9a58cc541e40ddf94a387f1c6a1edb22673f357182dd3079c",
+      "functions": [
+        {
+          "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "inference"
+          ]
+        }
+      ],
+      "exports": [
+        "test_generate_text_releases_cuda_memory_after_loading_failure"
+      ],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_jobs.py": {
+      "filePath": "tests/test_jobs.py",
+      "contentHash": "934a6e99addbe0e13961c94a1c4c1b7334e242395a8025240897312498ef6148",
+      "functions": [
+        {
+          "name": "test_create_run_persists_safe_config",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_create_run_appends_jobs_in_fifo_order",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_dispatch_starts_only_first_waiting_run",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "test_cancelling_running_job_starts_next_waiting_run",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 42
+        },
+        {
+          "name": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 28
+        },
+        {
+          "name": "test_list_runs_orders_active_then_waiting_then_history",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_atomic_json_replaces_existing_file",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_running_test_run",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "tuple[str, Path]",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_cancel_run_stops_only_its_training_worker",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "test_cancel_run_rejects_unrelated_process",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_cancel_active_run_delegates_to_active_run",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 31
+        },
+        {
+          "name": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "test_launch_run_rejects_missing_unsloth_runtime",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeWorkerProcess",
+          "methods": [
+            "__init__",
+            "cmdline",
+            "terminate",
+            "wait"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "types",
+          "specifiers": [
+            "SimpleNamespace"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "jobs"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "DatasetSpec",
+            "JobState",
+            "TrainingConfig"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.unsloth_runtime",
+          "specifiers": [
+            "UnslothRuntimeStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "test_create_run_persists_safe_config",
+        "test_create_run_appends_jobs_in_fifo_order",
+        "test_dispatch_starts_only_first_waiting_run",
+        "test_cancelling_running_job_starts_next_waiting_run",
+        "test_dispatch_marks_dead_worker_failed_before_continuing",
+        "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+        "test_list_runs_orders_active_then_waiting_then_history",
+        "test_dispatch_marks_launch_failure_and_continues_queue",
+        "test_dispatch_waits_for_terminal_worker_process_to_exit",
+        "test_atomic_json_replaces_existing_file",
+        "FakeWorkerProcess",
+        "_running_test_run",
+        "test_cancel_run_stops_only_its_training_worker",
+        "test_cancel_run_rejects_unrelated_process",
+        "test_cancel_active_run_delegates_to_active_run",
+        "test_launch_run_uses_unsloth_interpreter_and_source_path",
+        "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+        "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+        "test_launch_run_rejects_missing_unsloth_runtime"
+      ],
+      "totalLines": 436,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_lifecycle.py": {
+      "filePath": "tests/test_lifecycle.py",
+      "contentHash": "84413e489ddc1ff01694e305b0d0595ef64fcc7a94e71f7f37adc3f8a7dd955e",
+      "functions": [
+        {
+          "name": "test_schedule_application_exit_uses_daemon_timer",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "lifecycle"
+          ]
+        }
+      ],
+      "exports": [
+        "test_schedule_application_exit_uses_daemon_timer"
+      ],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_models.py": {
+      "filePath": "tests/test_models.py",
+      "contentHash": "9df4de49e91440ead0e8d9b48a697d462ca7c3f221c2d975b82f95d7841f93e9",
+      "functions": [
+        {
+          "name": "test_config_round_trip",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "test_config_requires_push_destination",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_config_rejects_mixed_and_duplicate_datasets",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "test_recipe_matrix_accepts_all_advertised_pairs",
+          "params": [
+            "approach",
+            "method"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "test_config_rejects_unsloth_fp32",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "test_kto_requires_actual_batch_size_above_one",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "test_config_rejects_learning_rate_outside_supported_range",
+          "params": [
+            "learning_rate"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "test_config_rejects_invalid_maximum_samples",
+          "params": [
+            "max_samples"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "test_config_rejects_invalid_maximum_gradient_norm",
+          "params": [
+            "max_grad_norm"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "test_compute_type_resolution",
+          "params": [
+            "requested",
+            "bf16_supported",
+            "expected"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_run_path_rejects_traversal",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_preset_values_are_bounded",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "TRAINING_RECIPES",
+            "ComputeType",
+            "DatasetSpec",
+            "PeftMode",
+            "Preset",
+            "TrainingApproach",
+            "TrainingConfig",
+            "resolve_compute_type",
+            "run_path"
+          ]
+        }
+      ],
+      "exports": [
+        "test_config_round_trip",
+        "test_old_config_migrates_single_dataset_and_standard_backend",
+        "test_config_requires_push_destination",
+        "test_config_rejects_mixed_and_duplicate_datasets",
+        "test_recipe_matrix_accepts_all_advertised_pairs",
+        "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+        "test_config_rejects_unsloth_fp32",
+        "test_kto_requires_actual_batch_size_above_one",
+        "test_config_rejects_learning_rate_outside_supported_range",
+        "test_config_rejects_invalid_maximum_samples",
+        "test_config_rejects_invalid_maximum_gradient_norm",
+        "test_compute_type_resolution",
+        "test_run_path_rejects_traversal",
+        "test_preset_values_are_bounded"
+      ],
+      "totalLines": 261,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_queue_dispatcher.py": {
+      "filePath": "tests/test_queue_dispatcher.py",
+      "contentHash": "934cd6bbd61a04e3191ef5de5c479473db4d3f0c6f5f41dca894b271bb9fb8c1",
+      "functions": [
+        {
+          "name": "test_handoff_waits_for_parent_exit_before_dispatch",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "test_schedule_handoff_uses_base_project_interpreter",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "queue_dispatcher"
+          ]
+        }
+      ],
+      "exports": [
+        "test_handoff_waits_for_parent_exit_before_dispatch",
+        "test_schedule_handoff_uses_base_project_interpreter"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_queue_ui.py": {
+      "filePath": "tests/test_queue_ui.py",
+      "contentHash": "11b1ae58f0622eca9b839767613a8fdf4e74d845c6cc1f0aa5f1c1d4ea196114",
+      "functions": [
+        {
+          "name": "test_review_adds_training_to_queue_while_worker_is_active",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 55
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "types",
+          "specifiers": [
+            "SimpleNamespace"
+          ]
+        },
+        {
+          "source": "streamlit.testing.v1",
+          "specifiers": [
+            "AppTest"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "jobs",
+            "unsloth_runtime"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "DatasetSpec",
+            "HardwareProfile",
+            "TrainingConfig"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.unsloth_runtime",
+          "specifiers": [
+            "UnslothRuntimeStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "test_review_adds_training_to_queue_while_worker_is_active"
+      ],
+      "totalLines": 66,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_sources.py": {
+      "filePath": "tests/test_sources.py",
+      "contentHash": "7c0c27e1f5366822e8b25a8a848cf68fe2f6b4d3775ca90f055caca7c2834b53",
+      "functions": [
+        {
+          "name": "test_parse_hf_repo",
+          "params": [
+            "value",
+            "repo_type",
+            "expected"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_parse_hf_repo_rejects_unsafe_locations",
+          "params": [
+            "value"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_inspect_dataset_detects_messages",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_inspect_dataset_detects_preference_before_prompt_completion",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_upload_validation_and_content_addressing",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_upload_rejects_unknown_type",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "datasets",
+          "specifiers": [
+            "Dataset"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.sources",
+          "specifiers": [
+            "inspect_dataset",
+            "parse_hf_repo",
+            "save_upload",
+            "validate_upload"
+          ]
+        }
+      ],
+      "exports": [
+        "test_parse_hf_repo",
+        "test_parse_hf_repo_rejects_unsafe_locations",
+        "test_inspect_dataset_detects_messages",
+        "test_inspect_dataset_detects_preference_before_prompt_completion",
+        "test_upload_validation_and_content_addressing",
+        "test_upload_rejects_unknown_type"
+      ],
+      "totalLines": 80,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_training.py": {
+      "filePath": "tests/test_training.py",
+      "contentHash": "86ffa858e0a8e295f7bd424fb3be79e2e3add292e11dd959ad1b5f893a2584b3",
+      "functions": [
+        {
+          "name": "test_normalize_prompt_completion_columns",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_normalize_preference_columns_preserves_conversations",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_small_dataset_skips_eval_split",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_combine_datasets_preserves_all_rows_and_shuffles",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "test_combined_max_samples_is_global_and_deterministic",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_combine_datasets_reports_incompatible_normalized_schemas",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_combine_datasets_identifies_source_load_failure",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "test_unsloth_loader_uses_optimized_qlora_settings",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 43
+        },
+        {
+          "name": "test_unsloth_reward_loader_keeps_score_head",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "test_peft_methods_build_expected_adapter_and_quantization",
+          "params": [
+            "method",
+            "expected_type",
+            "quantized"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_reward_peft_config_preserves_score_head",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_qoft_compatibility_passes_dispatcher_config",
+          "params": [
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_every_approach_resolves_installed_trainer",
+          "params": [
+            "approach"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_alignment_trainer_config_includes_beta",
+          "params": [
+            "approach"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_resolve_compute_dtype",
+          "params": [
+            "compute_type",
+            "bf16_supported",
+            "expected"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_fp32_trainer_config_disables_mixed_precision_flags",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_format_conversations_applies_chat_template_to_single_and_batch",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "types",
+          "specifiers": [
+            "ModuleType",
+            "SimpleNamespace"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "datasets",
+          "specifiers": [
+            "Dataset"
+          ]
+        },
+        {
+          "source": "peft",
+          "specifiers": [
+            "LoraConfig",
+            "OFTConfig"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "training"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "ComputeType",
+            "DatasetSpec",
+            "PeftMode",
+            "TrainingApproach",
+            "TrainingConfig"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.training",
+          "specifiers": [
+            "_format_conversations",
+            "_load_and_combine_datasets",
+            "_load_model_and_tokenizer",
+            "_normalize_dataset",
+            "_patch_qoft_peft_compatibility",
+            "_peft_config",
+            "_resolve_compute_dtype",
+            "_split_dataset",
+            "_trainer_components",
+            "_trainer_config"
+          ]
+        }
+      ],
+      "exports": [
+        "test_normalize_prompt_completion_columns",
+        "test_normalize_preference_columns_preserves_conversations",
+        "test_small_dataset_skips_eval_split",
+        "test_combine_datasets_preserves_all_rows_and_shuffles",
+        "test_combined_max_samples_is_global_and_deterministic",
+        "test_combine_datasets_reports_incompatible_normalized_schemas",
+        "test_combine_datasets_identifies_source_load_failure",
+        "test_unsloth_loader_uses_optimized_qlora_settings",
+        "test_unsloth_reward_loader_keeps_score_head",
+        "test_peft_methods_build_expected_adapter_and_quantization",
+        "test_reward_peft_config_preserves_score_head",
+        "test_qoft_compatibility_passes_dispatcher_config",
+        "test_every_approach_resolves_installed_trainer",
+        "test_alignment_trainer_config_includes_beta",
+        "test_resolve_compute_dtype",
+        "test_fp32_trainer_config_disables_mixed_precision_flags",
+        "test_format_conversations_applies_chat_template_to_single_and_batch"
+      ],
+      "totalLines": 385,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_tutorial.py": {
+      "filePath": "tests/test_tutorial.py",
+      "contentHash": "a181f4dcc29b50e616630e728a1f80855dd7c28739f3330c630243ffcd626498",
+      "functions": [
+        {
+          "name": "sha256",
+          "params": [
+            "path"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_tutorial_has_complete_progression",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "test_preference_lab_dataset_is_well_formed",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_generated_manifest_matches_files",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_generated_text_assets_use_portable_line_endings",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_generated_pages_have_valid_local_links",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_published_and_canonical_pdfs_are_identical",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageParser",
+          "methods": [
+            "__init__",
+            "handle_starttag"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "imports": [
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "html.parser",
+          "specifiers": [
+            "HTMLParser"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "urllib.parse",
+          "specifiers": [
+            "unquote",
+            "urlsplit"
+          ]
+        }
+      ],
+      "exports": [
+        "PageParser",
+        "sha256",
+        "test_tutorial_has_complete_progression",
+        "test_preference_lab_dataset_is_well_formed",
+        "test_generated_manifest_matches_files",
+        "test_generated_text_assets_use_portable_line_endings",
+        "test_generated_pages_have_valid_local_links",
+        "test_published_and_canonical_pdfs_are_identical"
+      ],
+      "totalLines": 125,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_worker.py": {
+      "filePath": "tests/test_worker.py",
+      "contentHash": "83f398ed5e9b0f32dd39294a5b93d7a7379d5c6911a9a64967117b8b4c9e69e4",
+      "functions": [
+        {
+          "name": "test_worker_schedules_queue_handoff_after_terminal_status",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_worker_failure_still_schedules_queue_handoff",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "types",
+          "specifiers": [
+            "SimpleNamespace"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio",
+          "specifiers": [
+            "worker"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "DatasetSpec",
+            "JobState",
+            "JobStatus",
+            "TrainingConfig"
+          ]
+        }
+      ],
+      "exports": [
+        "test_worker_schedules_queue_handoff_after_terminal_status",
+        "test_worker_failure_still_schedules_queue_handoff"
+      ],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "unsloth-runtime/pyproject.toml": {
+      "filePath": "unsloth-runtime/pyproject.toml",
+      "contentHash": "ea18c7c5b1cd7024a4775e55a2ea3d10a00a7ef3fc4c833b5a978d297eed64b7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    }
+  }
+}
