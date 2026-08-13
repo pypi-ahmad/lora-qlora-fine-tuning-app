@@ -1,1 +1,5 @@
 *.pdf binary
+docs/*.html -text
+docs/.tutorial-build.json -text
+docs/assets/*.css -text
+docs/assets/*.js -text

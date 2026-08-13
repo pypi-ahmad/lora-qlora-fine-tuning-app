@@ -261,12 +261,15 @@ tokenizer, not a merged full model.
 ## 7. Start and monitor a run
 
 Open **Review & run**, review warnings, acknowledge an above-recommendation model when applicable,
-then start training. The app switches to **Monitor** automatically. Only one worker may be active.
+then select **Start training** when idle or **Add to queue** while another run is active. The app
+switches to **Monitor** automatically. One worker remains active while additional jobs wait in
+first-in-first-out order.
 
 The monitor refreshes every two seconds and shows:
 
+- queue position, model, approach, method, and preset for every waiting job;
 - queued, running, completed, failed, or cancelled state;
-- step progress;
+- a step progress bar with a whole-number percentage;
 - loss, evaluation loss, learning rate, and epoch when reported;
 - a terminal error when present; and
 - the tail of `training.log`.
@@ -276,23 +279,26 @@ durable status files.
 
 ### Cancel
 
-Use **Cancel training**. The job manager requests termination, waits up to ten seconds, then forces
-the process to stop if required. Existing checkpoints remain.
+Use **Cancel training** for the active worker or **Remove from queue** for a waiting run. Cancelling
+the worker requests termination, waits up to ten seconds, then forces it to stop if required. The
+next waiting job starts automatically and existing checkpoints remain.
 
 ### Stop LoRA Studio
 
 Select **Stop LoRA Studio** at the bottom of the sidebar, review the warning, then select
 **Confirm stop**. The app verifies and cancels its active training worker before stopping the
 Streamlit server. If process ownership cannot be verified, shutdown is refused and the app remains
-available. Ollama, the browser, and unrelated processes are not stopped.
+available. Waiting jobs remain queued and do not start during shutdown. Ollama, the browser, and
+unrelated processes are not stopped.
 
 The browser tab disconnects after shutdown and can be closed manually. Launch the app again to
-start a fresh Streamlit session; saved runs, checkpoints, and adapters remain on disk.
+start a fresh Streamlit session; saved runs, checkpoints, and adapters remain on disk, and the
+first waiting job starts automatically.
 
 ### Resume
 
-For a failed or cancelled run, select **Resume latest checkpoint**. Resume requires at least one
-`checkpoint-*` directory. The highest numeric checkpoint is selected.
+For a failed or cancelled run, select **Queue latest checkpoint**. Resume requires at least one
+`checkpoint-*` directory. The highest numeric checkpoint is selected and appended to the queue.
 
 ## 8. Find the results
 

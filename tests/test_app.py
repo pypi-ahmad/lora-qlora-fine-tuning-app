@@ -10,6 +10,7 @@ from lora_finetune_studio.unsloth_runtime import UnslothRuntimeStatus
 
 def test_app_starts_without_ollama(monkeypatch) -> None:
     monkeypatch.setattr(ollama, "list_models", list)
+    monkeypatch.setattr(jobs, "dispatch_next_run", lambda: None)
     monkeypatch.setattr(
         unsloth_runtime,
         "inspect_unsloth_runtime",
@@ -39,7 +40,12 @@ def test_app_starts_without_ollama(monkeypatch) -> None:
     assert any(button.label == "Stop LoRA Studio" for button in app.button)
 
     scheduled_exits: list[bool] = []
-    monkeypatch.setattr(jobs, "cancel_active_run", lambda: None)
+    cancellation_options: list[bool] = []
+
+    def cancel_for_shutdown(*, dispatch_next: bool = True) -> None:
+        cancellation_options.append(dispatch_next)
+
+    monkeypatch.setattr(jobs, "cancel_active_run", cancel_for_shutdown)
     monkeypatch.setattr(
         lifecycle,
         "schedule_application_exit",
@@ -52,6 +58,7 @@ def test_app_starts_without_ollama(monkeypatch) -> None:
         button for button in app.button if button.label == "Confirm stop"
     ).click().run()
     assert scheduled_exits == [True]
+    assert cancellation_options == [False]
     assert any("Stopping LoRA Studio" in item.value for item in app.info)
 
     pages = {

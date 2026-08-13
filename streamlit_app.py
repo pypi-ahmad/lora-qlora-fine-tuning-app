@@ -7,7 +7,7 @@ import os
 import streamlit as st
 
 from lora_finetune_studio.hardware import detect_hardware
-from lora_finetune_studio.jobs import cancel_active_run
+from lora_finetune_studio.jobs import cancel_active_run, dispatch_next_run
 from lora_finetune_studio.lifecycle import schedule_application_exit
 from lora_finetune_studio.models import (
     TRAINING_RECIPES,
@@ -74,6 +74,13 @@ if not token:
     except FileNotFoundError, KeyError:
         pass
 
+try:
+    dispatch_next_run()
+except (OSError, RuntimeError, ValueError) as error:
+    st.session_state.queue_start_error = str(error)
+else:
+    st.session_state.pop("queue_start_error", None)
+
 pages = [
     st.Page(
         "app_pages/system.py",
@@ -129,6 +136,10 @@ pages = [
 page = st.navigation(pages, position="sidebar", expanded=True)
 
 with st.sidebar:
+    if st.session_state.get("queue_start_error"):
+        st.warning(
+            f"Training queue could not advance: {st.session_state.queue_start_error}"
+        )
     st.divider()
     if not st.session_state.confirm_shutdown:
         if st.button(
@@ -153,7 +164,7 @@ with st.sidebar:
                 type="primary",
             ):
                 try:
-                    cancelled_run = cancel_active_run()
+                    cancelled_run = cancel_active_run(dispatch_next=False)
                 except (OSError, RuntimeError, ValueError) as error:
                     st.error(f"LoRA Studio was not stopped: {error}")
                 else:
