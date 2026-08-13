@@ -975,8 +975,8 @@ boundary.
 3. **Model:** validate repository/revision and inspect parameter count.
 4. **GPU memory:** view global and process-local CUDA memory.
 5. **Training:** select approach, method, backend, preset, and controls.
-6. **Review & run:** inspect effective settings and resolve blockers.
-7. **Monitor:** follow status/logs, cancel, resume, and evaluate.
+6. **Review & run:** inspect effective settings, then start or queue the run.
+7. **Monitor:** inspect FIFO order, follow status/logs, cancel, resume, and evaluate.
 8. **Ollama playground:** use models already installed in local Ollama.
 
 ### Presets
@@ -1110,11 +1110,14 @@ On Review & run, verify model, dataset, backend, effective compute type, method,
 20-step cap, sample cap, learning rate, batching, and Hub upload disabled. Acknowledge a
 model-size warning only after understanding it.
 
-Start training. The browser switches to Monitor while a child process runs.
+Start training. The browser switches to Monitor while a child process runs. Additional experiments
+can be submitted from Review & run; they remain in a durable first-in-first-out queue.
 
 ### Step 6: read the monitor
 
-Observe state, message, progress, metrics, and `training.log`. Identify:
+Observe state, message, the progress bar and whole-number percentage, metrics, and `training.log`.
+The percentage is a best-effort view of completed trainer steps, not an estimated time remaining.
+Identify:
 
 - when model and dataset loading finish;
 - the first reported training loss;
@@ -1394,18 +1397,25 @@ Monitor poll does not read half-written state.
 ### State machine
 
 ```text
-queued -> running -> completed
-                  -> failed -> resume newest checkpoint -> running
-                  -> cancelled -> resume newest checkpoint -> running
+queued -> running -> completed -> dispatch next queued run
+                  -> failed ----> dispatch next queued run
+                  -> cancelled -> dispatch next queued run
+
+failed/cancelled -> queue newest checkpoint -> queued
 ```
 
 Only one owned training PID can be active. Before cancellation, the app verifies that
 the stored PID command line is the expected worker with the expected config path. It
 terminates, waits ten seconds, and kills only after timeout.
 
-Resume chooses the numerically latest `checkpoint-*`, writes its absolute path into the
-existing config, and launches the same run ID. Resume cannot recover work done before
-the first saved checkpoint.
+Queue order is stored in `.runs/queue.json` under an OS-level file lock. After a terminal status, a
+lightweight handoff waits for the old worker to exit and release VRAM before launching the next
+run. The queue survives app restarts and continues after failures. Confirmed app shutdown cancels
+the active worker without starting another; waiting runs resume when the app starts again.
+
+Resume chooses the numerically latest `checkpoint-*`, writes its absolute path into the existing
+config, and appends the same run ID to the queue. Resume cannot recover work done before the first
+saved checkpoint.
 
 ### Logs and error handling
 
