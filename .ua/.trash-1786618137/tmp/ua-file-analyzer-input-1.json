@@ -1,0 +1,15 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path": "src/lora_finetune_studio/jobs.py", "language": "python", "sizeLines": 392, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/models.py", "language": "python", "sizeLines": 348, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/training.py", "language": "python", "sizeLines": 471, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/unsloth_runtime.py", "language": "python", "sizeLines": 61, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "src/lora_finetune_studio/jobs.py": ["src/lora_finetune_studio/models.py", "src/lora_finetune_studio/unsloth_runtime.py"],
+    "src/lora_finetune_studio/models.py": [],
+    "src/lora_finetune_studio/training.py": ["src/lora_finetune_studio/jobs.py", "src/lora_finetune_studio/models.py", "src/lora_finetune_studio/sources.py"],
+    "src/lora_finetune_studio/unsloth_runtime.py": []
+  }
+}

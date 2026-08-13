@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "document:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "CHANGELOG.md",
+      "summary": "Records the release history from version 0.1.0 through 0.4.0, including training features, documentation, and security changes.",
+      "tags": ["documentation", "release-notes", "versioning"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CODE_OF_CONDUCT.md",
+      "type": "document",
+      "name": "CODE_OF_CONDUCT.md",
+      "filePath": "CODE_OF_CONDUCT.md",
+      "summary": "Defines expected community behavior, incident reporting, and enforcement for project participation.",
+      "tags": ["documentation", "community", "governance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING.md",
+      "filePath": "CONTRIBUTING.md",
+      "summary": "Explains the contributor workflow, development expectations, required checks, and pull-request checklist.",
+      "tags": ["documentation", "development", "contributing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Launch LoRA Studio.cmd",
+      "type": "file",
+      "name": "Launch LoRA Studio.cmd",
+      "filePath": "Launch LoRA Studio.cmd",
+      "summary": "Windows launcher that installs or locates uv, synchronizes the main and native-Unsloth environments, then starts and health-checks the Streamlit application.",
+      "tags": ["windows", "launcher", "streamlit", "unsloth", "automation"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Batch control flow plus an embedded PowerShell command to manage a background Streamlit process and its health endpoint."
+    },
+    {
+      "id": "file:Launch LoRA Studio.sh",
+      "type": "file",
+      "name": "Launch LoRA Studio.sh",
+      "filePath": "Launch LoRA Studio.sh",
+      "summary": "Linux launcher that locates or installs uv, synchronizes the locked environment, manages a prior application process, and starts Streamlit on port 8504.",
+      "tags": ["linux", "launcher", "streamlit", "automation"],
+      "complexity": "moderate",
+      "languageNotes": "Uses strict Bash settings, a PID file, and HTTP health checks to make local startup repeatable."
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview covering supported parameter-efficient training recipes, requirements, quick start, smoke testing, and links to detailed guides.",
+      "tags": ["documentation", "entry-point", "overview", "quick-start"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "States the vulnerability-reporting policy, supported versions, security controls, and safe-operation boundaries for local model training.",
+      "tags": ["documentation", "security", "responsible-disclosure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SETUP.md",
+      "type": "document",
+      "name": "SETUP.md",
+      "filePath": "SETUP.md",
+      "summary": "Comprehensive Windows and Linux installation guide covering uv environments, native Windows Unsloth, verification, smoke tests, maintenance, and troubleshooting.",
+      "tags": ["documentation", "installation", "windows", "linux", "unsloth"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:TECHNICAL.md",
+      "type": "document",
+      "name": "TECHNICAL.md",
+      "filePath": "TECHNICAL.md",
+      "summary": "Technical handbook describing the application's architecture, data contracts, dataset and training pipelines, job lifecycle, trust boundaries, and extension points.",
+      "tags": ["documentation", "architecture", "training", "streamlit", "technical-reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:TUTORIAL.md",
+      "type": "document",
+      "name": "TUTORIAL.md",
+      "filePath": "TUTORIAL.md",
+      "summary": "Zero-to-mastery tutorial that teaches LLM post-training concepts and leads users through dataset, configuration, SFT, preference-training, evaluation, and repository-extension labs.",
+      "tags": ["documentation", "tutorial", "llm-training", "fine-tuning", "education"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:USAGE.md",
+      "type": "document",
+      "name": "USAGE.md",
+      "filePath": "USAGE.md",
+      "summary": "Operational guide for launching the application, selecting models and datasets, configuring training, monitoring jobs, locating artifacts, and resolving common problems.",
+      "tags": ["documentation", "usage", "training", "operations"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "Defines package metadata, supported Python range, runtime and development dependencies, build backend, console entry point, and the CUDA PyTorch index for uv.",
+      "tags": ["configuration", "python", "uv", "dependencies", "build-system"],
+      "complexity": "simple",
+      "languageNotes": "Uses PEP 621 project metadata and uv-specific source configuration to select the CUDA PyTorch package index."
+    }
+  ],
+  "edges": [
+    {"source":"file:Launch LoRA Studio.cmd","target":"config:pyproject.toml","type":"depends_on","direction":"forward","weight":0.6},
+    {"source":"file:Launch LoRA Studio.cmd","target":"file:streamlit_app.py","type":"depends_on","direction":"forward","weight":0.6},
+    {"source":"file:Launch LoRA Studio.sh","target":"config:pyproject.toml","type":"depends_on","direction":"forward","weight":0.6},
+    {"source":"file:Launch LoRA Studio.sh","target":"file:streamlit_app.py","type":"depends_on","direction":"forward","weight":0.6},
+    {"source":"document:README.md","target":"file:Launch LoRA Studio.cmd","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:README.md","target":"file:Launch LoRA Studio.sh","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:SETUP.md","target":"file:Launch LoRA Studio.cmd","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:SETUP.md","target":"file:Launch LoRA Studio.sh","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:SETUP.md","target":"config:pyproject.toml","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:SETUP.md","target":"file:streamlit_app.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TECHNICAL.md","target":"file:streamlit_app.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TECHNICAL.md","target":"file:src/lora_finetune_studio/models.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TECHNICAL.md","target":"file:src/lora_finetune_studio/sources.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TECHNICAL.md","target":"file:src/lora_finetune_studio/jobs.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TECHNICAL.md","target":"file:src/lora_finetune_studio/worker.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TECHNICAL.md","target":"file:src/lora_finetune_studio/training.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TUTORIAL.md","target":"file:streamlit_app.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TUTORIAL.md","target":"file:src/lora_finetune_studio/models.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TUTORIAL.md","target":"file:src/lora_finetune_studio/training.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:USAGE.md","target":"file:Launch LoRA Studio.cmd","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:USAGE.md","target":"file:Launch LoRA Studio.sh","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:USAGE.md","target":"file:streamlit_app.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"config:pyproject.toml","target":"file:streamlit_app.py","type":"configures","direction":"forward","weight":0.6}
+  ]
+}

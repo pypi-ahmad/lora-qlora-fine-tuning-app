@@ -3,13 +3,13 @@
 import streamlit as st
 
 from lora_finetune_studio.hardware import model_size_warning
-from lora_finetune_studio.jobs import active_run, create_run, launch_run
+from lora_finetune_studio.jobs import active_run, enqueue_run, queued_runs
 from lora_finetune_studio.models import resolve_compute_type
 from lora_finetune_studio.sources import get_hf_token
 from lora_finetune_studio.unsloth_runtime import inspect_unsloth_runtime
 
 st.caption(
-    "Review the exact configuration, resolve blockers, and launch one local job."
+    "Review the exact configuration, resolve blockers, and start or queue training."
 )
 
 config = st.session_state.training_config
@@ -89,8 +89,18 @@ if warning and not acknowledge_large_model:
 if config.push_to_hub and not get_hf_token():
     errors.append("HF_TOKEN is required to upload the adapter.")
 running_job = active_run()
-if running_job:
-    errors.append("Another training job is already active.")
+try:
+    waiting_jobs = queued_runs()
+except (OSError, ValueError) as error:
+    waiting_jobs = []
+    errors.append(f"Training queue could not be read: {error}")
+
+if running_job or waiting_jobs:
+    position = len(waiting_jobs) + 1
+    st.info(
+        f"One training worker is active. This configuration will wait at queue "
+        f"position {position}."
+    )
 
 if errors:
     for error in errors:
@@ -98,26 +108,29 @@ if errors:
 
 with st.container(horizontal=True):
     start_run = st.button(
-        "Start training",
+        "Add to queue" if running_job or waiting_jobs else "Start training",
         type="primary",
-        icon=":material/play_arrow:",
+        icon=":material/playlist_add:"
+        if running_job or waiting_jobs
+        else ":material/play_arrow:",
         disabled=bool(errors),
     )
     open_monitor = st.button(
         "Open monitor",
         icon=":material/monitoring:",
-        disabled=not bool(st.session_state.run_id or running_job),
+        disabled=not bool(st.session_state.run_id or running_job or waiting_jobs),
     )
 
 if open_monitor:
     if not st.session_state.run_id and running_job:
         st.session_state.run_id = running_job
+    elif not st.session_state.run_id and waiting_jobs:
+        st.session_state.run_id = waiting_jobs[0]
     st.switch_page("app_pages/monitor.py")
 
 if start_run:
     try:
-        run_id = create_run(config)
-        launch_run(run_id)
+        run_id = enqueue_run(config)
         st.session_state.run_id = run_id
         st.switch_page("app_pages/monitor.py")
     except Exception as error:  # noqa: BLE001

@@ -1,0 +1,13 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path":"src/lora_finetune_studio/queue_dispatcher.py","language":"python","sizeLines":66,"fileCategory":"code"},
+    {"path":"src/lora_finetune_studio/sources.py","language":"python","sizeLines":130,"fileCategory":"code"},
+    {"path":"src/lora_finetune_studio/worker.py","language":"python","sizeLines":79,"fileCategory":"code"}
+  ],
+  "batchImportData": {
+    "src/lora_finetune_studio/queue_dispatcher.py":["src/lora_finetune_studio/jobs.py"],
+    "src/lora_finetune_studio/sources.py":[],
+    "src/lora_finetune_studio/worker.py":["src/lora_finetune_studio/jobs.py","src/lora_finetune_studio/models.py","src/lora_finetune_studio/queue_dispatcher.py","src/lora_finetune_studio/sources.py"]
+  }
+}

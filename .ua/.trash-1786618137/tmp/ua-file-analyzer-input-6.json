@@ -1,0 +1,147 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {
+      "path": "docs/.tutorial-build.json",
+      "language": "json",
+      "sizeLines": 33,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/01-learn-the-map-before-the-territory.html",
+      "language": "html",
+      "sizeLines": 163,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/02-natural-language-becomes-model-input.html",
+      "language": "html",
+      "sizeLines": 138,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/03-neural-networks-learn-with-vectors-and-gradients.html",
+      "language": "html",
+      "sizeLines": 152,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/04-build-a-transformer-from-attention-blocks.html",
+      "language": "html",
+      "sizeLines": 151,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/05-understand-the-llm-lifecycle.html",
+      "language": "html",
+      "sizeLines": 146,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/06-choose-a-tuning-family.html",
+      "language": "html",
+      "sizeLines": 148,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/07-master-lora-qlora-oft-and-qoft.html",
+      "language": "html",
+      "sizeLines": 197,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/08-engineer-datasets-that-teach-the-intended-behavior.html",
+      "language": "html",
+      "sizeLines": 158,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/09-select-the-post-training-objective.html",
+      "language": "html",
+      "sizeLines": 192,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/10-prepare-the-local-training-system.html",
+      "language": "html",
+      "sizeLines": 189,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/11-translate-intent-into-app-settings.html",
+      "language": "html",
+      "sizeLines": 179,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/12-lab-a-complete-an-sft-smoke-run.html",
+      "language": "html",
+      "sizeLines": 182,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/13-lab-b-preference-training-safely.html",
+      "language": "html",
+      "sizeLines": 173,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/14-evaluate-like-an-experimenter.html",
+      "language": "html",
+      "sizeLines": 182,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/15-operate-jobs-and-use-artifacts.html",
+      "language": "html",
+      "sizeLines": 141,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/16-read-and-extend-the-repository.html",
+      "language": "html",
+      "sizeLines": 175,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/17-capstone-train-a-defensible-specialist.html",
+      "language": "html",
+      "sizeLines": 157,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/18-checkpoint-answers.html",
+      "language": "html",
+      "sizeLines": 161,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/19-formula-and-settings-reference.html",
+      "language": "html",
+      "sizeLines": 171,
+      "fileCategory": "markup"
+    }
+  ],
+  "batchImportData": {
+    "docs/.tutorial-build.json": [],
+    "docs/01-learn-the-map-before-the-territory.html": [],
+    "docs/02-natural-language-becomes-model-input.html": [],
+    "docs/03-neural-networks-learn-with-vectors-and-gradients.html": [],
+    "docs/04-build-a-transformer-from-attention-blocks.html": [],
+    "docs/05-understand-the-llm-lifecycle.html": [],
+    "docs/06-choose-a-tuning-family.html": [],
+    "docs/07-master-lora-qlora-oft-and-qoft.html": [],
+    "docs/08-engineer-datasets-that-teach-the-intended-behavior.html": [],
+    "docs/09-select-the-post-training-objective.html": [],
+    "docs/10-prepare-the-local-training-system.html": [],
+    "docs/11-translate-intent-into-app-settings.html": [],
+    "docs/12-lab-a-complete-an-sft-smoke-run.html": [],
+    "docs/13-lab-b-preference-training-safely.html": [],
+    "docs/14-evaluate-like-an-experimenter.html": [],
+    "docs/15-operate-jobs-and-use-artifacts.html": [],
+    "docs/16-read-and-extend-the-repository.html": [],
+    "docs/17-capstone-train-a-defensible-specialist.html": [],
+    "docs/18-checkpoint-answers.html": [],
+    "docs/19-formula-and-settings-reference.html": []
+  }
+}

@@ -11,6 +11,14 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - A deployment-ready, read-only Streamlit showcase backed by contract-checked synthetic fixtures.
 
+## [0.4.0] - 2026-08-13
+
+### Added
+
+- A durable FIFO training queue that runs one GPU worker at a time, continues after terminal jobs,
+  survives app restarts, supports queued cancellation, and requeues checkpoint resumes.
+- A whole-number percentage displayed with the current task's progress bar.
+
 ## [0.3.0] - 2026-08-13
 
 ### Added
@@ -81,7 +89,8 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Limited dataset uploads to approved formats and 200 MB.
 - Added path validation and atomic run-status updates.
 
-[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases/tag/v0.1.0

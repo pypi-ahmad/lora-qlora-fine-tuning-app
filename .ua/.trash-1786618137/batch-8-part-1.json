@@ -1,0 +1,524 @@
+{
+  "nodes": [
+    {
+      "id": "file:.gitattributes",
+      "type": "file",
+      "name": ".gitattributes",
+      "filePath": ".gitattributes",
+      "summary": "Defines Git text and attribute handling for repository files.",
+      "tags": [
+        "configuration",
+        "repository",
+        "tooling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.python-version",
+      "type": "file",
+      "name": ".python-version",
+      "filePath": ".python-version",
+      "summary": "Pins the Python version expected by the project tooling.",
+      "tags": [
+        "configuration",
+        "repository",
+        "tooling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.streamlit/config.toml",
+      "type": "config",
+      "name": "config.toml",
+      "filePath": ".streamlit/config.toml",
+      "summary": "Configures the local Streamlit server appearance and behavior.",
+      "tags": [
+        "configuration",
+        "streamlit",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/dataset.py",
+      "type": "file",
+      "name": "dataset.py",
+      "filePath": "app_pages/dataset.py",
+      "summary": "Implements the Streamlit dataset page for inspecting, validating, and combining compatible training datasets.",
+      "tags": [
+        "streamlit",
+        "ui-page",
+        "training",
+        "local-tool"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:app_pages/dataset.py:source_label",
+      "type": "function",
+      "name": "source_label",
+      "filePath": "app_pages/dataset.py",
+      "lineRange": [
+        34,
+        36
+      ],
+      "summary": "Formats a dataset source as a compact label for the dataset page.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/dataset.py:source_identity",
+      "type": "function",
+      "name": "source_identity",
+      "filePath": "app_pages/dataset.py",
+      "lineRange": [
+        39,
+        48
+      ],
+      "summary": "Builds the stable source identity used to detect duplicate datasets.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/dataset.py:source_key",
+      "type": "function",
+      "name": "source_key",
+      "filePath": "app_pages/dataset.py",
+      "lineRange": [
+        51,
+        52
+      ],
+      "summary": "Hashes a dataset source identity into a short key.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/dataset.py:is_compatible",
+      "type": "function",
+      "name": "is_compatible",
+      "filePath": "app_pages/dataset.py",
+      "lineRange": [
+        55,
+        56
+      ],
+      "summary": "Checks whether a dataset format is accepted by the selected recipe.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/dataset.py:clear_pending",
+      "type": "function",
+      "name": "clear_pending",
+      "filePath": "app_pages/dataset.py",
+      "lineRange": [
+        59,
+        62
+      ],
+      "summary": "Clears pending dataset state from the Streamlit session.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/dataset.py:save_pending_dataset",
+      "type": "function",
+      "name": "save_pending_dataset",
+      "filePath": "app_pages/dataset.py",
+      "lineRange": [
+        65,
+        88
+      ],
+      "summary": "Adds or replaces a validated pending dataset in the selected dataset collection.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/gpu_memory.py",
+      "type": "file",
+      "name": "gpu_memory.py",
+      "filePath": "app_pages/gpu_memory.py",
+      "summary": "Shows live CUDA memory metrics and safely releases unused memory when no training run is active.",
+      "tags": [
+        "streamlit",
+        "ui-page",
+        "training",
+        "local-tool"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/model.py",
+      "type": "file",
+      "name": "model.py",
+      "filePath": "app_pages/model.py",
+      "summary": "Implements the model-selection page and inspects Hugging Face model metadata before training.",
+      "tags": [
+        "streamlit",
+        "ui-page",
+        "training",
+        "local-tool"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/monitor.py",
+      "type": "file",
+      "name": "monitor.py",
+      "filePath": "app_pages/monitor.py",
+      "summary": "Implements the training monitor, FIFO queue controls, checkpoint recovery, and completed-adapter testing UI.",
+      "tags": [
+        "streamlit",
+        "ui-page",
+        "training",
+        "local-tool"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app_pages/monitor.py:training_monitor",
+      "type": "function",
+      "name": "training_monitor",
+      "filePath": "app_pages/monitor.py",
+      "lineRange": [
+        67,
+        141
+      ],
+      "summary": "Refreshes run state, queue status, progress, logs, recovery actions, and adapter evaluation controls.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "app_pages/ollama.py",
+      "summary": "Provides an independent local Ollama chat playground for already installed models.",
+      "tags": [
+        "streamlit",
+        "ui-page",
+        "training",
+        "local-tool"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/review.py",
+      "type": "file",
+      "name": "review.py",
+      "filePath": "app_pages/review.py",
+      "summary": "Reviews the saved training configuration, reports blockers, and launches or queues a run.",
+      "tags": [
+        "streamlit",
+        "ui-page",
+        "training",
+        "local-tool"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/system.py",
+      "type": "file",
+      "name": "system.py",
+      "filePath": "app_pages/system.py",
+      "summary": "Displays a read-only local runtime, CUDA, hardware, token, and Unsloth readiness assessment.",
+      "tags": [
+        "streamlit",
+        "ui-page",
+        "training",
+        "local-tool"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/training.py",
+      "type": "file",
+      "name": "training.py",
+      "filePath": "app_pages/training.py",
+      "summary": "Implements the training-settings page, including supported approach and PEFT method selection.",
+      "tags": [
+        "streamlit",
+        "ui-page",
+        "training",
+        "local-tool"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:app_pages/training.py:approach_changed",
+      "type": "function",
+      "name": "approach_changed",
+      "filePath": "app_pages/training.py",
+      "lineRange": [
+        40,
+        50
+      ],
+      "summary": "Resets dependent training defaults after the selected approach changes.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/training.py:method_changed",
+      "type": "function",
+      "name": "method_changed",
+      "filePath": "app_pages/training.py",
+      "lineRange": [
+        53,
+        57
+      ],
+      "summary": "Updates configuration state when the PEFT method changes.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/training.py:compute_type_changed",
+      "type": "function",
+      "name": "compute_type_changed",
+      "filePath": "app_pages/training.py",
+      "lineRange": [
+        60,
+        64
+      ],
+      "summary": "Disables unsupported Unsloth use when the compute precision changes.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "function",
+      "name": "apply_preset_defaults",
+      "filePath": "app_pages/training.py",
+      "lineRange": [
+        125,
+        134
+      ],
+      "summary": "Applies the selected preset values to the training form state.",
+      "tags": [
+        "python",
+        "function",
+        "application-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:docs/.nojekyll",
+      "type": "file",
+      "name": ".nojekyll",
+      "filePath": "docs/.nojekyll",
+      "summary": "Prevents GitHub Pages from processing the generated documentation site with Jekyll.",
+      "tags": [
+        "documentation",
+        "static-site",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:docs/assets/search-index.js",
+      "type": "file",
+      "name": "search-index.js",
+      "filePath": "docs/assets/search-index.js",
+      "summary": "Contains the generated client-side documentation search index.",
+      "tags": [
+        "documentation",
+        "static-site",
+        "frontend"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:source_label",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:source_label",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:source_identity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:source_identity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:source_key",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:source_key",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:is_compatible",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:is_compatible",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:clear_pending",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:clear_pending",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:save_pending_dataset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/dataset.py",
+      "target": "function:app_pages/dataset.py:save_pending_dataset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/monitor.py",
+      "target": "function:app_pages/monitor.py:training_monitor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/monitor.py",
+      "target": "function:app_pages/monitor.py:training_monitor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:approach_changed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:approach_changed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:method_changed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:method_changed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:compute_type_changed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:compute_type_changed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

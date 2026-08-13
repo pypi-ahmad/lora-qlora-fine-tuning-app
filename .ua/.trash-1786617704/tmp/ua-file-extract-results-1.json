@@ -1,0 +1,3189 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "src/lora_finetune_studio/jobs.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 392,
+      "nonEmptyLines": 345,
+      "functions": [
+        {
+          "name": "write_json_atomic",
+          "startLine": 32,
+          "endLine": 41,
+          "params": [
+            "path",
+            "data"
+          ]
+        },
+        {
+          "name": "_queue_lock",
+          "startLine": 45,
+          "endLine": 69,
+          "params": []
+        },
+        {
+          "name": "_write_queue_unlocked",
+          "startLine": 72,
+          "endLine": 76,
+          "params": [
+            "run_ids"
+          ]
+        },
+        {
+          "name": "_read_queue_unlocked",
+          "startLine": 79,
+          "endLine": 121,
+          "params": []
+        },
+        {
+          "name": "queued_runs",
+          "startLine": 124,
+          "endLine": 127,
+          "params": []
+        },
+        {
+          "name": "list_runs",
+          "startLine": 130,
+          "endLine": 149,
+          "params": []
+        },
+        {
+          "name": "read_status",
+          "startLine": 152,
+          "endLine": 154,
+          "params": [
+            "run_id"
+          ]
+        },
+        {
+          "name": "read_config",
+          "startLine": 157,
+          "endLine": 159,
+          "params": [
+            "run_id"
+          ]
+        },
+        {
+          "name": "_is_training_worker",
+          "startLine": 162,
+          "endLine": 176,
+          "params": [
+            "pid",
+            "config_path"
+          ]
+        },
+        {
+          "name": "active_run",
+          "startLine": 179,
+          "endLine": 195,
+          "params": []
+        },
+        {
+          "name": "create_run",
+          "startLine": 198,
+          "endLine": 216,
+          "params": [
+            "config"
+          ]
+        },
+        {
+          "name": "launch_run",
+          "startLine": 219,
+          "endLine": 263,
+          "params": [
+            "run_id"
+          ]
+        },
+        {
+          "name": "dispatch_next_run",
+          "startLine": 266,
+          "endLine": 291,
+          "params": []
+        },
+        {
+          "name": "enqueue_run",
+          "startLine": 294,
+          "endLine": 298,
+          "params": [
+            "config"
+          ]
+        },
+        {
+          "name": "_fail_stale_running_jobs_unlocked",
+          "startLine": 301,
+          "endLine": 319,
+          "params": []
+        },
+        {
+          "name": "cancel_run",
+          "startLine": 322,
+          "endLine": 345,
+          "params": [
+            "run_id",
+            "dispatch_next"
+          ]
+        },
+        {
+          "name": "cancel_active_run",
+          "startLine": 348,
+          "endLine": 353,
+          "params": [
+            "dispatch_next"
+          ]
+        },
+        {
+          "name": "resume_run",
+          "startLine": 356,
+          "endLine": 384,
+          "params": [
+            "run_id"
+          ]
+        },
+        {
+          "name": "read_log",
+          "startLine": 387,
+          "endLine": 392,
+          "params": [
+            "run_id",
+            "max_chars"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "write_json_atomic",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "_queue_lock",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "_write_queue_unlocked",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "_read_queue_unlocked",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "queued_runs",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "list_runs",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "read_status",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "read_config",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "_is_training_worker",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "active_run",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "create_run",
+          "line": 198,
+          "isDefault": false
+        },
+        {
+          "name": "launch_run",
+          "line": 219,
+          "isDefault": false
+        },
+        {
+          "name": "dispatch_next_run",
+          "line": 266,
+          "isDefault": false
+        },
+        {
+          "name": "enqueue_run",
+          "line": 294,
+          "isDefault": false
+        },
+        {
+          "name": "_fail_stale_running_jobs_unlocked",
+          "line": 301,
+          "isDefault": false
+        },
+        {
+          "name": "cancel_run",
+          "line": 322,
+          "isDefault": false
+        },
+        {
+          "name": "cancel_active_run",
+          "line": 348,
+          "isDefault": false
+        },
+        {
+          "name": "resume_run",
+          "line": 356,
+          "isDefault": false
+        },
+        {
+          "name": "read_log",
+          "line": 387,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "write_json_atomic",
+          "callee": "path.parent.mkdir",
+          "lineNumber": 33
+        },
+        {
+          "caller": "write_json_atomic",
+          "callee": "tempfile.mkstemp",
+          "lineNumber": 34
+        },
+        {
+          "caller": "write_json_atomic",
+          "callee": "os.fdopen",
+          "lineNumber": 36
+        },
+        {
+          "caller": "write_json_atomic",
+          "callee": "json.dump",
+          "lineNumber": 37
+        },
+        {
+          "caller": "write_json_atomic",
+          "callee": "os.replace",
+          "lineNumber": 38
+        },
+        {
+          "caller": "write_json_atomic",
+          "callee": "Path(temporary_name).unlink",
+          "lineNumber": 40
+        },
+        {
+          "caller": "write_json_atomic",
+          "callee": "Path",
+          "lineNumber": 40
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "RUNS_ROOT.mkdir",
+          "lineNumber": 46
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "lock_path.open",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.seek",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.tell",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.write",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.flush",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.seek",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "msvcrt.locking",
+          "lineNumber": 57
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.fileno",
+          "lineNumber": 57
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "fcntl.flock",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.fileno",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.seek",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "msvcrt.locking",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.fileno",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "fcntl.flock",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_queue_lock",
+          "callee": "handle.fileno",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_write_queue_unlocked",
+          "callee": "write_json_atomic",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "queue_path.exists",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "json.loads",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "queue_path.read_text",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "data.get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "isinstance",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "data.get",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "ValueError",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "str",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "RUNS_ROOT.glob",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "JobStatus.from_dict",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "json.loads",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "status_path.read_text",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "json.loads",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "status_path.with_name(\"config.json\").read_text",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "status_path.with_name",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "run_path",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "queued_by_time.append",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "status_path.stat",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "list",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "dict.fromkeys",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "sorted",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "ordered.append",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "queue_path.exists",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_read_queue_unlocked",
+          "callee": "_write_queue_unlocked",
+          "lineNumber": 120
+        },
+        {
+          "caller": "queued_runs",
+          "callee": "_queue_lock",
+          "lineNumber": 126
+        },
+        {
+          "caller": "queued_runs",
+          "callee": "_read_queue_unlocked",
+          "lineNumber": 127
+        },
+        {
+          "caller": "list_runs",
+          "callee": "active_run",
+          "lineNumber": 132
+        },
+        {
+          "caller": "list_runs",
+          "callee": "queued_runs",
+          "lineNumber": 133
+        },
+        {
+          "caller": "list_runs",
+          "callee": "set",
+          "lineNumber": 135
+        },
+        {
+          "caller": "list_runs",
+          "callee": "excluded.add",
+          "lineNumber": 137
+        },
+        {
+          "caller": "list_runs",
+          "callee": "RUNS_ROOT.glob",
+          "lineNumber": 138
+        },
+        {
+          "caller": "list_runs",
+          "callee": "JobStatus.from_dict",
+          "lineNumber": 140
+        },
+        {
+          "caller": "list_runs",
+          "callee": "json.loads",
+          "lineNumber": 140
+        },
+        {
+          "caller": "list_runs",
+          "callee": "status_path.read_text",
+          "lineNumber": 140
+        },
+        {
+          "caller": "list_runs",
+          "callee": "history.append",
+          "lineNumber": 145
+        },
+        {
+          "caller": "list_runs",
+          "callee": "status_path.stat",
+          "lineNumber": 145
+        },
+        {
+          "caller": "list_runs",
+          "callee": "ordered.extend",
+          "lineNumber": 147
+        },
+        {
+          "caller": "list_runs",
+          "callee": "ordered.extend",
+          "lineNumber": 148
+        },
+        {
+          "caller": "list_runs",
+          "callee": "sorted",
+          "lineNumber": 148
+        },
+        {
+          "caller": "read_status",
+          "callee": "run_path",
+          "lineNumber": 153
+        },
+        {
+          "caller": "read_status",
+          "callee": "JobStatus.from_dict",
+          "lineNumber": 154
+        },
+        {
+          "caller": "read_status",
+          "callee": "json.loads",
+          "lineNumber": 154
+        },
+        {
+          "caller": "read_status",
+          "callee": "path.read_text",
+          "lineNumber": 154
+        },
+        {
+          "caller": "read_config",
+          "callee": "run_path",
+          "lineNumber": 158
+        },
+        {
+          "caller": "read_config",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 159
+        },
+        {
+          "caller": "read_config",
+          "callee": "json.loads",
+          "lineNumber": 159
+        },
+        {
+          "caller": "read_config",
+          "callee": "path.read_text",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "psutil.Process(pid).cmdline",
+          "lineNumber": 165
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "psutil.Process",
+          "lineNumber": 165
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "os.path.normcase",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "str",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "config_path.resolve",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "os.path.normcase",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "str",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "Path(item).resolve",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_is_training_worker",
+          "callee": "Path",
+          "lineNumber": 170
+        },
+        {
+          "caller": "active_run",
+          "callee": "RUNS_ROOT.exists",
+          "lineNumber": 180
+        },
+        {
+          "caller": "active_run",
+          "callee": "RUNS_ROOT.glob",
+          "lineNumber": 182
+        },
+        {
+          "caller": "active_run",
+          "callee": "JobStatus.from_dict",
+          "lineNumber": 184
+        },
+        {
+          "caller": "active_run",
+          "callee": "json.loads",
+          "lineNumber": 185
+        },
+        {
+          "caller": "active_run",
+          "callee": "status_path.read_text",
+          "lineNumber": 185
+        },
+        {
+          "caller": "active_run",
+          "callee": "status_path.with_name",
+          "lineNumber": 190
+        },
+        {
+          "caller": "active_run",
+          "callee": "psutil.pid_exists",
+          "lineNumber": 191
+        },
+        {
+          "caller": "active_run",
+          "callee": "_is_training_worker",
+          "lineNumber": 191
+        },
+        {
+          "caller": "create_run",
+          "callee": "_queue_lock",
+          "lineNumber": 199
+        },
+        {
+          "caller": "create_run",
+          "callee": "_read_queue_unlocked",
+          "lineNumber": 200
+        },
+        {
+          "caller": "create_run",
+          "callee": "uuid.uuid4",
+          "lineNumber": 201
+        },
+        {
+          "caller": "create_run",
+          "callee": "run_path",
+          "lineNumber": 202
+        },
+        {
+          "caller": "create_run",
+          "callee": "directory.mkdir",
+          "lineNumber": 203
+        },
+        {
+          "caller": "create_run",
+          "callee": "str",
+          "lineNumber": 204
+        },
+        {
+          "caller": "create_run",
+          "callee": "(directory / \"output\").resolve",
+          "lineNumber": 204
+        },
+        {
+          "caller": "create_run",
+          "callee": "write_json_atomic",
+          "lineNumber": 205
+        },
+        {
+          "caller": "create_run",
+          "callee": "config.to_dict",
+          "lineNumber": 205
+        },
+        {
+          "caller": "create_run",
+          "callee": "write_json_atomic",
+          "lineNumber": 206
+        },
+        {
+          "caller": "create_run",
+          "callee": "JobStatus(\r\n                state=JobState.QUEUED,\r\n                message=\"Waiting in training queue\",\r\n                artifact_dir=config.output_dir,\r\n            ).to_dict",
+          "lineNumber": 208
+        },
+        {
+          "caller": "create_run",
+          "callee": "JobStatus",
+          "lineNumber": 208
+        },
+        {
+          "caller": "create_run",
+          "callee": "queue.append",
+          "lineNumber": 214
+        },
+        {
+          "caller": "create_run",
+          "callee": "_write_queue_unlocked",
+          "lineNumber": 215
+        },
+        {
+          "caller": "launch_run",
+          "callee": "run_path",
+          "lineNumber": 220
+        },
+        {
+          "caller": "launch_run",
+          "callee": "config_path.is_file",
+          "lineNumber": 222
+        },
+        {
+          "caller": "launch_run",
+          "callee": "FileNotFoundError",
+          "lineNumber": 223
+        },
+        {
+          "caller": "launch_run",
+          "callee": "(directory / \"training.log\").open",
+          "lineNumber": 224
+        },
+        {
+          "caller": "launch_run",
+          "callee": "read_config",
+          "lineNumber": 226
+        },
+        {
+          "caller": "launch_run",
+          "callee": "os.environ.copy",
+          "lineNumber": 227
+        },
+        {
+          "caller": "launch_run",
+          "callee": "worker_environment.get",
+          "lineNumber": 228
+        },
+        {
+          "caller": "launch_run",
+          "callee": "inspect_unsloth_runtime",
+          "lineNumber": 231
+        },
+        {
+          "caller": "launch_run",
+          "callee": "log_handle.close",
+          "lineNumber": 233
+        },
+        {
+          "caller": "launch_run",
+          "callee": "RuntimeError",
+          "lineNumber": 234
+        },
+        {
+          "caller": "launch_run",
+          "callee": "str",
+          "lineNumber": 235
+        },
+        {
+          "caller": "launch_run",
+          "callee": "str",
+          "lineNumber": 236
+        },
+        {
+          "caller": "launch_run",
+          "callee": "worker_environment.get",
+          "lineNumber": 237
+        },
+        {
+          "caller": "launch_run",
+          "callee": "os.pathsep.join",
+          "lineNumber": 241
+        },
+        {
+          "caller": "launch_run",
+          "callee": "subprocess.Popen",
+          "lineNumber": 243
+        },
+        {
+          "caller": "launch_run",
+          "callee": "str",
+          "lineNumber": 248
+        },
+        {
+          "caller": "launch_run",
+          "callee": "config_path.resolve",
+          "lineNumber": 248
+        },
+        {
+          "caller": "launch_run",
+          "callee": "Path.cwd",
+          "lineNumber": 253
+        },
+        {
+          "caller": "launch_run",
+          "callee": "log_handle.close",
+          "lineNumber": 257
+        },
+        {
+          "caller": "launch_run",
+          "callee": "read_status",
+          "lineNumber": 258
+        },
+        {
+          "caller": "launch_run",
+          "callee": "write_json_atomic",
+          "lineNumber": 262
+        },
+        {
+          "caller": "launch_run",
+          "callee": "status.to_dict",
+          "lineNumber": 262
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "_queue_lock",
+          "lineNumber": 268
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "_fail_stale_running_jobs_unlocked",
+          "lineNumber": 269
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "active_run",
+          "lineNumber": 270
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "_read_queue_unlocked",
+          "lineNumber": 272
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "queue.pop",
+          "lineNumber": 274
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "_write_queue_unlocked",
+          "lineNumber": 275
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "launch_run",
+          "lineNumber": 277
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "read_config",
+          "lineNumber": 279
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "write_json_atomic",
+          "lineNumber": 280
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "run_path",
+          "lineNumber": 281
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "JobStatus(\r\n                        state=JobState.FAILED,\r\n                        message=\"Training worker could not start\",\r\n                        error=str(error),\r\n                        artifact_dir=config.output_dir,\r\n                    ).to_dict",
+          "lineNumber": 282
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "JobStatus",
+          "lineNumber": 282
+        },
+        {
+          "caller": "dispatch_next_run",
+          "callee": "str",
+          "lineNumber": 285
+        },
+        {
+          "caller": "enqueue_run",
+          "callee": "create_run",
+          "lineNumber": 296
+        },
+        {
+          "caller": "enqueue_run",
+          "callee": "dispatch_next_run",
+          "lineNumber": 297
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "RUNS_ROOT.glob",
+          "lineNumber": 302
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "JobStatus.from_dict",
+          "lineNumber": 304
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "json.loads",
+          "lineNumber": 305
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "status_path.read_text",
+          "lineNumber": 305
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "status_path.with_name",
+          "lineNumber": 309
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "psutil.pid_exists",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "_is_training_worker",
+          "lineNumber": 313
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "write_json_atomic",
+          "lineNumber": 319
+        },
+        {
+          "caller": "_fail_stale_running_jobs_unlocked",
+          "callee": "status.to_dict",
+          "lineNumber": 319
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "_queue_lock",
+          "lineNumber": 323
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "read_status",
+          "lineNumber": 324
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "psutil.pid_exists",
+          "lineNumber": 327
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "run_path",
+          "lineNumber": 328
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "_is_training_worker",
+          "lineNumber": 329
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "RuntimeError",
+          "lineNumber": 330
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "psutil.Process",
+          "lineNumber": 333
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "process.terminate",
+          "lineNumber": 334
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "process.wait",
+          "lineNumber": 336
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "process.kill",
+          "lineNumber": 338
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "write_json_atomic",
+          "lineNumber": 342
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "run_path",
+          "lineNumber": 342
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "status.to_dict",
+          "lineNumber": 342
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "_read_queue_unlocked",
+          "lineNumber": 343
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "dispatch_next_run",
+          "lineNumber": 345
+        },
+        {
+          "caller": "cancel_active_run",
+          "callee": "active_run",
+          "lineNumber": 350
+        },
+        {
+          "caller": "cancel_active_run",
+          "callee": "cancel_run",
+          "lineNumber": 352
+        },
+        {
+          "caller": "resume_run",
+          "callee": "run_path",
+          "lineNumber": 357
+        },
+        {
+          "caller": "resume_run",
+          "callee": "sorted",
+          "lineNumber": 358
+        },
+        {
+          "caller": "resume_run",
+          "callee": "(directory / \"output\").glob",
+          "lineNumber": 359
+        },
+        {
+          "caller": "resume_run",
+          "callee": "int",
+          "lineNumber": 360
+        },
+        {
+          "caller": "resume_run",
+          "callee": "path.name.rsplit",
+          "lineNumber": 360
+        },
+        {
+          "caller": "resume_run",
+          "callee": "FileNotFoundError",
+          "lineNumber": 363
+        },
+        {
+          "caller": "resume_run",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 365
+        },
+        {
+          "caller": "resume_run",
+          "callee": "json.loads",
+          "lineNumber": 366
+        },
+        {
+          "caller": "resume_run",
+          "callee": "config_path.read_text",
+          "lineNumber": 366
+        },
+        {
+          "caller": "resume_run",
+          "callee": "str",
+          "lineNumber": 368
+        },
+        {
+          "caller": "resume_run",
+          "callee": "checkpoints[-1].resolve",
+          "lineNumber": 368
+        },
+        {
+          "caller": "resume_run",
+          "callee": "_queue_lock",
+          "lineNumber": 369
+        },
+        {
+          "caller": "resume_run",
+          "callee": "_read_queue_unlocked",
+          "lineNumber": 370
+        },
+        {
+          "caller": "resume_run",
+          "callee": "write_json_atomic",
+          "lineNumber": 371
+        },
+        {
+          "caller": "resume_run",
+          "callee": "config.to_dict",
+          "lineNumber": 371
+        },
+        {
+          "caller": "resume_run",
+          "callee": "write_json_atomic",
+          "lineNumber": 372
+        },
+        {
+          "caller": "resume_run",
+          "callee": "JobStatus(\r\n                state=JobState.QUEUED,\r\n                message=\"Waiting in training queue to resume\",\r\n                artifact_dir=config.output_dir,\r\n            ).to_dict",
+          "lineNumber": 374
+        },
+        {
+          "caller": "resume_run",
+          "callee": "JobStatus",
+          "lineNumber": 374
+        },
+        {
+          "caller": "resume_run",
+          "callee": "queue.append",
+          "lineNumber": 381
+        },
+        {
+          "caller": "resume_run",
+          "callee": "_write_queue_unlocked",
+          "lineNumber": 382
+        },
+        {
+          "caller": "resume_run",
+          "callee": "dispatch_next_run",
+          "lineNumber": 383
+        },
+        {
+          "caller": "read_log",
+          "callee": "run_path",
+          "lineNumber": 388
+        },
+        {
+          "caller": "read_log",
+          "callee": "path.exists",
+          "lineNumber": 389
+        },
+        {
+          "caller": "read_log",
+          "callee": "path.read_text",
+          "lineNumber": 391
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 19,
+        "functionCount": 19,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 348,
+      "nonEmptyLines": 311,
+      "functions": [
+        {
+          "name": "resolve_compute_type",
+          "startLine": 34,
+          "endLine": 39,
+          "params": [
+            "compute_type",
+            "bf16_supported"
+          ]
+        },
+        {
+          "name": "apply_preset",
+          "startLine": 336,
+          "endLine": 340,
+          "params": [
+            "config",
+            "preset"
+          ]
+        },
+        {
+          "name": "run_path",
+          "startLine": 343,
+          "endLine": 348,
+          "params": [
+            "run_id",
+            "root"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PeftMode",
+          "startLine": 12,
+          "endLine": 16,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "TrainingApproach",
+          "startLine": 19,
+          "endLine": 24,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ComputeType",
+          "startLine": 27,
+          "endLine": 31,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "TrainingRecipe",
+          "startLine": 43,
+          "endLine": 48,
+          "methods": [],
+          "properties": [
+            "methods",
+            "dataset_formats",
+            "learning_rate",
+            "uses_beta",
+            "minimum_batch_size"
+          ]
+        },
+        {
+          "name": "Preset",
+          "startLine": 85,
+          "endLine": 88,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "JobState",
+          "startLine": 91,
+          "endLine": 96,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "HardwareProfile",
+          "startLine": 100,
+          "endLine": 109,
+          "methods": [],
+          "properties": [
+            "cuda_available",
+            "gpu_name",
+            "vram_gb",
+            "ram_gb",
+            "free_disk_gb",
+            "bf16_supported",
+            "recommended_mode",
+            "recommended_max_billions",
+            "warning"
+          ]
+        },
+        {
+          "name": "DatasetSpec",
+          "startLine": 113,
+          "endLine": 124,
+          "methods": [],
+          "properties": [
+            "source",
+            "repo_id",
+            "local_path",
+            "config_name",
+            "split",
+            "format",
+            "text_column",
+            "prompt_column",
+            "completion_column",
+            "chosen_column",
+            "rejected_column"
+          ]
+        },
+        {
+          "name": "TrainingConfig",
+          "startLine": 128,
+          "endLine": 285,
+          "methods": [
+            "to_dict",
+            "from_dict",
+            "validate"
+          ],
+          "properties": [
+            "model_id",
+            "model_revision",
+            "datasets",
+            "approach",
+            "peft_mode",
+            "use_unsloth",
+            "compute_type",
+            "preset",
+            "output_dir",
+            "max_length",
+            "epochs",
+            "max_steps",
+            "max_samples",
+            "learning_rate",
+            "beta",
+            "batch_size",
+            "gradient_accumulation_steps",
+            "max_grad_norm",
+            "gradient_checkpointing",
+            "eval_enabled",
+            "eval_ratio",
+            "seed",
+            "push_to_hub",
+            "hub_model_id",
+            "resume_from_checkpoint"
+          ]
+        },
+        {
+          "name": "JobStatus",
+          "startLine": 289,
+          "endLine": 305,
+          "methods": [
+            "to_dict",
+            "from_dict"
+          ],
+          "properties": [
+            "state",
+            "message",
+            "progress",
+            "pid",
+            "metrics",
+            "error",
+            "artifact_dir"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PeftMode",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "TrainingApproach",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ComputeType",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "resolve_compute_type",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "TrainingRecipe",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "Preset",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "JobState",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "HardwareProfile",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "DatasetSpec",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "TrainingConfig",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "JobStatus",
+          "line": 288,
+          "isDefault": false
+        },
+        {
+          "name": "apply_preset",
+          "line": 336,
+          "isDefault": false
+        },
+        {
+          "name": "run_path",
+          "line": 343,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "to_dict",
+          "callee": "asdict",
+          "lineNumber": 156
+        },
+        {
+          "caller": "from_dict",
+          "callee": "dict",
+          "lineNumber": 160
+        },
+        {
+          "caller": "from_dict",
+          "callee": "values.setdefault",
+          "lineNumber": 161
+        },
+        {
+          "caller": "from_dict",
+          "callee": "values.setdefault",
+          "lineNumber": 162
+        },
+        {
+          "caller": "from_dict",
+          "callee": "values.setdefault",
+          "lineNumber": 163
+        },
+        {
+          "caller": "from_dict",
+          "callee": "values.setdefault",
+          "lineNumber": 164
+        },
+        {
+          "caller": "from_dict",
+          "callee": "values.setdefault",
+          "lineNumber": 165
+        },
+        {
+          "caller": "from_dict",
+          "callee": "values.pop",
+          "lineNumber": 166
+        },
+        {
+          "caller": "from_dict",
+          "callee": "values.pop",
+          "lineNumber": 167
+        },
+        {
+          "caller": "from_dict",
+          "callee": "DatasetSpec",
+          "lineNumber": 170
+        },
+        {
+          "caller": "from_dict",
+          "callee": "TrainingApproach",
+          "lineNumber": 171
+        },
+        {
+          "caller": "from_dict",
+          "callee": "PeftMode",
+          "lineNumber": 172
+        },
+        {
+          "caller": "from_dict",
+          "callee": "ComputeType",
+          "lineNumber": 173
+        },
+        {
+          "caller": "from_dict",
+          "callee": "Preset",
+          "lineNumber": 174
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 175
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 180
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 182
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 185
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 187
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 189
+        },
+        {
+          "caller": "validate",
+          "callee": "set",
+          "lineNumber": 190
+        },
+        {
+          "caller": "validate",
+          "callee": "set",
+          "lineNumber": 191
+        },
+        {
+          "caller": "validate",
+          "callee": "enumerate",
+          "lineNumber": 192
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 195
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 197
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 199
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 206
+        },
+        {
+          "caller": "validate",
+          "callee": "formats.add",
+          "lineNumber": 208
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 210
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 214
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 219
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 227
+        },
+        {
+          "caller": "validate",
+          "callee": "len",
+          "lineNumber": 232
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 241
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 252
+        },
+        {
+          "caller": "validate",
+          "callee": "identities.add",
+          "lineNumber": 253
+        },
+        {
+          "caller": "validate",
+          "callee": "len",
+          "lineNumber": 254
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 255
+        },
+        {
+          "caller": "validate",
+          "callee": "formats.difference",
+          "lineNumber": 256
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 258
+        },
+        {
+          "caller": "validate",
+          "callee": "', '.join",
+          "lineNumber": 260
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 263
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 265
+        },
+        {
+          "caller": "validate",
+          "callee": "isinstance",
+          "lineNumber": 267
+        },
+        {
+          "caller": "validate",
+          "callee": "isinstance",
+          "lineNumber": 268
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 271
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 273
+        },
+        {
+          "caller": "validate",
+          "callee": "math.isfinite",
+          "lineNumber": 274
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 275
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 277
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 279
+        },
+        {
+          "caller": "validate",
+          "callee": "errors.append",
+          "lineNumber": 284
+        },
+        {
+          "caller": "to_dict",
+          "callee": "asdict",
+          "lineNumber": 299
+        },
+        {
+          "caller": "from_dict",
+          "callee": "dict",
+          "lineNumber": 303
+        },
+        {
+          "caller": "from_dict",
+          "callee": "JobState",
+          "lineNumber": 304
+        },
+        {
+          "caller": "from_dict",
+          "callee": "cls",
+          "lineNumber": 305
+        },
+        {
+          "caller": "apply_preset",
+          "callee": "config.to_dict",
+          "lineNumber": 337
+        },
+        {
+          "caller": "apply_preset",
+          "callee": "values.update",
+          "lineNumber": 338
+        },
+        {
+          "caller": "apply_preset",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 340
+        },
+        {
+          "caller": "run_path",
+          "callee": "Path",
+          "lineNumber": 343
+        },
+        {
+          "caller": "run_path",
+          "callee": "any",
+          "lineNumber": 344
+        },
+        {
+          "caller": "run_path",
+          "callee": "ValueError",
+          "lineNumber": 347
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 13,
+        "functionCount": 3,
+        "classCount": 10
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/sources.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 107,
+      "functions": [
+        {
+          "name": "get_hf_token",
+          "startLine": 26,
+          "endLine": 27,
+          "params": []
+        },
+        {
+          "name": "parse_hf_repo",
+          "startLine": 30,
+          "endLine": 57,
+          "params": [
+            "value",
+            "repo_type"
+          ]
+        },
+        {
+          "name": "token_identity",
+          "startLine": 60,
+          "endLine": 64,
+          "params": [
+            "token"
+          ]
+        },
+        {
+          "name": "model_parameter_count",
+          "startLine": 67,
+          "endLine": 74,
+          "params": [
+            "repo_id",
+            "revision",
+            "token"
+          ]
+        },
+        {
+          "name": "validate_upload",
+          "startLine": 77,
+          "endLine": 83,
+          "params": [
+            "filename",
+            "size"
+          ]
+        },
+        {
+          "name": "save_upload",
+          "startLine": 86,
+          "endLine": 93,
+          "params": [
+            "filename",
+            "content",
+            "root"
+          ]
+        },
+        {
+          "name": "load_training_dataset",
+          "startLine": 96,
+          "endLine": 112,
+          "params": [
+            "repo_id",
+            "local_path",
+            "config_name",
+            "split",
+            "token"
+          ]
+        },
+        {
+          "name": "inspect_dataset",
+          "startLine": 115,
+          "endLine": 130,
+          "params": [
+            "dataset",
+            "limit"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "DatasetInspection",
+          "startLine": 19,
+          "endLine": 23,
+          "methods": [],
+          "properties": [
+            "columns",
+            "format",
+            "rows",
+            "preview"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "DatasetInspection",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "get_hf_token",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "parse_hf_repo",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "token_identity",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "model_parameter_count",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "validate_upload",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "save_upload",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "load_training_dataset",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "inspect_dataset",
+          "line": 115,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get_hf_token",
+          "callee": "os.getenv",
+          "lineNumber": 27
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "value.strip().rstrip",
+          "lineNumber": 31
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "value.strip",
+          "lineNumber": 31
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 33
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "candidate.split",
+          "lineNumber": 35
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "len",
+          "lineNumber": 36
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "all",
+          "lineNumber": 36
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 38
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "urlparse",
+          "lineNumber": 40
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 45
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "unquote",
+          "lineNumber": 46
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "parsed.path.split",
+          "lineNumber": 46
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 51
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "len",
+          "lineNumber": 53
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "ValueError",
+          "lineNumber": 54
+        },
+        {
+          "caller": "parse_hf_repo",
+          "callee": "\"/\".join",
+          "lineNumber": 57
+        },
+        {
+          "caller": "token_identity",
+          "callee": "HfApi(token=token).whoami",
+          "lineNumber": 63
+        },
+        {
+          "caller": "token_identity",
+          "callee": "HfApi",
+          "lineNumber": 63
+        },
+        {
+          "caller": "token_identity",
+          "callee": "str",
+          "lineNumber": 64
+        },
+        {
+          "caller": "token_identity",
+          "callee": "details.get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "token_identity",
+          "callee": "details.get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "model_parameter_count",
+          "callee": "HfApi(token=token).model_info",
+          "lineNumber": 70
+        },
+        {
+          "caller": "model_parameter_count",
+          "callee": "HfApi",
+          "lineNumber": 70
+        },
+        {
+          "caller": "model_parameter_count",
+          "callee": "int",
+          "lineNumber": 74
+        },
+        {
+          "caller": "validate_upload",
+          "callee": "Path(filename).suffix.lower",
+          "lineNumber": 78
+        },
+        {
+          "caller": "validate_upload",
+          "callee": "Path",
+          "lineNumber": 78
+        },
+        {
+          "caller": "validate_upload",
+          "callee": "ValueError",
+          "lineNumber": 80
+        },
+        {
+          "caller": "validate_upload",
+          "callee": "ValueError",
+          "lineNumber": 82
+        },
+        {
+          "caller": "save_upload",
+          "callee": "Path",
+          "lineNumber": 86
+        },
+        {
+          "caller": "save_upload",
+          "callee": "validate_upload",
+          "lineNumber": 87
+        },
+        {
+          "caller": "save_upload",
+          "callee": "len",
+          "lineNumber": 87
+        },
+        {
+          "caller": "save_upload",
+          "callee": "root.mkdir",
+          "lineNumber": 88
+        },
+        {
+          "caller": "save_upload",
+          "callee": "hashlib.sha256(content).hexdigest",
+          "lineNumber": 89
+        },
+        {
+          "caller": "save_upload",
+          "callee": "hashlib.sha256",
+          "lineNumber": 89
+        },
+        {
+          "caller": "save_upload",
+          "callee": "path.exists",
+          "lineNumber": 91
+        },
+        {
+          "caller": "save_upload",
+          "callee": "path.write_bytes",
+          "lineNumber": 92
+        },
+        {
+          "caller": "save_upload",
+          "callee": "path.resolve",
+          "lineNumber": 93
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "load_dataset",
+          "lineNumber": 105
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "ValueError",
+          "lineNumber": 107
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "Path(local_path).resolve",
+          "lineNumber": 108
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "Path",
+          "lineNumber": 108
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "path.is_file",
+          "lineNumber": 109
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "path.suffix.lower",
+          "lineNumber": 109
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "ValueError",
+          "lineNumber": 110
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "path.suffix.lower",
+          "lineNumber": 111
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "load_dataset",
+          "lineNumber": 112
+        },
+        {
+          "caller": "load_training_dataset",
+          "callee": "str",
+          "lineNumber": 112
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "list",
+          "lineNumber": 116
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "{\"prompt\", \"chosen\", \"rejected\"}.issubset",
+          "lineNumber": 117
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "{\"prompt\", \"completion\"}.issubset",
+          "lineNumber": 123
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "dict",
+          "lineNumber": 127
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "range",
+          "lineNumber": 127
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "min",
+          "lineNumber": 127
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "len",
+          "lineNumber": 127
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "DatasetInspection",
+          "lineNumber": 128
+        },
+        {
+          "caller": "inspect_dataset",
+          "callee": "len",
+          "lineNumber": 129
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 9,
+        "functionCount": 8,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/training.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 471,
+      "nonEmptyLines": 427,
+      "functions": [
+        {
+          "name": "_normalize_dataset",
+          "startLine": 61,
+          "endLine": 98,
+          "params": [
+            "dataset",
+            "spec"
+          ]
+        },
+        {
+          "name": "_dataset_label",
+          "startLine": 101,
+          "endLine": 102,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "_load_and_combine_datasets",
+          "startLine": 105,
+          "endLine": 138,
+          "params": [
+            "config",
+            "token"
+          ]
+        },
+        {
+          "name": "_split_dataset",
+          "startLine": 141,
+          "endLine": 147,
+          "params": [
+            "dataset",
+            "config"
+          ]
+        },
+        {
+          "name": "_format_conversations",
+          "startLine": 150,
+          "endLine": 162,
+          "params": [
+            "examples",
+            "tokenizer"
+          ]
+        },
+        {
+          "name": "_quantization_config",
+          "startLine": 165,
+          "endLine": 173,
+          "params": [
+            "config",
+            "dtype"
+          ]
+        },
+        {
+          "name": "_peft_config",
+          "startLine": 176,
+          "endLine": 196,
+          "params": [
+            "config"
+          ]
+        },
+        {
+          "name": "_patch_qoft_peft_compatibility",
+          "startLine": 199,
+          "endLine": 229,
+          "params": []
+        },
+        {
+          "name": "_load_model_and_tokenizer",
+          "startLine": 232,
+          "endLine": 312,
+          "params": [
+            "config",
+            "token",
+            "compute_dtype"
+          ]
+        },
+        {
+          "name": "_apply_unsloth_trainer_patch",
+          "startLine": 315,
+          "endLine": 325,
+          "params": [
+            "approach"
+          ]
+        },
+        {
+          "name": "_trainer_components",
+          "startLine": 328,
+          "endLine": 343,
+          "params": [
+            "approach"
+          ]
+        },
+        {
+          "name": "_trainer_config",
+          "startLine": 346,
+          "endLine": 381,
+          "params": [
+            "config",
+            "compute_dtype",
+            "has_evaluation"
+          ]
+        },
+        {
+          "name": "_resolve_compute_dtype",
+          "startLine": 384,
+          "endLine": 392,
+          "params": [
+            "compute_type",
+            "bf16_supported"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 395,
+          "endLine": 471,
+          "params": [
+            "config",
+            "status_path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "StatusCallback",
+          "startLine": 38,
+          "endLine": 58,
+          "methods": [
+            "__init__",
+            "on_log"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "StatusCallback",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "_normalize_dataset",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "_dataset_label",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "_load_and_combine_datasets",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "_split_dataset",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "_format_conversations",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "_quantization_config",
+          "line": 165,
+          "isDefault": false
+        },
+        {
+          "name": "_peft_config",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "_patch_qoft_peft_compatibility",
+          "line": 199,
+          "isDefault": false
+        },
+        {
+          "name": "_load_model_and_tokenizer",
+          "line": 232,
+          "isDefault": false
+        },
+        {
+          "name": "_apply_unsloth_trainer_patch",
+          "line": 315,
+          "isDefault": false
+        },
+        {
+          "name": "_trainer_components",
+          "line": 328,
+          "isDefault": false
+        },
+        {
+          "name": "_trainer_config",
+          "line": 346,
+          "isDefault": false
+        },
+        {
+          "name": "_resolve_compute_dtype",
+          "line": 384,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 395,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "on_log",
+          "callee": "float",
+          "lineNumber": 46
+        },
+        {
+          "caller": "on_log",
+          "callee": "logs.items",
+          "lineNumber": 47
+        },
+        {
+          "caller": "on_log",
+          "callee": "isinstance",
+          "lineNumber": 48
+        },
+        {
+          "caller": "on_log",
+          "callee": "min",
+          "lineNumber": 50
+        },
+        {
+          "caller": "on_log",
+          "callee": "max",
+          "lineNumber": 50
+        },
+        {
+          "caller": "on_log",
+          "callee": "JobStatus",
+          "lineNumber": 51
+        },
+        {
+          "caller": "on_log",
+          "callee": "os.getpid",
+          "lineNumber": 55
+        },
+        {
+          "caller": "on_log",
+          "callee": "write_json_atomic",
+          "lineNumber": 58
+        },
+        {
+          "caller": "on_log",
+          "callee": "status.to_dict",
+          "lineNumber": 58
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "dataset.map",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "str",
+          "lineNumber": 64
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "dataset.select_columns",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "ValueError",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "dataset.map",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "ValueError",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "dataset.select_columns",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "dataset.map",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "dataset.select_columns",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_normalize_dataset",
+          "callee": "ValueError",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "enumerate",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "load_training_dataset",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "normalized.append",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "_normalize_dataset",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "RuntimeError",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "_dataset_label",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "ValueError",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "concatenate_datasets",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "len",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "ValueError",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "combined.shuffle",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "len",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "len",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "combined.shuffle",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "combined.select",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_load_and_combine_datasets",
+          "callee": "range",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_split_dataset",
+          "callee": "len",
+          "lineNumber": 144
+        },
+        {
+          "caller": "_split_dataset",
+          "callee": "dataset.train_test_split",
+          "lineNumber": 146
+        },
+        {
+          "caller": "_format_conversations",
+          "callee": "isinstance",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_format_conversations",
+          "callee": "tokenizer.apply_chat_template",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_quantization_config",
+          "callee": "BitsAndBytesConfig",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_peft_config",
+          "callee": "LoraConfig",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_peft_config",
+          "callee": "OFTConfig",
+          "lineNumber": 189
+        },
+        {
+          "caller": "compatible_init",
+          "callee": "cast",
+          "lineNumber": 218
+        },
+        {
+          "caller": "compatible_init",
+          "callee": "original",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "ValueError",
+          "lineNumber": 237
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "import_module",
+          "lineNumber": 238
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "fast_language_model.from_pretrained",
+          "lineNumber": 257
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "get_peft_model",
+          "lineNumber": 259
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "_peft_config",
+          "lineNumber": 259
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "fast_language_model.get_peft_model",
+          "lineNumber": 261
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "_quantization_config",
+          "lineNumber": 294
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "model_kwargs.update",
+          "lineNumber": 296
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "torch.cuda.current_device",
+          "lineNumber": 298
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "AutoTokenizer.from_pretrained",
+          "lineNumber": 300
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "AutoModelForSequenceClassification.from_pretrained",
+          "lineNumber": 307
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "AutoModelForCausalLM.from_pretrained",
+          "lineNumber": 311
+        },
+        {
+          "caller": "_load_model_and_tokenizer",
+          "callee": "_peft_config",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_apply_unsloth_trainer_patch",
+          "callee": "import_module",
+          "lineNumber": 318
+        },
+        {
+          "caller": "_apply_unsloth_trainer_patch",
+          "callee": "getattr",
+          "lineNumber": 323
+        },
+        {
+          "caller": "_apply_unsloth_trainer_patch",
+          "callee": "patch",
+          "lineNumber": 325
+        },
+        {
+          "caller": "_trainer_components",
+          "callee": "import_module",
+          "lineNumber": 329
+        },
+        {
+          "caller": "_trainer_components",
+          "callee": "getattr",
+          "lineNumber": 338
+        },
+        {
+          "caller": "_trainer_components",
+          "callee": "getattr",
+          "lineNumber": 339
+        },
+        {
+          "caller": "_trainer_components",
+          "callee": "import_module",
+          "lineNumber": 342
+        },
+        {
+          "caller": "_trainer_components",
+          "callee": "approach.name.lower",
+          "lineNumber": 342
+        },
+        {
+          "caller": "_trainer_components",
+          "callee": "getattr",
+          "lineNumber": 343
+        },
+        {
+          "caller": "_trainer_components",
+          "callee": "getattr",
+          "lineNumber": 343
+        },
+        {
+          "caller": "_trainer_config",
+          "callee": "options.update",
+          "lineNumber": 380
+        },
+        {
+          "caller": "_resolve_compute_dtype",
+          "callee": "resolve_compute_type",
+          "lineNumber": 387
+        },
+        {
+          "caller": "train",
+          "callee": "config.validate",
+          "lineNumber": 396
+        },
+        {
+          "caller": "train",
+          "callee": "ValueError",
+          "lineNumber": 398
+        },
+        {
+          "caller": "train",
+          "callee": "\" \".join",
+          "lineNumber": 398
+        },
+        {
+          "caller": "train",
+          "callee": "get_hf_token",
+          "lineNumber": 399
+        },
+        {
+          "caller": "train",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 400
+        },
+        {
+          "caller": "train",
+          "callee": "RuntimeError",
+          "lineNumber": 401
+        },
+        {
+          "caller": "train",
+          "callee": "_patch_qoft_peft_compatibility",
+          "lineNumber": 403
+        },
+        {
+          "caller": "train",
+          "callee": "_apply_unsloth_trainer_patch",
+          "lineNumber": 405
+        },
+        {
+          "caller": "train",
+          "callee": "_load_and_combine_datasets",
+          "lineNumber": 407
+        },
+        {
+          "caller": "train",
+          "callee": "_split_dataset",
+          "lineNumber": 408
+        },
+        {
+          "caller": "train",
+          "callee": "_resolve_compute_dtype",
+          "lineNumber": 409
+        },
+        {
+          "caller": "train",
+          "callee": "torch.cuda.is_bf16_supported",
+          "lineNumber": 411
+        },
+        {
+          "caller": "train",
+          "callee": "_load_model_and_tokenizer",
+          "lineNumber": 413
+        },
+        {
+          "caller": "train",
+          "callee": "Path",
+          "lineNumber": 419
+        },
+        {
+          "caller": "train",
+          "callee": "output_dir.mkdir",
+          "lineNumber": 420
+        },
+        {
+          "caller": "train",
+          "callee": "_trainer_components",
+          "lineNumber": 421
+        },
+        {
+          "caller": "train",
+          "callee": "config_class",
+          "lineNumber": 422
+        },
+        {
+          "caller": "train",
+          "callee": "_trainer_config",
+          "lineNumber": 423
+        },
+        {
+          "caller": "train",
+          "callee": "StatusCallback",
+          "lineNumber": 433
+        },
+        {
+          "caller": "train",
+          "callee": "_format_conversations",
+          "lineNumber": 441
+        },
+        {
+          "caller": "train",
+          "callee": "trainer_class",
+          "lineNumber": 444
+        },
+        {
+          "caller": "train",
+          "callee": "trainer.train",
+          "lineNumber": 445
+        },
+        {
+          "caller": "train",
+          "callee": "trainer.save_model",
+          "lineNumber": 446
+        },
+        {
+          "caller": "train",
+          "callee": "str",
+          "lineNumber": 446
+        },
+        {
+          "caller": "train",
+          "callee": "tokenizer.save_pretrained",
+          "lineNumber": 447
+        },
+        {
+          "caller": "train",
+          "callee": "float",
+          "lineNumber": 449
+        },
+        {
+          "caller": "train",
+          "callee": "result.metrics.items",
+          "lineNumber": 450
+        },
+        {
+          "caller": "train",
+          "callee": "isinstance",
+          "lineNumber": 451
+        },
+        {
+          "caller": "train",
+          "callee": "metrics.update",
+          "lineNumber": 454
+        },
+        {
+          "caller": "train",
+          "callee": "float",
+          "lineNumber": 456
+        },
+        {
+          "caller": "train",
+          "callee": "trainer.evaluate().items",
+          "lineNumber": 457
+        },
+        {
+          "caller": "train",
+          "callee": "trainer.evaluate",
+          "lineNumber": 457
+        },
+        {
+          "caller": "train",
+          "callee": "isinstance",
+          "lineNumber": 458
+        },
+        {
+          "caller": "train",
+          "callee": "(output_dir / \"metrics.json\").write_text",
+          "lineNumber": 461
+        },
+        {
+          "caller": "train",
+          "callee": "json.dumps",
+          "lineNumber": 462
+        },
+        {
+          "caller": "train",
+          "callee": "(output_dir / \"training_config.json\").write_text",
+          "lineNumber": 464
+        },
+        {
+          "caller": "train",
+          "callee": "json.dumps",
+          "lineNumber": 465
+        },
+        {
+          "caller": "train",
+          "callee": "config.to_dict",
+          "lineNumber": 465
+        },
+        {
+          "caller": "train",
+          "callee": "trained_model.push_to_hub",
+          "lineNumber": 469
+        },
+        {
+          "caller": "train",
+          "callee": "tokenizer.push_to_hub",
+          "lineNumber": 470
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 15,
+        "functionCount": 14,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/worker.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 17,
+          "endLine": 75,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 18
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 19
+        },
+        {
+          "caller": "main",
+          "callee": "Path(sys.argv[1]).resolve",
+          "lineNumber": 21
+        },
+        {
+          "caller": "main",
+          "callee": "Path",
+          "lineNumber": 21
+        },
+        {
+          "caller": "main",
+          "callee": "config_path.with_name",
+          "lineNumber": 22
+        },
+        {
+          "caller": "main",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 23
+        },
+        {
+          "caller": "main",
+          "callee": "json.loads",
+          "lineNumber": 24
+        },
+        {
+          "caller": "main",
+          "callee": "config_path.read_text",
+          "lineNumber": 24
+        },
+        {
+          "caller": "main",
+          "callee": "write_json_atomic",
+          "lineNumber": 26
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus(\r\n            state=JobState.RUNNING,\r\n            message=\"Loading model and dataset\",\r\n            pid=os.getpid(),\r\n            artifact_dir=config.output_dir,\r\n        ).to_dict",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 31
+        },
+        {
+          "caller": "main",
+          "callee": "__import__",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "train",
+          "lineNumber": 40
+        },
+        {
+          "caller": "main",
+          "callee": "get_hf_token",
+          "lineNumber": 42
+        },
+        {
+          "caller": "main",
+          "callee": "str(error).replace",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "write_json_atomic",
+          "lineNumber": 44
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus(\r\n                state=JobState.FAILED,\r\n                message=\"Training failed\",\r\n                pid=os.getpid(),\r\n                error=message,\r\n                artifact_dir=config.output_dir,\r\n            ).to_dict",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 49
+        },
+        {
+          "caller": "main",
+          "callee": "traceback.print_exc",
+          "lineNumber": 54
+        },
+        {
+          "caller": "main",
+          "callee": "schedule_queue_handoff",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "traceback.print_exc",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "write_json_atomic",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus(\r\n            state=JobState.COMPLETED,\r\n            message=\"Training completed\",\r\n            progress=1.0,\r\n            pid=os.getpid(),\r\n            metrics=metrics,\r\n            artifact_dir=config.output_dir,\r\n        ).to_dict",
+          "lineNumber": 62
+        },
+        {
+          "caller": "main",
+          "callee": "JobStatus",
+          "lineNumber": 62
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "schedule_queue_handoff",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "traceback.print_exc",
+          "lineNumber": 74
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

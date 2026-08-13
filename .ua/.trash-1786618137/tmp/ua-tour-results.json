@@ -1,0 +1,1969 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "document:README.md",
+      "score": 5,
+      "name": "README.md",
+      "summary": "Project overview covering supported parameter-efficient training recipes, requirements, quick start, smoke testing, and links to detailed guides."
+    },
+    {
+      "id": "file:app_pages/dataset.py",
+      "score": 3,
+      "name": "dataset.py",
+      "summary": "Implements the Streamlit dataset page for inspecting, validating, and combining compatible training datasets."
+    },
+    {
+      "id": "file:app_pages/monitor.py",
+      "score": 3,
+      "name": "monitor.py",
+      "summary": "Implements the training monitor, FIFO queue controls, checkpoint recovery, and completed-adapter testing UI."
+    },
+    {
+      "id": "file:app_pages/training.py",
+      "score": 3,
+      "name": "training.py",
+      "summary": "Implements the training-settings page, including supported approach and PEFT method selection."
+    },
+    {
+      "id": "file:tests/test_app.py",
+      "score": 3,
+      "name": "test_app.py",
+      "summary": "End-to-end Streamlit smoke test covering startup without Ollama, navigation, dataset removal, training controls, and application shutdown."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "document:TUTORIAL.md",
+      "fanIn": 19,
+      "name": "TUTORIAL.md"
+    },
+    {
+      "id": "file:streamlit_app.py",
+      "fanIn": 7,
+      "name": "streamlit_app.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/models.py",
+      "fanIn": 6,
+      "name": "models.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/jobs.py",
+      "fanIn": 4,
+      "name": "jobs.py"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:JobStatus",
+      "fanIn": 3,
+      "name": "JobStatus"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/models.py:TrainingConfig",
+      "fanIn": 3,
+      "name": "TrainingConfig"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "fanIn": 3,
+      "name": "pyproject.toml"
+    },
+    {
+      "id": "file:Launch LoRA Studio.cmd",
+      "fanIn": 3,
+      "name": "Launch LoRA Studio.cmd"
+    },
+    {
+      "id": "file:Launch LoRA Studio.sh",
+      "fanIn": 3,
+      "name": "Launch LoRA Studio.sh"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/sources.py",
+      "fanIn": 3,
+      "name": "sources.py"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "fanIn": 3,
+      "name": "release_unused_cuda_memory"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:dispatch_next_run",
+      "fanIn": 3,
+      "name": "dispatch_next_run"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/jobs.py:write_json_atomic",
+      "fanIn": 3,
+      "name": "write_json_atomic"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/queue_dispatcher.py:schedule_queue_handoff",
+      "fanIn": 3,
+      "name": "schedule_queue_handoff"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/sources.py:get_hf_token",
+      "fanIn": 3,
+      "name": "get_hf_token"
+    },
+    {
+      "id": "class:scripts/build_tutorial.py:Chapter",
+      "fanIn": 2,
+      "name": "Chapter"
+    },
+    {
+      "id": "class:scripts/build_tutorial.py:HandbookDocTemplate",
+      "fanIn": 2,
+      "name": "HandbookDocTemplate"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats",
+      "fanIn": 2,
+      "name": "CudaMemoryStats"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:SoftwareStatus",
+      "fanIn": 2,
+      "name": "SoftwareStatus"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:SystemScan",
+      "fanIn": 2,
+      "name": "SystemScan"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:scripts/build_tutorial.py",
+      "fanOut": 64,
+      "name": "build_tutorial.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/jobs.py",
+      "fanOut": 40,
+      "name": "jobs.py"
+    },
+    {
+      "id": "file:tests/test_jobs.py",
+      "fanOut": 38,
+      "name": "test_jobs.py"
+    },
+    {
+      "id": "file:tests/test_training.py",
+      "fanOut": 34,
+      "name": "test_training.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/training.py",
+      "fanOut": 33,
+      "name": "training.py"
+    },
+    {
+      "id": "file:tests/test_models.py",
+      "fanOut": 28,
+      "name": "test_models.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/models.py",
+      "fanOut": 26,
+      "name": "models.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/hardware.py",
+      "fanOut": 19,
+      "name": "hardware.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/sources.py",
+      "fanOut": 18,
+      "name": "sources.py"
+    },
+    {
+      "id": "file:tests/test_tutorial.py",
+      "fanOut": 16,
+      "name": "test_tutorial.py"
+    },
+    {
+      "id": "pipeline:.github/workflows/ci.yml",
+      "fanOut": 13,
+      "name": "ci.yml"
+    },
+    {
+      "id": "file:app_pages/dataset.py",
+      "fanOut": 12,
+      "name": "dataset.py"
+    },
+    {
+      "id": "file:tests/test_hardware.py",
+      "fanOut": 12,
+      "name": "test_hardware.py"
+    },
+    {
+      "id": "file:tests/test_sources.py",
+      "fanOut": 12,
+      "name": "test_sources.py"
+    },
+    {
+      "id": "file:app_pages/training.py",
+      "fanOut": 8,
+      "name": "training.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/queue_dispatcher.py",
+      "fanOut": 7,
+      "name": "queue_dispatcher.py"
+    },
+    {
+      "id": "document:TECHNICAL.md",
+      "fanOut": 6,
+      "name": "TECHNICAL.md"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/ollama.py",
+      "fanOut": 6,
+      "name": "ollama.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/worker.py",
+      "fanOut": 6,
+      "name": "worker.py"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/inference.py",
+      "fanOut": 5,
+      "name": "inference.py"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:app_pages/dataset.py",
+    "order": [
+      "file:app_pages/dataset.py"
+    ],
+    "depthMap": {
+      "file:app_pages/dataset.py": 0
+    },
+    "byDepth": {
+      "0": [
+        "file:app_pages/dataset.py"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:.firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
+        "name": "unsloth.ai-docs-get-started-install-pip-install.md",
+        "type": "document",
+        "summary": "Captured Unsloth installation documentation covering Desktop and Studio, Windows PowerShell, developer and nightly installs, and Unsloth Core installation and removal."
+      },
+      {
+        "id": "document:.firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md",
+        "name": "unsloth.ai-docs-get-started-install-windows-installation.md",
+        "type": "document",
+        "summary": "Captured Unsloth Windows installation guide covering Desktop, manual and Conda installation, Docker and WSL alternatives, troubleshooting, and uninstall procedures."
+      },
+      {
+        "id": "document:CHANGELOG.md",
+        "name": "CHANGELOG.md",
+        "type": "document",
+        "summary": "Records the release history from version 0.1.0 through 0.4.0, including training features, documentation, and security changes."
+      },
+      {
+        "id": "document:CODE_OF_CONDUCT.md",
+        "name": "CODE_OF_CONDUCT.md",
+        "type": "document",
+        "summary": "Defines expected community behavior, incident reporting, and enforcement for project participation."
+      },
+      {
+        "id": "document:CONTRIBUTING.md",
+        "name": "CONTRIBUTING.md",
+        "type": "document",
+        "summary": "Explains the contributor workflow, development expectations, required checks, and pull-request checklist."
+      },
+      {
+        "id": "document:README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Project overview covering supported parameter-efficient training recipes, requirements, quick start, smoke testing, and links to detailed guides."
+      },
+      {
+        "id": "document:SECURITY.md",
+        "name": "SECURITY.md",
+        "type": "document",
+        "summary": "States the vulnerability-reporting policy, supported versions, security controls, and safe-operation boundaries for local model training."
+      },
+      {
+        "id": "document:SETUP.md",
+        "name": "SETUP.md",
+        "type": "document",
+        "summary": "Comprehensive Windows and Linux installation guide covering uv environments, native Windows Unsloth, verification, smoke tests, maintenance, and troubleshooting."
+      },
+      {
+        "id": "document:TECHNICAL.md",
+        "name": "TECHNICAL.md",
+        "type": "document",
+        "summary": "Technical handbook describing the application's architecture, data contracts, dataset and training pipelines, job lifecycle, trust boundaries, and extension points."
+      },
+      {
+        "id": "document:TUTORIAL.md",
+        "name": "TUTORIAL.md",
+        "type": "document",
+        "summary": "Zero-to-mastery tutorial that teaches LLM post-training concepts and leads users through dataset, configuration, SFT, preference-training, evaluation, and repository-extension labs."
+      },
+      {
+        "id": "document:USAGE.md",
+        "name": "USAGE.md",
+        "type": "document",
+        "summary": "Operational guide for launching the application, selecting models and datasets, configuring training, monitoring jobs, locating artifacts, and resolving common problems."
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "pipeline:.github/workflows/ci.yml",
+        "name": "ci.yml",
+        "type": "pipeline",
+        "summary": "GitHub Actions continuous-integration workflow that validates the project on Ubuntu and Windows for pushes and pull requests. It installs the locked environment, runs Ruff and ty checks, executes pytest, and verifies tutorial documentation generation."
+      }
+    ],
+    "data": [],
+    "config": [
+      {
+        "id": "config:.firecrawl/search-unsloth-auto-docstring.json",
+        "name": "search-unsloth-auto-docstring.json",
+        "type": "config",
+        "summary": "Stores Firecrawl search results used to research Unsloth automatic documentation generation."
+      },
+      {
+        "id": "config:.firecrawl/search-unsloth-windows-nodeps.json",
+        "name": "search-unsloth-windows-nodeps.json",
+        "type": "config",
+        "summary": "Stores Firecrawl search results about using Unsloth on Windows without optional dependencies."
+      },
+      {
+        "id": "config:.firecrawl/search-unsloth-windows-torchao.json",
+        "name": "search-unsloth-windows-torchao.json",
+        "type": "config",
+        "summary": "Stores Firecrawl search results about Unsloth's Windows support and TorchAO integration."
+      },
+      {
+        "id": "config:.firecrawl/search-unsloth-windows-versions.json",
+        "name": "search-unsloth-windows-versions.json",
+        "type": "config",
+        "summary": "Stores Firecrawl search results about compatible Unsloth and Windows package versions."
+      },
+      {
+        "id": "config:pyproject.toml",
+        "name": "pyproject.toml",
+        "type": "config",
+        "summary": "Defines package metadata, supported Python range, runtime and development dependencies, build backend, console entry point, and the CUDA PyTorch index for uv."
+      },
+      {
+        "id": "config:docs/.tutorial-build.json",
+        "name": ".tutorial-build.json",
+        "type": "config",
+        "summary": "Records integrity hashes for generated tutorial website files and identifies TUTORIAL.md as their source document."
+      },
+      {
+        "id": "config:.streamlit/config.toml",
+        "name": "config.toml",
+        "type": "config",
+        "summary": "Configures the local Streamlit server appearance and behavior."
+      },
+      {
+        "id": "config:unsloth-runtime/pyproject.toml",
+        "name": "pyproject.toml",
+        "type": "config",
+        "summary": "UV project configuration for the isolated Python 3.13 Unsloth runtime, pinning CUDA-enabled PyTorch, TorchAO, torchvision, and Unsloth."
+      }
+    ]
+  },
+  "clusters": [],
+  "layers": {
+    "count": 6,
+    "list": [
+      {
+        "id": "layer:streamlit-ui",
+        "name": "Streamlit User Interface",
+        "description": "The Streamlit application entry point and workflow pages that collect training choices, show diagnostics, and operate local training jobs.",
+        "nodeIds": [
+          "file:streamlit_app.py",
+          "file:app_pages/dataset.py",
+          "file:app_pages/gpu_memory.py",
+          "file:app_pages/model.py",
+          "file:app_pages/monitor.py",
+          "file:app_pages/ollama.py",
+          "file:app_pages/review.py",
+          "file:app_pages/system.py",
+          "file:app_pages/training.py"
+        ]
+      },
+      {
+        "id": "layer:training-domain",
+        "name": "Training Domain and Runtime",
+        "description": "The Python package and example datasets that validate inputs, run training and inference, manage the durable queue, and execute workers.",
+        "nodeIds": [
+          "file:src/lora_finetune_studio/jobs.py",
+          "file:src/lora_finetune_studio/models.py",
+          "file:src/lora_finetune_studio/training.py",
+          "file:src/lora_finetune_studio/unsloth_runtime.py",
+          "file:src/lora_finetune_studio/queue_dispatcher.py",
+          "file:src/lora_finetune_studio/sources.py",
+          "file:src/lora_finetune_studio/worker.py",
+          "file:src/lora_finetune_studio/__init__.py",
+          "file:src/lora_finetune_studio/cli.py",
+          "file:src/lora_finetune_studio/hardware.py",
+          "file:src/lora_finetune_studio/inference.py",
+          "file:src/lora_finetune_studio/lifecycle.py",
+          "file:src/lora_finetune_studio/ollama.py",
+          "file:examples/preference_sample.jsonl",
+          "file:examples/sft_sample.jsonl"
+        ]
+      },
+      {
+        "id": "layer:runtime-configuration",
+        "name": "Runtime Configuration and Launchers",
+        "description": "Dependency definitions, runtime settings, version pins, and platform launchers that provision and start the local fine-tuning studio.",
+        "nodeIds": [
+          "config:pyproject.toml",
+          "config:.streamlit/config.toml",
+          "config:unsloth-runtime/pyproject.toml",
+          "file:.gitattributes",
+          "file:.python-version",
+          "file:Launch LoRA Studio.cmd",
+          "file:Launch LoRA Studio.sh"
+        ]
+      },
+      {
+        "id": "layer:quality-automation",
+        "name": "Quality and Automation",
+        "description": "Cross-platform continuous integration and automated tests for the user interface, tutorial outputs, queue behavior, and local ML runtime.",
+        "nodeIds": [
+          "pipeline:.github/workflows/ci.yml",
+          "file:tests/test_app.py",
+          "file:tests/test_hardware.py",
+          "file:tests/test_inference.py",
+          "file:tests/test_jobs.py",
+          "file:tests/test_lifecycle.py",
+          "file:tests/test_models.py",
+          "file:tests/test_queue_dispatcher.py",
+          "file:tests/test_queue_ui.py",
+          "file:tests/test_sources.py",
+          "file:tests/test_training.py",
+          "file:tests/test_tutorial.py",
+          "file:tests/test_worker.py"
+        ]
+      },
+      {
+        "id": "layer:documentation",
+        "name": "Documentation and Project Guidance",
+        "description": "Project guides, generated zero-to-mastery handbook pages, and the assets and builder that publish the training documentation site.",
+        "nodeIds": [
+          "document:CHANGELOG.md",
+          "document:CODE_OF_CONDUCT.md",
+          "document:CONTRIBUTING.md",
+          "document:README.md",
+          "document:SECURITY.md",
+          "document:SETUP.md",
+          "document:TECHNICAL.md",
+          "document:TUTORIAL.md",
+          "document:USAGE.md",
+          "config:docs/.tutorial-build.json",
+          "file:docs/01-learn-the-map-before-the-territory.html",
+          "file:docs/02-natural-language-becomes-model-input.html",
+          "file:docs/03-neural-networks-learn-with-vectors-and-gradients.html",
+          "file:docs/04-build-a-transformer-from-attention-blocks.html",
+          "file:docs/05-understand-the-llm-lifecycle.html",
+          "file:docs/06-choose-a-tuning-family.html",
+          "file:docs/07-master-lora-qlora-oft-and-qoft.html",
+          "file:docs/08-engineer-datasets-that-teach-the-intended-behavior.html",
+          "file:docs/09-select-the-post-training-objective.html",
+          "file:docs/10-prepare-the-local-training-system.html",
+          "file:docs/11-translate-intent-into-app-settings.html",
+          "file:docs/12-lab-a-complete-an-sft-smoke-run.html",
+          "file:docs/13-lab-b-preference-training-safely.html",
+          "file:docs/14-evaluate-like-an-experimenter.html",
+          "file:docs/15-operate-jobs-and-use-artifacts.html",
+          "file:docs/16-read-and-extend-the-repository.html",
+          "file:docs/17-capstone-train-a-defensible-specialist.html",
+          "file:docs/18-checkpoint-answers.html",
+          "file:docs/19-formula-and-settings-reference.html",
+          "file:docs/20-troubleshooting-by-boundary.html",
+          "file:docs/21-glossary.html",
+          "file:docs/22-official-references.html",
+          "file:docs/index.html",
+          "file:docs/.nojekyll",
+          "file:docs/assets/search-index.js",
+          "file:docs/assets/site.css",
+          "file:docs/assets/site.js",
+          "file:scripts/build_tutorial.py",
+          "file:scripts/tutorial_assets/site.css",
+          "file:scripts/tutorial_assets/site.js"
+        ]
+      },
+      {
+        "id": "layer:research-artifacts",
+        "name": "Research Artifacts",
+        "description": "Captured Unsloth installation research and Firecrawl search records retained alongside the project for Windows-native runtime decisions.",
+        "nodeIds": [
+          "config:.firecrawl/search-unsloth-auto-docstring.json",
+          "config:.firecrawl/search-unsloth-windows-nodeps.json",
+          "config:.firecrawl/search-unsloth-windows-torchao.json",
+          "config:.firecrawl/search-unsloth-windows-versions.json",
+          "document:.firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
+          "document:.firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md"
+        ]
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:src/lora_finetune_studio/jobs.py": {
+      "name": "jobs.py",
+      "type": "file",
+      "summary": "Persists training runs and coordinates their lifecycle through an on-disk queue and worker processes."
+    },
+    "function:src/lora_finetune_studio/jobs.py:write_json_atomic": {
+      "name": "write_json_atomic",
+      "type": "function",
+      "summary": "Writes JSON through a temporary file and atomically replaces the destination."
+    },
+    "function:src/lora_finetune_studio/jobs.py:_queue_lock": {
+      "name": "_queue_lock",
+      "type": "function",
+      "summary": "Provides a cross-platform exclusive lock for queue-file updates."
+    },
+    "function:src/lora_finetune_studio/jobs.py:_write_queue_unlocked": {
+      "name": "_write_queue_unlocked",
+      "type": "function",
+      "summary": "Serializes queued run identifiers while the queue lock is held."
+    },
+    "function:src/lora_finetune_studio/jobs.py:_read_queue_unlocked": {
+      "name": "_read_queue_unlocked",
+      "type": "function",
+      "summary": "Reads, validates, and repairs the persisted queue without acquiring the lock itself."
+    },
+    "function:src/lora_finetune_studio/jobs.py:queued_runs": {
+      "name": "queued_runs",
+      "type": "function",
+      "summary": "Returns queued run identifiers under queue synchronization."
+    },
+    "function:src/lora_finetune_studio/jobs.py:list_runs": {
+      "name": "list_runs",
+      "type": "function",
+      "summary": "Lists active, queued, and historical training runs in display order."
+    },
+    "function:src/lora_finetune_studio/jobs.py:read_status": {
+      "name": "read_status",
+      "type": "function",
+      "summary": "Loads a run status record from its JSON file."
+    },
+    "function:src/lora_finetune_studio/jobs.py:read_config": {
+      "name": "read_config",
+      "type": "function",
+      "summary": "Loads the stored training configuration for a run."
+    },
+    "function:src/lora_finetune_studio/jobs.py:_is_training_worker": {
+      "name": "_is_training_worker",
+      "type": "function",
+      "summary": "Verifies that a process belongs to the expected training worker and configuration."
+    },
+    "function:src/lora_finetune_studio/jobs.py:active_run": {
+      "name": "active_run",
+      "type": "function",
+      "summary": "Finds the currently running training job and confirms its worker process."
+    },
+    "function:src/lora_finetune_studio/jobs.py:create_run": {
+      "name": "create_run",
+      "type": "function",
+      "summary": "Creates persisted queued-run files and appends the new run to the queue."
+    },
+    "function:src/lora_finetune_studio/jobs.py:launch_run": {
+      "name": "launch_run",
+      "type": "function",
+      "summary": "Starts a training worker subprocess after validating the selected runtime."
+    },
+    "function:src/lora_finetune_studio/jobs.py:dispatch_next_run": {
+      "name": "dispatch_next_run",
+      "type": "function",
+      "summary": "Launches the first queued run when no active run occupies the worker."
+    },
+    "function:src/lora_finetune_studio/jobs.py:enqueue_run": {
+      "name": "enqueue_run",
+      "type": "function",
+      "summary": "Creates a queued run and attempts immediate dispatch."
+    },
+    "function:src/lora_finetune_studio/jobs.py:_fail_stale_running_jobs_unlocked": {
+      "name": "_fail_stale_running_jobs_unlocked",
+      "type": "function",
+      "summary": "Marks stale running jobs as failed while repairing queue state."
+    },
+    "function:src/lora_finetune_studio/jobs.py:cancel_run": {
+      "name": "cancel_run",
+      "type": "function",
+      "summary": "Cancels a run, updates its status, and optionally dispatches the next job."
+    },
+    "function:src/lora_finetune_studio/jobs.py:cancel_active_run": {
+      "name": "cancel_active_run",
+      "type": "function",
+      "summary": "Cancels the currently active training job when one exists."
+    },
+    "function:src/lora_finetune_studio/jobs.py:resume_run": {
+      "name": "resume_run",
+      "type": "function",
+      "summary": "Requeues a resumable job and starts dispatching if the worker is idle."
+    },
+    "function:src/lora_finetune_studio/jobs.py:read_log": {
+      "name": "read_log",
+      "type": "function",
+      "summary": "Returns the bounded tail of a training run log."
+    },
+    "file:src/lora_finetune_studio/models.py": {
+      "name": "models.py",
+      "type": "file",
+      "summary": "Defines the training domain model, validation rules, presets, and persisted job records."
+    },
+    "class:src/lora_finetune_studio/models.py:PeftMode": {
+      "name": "PeftMode",
+      "type": "class",
+      "summary": "Enumerates supported parameter-efficient fine-tuning methods."
+    },
+    "class:src/lora_finetune_studio/models.py:TrainingApproach": {
+      "name": "TrainingApproach",
+      "type": "class",
+      "summary": "Enumerates supported training objectives."
+    },
+    "class:src/lora_finetune_studio/models.py:ComputeType": {
+      "name": "ComputeType",
+      "type": "class",
+      "summary": "Enumerates available numeric compute precisions."
+    },
+    "function:src/lora_finetune_studio/models.py:resolve_compute_type": {
+      "name": "resolve_compute_type",
+      "type": "function",
+      "summary": "Resolves the effective compute type from user selection and hardware capability."
+    },
+    "class:src/lora_finetune_studio/models.py:TrainingRecipe": {
+      "name": "TrainingRecipe",
+      "type": "class",
+      "summary": "Describes an approach and its supported fine-tuning methods."
+    },
+    "class:src/lora_finetune_studio/models.py:Preset": {
+      "name": "Preset",
+      "type": "class",
+      "summary": "Represents a named set of reusable training defaults."
+    },
+    "class:src/lora_finetune_studio/models.py:JobState": {
+      "name": "JobState",
+      "type": "class",
+      "summary": "Enumerates lifecycle states for queued training jobs."
+    },
+    "class:src/lora_finetune_studio/models.py:HardwareProfile": {
+      "name": "HardwareProfile",
+      "type": "class",
+      "summary": "Carries detected accelerator and memory capabilities for UI guidance."
+    },
+    "class:src/lora_finetune_studio/models.py:DatasetSpec": {
+      "name": "DatasetSpec",
+      "type": "class",
+      "summary": "Describes an individual dataset source and its split selection."
+    },
+    "class:src/lora_finetune_studio/models.py:TrainingConfig": {
+      "name": "TrainingConfig",
+      "type": "class",
+      "summary": "Captures complete fine-tuning configuration and validates it before a run starts."
+    },
+    "class:src/lora_finetune_studio/models.py:JobStatus": {
+      "name": "JobStatus",
+      "type": "class",
+      "summary": "Serializes the state, progress, and artifacts of a training run."
+    },
+    "function:src/lora_finetune_studio/models.py:apply_preset": {
+      "name": "apply_preset",
+      "type": "function",
+      "summary": "Applies a named preset to the configuration fields it defines."
+    },
+    "function:src/lora_finetune_studio/models.py:run_path": {
+      "name": "run_path",
+      "type": "function",
+      "summary": "Builds the persistent directory path for a run identifier."
+    },
+    "file:src/lora_finetune_studio/training.py": {
+      "name": "training.py",
+      "type": "file",
+      "summary": "Loads and normalizes datasets, configures PEFT or Unsloth models, and executes training objectives."
+    },
+    "class:src/lora_finetune_studio/training.py:StatusCallback": {
+      "name": "StatusCallback",
+      "type": "class",
+      "summary": "Persists trainer log metrics as live job-status updates."
+    },
+    "function:src/lora_finetune_studio/training.py:_normalize_dataset": {
+      "name": "_normalize_dataset",
+      "type": "function",
+      "summary": "Converts supported dataset schemas to the format required by each training approach."
+    },
+    "function:src/lora_finetune_studio/training.py:_dataset_label": {
+      "name": "_dataset_label",
+      "type": "function",
+      "summary": "Produces a display label for a dataset specification."
+    },
+    "function:src/lora_finetune_studio/training.py:_load_and_combine_datasets": {
+      "name": "_load_and_combine_datasets",
+      "type": "function",
+      "summary": "Loads configured datasets, validates their schemas, combines them, and enforces sample limits."
+    },
+    "function:src/lora_finetune_studio/training.py:_split_dataset": {
+      "name": "_split_dataset",
+      "type": "function",
+      "summary": "Creates optional train and evaluation splits for trainer use."
+    },
+    "function:src/lora_finetune_studio/training.py:_format_conversations": {
+      "name": "_format_conversations",
+      "type": "function",
+      "summary": "Formats conversational examples with the tokenizer chat template."
+    },
+    "function:src/lora_finetune_studio/training.py:_quantization_config": {
+      "name": "_quantization_config",
+      "type": "function",
+      "summary": "Builds the 4-bit quantization settings used for QLoRA-style loading."
+    },
+    "function:src/lora_finetune_studio/training.py:_peft_config": {
+      "name": "_peft_config",
+      "type": "function",
+      "summary": "Builds LoRA, QLoRA, OFT, or QOFT adapter configuration from a training config."
+    },
+    "function:src/lora_finetune_studio/training.py:_patch_qoft_peft_compatibility": {
+      "name": "_patch_qoft_peft_compatibility",
+      "type": "function",
+      "summary": "Applies a compatibility patch for QOFT configuration in the installed PEFT runtime."
+    },
+    "function:src/lora_finetune_studio/training.py:_load_model_and_tokenizer": {
+      "name": "_load_model_and_tokenizer",
+      "type": "function",
+      "summary": "Loads a compatible model and tokenizer through either Unsloth or Transformers with PEFT adapters."
+    },
+    "function:src/lora_finetune_studio/training.py:_apply_unsloth_trainer_patch": {
+      "name": "_apply_unsloth_trainer_patch",
+      "type": "function",
+      "summary": "Activates the matching Unsloth trainer patch for the selected approach."
+    },
+    "function:src/lora_finetune_studio/training.py:_trainer_components": {
+      "name": "_trainer_components",
+      "type": "function",
+      "summary": "Selects the TRL trainer and configuration classes for an approach."
+    },
+    "function:src/lora_finetune_studio/training.py:_trainer_config": {
+      "name": "_trainer_config",
+      "type": "function",
+      "summary": "Builds trainer arguments from user configuration and evaluation availability."
+    },
+    "function:src/lora_finetune_studio/training.py:_resolve_compute_dtype": {
+      "name": "_resolve_compute_dtype",
+      "type": "function",
+      "summary": "Maps the configured compute mode to an effective torch dtype."
+    },
+    "function:src/lora_finetune_studio/training.py:train": {
+      "name": "train",
+      "type": "function",
+      "summary": "Runs validation, data preparation, model training, artifact saving, and optional Hub publishing."
+    },
+    "file:src/lora_finetune_studio/unsloth_runtime.py": {
+      "name": "unsloth_runtime.py",
+      "type": "file",
+      "summary": "Checks whether the configured isolated Unsloth Python runtime is available and usable."
+    },
+    "class:src/lora_finetune_studio/unsloth_runtime.py:UnslothRuntimeStatus": {
+      "name": "UnslothRuntimeStatus",
+      "type": "class",
+      "summary": "Represents the availability and diagnostic details of the Unsloth runtime."
+    },
+    "function:src/lora_finetune_studio/unsloth_runtime.py:inspect_unsloth_runtime": {
+      "name": "inspect_unsloth_runtime",
+      "type": "function",
+      "summary": "Probes the configured Unsloth interpreter and returns version diagnostics."
+    },
+    "file:src/lora_finetune_studio/queue_dispatcher.py": {
+      "name": "queue_dispatcher.py",
+      "type": "file",
+      "summary": "Provides the post-worker handoff process that waits for a training subprocess to finish before advancing the durable job queue."
+    },
+    "function:src/lora_finetune_studio/queue_dispatcher.py:schedule_queue_handoff": {
+      "name": "schedule_queue_handoff",
+      "type": "function",
+      "summary": "Launches a detached module process to dispatch the next queued run after the current worker exits."
+    },
+    "function:src/lora_finetune_studio/queue_dispatcher.py:wait_for_parent_and_dispatch": {
+      "name": "wait_for_parent_and_dispatch",
+      "type": "function",
+      "summary": "Waits for the parent worker process and then advances the queue while handling process and dispatch failures."
+    },
+    "function:src/lora_finetune_studio/queue_dispatcher.py:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "Validates the parent process identifier passed to the dispatcher module and starts the queue handoff."
+    },
+    "file:src/lora_finetune_studio/sources.py": {
+      "name": "sources.py",
+      "type": "file",
+      "summary": "Validates Hugging Face and local dataset inputs, loads training datasets, and derives dataset metadata for the application."
+    },
+    "class:src/lora_finetune_studio/sources.py:DatasetInspection": {
+      "name": "DatasetInspection",
+      "type": "class",
+      "summary": "Represents detected dataset columns, format, row count, and a preview for the user interface."
+    },
+    "function:src/lora_finetune_studio/sources.py:get_hf_token": {
+      "name": "get_hf_token",
+      "type": "function",
+      "summary": "Reads the optional Hugging Face token from the process environment."
+    },
+    "function:src/lora_finetune_studio/sources.py:parse_hf_repo": {
+      "name": "parse_hf_repo",
+      "type": "function",
+      "summary": "Normalizes and validates a Hugging Face model or dataset repository ID or root URL."
+    },
+    "function:src/lora_finetune_studio/sources.py:token_identity": {
+      "name": "token_identity",
+      "type": "function",
+      "summary": "Looks up the authenticated Hugging Face account name when a token is supplied."
+    },
+    "function:src/lora_finetune_studio/sources.py:model_parameter_count": {
+      "name": "model_parameter_count",
+      "type": "function",
+      "summary": "Retrieves a model revision's SafeTensors parameter count from the Hugging Face Hub."
+    },
+    "function:src/lora_finetune_studio/sources.py:validate_upload": {
+      "name": "validate_upload",
+      "type": "function",
+      "summary": "Enforces supported dataset file extensions and the configured 200 MB upload limit."
+    },
+    "function:src/lora_finetune_studio/sources.py:save_upload": {
+      "name": "save_upload",
+      "type": "function",
+      "summary": "Stores validated dataset bytes under a content-derived filename and returns its resolved path."
+    },
+    "function:src/lora_finetune_studio/sources.py:load_training_dataset": {
+      "name": "load_training_dataset",
+      "type": "function",
+      "summary": "Loads a selected split from a Hugging Face dataset repository or from an approved local CSV or JSON upload."
+    },
+    "function:src/lora_finetune_studio/sources.py:inspect_dataset": {
+      "name": "inspect_dataset",
+      "type": "function",
+      "summary": "Classifies common supervised and preference dataset formats and creates a bounded preview."
+    },
+    "file:src/lora_finetune_studio/worker.py": {
+      "name": "worker.py",
+      "type": "file",
+      "summary": "Implements the subprocess entry point that runs one training job, persists its status, and hands the queue to the next job."
+    },
+    "function:src/lora_finetune_studio/worker.py:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "Loads a run configuration, records lifecycle status, runs training with optional Unsloth, redacts token errors, and schedules queue continuation."
+    },
+    "pipeline:.github/workflows/ci.yml": {
+      "name": "ci.yml",
+      "type": "pipeline",
+      "summary": "GitHub Actions continuous-integration workflow that validates the project on Ubuntu and Windows for pushes and pull requests. It installs the locked environment, runs Ruff and ty checks, executes pytest, and verifies tutorial documentation generation."
+    },
+    "config:.firecrawl/search-unsloth-auto-docstring.json": {
+      "name": "search-unsloth-auto-docstring.json",
+      "type": "config",
+      "summary": "Stores Firecrawl search results used to research Unsloth automatic documentation generation."
+    },
+    "config:.firecrawl/search-unsloth-windows-nodeps.json": {
+      "name": "search-unsloth-windows-nodeps.json",
+      "type": "config",
+      "summary": "Stores Firecrawl search results about using Unsloth on Windows without optional dependencies."
+    },
+    "config:.firecrawl/search-unsloth-windows-torchao.json": {
+      "name": "search-unsloth-windows-torchao.json",
+      "type": "config",
+      "summary": "Stores Firecrawl search results about Unsloth's Windows support and TorchAO integration."
+    },
+    "config:.firecrawl/search-unsloth-windows-versions.json": {
+      "name": "search-unsloth-windows-versions.json",
+      "type": "config",
+      "summary": "Stores Firecrawl search results about compatible Unsloth and Windows package versions."
+    },
+    "document:.firecrawl/unsloth.ai-docs-get-started-install-pip-install.md": {
+      "name": "unsloth.ai-docs-get-started-install-pip-install.md",
+      "type": "document",
+      "summary": "Captured Unsloth installation documentation covering Desktop and Studio, Windows PowerShell, developer and nightly installs, and Unsloth Core installation and removal."
+    },
+    "document:.firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md": {
+      "name": "unsloth.ai-docs-get-started-install-windows-installation.md",
+      "type": "document",
+      "summary": "Captured Unsloth Windows installation guide covering Desktop, manual and Conda installation, Docker and WSL alternatives, troubleshooting, and uninstall procedures."
+    },
+    "document:CHANGELOG.md": {
+      "name": "CHANGELOG.md",
+      "type": "document",
+      "summary": "Records the release history from version 0.1.0 through 0.4.0, including training features, documentation, and security changes."
+    },
+    "document:CODE_OF_CONDUCT.md": {
+      "name": "CODE_OF_CONDUCT.md",
+      "type": "document",
+      "summary": "Defines expected community behavior, incident reporting, and enforcement for project participation."
+    },
+    "document:CONTRIBUTING.md": {
+      "name": "CONTRIBUTING.md",
+      "type": "document",
+      "summary": "Explains the contributor workflow, development expectations, required checks, and pull-request checklist."
+    },
+    "file:Launch LoRA Studio.cmd": {
+      "name": "Launch LoRA Studio.cmd",
+      "type": "file",
+      "summary": "Windows launcher that installs or locates uv, synchronizes the main and native-Unsloth environments, then starts and health-checks the Streamlit application."
+    },
+    "file:Launch LoRA Studio.sh": {
+      "name": "Launch LoRA Studio.sh",
+      "type": "file",
+      "summary": "Linux launcher that locates or installs uv, synchronizes the locked environment, manages a prior application process, and starts Streamlit on port 8504."
+    },
+    "document:README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Project overview covering supported parameter-efficient training recipes, requirements, quick start, smoke testing, and links to detailed guides."
+    },
+    "document:SECURITY.md": {
+      "name": "SECURITY.md",
+      "type": "document",
+      "summary": "States the vulnerability-reporting policy, supported versions, security controls, and safe-operation boundaries for local model training."
+    },
+    "document:SETUP.md": {
+      "name": "SETUP.md",
+      "type": "document",
+      "summary": "Comprehensive Windows and Linux installation guide covering uv environments, native Windows Unsloth, verification, smoke tests, maintenance, and troubleshooting."
+    },
+    "document:TECHNICAL.md": {
+      "name": "TECHNICAL.md",
+      "type": "document",
+      "summary": "Technical handbook describing the application's architecture, data contracts, dataset and training pipelines, job lifecycle, trust boundaries, and extension points."
+    },
+    "document:TUTORIAL.md": {
+      "name": "TUTORIAL.md",
+      "type": "document",
+      "summary": "Zero-to-mastery tutorial that teaches LLM post-training concepts and leads users through dataset, configuration, SFT, preference-training, evaluation, and repository-extension labs."
+    },
+    "document:USAGE.md": {
+      "name": "USAGE.md",
+      "type": "document",
+      "summary": "Operational guide for launching the application, selecting models and datasets, configuring training, monitoring jobs, locating artifacts, and resolving common problems."
+    },
+    "config:pyproject.toml": {
+      "name": "pyproject.toml",
+      "type": "config",
+      "summary": "Defines package metadata, supported Python range, runtime and development dependencies, build backend, console entry point, and the CUDA PyTorch index for uv."
+    },
+    "config:docs/.tutorial-build.json": {
+      "name": ".tutorial-build.json",
+      "type": "config",
+      "summary": "Records integrity hashes for generated tutorial website files and identifies TUTORIAL.md as their source document."
+    },
+    "file:docs/01-learn-the-map-before-the-territory.html": {
+      "name": "01-learn-the-map-before-the-territory.html",
+      "type": "file",
+      "summary": "Static tutorial module that introduces the learning path and repository context before model training concepts."
+    },
+    "file:docs/02-natural-language-becomes-model-input.html": {
+      "name": "02-natural-language-becomes-model-input.html",
+      "type": "file",
+      "summary": "Static tutorial module explaining how natural-language text is transformed into model input."
+    },
+    "file:docs/03-neural-networks-learn-with-vectors-and-gradients.html": {
+      "name": "03-neural-networks-learn-with-vectors-and-gradients.html",
+      "type": "file",
+      "summary": "Static tutorial module covering vector representations, neural-network learning, and gradients."
+    },
+    "file:docs/04-build-a-transformer-from-attention-blocks.html": {
+      "name": "04-build-a-transformer-from-attention-blocks.html",
+      "type": "file",
+      "summary": "Static tutorial module that explains transformer architecture through attention blocks."
+    },
+    "file:docs/05-understand-the-llm-lifecycle.html": {
+      "name": "05-understand-the-llm-lifecycle.html",
+      "type": "file",
+      "summary": "Static tutorial module describing the lifecycle of an LLM from pre-training through post-training."
+    },
+    "file:docs/06-choose-a-tuning-family.html": {
+      "name": "06-choose-a-tuning-family.html",
+      "type": "file",
+      "summary": "Static tutorial module that guides selection among fine-tuning families for a training goal."
+    },
+    "file:docs/07-master-lora-qlora-oft-and-qoft.html": {
+      "name": "07-master-lora-qlora-oft-and-qoft.html",
+      "type": "file",
+      "summary": "Static tutorial module comparing LoRA, QLoRA, OFT, and QOFT adaptation methods."
+    },
+    "file:docs/08-engineer-datasets-that-teach-the-intended-behavior.html": {
+      "name": "08-engineer-datasets-that-teach-the-intended-behavior.html",
+      "type": "file",
+      "summary": "Static tutorial module on designing datasets that teach the intended model behavior."
+    },
+    "file:docs/09-select-the-post-training-objective.html": {
+      "name": "09-select-the-post-training-objective.html",
+      "type": "file",
+      "summary": "Static tutorial module for choosing a post-training objective such as SFT or preference optimization."
+    },
+    "file:docs/10-prepare-the-local-training-system.html": {
+      "name": "10-prepare-the-local-training-system.html",
+      "type": "file",
+      "summary": "Static tutorial module that prepares a local environment for running fine-tuning workloads."
+    },
+    "file:docs/11-translate-intent-into-app-settings.html": {
+      "name": "11-translate-intent-into-app-settings.html",
+      "type": "file",
+      "summary": "Static tutorial module mapping training intent to the application's configuration settings."
+    },
+    "file:docs/12-lab-a-complete-an-sft-smoke-run.html": {
+      "name": "12-lab-a-complete-an-sft-smoke-run.html",
+      "type": "file",
+      "summary": "Static lab module walking through a complete supervised fine-tuning smoke run."
+    },
+    "file:docs/13-lab-b-preference-training-safely.html": {
+      "name": "13-lab-b-preference-training-safely.html",
+      "type": "file",
+      "summary": "Static lab module introducing safe preference-training workflows."
+    },
+    "file:docs/14-evaluate-like-an-experimenter.html": {
+      "name": "14-evaluate-like-an-experimenter.html",
+      "type": "file",
+      "summary": "Static tutorial module explaining experiment-oriented evaluation of fine-tuned models."
+    },
+    "file:docs/15-operate-jobs-and-use-artifacts.html": {
+      "name": "15-operate-jobs-and-use-artifacts.html",
+      "type": "file",
+      "summary": "Static tutorial module covering training-job operation and use of generated artifacts."
+    },
+    "file:docs/16-read-and-extend-the-repository.html": {
+      "name": "16-read-and-extend-the-repository.html",
+      "type": "file",
+      "summary": "Static tutorial module for understanding and extending this repository's implementation."
+    },
+    "file:docs/17-capstone-train-a-defensible-specialist.html": {
+      "name": "17-capstone-train-a-defensible-specialist.html",
+      "type": "file",
+      "summary": "Static capstone module for training and defending a task-specific specialist model."
+    },
+    "file:docs/18-checkpoint-answers.html": {
+      "name": "18-checkpoint-answers.html",
+      "type": "file",
+      "summary": "Static appendix providing answers to tutorial checkpoint questions."
+    },
+    "file:docs/19-formula-and-settings-reference.html": {
+      "name": "19-formula-and-settings-reference.html",
+      "type": "file",
+      "summary": "Static appendix collecting formulas and training-setting references for the tutorial."
+    },
+    "file:docs/20-troubleshooting-by-boundary.html": {
+      "name": "20-troubleshooting-by-boundary.html",
+      "type": "file",
+      "summary": "Appendix C of the Zero to Mastery handbook organizes troubleshooting guidance by the local training-system boundary where a failure occurs."
+    },
+    "file:docs/21-glossary.html": {
+      "name": "21-glossary.html",
+      "type": "file",
+      "summary": "Appendix D provides a concise glossary of concepts and terms used throughout the LoRA Fine-tune Studio learning handbook."
+    },
+    "file:docs/22-official-references.html": {
+      "name": "22-official-references.html",
+      "type": "file",
+      "summary": "Appendix E lists official framework documentation and foundational papers supporting the handbook's guidance on fine-tuning and preference optimization."
+    },
+    "file:docs/index.html": {
+      "name": "index.html",
+      "type": "file",
+      "summary": "Landing page for the Zero to Mastery handbook, presenting its learning path, module descriptions, navigation, search interface, and PDF download."
+    },
+    "file:.gitattributes": {
+      "name": ".gitattributes",
+      "type": "file",
+      "summary": "Defines Git text and attribute handling for repository files."
+    },
+    "file:.python-version": {
+      "name": ".python-version",
+      "type": "file",
+      "summary": "Pins the Python version expected by the project tooling."
+    },
+    "config:.streamlit/config.toml": {
+      "name": "config.toml",
+      "type": "config",
+      "summary": "Configures the local Streamlit server appearance and behavior."
+    },
+    "file:app_pages/dataset.py": {
+      "name": "dataset.py",
+      "type": "file",
+      "summary": "Implements the Streamlit dataset page for inspecting, validating, and combining compatible training datasets."
+    },
+    "function:app_pages/dataset.py:source_label": {
+      "name": "source_label",
+      "type": "function",
+      "summary": "Formats a dataset source as a compact label for the dataset page."
+    },
+    "function:app_pages/dataset.py:source_identity": {
+      "name": "source_identity",
+      "type": "function",
+      "summary": "Builds the stable source identity used to detect duplicate datasets."
+    },
+    "function:app_pages/dataset.py:source_key": {
+      "name": "source_key",
+      "type": "function",
+      "summary": "Hashes a dataset source identity into a short key."
+    },
+    "function:app_pages/dataset.py:is_compatible": {
+      "name": "is_compatible",
+      "type": "function",
+      "summary": "Checks whether a dataset format is accepted by the selected recipe."
+    },
+    "function:app_pages/dataset.py:clear_pending": {
+      "name": "clear_pending",
+      "type": "function",
+      "summary": "Clears pending dataset state from the Streamlit session."
+    },
+    "function:app_pages/dataset.py:save_pending_dataset": {
+      "name": "save_pending_dataset",
+      "type": "function",
+      "summary": "Adds or replaces a validated pending dataset in the selected dataset collection."
+    },
+    "file:app_pages/gpu_memory.py": {
+      "name": "gpu_memory.py",
+      "type": "file",
+      "summary": "Shows live CUDA memory metrics and safely releases unused memory when no training run is active."
+    },
+    "file:app_pages/model.py": {
+      "name": "model.py",
+      "type": "file",
+      "summary": "Implements the model-selection page and inspects Hugging Face model metadata before training."
+    },
+    "file:app_pages/monitor.py": {
+      "name": "monitor.py",
+      "type": "file",
+      "summary": "Implements the training monitor, FIFO queue controls, checkpoint recovery, and completed-adapter testing UI."
+    },
+    "function:app_pages/monitor.py:training_monitor": {
+      "name": "training_monitor",
+      "type": "function",
+      "summary": "Refreshes run state, queue status, progress, logs, recovery actions, and adapter evaluation controls."
+    },
+    "file:app_pages/ollama.py": {
+      "name": "ollama.py",
+      "type": "file",
+      "summary": "Provides an independent local Ollama chat playground for already installed models."
+    },
+    "file:app_pages/review.py": {
+      "name": "review.py",
+      "type": "file",
+      "summary": "Reviews the saved training configuration, reports blockers, and launches or queues a run."
+    },
+    "file:app_pages/system.py": {
+      "name": "system.py",
+      "type": "file",
+      "summary": "Displays a read-only local runtime, CUDA, hardware, token, and Unsloth readiness assessment."
+    },
+    "file:app_pages/training.py": {
+      "name": "training.py",
+      "type": "file",
+      "summary": "Implements the training-settings page, including supported approach and PEFT method selection."
+    },
+    "function:app_pages/training.py:approach_changed": {
+      "name": "approach_changed",
+      "type": "function",
+      "summary": "Resets dependent training defaults after the selected approach changes."
+    },
+    "function:app_pages/training.py:method_changed": {
+      "name": "method_changed",
+      "type": "function",
+      "summary": "Updates configuration state when the PEFT method changes."
+    },
+    "function:app_pages/training.py:compute_type_changed": {
+      "name": "compute_type_changed",
+      "type": "function",
+      "summary": "Disables unsupported Unsloth use when the compute precision changes."
+    },
+    "function:app_pages/training.py:apply_preset_defaults": {
+      "name": "apply_preset_defaults",
+      "type": "function",
+      "summary": "Applies the selected preset values to the training form state."
+    },
+    "file:docs/.nojekyll": {
+      "name": ".nojekyll",
+      "type": "file",
+      "summary": "Prevents GitHub Pages from processing the generated documentation site with Jekyll."
+    },
+    "file:docs/assets/search-index.js": {
+      "name": "search-index.js",
+      "type": "file",
+      "summary": "Contains the generated client-side documentation search index."
+    },
+    "file:docs/assets/site.css": {
+      "name": "site.css",
+      "type": "file",
+      "summary": "Provides the styling shared by the generated tutorial documentation site."
+    },
+    "file:docs/assets/site.js": {
+      "name": "site.js",
+      "type": "file",
+      "summary": "Provides client-side navigation, theme, and search behavior for the generated tutorial site."
+    },
+    "file:examples/preference_sample.jsonl": {
+      "name": "preference_sample.jsonl",
+      "type": "file",
+      "summary": "Supplies a small preference-pair dataset example for alignment-training workflows."
+    },
+    "file:examples/sft_sample.jsonl": {
+      "name": "sft_sample.jsonl",
+      "type": "file",
+      "summary": "Supplies a small supervised fine-tuning dataset example for quick application tests."
+    },
+    "file:scripts/build_tutorial.py": {
+      "name": "build_tutorial.py",
+      "type": "file",
+      "summary": "Builds the Zero to Mastery tutorial into a multi-page HTML site and a verified PDF handbook."
+    },
+    "function:scripts/build_tutorial.py:slugify": {
+      "name": "slugify",
+      "type": "function",
+      "summary": "Converts text into a URL-safe chapter slug."
+    },
+    "function:scripts/build_tutorial.py:split_source": {
+      "name": "split_source",
+      "type": "function",
+      "summary": "Separates a source reference into display components."
+    },
+    "function:scripts/build_tutorial.py:render_markdown": {
+      "name": "render_markdown",
+      "type": "function",
+      "summary": "Renders Markdown input as HTML."
+    },
+    "function:scripts/build_tutorial.py:plain_text": {
+      "name": "plain_text",
+      "type": "function",
+      "summary": "Removes markup for text-only output."
+    },
+    "function:scripts/build_tutorial.py:pdf_safe": {
+      "name": "pdf_safe",
+      "type": "function",
+      "summary": "Normalizes rendered text for the PDF renderer."
+    },
+    "function:scripts/build_tutorial.py:chapter_summary": {
+      "name": "chapter_summary",
+      "type": "function",
+      "summary": "Extracts a concise summary from rendered chapter content."
+    },
+    "function:scripts/build_tutorial.py:load_course": {
+      "name": "load_course",
+      "type": "function",
+      "summary": "Loads and parses the tutorial source into chapter records."
+    },
+    "function:scripts/build_tutorial.py:nav_items": {
+      "name": "nav_items",
+      "type": "function",
+      "summary": "Builds navigation links for tutorial chapters."
+    },
+    "function:scripts/build_tutorial.py:site_shell": {
+      "name": "site_shell",
+      "type": "function",
+      "summary": "Wraps page content in the shared HTML site shell."
+    },
+    "function:scripts/build_tutorial.py:index_content": {
+      "name": "index_content",
+      "type": "function",
+      "summary": "Builds the tutorial landing-page content."
+    },
+    "function:scripts/build_tutorial.py:chapter_content": {
+      "name": "chapter_content",
+      "type": "function",
+      "summary": "Builds the content for one tutorial chapter page."
+    },
+    "function:scripts/build_tutorial.py:rewrite_root_links": {
+      "name": "rewrite_root_links",
+      "type": "function",
+      "summary": "Rewrites root-relative links for generated pages."
+    },
+    "function:scripts/build_tutorial.py:build_search_index": {
+      "name": "build_search_index",
+      "type": "function",
+      "summary": "Builds the browser search index from tutorial chapters."
+    },
+    "function:scripts/build_tutorial.py:build_site_files": {
+      "name": "build_site_files",
+      "type": "function",
+      "summary": "Assembles generated HTML, assets, manifest, and PDF files."
+    },
+    "function:scripts/build_tutorial.py:pdf_styles": {
+      "name": "pdf_styles",
+      "type": "function",
+      "summary": "Defines ReportLab styles used by the tutorial PDF."
+    },
+    "function:scripts/build_tutorial.py:inline_markup": {
+      "name": "inline_markup",
+      "type": "function",
+      "summary": "Converts inline HTML markup into PDF flowables."
+    },
+    "function:scripts/build_tutorial.py:paragraph_from_tag": {
+      "name": "paragraph_from_tag",
+      "type": "function",
+      "summary": "Converts an HTML tag to a ReportLab paragraph."
+    },
+    "function:scripts/build_tutorial.py:table_flowable": {
+      "name": "table_flowable",
+      "type": "function",
+      "summary": "Converts an HTML table into a ReportLab table."
+    },
+    "function:scripts/build_tutorial.py:list_flowable": {
+      "name": "list_flowable",
+      "type": "function",
+      "summary": "Converts an HTML list into ReportLab flowables."
+    },
+    "function:scripts/build_tutorial.py:html_to_flowables": {
+      "name": "html_to_flowables",
+      "type": "function",
+      "summary": "Converts rendered tutorial HTML into PDF flowable elements."
+    },
+    "function:scripts/build_tutorial.py:cover_flowables": {
+      "name": "cover_flowables",
+      "type": "function",
+      "summary": "Builds the tutorial PDF cover pages."
+    },
+    "function:scripts/build_tutorial.py:build_pdf": {
+      "name": "build_pdf",
+      "type": "function",
+      "summary": "Generates the tutorial handbook PDF from parsed chapters."
+    },
+    "function:scripts/build_tutorial.py:file_digest": {
+      "name": "file_digest",
+      "type": "function",
+      "summary": "Calculates a content digest for a generated file."
+    },
+    "function:scripts/build_tutorial.py:manifest_bytes": {
+      "name": "manifest_bytes",
+      "type": "function",
+      "summary": "Serializes the generated-site file manifest."
+    },
+    "function:scripts/build_tutorial.py:read_manifest": {
+      "name": "read_manifest",
+      "type": "function",
+      "summary": "Reads a prior generated-site manifest."
+    },
+    "function:scripts/build_tutorial.py:write_site": {
+      "name": "write_site",
+      "type": "function",
+      "summary": "Writes generated tutorial files to the output directory."
+    },
+    "function:scripts/build_tutorial.py:compare_files": {
+      "name": "compare_files",
+      "type": "function",
+      "summary": "Compares generated files with the checked-in output."
+    },
+    "function:scripts/build_tutorial.py:pdf_content_signature": {
+      "name": "pdf_content_signature",
+      "type": "function",
+      "summary": "Extracts a stable signature for PDF verification."
+    },
+    "function:scripts/build_tutorial.py:run": {
+      "name": "run",
+      "type": "function",
+      "summary": "Builds or verifies tutorial artifacts and reports mismatches."
+    },
+    "function:scripts/build_tutorial.py:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "Parses command-line arguments and invokes the tutorial build workflow."
+    },
+    "class:scripts/build_tutorial.py:Chapter": {
+      "name": "Chapter",
+      "type": "class",
+      "summary": "Stores parsed tutorial chapter metadata and its source filename."
+    },
+    "class:scripts/build_tutorial.py:HandbookDocTemplate": {
+      "name": "HandbookDocTemplate",
+      "type": "class",
+      "summary": "Customizes ReportLab document metadata, cover pages, headers, and footers for the handbook."
+    },
+    "file:scripts/tutorial_assets/site.css": {
+      "name": "site.css",
+      "type": "file",
+      "summary": "Stores source CSS copied into the generated tutorial website."
+    },
+    "file:scripts/tutorial_assets/site.js": {
+      "name": "site.js",
+      "type": "file",
+      "summary": "Stores source JavaScript copied into the generated tutorial website."
+    },
+    "file:src/lora_finetune_studio/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "Defines the lora_finetune_studio Python package namespace."
+    },
+    "file:src/lora_finetune_studio/cli.py": {
+      "name": "cli.py",
+      "type": "file",
+      "summary": "Provides the console entry point that launches the Streamlit application."
+    },
+    "function:src/lora_finetune_studio/cli.py:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "Parses command-line arguments and invokes the tutorial build workflow."
+    },
+    "file:src/lora_finetune_studio/hardware.py": {
+      "name": "hardware.py",
+      "type": "file",
+      "summary": "Detects local hardware and software readiness, reports CUDA memory, and makes conservative model-size recommendations."
+    },
+    "function:src/lora_finetune_studio/hardware.py:_package_status": {
+      "name": "_package_status",
+      "type": "function",
+      "summary": "Reports whether a named optional package is installed and its version."
+    },
+    "function:src/lora_finetune_studio/hardware.py:scan_system": {
+      "name": "scan_system",
+      "type": "function",
+      "summary": "Collects a read-only operating-system, runtime, resource, and integration inventory."
+    },
+    "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats": {
+      "name": "cuda_memory_stats",
+      "type": "function",
+      "summary": "Reads current first-GPU CUDA memory statistics."
+    },
+    "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory": {
+      "name": "release_unused_cuda_memory",
+      "type": "function",
+      "summary": "Requests garbage collection and clears unused PyTorch CUDA cache."
+    },
+    "function:src/lora_finetune_studio/hardware.py:detect_hardware": {
+      "name": "detect_hardware",
+      "type": "function",
+      "summary": "Builds the hardware profile used to constrain training choices."
+    },
+    "function:src/lora_finetune_studio/hardware.py:model_size_warning": {
+      "name": "model_size_warning",
+      "type": "function",
+      "summary": "Returns a warning when a model is unsuitable for the detected hardware."
+    },
+    "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats": {
+      "name": "CudaMemoryStats",
+      "type": "class",
+      "summary": "Immutable value object for first-GPU CUDA memory measurements."
+    },
+    "class:src/lora_finetune_studio/hardware.py:SoftwareStatus": {
+      "name": "SoftwareStatus",
+      "type": "class",
+      "summary": "Immutable value object for optional integration availability and version detail."
+    },
+    "class:src/lora_finetune_studio/hardware.py:SystemScan": {
+      "name": "SystemScan",
+      "type": "class",
+      "summary": "Immutable record of local operating-system, runtime, resource, and software scan results."
+    },
+    "file:src/lora_finetune_studio/inference.py": {
+      "name": "inference.py",
+      "type": "file",
+      "summary": "Runs short-lived, quantized adapter inference for comparing a completed training run."
+    },
+    "function:src/lora_finetune_studio/inference.py:generate_text": {
+      "name": "generate_text",
+      "type": "function",
+      "summary": "Runs adapter inference and ensures CUDA cache cleanup afterward."
+    },
+    "function:src/lora_finetune_studio/inference.py:_generate_text": {
+      "name": "_generate_text",
+      "type": "function",
+      "summary": "Loads a quantized causal model and optional adapter, then generates a response."
+    },
+    "file:src/lora_finetune_studio/lifecycle.py": {
+      "name": "lifecycle.py",
+      "type": "file",
+      "summary": "Provides a delayed process-exit helper so Streamlit can render shutdown feedback."
+    },
+    "function:src/lora_finetune_studio/lifecycle.py:schedule_application_exit": {
+      "name": "schedule_application_exit",
+      "type": "function",
+      "summary": "Schedules a daemon timer to end the application process after a short delay."
+    },
+    "file:src/lora_finetune_studio/ollama.py": {
+      "name": "ollama.py",
+      "type": "file",
+      "summary": "Small standard-library HTTP client for listing local Ollama models and generating a non-streamed response."
+    },
+    "function:src/lora_finetune_studio/ollama.py:_request": {
+      "name": "_request",
+      "type": "function",
+      "summary": "Builds and executes an Ollama HTTP request, decoding the JSON response."
+    },
+    "function:src/lora_finetune_studio/ollama.py:list_models": {
+      "name": "list_models",
+      "type": "function",
+      "summary": "Retrieves the names of locally available Ollama models."
+    },
+    "function:src/lora_finetune_studio/ollama.py:generate": {
+      "name": "generate",
+      "type": "function",
+      "summary": "Requests a non-streamed completion from a selected local Ollama model."
+    },
+    "file:streamlit_app.py": {
+      "name": "streamlit_app.py",
+      "type": "file",
+      "summary": "Streamlit application entry point that initializes shared session state, advances the training queue, configures navigation, and handles graceful shutdown."
+    },
+    "file:tests/test_app.py": {
+      "name": "test_app.py",
+      "type": "file",
+      "summary": "End-to-end Streamlit smoke test covering startup without Ollama, navigation, dataset removal, training controls, and application shutdown."
+    },
+    "function:tests/test_app.py:test_app_starts_without_ollama": {
+      "name": "test_app_starts_without_ollama",
+      "type": "function",
+      "summary": "Exercises the Streamlit application workflow with external services stubbed out."
+    },
+    "file:tests/test_hardware.py": {
+      "name": "test_hardware.py",
+      "type": "file",
+      "summary": "Unit tests for hardware detection, CUDA memory helpers, model-size warnings, and platform-specific system scanning."
+    },
+    "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit": {
+      "name": "test_model_size_warning_uses_detected_limit",
+      "type": "function",
+      "summary": "Verifies model size warning uses detected limit."
+    },
+    "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage": {
+      "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "function",
+      "summary": "Verifies cuda memory stats reports global and process usage."
+    },
+    "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache": {
+      "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "function",
+      "summary": "Verifies release unused cuda memory runs gc and empties cache."
+    },
+    "function:tests/test_hardware.py:test_cuda_memory_helpers_reject_cpu_only_system": {
+      "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+      "type": "function",
+      "summary": "Verifies cuda memory helpers reject cpu only system."
+    },
+    "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing": {
+      "name": "test_system_scan_reports_live_resources_without_installing",
+      "type": "function",
+      "summary": "Verifies system scan reports live resources without installing."
+    },
+    "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux": {
+      "name": "test_system_scan_recognizes_native_linux",
+      "type": "function",
+      "summary": "Verifies system scan recognizes native linux."
+    },
+    "file:tests/test_inference.py": {
+      "name": "test_inference.py",
+      "type": "file",
+      "summary": "Regression test ensuring failed model loading releases CUDA memory during inference setup."
+    },
+    "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure": {
+      "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "function",
+      "summary": "Verifies generate text releases cuda memory after loading failure."
+    },
+    "file:tests/test_jobs.py": {
+      "name": "test_jobs.py",
+      "type": "file",
+      "summary": "Comprehensive tests for persistent training runs, FIFO dispatch, worker lifecycle handling, cancellation, and Unsloth interpreter selection."
+    },
+    "function:tests/test_jobs.py:test_create_run_persists_safe_config": {
+      "name": "test_create_run_persists_safe_config",
+      "type": "function",
+      "summary": "Verifies create run persists safe config."
+    },
+    "function:tests/test_jobs.py:test_create_run_appends_jobs_in_fifo_order": {
+      "name": "test_create_run_appends_jobs_in_fifo_order",
+      "type": "function",
+      "summary": "Verifies create run appends jobs in fifo order."
+    },
+    "function:tests/test_jobs.py:test_dispatch_starts_only_first_waiting_run": {
+      "name": "test_dispatch_starts_only_first_waiting_run",
+      "type": "function",
+      "summary": "Verifies dispatch starts only first waiting run."
+    },
+    "function:tests/test_jobs.py:test_cancelling_running_job_starts_next_waiting_run": {
+      "name": "test_cancelling_running_job_starts_next_waiting_run",
+      "type": "function",
+      "summary": "Verifies cancelling running job starts next waiting run."
+    },
+    "function:tests/test_jobs.py:test_dispatch_marks_dead_worker_failed_before_continuing": {
+      "name": "test_dispatch_marks_dead_worker_failed_before_continuing",
+      "type": "function",
+      "summary": "Verifies dispatch marks dead worker failed before continuing."
+    },
+    "function:tests/test_jobs.py:test_resume_appends_checkpoint_run_to_queue_when_worker_is_active": {
+      "name": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "type": "function",
+      "summary": "Verifies resume appends checkpoint run to queue when worker is active."
+    },
+    "function:tests/test_jobs.py:test_list_runs_orders_active_then_waiting_then_history": {
+      "name": "test_list_runs_orders_active_then_waiting_then_history",
+      "type": "function",
+      "summary": "Verifies list runs orders active then waiting then history."
+    },
+    "function:tests/test_jobs.py:test_dispatch_marks_launch_failure_and_continues_queue": {
+      "name": "test_dispatch_marks_launch_failure_and_continues_queue",
+      "type": "function",
+      "summary": "Verifies dispatch marks launch failure and continues queue."
+    },
+    "function:tests/test_jobs.py:test_dispatch_waits_for_terminal_worker_process_to_exit": {
+      "name": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "type": "function",
+      "summary": "Verifies dispatch waits for terminal worker process to exit."
+    },
+    "function:tests/test_jobs.py:test_atomic_json_replaces_existing_file": {
+      "name": "test_atomic_json_replaces_existing_file",
+      "type": "function",
+      "summary": "Verifies atomic json replaces existing file."
+    },
+    "function:tests/test_jobs.py:_running_test_run": {
+      "name": "_running_test_run",
+      "type": "function",
+      "summary": "Verifies  running test run."
+    },
+    "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker": {
+      "name": "test_cancel_run_stops_only_its_training_worker",
+      "type": "function",
+      "summary": "Verifies cancel run stops only its training worker."
+    },
+    "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process": {
+      "name": "test_cancel_run_rejects_unrelated_process",
+      "type": "function",
+      "summary": "Verifies cancel run rejects unrelated process."
+    },
+    "function:tests/test_jobs.py:test_cancel_active_run_delegates_to_active_run": {
+      "name": "test_cancel_active_run_delegates_to_active_run",
+      "type": "function",
+      "summary": "Verifies cancel active run delegates to active run."
+    },
+    "function:tests/test_jobs.py:test_launch_run_uses_unsloth_interpreter_and_source_path": {
+      "name": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "type": "function",
+      "summary": "Verifies launch run uses unsloth interpreter and source path."
+    },
+    "function:tests/test_jobs.py:test_launch_run_keeps_current_interpreter_when_unsloth_is_off": {
+      "name": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "type": "function",
+      "summary": "Verifies launch run keeps current interpreter when unsloth is off."
+    },
+    "function:tests/test_jobs.py:test_launch_run_preserves_base_interpreter_across_worker_handoffs": {
+      "name": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "type": "function",
+      "summary": "Verifies launch run preserves base interpreter across worker handoffs."
+    },
+    "function:tests/test_jobs.py:test_launch_run_rejects_missing_unsloth_runtime": {
+      "name": "test_launch_run_rejects_missing_unsloth_runtime",
+      "type": "function",
+      "summary": "Verifies launch run rejects missing unsloth runtime."
+    },
+    "class:tests/test_jobs.py:FakeWorkerProcess": {
+      "name": "FakeWorkerProcess",
+      "type": "class",
+      "summary": "Test double that simulates a managed worker process for job lifecycle assertions."
+    },
+    "file:tests/test_lifecycle.py": {
+      "name": "test_lifecycle.py",
+      "type": "file",
+      "summary": "Unit test for scheduling the application exit callback on a daemon timer."
+    },
+    "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer": {
+      "name": "test_schedule_application_exit_uses_daemon_timer",
+      "type": "function",
+      "summary": "Verifies schedule application exit uses daemon timer."
+    },
+    "file:tests/test_models.py": {
+      "name": "test_models.py",
+      "type": "file",
+      "summary": "Validation tests for training configuration serialization, recipe compatibility, dataset constraints, presets, and compute-type selection."
+    },
+    "function:tests/test_models.py:test_config_round_trip": {
+      "name": "test_config_round_trip",
+      "type": "function",
+      "summary": "Verifies config round trip."
+    },
+    "function:tests/test_models.py:test_old_config_migrates_single_dataset_and_standard_backend": {
+      "name": "test_old_config_migrates_single_dataset_and_standard_backend",
+      "type": "function",
+      "summary": "Verifies old config migrates single dataset and standard backend."
+    },
+    "function:tests/test_models.py:test_config_requires_push_destination": {
+      "name": "test_config_requires_push_destination",
+      "type": "function",
+      "summary": "Verifies config requires push destination."
+    },
+    "function:tests/test_models.py:test_config_rejects_mixed_and_duplicate_datasets": {
+      "name": "test_config_rejects_mixed_and_duplicate_datasets",
+      "type": "function",
+      "summary": "Verifies config rejects mixed and duplicate datasets."
+    },
+    "function:tests/test_models.py:test_recipe_matrix_accepts_all_advertised_pairs": {
+      "name": "test_recipe_matrix_accepts_all_advertised_pairs",
+      "type": "function",
+      "summary": "Verifies recipe matrix accepts all advertised pairs."
+    },
+    "function:tests/test_models.py:test_config_rejects_approach_dataset_mismatch_and_unsloth_oft": {
+      "name": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "type": "function",
+      "summary": "Verifies config rejects approach dataset mismatch and unsloth oft."
+    },
+    "function:tests/test_models.py:test_config_rejects_unsloth_fp32": {
+      "name": "test_config_rejects_unsloth_fp32",
+      "type": "function",
+      "summary": "Verifies config rejects unsloth fp32."
+    },
+    "function:tests/test_models.py:test_kto_requires_actual_batch_size_above_one": {
+      "name": "test_kto_requires_actual_batch_size_above_one",
+      "type": "function",
+      "summary": "Verifies kto requires actual batch size above one."
+    },
+    "function:tests/test_models.py:test_config_rejects_learning_rate_outside_supported_range": {
+      "name": "test_config_rejects_learning_rate_outside_supported_range",
+      "type": "function",
+      "summary": "Verifies config rejects learning rate outside supported range."
+    },
+    "function:tests/test_models.py:test_config_rejects_invalid_maximum_samples": {
+      "name": "test_config_rejects_invalid_maximum_samples",
+      "type": "function",
+      "summary": "Verifies config rejects invalid maximum samples."
+    },
+    "function:tests/test_models.py:test_config_rejects_invalid_maximum_gradient_norm": {
+      "name": "test_config_rejects_invalid_maximum_gradient_norm",
+      "type": "function",
+      "summary": "Verifies config rejects invalid maximum gradient norm."
+    },
+    "function:tests/test_models.py:test_compute_type_resolution": {
+      "name": "test_compute_type_resolution",
+      "type": "function",
+      "summary": "Verifies compute type resolution."
+    },
+    "function:tests/test_models.py:test_run_path_rejects_traversal": {
+      "name": "test_run_path_rejects_traversal",
+      "type": "function",
+      "summary": "Verifies run path rejects traversal."
+    },
+    "function:tests/test_models.py:test_preset_values_are_bounded": {
+      "name": "test_preset_values_are_bounded",
+      "type": "function",
+      "summary": "Verifies preset values are bounded."
+    },
+    "file:tests/test_queue_dispatcher.py": {
+      "name": "test_queue_dispatcher.py",
+      "type": "file",
+      "summary": "Tests the process handoff helper that waits for a parent worker and then resumes queue dispatch with the base interpreter."
+    },
+    "function:tests/test_queue_dispatcher.py:test_handoff_waits_for_parent_exit_before_dispatch": {
+      "name": "test_handoff_waits_for_parent_exit_before_dispatch",
+      "type": "function",
+      "summary": "Verifies queue handoff waits for the parent worker before dispatching the next run."
+    },
+    "function:tests/test_queue_dispatcher.py:test_schedule_handoff_uses_base_project_interpreter": {
+      "name": "test_schedule_handoff_uses_base_project_interpreter",
+      "type": "function",
+      "summary": "Verifies queue handoff uses the base project interpreter rather than the training runtime."
+    },
+    "file:tests/test_queue_ui.py": {
+      "name": "test_queue_ui.py",
+      "type": "file",
+      "summary": "Streamlit integration test confirming that a new training request is queued while another worker remains active."
+    },
+    "function:tests/test_queue_ui.py:test_review_adds_training_to_queue_while_worker_is_active": {
+      "name": "test_review_adds_training_to_queue_while_worker_is_active",
+      "type": "function",
+      "summary": "Verifies review adds training to queue while worker is active."
+    },
+    "file:tests/test_sources.py": {
+      "name": "test_sources.py",
+      "type": "file",
+      "summary": "Tests Hugging Face repository parsing plus dataset inspection, upload validation, and content-addressed upload storage."
+    },
+    "function:tests/test_sources.py:test_parse_hf_repo": {
+      "name": "test_parse_hf_repo",
+      "type": "function",
+      "summary": "Verifies parse hf repo."
+    },
+    "function:tests/test_sources.py:test_parse_hf_repo_rejects_unsafe_locations": {
+      "name": "test_parse_hf_repo_rejects_unsafe_locations",
+      "type": "function",
+      "summary": "Verifies parse hf repo rejects unsafe locations."
+    },
+    "function:tests/test_sources.py:test_inspect_dataset_detects_messages": {
+      "name": "test_inspect_dataset_detects_messages",
+      "type": "function",
+      "summary": "Verifies inspect dataset detects messages."
+    },
+    "function:tests/test_sources.py:test_inspect_dataset_detects_preference_before_prompt_completion": {
+      "name": "test_inspect_dataset_detects_preference_before_prompt_completion",
+      "type": "function",
+      "summary": "Verifies inspect dataset detects preference before prompt completion."
+    },
+    "function:tests/test_sources.py:test_upload_validation_and_content_addressing": {
+      "name": "test_upload_validation_and_content_addressing",
+      "type": "function",
+      "summary": "Verifies upload validation and content addressing."
+    },
+    "function:tests/test_sources.py:test_upload_rejects_unknown_type": {
+      "name": "test_upload_rejects_unknown_type",
+      "type": "function",
+      "summary": "Verifies upload rejects unknown type."
+    },
+    "file:tests/test_training.py": {
+      "name": "test_training.py",
+      "type": "file",
+      "summary": "Tests dataset normalization and combination, PEFT and Unsloth loading, trainer configuration, compute dtypes, and conversation formatting."
+    },
+    "function:tests/test_training.py:test_normalize_prompt_completion_columns": {
+      "name": "test_normalize_prompt_completion_columns",
+      "type": "function",
+      "summary": "Verifies normalize prompt completion columns."
+    },
+    "function:tests/test_training.py:test_normalize_preference_columns_preserves_conversations": {
+      "name": "test_normalize_preference_columns_preserves_conversations",
+      "type": "function",
+      "summary": "Verifies normalize preference columns preserves conversations."
+    },
+    "function:tests/test_training.py:test_small_dataset_skips_eval_split": {
+      "name": "test_small_dataset_skips_eval_split",
+      "type": "function",
+      "summary": "Verifies small dataset skips eval split."
+    },
+    "function:tests/test_training.py:test_combine_datasets_preserves_all_rows_and_shuffles": {
+      "name": "test_combine_datasets_preserves_all_rows_and_shuffles",
+      "type": "function",
+      "summary": "Verifies combine datasets preserves all rows and shuffles."
+    },
+    "function:tests/test_training.py:test_combined_max_samples_is_global_and_deterministic": {
+      "name": "test_combined_max_samples_is_global_and_deterministic",
+      "type": "function",
+      "summary": "Verifies combined max samples is global and deterministic."
+    },
+    "function:tests/test_training.py:test_combine_datasets_reports_incompatible_normalized_schemas": {
+      "name": "test_combine_datasets_reports_incompatible_normalized_schemas",
+      "type": "function",
+      "summary": "Verifies combine datasets reports incompatible normalized schemas."
+    },
+    "function:tests/test_training.py:test_combine_datasets_identifies_source_load_failure": {
+      "name": "test_combine_datasets_identifies_source_load_failure",
+      "type": "function",
+      "summary": "Verifies combine datasets identifies source load failure."
+    },
+    "function:tests/test_training.py:test_unsloth_loader_uses_optimized_qlora_settings": {
+      "name": "test_unsloth_loader_uses_optimized_qlora_settings",
+      "type": "function",
+      "summary": "Checks that the Unsloth model loader applies its optimized QLoRA configuration."
+    },
+    "function:tests/test_training.py:test_unsloth_reward_loader_keeps_score_head": {
+      "name": "test_unsloth_reward_loader_keeps_score_head",
+      "type": "function",
+      "summary": "Checks that reward-model loading preserves the score head when using Unsloth."
+    },
+    "function:tests/test_training.py:test_peft_methods_build_expected_adapter_and_quantization": {
+      "name": "test_peft_methods_build_expected_adapter_and_quantization",
+      "type": "function",
+      "summary": "Verifies peft methods build expected adapter and quantization."
+    },
+    "function:tests/test_training.py:test_reward_peft_config_preserves_score_head": {
+      "name": "test_reward_peft_config_preserves_score_head",
+      "type": "function",
+      "summary": "Verifies reward peft config preserves score head."
+    },
+    "function:tests/test_training.py:test_qoft_compatibility_passes_dispatcher_config": {
+      "name": "test_qoft_compatibility_passes_dispatcher_config",
+      "type": "function",
+      "summary": "Verifies qoft compatibility passes dispatcher config."
+    },
+    "function:tests/test_training.py:test_every_approach_resolves_installed_trainer": {
+      "name": "test_every_approach_resolves_installed_trainer",
+      "type": "function",
+      "summary": "Verifies every approach resolves installed trainer."
+    },
+    "function:tests/test_training.py:test_alignment_trainer_config_includes_beta": {
+      "name": "test_alignment_trainer_config_includes_beta",
+      "type": "function",
+      "summary": "Verifies alignment trainer config includes beta."
+    },
+    "function:tests/test_training.py:test_resolve_compute_dtype": {
+      "name": "test_resolve_compute_dtype",
+      "type": "function",
+      "summary": "Verifies resolve compute dtype."
+    },
+    "function:tests/test_training.py:test_fp32_trainer_config_disables_mixed_precision_flags": {
+      "name": "test_fp32_trainer_config_disables_mixed_precision_flags",
+      "type": "function",
+      "summary": "Verifies fp32 trainer config disables mixed precision flags."
+    },
+    "function:tests/test_training.py:test_format_conversations_applies_chat_template_to_single_and_batch": {
+      "name": "test_format_conversations_applies_chat_template_to_single_and_batch",
+      "type": "function",
+      "summary": "Verifies format conversations applies chat template to single and batch."
+    },
+    "file:tests/test_tutorial.py": {
+      "name": "test_tutorial.py",
+      "type": "file",
+      "summary": "Validates the generated zero-to-mastery tutorial, linked HTML pages, manifest hashes, reference dataset, and matching PDF artifacts."
+    },
+    "function:tests/test_tutorial.py:sha256": {
+      "name": "sha256",
+      "type": "function",
+      "summary": "Verifies sha256."
+    },
+    "function:tests/test_tutorial.py:test_tutorial_has_complete_progression": {
+      "name": "test_tutorial_has_complete_progression",
+      "type": "function",
+      "summary": "Verifies tutorial has complete progression."
+    },
+    "function:tests/test_tutorial.py:test_preference_lab_dataset_is_well_formed": {
+      "name": "test_preference_lab_dataset_is_well_formed",
+      "type": "function",
+      "summary": "Verifies preference lab dataset is well formed."
+    },
+    "function:tests/test_tutorial.py:test_generated_manifest_matches_files": {
+      "name": "test_generated_manifest_matches_files",
+      "type": "function",
+      "summary": "Verifies generated manifest matches files."
+    },
+    "function:tests/test_tutorial.py:test_generated_text_assets_use_portable_line_endings": {
+      "name": "test_generated_text_assets_use_portable_line_endings",
+      "type": "function",
+      "summary": "Verifies generated text assets use portable line endings."
+    },
+    "function:tests/test_tutorial.py:test_generated_pages_have_valid_local_links": {
+      "name": "test_generated_pages_have_valid_local_links",
+      "type": "function",
+      "summary": "Verifies generated pages have valid local links."
+    },
+    "function:tests/test_tutorial.py:test_published_and_canonical_pdfs_are_identical": {
+      "name": "test_published_and_canonical_pdfs_are_identical",
+      "type": "function",
+      "summary": "Verifies published and canonical pdfs are identical."
+    },
+    "class:tests/test_tutorial.py:PageParser": {
+      "name": "PageParser",
+      "type": "class",
+      "summary": "HTML parser helper that collects page anchors and local links for tutorial validation."
+    },
+    "file:tests/test_worker.py": {
+      "name": "test_worker.py",
+      "type": "file",
+      "summary": "Tests that the training worker schedules queue handoff after both successful and failed terminal runs."
+    },
+    "function:tests/test_worker.py:test_worker_schedules_queue_handoff_after_terminal_status": {
+      "name": "test_worker_schedules_queue_handoff_after_terminal_status",
+      "type": "function",
+      "summary": "Verifies a successful worker completion schedules the next queued job."
+    },
+    "function:tests/test_worker.py:test_worker_failure_still_schedules_queue_handoff": {
+      "name": "test_worker_failure_still_schedules_queue_handoff",
+      "type": "function",
+      "summary": "Verifies a failed worker completion still schedules the next queued job."
+    },
+    "config:unsloth-runtime/pyproject.toml": {
+      "name": "pyproject.toml",
+      "type": "config",
+      "summary": "UV project configuration for the isolated Python 3.13 Unsloth runtime, pinning CUDA-enabled PyTorch, TorchAO, torchvision, and Unsloth."
+    }
+  },
+  "totalNodes": 289,
+  "totalEdges": 473
+}

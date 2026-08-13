@@ -1,0 +1,49 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {
+      "path": ".firecrawl/search-unsloth-auto-docstring.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".firecrawl/search-unsloth-windows-nodeps.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".firecrawl/search-unsloth-windows-torchao.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".firecrawl/search-unsloth-windows-versions.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
+      "language": "markdown",
+      "sizeLines": 395,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md",
+      "language": "markdown",
+      "sizeLines": 512,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    ".firecrawl/search-unsloth-auto-docstring.json": [],
+    ".firecrawl/search-unsloth-windows-nodeps.json": [],
+    ".firecrawl/search-unsloth-windows-torchao.json": [],
+    ".firecrawl/search-unsloth-windows-versions.json": [],
+    ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md": [],
+    ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md": []
+  }
+}

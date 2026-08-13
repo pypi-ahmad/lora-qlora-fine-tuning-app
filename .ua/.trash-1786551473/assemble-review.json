@@ -1,0 +1,13 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "The merge report contains no mechanical corrections or unresolved items.",
+    "All 10 import relationships represented by the non-empty import map entries already have file-level imports edges.",
+    "The assembled graph has no missing node IDs, unknown node types or complexity values, duplicate IDs, or dangling edges."
+  ]
+}

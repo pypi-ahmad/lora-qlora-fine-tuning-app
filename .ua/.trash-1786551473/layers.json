@@ -1,0 +1,80 @@
+[
+  {
+    "id": "layer:streamlit-ui",
+    "name": "Streamlit User Interface",
+    "description": "The Streamlit entry point and task-oriented pages that guide users through system checks, model and dataset setup, training, monitoring, review, GPU memory, and Ollama use.",
+    "nodeIds": [
+      "file:streamlit_app.py",
+      "file:app_pages/dataset.py",
+      "file:app_pages/gpu_memory.py",
+      "file:app_pages/model.py",
+      "file:app_pages/monitor.py",
+      "file:app_pages/ollama.py",
+      "file:app_pages/review.py",
+      "file:app_pages/system.py",
+      "file:app_pages/training.py"
+    ]
+  },
+  {
+    "id": "layer:training-domain",
+    "name": "Training Domain and Runtime",
+    "description": "LoRA and QLoRA configuration, data and model acquisition, hardware inspection, job lifecycle management, worker execution, inference, and Ollama integration.",
+    "nodeIds": [
+      "file:src/lora_finetune_studio/__init__.py",
+      "file:src/lora_finetune_studio/cli.py",
+      "file:src/lora_finetune_studio/hardware.py",
+      "file:src/lora_finetune_studio/inference.py",
+      "file:src/lora_finetune_studio/jobs.py",
+      "file:src/lora_finetune_studio/lifecycle.py",
+      "file:src/lora_finetune_studio/models.py",
+      "file:src/lora_finetune_studio/ollama.py",
+      "file:src/lora_finetune_studio/sources.py",
+      "file:src/lora_finetune_studio/training.py",
+      "file:src/lora_finetune_studio/worker.py",
+      "file:examples/sft_sample.jsonl"
+    ]
+  },
+  {
+    "id": "layer:runtime-configuration",
+    "name": "Runtime Configuration and Launchers",
+    "description": "Cross-platform launch scripts and project settings that establish the uv-managed Python environment and Streamlit runtime.",
+    "nodeIds": [
+      "file:Launch LoRA Studio.cmd",
+      "file:Launch LoRA Studio.sh",
+      "file:.python-version",
+      "config:pyproject.toml",
+      "config:.streamlit/config.toml"
+    ]
+  },
+  {
+    "id": "layer:quality-automation",
+    "name": "Quality and Automation",
+    "description": "Pytest coverage for the UI and training runtime plus the GitHub Actions workflow that validates the project on supported platforms.",
+    "nodeIds": [
+      "file:tests/test_app.py",
+      "file:tests/test_hardware.py",
+      "file:tests/test_inference.py",
+      "file:tests/test_jobs.py",
+      "file:tests/test_lifecycle.py",
+      "file:tests/test_models.py",
+      "file:tests/test_sources.py",
+      "file:tests/test_training.py",
+      "pipeline:.github/workflows/ci.yml"
+    ]
+  },
+  {
+    "id": "layer:documentation",
+    "name": "Documentation and Project Guidance",
+    "description": "User, technical, contribution, security, conduct, release, and web handbook materials for operating and evolving LoRA Studio.",
+    "nodeIds": [
+      "document:CHANGELOG.md",
+      "document:CODE_OF_CONDUCT.md",
+      "document:CONTRIBUTING.md",
+      "document:README.md",
+      "document:SECURITY.md",
+      "document:TECHNICAL.md",
+      "document:USAGE.md",
+      "file:docs/index.html"
+    ]
+  }
+]

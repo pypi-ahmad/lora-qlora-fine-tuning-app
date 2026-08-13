@@ -126,9 +126,12 @@ first run so the exercise applies to Windows and Linux. Save the settings.</p>
 <p>On Review &amp; run, verify model, dataset, backend, effective compute type, method, length,
 20-step cap, sample cap, learning rate, batching, and Hub upload disabled. Acknowledge a
 model-size warning only after understanding it.</p>
-<p>Start training. The browser switches to Monitor while a child process runs.</p>
+<p>Start training. The browser switches to Monitor while a child process runs. Additional experiments
+can be submitted from Review &amp; run; they remain in a durable first-in-first-out queue.</p>
 <h3 id="step-6-read-the-monitor">Step 6: read the monitor</h3>
-<p>Observe state, message, progress, metrics, and <code>training.log</code>. Identify:</p>
+<p>Observe state, message, the progress bar and whole-number percentage, metrics, and <code>training.log</code>.
+The percentage is a best-effort view of completed trainer steps, not an estimated time remaining.
+Identify:</p>
 <ul>
 <li>when model and dataset loading finish;</li>
 <li>the first reported training loss;</li>

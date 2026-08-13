@@ -23,6 +23,7 @@ from reportlab import rl_config
 
 rl_config.invariant = 1
 
+from pypdf import PdfReader
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import A4
@@ -361,8 +362,9 @@ def build_site_files(
             page_class="chapter-page",
         )
         files[chapter.filename] = page.encode("utf-8")
-    files["assets/site.css"] = (ASSET_SOURCE / "site.css").read_bytes()
-    files["assets/site.js"] = (ASSET_SOURCE / "site.js").read_bytes()
+    for asset_name in ("site.css", "site.js"):
+        asset_text = (ASSET_SOURCE / asset_name).read_text(encoding="utf-8")
+        files[f"assets/{asset_name}"] = asset_text.replace("\r\n", "\n").encode("utf-8")
     files["assets/search-index.js"] = build_search_index(chapters).encode("utf-8")
     files[f"downloads/{PDF_NAME}"] = pdf_bytes
     return files
@@ -864,6 +866,13 @@ def write_site(files: dict[str, bytes], root: Path) -> None:
             stale.unlink()
 
 
+def portable_text_bytes(data: bytes, relative: str) -> bytes:
+    """Normalize text so Windows checkouts compare equal to committed LF bytes."""
+    if Path(relative).suffix.lower() in {".html", ".css", ".js", ".json"}:
+        return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return data
+
+
 def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
     complete = dict(expected)
     complete[MANIFEST_NAME] = manifest_bytes(complete)
@@ -872,7 +881,9 @@ def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
         current = root / relative
         if not current.is_file():
             differences.append(f"missing: {current.relative_to(ROOT)}")
-        elif current.read_bytes() != data:
+        elif portable_text_bytes(current.read_bytes(), relative) != portable_text_bytes(
+            data, relative
+        ):
             differences.append(f"stale: {current.relative_to(ROOT)}")
     for relative in sorted(read_manifest(root).difference(complete)):
         differences.append(
@@ -881,20 +892,37 @@ def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
     return differences
 
 
+def pdf_content_signature(path: Path) -> tuple[object, ...]:
+    reader = PdfReader(path)
+    metadata = reader.metadata
+    pages = tuple(
+        (
+            float(page.mediabox.width),
+            float(page.mediabox.height),
+            " ".join((page.extract_text() or "").split()),
+        )
+        for page in reader.pages
+    )
+    return metadata.title, metadata.author, metadata.subject, pages
+
+
 def run(check: bool) -> int:
     _, preamble_html, chapters = load_course()
     if check:
+        canonical_pdf = PDF_ROOT / PDF_NAME
+        if not canonical_pdf.is_file():
+            print("Tutorial outputs are not synchronized:")
+            print(f"- missing: {canonical_pdf.relative_to(ROOT)}")
+            return 1
         with tempfile.TemporaryDirectory(prefix="tutorial-build-") as temporary:
             temporary_root = Path(temporary)
             pdf_path = temporary_root / PDF_NAME
             build_pdf(chapters, pdf_path)
-            pdf_bytes = pdf_path.read_bytes()
-            site_files = build_site_files(preamble_html, chapters, pdf_bytes)
+            site_files = build_site_files(
+                preamble_html, chapters, canonical_pdf.read_bytes()
+            )
             differences = compare_files(site_files, DOCS_ROOT)
-            canonical_pdf = PDF_ROOT / PDF_NAME
-            if not canonical_pdf.is_file():
-                differences.append(f"missing: {canonical_pdf.relative_to(ROOT)}")
-            elif canonical_pdf.read_bytes() != pdf_bytes:
+            if pdf_content_signature(canonical_pdf) != pdf_content_signature(pdf_path):
                 differences.append(f"stale: {canonical_pdf.relative_to(ROOT)}")
             if differences:
                 print("Tutorial outputs are not synchronized:")

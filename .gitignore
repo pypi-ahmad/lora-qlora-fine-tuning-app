@@ -8,9 +8,3 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .coverage
-
-# Local analysis artifacts
-.codegraph/
-.code-review-graph/
-.ua/
-graphify-out/

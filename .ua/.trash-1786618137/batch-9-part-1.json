@@ -1,0 +1,1512 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/lora_finetune_studio/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "summary": "Small standard-library HTTP client for listing local Ollama models and generating a non-streamed response.",
+      "tags": [
+        "ollama",
+        "http-client",
+        "inference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "function",
+      "name": "_request",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        11,
+        22
+      ],
+      "summary": "Builds and executes an Ollama HTTP request, decoding the JSON response.",
+      "tags": [
+        "utility",
+        "ollama",
+        "http-client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "function",
+      "name": "list_models",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        25,
+        27
+      ],
+      "summary": "Retrieves the names of locally available Ollama models.",
+      "tags": [
+        "utility",
+        "ollama",
+        "http-client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "function",
+      "name": "generate",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        30,
+        34
+      ],
+      "summary": "Requests a non-streamed completion from a selected local Ollama model.",
+      "tags": [
+        "utility",
+        "ollama",
+        "http-client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:streamlit_app.py",
+      "type": "file",
+      "name": "streamlit_app.py",
+      "filePath": "streamlit_app.py",
+      "summary": "Streamlit application entry point that initializes shared session state, advances the training queue, configures navigation, and handles graceful shutdown.",
+      "tags": [
+        "entry-point",
+        "streamlit",
+        "queue-management",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_app.py",
+      "type": "file",
+      "name": "test_app.py",
+      "filePath": "tests/test_app.py",
+      "summary": "End-to-end Streamlit smoke test covering startup without Ollama, navigation, dataset removal, training controls, and application shutdown.",
+      "tags": [
+        "test",
+        "streamlit",
+        "integration",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "function",
+      "name": "test_app_starts_without_ollama",
+      "filePath": "tests/test_app.py",
+      "lineRange": [
+        11,
+        196
+      ],
+      "summary": "Exercises the Streamlit application workflow with external services stubbed out.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_hardware.py",
+      "type": "file",
+      "name": "test_hardware.py",
+      "filePath": "tests/test_hardware.py",
+      "summary": "Unit tests for hardware detection, CUDA memory helpers, model-size warnings, and platform-specific system scanning.",
+      "tags": [
+        "test",
+        "hardware",
+        "cuda",
+        "system"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "function",
+      "name": "test_model_size_warning_uses_detected_limit",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        15,
+        28
+      ],
+      "summary": "Verifies model size warning uses detected limit.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "function",
+      "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        31,
+        47
+      ],
+      "summary": "Verifies cuda memory stats reports global and process usage.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "function",
+      "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        50,
+        60
+      ],
+      "summary": "Verifies release unused cuda memory runs gc and empties cache.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_cuda_memory_helpers_reject_cpu_only_system",
+      "type": "function",
+      "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        63,
+        69
+      ],
+      "summary": "Verifies cuda memory helpers reject cpu only system.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "function",
+      "name": "test_system_scan_reports_live_resources_without_installing",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        72,
+        106
+      ],
+      "summary": "Verifies system scan reports live resources without installing.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "function",
+      "name": "test_system_scan_recognizes_native_linux",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        109,
+        118
+      ],
+      "summary": "Verifies system scan recognizes native linux.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_inference.py",
+      "type": "file",
+      "name": "test_inference.py",
+      "filePath": "tests/test_inference.py",
+      "summary": "Regression test ensuring failed model loading releases CUDA memory during inference setup.",
+      "tags": [
+        "test",
+        "inference",
+        "cuda",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "function",
+      "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+      "filePath": "tests/test_inference.py",
+      "lineRange": [
+        6,
+        25
+      ],
+      "summary": "Verifies generate text releases cuda memory after loading failure.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_jobs.py",
+      "type": "file",
+      "name": "test_jobs.py",
+      "filePath": "tests/test_jobs.py",
+      "summary": "Comprehensive tests for persistent training runs, FIFO dispatch, worker lifecycle handling, cancellation, and Unsloth interpreter selection.",
+      "tags": [
+        "test",
+        "job-queue",
+        "workers",
+        "persistence"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "function",
+      "name": "test_create_run_persists_safe_config",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        11,
+        28
+      ],
+      "summary": "Verifies create run persists safe config.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_create_run_appends_jobs_in_fifo_order",
+      "type": "function",
+      "name": "test_create_run_appends_jobs_in_fifo_order",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        31,
+        41
+      ],
+      "summary": "Verifies create run appends jobs in fifo order.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_dispatch_starts_only_first_waiting_run",
+      "type": "function",
+      "name": "test_dispatch_starts_only_first_waiting_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        44,
+        66
+      ],
+      "summary": "Verifies dispatch starts only first waiting run.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancelling_running_job_starts_next_waiting_run",
+      "type": "function",
+      "name": "test_cancelling_running_job_starts_next_waiting_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        69,
+        110
+      ],
+      "summary": "Verifies cancelling running job starts next waiting run.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_dispatch_marks_dead_worker_failed_before_continuing",
+      "type": "function",
+      "name": "test_dispatch_marks_dead_worker_failed_before_continuing",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        113,
+        134
+      ],
+      "summary": "Verifies dispatch marks dead worker failed before continuing.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "type": "function",
+      "name": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        137,
+        164
+      ],
+      "summary": "Verifies resume appends checkpoint run to queue when worker is active.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_list_runs_orders_active_then_waiting_then_history",
+      "type": "function",
+      "name": "test_list_runs_orders_active_then_waiting_then_history",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        167,
+        190
+      ],
+      "summary": "Verifies list runs orders active then waiting then history.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_dispatch_marks_launch_failure_and_continues_queue",
+      "type": "function",
+      "name": "test_dispatch_marks_launch_failure_and_continues_queue",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        193,
+        216
+      ],
+      "summary": "Verifies dispatch marks launch failure and continues queue.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "type": "function",
+      "name": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        219,
+        242
+      ],
+      "summary": "Verifies dispatch waits for terminal worker process to exit.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_atomic_json_replaces_existing_file",
+      "type": "function",
+      "name": "test_atomic_json_replaces_existing_file",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        245,
+        250
+      ],
+      "summary": "Verifies atomic json replaces existing file.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:_running_test_run",
+      "type": "function",
+      "name": "_running_test_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        268,
+        280
+      ],
+      "summary": "Verifies  running test run.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "function",
+      "name": "test_cancel_run_stops_only_its_training_worker",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        283,
+        299
+      ],
+      "summary": "Verifies cancel run stops only its training worker.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "function",
+      "name": "test_cancel_run_rejects_unrelated_process",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        302,
+        312
+      ],
+      "summary": "Verifies cancel run rejects unrelated process.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancel_active_run_delegates_to_active_run",
+      "type": "function",
+      "name": "test_cancel_active_run_delegates_to_active_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        315,
+        325
+      ],
+      "summary": "Verifies cancel active run delegates to active run.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "type": "function",
+      "name": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        328,
+        358
+      ],
+      "summary": "Verifies launch run uses unsloth interpreter and source path.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "type": "function",
+      "name": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        361,
+        383
+      ],
+      "summary": "Verifies launch run keeps current interpreter when unsloth is off.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "type": "function",
+      "name": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        386,
+        412
+      ],
+      "summary": "Verifies launch run preserves base interpreter across worker handoffs.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_launch_run_rejects_missing_unsloth_runtime",
+      "type": "function",
+      "name": "test_launch_run_rejects_missing_unsloth_runtime",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        415,
+        435
+      ],
+      "summary": "Verifies launch run rejects missing unsloth runtime.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "class",
+      "name": "FakeWorkerProcess",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        253,
+        265
+      ],
+      "summary": "Test double that simulates a managed worker process for job lifecycle assertions.",
+      "tags": [
+        "test",
+        "helper",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_lifecycle.py",
+      "type": "file",
+      "name": "test_lifecycle.py",
+      "filePath": "tests/test_lifecycle.py",
+      "summary": "Unit test for scheduling the application exit callback on a daemon timer.",
+      "tags": [
+        "test",
+        "lifecycle",
+        "shutdown",
+        "timer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "function",
+      "name": "test_schedule_application_exit_uses_daemon_timer",
+      "filePath": "tests/test_lifecycle.py",
+      "lineRange": [
+        4,
+        25
+      ],
+      "summary": "Verifies schedule application exit uses daemon timer.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_models.py",
+      "type": "file",
+      "name": "test_models.py",
+      "filePath": "tests/test_models.py",
+      "summary": "Validation tests for training configuration serialization, recipe compatibility, dataset constraints, presets, and compute-type selection.",
+      "tags": [
+        "test",
+        "configuration",
+        "validation",
+        "training"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_round_trip",
+      "type": "function",
+      "name": "test_config_round_trip",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        18,
+        31
+      ],
+      "summary": "Verifies config round trip.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_old_config_migrates_single_dataset_and_standard_backend",
+      "type": "function",
+      "name": "test_old_config_migrates_single_dataset_and_standard_backend",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        34,
+        54
+      ],
+      "summary": "Verifies old config migrates single dataset and standard backend.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "function",
+      "name": "test_config_requires_push_destination",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        57,
+        66
+      ],
+      "summary": "Verifies config requires push destination.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_mixed_and_duplicate_datasets",
+      "type": "function",
+      "name": "test_config_rejects_mixed_and_duplicate_datasets",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        69,
+        83
+      ],
+      "summary": "Verifies config rejects mixed and duplicate datasets.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_recipe_matrix_accepts_all_advertised_pairs",
+      "type": "function",
+      "name": "test_recipe_matrix_accepts_all_advertised_pairs",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        88,
+        116
+      ],
+      "summary": "Verifies recipe matrix accepts all advertised pairs.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "type": "function",
+      "name": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        119,
+        138
+      ],
+      "summary": "Verifies config rejects approach dataset mismatch and unsloth oft.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_unsloth_fp32",
+      "type": "function",
+      "name": "test_config_rejects_unsloth_fp32",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        141,
+        156
+      ],
+      "summary": "Verifies config rejects unsloth fp32.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_kto_requires_actual_batch_size_above_one",
+      "type": "function",
+      "name": "test_kto_requires_actual_batch_size_above_one",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        159,
+        179
+      ],
+      "summary": "Verifies kto requires actual batch size above one.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_learning_rate_outside_supported_range",
+      "type": "function",
+      "name": "test_config_rejects_learning_rate_outside_supported_range",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        183,
+        199
+      ],
+      "summary": "Verifies config rejects learning rate outside supported range.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_invalid_maximum_samples",
+      "type": "function",
+      "name": "test_config_rejects_invalid_maximum_samples",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        203,
+        217
+      ],
+      "summary": "Verifies config rejects invalid maximum samples.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_rejects_invalid_maximum_gradient_norm",
+      "type": "function",
+      "name": "test_config_rejects_invalid_maximum_gradient_norm",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        221,
+        235
+      ],
+      "summary": "Verifies config rejects invalid maximum gradient norm.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_compute_type_resolution",
+      "type": "function",
+      "name": "test_compute_type_resolution",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        248,
+        251
+      ],
+      "summary": "Verifies compute type resolution.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_run_path_rejects_traversal",
+      "type": "function",
+      "name": "test_run_path_rejects_traversal",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        254,
+        256
+      ],
+      "summary": "Verifies run path rejects traversal.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_preset_values_are_bounded",
+      "type": "function",
+      "name": "test_preset_values_are_bounded",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        259,
+        260
+      ],
+      "summary": "Verifies preset values are bounded.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_helpers_reject_cpu_only_system",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_helpers_reject_cpu_only_system",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_inference.py",
+      "target": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_inference.py",
+      "target": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_appends_jobs_in_fifo_order",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_appends_jobs_in_fifo_order",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_starts_only_first_waiting_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_starts_only_first_waiting_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancelling_running_job_starts_next_waiting_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancelling_running_job_starts_next_waiting_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_marks_dead_worker_failed_before_continuing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_marks_dead_worker_failed_before_continuing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_list_runs_orders_active_then_waiting_then_history",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_list_runs_orders_active_then_waiting_then_history",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_marks_launch_failure_and_continues_queue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_marks_launch_failure_and_continues_queue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_atomic_json_replaces_existing_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_atomic_json_replaces_existing_file",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:_running_test_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:_running_test_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_active_run_delegates_to_active_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_active_run_delegates_to_active_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_rejects_missing_unsloth_runtime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_launch_run_rejects_missing_unsloth_runtime",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_lifecycle.py",
+      "target": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_lifecycle.py",
+      "target": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_round_trip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_round_trip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_old_config_migrates_single_dataset_and_standard_backend",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_old_config_migrates_single_dataset_and_standard_backend",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_mixed_and_duplicate_datasets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_mixed_and_duplicate_datasets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_recipe_matrix_accepts_all_advertised_pairs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_recipe_matrix_accepts_all_advertised_pairs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_unsloth_fp32",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_unsloth_fp32",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_kto_requires_actual_batch_size_above_one",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_kto_requires_actual_batch_size_above_one",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_learning_rate_outside_supported_range",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_learning_rate_outside_supported_range",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_invalid_maximum_samples",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_invalid_maximum_samples",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_invalid_maximum_gradient_norm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_rejects_invalid_maximum_gradient_norm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_compute_type_resolution",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_compute_type_resolution",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_run_path_rejects_traversal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_run_path_rejects_traversal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_preset_values_are_bounded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_preset_values_are_bounded",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

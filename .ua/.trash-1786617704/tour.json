@@ -1,0 +1,65 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "Start with the README to learn the studio's purpose: local, parameter-efficient LLM post-training on NVIDIA GPUs. It introduces the supported recipes, platform-specific setup, and a smoke-test path that frames the rest of this tour."
+    ,"nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "Application Assembly",
+    "description": "The Streamlit entry point initializes the shared application state and brings the guided workflow together. With the project context from Step 1, this is the top-level place to see how a user moves among setup, data, training, review, and monitoring."
+    ,"nodeIds": ["file:streamlit_app.py"]
+  },
+  {
+    "order": 3,
+    "title": "Runtime Configuration",
+    "description": "The project manifest defines the package, Python and machine-learning dependencies, installed command-line entry point, and CUDA-aware dependency source. It explains the runtime assumptions behind the Streamlit interface introduced in Step 2."
+    ,"nodeIds": ["config:pyproject.toml", "config:.streamlit/config.toml"]
+  },
+  {
+    "order": 4,
+    "title": "Shared Domain Contracts",
+    "description": "The domain model supplies the validated contracts for datasets, training choices, hardware, presets, and job state. Because this file has the strongest fan-in among the application files, it is the vocabulary that connects the UI choices to the runtime behavior covered next."
+    ,"nodeIds": ["file:src/lora_finetune_studio/models.py"]
+  },
+  {
+    "order": 5,
+    "title": "Dataset Preparation",
+    "description": "The dataset page gathers and records pending sources in the user workflow, while the sources module handles repository access, uploads, inspection, and loading. Together they establish that data is validated and normalized before it reaches the training runtime."
+    ,"nodeIds": ["file:app_pages/dataset.py", "file:src/lora_finetune_studio/sources.py"],
+    "languageLesson": "Python data contracts make validation explicit: collect untrusted UI or file input at the boundary, then pass validated objects through the rest of the workflow."
+  },
+  {
+    "order": 6,
+    "title": "Training Configuration",
+    "description": "The training page converts user intent into a selected approach, adapter method, precision, preset, and hyperparameters. Building on the dataset and domain contracts, it keeps only compatible choices available before the review stage creates a run."
+    ,"nodeIds": ["file:app_pages/training.py", "file:app_pages/review.py"]
+  },
+  {
+    "order": 7,
+    "title": "Training Engine",
+    "description": "The training module is the core runtime: it prepares datasets, configures PEFT and quantization, chooses a TRL recipe, and can use Unsloth acceleration where supported. This is where the choices from Step 6 become an adapter-producing local training execution."
+    ,"nodeIds": ["file:src/lora_finetune_studio/training.py"],
+    "languageLesson": "Python's dependency-based design lets one recipe-driven function select compatible trainer and adapter configurations without duplicating the surrounding dataset and artifact workflow."
+  },
+  {
+    "order": 8,
+    "title": "Durable Job Queue",
+    "description": "The job manager provides the single-worker FIFO queue, durable status files, subprocess lifecycle, cancellation, and recovery. Its broad fan-out reflects its orchestration role, while the worker process isolates an individual training run and advances the next queued job afterward."
+    ,"nodeIds": ["file:src/lora_finetune_studio/jobs.py", "file:src/lora_finetune_studio/worker.py"]
+  },
+  {
+    "order": 9,
+    "title": "Monitoring And Inference",
+    "description": "The monitor page makes queue order, percent progress, logs, metrics, cancellation, and recovery visible to the user. After a run completes, the inference module loads a base model with an optional adapter for local comparison and releases CUDA resources when finished."
+    ,"nodeIds": ["file:app_pages/monitor.py", "file:src/lora_finetune_studio/inference.py"]
+  },
+  {
+    "order": 10,
+    "title": "Quality And Operations",
+    "description": "The training tests protect the recipe, PEFT, Unsloth, data-preparation, and precision behaviors introduced earlier. The cross-platform CI workflow installs with uv and runs formatting, linting, type checks, tests, and tutorial generation, turning those expectations into repeatable checks."
+    ,"nodeIds": ["file:tests/test_training.py", "pipeline:.github/workflows/ci.yml"],
+    "languageLesson": "GitHub Actions organize automation through triggers, jobs, and ordered steps; running the same checks on Windows and Ubuntu protects the app's local-platform promise."
+  }
+]
