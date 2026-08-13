@@ -33,8 +33,15 @@ class PageParser(HTMLParser):
             self.has_title = True
 
 
+def portable_bytes(path: Path) -> bytes:
+    data = path.read_bytes()
+    if path.suffix.lower() in {".html", ".css", ".js", ".json"}:
+        return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return data
+
+
 def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(portable_bytes(path)).hexdigest()
 
 
 def test_tutorial_has_complete_progression() -> None:
@@ -88,6 +95,22 @@ def test_generated_manifest_matches_files() -> None:
         path = DOCS / relative
         assert path.is_file(), relative
         assert sha256(path) == expected_digest, relative
+
+
+def test_text_digest_is_stable_across_line_endings(tmp_path: Path) -> None:
+    lf = tmp_path / "lf.css"
+    crlf = tmp_path / "crlf.css"
+    lf.write_bytes(b"body { color: red; }\n")
+    crlf.write_bytes(b"body { color: red; }\r\n")
+    assert sha256(lf) == sha256(crlf)
+
+
+def test_generated_text_assets_use_portable_line_endings() -> None:
+    for name in ("site.css", "site.js"):
+        source = portable_bytes(ROOT / "scripts" / "tutorial_assets" / name)
+        published = portable_bytes(DOCS / "assets" / name)
+        assert published == source, name
+        assert b"\r" not in published, name
 
 
 def test_generated_pages_have_valid_local_links() -> None:

@@ -10,6 +10,7 @@ from pathlib import Path
 
 from .jobs import write_json_atomic
 from .models import JobState, JobStatus, TrainingConfig
+from .queue_dispatcher import schedule_queue_handoff
 from .sources import get_hf_token
 
 
@@ -51,6 +52,10 @@ def main() -> int:
             ).to_dict(),
         )
         traceback.print_exc()
+        try:
+            schedule_queue_handoff(os.getpid())
+        except OSError:
+            traceback.print_exc()
         return 1
     write_json_atomic(
         status_path,
@@ -63,6 +68,10 @@ def main() -> int:
             artifact_dir=config.output_dir,
         ).to_dict(),
     )
+    try:
+        schedule_queue_handoff(os.getpid())
+    except OSError:
+        traceback.print_exc()
     return 0
 
 

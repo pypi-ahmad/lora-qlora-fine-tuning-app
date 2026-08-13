@@ -1,0 +1,1478 @@
+{
+  "nodes": [
+    {
+      "id": "file:.python-version",
+      "type": "file",
+      "name": ".python-version",
+      "filePath": ".python-version",
+      "summary": "Pins the uv-managed project interpreter to Python 3.14.",
+      "tags": [
+        "python",
+        "runtime",
+        "version-pin"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.streamlit/config.toml",
+      "type": "config",
+      "name": "config.toml",
+      "filePath": ".streamlit/config.toml",
+      "summary": "Configures Streamlit's visual theme and server behavior for the local studio.",
+      "tags": [
+        "configuration",
+        "streamlit",
+        "theme"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/dataset.py",
+      "type": "file",
+      "name": "dataset.py",
+      "filePath": "app_pages/dataset.py",
+      "summary": "Renders the dataset setup page, supporting Hugging Face datasets and local uploads, previewing rows, and saving column mappings for training.",
+      "tags": [
+        "streamlit",
+        "dataset",
+        "validation",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/gpu_memory.py",
+      "type": "file",
+      "name": "gpu_memory.py",
+      "filePath": "app_pages/gpu_memory.py",
+      "summary": "Renders live CUDA memory metrics and safely clears unused cache owned by the Streamlit process when no training job is active.",
+      "tags": [
+        "streamlit",
+        "cuda",
+        "gpu-memory",
+        "monitoring"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/model.py",
+      "type": "file",
+      "name": "model.py",
+      "filePath": "app_pages/model.py",
+      "summary": "Renders model selection and metadata inspection, recording the selected Hugging Face model and warning when it exceeds detected hardware guidance.",
+      "tags": [
+        "streamlit",
+        "model-selection",
+        "hugging-face",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/monitor.py",
+      "type": "file",
+      "name": "monitor.py",
+      "filePath": "app_pages/monitor.py",
+      "summary": "Renders the training monitor, live job status, cancellation and resume controls, logs, and completed-adapter comparison generation.",
+      "tags": [
+        "streamlit",
+        "training",
+        "monitoring",
+        "inference"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app_pages/monitor.py:training_monitor",
+      "type": "function",
+      "name": "training_monitor",
+      "filePath": "app_pages/monitor.py",
+      "lineRange": [
+        31,
+        67
+      ],
+      "summary": "Refreshes and renders a selected training run's state, metrics, log, cancellation control, and checkpoint-resume control.",
+      "tags": [
+        "streamlit",
+        "training",
+        "monitoring",
+        "fragment"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "app_pages/ollama.py",
+      "summary": "Provides an independent Streamlit chat playground for models already installed in local Ollama.",
+      "tags": [
+        "streamlit",
+        "ollama",
+        "chat",
+        "playground"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app_pages/review.py",
+      "type": "file",
+      "name": "review.py",
+      "filePath": "app_pages/review.py",
+      "summary": "Shows the saved training configuration, applies runtime and model-size guards, and launches one local training run.",
+      "tags": [
+        "streamlit",
+        "training",
+        "review",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/system.py",
+      "type": "file",
+      "name": "system.py",
+      "filePath": "app_pages/system.py",
+      "summary": "Renders a read-only runtime readiness scan covering native platform, Python, CUDA, VRAM, integrations, and Hugging Face token access.",
+      "tags": [
+        "streamlit",
+        "system-scan",
+        "cuda",
+        "readiness"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app_pages/training.py",
+      "type": "file",
+      "name": "training.py",
+      "filePath": "app_pages/training.py",
+      "summary": "Renders PEFT and trainer settings, applies presets, validates prerequisites, and saves a TrainingConfig for review.",
+      "tags": [
+        "streamlit",
+        "training",
+        "peft",
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "function",
+      "name": "apply_preset_defaults",
+      "filePath": "app_pages/training.py",
+      "lineRange": [
+        36,
+        42
+      ],
+      "summary": "Copies the selected preset's sequence length, epochs, and accumulation values into Streamlit session state.",
+      "tags": [
+        "streamlit",
+        "preset",
+        "configuration",
+        "callback"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:docs/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "docs/index.html",
+      "summary": "Standalone zero-to-hero HTML handbook for users, engineers, and business stakeholders of the fine-tuning studio.",
+      "tags": [
+        "documentation",
+        "html",
+        "handbook",
+        "tutorial"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:examples/sft_sample.jsonl",
+      "type": "file",
+      "name": "sft_sample.jsonl",
+      "filePath": "examples/sft_sample.jsonl",
+      "summary": "Provides small JSONL examples for supervised fine-tuning dataset preparation.",
+      "tags": [
+        "example-data",
+        "sft",
+        "dataset",
+        "jsonl"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "src/lora_finetune_studio/__init__.py",
+      "summary": "Marks the LoRA Fine-tune Studio source directory as a Python package.",
+      "tags": [
+        "python",
+        "package",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/cli.py",
+      "type": "file",
+      "name": "cli.py",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "summary": "Provides the console entry point that starts Streamlit with the repository's main application file.",
+      "tags": [
+        "python",
+        "cli",
+        "entry-point",
+        "streamlit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "src/lora_finetune_studio/cli.py",
+      "lineRange": [
+        11,
+        14
+      ],
+      "summary": "Invokes Streamlit's CLI with the resolved project application path.",
+      "tags": [
+        "cli",
+        "entry-point",
+        "streamlit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/hardware.py",
+      "type": "file",
+      "name": "hardware.py",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "summary": "Detects host runtime and CUDA capabilities, reports memory, safely releases cached PyTorch VRAM, and derives model-size recommendations.",
+      "tags": [
+        "hardware",
+        "cuda",
+        "system-scan",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats",
+      "type": "class",
+      "name": "CudaMemoryStats",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        26,
+        32
+      ],
+      "summary": "Stores global GPU free and total memory alongside memory allocated and reserved by this process.",
+      "tags": [
+        "data-model",
+        "cuda",
+        "gpu-memory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:SoftwareStatus",
+      "type": "class",
+      "name": "SoftwareStatus",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        36,
+        41
+      ],
+      "summary": "Represents one detected software integration and its availability detail.",
+      "tags": [
+        "data-model",
+        "system-scan",
+        "integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/lora_finetune_studio/hardware.py:SystemScan",
+      "type": "class",
+      "name": "SystemScan",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        45,
+        58
+      ],
+      "summary": "Captures operating-system, interpreter, CUDA, resource, runtime, and integration readiness data.",
+      "tags": [
+        "data-model",
+        "system-scan",
+        "readiness"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:_package_status",
+      "type": "function",
+      "name": "_package_status",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        61,
+        66
+      ],
+      "summary": "Checks whether a Python package is installed and returns a displayable availability record.",
+      "tags": [
+        "utility",
+        "package-check",
+        "system-scan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "function",
+      "name": "scan_system",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        69,
+        115
+      ],
+      "summary": "Performs a read-only scan of platform, Python, CUDA, resources, uv environment, and supported integrations.",
+      "tags": [
+        "system-scan",
+        "runtime",
+        "validation",
+        "hardware"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "function",
+      "name": "cuda_memory_stats",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        118,
+        128
+      ],
+      "summary": "Returns current CUDA memory totals and this process's allocated and reserved memory, failing clearly without CUDA.",
+      "tags": [
+        "cuda",
+        "gpu-memory",
+        "monitoring"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "type": "function",
+      "name": "release_unused_cuda_memory",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        131,
+        136
+      ],
+      "summary": "Runs garbage collection and clears unused PyTorch CUDA cache when a CUDA device is available.",
+      "tags": [
+        "cuda",
+        "gpu-memory",
+        "cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "function",
+      "name": "detect_hardware",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        139,
+        178
+      ],
+      "summary": "Builds a HardwareProfile from the detected CUDA device, BF16 capability, VRAM, RAM, disk, and runtime recommendation.",
+      "tags": [
+        "hardware",
+        "cuda",
+        "profiling",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "function",
+      "name": "model_size_warning",
+      "filePath": "src/lora_finetune_studio/hardware.py",
+      "lineRange": [
+        181,
+        192
+      ],
+      "summary": "Returns a warning when a selected model exceeds the detected hardware's recommended parameter limit.",
+      "tags": [
+        "validation",
+        "model-selection",
+        "hardware"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/inference.py",
+      "type": "file",
+      "name": "inference.py",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "summary": "Loads a Hugging Face causal language model, optionally attaches a PEFT adapter, generates text, and releases process CUDA cache afterward.",
+      "tags": [
+        "inference",
+        "hugging-face",
+        "peft",
+        "cuda"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "function",
+      "name": "generate_text",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "lineRange": [
+        15,
+        39
+      ],
+      "summary": "Runs text generation with guaranteed CUDA cache cleanup after model loading and inference.",
+      "tags": [
+        "inference",
+        "cuda",
+        "resource-cleanup"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "function",
+      "name": "_generate_text",
+      "filePath": "src/lora_finetune_studio/inference.py",
+      "lineRange": [
+        42,
+        85
+      ],
+      "summary": "Builds quantized model and tokenizer instances, optionally loads an adapter, and decodes a generated completion.",
+      "tags": [
+        "inference",
+        "hugging-face",
+        "peft",
+        "quantization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/lifecycle.py",
+      "type": "file",
+      "name": "lifecycle.py",
+      "filePath": "src/lora_finetune_studio/lifecycle.py",
+      "summary": "Schedules a delayed process exit so Streamlit can render shutdown feedback before the server terminates.",
+      "tags": [
+        "lifecycle",
+        "shutdown",
+        "streamlit",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/lifecycle.py:schedule_application_exit",
+      "type": "function",
+      "name": "schedule_application_exit",
+      "filePath": "src/lora_finetune_studio/lifecycle.py",
+      "lineRange": [
+        10,
+        17
+      ],
+      "summary": "Starts a daemon timer that exits the application process after a short configurable delay.",
+      "tags": [
+        "lifecycle",
+        "shutdown",
+        "timer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lora_finetune_studio/ollama.py",
+      "type": "file",
+      "name": "ollama.py",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "summary": "Implements small HTTP helpers for listing locally installed Ollama models and generating chat responses.",
+      "tags": [
+        "ollama",
+        "http-client",
+        "inference",
+        "local-models"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "function",
+      "name": "_request",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        11,
+        22
+      ],
+      "summary": "Sends a JSON request to the configured local Ollama endpoint and decodes its JSON response.",
+      "tags": [
+        "http-client",
+        "ollama",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "function",
+      "name": "list_models",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        25,
+        27
+      ],
+      "summary": "Returns names of models reported by Ollama's local tags endpoint.",
+      "tags": [
+        "ollama",
+        "model-list",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "function",
+      "name": "generate",
+      "filePath": "src/lora_finetune_studio/ollama.py",
+      "lineRange": [
+        30,
+        34
+      ],
+      "summary": "Requests a non-streaming local Ollama generation and returns its response text.",
+      "tags": [
+        "ollama",
+        "inference",
+        "chat"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:streamlit_app.py",
+      "type": "file",
+      "name": "streamlit_app.py",
+      "filePath": "streamlit_app.py",
+      "summary": "Bootstraps application session state, token fallback, sidebar navigation, and safe whole-studio shutdown confirmation.",
+      "tags": [
+        "streamlit",
+        "entry-point",
+        "navigation",
+        "lifecycle"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_app.py",
+      "type": "file",
+      "name": "test_app.py",
+      "filePath": "tests/test_app.py",
+      "summary": "Exercises Streamlit navigation, shared state, UI controls, and shutdown confirmation without requiring Ollama.",
+      "tags": [
+        "test",
+        "streamlit",
+        "integration-test",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "function",
+      "name": "test_app_starts_without_ollama",
+      "filePath": "tests/test_app.py",
+      "lineRange": [
+        8,
+        62
+      ],
+      "summary": "Validates all app pages render and key Streamlit interactions work when Ollama is unavailable.",
+      "tags": [
+        "test",
+        "streamlit",
+        "integration-test",
+        "ollama"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_hardware.py",
+      "type": "file",
+      "name": "test_hardware.py",
+      "filePath": "tests/test_hardware.py",
+      "summary": "Tests hardware recommendation, CUDA-memory safety, read-only system scanning, and native Linux recognition.",
+      "tags": [
+        "test",
+        "hardware",
+        "cuda",
+        "system-scan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "function",
+      "name": "test_model_size_warning_uses_detected_limit",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        15,
+        28
+      ],
+      "summary": "Verifies hardware-aware model-size warnings use the detected parameter limit.",
+      "tags": [
+        "test",
+        "hardware",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "function",
+      "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        31,
+        47
+      ],
+      "summary": "Verifies CUDA memory reporting combines device memory with process allocation and reservation values.",
+      "tags": [
+        "test",
+        "cuda",
+        "gpu-memory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "function",
+      "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        50,
+        60
+      ],
+      "summary": "Verifies unused CUDA cache cleanup calls garbage collection and PyTorch cache clearing.",
+      "tags": [
+        "test",
+        "cuda",
+        "cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_cuda_memory_helpers_reject_cpu_only_system",
+      "type": "function",
+      "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        63,
+        69
+      ],
+      "summary": "Ensures CUDA helpers fail predictably when no CUDA device is available.",
+      "tags": [
+        "test",
+        "cuda",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "function",
+      "name": "test_system_scan_reports_live_resources_without_installing",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        72,
+        106
+      ],
+      "summary": "Verifies the readiness scan reports live resources and integrations without changing machine state.",
+      "tags": [
+        "test",
+        "system-scan",
+        "safety",
+        "hardware"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "function",
+      "name": "test_system_scan_recognizes_native_linux",
+      "filePath": "tests/test_hardware.py",
+      "lineRange": [
+        109,
+        118
+      ],
+      "summary": "Verifies the system scan identifies Linux as a supported native runtime.",
+      "tags": [
+        "test",
+        "linux",
+        "system-scan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_inference.py",
+      "type": "file",
+      "name": "test_inference.py",
+      "filePath": "tests/test_inference.py",
+      "summary": "Tests that inference always releases CUDA cache after model-loading failure.",
+      "tags": [
+        "test",
+        "inference",
+        "cuda",
+        "resource-cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "function",
+      "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+      "filePath": "tests/test_inference.py",
+      "lineRange": [
+        6,
+        25
+      ],
+      "summary": "Asserts generation cleanup runs after a loading error.",
+      "tags": [
+        "test",
+        "inference",
+        "cuda",
+        "error-handling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_jobs.py",
+      "type": "file",
+      "name": "test_jobs.py",
+      "filePath": "tests/test_jobs.py",
+      "summary": "Tests run persistence and cancellation safeguards, including rejection of unrelated worker processes.",
+      "tags": [
+        "test",
+        "training",
+        "process-safety",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "function",
+      "name": "test_create_run_persists_safe_config",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        9,
+        26
+      ],
+      "summary": "Verifies run creation persists a sanitized configuration and initial status.",
+      "tags": [
+        "test",
+        "training",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "class",
+      "name": "FakeWorkerProcess",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        37,
+        49
+      ],
+      "summary": "Provides a controllable fake worker process for cancellation tests.",
+      "tags": [
+        "test",
+        "mock",
+        "process-safety"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:_running_test_run",
+      "type": "function",
+      "name": "_running_test_run",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        52,
+        64
+      ],
+      "summary": "Creates a persisted running test job with a synthetic worker PID.",
+      "tags": [
+        "test",
+        "fixture",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "function",
+      "name": "test_cancel_run_stops_only_its_training_worker",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        67,
+        83
+      ],
+      "summary": "Verifies job cancellation only terminates a worker whose command belongs to the recorded training run.",
+      "tags": [
+        "test",
+        "training",
+        "process-safety"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "function",
+      "name": "test_cancel_run_rejects_unrelated_process",
+      "filePath": "tests/test_jobs.py",
+      "lineRange": [
+        86,
+        96
+      ],
+      "summary": "Verifies cancellation refuses to terminate a process that is not the recorded training worker.",
+      "tags": [
+        "test",
+        "security",
+        "process-safety"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_lifecycle.py",
+      "type": "file",
+      "name": "test_lifecycle.py",
+      "filePath": "tests/test_lifecycle.py",
+      "summary": "Tests delayed application exit scheduling without exiting the test runner.",
+      "tags": [
+        "test",
+        "lifecycle",
+        "shutdown",
+        "timer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "function",
+      "name": "test_schedule_application_exit_uses_daemon_timer",
+      "filePath": "tests/test_lifecycle.py",
+      "lineRange": [
+        4,
+        25
+      ],
+      "summary": "Verifies application exit scheduling uses a daemon timer with the expected callback and delay.",
+      "tags": [
+        "test",
+        "lifecycle",
+        "shutdown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_models.py",
+      "type": "file",
+      "name": "test_models.py",
+      "filePath": "tests/test_models.py",
+      "summary": "Tests training configuration serialization, validation, safe run paths, and bounded preset values.",
+      "tags": [
+        "test",
+        "data-model",
+        "validation",
+        "training"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_round_trip",
+      "type": "function",
+      "name": "test_config_round_trip",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        8,
+        17
+      ],
+      "summary": "Verifies training configurations serialize, deserialize, and validate consistently.",
+      "tags": [
+        "test",
+        "serialization",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "function",
+      "name": "test_config_requires_push_destination",
+      "filePath": "tests/test_models.py",
+      "lineRange": [
+        20,
+        29
+      ],
+      "summary": "Verifies Hub upload configuration requires an output repository destination.",
+      "tags": [
+        "test",
+        "validation",
+        "hugging-face"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:app_pages/monitor.py",
+      "target": "function:app_pages/monitor.py:training_monitor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app_pages/monitor.py",
+      "target": "function:app_pages/monitor.py:training_monitor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app_pages/training.py",
+      "target": "function:app_pages/training.py:apply_preset_defaults",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:.streamlit/config.toml",
+      "target": "file:streamlit_app.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:docs/index.html",
+      "target": "file:streamlit_app.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/lora_finetune_studio/cli.py",
+      "target": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/cli.py",
+      "target": "function:src/lora_finetune_studio/cli.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "file:src/lora_finetune_studio/hardware.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:SoftwareStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:SystemScan",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:_package_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "target": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "target": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/lifecycle.py",
+      "target": "function:src/lora_finetune_studio/lifecycle.py:schedule_application_exit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_helpers_reject_cpu_only_system",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "file:tests/test_hardware.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:tests/test_inference.py",
+      "target": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "file:tests/test_inference.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:_running_test_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_lifecycle.py",
+      "target": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/lifecycle.py",
+      "target": "file:tests/test_lifecycle.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_round_trip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:CudaMemoryStats",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:SoftwareStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "class:src/lora_finetune_studio/hardware.py:SystemScan",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:_package_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:scan_system",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:cuda_memory_stats",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:release_unused_cuda_memory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:detect_hardware",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/hardware.py",
+      "target": "function:src/lora_finetune_studio/hardware.py:model_size_warning",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:generate_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/inference.py",
+      "target": "function:src/lora_finetune_studio/inference.py:_generate_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/lifecycle.py",
+      "target": "function:src/lora_finetune_studio/lifecycle.py:schedule_application_exit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:list_models",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/ollama.py",
+      "target": "function:src/lora_finetune_studio/ollama.py:generate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "function:tests/test_app.py:test_app_starts_without_ollama",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_model_size_warning_uses_detected_limit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_stats_reports_global_and_process_usage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_cuda_memory_helpers_reject_cpu_only_system",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_reports_live_resources_without_installing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_hardware.py",
+      "target": "function:tests/test_hardware.py:test_system_scan_recognizes_native_linux",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_inference.py",
+      "target": "function:tests/test_inference.py:test_generate_text_releases_cuda_memory_after_loading_failure",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_create_run_persists_safe_config",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "class:tests/test_jobs.py:FakeWorkerProcess",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:_running_test_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_stops_only_its_training_worker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_jobs.py",
+      "target": "function:tests/test_jobs.py:test_cancel_run_rejects_unrelated_process",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_lifecycle.py",
+      "target": "function:tests/test_lifecycle.py:test_schedule_application_exit_uses_daemon_timer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_round_trip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_models.py",
+      "target": "function:tests/test_models.py:test_config_requires_push_destination",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

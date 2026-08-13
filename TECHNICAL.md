@@ -34,10 +34,10 @@ Implemented capabilities:
 
 Deliberate boundaries:
 
-- training is CUDA-only, single-GPU, and single-job;
+- training is CUDA-only and single-GPU, with one active job and a persistent local FIFO queue;
 - full tuning, freeze tuning, pre-training, PPO, SimPO, and distributed training are
   not implemented;
-- there is no authentication, multi-user isolation, remote queue, model registry, or
+- there is no authentication, multi-user isolation, remote/distributed queue, model registry, or
   production inference server;
 - the Ollama playground does not import, merge, or run the trained adapter; and
 - a saved adapter still requires its matching base model and revision.
@@ -134,8 +134,9 @@ The architecture has four practical layers:
 4. **ML execution:** `training.py` and `inference.py` use Datasets, Transformers, PEFT,
    TRL, bitsandbytes, PyTorch, and optionally Unsloth.
 
-The application deliberately uses JSON files and one child process instead of a
-database, broker, or queue. This keeps local operation inspectable and recoverable.
+The application deliberately uses JSON files, an atomically updated local queue manifest, and one
+GPU worker instead of a database or message broker. This keeps local operation inspectable and
+recoverable.
 
 ## 5. Repository map
 
@@ -236,8 +237,8 @@ The eight sidebar pages are:
 3. Model — model ID/revision validation and parameter-count inspection;
 4. GPU memory — live allocator figures and safe cache cleanup;
 5. Training — linked approach/method choices and trainer settings;
-6. Review & run — effective configuration, blockers, and worker launch;
-7. Monitor — two-second status polling, logs, cancellation, resume, and evaluation;
+6. Review & run — effective configuration, blockers, and FIFO submission;
+7. Monitor — queue order, two-second status polling, logs, cancellation, resume, and evaluation;
 8. Ollama playground — chat with an already-installed local Ollama model.
 
 Important session-state groups:
@@ -295,7 +296,7 @@ again.
 | `use_unsloth` | `False` | Only LoRA/QLoRA; cannot use FP32 |
 | `compute_type` | Auto | Auto, BF16, FP16, or FP32 |
 | `preset` | Standard | Smoke test, Standard, or Quality |
-| `output_dir` | Empty | Replaced by `create_run` with the run's absolute output path |
+| `output_dir` | Empty | Replaced during enqueue with the run's absolute output path |
 | `max_length` | `1024` | Inclusive range `128..8192` |
 | `epochs` | `2.0` | Greater than zero and at most 20 |
 | `max_steps` | `-1` | `-1` means epoch-driven; Smoke uses 20 |
@@ -341,7 +342,7 @@ batch size, accumulation, and gradient checkpointing.
 | --- | --- |
 | `state` | `queued`, `running`, `completed`, `failed`, or `cancelled` |
 | `message` | Human-readable current phase |
-| `progress` | Best-effort `0.0..1.0` trainer progress |
+| `progress` | Best-effort `0.0..1.0` trainer progress; Monitor renders a rounded percentage |
 | `pid` | Worker PID used for liveness and ownership checks |
 | `metrics` | Latest numeric trainer log or final metrics |
 | `error` | Redacted terminal failure message |
@@ -522,45 +523,52 @@ after successful local saving and evaluation.
 ### 10.6 Metrics and reproducibility
 
 `StatusCallback` persists numeric log values and computes progress from global step and
-maximum steps. The final metrics combine numeric results returned from training with a
-subsequent evaluation. Exact numerical reproducibility is not guaranteed across GPU,
-driver, CUDA, library, model, or kernel changes, even with the same seed.
+maximum steps. Monitor passes that value to the native progress bar and displays it as a rounded
+whole-number percentage; it is not an ETA. The final metrics combine numeric results returned from
+training with a subsequent evaluation. Exact numerical reproducibility is not guaranteed across
+GPU, driver, CUDA, library, model, or kernel changes, even with the same seed.
 
 ## 11. Job lifecycle and persistence
 
 ```mermaid
 stateDiagram-v2
-    [*] --> queued: create_run
-    queued --> running: launch_run
+    [*] --> queued: enqueue_run
+    queued --> running: FIFO dispatcher
     running --> completed: worker returns success
     running --> failed: worker catches exception
     running --> cancelled: verified user cancellation
-    failed --> running: resume newest checkpoint
-    cancelled --> running: resume newest checkpoint
+    failed --> queued: queue newest checkpoint
+    cancelled --> queued: queue newest checkpoint
     completed --> [*]
 ```
 
-`create_run` refuses to create a run while a queued or running status points to a live
-PID. It creates a random 12-character hexadecimal ID, sets the absolute output
-directory, and writes `config.json` and `status.json` atomically.
+`enqueue_run` creates a random 12-character hexadecimal ID, sets the absolute output directory,
+writes `config.json` and `status.json`, appends the ID to `queue.json`, and dispatches immediately
+only when no worker is active. OS file locking serializes queue changes across Streamlit, workers,
+and handoff processes. Invalid, duplicate, missing, and terminal queue entries are removed while
+orphaned valid queued statuses are recovered in filesystem order.
 
 Atomic writes use a temporary file in the destination directory followed by
 `os.replace`, preventing readers from observing partially written JSON. The monitor
 fragment polls status every two seconds and reads only the last 12,000 log characters.
 
-`launch_run` appends stdout and stderr to `training.log`. Standard jobs use the current
-interpreter; Unsloth jobs use `.venv-unsloth`. Windows supplies `CREATE_NO_WINDOW`.
-The process starts in the current project directory and inherits the environment,
-including `HF_TOKEN`.
+`launch_run` appends stdout and stderr to `training.log`. Standard jobs use the saved base project
+interpreter; Unsloth jobs use `.venv-unsloth`. The base interpreter path is preserved across mixed
+worker handoffs. Windows supplies `CREATE_NO_WINDOW`. The process starts in the current project
+directory and inherits the environment, including `HF_TOKEN`.
+
+After writing a completed or failed status, a worker starts a lightweight handoff process. The
+handoff waits for the VRAM-owning worker PID to exit before dispatching the next queued run. User
+cancellation also waits for termination before advancing. A dead worker is marked failed during
+the next app/monitor reconciliation, and launch failures do not block later jobs.
 
 Before cancellation, `_is_training_worker` verifies that the PID command line contains
 the module worker invocation and the expected resolved configuration path. It refuses
 to stop a PID that merely happens to reuse a stored number. A verified process receives
 terminate, gets ten seconds to exit, and is killed only after timeout.
 
-Resume numerically sorts `output/checkpoint-*`, writes the newest absolute path into
-the existing configuration, and launches the same run ID. It fails when another job is
-active or no checkpoint exists.
+Resume numerically sorts `output/checkpoint-*`, writes the newest absolute path into the existing
+configuration, and appends the same run ID to the queue. It fails only when no checkpoint exists.
 
 The worker catches ordinary exceptions, removes the current token from the short error
 message, writes a failed status, and sends the full traceback to `training.log`. The
@@ -577,6 +585,8 @@ as potentially sensitive operational data.
 ├── streamlit.out.log
 ├── streamlit.err.log
 ├── streamlit.pid                 # Linux launcher only
+├── queue.json                    # Durable FIFO run IDs
+├── .queue.lock                   # Cross-process queue serialization
 └── <run-id>/
     ├── config.json               # Durable launch/resume contract
     ├── status.json               # Atomic current job state

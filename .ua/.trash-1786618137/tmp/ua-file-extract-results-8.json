@@ -1,0 +1,3676 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [
+    ".gitattributes",
+    ".python-version",
+    "docs/.nojekyll",
+    "docs/assets/site.css",
+    "examples/preference_sample.jsonl",
+    "examples/sft_sample.jsonl",
+    "scripts/tutorial_assets/site.css"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 18,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 17,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "results": [
+    {
+      "path": ".streamlit/config.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 9,
+      "nonEmptyLines": 8,
+      "sections": [
+        {
+          "heading": "theme",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "server",
+          "level": 1,
+          "line": 8
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": "app_pages/dataset.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 360,
+      "nonEmptyLines": 333,
+      "functions": [
+        {
+          "name": "source_label",
+          "startLine": 34,
+          "endLine": 36,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "source_identity",
+          "startLine": 39,
+          "endLine": 48,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "source_key",
+          "startLine": 51,
+          "endLine": 52,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "is_compatible",
+          "startLine": 55,
+          "endLine": 56,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "clear_pending",
+          "startLine": 59,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "save_pending_dataset",
+          "startLine": 65,
+          "endLine": 88,
+          "params": [
+            "spec",
+            "inspection"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "source_label",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "source_identity",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "source_key",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "is_compatible",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "clear_pending",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "save_pending_dataset",
+          "line": 65,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "source_label",
+          "callee": "Path",
+          "lineNumber": 36
+        },
+        {
+          "caller": "source_key",
+          "callee": "hashlib.sha256(repr(source_identity(spec)).encode()).hexdigest",
+          "lineNumber": 52
+        },
+        {
+          "caller": "source_key",
+          "callee": "hashlib.sha256",
+          "lineNumber": 52
+        },
+        {
+          "caller": "source_key",
+          "callee": "repr(source_identity(spec)).encode",
+          "lineNumber": 52
+        },
+        {
+          "caller": "source_key",
+          "callee": "repr",
+          "lineNumber": 52
+        },
+        {
+          "caller": "source_key",
+          "callee": "source_identity",
+          "lineNumber": 52
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "enumerate",
+          "lineNumber": 69
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "source_identity",
+          "lineNumber": 71
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "source_identity",
+          "lineNumber": 71
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "ValueError",
+          "lineNumber": 72
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "ValueError",
+          "lineNumber": 74
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "is_compatible",
+          "lineNumber": 75
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "next",
+          "lineNumber": 77
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "iter",
+          "lineNumber": 77
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "ValueError",
+          "lineNumber": 78
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "st.session_state.dataset_specs.append",
+          "lineNumber": 82
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "st.session_state.dataset_inspections.append",
+          "lineNumber": 83
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "clear_pending",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/gpu_memory.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 50,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/model.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/monitor.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 183,
+      "nonEmptyLines": 168,
+      "functions": [
+        {
+          "name": "training_monitor",
+          "startLine": 67,
+          "endLine": 141,
+          "params": [
+            "selected_run_id"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "training_monitor",
+          "line": 66,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "training_monitor",
+          "callee": "dispatch_next_run",
+          "lineNumber": 69
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "queued_runs",
+          "lineNumber": 70
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 72
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.subheader",
+          "lineNumber": 75
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "enumerate",
+          "lineNumber": 78
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "read_config",
+          "lineNumber": 80
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "queue_rows.append",
+          "lineNumber": 83
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.dataframe",
+          "lineNumber": 93
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.caption",
+          "lineNumber": 95
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.subheader",
+          "lineNumber": 97
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "read_status",
+          "lineNumber": 99
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 101
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.container",
+          "lineNumber": 103
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.badge",
+          "lineNumber": 104
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.write",
+          "lineNumber": 108
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.progress",
+          "lineNumber": 109
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.json",
+          "lineNumber": 111
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 113
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.button",
+          "lineNumber": 119
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "cancel_run",
+          "lineNumber": 125
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.rerun",
+          "lineNumber": 126
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.button",
+          "lineNumber": 127
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "resume_run",
+          "lineNumber": 131
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.rerun",
+          "lineNumber": 132
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 134
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "str",
+          "lineNumber": 134
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.expander",
+          "lineNumber": 135
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.code",
+          "lineNumber": 138
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "read_log",
+          "lineNumber": 139
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/ollama.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/review.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 137,
+      "nonEmptyLines": 124,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/system.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 136,
+      "nonEmptyLines": 125,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/training.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 364,
+      "nonEmptyLines": 343,
+      "functions": [
+        {
+          "name": "approach_changed",
+          "startLine": 40,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "method_changed",
+          "startLine": 53,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "compute_type_changed",
+          "startLine": 60,
+          "endLine": 64,
+          "params": []
+        },
+        {
+          "name": "apply_preset_defaults",
+          "startLine": 125,
+          "endLine": 134,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "approach_changed",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "method_changed",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "compute_type_changed",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "apply_preset_defaults",
+          "line": 125,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "approach_changed",
+          "callee": "TrainingApproach",
+          "lineNumber": 41
+        },
+        {
+          "caller": "approach_changed",
+          "callee": "max",
+          "lineNumber": 45
+        },
+        {
+          "caller": "approach_changed",
+          "callee": "st.session_state.get",
+          "lineNumber": 46
+        },
+        {
+          "caller": "approach_changed",
+          "callee": "st.session_state.get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "method_changed",
+          "callee": "PeftMode",
+          "lineNumber": 54
+        },
+        {
+          "caller": "compute_type_changed",
+          "callee": "ComputeType",
+          "lineNumber": 61
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "int",
+          "lineNumber": 127
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "float",
+          "lineNumber": 129
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "int",
+          "lineNumber": 131
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "int",
+          "lineNumber": 132
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "docs/assets/search-index.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "docs/assets/site.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 82,
+      "callGraph": [
+        {
+          "caller": "updateReadingProgress",
+          "callee": "Math.min",
+          "lineNumber": 14
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "value.replace",
+          "lineNumber": 54
+        },
+        {
+          "caller": "renderResults",
+          "callee": "query.toLowerCase().trim().split(/\\s+/).filter",
+          "lineNumber": 60
+        },
+        {
+          "caller": "renderResults",
+          "callee": "query.toLowerCase().trim().split",
+          "lineNumber": 60
+        },
+        {
+          "caller": "renderResults",
+          "callee": "query.toLowerCase().trim",
+          "lineNumber": 60
+        },
+        {
+          "caller": "renderResults",
+          "callee": "query.toLowerCase",
+          "lineNumber": 60
+        },
+        {
+          "caller": "renderResults",
+          "callee": "searchRecords\n      .map(record => {\n        const haystack = `${record.title} ${record.headings} ${record.text}`.toLowerCase();\n        const score = terms.reduce((total, term) => total + (haystack.includes(term) ? 1 : 0), 0);\n        return { record, score };\n      })\n      .filter(item => item.score === terms.length)\n      .slice",
+          "lineNumber": 65
+        },
+        {
+          "caller": "renderResults",
+          "callee": "searchRecords\n      .map(record => {\n        const haystack = `${record.title} ${record.headings} ${record.text}`.toLowerCase();\n        const score = terms.reduce((total, term) => total + (haystack.includes(term) ? 1 : 0), 0);\n        return { record, score };\n      })\n      .filter",
+          "lineNumber": 65
+        },
+        {
+          "caller": "renderResults",
+          "callee": "searchRecords\n      .map",
+          "lineNumber": 65
+        },
+        {
+          "caller": "renderResults",
+          "callee": "`${record.title} ${record.headings} ${record.text}`.toLowerCase",
+          "lineNumber": 67
+        },
+        {
+          "caller": "renderResults",
+          "callee": "terms.reduce",
+          "lineNumber": 68
+        },
+        {
+          "caller": "renderResults",
+          "callee": "haystack.includes",
+          "lineNumber": 68
+        },
+        {
+          "caller": "renderResults",
+          "callee": "matches.map(({ record }) => `<li><a href=\"${encodeURI(record.url)}\"><strong>${escapeHtml(record.title)}</strong><span>${escapeHtml(record.summary)}</span></a></li>`).join",
+          "lineNumber": 74
+        },
+        {
+          "caller": "renderResults",
+          "callee": "matches.map",
+          "lineNumber": 74
+        },
+        {
+          "caller": "renderResults",
+          "callee": "encodeURI",
+          "lineNumber": 74
+        },
+        {
+          "caller": "renderResults",
+          "callee": "escapeHtml",
+          "lineNumber": 74
+        },
+        {
+          "caller": "renderResults",
+          "callee": "escapeHtml",
+          "lineNumber": 74
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "scripts/build_tutorial.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 947,
+      "nonEmptyLines": 867,
+      "functions": [
+        {
+          "name": "slugify",
+          "startLine": 85,
+          "endLine": 88,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "split_source",
+          "startLine": 91,
+          "endLine": 102,
+          "params": [
+            "source"
+          ]
+        },
+        {
+          "name": "render_markdown",
+          "startLine": 105,
+          "endLine": 111,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "plain_text",
+          "startLine": 114,
+          "endLine": 115,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "pdf_safe",
+          "startLine": 118,
+          "endLine": 134,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "chapter_summary",
+          "startLine": 137,
+          "endLine": 143,
+          "params": [
+            "rendered"
+          ]
+        },
+        {
+          "name": "load_course",
+          "startLine": 146,
+          "endLine": 175,
+          "params": []
+        },
+        {
+          "name": "nav_items",
+          "startLine": 178,
+          "endLine": 189,
+          "params": [
+            "chapters",
+            "current"
+          ]
+        },
+        {
+          "name": "site_shell",
+          "startLine": 192,
+          "endLine": 250,
+          "params": [
+            "title",
+            "description",
+            "content",
+            "chapters",
+            "current",
+            "page_class"
+          ]
+        },
+        {
+          "name": "index_content",
+          "startLine": 253,
+          "endLine": 280,
+          "params": [
+            "preamble_html",
+            "chapters"
+          ]
+        },
+        {
+          "name": "chapter_content",
+          "startLine": 283,
+          "endLine": 301,
+          "params": [
+            "chapter",
+            "chapters"
+          ]
+        },
+        {
+          "name": "rewrite_root_links",
+          "startLine": 304,
+          "endLine": 317,
+          "params": [
+            "rendered"
+          ]
+        },
+        {
+          "name": "build_search_index",
+          "startLine": 320,
+          "endLine": 338,
+          "params": [
+            "chapters"
+          ]
+        },
+        {
+          "name": "build_site_files",
+          "startLine": 341,
+          "endLine": 370,
+          "params": [
+            "preamble_html",
+            "chapters",
+            "pdf_bytes"
+          ]
+        },
+        {
+          "name": "pdf_styles",
+          "startLine": 441,
+          "endLine": 531,
+          "params": []
+        },
+        {
+          "name": "inline_markup",
+          "startLine": 534,
+          "endLine": 549,
+          "params": [
+            "node"
+          ]
+        },
+        {
+          "name": "paragraph_from_tag",
+          "startLine": 552,
+          "endLine": 554,
+          "params": [
+            "tag",
+            "style"
+          ]
+        },
+        {
+          "name": "table_flowable",
+          "startLine": 557,
+          "endLine": 596,
+          "params": [
+            "table_tag",
+            "styles",
+            "width"
+          ]
+        },
+        {
+          "name": "list_flowable",
+          "startLine": 599,
+          "endLine": 629,
+          "params": [
+            "tag",
+            "styles"
+          ]
+        },
+        {
+          "name": "html_to_flowables",
+          "startLine": 632,
+          "endLine": 702,
+          "params": [
+            "rendered",
+            "styles",
+            "width",
+            "bookmark_prefix"
+          ]
+        },
+        {
+          "name": "cover_flowables",
+          "startLine": 705,
+          "endLine": 773,
+          "params": [
+            "styles",
+            "chapter_count"
+          ]
+        },
+        {
+          "name": "build_pdf",
+          "startLine": 776,
+          "endLine": 825,
+          "params": [
+            "chapters",
+            "target"
+          ]
+        },
+        {
+          "name": "file_digest",
+          "startLine": 828,
+          "endLine": 829,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "manifest_bytes",
+          "startLine": 832,
+          "endLine": 841,
+          "params": [
+            "files"
+          ]
+        },
+        {
+          "name": "read_manifest",
+          "startLine": 844,
+          "endLine": 852,
+          "params": [
+            "root"
+          ]
+        },
+        {
+          "name": "write_site",
+          "startLine": 855,
+          "endLine": 866,
+          "params": [
+            "files",
+            "root"
+          ]
+        },
+        {
+          "name": "compare_files",
+          "startLine": 869,
+          "endLine": 883,
+          "params": [
+            "expected",
+            "root"
+          ]
+        },
+        {
+          "name": "pdf_content_signature",
+          "startLine": 886,
+          "endLine": 897,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "run",
+          "startLine": 900,
+          "endLine": 932,
+          "params": [
+            "check"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 935,
+          "endLine": 943,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "Chapter",
+          "startLine": 72,
+          "endLine": 82,
+          "methods": [
+            "filename"
+          ],
+          "properties": [
+            "number",
+            "title",
+            "slug",
+            "markdown",
+            "html",
+            "summary"
+          ]
+        },
+        {
+          "name": "HandbookDocTemplate",
+          "startLine": 373,
+          "endLine": 438,
+          "methods": [
+            "__init__",
+            "_metadata",
+            "_cover_page",
+            "_body_page",
+            "afterFlowable"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Chapter",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "slugify",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "split_source",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "render_markdown",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "plain_text",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "pdf_safe",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "chapter_summary",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "load_course",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "nav_items",
+          "line": 178,
+          "isDefault": false
+        },
+        {
+          "name": "site_shell",
+          "line": 192,
+          "isDefault": false
+        },
+        {
+          "name": "index_content",
+          "line": 253,
+          "isDefault": false
+        },
+        {
+          "name": "chapter_content",
+          "line": 283,
+          "isDefault": false
+        },
+        {
+          "name": "rewrite_root_links",
+          "line": 304,
+          "isDefault": false
+        },
+        {
+          "name": "build_search_index",
+          "line": 320,
+          "isDefault": false
+        },
+        {
+          "name": "build_site_files",
+          "line": 341,
+          "isDefault": false
+        },
+        {
+          "name": "HandbookDocTemplate",
+          "line": 373,
+          "isDefault": false
+        },
+        {
+          "name": "pdf_styles",
+          "line": 441,
+          "isDefault": false
+        },
+        {
+          "name": "inline_markup",
+          "line": 534,
+          "isDefault": false
+        },
+        {
+          "name": "paragraph_from_tag",
+          "line": 552,
+          "isDefault": false
+        },
+        {
+          "name": "table_flowable",
+          "line": 557,
+          "isDefault": false
+        },
+        {
+          "name": "list_flowable",
+          "line": 599,
+          "isDefault": false
+        },
+        {
+          "name": "html_to_flowables",
+          "line": 632,
+          "isDefault": false
+        },
+        {
+          "name": "cover_flowables",
+          "line": 705,
+          "isDefault": false
+        },
+        {
+          "name": "build_pdf",
+          "line": 776,
+          "isDefault": false
+        },
+        {
+          "name": "file_digest",
+          "line": 828,
+          "isDefault": false
+        },
+        {
+          "name": "manifest_bytes",
+          "line": 832,
+          "isDefault": false
+        },
+        {
+          "name": "read_manifest",
+          "line": 844,
+          "isDefault": false
+        },
+        {
+          "name": "write_site",
+          "line": 855,
+          "isDefault": false
+        },
+        {
+          "name": "compare_files",
+          "line": 869,
+          "isDefault": false
+        },
+        {
+          "name": "pdf_content_signature",
+          "line": 886,
+          "isDefault": false
+        },
+        {
+          "name": "run",
+          "line": 900,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 935,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "slugify",
+          "callee": "value.lower().replace",
+          "lineNumber": 86
+        },
+        {
+          "caller": "slugify",
+          "callee": "value.lower",
+          "lineNumber": 86
+        },
+        {
+          "caller": "slugify",
+          "callee": "re.sub(r\"[^a-z0-9]+\", \"-\", value).strip",
+          "lineNumber": 87
+        },
+        {
+          "caller": "slugify",
+          "callee": "re.sub",
+          "lineNumber": 87
+        },
+        {
+          "caller": "split_source",
+          "callee": "list",
+          "lineNumber": 92
+        },
+        {
+          "caller": "split_source",
+          "callee": "re.finditer",
+          "lineNumber": 92
+        },
+        {
+          "caller": "split_source",
+          "callee": "ValueError",
+          "lineNumber": 94
+        },
+        {
+          "caller": "split_source",
+          "callee": "source[: headings[0].start()].strip",
+          "lineNumber": 95
+        },
+        {
+          "caller": "split_source",
+          "callee": "headings[0].start",
+          "lineNumber": 95
+        },
+        {
+          "caller": "split_source",
+          "callee": "enumerate",
+          "lineNumber": 97
+        },
+        {
+          "caller": "split_source",
+          "callee": "headings[index + 1].start",
+          "lineNumber": 98
+        },
+        {
+          "caller": "split_source",
+          "callee": "len",
+          "lineNumber": 98
+        },
+        {
+          "caller": "split_source",
+          "callee": "len",
+          "lineNumber": 98
+        },
+        {
+          "caller": "split_source",
+          "callee": "match.group(1).strip",
+          "lineNumber": 99
+        },
+        {
+          "caller": "split_source",
+          "callee": "match.group",
+          "lineNumber": 99
+        },
+        {
+          "caller": "split_source",
+          "callee": "source[match.end() : end].strip",
+          "lineNumber": 100
+        },
+        {
+          "caller": "split_source",
+          "callee": "match.end",
+          "lineNumber": 100
+        },
+        {
+          "caller": "split_source",
+          "callee": "sections.append",
+          "lineNumber": 101
+        },
+        {
+          "caller": "render_markdown",
+          "callee": "markdown",
+          "lineNumber": 106
+        },
+        {
+          "caller": "plain_text",
+          "callee": "\" \".join",
+          "lineNumber": 115
+        },
+        {
+          "caller": "plain_text",
+          "callee": "BeautifulSoup(value, \"html.parser\").get_text(\" \").split",
+          "lineNumber": 115
+        },
+        {
+          "caller": "plain_text",
+          "callee": "BeautifulSoup(value, \"html.parser\").get_text",
+          "lineNumber": 115
+        },
+        {
+          "caller": "plain_text",
+          "callee": "BeautifulSoup",
+          "lineNumber": 115
+        },
+        {
+          "caller": "pdf_safe",
+          "callee": "\"\".join",
+          "lineNumber": 134
+        },
+        {
+          "caller": "pdf_safe",
+          "callee": "replacements.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "BeautifulSoup",
+          "lineNumber": 138
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "soup.find_all",
+          "lineNumber": 139
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "\" \".join",
+          "lineNumber": 140
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "paragraph.get_text(\" \").split",
+          "lineNumber": 140
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "paragraph.get_text",
+          "lineNumber": 140
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "len",
+          "lineNumber": 141
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "text[:237].rstrip",
+          "lineNumber": 142
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "len",
+          "lineNumber": 142
+        },
+        {
+          "caller": "load_course",
+          "callee": "SOURCE.read_text",
+          "lineNumber": 147
+        },
+        {
+          "caller": "load_course",
+          "callee": "split_source",
+          "lineNumber": 148
+        },
+        {
+          "caller": "load_course",
+          "callee": "render_markdown",
+          "lineNumber": 149
+        },
+        {
+          "caller": "load_course",
+          "callee": "set",
+          "lineNumber": 151
+        },
+        {
+          "caller": "load_course",
+          "callee": "enumerate",
+          "lineNumber": 152
+        },
+        {
+          "caller": "load_course",
+          "callee": "slugify",
+          "lineNumber": 153
+        },
+        {
+          "caller": "load_course",
+          "callee": "re.sub",
+          "lineNumber": 154
+        },
+        {
+          "caller": "load_course",
+          "callee": "used_slugs.add",
+          "lineNumber": 163
+        },
+        {
+          "caller": "load_course",
+          "callee": "render_markdown",
+          "lineNumber": 164
+        },
+        {
+          "caller": "load_course",
+          "callee": "chapters.append",
+          "lineNumber": 165
+        },
+        {
+          "caller": "load_course",
+          "callee": "Chapter",
+          "lineNumber": 166
+        },
+        {
+          "caller": "load_course",
+          "callee": "chapter_summary",
+          "lineNumber": 172
+        },
+        {
+          "caller": "nav_items",
+          "callee": "html.escape",
+          "lineNumber": 184
+        },
+        {
+          "caller": "nav_items",
+          "callee": "parts.append",
+          "lineNumber": 185
+        },
+        {
+          "caller": "nav_items",
+          "callee": "\"\\n\".join",
+          "lineNumber": 189
+        },
+        {
+          "caller": "site_shell",
+          "callee": "html.escape",
+          "lineNumber": 201
+        },
+        {
+          "caller": "site_shell",
+          "callee": "html.escape",
+          "lineNumber": 202
+        },
+        {
+          "caller": "site_shell",
+          "callee": "nav_items",
+          "lineNumber": 203
+        },
+        {
+          "caller": "site_shell",
+          "callee": "html.escape",
+          "lineNumber": 216
+        },
+        {
+          "caller": "index_content",
+          "callee": "\"\\n\".join",
+          "lineNumber": 254
+        },
+        {
+          "caller": "index_content",
+          "callee": "html.escape",
+          "lineNumber": 258
+        },
+        {
+          "caller": "index_content",
+          "callee": "html.escape",
+          "lineNumber": 259
+        },
+        {
+          "caller": "index_content",
+          "callee": "html.escape",
+          "lineNumber": 269
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "len",
+          "lineNumber": 285
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "html.escape",
+          "lineNumber": 287
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "html.escape",
+          "lineNumber": 292
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "rewrite_root_links",
+          "lineNumber": 296
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "len",
+          "lineNumber": 298
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "len",
+          "lineNumber": 298
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "BeautifulSoup",
+          "lineNumber": 306
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "soup.find_all",
+          "lineNumber": 307
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "str",
+          "lineNumber": 308
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "href.startswith",
+          "lineNumber": 309
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "href.partition",
+          "lineNumber": 311
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "(ROOT / path).exists",
+          "lineNumber": 312
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "str",
+          "lineNumber": 317
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "BeautifulSoup",
+          "lineNumber": 323
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "heading.get_text",
+          "lineNumber": 325
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "soup.find_all",
+          "lineNumber": 326
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "records.append",
+          "lineNumber": 328
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "\" | \".join",
+          "lineNumber": 333
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "\" \".join",
+          "lineNumber": 334
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "soup.get_text(\" \").split",
+          "lineNumber": 334
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "soup.get_text",
+          "lineNumber": 334
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "json.dumps",
+          "lineNumber": 337
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "site_shell",
+          "lineNumber": 346
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "index_content",
+          "lineNumber": 349
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "index.encode",
+          "lineNumber": 354
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "site_shell",
+          "lineNumber": 356
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "chapter_content",
+          "lineNumber": 359
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "page.encode",
+          "lineNumber": 364
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "(ASSET_SOURCE / asset_name).read_text",
+          "lineNumber": 366
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "asset_text.replace(\"\\r\\n\", \"\\n\").encode",
+          "lineNumber": 367
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "asset_text.replace",
+          "lineNumber": 367
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "build_search_index(chapters).encode",
+          "lineNumber": 368
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "build_search_index",
+          "lineNumber": 368
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 375
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 375
+        },
+        {
+          "caller": "__init__",
+          "callee": "Frame",
+          "lineNumber": 377
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.addPageTemplates",
+          "lineNumber": 388
+        },
+        {
+          "caller": "__init__",
+          "callee": "PageTemplate",
+          "lineNumber": 390
+        },
+        {
+          "caller": "__init__",
+          "callee": "PageTemplate",
+          "lineNumber": 391
+        },
+        {
+          "caller": "_metadata",
+          "callee": "canvas.setTitle",
+          "lineNumber": 396
+        },
+        {
+          "caller": "_metadata",
+          "callee": "canvas.setAuthor",
+          "lineNumber": 397
+        },
+        {
+          "caller": "_metadata",
+          "callee": "canvas.setSubject",
+          "lineNumber": 398
+        },
+        {
+          "caller": "_metadata",
+          "callee": "canvas.setKeywords",
+          "lineNumber": 399
+        },
+        {
+          "caller": "_cover_page",
+          "callee": "self._metadata",
+          "lineNumber": 403
+        },
+        {
+          "caller": "_body_page",
+          "callee": "self._metadata",
+          "lineNumber": 406
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.saveState",
+          "lineNumber": 407
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.setStrokeColor",
+          "lineNumber": 408
+        },
+        {
+          "caller": "_body_page",
+          "callee": "colors.HexColor",
+          "lineNumber": 408
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.setLineWidth",
+          "lineNumber": 409
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.line",
+          "lineNumber": 410
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.setFillColor",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_body_page",
+          "callee": "colors.HexColor",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.setFont",
+          "lineNumber": 414
+        },
+        {
+          "caller": "_body_page",
+          "callee": "stringWidth",
+          "lineNumber": 417
+        },
+        {
+          "caller": "_body_page",
+          "callee": "len",
+          "lineNumber": 417
+        },
+        {
+          "caller": "_body_page",
+          "callee": "heading[:-2].rstrip",
+          "lineNumber": 418
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.drawString",
+          "lineNumber": 419
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.drawRightString",
+          "lineNumber": 420
+        },
+        {
+          "caller": "_body_page",
+          "callee": "str",
+          "lineNumber": 421
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.getPageNumber",
+          "lineNumber": 421
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.restoreState",
+          "lineNumber": 423
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "isinstance",
+          "lineNumber": 426
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "flowable.getPlainText",
+          "lineNumber": 432
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "getattr",
+          "lineNumber": 433
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "self.canv.bookmarkPage",
+          "lineNumber": 434
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "self.canv.addOutlineEntry",
+          "lineNumber": 435
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "self.notify",
+          "lineNumber": 436
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "getSampleStyleSheet",
+          "lineNumber": 442
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 443
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 444
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 445
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 447
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 458
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 466
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 472
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 477
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 488
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 494
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 499
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 505
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 506
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 513
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 521
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "isinstance",
+          "lineNumber": 535
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "html.escape",
+          "lineNumber": 536
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "pdf_safe",
+          "lineNumber": 536
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "str",
+          "lineNumber": 536
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "\"\".join",
+          "lineNumber": 537
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "inline_markup",
+          "lineNumber": 537
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "html.escape",
+          "lineNumber": 545
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "str",
+          "lineNumber": 545
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "node.get",
+          "lineNumber": 545
+        },
+        {
+          "caller": "paragraph_from_tag",
+          "callee": "\"\".join(inline_markup(child) for child in tag.children).strip",
+          "lineNumber": 553
+        },
+        {
+          "caller": "paragraph_from_tag",
+          "callee": "\"\".join",
+          "lineNumber": 553
+        },
+        {
+          "caller": "paragraph_from_tag",
+          "callee": "inline_markup",
+          "lineNumber": 553
+        },
+        {
+          "caller": "paragraph_from_tag",
+          "callee": "Paragraph",
+          "lineNumber": 554
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "enumerate",
+          "lineNumber": 561
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "table_tag.find_all",
+          "lineNumber": 561
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "row.find_all",
+          "lineNumber": 562
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "\"\".join(inline_markup(child) for child in cell.children).strip",
+          "lineNumber": 565
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 565
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "inline_markup",
+          "lineNumber": 565
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "row_values.append",
+          "lineNumber": 568
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 568
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "rows.append",
+          "lineNumber": 570
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "Table",
+          "lineNumber": 572
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "max",
+          "lineNumber": 573
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "len",
+          "lineNumber": 573
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "row.extend",
+          "lineNumber": 575
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 575
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "range",
+          "lineNumber": 575
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "len",
+          "lineNumber": 575
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "Table",
+          "lineNumber": 580
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "result.setStyle",
+          "lineNumber": 581
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "TableStyle",
+          "lineNumber": 582
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "colors.HexColor",
+          "lineNumber": 584
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "colors.HexColor",
+          "lineNumber": 585
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "colors.HexColor",
+          "lineNumber": 586
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "colors.HexColor",
+          "lineNumber": 587
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "tag.find_all",
+          "lineNumber": 602
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "isinstance",
+          "lineNumber": 606
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "direct_text.append",
+          "lineNumber": 607
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "html.escape",
+          "lineNumber": 607
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "str",
+          "lineNumber": 607
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join(direct_text).strip",
+          "lineNumber": 609
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 609
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "blocks.append",
+          "lineNumber": 610
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 610
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 610
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "blocks.append",
+          "lineNumber": 612
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "list_flowable",
+          "lineNumber": 612
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "direct_text.append",
+          "lineNumber": 614
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "inline_markup",
+          "lineNumber": 614
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join(direct_text).strip",
+          "lineNumber": 615
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 615
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "blocks.insert",
+          "lineNumber": 616
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 616
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 616
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "items.append",
+          "lineNumber": 617
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "ListItem",
+          "lineNumber": 617
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 617
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "ListFlowable",
+          "lineNumber": 629
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "BeautifulSoup",
+          "lineNumber": 638
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "isinstance",
+          "lineNumber": 642
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "isinstance",
+          "lineNumber": 642
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "pdf_safe",
+          "lineNumber": 652
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "node.get_text",
+          "lineNumber": 652
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "slugify",
+          "lineNumber": 654
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 656
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "html.escape",
+          "lineNumber": 657
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 661
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 663
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "paragraph_from_tag",
+          "lineNumber": 663
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 665
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "list_flowable",
+          "lineNumber": 665
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "pdf_safe",
+          "lineNumber": 667
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "node.get_text().rstrip",
+          "lineNumber": 667
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "node.get_text",
+          "lineNumber": 667
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 668
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "XPreformatted",
+          "lineNumber": 668
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "html.escape",
+          "lineNumber": 668
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.extend",
+          "lineNumber": 670
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Spacer",
+          "lineNumber": 671
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "table_flowable",
+          "lineNumber": 671
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Spacer",
+          "lineNumber": 671
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "paragraph_from_tag",
+          "lineNumber": 675
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "node.find_all",
+          "lineNumber": 676
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Table",
+          "lineNumber": 678
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "callout.setStyle",
+          "lineNumber": 679
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "TableStyle",
+          "lineNumber": 680
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 682
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 683
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.extend",
+          "lineNumber": 691
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Spacer",
+          "lineNumber": 691
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 693
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "HRFlowable",
+          "lineNumber": 694
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 697
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "ParagraphStyle",
+          "lineNumber": 706
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 713
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "ParagraphStyle",
+          "lineNumber": 716
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 721
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "ParagraphStyle",
+          "lineNumber": 724
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 730
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Table",
+          "lineNumber": 734
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 736
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 737
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 738
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "html.escape",
+          "lineNumber": 738
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 740
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "panel.setStyle",
+          "lineNumber": 749
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "TableStyle",
+          "lineNumber": 750
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 752
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 757
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 761
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "ParagraphStyle",
+          "lineNumber": 763
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 770
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Spacer",
+          "lineNumber": 773
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Spacer",
+          "lineNumber": 773
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "target.parent.mkdir",
+          "lineNumber": 777
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "pdf_styles",
+          "lineNumber": 778
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "HandbookDocTemplate",
+          "lineNumber": 779
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "str",
+          "lineNumber": 780
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "cover_flowables",
+          "lineNumber": 790
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "len",
+          "lineNumber": 790
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.extend",
+          "lineNumber": 791
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "NextPageTemplate",
+          "lineNumber": 791
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "PageBreak",
+          "lineNumber": 791
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.append",
+          "lineNumber": 792
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "Paragraph",
+          "lineNumber": 793
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "ParagraphStyle",
+          "lineNumber": 795
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "TableOfContents",
+          "lineNumber": 803
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "ParagraphStyle",
+          "lineNumber": 806
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "colors.HexColor",
+          "lineNumber": 813
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.extend",
+          "lineNumber": 816
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "PageBreak",
+          "lineNumber": 816
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "enumerate",
+          "lineNumber": 817
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.append",
+          "lineNumber": 819
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "PageBreak",
+          "lineNumber": 819
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "html_to_flowables",
+          "lineNumber": 820
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.extend",
+          "lineNumber": 824
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "doc.multiBuild",
+          "lineNumber": 825
+        },
+        {
+          "caller": "file_digest",
+          "callee": "hashlib.sha256(data).hexdigest",
+          "lineNumber": 829
+        },
+        {
+          "caller": "file_digest",
+          "callee": "hashlib.sha256",
+          "lineNumber": 829
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "file_digest",
+          "lineNumber": 836
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "sorted",
+          "lineNumber": 837
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "files.items",
+          "lineNumber": 837
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "(json.dumps(manifest, indent=2, sort_keys=True) + \"\\n\").encode",
+          "lineNumber": 841
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "json.dumps",
+          "lineNumber": 841
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "path.is_file",
+          "lineNumber": 846
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "set",
+          "lineNumber": 847
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "json.loads",
+          "lineNumber": 849
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "path.read_text",
+          "lineNumber": 849
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "set",
+          "lineNumber": 850
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "data.get",
+          "lineNumber": 850
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "set",
+          "lineNumber": 852
+        },
+        {
+          "caller": "write_site",
+          "callee": "read_manifest",
+          "lineNumber": 856
+        },
+        {
+          "caller": "write_site",
+          "callee": "dict",
+          "lineNumber": 857
+        },
+        {
+          "caller": "write_site",
+          "callee": "manifest_bytes",
+          "lineNumber": 858
+        },
+        {
+          "caller": "write_site",
+          "callee": "complete.items",
+          "lineNumber": 859
+        },
+        {
+          "caller": "write_site",
+          "callee": "destination.parent.mkdir",
+          "lineNumber": 861
+        },
+        {
+          "caller": "write_site",
+          "callee": "destination.write_bytes",
+          "lineNumber": 862
+        },
+        {
+          "caller": "write_site",
+          "callee": "old_files.difference",
+          "lineNumber": 863
+        },
+        {
+          "caller": "write_site",
+          "callee": "stale.is_file",
+          "lineNumber": 865
+        },
+        {
+          "caller": "write_site",
+          "callee": "stale.unlink",
+          "lineNumber": 866
+        },
+        {
+          "caller": "compare_files",
+          "callee": "dict",
+          "lineNumber": 870
+        },
+        {
+          "caller": "compare_files",
+          "callee": "manifest_bytes",
+          "lineNumber": 871
+        },
+        {
+          "caller": "compare_files",
+          "callee": "sorted",
+          "lineNumber": 873
+        },
+        {
+          "caller": "compare_files",
+          "callee": "complete.items",
+          "lineNumber": 873
+        },
+        {
+          "caller": "compare_files",
+          "callee": "current.is_file",
+          "lineNumber": 875
+        },
+        {
+          "caller": "compare_files",
+          "callee": "differences.append",
+          "lineNumber": 876
+        },
+        {
+          "caller": "compare_files",
+          "callee": "current.relative_to",
+          "lineNumber": 876
+        },
+        {
+          "caller": "compare_files",
+          "callee": "current.read_bytes",
+          "lineNumber": 877
+        },
+        {
+          "caller": "compare_files",
+          "callee": "differences.append",
+          "lineNumber": 878
+        },
+        {
+          "caller": "compare_files",
+          "callee": "current.relative_to",
+          "lineNumber": 878
+        },
+        {
+          "caller": "compare_files",
+          "callee": "sorted",
+          "lineNumber": 879
+        },
+        {
+          "caller": "compare_files",
+          "callee": "read_manifest(root).difference",
+          "lineNumber": 879
+        },
+        {
+          "caller": "compare_files",
+          "callee": "read_manifest",
+          "lineNumber": 879
+        },
+        {
+          "caller": "compare_files",
+          "callee": "differences.append",
+          "lineNumber": 880
+        },
+        {
+          "caller": "compare_files",
+          "callee": "(root / relative).relative_to",
+          "lineNumber": 881
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "PdfReader",
+          "lineNumber": 887
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "tuple",
+          "lineNumber": 889
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "float",
+          "lineNumber": 891
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "float",
+          "lineNumber": 892
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "\" \".join",
+          "lineNumber": 893
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "(page.extract_text() or \"\").split",
+          "lineNumber": 893
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "page.extract_text",
+          "lineNumber": 893
+        },
+        {
+          "caller": "run",
+          "callee": "load_course",
+          "lineNumber": 901
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.is_file",
+          "lineNumber": 904
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 905
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 906
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.relative_to",
+          "lineNumber": 906
+        },
+        {
+          "caller": "run",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 908
+        },
+        {
+          "caller": "run",
+          "callee": "Path",
+          "lineNumber": 909
+        },
+        {
+          "caller": "run",
+          "callee": "build_pdf",
+          "lineNumber": 911
+        },
+        {
+          "caller": "run",
+          "callee": "build_site_files",
+          "lineNumber": 912
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.read_bytes",
+          "lineNumber": 913
+        },
+        {
+          "caller": "run",
+          "callee": "compare_files",
+          "lineNumber": 915
+        },
+        {
+          "caller": "run",
+          "callee": "pdf_content_signature",
+          "lineNumber": 916
+        },
+        {
+          "caller": "run",
+          "callee": "pdf_content_signature",
+          "lineNumber": 916
+        },
+        {
+          "caller": "run",
+          "callee": "differences.append",
+          "lineNumber": 917
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.relative_to",
+          "lineNumber": 917
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 919
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 921
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 923
+        },
+        {
+          "caller": "run",
+          "callee": "len",
+          "lineNumber": 923
+        },
+        {
+          "caller": "run",
+          "callee": "PDF_ROOT.mkdir",
+          "lineNumber": 926
+        },
+        {
+          "caller": "run",
+          "callee": "build_pdf",
+          "lineNumber": 928
+        },
+        {
+          "caller": "run",
+          "callee": "build_site_files",
+          "lineNumber": 929
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.read_bytes",
+          "lineNumber": 929
+        },
+        {
+          "caller": "run",
+          "callee": "write_site",
+          "lineNumber": 930
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 931
+        },
+        {
+          "caller": "run",
+          "callee": "len",
+          "lineNumber": 931
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.relative_to",
+          "lineNumber": 931
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 936
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 937
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 942
+        },
+        {
+          "caller": "main",
+          "callee": "run",
+          "lineNumber": 943
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 32,
+        "functionCount": 30,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "scripts/tutorial_assets/site.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 82,
+      "callGraph": [
+        {
+          "caller": "updateReadingProgress",
+          "callee": "Math.min",
+          "lineNumber": 14
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "value.replace",
+          "lineNumber": 54
+        },
+        {
+          "caller": "renderResults",
+          "callee": "query.toLowerCase().trim().split(/\\s+/).filter",
+          "lineNumber": 60
+        },
+        {
+          "caller": "renderResults",
+          "callee": "query.toLowerCase().trim().split",
+          "lineNumber": 60
+        },
+        {
+          "caller": "renderResults",
+          "callee": "query.toLowerCase().trim",
+          "lineNumber": 60
+        },
+        {
+          "caller": "renderResults",
+          "callee": "query.toLowerCase",
+          "lineNumber": 60
+        },
+        {
+          "caller": "renderResults",
+          "callee": "searchRecords\r\n      .map(record => {\r\n        const haystack = `${record.title} ${record.headings} ${record.text}`.toLowerCase();\r\n        const score = terms.reduce((total, term) => total + (haystack.includes(term) ? 1 : 0), 0);\r\n        return { record, score };\r\n      })\r\n      .filter(item => item.score === terms.length)\r\n      .slice",
+          "lineNumber": 65
+        },
+        {
+          "caller": "renderResults",
+          "callee": "searchRecords\r\n      .map(record => {\r\n        const haystack = `${record.title} ${record.headings} ${record.text}`.toLowerCase();\r\n        const score = terms.reduce((total, term) => total + (haystack.includes(term) ? 1 : 0), 0);\r\n        return { record, score };\r\n      })\r\n      .filter",
+          "lineNumber": 65
+        },
+        {
+          "caller": "renderResults",
+          "callee": "searchRecords\r\n      .map",
+          "lineNumber": 65
+        },
+        {
+          "caller": "renderResults",
+          "callee": "`${record.title} ${record.headings} ${record.text}`.toLowerCase",
+          "lineNumber": 67
+        },
+        {
+          "caller": "renderResults",
+          "callee": "terms.reduce",
+          "lineNumber": 68
+        },
+        {
+          "caller": "renderResults",
+          "callee": "haystack.includes",
+          "lineNumber": 68
+        },
+        {
+          "caller": "renderResults",
+          "callee": "matches.map(({ record }) => `<li><a href=\"${encodeURI(record.url)}\"><strong>${escapeHtml(record.title)}</strong><span>${escapeHtml(record.summary)}</span></a></li>`).join",
+          "lineNumber": 74
+        },
+        {
+          "caller": "renderResults",
+          "callee": "matches.map",
+          "lineNumber": 74
+        },
+        {
+          "caller": "renderResults",
+          "callee": "encodeURI",
+          "lineNumber": 74
+        },
+        {
+          "caller": "renderResults",
+          "callee": "escapeHtml",
+          "lineNumber": 74
+        },
+        {
+          "caller": "renderResults",
+          "callee": "escapeHtml",
+          "lineNumber": 74
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/cli.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 9,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 11,
+          "endLine": 14,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Path",
+          "lineNumber": 12
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 13
+        },
+        {
+          "caller": "main",
+          "callee": "SystemExit",
+          "lineNumber": 14
+        },
+        {
+          "caller": "main",
+          "callee": "stcli.main",
+          "lineNumber": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/hardware.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 192,
+      "nonEmptyLines": 163,
+      "functions": [
+        {
+          "name": "_package_status",
+          "startLine": 61,
+          "endLine": 66,
+          "params": [
+            "display_name",
+            "package_name"
+          ]
+        },
+        {
+          "name": "scan_system",
+          "startLine": 69,
+          "endLine": 115,
+          "params": [
+            "workspace"
+          ]
+        },
+        {
+          "name": "cuda_memory_stats",
+          "startLine": 118,
+          "endLine": 128,
+          "params": []
+        },
+        {
+          "name": "release_unused_cuda_memory",
+          "startLine": 131,
+          "endLine": 136,
+          "params": []
+        },
+        {
+          "name": "detect_hardware",
+          "startLine": 139,
+          "endLine": 178,
+          "params": [
+            "workspace"
+          ]
+        },
+        {
+          "name": "model_size_warning",
+          "startLine": 181,
+          "endLine": 192,
+          "params": [
+            "parameter_count",
+            "profile"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CudaMemoryStats",
+          "startLine": 26,
+          "endLine": 32,
+          "methods": [],
+          "properties": [
+            "free_gb",
+            "total_gb",
+            "allocated_gb",
+            "reserved_gb"
+          ]
+        },
+        {
+          "name": "SoftwareStatus",
+          "startLine": 36,
+          "endLine": 41,
+          "methods": [],
+          "properties": [
+            "name",
+            "available",
+            "detail"
+          ]
+        },
+        {
+          "name": "SystemScan",
+          "startLine": 45,
+          "endLine": 58,
+          "methods": [],
+          "properties": [
+            "os_name",
+            "os_release",
+            "os_version",
+            "python_version",
+            "cuda_version",
+            "cpu_threads",
+            "available_ram_gb",
+            "free_disk_gb",
+            "native_runtime",
+            "uv_venv_active",
+            "software"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CudaMemoryStats",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "SoftwareStatus",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "SystemScan",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "_package_status",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "scan_system",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "cuda_memory_stats",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "release_unused_cuda_memory",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "detect_hardware",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "model_size_warning",
+          "line": 181,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_package_status",
+          "callee": "version",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_package_status",
+          "callee": "SoftwareStatus",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_package_status",
+          "callee": "SoftwareStatus",
+          "lineNumber": 66
+        },
+        {
+          "caller": "scan_system",
+          "callee": "Path.cwd",
+          "lineNumber": 71
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.system",
+          "lineNumber": 72
+        },
+        {
+          "caller": "scan_system",
+          "callee": "Path",
+          "lineNumber": 74
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 76
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.python_version",
+          "lineNumber": 76
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 77
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 79
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 80
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 82
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 87
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 88
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 93
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 94
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 95
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 96
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 97
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 99
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 100
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SystemScan",
+          "lineNumber": 103
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.release",
+          "lineNumber": 105
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.version",
+          "lineNumber": 106
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.python_version",
+          "lineNumber": 107
+        },
+        {
+          "caller": "scan_system",
+          "callee": "os.cpu_count",
+          "lineNumber": 109
+        },
+        {
+          "caller": "scan_system",
+          "callee": "psutil.virtual_memory",
+          "lineNumber": 110
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.disk_usage",
+          "lineNumber": 111
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 120
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "RuntimeError",
+          "lineNumber": 121
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.mem_get_info",
+          "lineNumber": 122
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "CudaMemoryStats",
+          "lineNumber": 123
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.memory_allocated",
+          "lineNumber": 126
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.memory_reserved",
+          "lineNumber": 127
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 133
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "RuntimeError",
+          "lineNumber": 134
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "gc.collect",
+          "lineNumber": 135
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "torch.cuda.empty_cache",
+          "lineNumber": 136
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "Path.cwd",
+          "lineNumber": 140
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 141
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.get_device_properties",
+          "lineNumber": 146
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.is_bf16_supported",
+          "lineNumber": 149
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "psutil.virtual_memory",
+          "lineNumber": 151
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "shutil.disk_usage",
+          "lineNumber": 152
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "HardwareProfile",
+          "lineNumber": 168
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 171
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 172
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 173
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 9,
+        "functionCount": 6,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/inference.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 85,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "generate_text",
+          "startLine": 15,
+          "endLine": 39,
+          "params": [
+            "model_id",
+            "prompt",
+            "token",
+            "revision",
+            "adapter_path",
+            "max_new_tokens"
+          ]
+        },
+        {
+          "name": "_generate_text",
+          "startLine": 42,
+          "endLine": 85,
+          "params": [
+            "model_id",
+            "prompt",
+            "token",
+            "revision",
+            "adapter_path",
+            "max_new_tokens"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "generate_text",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "_generate_text",
+          "line": 42,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "generate_text",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 24
+        },
+        {
+          "caller": "generate_text",
+          "callee": "RuntimeError",
+          "lineNumber": 25
+        },
+        {
+          "caller": "generate_text",
+          "callee": "_generate_text",
+          "lineNumber": 27
+        },
+        {
+          "caller": "generate_text",
+          "callee": "release_unused_cuda_memory",
+          "lineNumber": 37
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.cuda.is_bf16_supported",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "BitsAndBytesConfig",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "AutoTokenizer.from_pretrained",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "AutoModelForCausalLM.from_pretrained",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.cuda.current_device",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "PeftModel.from_pretrained",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "Path",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer(prompt, return_tensors=\"pt\").to",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.inference_mode",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "model.generate",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "cast",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer.decode",
+          "lineNumber": 82
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 13,
+      "functions": [
+        {
+          "name": "schedule_application_exit",
+          "startLine": 10,
+          "endLine": 17,
+          "params": [
+            "delay_seconds",
+            "exit_function"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "schedule_application_exit",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "schedule_application_exit",
+          "callee": "threading.Timer",
+          "lineNumber": 15
+        },
+        {
+          "caller": "schedule_application_exit",
+          "callee": "timer.start",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'document:CODE_OF_CONDUCT.md' has no edges (orphan)",
+    "Node 'config:.streamlit/config.toml' has no edges (orphan)",
+    "Node 'file:examples/sft_sample.jsonl' has no edges (orphan)",
+    "Node 'file:src/lora_finetune_studio/__init__.py' has no edges (orphan)",
+    "Node 'pipeline:.github/workflows/ci.yml' has no edges (orphan)",
+    "Node 'document:CHANGELOG.md' has no edges (orphan)",
+    "Node 'document:CONTRIBUTING.md' has no edges (orphan)",
+    "Node 'document:SECURITY.md' has no edges (orphan)",
+    "Node 'file:.python-version' has no edges (orphan)",
+    "Node 'file:app_pages/gpu_memory.py' has no edges (orphan)",
+    "Node 'file:app_pages/model.py' has no edges (orphan)",
+    "Node 'file:app_pages/ollama.py' has no edges (orphan)",
+    "Node 'file:app_pages/review.py' has no edges (orphan)",
+    "Node 'file:app_pages/system.py' has no edges (orphan)",
+    "Node 'file:docs/index.html' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 175,
+    "totalEdges": 293,
+    "totalLayers": 5,
+    "tourSteps": 10,
+    "nodeTypes": {
+      "document": 7,
+      "config": 2,
+      "file": 33,
+      "function": 119,
+      "class": 13,
+      "pipeline": 1
+    },
+    "edgeTypes": {
+      "contains": 132,
+      "exports": 132,
+      "imports": 10,
+      "calls": 6,
+      "depends_on": 2,
+      "documents": 5,
+      "tested_by": 6
+    }
+  }
+}

@@ -38,8 +38,8 @@ entrypoint-local `demo/requirements.txt` installs only Streamlit. No secrets are
 - Validates conversational, text, prompt/completion, and paired-preference schemas before training.
 - Provides Smoke test, Standard, and High quality presets with optional controls for learning rate,
   epochs, sample limits, gradient norm, precision, sequence length, and batching.
-- Runs training in an isolated worker with live logs, cancellation, checkpoint recovery, and saved
-  configuration and metrics.
+- Queues multiple training configurations while one isolated GPU worker runs, with live logs,
+  cancellation, checkpoint recovery, and automatic FIFO continuation.
 - Supports optional native Windows acceleration through a repository-managed Unsloth Core runtime.
 - Saves portable PEFT adapters locally and can optionally upload completed adapters to the
   Hugging Face Hub.
@@ -67,8 +67,9 @@ backend.
 3. **Model** — inspect the base model and estimate whether it fits the available VRAM.
 4. **GPU memory** — review live CUDA use and release unused PyTorch cache when safe.
 5. **Training** — select the approach, adapter method, backend, preset, and optional overrides.
-6. **Review & run** — validate the complete configuration before starting the worker.
-7. **Monitor** — follow progress, logs, metrics, cancellation, and checkpoint recovery.
+6. **Review & run** — validate the configuration, then start it or add it to the durable queue.
+7. **Monitor** — inspect queue order, progress bar and percentage, logs, metrics, cancellation, and
+   recovery.
 8. **Ollama playground** — chat with models already served by a local Ollama installation.
 
 ## Requirements
@@ -143,7 +144,7 @@ production-quality adapter.
 
 - PPO, full tuning, freeze tuning, pre-training, and distributed training are not implemented.
 - Native Unsloth integration currently targets Windows; Linux uses the standard backend.
-- Only one local training job can run at a time.
+- Only one local training job runs at a time; additional jobs wait in the persistent FIFO queue.
 - The application has no authentication and must not be exposed to an untrusted network.
 - The Ollama playground does not merge, convert, or import trained adapters.
 - GitHub Pages and Streamlit Community Cloud cannot access a user's local GPU or Ollama service.

@@ -1,0 +1,3676 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [
+    ".python-version",
+    "docs/index.html"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 18,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 18,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "app_pages/dataset.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 360,
+      "nonEmptyLines": 333,
+      "functions": [
+        {
+          "name": "source_label",
+          "startLine": 34,
+          "endLine": 36,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "source_identity",
+          "startLine": 39,
+          "endLine": 48,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "source_key",
+          "startLine": 51,
+          "endLine": 52,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "is_compatible",
+          "startLine": 55,
+          "endLine": 56,
+          "params": [
+            "spec"
+          ]
+        },
+        {
+          "name": "clear_pending",
+          "startLine": 59,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "save_pending_dataset",
+          "startLine": 65,
+          "endLine": 88,
+          "params": [
+            "spec",
+            "inspection"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "source_label",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "source_identity",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "source_key",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "is_compatible",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "clear_pending",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "save_pending_dataset",
+          "line": 65,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "source_label",
+          "callee": "Path",
+          "lineNumber": 36
+        },
+        {
+          "caller": "source_key",
+          "callee": "hashlib.sha256(repr(source_identity(spec)).encode()).hexdigest",
+          "lineNumber": 52
+        },
+        {
+          "caller": "source_key",
+          "callee": "hashlib.sha256",
+          "lineNumber": 52
+        },
+        {
+          "caller": "source_key",
+          "callee": "repr(source_identity(spec)).encode",
+          "lineNumber": 52
+        },
+        {
+          "caller": "source_key",
+          "callee": "repr",
+          "lineNumber": 52
+        },
+        {
+          "caller": "source_key",
+          "callee": "source_identity",
+          "lineNumber": 52
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "enumerate",
+          "lineNumber": 69
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "source_identity",
+          "lineNumber": 71
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "source_identity",
+          "lineNumber": 71
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "ValueError",
+          "lineNumber": 72
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "ValueError",
+          "lineNumber": 74
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "is_compatible",
+          "lineNumber": 75
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "next",
+          "lineNumber": 77
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "iter",
+          "lineNumber": 77
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "ValueError",
+          "lineNumber": 78
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "st.session_state.dataset_specs.append",
+          "lineNumber": 82
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "st.session_state.dataset_inspections.append",
+          "lineNumber": 83
+        },
+        {
+          "caller": "save_pending_dataset",
+          "callee": "clear_pending",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/gpu_memory.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 50,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/model.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/monitor.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 183,
+      "nonEmptyLines": 168,
+      "functions": [
+        {
+          "name": "training_monitor",
+          "startLine": 67,
+          "endLine": 141,
+          "params": [
+            "selected_run_id"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "training_monitor",
+          "line": 66,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "training_monitor",
+          "callee": "dispatch_next_run",
+          "lineNumber": 69
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "queued_runs",
+          "lineNumber": 70
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 72
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.subheader",
+          "lineNumber": 75
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "enumerate",
+          "lineNumber": 78
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "read_config",
+          "lineNumber": 80
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "queue_rows.append",
+          "lineNumber": 83
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.dataframe",
+          "lineNumber": 93
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.caption",
+          "lineNumber": 95
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.subheader",
+          "lineNumber": 97
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "read_status",
+          "lineNumber": 99
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 101
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.container",
+          "lineNumber": 103
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.badge",
+          "lineNumber": 104
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.write",
+          "lineNumber": 108
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.progress",
+          "lineNumber": 109
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.json",
+          "lineNumber": 111
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 113
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.button",
+          "lineNumber": 119
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "cancel_run",
+          "lineNumber": 125
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.rerun",
+          "lineNumber": 126
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.button",
+          "lineNumber": 127
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "resume_run",
+          "lineNumber": 131
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.rerun",
+          "lineNumber": 132
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.error",
+          "lineNumber": 134
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "str",
+          "lineNumber": 134
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.expander",
+          "lineNumber": 135
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "st.code",
+          "lineNumber": 138
+        },
+        {
+          "caller": "training_monitor",
+          "callee": "read_log",
+          "lineNumber": 139
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/ollama.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/review.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 137,
+      "nonEmptyLines": 124,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/system.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 136,
+      "nonEmptyLines": 125,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "app_pages/training.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 364,
+      "nonEmptyLines": 343,
+      "functions": [
+        {
+          "name": "approach_changed",
+          "startLine": 40,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "method_changed",
+          "startLine": 53,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "compute_type_changed",
+          "startLine": 60,
+          "endLine": 64,
+          "params": []
+        },
+        {
+          "name": "apply_preset_defaults",
+          "startLine": 125,
+          "endLine": 134,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "approach_changed",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "method_changed",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "compute_type_changed",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "apply_preset_defaults",
+          "line": 125,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "approach_changed",
+          "callee": "TrainingApproach",
+          "lineNumber": 41
+        },
+        {
+          "caller": "approach_changed",
+          "callee": "max",
+          "lineNumber": 45
+        },
+        {
+          "caller": "approach_changed",
+          "callee": "st.session_state.get",
+          "lineNumber": 46
+        },
+        {
+          "caller": "approach_changed",
+          "callee": "st.session_state.get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "method_changed",
+          "callee": "PeftMode",
+          "lineNumber": 54
+        },
+        {
+          "caller": "compute_type_changed",
+          "callee": "ComputeType",
+          "lineNumber": 61
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "int",
+          "lineNumber": 127
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "float",
+          "lineNumber": 129
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "int",
+          "lineNumber": 131
+        },
+        {
+          "caller": "apply_preset_defaults",
+          "callee": "int",
+          "lineNumber": 132
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/hardware.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 192,
+      "nonEmptyLines": 163,
+      "functions": [
+        {
+          "name": "_package_status",
+          "startLine": 61,
+          "endLine": 66,
+          "params": [
+            "display_name",
+            "package_name"
+          ]
+        },
+        {
+          "name": "scan_system",
+          "startLine": 69,
+          "endLine": 115,
+          "params": [
+            "workspace"
+          ]
+        },
+        {
+          "name": "cuda_memory_stats",
+          "startLine": 118,
+          "endLine": 128,
+          "params": []
+        },
+        {
+          "name": "release_unused_cuda_memory",
+          "startLine": 131,
+          "endLine": 136,
+          "params": []
+        },
+        {
+          "name": "detect_hardware",
+          "startLine": 139,
+          "endLine": 178,
+          "params": [
+            "workspace"
+          ]
+        },
+        {
+          "name": "model_size_warning",
+          "startLine": 181,
+          "endLine": 192,
+          "params": [
+            "parameter_count",
+            "profile"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CudaMemoryStats",
+          "startLine": 26,
+          "endLine": 32,
+          "methods": [],
+          "properties": [
+            "free_gb",
+            "total_gb",
+            "allocated_gb",
+            "reserved_gb"
+          ]
+        },
+        {
+          "name": "SoftwareStatus",
+          "startLine": 36,
+          "endLine": 41,
+          "methods": [],
+          "properties": [
+            "name",
+            "available",
+            "detail"
+          ]
+        },
+        {
+          "name": "SystemScan",
+          "startLine": 45,
+          "endLine": 58,
+          "methods": [],
+          "properties": [
+            "os_name",
+            "os_release",
+            "os_version",
+            "python_version",
+            "cuda_version",
+            "cpu_threads",
+            "available_ram_gb",
+            "free_disk_gb",
+            "native_runtime",
+            "uv_venv_active",
+            "software"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CudaMemoryStats",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "SoftwareStatus",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "SystemScan",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "_package_status",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "scan_system",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "cuda_memory_stats",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "release_unused_cuda_memory",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "detect_hardware",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "model_size_warning",
+          "line": 181,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_package_status",
+          "callee": "version",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_package_status",
+          "callee": "SoftwareStatus",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_package_status",
+          "callee": "SoftwareStatus",
+          "lineNumber": 66
+        },
+        {
+          "caller": "scan_system",
+          "callee": "Path.cwd",
+          "lineNumber": 71
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.system",
+          "lineNumber": 72
+        },
+        {
+          "caller": "scan_system",
+          "callee": "Path",
+          "lineNumber": 74
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 76
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.python_version",
+          "lineNumber": 76
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 77
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 79
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 80
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 82
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 87
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 88
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 93
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 94
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 95
+        },
+        {
+          "caller": "scan_system",
+          "callee": "_package_status",
+          "lineNumber": 96
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SoftwareStatus",
+          "lineNumber": 97
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 99
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.which",
+          "lineNumber": 100
+        },
+        {
+          "caller": "scan_system",
+          "callee": "SystemScan",
+          "lineNumber": 103
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.release",
+          "lineNumber": 105
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.version",
+          "lineNumber": 106
+        },
+        {
+          "caller": "scan_system",
+          "callee": "platform.python_version",
+          "lineNumber": 107
+        },
+        {
+          "caller": "scan_system",
+          "callee": "os.cpu_count",
+          "lineNumber": 109
+        },
+        {
+          "caller": "scan_system",
+          "callee": "psutil.virtual_memory",
+          "lineNumber": 110
+        },
+        {
+          "caller": "scan_system",
+          "callee": "shutil.disk_usage",
+          "lineNumber": 111
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 120
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "RuntimeError",
+          "lineNumber": 121
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.mem_get_info",
+          "lineNumber": 122
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "CudaMemoryStats",
+          "lineNumber": 123
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.memory_allocated",
+          "lineNumber": 126
+        },
+        {
+          "caller": "cuda_memory_stats",
+          "callee": "torch.cuda.memory_reserved",
+          "lineNumber": 127
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 133
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "RuntimeError",
+          "lineNumber": 134
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "gc.collect",
+          "lineNumber": 135
+        },
+        {
+          "caller": "release_unused_cuda_memory",
+          "callee": "torch.cuda.empty_cache",
+          "lineNumber": 136
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "Path.cwd",
+          "lineNumber": 140
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 141
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.get_device_properties",
+          "lineNumber": 146
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "torch.cuda.is_bf16_supported",
+          "lineNumber": 149
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "psutil.virtual_memory",
+          "lineNumber": 151
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "shutil.disk_usage",
+          "lineNumber": 152
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "HardwareProfile",
+          "lineNumber": 168
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 171
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 172
+        },
+        {
+          "caller": "detect_hardware",
+          "callee": "round",
+          "lineNumber": 173
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 9,
+        "functionCount": 6,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/inference.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 85,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "generate_text",
+          "startLine": 15,
+          "endLine": 39,
+          "params": [
+            "model_id",
+            "prompt",
+            "token",
+            "revision",
+            "adapter_path",
+            "max_new_tokens"
+          ]
+        },
+        {
+          "name": "_generate_text",
+          "startLine": 42,
+          "endLine": 85,
+          "params": [
+            "model_id",
+            "prompt",
+            "token",
+            "revision",
+            "adapter_path",
+            "max_new_tokens"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "generate_text",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "_generate_text",
+          "line": 42,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "generate_text",
+          "callee": "torch.cuda.is_available",
+          "lineNumber": 24
+        },
+        {
+          "caller": "generate_text",
+          "callee": "RuntimeError",
+          "lineNumber": 25
+        },
+        {
+          "caller": "generate_text",
+          "callee": "_generate_text",
+          "lineNumber": 27
+        },
+        {
+          "caller": "generate_text",
+          "callee": "release_unused_cuda_memory",
+          "lineNumber": 37
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.cuda.is_bf16_supported",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "BitsAndBytesConfig",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "AutoTokenizer.from_pretrained",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "AutoModelForCausalLM.from_pretrained",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.cuda.current_device",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "PeftModel.from_pretrained",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "Path",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer(prompt, return_tensors=\"pt\").to",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "torch.inference_mode",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "model.generate",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "cast",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_generate_text",
+          "callee": "tokenizer.decode",
+          "lineNumber": 82
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lora_finetune_studio/lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 13,
+      "functions": [
+        {
+          "name": "schedule_application_exit",
+          "startLine": 10,
+          "endLine": 17,
+          "params": [
+            "delay_seconds",
+            "exit_function"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "schedule_application_exit",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "schedule_application_exit",
+          "callee": "threading.Timer",
+          "lineNumber": 15
+        },
+        {
+          "caller": "schedule_application_exit",
+          "callee": "timer.start",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "streamlit_app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 179,
+      "nonEmptyLines": 167,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 196,
+      "nonEmptyLines": 175,
+      "functions": [
+        {
+          "name": "test_app_starts_without_ollama",
+          "startLine": 11,
+          "endLine": 196,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_app_starts_without_ollama",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "UnslothRuntimeStatus",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "Path",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "Path",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "AppTest.from_file(app_path, default_timeout=60).run",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "AppTest.from_file",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "stop_button.click().run",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "stop_button.click",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "keep_running.click().run",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "keep_running.click",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 40
+        },
+        {
+          "caller": "cancel_for_shutdown",
+          "callee": "cancellation_options.append",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "scheduled_exits.append",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\r\n        button for button in app.button if button.label == \"Stop LoRA Studio\"\r\n    ).click().run",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\r\n        button for button in app.button if button.label == \"Stop LoRA Studio\"\r\n    ).click",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\r\n        button for button in app.button if button.label == \"Confirm stop\"\r\n    ).click().run",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\r\n        button for button in app.button if button.label == \"Confirm stop\"\r\n    ).click",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "pages.items",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page(path).run",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page(\"app_pages/gpu_memory.py\").run",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "DatasetSpec",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "DatasetInspection",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page(\"app_pages/dataset.py\").run",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "remove_dataset.click().run",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "remove_dataset.click",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "DatasetInspection",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page(\"app_pages/training.py\").run",
+          "lineNumber": 98
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page",
+          "lineNumber": 98
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 99
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "set",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "set",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 119
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "learning_rate_mode.select(\"Custom\").run",
+          "lineNumber": 130
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "learning_rate_mode.select",
+          "lineNumber": 130
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "mode.select(\"Custom\").run",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "mode.select",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "compute_type.select(\"FP32\").run",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "compute_type.select",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 140
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "custom_values.items",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\r\n            number_input\r\n            for number_input in app.number_input\r\n            if number_input.label == label\r\n        ).set_value",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\r\n        button for button in app.button if button.label == \"Save training settings\"\r\n    ).click().run",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next(\r\n        button for button in app.button if button.label == \"Save training settings\"\r\n    ).click",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 167
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "preset.select(\"Smoke test\").run",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "preset.select",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "method.select(\"OFT\").run",
+          "lineNumber": 179
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "method.select",
+          "lineNumber": 179
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 180
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "next",
+          "lineNumber": 186
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "approach.select(\"DPO Training\").run",
+          "lineNumber": 189
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "approach.select",
+          "lineNumber": 189
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 193
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page(\"app_pages/dataset.py\").run",
+          "lineNumber": 195
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "app.switch_page",
+          "lineNumber": 195
+        },
+        {
+          "caller": "test_app_starts_without_ollama",
+          "callee": "any",
+          "lineNumber": 196
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_hardware.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 94,
+      "functions": [
+        {
+          "name": "test_model_size_warning_uses_detected_limit",
+          "startLine": 15,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "startLine": 31,
+          "endLine": 47,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "startLine": 50,
+          "endLine": 60,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "startLine": 63,
+          "endLine": 69,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_system_scan_reports_live_resources_without_installing",
+          "startLine": 72,
+          "endLine": 106,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_system_scan_recognizes_native_linux",
+          "startLine": 109,
+          "endLine": 118,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_model_size_warning_uses_detected_limit",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "test_system_scan_reports_live_resources_without_installing",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "test_system_scan_recognizes_native_linux",
+          "line": 109,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_model_size_warning_uses_detected_limit",
+          "callee": "HardwareProfile",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_model_size_warning_uses_detected_limit",
+          "callee": "model_size_warning",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_model_size_warning_uses_detected_limit",
+          "callee": "model_size_warning",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_cuda_memory_stats_reports_global_and_process_usage",
+          "callee": "cuda_memory_stats",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "calls.append",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "calls.append",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+          "callee": "release_unused_cuda_memory",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "pytest.raises",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "cuda_memory_stats",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "pytest.raises",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_cuda_memory_helpers_reject_cpu_only_system",
+          "callee": "release_unused_cuda_memory",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "SimpleNamespace",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "SimpleNamespace",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "str",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "str",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_system_scan_reports_live_resources_without_installing",
+          "callee": "scan_system",
+          "lineNumber": 95
+        },
+        {
+          "caller": "test_system_scan_recognizes_native_linux",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_system_scan_recognizes_native_linux",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 111
+        },
+        {
+          "caller": "test_system_scan_recognizes_native_linux",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_system_scan_recognizes_native_linux",
+          "callee": "scan_system",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_inference.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 20,
+      "functions": [
+        {
+          "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "startLine": 6,
+          "endLine": 25,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 10
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "object",
+          "lineNumber": 10
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "(_ for _ in ()).throw",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "ValueError",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "cleanup_calls.append",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "pytest.raises",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_generate_text_releases_cuda_memory_after_loading_failure",
+          "callee": "inference.generate_text",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_jobs.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 435,
+      "nonEmptyLines": 353,
+      "functions": [
+        {
+          "name": "test_create_run_persists_safe_config",
+          "startLine": 11,
+          "endLine": 28,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_create_run_appends_jobs_in_fifo_order",
+          "startLine": 31,
+          "endLine": 41,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_dispatch_starts_only_first_waiting_run",
+          "startLine": 44,
+          "endLine": 66,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cancelling_running_job_starts_next_waiting_run",
+          "startLine": 69,
+          "endLine": 110,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "startLine": 113,
+          "endLine": 134,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "startLine": 137,
+          "endLine": 164,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_list_runs_orders_active_then_waiting_then_history",
+          "startLine": 167,
+          "endLine": 190,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "startLine": 193,
+          "endLine": 216,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "startLine": 219,
+          "endLine": 242,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_atomic_json_replaces_existing_file",
+          "startLine": 245,
+          "endLine": 250,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "_running_test_run",
+          "startLine": 268,
+          "endLine": 280,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cancel_run_stops_only_its_training_worker",
+          "startLine": 283,
+          "endLine": 299,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cancel_run_rejects_unrelated_process",
+          "startLine": 302,
+          "endLine": 312,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_cancel_active_run_delegates_to_active_run",
+          "startLine": 315,
+          "endLine": 325,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "startLine": 328,
+          "endLine": 358,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "startLine": 361,
+          "endLine": 383,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "startLine": 386,
+          "endLine": 412,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_launch_run_rejects_missing_unsloth_runtime",
+          "startLine": 415,
+          "endLine": 435,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeWorkerProcess",
+          "startLine": 253,
+          "endLine": 265,
+          "methods": [
+            "__init__",
+            "cmdline",
+            "terminate",
+            "wait"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_create_run_persists_safe_config",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "test_create_run_appends_jobs_in_fifo_order",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "test_dispatch_starts_only_first_waiting_run",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "test_cancelling_running_job_starts_next_waiting_run",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "line": 113,
+          "isDefault": false
+        },
+        {
+          "name": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "test_list_runs_orders_active_then_waiting_then_history",
+          "line": 167,
+          "isDefault": false
+        },
+        {
+          "name": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "line": 193,
+          "isDefault": false
+        },
+        {
+          "name": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "line": 219,
+          "isDefault": false
+        },
+        {
+          "name": "test_atomic_json_replaces_existing_file",
+          "line": 245,
+          "isDefault": false
+        },
+        {
+          "name": "FakeWorkerProcess",
+          "line": 253,
+          "isDefault": false
+        },
+        {
+          "name": "_running_test_run",
+          "line": 268,
+          "isDefault": false
+        },
+        {
+          "name": "test_cancel_run_stops_only_its_training_worker",
+          "line": 283,
+          "isDefault": false
+        },
+        {
+          "name": "test_cancel_run_rejects_unrelated_process",
+          "line": 302,
+          "isDefault": false
+        },
+        {
+          "name": "test_cancel_active_run_delegates_to_active_run",
+          "line": 315,
+          "isDefault": false
+        },
+        {
+          "name": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "line": 328,
+          "isDefault": false
+        },
+        {
+          "name": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "line": 361,
+          "isDefault": false
+        },
+        {
+          "name": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "line": 386,
+          "isDefault": false
+        },
+        {
+          "name": "test_launch_run_rejects_missing_unsloth_runtime",
+          "line": 415,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "TrainingConfig",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "DatasetSpec",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "jobs.create_run",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "jobs.read_status",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "jobs.read_config",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "(tmp_path / run_id / \"config.json\").is_file",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_create_run_persists_safe_config",
+          "callee": "(tmp_path / run_id / \"config.json\").read_text",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_create_run_appends_jobs_in_fifo_order",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_create_run_appends_jobs_in_fifo_order",
+          "callee": "TrainingConfig",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_create_run_appends_jobs_in_fifo_order",
+          "callee": "DatasetSpec",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_create_run_appends_jobs_in_fifo_order",
+          "callee": "jobs.create_run",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_create_run_appends_jobs_in_fifo_order",
+          "callee": "jobs.create_run",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_create_run_appends_jobs_in_fifo_order",
+          "callee": "jobs.queued_runs",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "TrainingConfig",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "DatasetSpec",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "jobs.create_run",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "jobs.create_run",
+          "lineNumber": 51
+        },
+        {
+          "caller": "fake_popen",
+          "callee": "launched_commands.append",
+          "lineNumber": 55
+        },
+        {
+          "caller": "fake_popen",
+          "callee": "SimpleNamespace",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "jobs.queued_runs",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "jobs.read_status",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_dispatch_starts_only_first_waiting_run",
+          "callee": "len",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "TrainingConfig",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "DatasetSpec",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "jobs.create_run",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "jobs.create_run",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "iter",
+          "lineNumber": 79
+        },
+        {
+          "caller": "fake_popen",
+          "callee": "next",
+          "lineNumber": 83
+        },
+        {
+          "caller": "fake_popen",
+          "callee": "live_pids.add",
+          "lineNumber": 84
+        },
+        {
+          "caller": "fake_popen",
+          "callee": "SimpleNamespace",
+          "lineNumber": 85
+        },
+        {
+          "caller": "terminate",
+          "callee": "super().terminate",
+          "lineNumber": 89
+        },
+        {
+          "caller": "terminate",
+          "callee": "super",
+          "lineNumber": 89
+        },
+        {
+          "caller": "terminate",
+          "callee": "live_pids.discard",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "RunningProcess",
+          "lineNumber": 95
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "str",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "first_config.resolve",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "jobs.cancel_run",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "jobs.read_status",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "jobs.read_status",
+          "lineNumber": 109
+        },
+        {
+          "caller": "test_cancelling_running_job_starts_next_waiting_run",
+          "callee": "jobs.queued_runs",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "TrainingConfig",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "DatasetSpec",
+          "lineNumber": 119
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "jobs.create_run",
+          "lineNumber": 121
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "jobs.create_run",
+          "lineNumber": 122
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "jobs.read_status",
+          "lineNumber": 123
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "stale_status.to_dict",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 128
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "SimpleNamespace",
+          "lineNumber": 129
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "jobs.read_status",
+          "lineNumber": 133
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "(jobs.read_status(stale_run).error or \"\").lower",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_dispatch_marks_dead_worker_failed_before_continuing",
+          "callee": "jobs.read_status",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 140
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "TrainingConfig",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "DatasetSpec",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.create_run",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.create_run",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 147
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "SimpleNamespace",
+          "lineNumber": 148
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.cancel_run",
+          "lineNumber": 153
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "checkpoint.mkdir",
+          "lineNumber": 155
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.resume_run",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.queued_runs",
+          "lineNumber": 159
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.read_status",
+          "lineNumber": 160
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.read_config",
+          "lineNumber": 161
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "str",
+          "lineNumber": 161
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "checkpoint.resolve",
+          "lineNumber": 162
+        },
+        {
+          "caller": "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+          "callee": "jobs.active_run",
+          "lineNumber": 164
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "TrainingConfig",
+          "lineNumber": 171
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "DatasetSpec",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "jobs.create_run",
+          "lineNumber": 175
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "jobs.read_status",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 178
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "history_status.to_dict",
+          "lineNumber": 179
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "jobs.create_run",
+          "lineNumber": 181
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "jobs.create_run",
+          "lineNumber": 182
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 183
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "SimpleNamespace",
+          "lineNumber": 184
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 186
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 187
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 188
+        },
+        {
+          "caller": "test_list_runs_orders_active_then_waiting_then_history",
+          "callee": "jobs.list_runs",
+          "lineNumber": 190
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 196
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "DatasetSpec",
+          "lineNumber": 197
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "jobs.create_run",
+          "lineNumber": 198
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "TrainingConfig",
+          "lineNumber": 199
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "jobs.create_run",
+          "lineNumber": 201
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "TrainingConfig",
+          "lineNumber": 201
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "UnslothRuntimeStatus",
+          "lineNumber": 205
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 209
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "SimpleNamespace",
+          "lineNumber": 210
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 213
+        },
+        {
+          "caller": "test_dispatch_marks_launch_failure_and_continues_queue",
+          "callee": "jobs.read_status",
+          "lineNumber": 214
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 222
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "TrainingConfig",
+          "lineNumber": 223
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "DatasetSpec",
+          "lineNumber": 225
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "jobs.create_run",
+          "lineNumber": 227
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "jobs.create_run",
+          "lineNumber": 228
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 229
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "SimpleNamespace",
+          "lineNumber": 230
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 232
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 233
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 234
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "jobs.read_status",
+          "lineNumber": 235
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 237
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "finishing_status.to_dict",
+          "lineNumber": 238
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "jobs.dispatch_next_run",
+          "lineNumber": 241
+        },
+        {
+          "caller": "test_dispatch_waits_for_terminal_worker_process_to_exit",
+          "callee": "jobs.queued_runs",
+          "lineNumber": 242
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 247
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 248
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "path.read_text(encoding=\"utf-8\").strip().endswith",
+          "lineNumber": 250
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "path.read_text(encoding=\"utf-8\").strip",
+          "lineNumber": 250
+        },
+        {
+          "caller": "test_atomic_json_replaces_existing_file",
+          "callee": "path.read_text",
+          "lineNumber": 250
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 269
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "jobs.create_run",
+          "lineNumber": 270
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "TrainingConfig",
+          "lineNumber": 271
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "DatasetSpec",
+          "lineNumber": 273
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "jobs.read_status",
+          "lineNumber": 276
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "jobs.write_json_atomic",
+          "lineNumber": 279
+        },
+        {
+          "caller": "_running_test_run",
+          "callee": "status.to_dict",
+          "lineNumber": 279
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "_running_test_run",
+          "lineNumber": 284
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "FakeWorkerProcess",
+          "lineNumber": 285
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "str",
+          "lineNumber": 290
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "config_path.resolve",
+          "lineNumber": 290
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 293
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 294
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "jobs.cancel_run",
+          "lineNumber": 296
+        },
+        {
+          "caller": "test_cancel_run_stops_only_its_training_worker",
+          "callee": "jobs.read_status",
+          "lineNumber": 299
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "_running_test_run",
+          "lineNumber": 303
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "FakeWorkerProcess",
+          "lineNumber": 304
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 305
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 306
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "pytest.raises",
+          "lineNumber": 308
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "jobs.cancel_run",
+          "lineNumber": 309
+        },
+        {
+          "caller": "test_cancel_run_rejects_unrelated_process",
+          "callee": "jobs.read_status",
+          "lineNumber": 312
+        },
+        {
+          "caller": "test_cancel_active_run_delegates_to_active_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 317
+        },
+        {
+          "caller": "fake_cancel",
+          "callee": "cancelled.append",
+          "lineNumber": 320
+        },
+        {
+          "caller": "test_cancel_active_run_delegates_to_active_run",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 322
+        },
+        {
+          "caller": "test_cancel_active_run_delegates_to_active_run",
+          "callee": "jobs.cancel_active_run",
+          "lineNumber": 324
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 331
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 333
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "UnslothRuntimeStatus",
+          "lineNumber": 336
+        },
+        {
+          "caller": "fake_popen",
+          "callee": "SimpleNamespace",
+          "lineNumber": 343
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 345
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "jobs.create_run",
+          "lineNumber": 346
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "TrainingConfig",
+          "lineNumber": 347
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "DatasetSpec",
+          "lineNumber": 349
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "jobs.launch_run",
+          "lineNumber": 354
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "str",
+          "lineNumber": 356
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "captured[\"options\"][\"env\"][\"PYTHONPATH\"].split",
+          "lineNumber": 357
+        },
+        {
+          "caller": "test_launch_run_uses_unsloth_interpreter_and_source_path",
+          "callee": "str",
+          "lineNumber": 358
+        },
+        {
+          "caller": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 364
+        },
+        {
+          "caller": "fake_popen",
+          "callee": "SimpleNamespace",
+          "lineNumber": 370
+        },
+        {
+          "caller": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 372
+        },
+        {
+          "caller": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "callee": "jobs.create_run",
+          "lineNumber": 373
+        },
+        {
+          "caller": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "callee": "TrainingConfig",
+          "lineNumber": 374
+        },
+        {
+          "caller": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "callee": "DatasetSpec",
+          "lineNumber": 376
+        },
+        {
+          "caller": "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+          "callee": "jobs.launch_run",
+          "lineNumber": 380
+        },
+        {
+          "caller": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 389
+        },
+        {
+          "caller": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 390
+        },
+        {
+          "caller": "fake_popen",
+          "callee": "SimpleNamespace",
+          "lineNumber": 396
+        },
+        {
+          "caller": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 398
+        },
+        {
+          "caller": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "callee": "jobs.create_run",
+          "lineNumber": 399
+        },
+        {
+          "caller": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "callee": "TrainingConfig",
+          "lineNumber": 400
+        },
+        {
+          "caller": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "callee": "DatasetSpec",
+          "lineNumber": 402
+        },
+        {
+          "caller": "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+          "callee": "jobs.launch_run",
+          "lineNumber": 406
+        },
+        {
+          "caller": "test_launch_run_rejects_missing_unsloth_runtime",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 418
+        },
+        {
+          "caller": "test_launch_run_rejects_missing_unsloth_runtime",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 419
+        },
+        {
+          "caller": "test_launch_run_rejects_missing_unsloth_runtime",
+          "callee": "UnslothRuntimeStatus",
+          "lineNumber": 422
+        },
+        {
+          "caller": "test_launch_run_rejects_missing_unsloth_runtime",
+          "callee": "jobs.create_run",
+          "lineNumber": 426
+        },
+        {
+          "caller": "test_launch_run_rejects_missing_unsloth_runtime",
+          "callee": "TrainingConfig",
+          "lineNumber": 427
+        },
+        {
+          "caller": "test_launch_run_rejects_missing_unsloth_runtime",
+          "callee": "DatasetSpec",
+          "lineNumber": 429
+        },
+        {
+          "caller": "test_launch_run_rejects_missing_unsloth_runtime",
+          "callee": "pytest.raises",
+          "lineNumber": 434
+        },
+        {
+          "caller": "test_launch_run_rejects_missing_unsloth_runtime",
+          "callee": "jobs.launch_run",
+          "lineNumber": 435
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 19,
+        "functionCount": 18,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/test_lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 17,
+      "functions": [
+        {
+          "name": "test_schedule_application_exit_uses_daemon_timer",
+          "startLine": 4,
+          "endLine": 25,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_schedule_application_exit_uses_daemon_timer",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "scheduled.update",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_schedule_application_exit_uses_daemon_timer",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_schedule_application_exit_uses_daemon_timer",
+          "callee": "lifecycle.schedule_application_exit",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 260,
+      "nonEmptyLines": 215,
+      "functions": [
+        {
+          "name": "test_config_round_trip",
+          "startLine": 18,
+          "endLine": 31,
+          "params": []
+        },
+        {
+          "name": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "startLine": 34,
+          "endLine": 54,
+          "params": []
+        },
+        {
+          "name": "test_config_requires_push_destination",
+          "startLine": 57,
+          "endLine": 66,
+          "params": []
+        },
+        {
+          "name": "test_config_rejects_mixed_and_duplicate_datasets",
+          "startLine": 69,
+          "endLine": 83,
+          "params": []
+        },
+        {
+          "name": "test_recipe_matrix_accepts_all_advertised_pairs",
+          "startLine": 88,
+          "endLine": 116,
+          "params": [
+            "approach",
+            "method"
+          ]
+        },
+        {
+          "name": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+          "startLine": 119,
+          "endLine": 138,
+          "params": []
+        },
+        {
+          "name": "test_config_rejects_unsloth_fp32",
+          "startLine": 141,
+          "endLine": 156,
+          "params": []
+        },
+        {
+          "name": "test_kto_requires_actual_batch_size_above_one",
+          "startLine": 159,
+          "endLine": 179,
+          "params": []
+        },
+        {
+          "name": "test_config_rejects_learning_rate_outside_supported_range",
+          "startLine": 183,
+          "endLine": 199,
+          "params": [
+            "learning_rate"
+          ]
+        },
+        {
+          "name": "test_config_rejects_invalid_maximum_samples",
+          "startLine": 203,
+          "endLine": 217,
+          "params": [
+            "max_samples"
+          ]
+        },
+        {
+          "name": "test_config_rejects_invalid_maximum_gradient_norm",
+          "startLine": 221,
+          "endLine": 235,
+          "params": [
+            "max_grad_norm"
+          ]
+        },
+        {
+          "name": "test_compute_type_resolution",
+          "startLine": 248,
+          "endLine": 251,
+          "params": [
+            "requested",
+            "bf16_supported",
+            "expected"
+          ]
+        },
+        {
+          "name": "test_run_path_rejects_traversal",
+          "startLine": 254,
+          "endLine": 256,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_preset_values_are_bounded",
+          "startLine": 259,
+          "endLine": 260,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_config_round_trip",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_requires_push_destination",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_rejects_mixed_and_duplicate_datasets",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "test_recipe_matrix_accepts_all_advertised_pairs",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_rejects_unsloth_fp32",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "test_kto_requires_actual_batch_size_above_one",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_rejects_learning_rate_outside_supported_range",
+          "line": 182,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_rejects_invalid_maximum_samples",
+          "line": 202,
+          "isDefault": false
+        },
+        {
+          "name": "test_config_rejects_invalid_maximum_gradient_norm",
+          "line": 220,
+          "isDefault": false
+        },
+        {
+          "name": "test_compute_type_resolution",
+          "line": 238,
+          "isDefault": false
+        },
+        {
+          "name": "test_run_path_rejects_traversal",
+          "line": 254,
+          "isDefault": false
+        },
+        {
+          "name": "test_preset_values_are_bounded",
+          "line": 259,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_config_round_trip",
+          "callee": "TrainingConfig",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_config_round_trip",
+          "callee": "DatasetSpec",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_config_round_trip",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_config_round_trip",
+          "callee": "original.to_dict",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_config_round_trip",
+          "callee": "restored.validate",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "callee": "TrainingConfig(\n        model_id=\"owner/model\",\n        datasets=[DatasetSpec(source=\"hub\", repo_id=\"owner/data\", format=\"text\")],\n    ).to_dict",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "callee": "TrainingConfig",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "callee": "DatasetSpec",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "callee": "values.pop",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_old_config_migrates_single_dataset_and_standard_backend",
+          "callee": "len",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_config_requires_push_destination",
+          "callee": "TrainingConfig",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_config_requires_push_destination",
+          "callee": "DatasetSpec",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_config_requires_push_destination",
+          "callee": "config.validate",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_config_rejects_mixed_and_duplicate_datasets",
+          "callee": "DatasetSpec",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_config_rejects_mixed_and_duplicate_datasets",
+          "callee": "TrainingConfig",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_config_rejects_mixed_and_duplicate_datasets",
+          "callee": "DatasetSpec",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_config_rejects_mixed_and_duplicate_datasets",
+          "callee": "config.validate",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_recipe_matrix_accepts_all_advertised_pairs",
+          "callee": "DatasetSpec",
+          "lineNumber": 92
+        },
+        {
+          "caller": "test_recipe_matrix_accepts_all_advertised_pairs",
+          "callee": "DatasetSpec",
+          "lineNumber": 99
+        },
+        {
+          "caller": "test_recipe_matrix_accepts_all_advertised_pairs",
+          "callee": "TrainingConfig",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_recipe_matrix_accepts_all_advertised_pairs",
+          "callee": "config.validate",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+          "callee": "TrainingConfig",
+          "lineNumber": 120
+        },
+        {
+          "caller": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+          "callee": "DatasetSpec",
+          "lineNumber": 123
+        },
+        {
+          "caller": "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+          "callee": "config.validate",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_config_rejects_unsloth_fp32",
+          "callee": "TrainingConfig",
+          "lineNumber": 142
+        },
+        {
+          "caller": "test_config_rejects_unsloth_fp32",
+          "callee": "DatasetSpec",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_config_rejects_unsloth_fp32",
+          "callee": "config.validate",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_kto_requires_actual_batch_size_above_one",
+          "callee": "TrainingConfig",
+          "lineNumber": 160
+        },
+        {
+          "caller": "test_kto_requires_actual_batch_size_above_one",
+          "callee": "DatasetSpec",
+          "lineNumber": 163
+        },
+        {
+          "caller": "test_kto_requires_actual_batch_size_above_one",
+          "callee": "config.validate",
+          "lineNumber": 178
+        },
+        {
+          "caller": "test_config_rejects_learning_rate_outside_supported_range",
+          "callee": "TrainingConfig",
+          "lineNumber": 186
+        },
+        {
+          "caller": "test_config_rejects_learning_rate_outside_supported_range",
+          "callee": "DatasetSpec",
+          "lineNumber": 189
+        },
+        {
+          "caller": "test_config_rejects_learning_rate_outside_supported_range",
+          "callee": "config.validate",
+          "lineNumber": 199
+        },
+        {
+          "caller": "test_config_rejects_invalid_maximum_samples",
+          "callee": "TrainingConfig",
+          "lineNumber": 204
+        },
+        {
+          "caller": "test_config_rejects_invalid_maximum_samples",
+          "callee": "DatasetSpec",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_config_rejects_invalid_maximum_samples",
+          "callee": "config.validate",
+          "lineNumber": 217
+        },
+        {
+          "caller": "test_config_rejects_invalid_maximum_gradient_norm",
+          "callee": "TrainingConfig",
+          "lineNumber": 222
+        },
+        {
+          "caller": "test_config_rejects_invalid_maximum_gradient_norm",
+          "callee": "DatasetSpec",
+          "lineNumber": 225
+        },
+        {
+          "caller": "test_config_rejects_invalid_maximum_gradient_norm",
+          "callee": "config.validate",
+          "lineNumber": 235
+        },
+        {
+          "caller": "test_compute_type_resolution",
+          "callee": "resolve_compute_type",
+          "lineNumber": 251
+        },
+        {
+          "caller": "test_run_path_rejects_traversal",
+          "callee": "pytest.raises",
+          "lineNumber": 255
+        },
+        {
+          "caller": "test_run_path_rejects_traversal",
+          "callee": "run_path",
+          "lineNumber": 256
+        },
+        {
+          "caller": "test_preset_values_are_bounded",
+          "callee": "set",
+          "lineNumber": 260
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 14,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    }
+  ]
+}

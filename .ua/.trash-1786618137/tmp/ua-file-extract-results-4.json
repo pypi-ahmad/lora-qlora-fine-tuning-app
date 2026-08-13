@@ -1,0 +1,319 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 6
+    }
+  },
+  "results": [
+    {
+      "path": ".firecrawl/search-unsloth-auto-docstring.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "sections": [
+        {
+          "heading": "success",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "results",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": ".firecrawl/search-unsloth-windows-nodeps.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "sections": [
+        {
+          "heading": "success",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "results",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": ".firecrawl/search-unsloth-windows-torchao.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "sections": [
+        {
+          "heading": "success",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "results",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": ".firecrawl/search-unsloth-windows-versions.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "sections": [
+        {
+          "heading": "success",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "results",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 396,
+      "nonEmptyLines": 255,
+      "sections": [
+        {
+          "heading": "Unsloth Desktop[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#unsloth-desktop)",
+          "level": 3,
+          "line": 9
+        },
+        {
+          "heading": "**Unsloth Studio**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#unsloth-studio)",
+          "level": 2,
+          "line": 20
+        },
+        {
+          "heading": "**MacOS, Linux, WSL:**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#macos-linux-wsl)",
+          "level": 4,
+          "line": 22
+        },
+        {
+          "heading": "**Windows PowerShell:**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#windows-powershell)",
+          "level": 4,
+          "line": 32
+        },
+        {
+          "heading": "Launch:[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#launch)",
+          "level": 4,
+          "line": 42
+        },
+        {
+          "heading": "**Install from Main Repo**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#install-from-main-repo)",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "**macOS, Linux, WSL developer installs:**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#macos-linux-wsl-developer-installs)",
+          "level": 4,
+          "line": 54
+        },
+        {
+          "heading": "**Windows PowerShell developer installs:**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#windows-powershell-developer-installs)",
+          "level": 4,
+          "line": 65
+        },
+        {
+          "heading": "**Nightly Install**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#nightly-install)",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "**Nightly - MacOS, Linux, WSL:**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#nightly-macos-linux-wsl)",
+          "level": 4,
+          "line": 82
+        },
+        {
+          "heading": "**Nightly - Windows:**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#nightly-windows)",
+          "level": 4,
+          "line": 101
+        },
+        {
+          "heading": "Uninstall[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#uninstall)",
+          "level": 3,
+          "line": 126
+        },
+        {
+          "heading": "Manual uninstall[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#manual-uninstall)",
+          "level": 4,
+          "line": 146
+        },
+        {
+          "heading": "**Deleting cached HF model files**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#deleting-cached-hf-model-files)",
+          "level": 3,
+          "line": 209
+        },
+        {
+          "heading": "**Unsloth Core**[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#unsloth-core)",
+          "level": 2,
+          "line": 220
+        },
+        {
+          "heading": "Uninstall Unsloth Core[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#uninstall-unsloth-core)",
+          "level": 3,
+          "line": 291
+        },
+        {
+          "heading": "Advanced Pip Installation[Direct link to heading](https://unsloth.ai/docs/get-started/install/pip-install\\#advanced-pip-installation)",
+          "level": 3,
+          "line": 302
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 513,
+      "nonEmptyLines": 311,
+      "sections": [
+        {
+          "heading": "Download[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#download)",
+          "level": 3,
+          "line": 11
+        },
+        {
+          "heading": "[Download Unsloth for Windows](https://unsloth.ai/download/windows)[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#undefined)",
+          "level": 3,
+          "line": 13
+        },
+        {
+          "heading": "Install[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#install)",
+          "level": 3,
+          "line": 17
+        },
+        {
+          "heading": "Choose a model[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#choose-a-model)",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Unsloth is now ready[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#unsloth-is-now-ready)",
+          "level": 3,
+          "line": 36
+        },
+        {
+          "heading": "Install Unsloth manually[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#install-unsloth-manually)",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Unsloth Studio[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#unsloth-studio)",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Method \\#1 - Windows via Conda:[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#method-1-windows-via-conda)",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Method \\#2 - Docker:[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#method-2-docker)",
+          "level": 3,
+          "line": 280
+        },
+        {
+          "heading": "Method \\#3 - WSL:[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#method-3-wsl)",
+          "level": 3,
+          "line": 337
+        },
+        {
+          "heading": "**Troubleshooting /** Advanced[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#troubleshooting-advanced)",
+          "level": 3,
+          "line": 413
+        },
+        {
+          "heading": "Uninstall[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#uninstall)",
+          "level": 3,
+          "line": 432
+        },
+        {
+          "heading": "Unsloth Desktop[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#unsloth-desktop)",
+          "level": 4,
+          "line": 434
+        },
+        {
+          "heading": "Unsloth Studio (manual installation)[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#unsloth-studio-manual-installation)",
+          "level": 4,
+          "line": 449
+        },
+        {
+          "heading": "Manual uninstall[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#manual-uninstall)",
+          "level": 4,
+          "line": 459
+        },
+        {
+          "heading": "**Deleting cached HF model files**[Direct link to heading](https://unsloth.ai/docs/get-started/install/windows-installation\\#deleting-cached-hf-model-files)",
+          "level": 3,
+          "line": 496
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    }
+  ]
+}

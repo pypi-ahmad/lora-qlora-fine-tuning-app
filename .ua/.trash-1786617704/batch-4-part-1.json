@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {"id":"file:.python-version","type":"file","name":".python-version","filePath":".python-version","summary":"Pins the Python version expected by the project tooling.","tags":["python","version-pin","tooling"],"complexity":"simple"},
+    {"id":"file:app_pages/dataset.py","type":"file","name":"dataset.py","filePath":"app_pages/dataset.py","summary":"Provides the Streamlit dataset page and helpers for identifying, validating, and saving pending dataset selections into session state.","tags":["streamlit","dataset","validation","ui"],"complexity":"complex"},
+    {"id":"function:app_pages/dataset.py:source_identity","type":"function","name":"source_identity","filePath":"app_pages/dataset.py","lineRange":[39,48],"summary":"Builds a stable identity for a dataset source so duplicate or incompatible selections can be detected.","tags":["dataset","identity","validation"],"complexity":"simple"},
+    {"id":"function:app_pages/dataset.py:save_pending_dataset","type":"function","name":"save_pending_dataset","filePath":"app_pages/dataset.py","lineRange":[65,88],"summary":"Validates the pending dataset and inspection before appending them to Streamlit session state.","tags":["dataset","validation","session-state"],"complexity":"moderate"},
+    {"id":"file:app_pages/gpu_memory.py","type":"file","name":"gpu_memory.py","filePath":"app_pages/gpu_memory.py","summary":"Renders the Streamlit page that displays CUDA memory statistics and exposes cache-release controls.","tags":["streamlit","gpu","cuda","monitoring"],"complexity":"moderate"},
+    {"id":"file:app_pages/model.py","type":"file","name":"model.py","filePath":"app_pages/model.py","summary":"Renders the Streamlit model-selection page and persists model configuration in session state.","tags":["streamlit","model-selection","configuration","ui"],"complexity":"moderate"},
+    {"id":"file:app_pages/monitor.py","type":"file","name":"monitor.py","filePath":"app_pages/monitor.py","summary":"Renders training-run status, queued jobs, progress, logs, and cancel or resume controls in the Streamlit UI.","tags":["streamlit","job-queue","monitoring","training"],"complexity":"moderate"},
+    {"id":"function:app_pages/monitor.py:training_monitor","type":"function","name":"training_monitor","filePath":"app_pages/monitor.py","lineRange":[67,141],"summary":"Displays queued and active training runs, dispatches waiting work, and provides controls for terminal or recoverable jobs.","tags":["streamlit","job-queue","progress","monitoring"],"complexity":"moderate"},
+    {"id":"file:app_pages/ollama.py","type":"file","name":"ollama.py","filePath":"app_pages/ollama.py","summary":"Renders the optional Ollama integration page for local model inference.","tags":["streamlit","ollama","inference","ui"],"complexity":"simple"},
+    {"id":"file:app_pages/review.py","type":"file","name":"review.py","filePath":"app_pages/review.py","summary":"Renders the review page that presents configured training choices before a run is created.","tags":["streamlit","training","review","configuration"],"complexity":"moderate"},
+    {"id":"file:app_pages/system.py","type":"file","name":"system.py","filePath":"app_pages/system.py","summary":"Renders system, dependency, and hardware diagnostics for the local fine-tuning environment.","tags":["streamlit","hardware","diagnostics","environment"],"complexity":"moderate"},
+    {"id":"file:app_pages/training.py","type":"file","name":"training.py","filePath":"app_pages/training.py","summary":"Renders training approach, PEFT method, compute type, presets, and hyperparameter controls in the Streamlit workflow.","tags":["streamlit","training","peft","configuration"],"complexity":"complex"},
+    {"id":"function:app_pages/training.py:approach_changed","type":"function","name":"approach_changed","filePath":"app_pages/training.py","lineRange":[40,50],"summary":"Updates session-state defaults when the selected training approach changes.","tags":["streamlit","training","session-state"],"complexity":"simple"},
+    {"id":"function:app_pages/training.py:apply_preset_defaults","type":"function","name":"apply_preset_defaults","filePath":"app_pages/training.py","lineRange":[125,134],"summary":"Copies bounded preset values into editable Streamlit training settings.","tags":["preset","training","session-state"],"complexity":"simple"}
+  ],
+  "edges": [
+    {"source":"file:app_pages/dataset.py","target":"function:app_pages/dataset.py:source_identity","type":"contains","direction":"forward","weight":1.0},
+    {"source":"file:app_pages/dataset.py","target":"function:app_pages/dataset.py:source_identity","type":"exports","direction":"forward","weight":0.8},
+    {"source":"file:app_pages/dataset.py","target":"function:app_pages/dataset.py:save_pending_dataset","type":"contains","direction":"forward","weight":1.0},
+    {"source":"file:app_pages/dataset.py","target":"function:app_pages/dataset.py:save_pending_dataset","type":"exports","direction":"forward","weight":0.8},
+    {"source":"file:app_pages/monitor.py","target":"function:app_pages/monitor.py:training_monitor","type":"contains","direction":"forward","weight":1.0},
+    {"source":"file:app_pages/monitor.py","target":"function:app_pages/monitor.py:training_monitor","type":"exports","direction":"forward","weight":0.8},
+    {"source":"file:app_pages/training.py","target":"function:app_pages/training.py:approach_changed","type":"contains","direction":"forward","weight":1.0},
+    {"source":"file:app_pages/training.py","target":"function:app_pages/training.py:approach_changed","type":"exports","direction":"forward","weight":0.8},
+    {"source":"file:app_pages/training.py","target":"function:app_pages/training.py:apply_preset_defaults","type":"contains","direction":"forward","weight":1.0},
+    {"source":"file:app_pages/training.py","target":"function:app_pages/training.py:apply_preset_defaults","type":"exports","direction":"forward","weight":0.8}
+  ]
+}

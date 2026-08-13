@@ -1,0 +1,139 @@
+{
+  "nodes": [
+    {
+      "id": "document:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "CHANGELOG.md",
+      "summary": "Records released versions and user-visible changes to LoRA Fine-tune Studio, including the queue and Unsloth additions.",
+      "tags": ["documentation", "changelog", "releases"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING.md",
+      "filePath": "CONTRIBUTING.md",
+      "summary": "Defines the development setup, contribution workflow, engineering expectations, and required checks for repository contributors.",
+      "tags": ["documentation", "development", "contributing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Launch LoRA Studio.cmd",
+      "type": "file",
+      "name": "Launch LoRA Studio.cmd",
+      "filePath": "Launch LoRA Studio.cmd",
+      "summary": "Windows launcher that verifies the repository, provisions the standard and native Unsloth environments with uv, then starts and health-checks the Streamlit app.",
+      "tags": ["launcher", "windows", "streamlit", "automation"],
+      "complexity": "moderate",
+      "languageNotes": "Batch control flow uses labels for failure paths and delegates process management to an embedded PowerShell command."
+    },
+    {
+      "id": "file:Launch LoRA Studio.sh",
+      "type": "file",
+      "name": "Launch LoRA Studio.sh",
+      "filePath": "Launch LoRA Studio.sh",
+      "summary": "Linux launcher that installs or locates uv, synchronizes the project environment, and starts the Streamlit app with PID and health-check management.",
+      "tags": ["launcher", "linux", "streamlit", "automation"],
+      "complexity": "moderate",
+      "languageNotes": "The shell script uses strict mode and manages the background Streamlit process through a PID file."
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview with supported training recipes, requirements, platform-specific quick start steps, and a small smoke-test workflow.",
+      "tags": ["documentation", "entry-point", "overview", "quick-start"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "States supported versions, private vulnerability reporting guidance, local trust boundaries, and safe operating practices for the application.",
+      "tags": ["documentation", "security", "policy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:TECHNICAL.md",
+      "type": "document",
+      "name": "TECHNICAL.md",
+      "filePath": "TECHNICAL.md",
+      "summary": "Comprehensive technical handbook covering the application architecture, data and training pipelines, job lifecycle, hardware behavior, testing, and extension paths.",
+      "tags": ["documentation", "architecture", "training", "reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:USAGE.md",
+      "type": "document",
+      "name": "USAGE.md",
+      "filePath": "USAGE.md",
+      "summary": "Step-by-step user guide for configuring access, launching the app, preparing datasets, configuring training, managing runs, and troubleshooting.",
+      "tags": ["documentation", "user-guide", "training", "troubleshooting"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "Defines package metadata, Python and ML dependencies, the installed CLI entry point, uv CUDA package source, and development/documentation dependency groups.",
+      "tags": ["configuration", "python", "dependencies", "build-system"],
+      "complexity": "simple",
+      "languageNotes": "The uv source override selects the CUDA-enabled PyTorch index while project dependencies retain bounded version ranges."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:Launch LoRA Studio.cmd",
+      "target": "config:pyproject.toml",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:Launch LoRA Studio.sh",
+      "target": "config:pyproject.toml",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:Launch LoRA Studio.cmd",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:Launch LoRA Studio.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:Launch LoRA Studio.cmd",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:Launch LoRA Studio.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TECHNICAL.md",
+      "target": "config:pyproject.toml",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

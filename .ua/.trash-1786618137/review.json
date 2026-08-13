@@ -1,0 +1,62 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'config:.firecrawl/search-unsloth-auto-docstring.json' has no edges (orphan)",
+    "Node 'config:.firecrawl/search-unsloth-windows-nodeps.json' has no edges (orphan)",
+    "Node 'config:.firecrawl/search-unsloth-windows-torchao.json' has no edges (orphan)",
+    "Node 'config:.firecrawl/search-unsloth-windows-versions.json' has no edges (orphan)",
+    "Node 'document:.firecrawl/unsloth.ai-docs-get-started-install-pip-install.md' has no edges (orphan)",
+    "Node 'document:.firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md' has no edges (orphan)",
+    "Node 'document:CHANGELOG.md' has no edges (orphan)",
+    "Node 'document:CODE_OF_CONDUCT.md' has no edges (orphan)",
+    "Node 'document:CONTRIBUTING.md' has no edges (orphan)",
+    "Node 'document:SECURITY.md' has no edges (orphan)",
+    "Node 'file:docs/20-troubleshooting-by-boundary.html' has no edges (orphan)",
+    "Node 'file:docs/21-glossary.html' has no edges (orphan)",
+    "Node 'file:docs/22-official-references.html' has no edges (orphan)",
+    "Node 'file:docs/index.html' has no edges (orphan)",
+    "Node 'file:.gitattributes' has no edges (orphan)",
+    "Node 'file:.python-version' has no edges (orphan)",
+    "Node 'config:.streamlit/config.toml' has no edges (orphan)",
+    "Node 'file:app_pages/gpu_memory.py' has no edges (orphan)",
+    "Node 'file:app_pages/model.py' has no edges (orphan)",
+    "Node 'file:app_pages/ollama.py' has no edges (orphan)",
+    "Node 'file:app_pages/review.py' has no edges (orphan)",
+    "Node 'file:app_pages/system.py' has no edges (orphan)",
+    "Node 'file:docs/.nojekyll' has no edges (orphan)",
+    "Node 'file:docs/assets/search-index.js' has no edges (orphan)",
+    "Node 'file:docs/assets/site.css' has no edges (orphan)",
+    "Node 'file:docs/assets/site.js' has no edges (orphan)",
+    "Node 'file:examples/preference_sample.jsonl' has no edges (orphan)",
+    "Node 'file:examples/sft_sample.jsonl' has no edges (orphan)",
+    "Node 'file:scripts/tutorial_assets/site.css' has no edges (orphan)",
+    "Node 'file:scripts/tutorial_assets/site.js' has no edges (orphan)",
+    "Node 'file:src/lora_finetune_studio/__init__.py' has no edges (orphan)",
+    "Node 'config:unsloth-runtime/pyproject.toml' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 289,
+    "totalEdges": 473,
+    "totalLayers": 6,
+    "tourSteps": 11,
+    "nodeTypes": {
+      "file": 70,
+      "function": 179,
+      "class": 20,
+      "pipeline": 1,
+      "config": 8,
+      "document": 11
+    },
+    "edgeTypes": {
+      "imports": 12,
+      "contains": 199,
+      "exports": 199,
+      "calls": 7,
+      "triggers": 13,
+      "depends_on": 4,
+      "documents": 18,
+      "configures": 2,
+      "related": 19
+    }
+  }
+}

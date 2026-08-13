@@ -1,0 +1,116 @@
+{
+  "nodes": [
+    {
+      "id": "document:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "CHANGELOG.md",
+      "summary": "Records user-visible additions, runtime changes, and security updates for LoRA Fine-tune Studio releases.",
+      "tags": ["documentation", "changelog", "release-notes"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CODE_OF_CONDUCT.md",
+      "type": "document",
+      "name": "CODE_OF_CONDUCT.md",
+      "filePath": "CODE_OF_CONDUCT.md",
+      "summary": "Defines community expectations, incident reporting, and enforcement for project contributors and participants.",
+      "tags": ["documentation", "community", "governance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING.md",
+      "filePath": "CONTRIBUTING.md",
+      "summary": "Describes the local development setup, required quality checks, workflow, and pull-request expectations.",
+      "tags": ["documentation", "development", "contributing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Launch LoRA Studio.cmd",
+      "type": "file",
+      "name": "Launch LoRA Studio.cmd",
+      "filePath": "Launch LoRA Studio.cmd",
+      "summary": "Windows one-click launcher that installs uv when needed, synchronizes the Python 3.14 environment, safely replaces the LoRA Studio server on port 8504, and opens the application.",
+      "tags": ["launcher", "windows", "streamlit", "setup"],
+      "complexity": "moderate",
+      "languageNotes": "Batch control flow delegates process inspection and startup to an embedded PowerShell command."
+    },
+    {
+      "id": "file:Launch LoRA Studio.sh",
+      "type": "file",
+      "name": "Launch LoRA Studio.sh",
+      "filePath": "Launch LoRA Studio.sh",
+      "summary": "Linux launcher that installs uv when needed, creates the locked Python 3.14 environment, replaces a prior LoRA Studio server, and starts Streamlit on port 8504.",
+      "tags": ["launcher", "linux", "streamlit", "setup"],
+      "complexity": "moderate",
+      "languageNotes": "The script uses strict Bash mode and a PID file to identify the server it owns."
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview and primary onboarding guide covering features, hardware requirements, GitHub installation, Hugging Face access, launchers, first training, and project boundaries.",
+      "tags": ["documentation", "entry-point", "onboarding", "installation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "States supported versions, private vulnerability reporting, security controls, and safe operating guidance for the local training application.",
+      "tags": ["documentation", "security", "policy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:TECHNICAL.md",
+      "type": "document",
+      "name": "TECHNICAL.md",
+      "filePath": "TECHNICAL.md",
+      "summary": "Technical reference for the Streamlit architecture, data and job lifecycles, training implementation, storage, inference, credential boundaries, and testing strategy.",
+      "tags": ["documentation", "architecture", "training", "reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:USAGE.md",
+      "type": "document",
+      "name": "USAGE.md",
+      "filePath": "USAGE.md",
+      "summary": "End-user operating guide for system readiness, Hugging Face access, launch, data and model selection, training, monitoring, shutdown, and troubleshooting.",
+      "tags": ["documentation", "user-guide", "training", "troubleshooting"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "Defines the Python 3.14 package, Streamlit console entry point, CUDA 13 PyTorch index, runtime dependencies, build backend, and development tools.",
+      "tags": ["configuration", "python", "dependencies", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source":"document:CONTRIBUTING.md","target":"config:pyproject.toml","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:README.md","target":"file:Launch LoRA Studio.cmd","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:README.md","target":"file:Launch LoRA Studio.sh","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:README.md","target":"config:pyproject.toml","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:README.md","target":"document:USAGE.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:README.md","target":"document:TECHNICAL.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:README.md","target":"document:SECURITY.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:SECURITY.md","target":"document:README.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TECHNICAL.md","target":"file:streamlit_app.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:TECHNICAL.md","target":"config:pyproject.toml","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:USAGE.md","target":"file:Launch LoRA Studio.cmd","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:USAGE.md","target":"file:Launch LoRA Studio.sh","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:USAGE.md","target":"file:streamlit_app.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"config:pyproject.toml","target":"file:streamlit_app.py","type":"configures","direction":"forward","weight":0.6},
+    {"source":"file:Launch LoRA Studio.cmd","target":"file:streamlit_app.py","type":"depends_on","direction":"forward","weight":0.6},
+    {"source":"file:Launch LoRA Studio.cmd","target":"config:pyproject.toml","type":"depends_on","direction":"forward","weight":0.6},
+    {"source":"file:Launch LoRA Studio.sh","target":"file:streamlit_app.py","type":"depends_on","direction":"forward","weight":0.6},
+    {"source":"file:Launch LoRA Studio.sh","target":"config:pyproject.toml","type":"depends_on","direction":"forward","weight":0.6}
+  ]
+}

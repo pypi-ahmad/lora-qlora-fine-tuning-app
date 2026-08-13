@@ -1,0 +1,661 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [
+    "Launch LoRA Studio.cmd"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 9,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 9
+    }
+  },
+  "results": [
+    {
+      "path": "CHANGELOG.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 60,
+      "nonEmptyLines": 47,
+      "sections": [
+        {
+          "heading": "Changelog",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "[Unreleased]",
+          "level": 2,
+          "line": 8
+        },
+        {
+          "heading": "Added",
+          "level": 3,
+          "line": 10
+        },
+        {
+          "heading": "Changed",
+          "level": 3,
+          "line": 21
+        },
+        {
+          "heading": "[0.1.0] - 2026-08-12",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Added",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "Security",
+          "level": 3,
+          "line": 51
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 74,
+      "nonEmptyLines": 53,
+      "sections": [
+        {
+          "heading": "Community Code of Conduct",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Our commitment",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Expected behavior",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Unacceptable behavior",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Scope",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Reporting an incident",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Enforcement",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Attribution",
+          "level": 2,
+          "line": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 97,
+      "nonEmptyLines": 73,
+      "sections": [
+        {
+          "heading": "Contributing",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Before starting",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Development setup",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Engineering expectations",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Required checks",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Pull-request checklist",
+          "level": 2,
+          "line": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "Launch LoRA Studio.sh",
+      "language": "shell",
+      "fileCategory": "script",
+      "totalLines": 84,
+      "nonEmptyLines": 75,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 179,
+      "nonEmptyLines": 128,
+      "sections": [
+        {
+          "heading": "LoRA Fine-tune Studio",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Features",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Requirements",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Install from GitHub",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "1. Clone the repository",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "2. Configure Hugging Face access",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "3. Install and launch",
+          "level": 3,
+          "line": 75
+        },
+        {
+          "heading": "Manual setup and launch",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "First training run",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Dataset formats",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Documentation",
+          "level": 2,
+          "line": 137
+        },
+        {
+          "heading": "Project boundaries",
+          "level": 2,
+          "line": 149
+        },
+        {
+          "heading": "Development",
+          "level": 2,
+          "line": 159
+        },
+        {
+          "heading": "Security",
+          "level": 2,
+          "line": 171
+        },
+        {
+          "heading": "License",
+          "level": 2,
+          "line": 177
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "SECURITY.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 98,
+      "nonEmptyLines": 76,
+      "sections": [
+        {
+          "heading": "Security Policy",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Supported versions",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Report a vulnerability privately",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Project security model",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Existing controls",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Safe operation",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "Not security vulnerabilities",
+          "level": 2,
+          "line": 93
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "TECHNICAL.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 277,
+      "nonEmptyLines": 212,
+      "sections": [
+        {
+          "heading": "Technical Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Goals and boundaries",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Runtime architecture",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Module map",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "System readiness scan",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Shared contracts",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "`DatasetSpec`",
+          "level": 3,
+          "line": 90
+        },
+        {
+          "heading": "`TrainingConfig`",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Presets",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "Source and dataset flow",
+          "level": 2,
+          "line": 129
+        },
+        {
+          "heading": "Job lifecycle",
+          "level": 2,
+          "line": 150
+        },
+        {
+          "heading": "Training implementation",
+          "level": 2,
+          "line": 181
+        },
+        {
+          "heading": "Storage layout",
+          "level": 2,
+          "line": 199
+        },
+        {
+          "heading": "Post-training inference",
+          "level": 2,
+          "line": 219
+        },
+        {
+          "heading": "Credentials and network boundaries",
+          "level": 2,
+          "line": 235
+        },
+        {
+          "heading": "Testing and CI",
+          "level": 2,
+          "line": 252
+        },
+        {
+          "heading": "Extension guidance",
+          "level": 2,
+          "line": 270
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "USAGE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 342,
+      "nonEmptyLines": 232,
+      "sections": [
+        {
+          "heading": "Usage Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Prepare the computer",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "2. Configure Hugging Face access",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "3. Launch the application",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Platform launch",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Manual launch",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "4. Read the System and GPU memory pages",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "5. Select a dataset and model",
+          "level": 2,
+          "line": 126
+        },
+        {
+          "heading": "Model",
+          "level": 3,
+          "line": 128
+        },
+        {
+          "heading": "Hugging Face dataset",
+          "level": 3,
+          "line": 138
+        },
+        {
+          "heading": "Uploaded dataset",
+          "level": 3,
+          "line": 144
+        },
+        {
+          "heading": "Inspect before continuing",
+          "level": 3,
+          "line": 149
+        },
+        {
+          "heading": "6. Configure training",
+          "level": 2,
+          "line": 181
+        },
+        {
+          "heading": "Choose PEFT mode",
+          "level": 3,
+          "line": 186
+        },
+        {
+          "heading": "Choose a preset",
+          "level": 3,
+          "line": 193
+        },
+        {
+          "heading": "Optional Hub upload",
+          "level": 3,
+          "line": 214
+        },
+        {
+          "heading": "7. Start and monitor a run",
+          "level": 2,
+          "line": 220
+        },
+        {
+          "heading": "Cancel",
+          "level": 3,
+          "line": 236
+        },
+        {
+          "heading": "Stop LoRA Studio",
+          "level": 3,
+          "line": 241
+        },
+        {
+          "heading": "Resume",
+          "level": 3,
+          "line": 251
+        },
+        {
+          "heading": "8. Find the results",
+          "level": 2,
+          "line": 256
+        },
+        {
+          "heading": "9. Compare base and adapter",
+          "level": 2,
+          "line": 274
+        },
+        {
+          "heading": "10. Use the Ollama playground",
+          "level": 2,
+          "line": 283
+        },
+        {
+          "heading": "Troubleshooting",
+          "level": 2,
+          "line": 290
+        },
+        {
+          "heading": "The launcher cannot install `uv`",
+          "level": 3,
+          "line": 292
+        },
+        {
+          "heading": "The browser does not open",
+          "level": 3,
+          "line": 298
+        },
+        {
+          "heading": "Hugging Face returns 401 or 403",
+          "level": 3,
+          "line": 302
+        },
+        {
+          "heading": "Dataset format is not detected",
+          "level": 3,
+          "line": 307
+        },
+        {
+          "heading": "CUDA is not detected",
+          "level": 3,
+          "line": 312
+        },
+        {
+          "heading": "CUDA runs out of memory",
+          "level": 3,
+          "line": 320
+        },
+        {
+          "heading": "Resume says no checkpoint is available",
+          "level": 3,
+          "line": 327
+        },
+        {
+          "heading": "Ollama shows no models",
+          "level": 3,
+          "line": 332
+        },
+        {
+          "heading": "Safe use",
+          "level": 2,
+          "line": 336
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 33
+      }
+    },
+    {
+      "path": "pyproject.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 43,
+      "nonEmptyLines": 38,
+      "sections": [
+        {
+          "heading": "project",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "project.scripts",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "build-system",
+          "level": 1,
+          "line": 26
+        },
+        {
+          "heading": "[[tool.uv.index]]",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "tool.uv.sources",
+          "level": 3,
+          "line": 35
+        },
+        {
+          "heading": "dependency-groups",
+          "level": 1,
+          "line": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    }
+  ]
+}

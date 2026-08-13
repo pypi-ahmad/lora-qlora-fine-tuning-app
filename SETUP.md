@@ -495,13 +495,17 @@ Models, package caches, uploads, runs, and environments are intentionally not co
 ### Stop safely
 
 Use **Stop LoRA Studio** in the sidebar, then confirm. This cancels the active owned training worker
-before stopping Streamlit. It does not stop Ollama or unrelated processes.
+before stopping Streamlit. Waiting jobs remain queued without starting. It does not stop Ollama or
+unrelated processes.
 
 For a manually launched foreground server, press `Ctrl+C` in its terminal.
 
 Launching the platform launcher again replaces the previous LoRA Studio web server. A separately
 running training worker continues unless it is cancelled from **Monitor** or through the confirmed
 shutdown control.
+
+When LoRA Studio starts again, it automatically launches the first waiting job in the durable FIFO
+queue. Only one GPU worker runs at a time.
 
 ### Update a Git clone
 

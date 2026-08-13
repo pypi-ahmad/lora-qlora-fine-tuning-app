@@ -1,0 +1,1179 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 90,
+  "totalBatches": 9,
+  "exportsByPath": {
+    ".gitattributes": [],
+    ".python-version": [],
+    "app_pages/dataset.py": [
+      "source_label",
+      "source_identity",
+      "source_key",
+      "is_compatible",
+      "clear_pending",
+      "save_pending_dataset"
+    ],
+    "app_pages/gpu_memory.py": [],
+    "app_pages/model.py": [],
+    "app_pages/monitor.py": [
+      "training_monitor"
+    ],
+    "app_pages/ollama.py": [],
+    "app_pages/review.py": [],
+    "app_pages/system.py": [],
+    "app_pages/training.py": [
+      "approach_changed",
+      "method_changed",
+      "compute_type_changed",
+      "apply_preset_defaults"
+    ],
+    "docs/.nojekyll": [],
+    "docs/assets/search-index.js": [],
+    "docs/assets/site.js": [],
+    "examples/preference_sample.jsonl": [],
+    "examples/sft_sample.jsonl": [],
+    "scripts/build_tutorial.py": [
+      "Chapter",
+      "slugify",
+      "split_source",
+      "render_markdown",
+      "plain_text",
+      "pdf_safe",
+      "chapter_summary",
+      "load_course",
+      "nav_items",
+      "site_shell",
+      "index_content",
+      "chapter_content",
+      "rewrite_root_links",
+      "build_search_index",
+      "build_site_files",
+      "HandbookDocTemplate",
+      "pdf_styles",
+      "inline_markup",
+      "paragraph_from_tag",
+      "table_flowable",
+      "list_flowable",
+      "html_to_flowables",
+      "cover_flowables",
+      "build_pdf",
+      "file_digest",
+      "manifest_bytes",
+      "read_manifest",
+      "write_site",
+      "compare_files",
+      "pdf_content_signature",
+      "run",
+      "main"
+    ],
+    "scripts/tutorial_assets/site.js": [],
+    "src/lora_finetune_studio/__init__.py": [],
+    "src/lora_finetune_studio/cli.py": [
+      "main"
+    ],
+    "src/lora_finetune_studio/hardware.py": [
+      "CudaMemoryStats",
+      "SoftwareStatus",
+      "SystemScan",
+      "_package_status",
+      "scan_system",
+      "cuda_memory_stats",
+      "release_unused_cuda_memory",
+      "detect_hardware",
+      "model_size_warning"
+    ],
+    "src/lora_finetune_studio/inference.py": [
+      "generate_text",
+      "_generate_text"
+    ],
+    "src/lora_finetune_studio/jobs.py": [
+      "write_json_atomic",
+      "_queue_lock",
+      "_write_queue_unlocked",
+      "_read_queue_unlocked",
+      "queued_runs",
+      "list_runs",
+      "read_status",
+      "read_config",
+      "_is_training_worker",
+      "active_run",
+      "create_run",
+      "launch_run",
+      "dispatch_next_run",
+      "enqueue_run",
+      "_fail_stale_running_jobs_unlocked",
+      "cancel_run",
+      "cancel_active_run",
+      "resume_run",
+      "read_log"
+    ],
+    "src/lora_finetune_studio/lifecycle.py": [
+      "schedule_application_exit"
+    ],
+    "src/lora_finetune_studio/models.py": [
+      "PeftMode",
+      "TrainingApproach",
+      "ComputeType",
+      "resolve_compute_type",
+      "TrainingRecipe",
+      "Preset",
+      "JobState",
+      "HardwareProfile",
+      "DatasetSpec",
+      "TrainingConfig",
+      "JobStatus",
+      "apply_preset",
+      "run_path"
+    ],
+    "src/lora_finetune_studio/ollama.py": [
+      "_request",
+      "list_models",
+      "generate"
+    ],
+    "src/lora_finetune_studio/queue_dispatcher.py": [
+      "schedule_queue_handoff",
+      "wait_for_parent_and_dispatch",
+      "main"
+    ],
+    "src/lora_finetune_studio/sources.py": [
+      "DatasetInspection",
+      "get_hf_token",
+      "parse_hf_repo",
+      "token_identity",
+      "model_parameter_count",
+      "validate_upload",
+      "save_upload",
+      "load_training_dataset",
+      "inspect_dataset"
+    ],
+    "src/lora_finetune_studio/training.py": [
+      "StatusCallback",
+      "_normalize_dataset",
+      "_dataset_label",
+      "_load_and_combine_datasets",
+      "_split_dataset",
+      "_format_conversations",
+      "_quantization_config",
+      "_peft_config",
+      "_patch_qoft_peft_compatibility",
+      "_load_model_and_tokenizer",
+      "_apply_unsloth_trainer_patch",
+      "_trainer_components",
+      "_trainer_config",
+      "_resolve_compute_dtype",
+      "train"
+    ],
+    "src/lora_finetune_studio/unsloth_runtime.py": [
+      "UnslothRuntimeStatus",
+      "inspect_unsloth_runtime"
+    ],
+    "src/lora_finetune_studio/worker.py": [
+      "main"
+    ],
+    "streamlit_app.py": [],
+    "tests/test_app.py": [
+      "test_app_starts_without_ollama"
+    ],
+    "tests/test_hardware.py": [
+      "test_model_size_warning_uses_detected_limit",
+      "test_cuda_memory_stats_reports_global_and_process_usage",
+      "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "test_cuda_memory_helpers_reject_cpu_only_system",
+      "test_system_scan_reports_live_resources_without_installing",
+      "test_system_scan_recognizes_native_linux"
+    ],
+    "tests/test_inference.py": [
+      "test_generate_text_releases_cuda_memory_after_loading_failure"
+    ],
+    "tests/test_jobs.py": [
+      "test_create_run_persists_safe_config",
+      "test_create_run_appends_jobs_in_fifo_order",
+      "test_dispatch_starts_only_first_waiting_run",
+      "test_cancelling_running_job_starts_next_waiting_run",
+      "test_dispatch_marks_dead_worker_failed_before_continuing",
+      "test_resume_appends_checkpoint_run_to_queue_when_worker_is_active",
+      "test_list_runs_orders_active_then_waiting_then_history",
+      "test_dispatch_marks_launch_failure_and_continues_queue",
+      "test_dispatch_waits_for_terminal_worker_process_to_exit",
+      "test_atomic_json_replaces_existing_file",
+      "FakeWorkerProcess",
+      "_running_test_run",
+      "test_cancel_run_stops_only_its_training_worker",
+      "test_cancel_run_rejects_unrelated_process",
+      "test_cancel_active_run_delegates_to_active_run",
+      "test_launch_run_uses_unsloth_interpreter_and_source_path",
+      "test_launch_run_keeps_current_interpreter_when_unsloth_is_off",
+      "test_launch_run_preserves_base_interpreter_across_worker_handoffs",
+      "test_launch_run_rejects_missing_unsloth_runtime"
+    ],
+    "tests/test_lifecycle.py": [
+      "test_schedule_application_exit_uses_daemon_timer"
+    ],
+    "tests/test_models.py": [
+      "test_config_round_trip",
+      "test_old_config_migrates_single_dataset_and_standard_backend",
+      "test_config_requires_push_destination",
+      "test_config_rejects_mixed_and_duplicate_datasets",
+      "test_recipe_matrix_accepts_all_advertised_pairs",
+      "test_config_rejects_approach_dataset_mismatch_and_unsloth_oft",
+      "test_config_rejects_unsloth_fp32",
+      "test_kto_requires_actual_batch_size_above_one",
+      "test_config_rejects_learning_rate_outside_supported_range",
+      "test_config_rejects_invalid_maximum_samples",
+      "test_config_rejects_invalid_maximum_gradient_norm",
+      "test_compute_type_resolution",
+      "test_run_path_rejects_traversal",
+      "test_preset_values_are_bounded"
+    ],
+    "tests/test_queue_dispatcher.py": [
+      "test_handoff_waits_for_parent_exit_before_dispatch",
+      "test_schedule_handoff_uses_base_project_interpreter"
+    ],
+    "tests/test_queue_ui.py": [
+      "test_review_adds_training_to_queue_while_worker_is_active"
+    ],
+    "tests/test_sources.py": [
+      "test_parse_hf_repo",
+      "test_parse_hf_repo_rejects_unsafe_locations",
+      "test_inspect_dataset_detects_messages",
+      "test_inspect_dataset_detects_preference_before_prompt_completion",
+      "test_upload_validation_and_content_addressing",
+      "test_upload_rejects_unknown_type"
+    ],
+    "tests/test_training.py": [
+      "test_normalize_prompt_completion_columns",
+      "test_normalize_preference_columns_preserves_conversations",
+      "test_small_dataset_skips_eval_split",
+      "test_combine_datasets_preserves_all_rows_and_shuffles",
+      "test_combined_max_samples_is_global_and_deterministic",
+      "test_combine_datasets_reports_incompatible_normalized_schemas",
+      "test_combine_datasets_identifies_source_load_failure",
+      "test_unsloth_loader_uses_optimized_qlora_settings",
+      "test_unsloth_reward_loader_keeps_score_head",
+      "test_peft_methods_build_expected_adapter_and_quantization",
+      "test_reward_peft_config_preserves_score_head",
+      "test_qoft_compatibility_passes_dispatcher_config",
+      "test_every_approach_resolves_installed_trainer",
+      "test_alignment_trainer_config_includes_beta",
+      "test_resolve_compute_dtype",
+      "test_fp32_trainer_config_disables_mixed_precision_flags",
+      "test_format_conversations_applies_chat_template_to_single_and_batch"
+    ],
+    "tests/test_tutorial.py": [
+      "PageParser",
+      "sha256",
+      "test_tutorial_has_complete_progression",
+      "test_preference_lab_dataset_is_well_formed",
+      "test_generated_manifest_matches_files",
+      "test_generated_text_assets_use_portable_line_endings",
+      "test_generated_pages_have_valid_local_links",
+      "test_published_and_canonical_pdfs_are_identical"
+    ],
+    "tests/test_worker.py": [
+      "test_worker_schedules_queue_handoff_after_terminal_status",
+      "test_worker_failure_still_schedules_queue_handoff"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "src/lora_finetune_studio/jobs.py",
+          "language": "python",
+          "sizeLines": 392,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/models.py",
+          "language": "python",
+          "sizeLines": 348,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/training.py",
+          "language": "python",
+          "sizeLines": 471,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/unsloth_runtime.py",
+          "language": "python",
+          "sizeLines": 61,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/lora_finetune_studio/jobs.py": [
+          "src/lora_finetune_studio/models.py",
+          "src/lora_finetune_studio/unsloth_runtime.py"
+        ],
+        "src/lora_finetune_studio/models.py": [],
+        "src/lora_finetune_studio/training.py": [
+          "src/lora_finetune_studio/jobs.py",
+          "src/lora_finetune_studio/models.py",
+          "src/lora_finetune_studio/sources.py"
+        ],
+        "src/lora_finetune_studio/unsloth_runtime.py": []
+      },
+      "neighborMap": {
+        "src/lora_finetune_studio/jobs.py": [
+          {
+            "path": "src/lora_finetune_studio/queue_dispatcher.py",
+            "batchIndex": 2,
+            "symbols": [
+              "schedule_queue_handoff",
+              "wait_for_parent_and_dispatch",
+              "main"
+            ]
+          },
+          {
+            "path": "src/lora_finetune_studio/worker.py",
+            "batchIndex": 2,
+            "symbols": [
+              "main"
+            ]
+          }
+        ],
+        "src/lora_finetune_studio/models.py": [
+          {
+            "path": "src/lora_finetune_studio/hardware.py",
+            "batchIndex": 8,
+            "symbols": [
+              "CudaMemoryStats",
+              "SoftwareStatus",
+              "SystemScan",
+              "_package_status",
+              "scan_system",
+              "cuda_memory_stats",
+              "release_unused_cuda_memory",
+              "detect_hardware",
+              "model_size_warning"
+            ]
+          },
+          {
+            "path": "src/lora_finetune_studio/worker.py",
+            "batchIndex": 2,
+            "symbols": [
+              "main"
+            ]
+          }
+        ],
+        "src/lora_finetune_studio/training.py": [
+          {
+            "path": "src/lora_finetune_studio/sources.py",
+            "batchIndex": 2,
+            "symbols": [
+              "DatasetInspection",
+              "get_hf_token",
+              "parse_hf_repo",
+              "token_identity",
+              "model_parameter_count",
+              "validate_upload",
+              "save_upload",
+              "load_training_dataset",
+              "inspect_dataset"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "src/lora_finetune_studio/queue_dispatcher.py",
+          "language": "python",
+          "sizeLines": 66,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/sources.py",
+          "language": "python",
+          "sizeLines": 130,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/worker.py",
+          "language": "python",
+          "sizeLines": 79,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/lora_finetune_studio/queue_dispatcher.py": [
+          "src/lora_finetune_studio/jobs.py"
+        ],
+        "src/lora_finetune_studio/sources.py": [],
+        "src/lora_finetune_studio/worker.py": [
+          "src/lora_finetune_studio/jobs.py",
+          "src/lora_finetune_studio/models.py",
+          "src/lora_finetune_studio/queue_dispatcher.py",
+          "src/lora_finetune_studio/sources.py"
+        ]
+      },
+      "neighborMap": {
+        "src/lora_finetune_studio/queue_dispatcher.py": [
+          {
+            "path": "src/lora_finetune_studio/jobs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "write_json_atomic",
+              "_queue_lock",
+              "_write_queue_unlocked",
+              "_read_queue_unlocked",
+              "queued_runs",
+              "list_runs",
+              "read_status",
+              "read_config",
+              "_is_training_worker",
+              "active_run",
+              "create_run",
+              "launch_run",
+              "dispatch_next_run",
+              "enqueue_run",
+              "_fail_stale_running_jobs_unlocked",
+              "cancel_run",
+              "cancel_active_run",
+              "resume_run",
+              "read_log"
+            ]
+          }
+        ],
+        "src/lora_finetune_studio/sources.py": [
+          {
+            "path": "src/lora_finetune_studio/training.py",
+            "batchIndex": 1,
+            "symbols": [
+              "StatusCallback",
+              "_normalize_dataset",
+              "_dataset_label",
+              "_load_and_combine_datasets",
+              "_split_dataset",
+              "_format_conversations",
+              "_quantization_config",
+              "_peft_config",
+              "_patch_qoft_peft_compatibility",
+              "_load_model_and_tokenizer",
+              "_apply_unsloth_trainer_patch",
+              "_trainer_components",
+              "_trainer_config",
+              "_resolve_compute_dtype",
+              "train"
+            ]
+          }
+        ],
+        "src/lora_finetune_studio/worker.py": [
+          {
+            "path": "src/lora_finetune_studio/jobs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "write_json_atomic",
+              "_queue_lock",
+              "_write_queue_unlocked",
+              "_read_queue_unlocked",
+              "queued_runs",
+              "list_runs",
+              "read_status",
+              "read_config",
+              "_is_training_worker",
+              "active_run",
+              "create_run",
+              "launch_run",
+              "dispatch_next_run",
+              "enqueue_run",
+              "_fail_stale_running_jobs_unlocked",
+              "cancel_run",
+              "cancel_active_run",
+              "resume_run",
+              "read_log"
+            ]
+          },
+          {
+            "path": "src/lora_finetune_studio/models.py",
+            "batchIndex": 1,
+            "symbols": [
+              "PeftMode",
+              "TrainingApproach",
+              "ComputeType",
+              "resolve_compute_type",
+              "TrainingRecipe",
+              "Preset",
+              "JobState",
+              "HardwareProfile",
+              "DatasetSpec",
+              "TrainingConfig",
+              "JobStatus",
+              "apply_preset",
+              "run_path"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "language": "yaml",
+          "sizeLines": 24,
+          "fileCategory": "infra"
+        }
+      ],
+      "batchImportData": {
+        ".github/workflows/ci.yml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": ".firecrawl/search-unsloth-auto-docstring.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": ".firecrawl/search-unsloth-windows-nodeps.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": ".firecrawl/search-unsloth-windows-torchao.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": ".firecrawl/search-unsloth-windows-versions.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
+          "language": "markdown",
+          "sizeLines": 395,
+          "fileCategory": "docs"
+        },
+        {
+          "path": ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md",
+          "language": "markdown",
+          "sizeLines": 512,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        ".firecrawl/search-unsloth-auto-docstring.json": [],
+        ".firecrawl/search-unsloth-windows-nodeps.json": [],
+        ".firecrawl/search-unsloth-windows-torchao.json": [],
+        ".firecrawl/search-unsloth-windows-versions.json": [],
+        ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md": [],
+        ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "CHANGELOG.md",
+          "language": "markdown",
+          "sizeLines": 92,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CODE_OF_CONDUCT.md",
+          "language": "markdown",
+          "sizeLines": 74,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CONTRIBUTING.md",
+          "language": "markdown",
+          "sizeLines": 97,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "Launch LoRA Studio.cmd",
+          "language": "batch",
+          "sizeLines": 95,
+          "fileCategory": "script"
+        },
+        {
+          "path": "Launch LoRA Studio.sh",
+          "language": "shell",
+          "sizeLines": 84,
+          "fileCategory": "script"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 146,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "SECURITY.md",
+          "language": "markdown",
+          "sizeLines": 98,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "SETUP.md",
+          "language": "markdown",
+          "sizeLines": 689,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "TECHNICAL.md",
+          "language": "markdown",
+          "sizeLines": 818,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "TUTORIAL.md",
+          "language": "markdown",
+          "sizeLines": 1881,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "USAGE.md",
+          "language": "markdown",
+          "sizeLines": 389,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "pyproject.toml",
+          "language": "toml",
+          "sizeLines": 49,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "CHANGELOG.md": [],
+        "CODE_OF_CONDUCT.md": [],
+        "CONTRIBUTING.md": [],
+        "Launch LoRA Studio.cmd": [],
+        "Launch LoRA Studio.sh": [],
+        "README.md": [],
+        "SECURITY.md": [],
+        "SETUP.md": [],
+        "TECHNICAL.md": [],
+        "TUTORIAL.md": [],
+        "USAGE.md": [],
+        "pyproject.toml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "docs/.tutorial-build.json",
+          "language": "json",
+          "sizeLines": 33,
+          "fileCategory": "config"
+        },
+        {
+          "path": "docs/01-learn-the-map-before-the-territory.html",
+          "language": "html",
+          "sizeLines": 163,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/02-natural-language-becomes-model-input.html",
+          "language": "html",
+          "sizeLines": 138,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/03-neural-networks-learn-with-vectors-and-gradients.html",
+          "language": "html",
+          "sizeLines": 152,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/04-build-a-transformer-from-attention-blocks.html",
+          "language": "html",
+          "sizeLines": 151,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/05-understand-the-llm-lifecycle.html",
+          "language": "html",
+          "sizeLines": 146,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/06-choose-a-tuning-family.html",
+          "language": "html",
+          "sizeLines": 148,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/07-master-lora-qlora-oft-and-qoft.html",
+          "language": "html",
+          "sizeLines": 197,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/08-engineer-datasets-that-teach-the-intended-behavior.html",
+          "language": "html",
+          "sizeLines": 158,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/09-select-the-post-training-objective.html",
+          "language": "html",
+          "sizeLines": 192,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/10-prepare-the-local-training-system.html",
+          "language": "html",
+          "sizeLines": 189,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/11-translate-intent-into-app-settings.html",
+          "language": "html",
+          "sizeLines": 179,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/12-lab-a-complete-an-sft-smoke-run.html",
+          "language": "html",
+          "sizeLines": 182,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/13-lab-b-preference-training-safely.html",
+          "language": "html",
+          "sizeLines": 173,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/14-evaluate-like-an-experimenter.html",
+          "language": "html",
+          "sizeLines": 182,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/15-operate-jobs-and-use-artifacts.html",
+          "language": "html",
+          "sizeLines": 141,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/16-read-and-extend-the-repository.html",
+          "language": "html",
+          "sizeLines": 175,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/17-capstone-train-a-defensible-specialist.html",
+          "language": "html",
+          "sizeLines": 157,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/18-checkpoint-answers.html",
+          "language": "html",
+          "sizeLines": 161,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/19-formula-and-settings-reference.html",
+          "language": "html",
+          "sizeLines": 171,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "docs/.tutorial-build.json": [],
+        "docs/01-learn-the-map-before-the-territory.html": [],
+        "docs/02-natural-language-becomes-model-input.html": [],
+        "docs/03-neural-networks-learn-with-vectors-and-gradients.html": [],
+        "docs/04-build-a-transformer-from-attention-blocks.html": [],
+        "docs/05-understand-the-llm-lifecycle.html": [],
+        "docs/06-choose-a-tuning-family.html": [],
+        "docs/07-master-lora-qlora-oft-and-qoft.html": [],
+        "docs/08-engineer-datasets-that-teach-the-intended-behavior.html": [],
+        "docs/09-select-the-post-training-objective.html": [],
+        "docs/10-prepare-the-local-training-system.html": [],
+        "docs/11-translate-intent-into-app-settings.html": [],
+        "docs/12-lab-a-complete-an-sft-smoke-run.html": [],
+        "docs/13-lab-b-preference-training-safely.html": [],
+        "docs/14-evaluate-like-an-experimenter.html": [],
+        "docs/15-operate-jobs-and-use-artifacts.html": [],
+        "docs/16-read-and-extend-the-repository.html": [],
+        "docs/17-capstone-train-a-defensible-specialist.html": [],
+        "docs/18-checkpoint-answers.html": [],
+        "docs/19-formula-and-settings-reference.html": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "docs/20-troubleshooting-by-boundary.html",
+          "language": "html",
+          "sizeLines": 142,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/21-glossary.html",
+          "language": "html",
+          "sizeLines": 114,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/22-official-references.html",
+          "language": "html",
+          "sizeLines": 98,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/index.html",
+          "language": "html",
+          "sizeLines": 277,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "docs/20-troubleshooting-by-boundary.html": [],
+        "docs/21-glossary.html": [],
+        "docs/22-official-references.html": [],
+        "docs/index.html": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": ".gitattributes",
+          "language": "unknown",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".python-version",
+          "language": "unknown",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "language": "toml",
+          "sizeLines": 9,
+          "fileCategory": "config"
+        },
+        {
+          "path": "app_pages/dataset.py",
+          "language": "python",
+          "sizeLines": 360,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/gpu_memory.py",
+          "language": "python",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/model.py",
+          "language": "python",
+          "sizeLines": 59,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/monitor.py",
+          "language": "python",
+          "sizeLines": 183,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/ollama.py",
+          "language": "python",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/review.py",
+          "language": "python",
+          "sizeLines": 137,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/system.py",
+          "language": "python",
+          "sizeLines": 136,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/training.py",
+          "language": "python",
+          "sizeLines": 364,
+          "fileCategory": "code"
+        },
+        {
+          "path": "docs/.nojekyll",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "docs/assets/search-index.js",
+          "language": "javascript",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "docs/assets/site.css",
+          "language": "css",
+          "sizeLines": 303,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "docs/assets/site.js",
+          "language": "javascript",
+          "sizeLines": 90,
+          "fileCategory": "code"
+        },
+        {
+          "path": "examples/preference_sample.jsonl",
+          "language": "jsonl",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "examples/sft_sample.jsonl",
+          "language": "jsonl",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "scripts/build_tutorial.py",
+          "language": "python",
+          "sizeLines": 947,
+          "fileCategory": "code"
+        },
+        {
+          "path": "scripts/tutorial_assets/site.css",
+          "language": "css",
+          "sizeLines": 303,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "scripts/tutorial_assets/site.js",
+          "language": "javascript",
+          "sizeLines": 90,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/__init__.py",
+          "language": "python",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/cli.py",
+          "language": "python",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/hardware.py",
+          "language": "python",
+          "sizeLines": 192,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/inference.py",
+          "language": "python",
+          "sizeLines": 85,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/lifecycle.py",
+          "language": "python",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".gitattributes": [],
+        ".python-version": [],
+        ".streamlit/config.toml": [],
+        "app_pages/dataset.py": [],
+        "app_pages/gpu_memory.py": [],
+        "app_pages/model.py": [],
+        "app_pages/monitor.py": [],
+        "app_pages/ollama.py": [],
+        "app_pages/review.py": [],
+        "app_pages/system.py": [],
+        "app_pages/training.py": [],
+        "docs/.nojekyll": [],
+        "docs/assets/search-index.js": [],
+        "docs/assets/site.css": [],
+        "docs/assets/site.js": [],
+        "examples/preference_sample.jsonl": [],
+        "examples/sft_sample.jsonl": [],
+        "scripts/build_tutorial.py": [],
+        "scripts/tutorial_assets/site.css": [],
+        "scripts/tutorial_assets/site.js": [],
+        "src/lora_finetune_studio/__init__.py": [],
+        "src/lora_finetune_studio/cli.py": [],
+        "src/lora_finetune_studio/hardware.py": [
+          "src/lora_finetune_studio/models.py"
+        ],
+        "src/lora_finetune_studio/inference.py": [
+          "src/lora_finetune_studio/hardware.py"
+        ],
+        "src/lora_finetune_studio/lifecycle.py": []
+      },
+      "neighborMap": {
+        "src/lora_finetune_studio/hardware.py": [
+          {
+            "path": "src/lora_finetune_studio/models.py",
+            "batchIndex": 1,
+            "symbols": [
+              "PeftMode",
+              "TrainingApproach",
+              "ComputeType",
+              "resolve_compute_type",
+              "TrainingRecipe",
+              "Preset",
+              "JobState",
+              "HardwareProfile",
+              "DatasetSpec",
+              "TrainingConfig",
+              "JobStatus",
+              "apply_preset",
+              "run_path"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 9,
+      "files": [
+        {
+          "path": "src/lora_finetune_studio/ollama.py",
+          "language": "python",
+          "sizeLines": 34,
+          "fileCategory": "code"
+        },
+        {
+          "path": "streamlit_app.py",
+          "language": "python",
+          "sizeLines": 179,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_app.py",
+          "language": "python",
+          "sizeLines": 196,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_hardware.py",
+          "language": "python",
+          "sizeLines": 118,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_inference.py",
+          "language": "python",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_jobs.py",
+          "language": "python",
+          "sizeLines": 435,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_lifecycle.py",
+          "language": "python",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_models.py",
+          "language": "python",
+          "sizeLines": 260,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_queue_dispatcher.py",
+          "language": "python",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_queue_ui.py",
+          "language": "python",
+          "sizeLines": 65,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_sources.py",
+          "language": "python",
+          "sizeLines": 79,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_training.py",
+          "language": "python",
+          "sizeLines": 384,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_tutorial.py",
+          "language": "python",
+          "sizeLines": 124,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_worker.py",
+          "language": "python",
+          "sizeLines": 63,
+          "fileCategory": "code"
+        },
+        {
+          "path": "unsloth-runtime/pyproject.toml",
+          "language": "toml",
+          "sizeLines": 22,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "src/lora_finetune_studio/ollama.py": [],
+        "streamlit_app.py": [],
+        "tests/test_app.py": [],
+        "tests/test_hardware.py": [],
+        "tests/test_inference.py": [],
+        "tests/test_jobs.py": [],
+        "tests/test_lifecycle.py": [],
+        "tests/test_models.py": [],
+        "tests/test_queue_dispatcher.py": [],
+        "tests/test_queue_ui.py": [],
+        "tests/test_sources.py": [],
+        "tests/test_training.py": [],
+        "tests/test_tutorial.py": [],
+        "tests/test_worker.py": [],
+        "unsloth-runtime/pyproject.toml": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

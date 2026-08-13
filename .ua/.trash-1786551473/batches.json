@@ -1,0 +1,531 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 43,
+  "totalBatches": 5,
+  "exportsByPath": {
+    ".python-version": [],
+    "app_pages/dataset.py": [],
+    "app_pages/gpu_memory.py": [],
+    "app_pages/model.py": [],
+    "app_pages/monitor.py": [
+      "training_monitor"
+    ],
+    "app_pages/ollama.py": [],
+    "app_pages/review.py": [],
+    "app_pages/system.py": [],
+    "app_pages/training.py": [
+      "apply_preset_defaults"
+    ],
+    "examples/sft_sample.jsonl": [],
+    "src/lora_finetune_studio/__init__.py": [],
+    "src/lora_finetune_studio/cli.py": [
+      "main"
+    ],
+    "src/lora_finetune_studio/hardware.py": [
+      "CudaMemoryStats",
+      "SoftwareStatus",
+      "SystemScan",
+      "_package_status",
+      "scan_system",
+      "cuda_memory_stats",
+      "release_unused_cuda_memory",
+      "detect_hardware",
+      "model_size_warning"
+    ],
+    "src/lora_finetune_studio/inference.py": [
+      "generate_text",
+      "_generate_text"
+    ],
+    "src/lora_finetune_studio/jobs.py": [
+      "write_json_atomic",
+      "read_status",
+      "read_config",
+      "_is_training_worker",
+      "active_run",
+      "create_run",
+      "launch_run",
+      "cancel_run",
+      "cancel_active_run",
+      "resume_run",
+      "read_log"
+    ],
+    "src/lora_finetune_studio/lifecycle.py": [
+      "schedule_application_exit"
+    ],
+    "src/lora_finetune_studio/models.py": [
+      "PeftMode",
+      "Preset",
+      "JobState",
+      "HardwareProfile",
+      "DatasetSpec",
+      "TrainingConfig",
+      "JobStatus",
+      "apply_preset",
+      "run_path"
+    ],
+    "src/lora_finetune_studio/ollama.py": [
+      "_request",
+      "list_models",
+      "generate"
+    ],
+    "src/lora_finetune_studio/sources.py": [
+      "DatasetInspection",
+      "get_hf_token",
+      "parse_hf_repo",
+      "token_identity",
+      "model_parameter_count",
+      "validate_upload",
+      "save_upload",
+      "load_training_dataset",
+      "inspect_dataset"
+    ],
+    "src/lora_finetune_studio/training.py": [
+      "StatusCallback",
+      "_normalize_dataset",
+      "_split_dataset",
+      "train"
+    ],
+    "src/lora_finetune_studio/worker.py": [
+      "main"
+    ],
+    "streamlit_app.py": [],
+    "tests/test_app.py": [
+      "test_app_starts_without_ollama"
+    ],
+    "tests/test_hardware.py": [
+      "test_model_size_warning_uses_detected_limit",
+      "test_cuda_memory_stats_reports_global_and_process_usage",
+      "test_release_unused_cuda_memory_runs_gc_and_empties_cache",
+      "test_cuda_memory_helpers_reject_cpu_only_system",
+      "test_system_scan_reports_live_resources_without_installing",
+      "test_system_scan_recognizes_native_linux"
+    ],
+    "tests/test_inference.py": [
+      "test_generate_text_releases_cuda_memory_after_loading_failure"
+    ],
+    "tests/test_jobs.py": [
+      "test_create_run_persists_safe_config",
+      "test_atomic_json_replaces_existing_file",
+      "FakeWorkerProcess",
+      "_running_test_run",
+      "test_cancel_run_stops_only_its_training_worker",
+      "test_cancel_run_rejects_unrelated_process",
+      "test_cancel_active_run_delegates_to_active_run"
+    ],
+    "tests/test_lifecycle.py": [
+      "test_schedule_application_exit_uses_daemon_timer"
+    ],
+    "tests/test_models.py": [
+      "test_config_round_trip",
+      "test_config_requires_push_destination",
+      "test_run_path_rejects_traversal",
+      "test_preset_values_are_bounded"
+    ],
+    "tests/test_sources.py": [
+      "test_parse_hf_repo",
+      "test_parse_hf_repo_rejects_unsafe_locations",
+      "test_inspect_dataset_detects_messages",
+      "test_upload_validation_and_content_addressing",
+      "test_upload_rejects_unknown_type"
+    ],
+    "tests/test_training.py": [
+      "test_normalize_prompt_completion_columns",
+      "test_small_dataset_skips_eval_split"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "src/lora_finetune_studio/jobs.py",
+          "language": "python",
+          "sizeLines": 177,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/models.py",
+          "language": "python",
+          "sizeLines": 167,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/sources.py",
+          "language": "python",
+          "sizeLines": 128,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/training.py",
+          "language": "python",
+          "sizeLines": 188,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/worker.py",
+          "language": "python",
+          "sizeLines": 67,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/lora_finetune_studio/jobs.py": [
+          "src/lora_finetune_studio/models.py"
+        ],
+        "src/lora_finetune_studio/models.py": [],
+        "src/lora_finetune_studio/sources.py": [],
+        "src/lora_finetune_studio/training.py": [
+          "src/lora_finetune_studio/jobs.py",
+          "src/lora_finetune_studio/models.py",
+          "src/lora_finetune_studio/sources.py"
+        ],
+        "src/lora_finetune_studio/worker.py": [
+          "src/lora_finetune_studio/jobs.py",
+          "src/lora_finetune_studio/models.py",
+          "src/lora_finetune_studio/sources.py",
+          "src/lora_finetune_studio/training.py"
+        ]
+      },
+      "neighborMap": {
+        "src/lora_finetune_studio/models.py": [
+          {
+            "path": "src/lora_finetune_studio/hardware.py",
+            "batchIndex": 4,
+            "symbols": [
+              "CudaMemoryStats",
+              "SoftwareStatus",
+              "SystemScan",
+              "_package_status",
+              "scan_system",
+              "cuda_memory_stats",
+              "release_unused_cuda_memory",
+              "detect_hardware",
+              "model_size_warning"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "language": "yaml",
+          "sizeLines": 23,
+          "fileCategory": "infra"
+        }
+      ],
+      "batchImportData": {
+        ".github/workflows/ci.yml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "CHANGELOG.md",
+          "language": "markdown",
+          "sizeLines": 60,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CODE_OF_CONDUCT.md",
+          "language": "markdown",
+          "sizeLines": 74,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CONTRIBUTING.md",
+          "language": "markdown",
+          "sizeLines": 97,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "Launch LoRA Studio.cmd",
+          "language": "batch",
+          "sizeLines": 80,
+          "fileCategory": "script"
+        },
+        {
+          "path": "Launch LoRA Studio.sh",
+          "language": "shell",
+          "sizeLines": 84,
+          "fileCategory": "script"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 179,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "SECURITY.md",
+          "language": "markdown",
+          "sizeLines": 98,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "TECHNICAL.md",
+          "language": "markdown",
+          "sizeLines": 277,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "USAGE.md",
+          "language": "markdown",
+          "sizeLines": 342,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "pyproject.toml",
+          "language": "toml",
+          "sizeLines": 43,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "CHANGELOG.md": [],
+        "CODE_OF_CONDUCT.md": [],
+        "CONTRIBUTING.md": [],
+        "Launch LoRA Studio.cmd": [],
+        "Launch LoRA Studio.sh": [],
+        "README.md": [],
+        "SECURITY.md": [],
+        "TECHNICAL.md": [],
+        "USAGE.md": [],
+        "pyproject.toml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": ".python-version",
+          "language": "unknown",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "language": "toml",
+          "sizeLines": 9,
+          "fileCategory": "config"
+        },
+        {
+          "path": "app_pages/dataset.py",
+          "language": "python",
+          "sizeLines": 156,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/gpu_memory.py",
+          "language": "python",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/model.py",
+          "language": "python",
+          "sizeLines": 59,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/monitor.py",
+          "language": "python",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/ollama.py",
+          "language": "python",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/review.py",
+          "language": "python",
+          "sizeLines": 95,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/system.py",
+          "language": "python",
+          "sizeLines": 127,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app_pages/training.py",
+          "language": "python",
+          "sizeLines": 168,
+          "fileCategory": "code"
+        },
+        {
+          "path": "docs/index.html",
+          "language": "html",
+          "sizeLines": 785,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "examples/sft_sample.jsonl",
+          "language": "jsonl",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/__init__.py",
+          "language": "python",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/cli.py",
+          "language": "python",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/hardware.py",
+          "language": "python",
+          "sizeLines": 192,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/inference.py",
+          "language": "python",
+          "sizeLines": 85,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/lifecycle.py",
+          "language": "python",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lora_finetune_studio/ollama.py",
+          "language": "python",
+          "sizeLines": 34,
+          "fileCategory": "code"
+        },
+        {
+          "path": "streamlit_app.py",
+          "language": "python",
+          "sizeLines": 138,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_app.py",
+          "language": "python",
+          "sizeLines": 62,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_hardware.py",
+          "language": "python",
+          "sizeLines": 118,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_inference.py",
+          "language": "python",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_jobs.py",
+          "language": "python",
+          "sizeLines": 105,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_lifecycle.py",
+          "language": "python",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_models.py",
+          "language": "python",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".python-version": [],
+        ".streamlit/config.toml": [],
+        "app_pages/dataset.py": [],
+        "app_pages/gpu_memory.py": [],
+        "app_pages/model.py": [],
+        "app_pages/monitor.py": [],
+        "app_pages/ollama.py": [],
+        "app_pages/review.py": [],
+        "app_pages/system.py": [],
+        "app_pages/training.py": [],
+        "docs/index.html": [],
+        "examples/sft_sample.jsonl": [],
+        "src/lora_finetune_studio/__init__.py": [],
+        "src/lora_finetune_studio/cli.py": [],
+        "src/lora_finetune_studio/hardware.py": [
+          "src/lora_finetune_studio/models.py"
+        ],
+        "src/lora_finetune_studio/inference.py": [
+          "src/lora_finetune_studio/hardware.py"
+        ],
+        "src/lora_finetune_studio/lifecycle.py": [],
+        "src/lora_finetune_studio/ollama.py": [],
+        "streamlit_app.py": [],
+        "tests/test_app.py": [],
+        "tests/test_hardware.py": [],
+        "tests/test_inference.py": [],
+        "tests/test_jobs.py": [],
+        "tests/test_lifecycle.py": [],
+        "tests/test_models.py": []
+      },
+      "neighborMap": {
+        "src/lora_finetune_studio/hardware.py": [
+          {
+            "path": "src/lora_finetune_studio/models.py",
+            "batchIndex": 1,
+            "symbols": [
+              "PeftMode",
+              "Preset",
+              "JobState",
+              "HardwareProfile",
+              "DatasetSpec",
+              "TrainingConfig",
+              "JobStatus",
+              "apply_preset",
+              "run_path"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "tests/test_sources.py",
+          "language": "python",
+          "sizeLines": 64,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_training.py",
+          "language": "python",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "tests/test_sources.py": [],
+        "tests/test_training.py": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

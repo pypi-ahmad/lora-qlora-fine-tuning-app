@@ -1,0 +1,17 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path": "src/lora_finetune_studio/jobs.py", "language": "python", "sizeLines": 177, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/models.py", "language": "python", "sizeLines": 167, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/sources.py", "language": "python", "sizeLines": 128, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/training.py", "language": "python", "sizeLines": 188, "fileCategory": "code"},
+    {"path": "src/lora_finetune_studio/worker.py", "language": "python", "sizeLines": 67, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "src/lora_finetune_studio/jobs.py": ["src/lora_finetune_studio/models.py"],
+    "src/lora_finetune_studio/models.py": [],
+    "src/lora_finetune_studio/sources.py": [],
+    "src/lora_finetune_studio/training.py": ["src/lora_finetune_studio/jobs.py", "src/lora_finetune_studio/models.py", "src/lora_finetune_studio/sources.py"],
+    "src/lora_finetune_studio/worker.py": ["src/lora_finetune_studio/jobs.py", "src/lora_finetune_studio/models.py", "src/lora_finetune_studio/sources.py", "src/lora_finetune_studio/training.py"]
+  }
+}

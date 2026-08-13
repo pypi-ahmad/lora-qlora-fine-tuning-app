@@ -1,0 +1,71 @@
+[CodeGraph daemon] Listening on \\.\pipe\codegraph-e858b70b969a45cb (pid 19276, v1.5.0). Idle timeout 300000ms.
+[CodeGraph MCP] File watcher active — graph will auto-sync on changes
+[CodeGraph MCP] Query pool: up to 15 worker thread(s) for concurrent reads.
+[CodeGraph daemon] Listening on \\.\pipe\codegraph-e858b70b969a45cb (pid 51752, v1.5.0). Idle timeout 300000ms.
+[CodeGraph MCP] File watcher active — graph will auto-sync on changes
+[CodeGraph MCP] Query pool: up to 15 worker thread(s) for concurrent reads.
+[CodeGraph MCP] Auto-synced 1 file(s) in 275ms
+[CodeGraph MCP] Auto-synced 4 file(s) in 35ms
+[CodeGraph MCP] Auto-synced 5 file(s) in 34ms
+[CodeGraph MCP] Auto-synced 3 file(s) in 36ms
+[CodeGraph MCP] Auto-synced 5 file(s) in 55ms
+[CodeGraph MCP] Auto-synced 3 file(s) in 47ms
+[CodeGraph MCP] Auto-synced 6 file(s) in 22ms
+[CodeGraph MCP] Auto-synced 12 file(s) in 114ms
+[CodeGraph MCP] Auto-synced 2 file(s) in 26ms
+[CodeGraph MCP] Auto-synced 3 file(s) in 50ms
+[CodeGraph MCP] Auto-synced 1 file(s) in 17ms
+[CodeGraph MCP] Auto-synced 1 file(s) in 23ms
+[CodeGraph MCP] Auto-synced 1 file(s) in 42ms
+[CodeGraph MCP] Auto-synced 1 file(s) in 21ms
+[CodeGraph MCP] Auto-synced 6 file(s) in 91ms
+[CodeGraph MCP] Auto-synced 2 file(s) in 32ms
+[CodeGraph MCP] Auto-synced 2 file(s) in 32ms
+[CodeGraph MCP] Auto-synced 4 file(s) in 31ms
+[CodeGraph MCP] Auto-synced 4 file(s) in 24ms
+[CodeGraph MCP] Auto-synced 6 file(s) in 86ms
+[CodeGraph MCP] Auto-synced 1 file(s) in 8ms
+[CodeGraph MCP] Auto-synced 1 file(s) in 10ms
+[CodeGraph MCP] Auto-synced 2 file(s) in 24ms
+[CodeGraph MCP] Auto-synced 3 file(s) in 38ms
+[CodeGraph MCP] Auto-synced 1 file(s) in 10ms
+[CodeGraph MCP] Auto-synced 3 file(s) in 67ms
+[CodeGraph MCP] Auto-synced 2 file(s) in 39ms
+[CodeGraph] Main thread unresponsive for ~60s — killing the wedged process so a fresh one can start (#850). Disable with CODEGRAPH_NO_WATCHDOG=1.
+[CodeGraph daemon] Listening on \\.\pipe\codegraph-e858b70b969a45cb (pid 61288, v1.5.0). Idle timeout 300000ms.
+[CodeGraph MCP] File watcher active — graph will auto-sync on changes
+[CodeGraph MCP] Query pool: up to 15 worker thread(s) for concurrent reads.
+[CodeGraph MCP] Catch-up sync failed: database is locked
+[CodeGraph daemon] Listening on \\.\pipe\codegraph-e858b70b969a45cb (pid 49492, v1.5.0). Idle timeout 300000ms.
+[CodeGraph MCP] File watcher active — graph will auto-sync on changes
+[CodeGraph MCP] Query pool: up to 15 worker thread(s) for concurrent reads.
+[CodeGraph MCP] Catch-up sync failed: database is locked
+[CodeGraph daemon] Listening on \\.\pipe\codegraph-e858b70b969a45cb (pid 53568, v1.5.0). Idle timeout 300000ms.
+[CodeGraph MCP] File watcher active — graph will auto-sync on changes
+[CodeGraph MCP] Query pool: up to 15 worker thread(s) for concurrent reads.
+[CodeGraph MCP] Catch-up sync failed: database is locked
+[CodeGraph] Watch sync failed { error: 'database is locked', retryCount: 1 }
+[CodeGraph MCP] Auto-sync error: database is locked
+[CodeGraph] Main thread unresponsive for ~60s — killing the wedged process so a fresh one can start (#850). Disable with CODEGRAPH_NO_WATCHDOG=1.
+[CodeGraph daemon] Listening on \\.\pipe\codegraph-e858b70b969a45cb (pid 62532, v1.5.0). Idle timeout 300000ms.
+[CodeGraph MCP] File watcher active — graph will auto-sync on changes
+[CodeGraph MCP] Query pool: up to 15 worker thread(s) for concurrent reads.
+[CodeGraph] Watch sync failed { error: 'database is locked', retryCount: 1 }
+[CodeGraph MCP] Auto-sync error: database is locked
+[CodeGraph] Watch sync failed { error: 'database is locked', retryCount: 2 }
+[CodeGraph MCP] Auto-sync error: database is locked
+[CodeGraph] Watch sync failed { error: 'database is locked', retryCount: 3 }
+[CodeGraph MCP] Auto-sync error: database is locked
+[CodeGraph] Watch sync failed { error: 'database is locked', retryCount: 4 }
+[CodeGraph MCP] Auto-sync error: database is locked
+[CodeGraph] Watch sync failed { error: 'database is locked', retryCount: 5 }
+[CodeGraph MCP] Auto-sync error: database is locked
+[CodeGraph] Watch sync failed { error: 'database is locked', retryCount: 6 }
+[CodeGraph MCP] Auto-sync error: database is locked
+[CodeGraph] File watcher disabled {
+  projectRoot: 'D:\\AI\\Github\\lora-qlora-fine-tuning-app',
+  reason: 'CodeGraph auto-sync failed 6 times in a row; auto-sync disabled. Run `codegraph sync` (or install git sync hooks) to refresh the graph after changes. Last error: database is locked',
+  error: 'database is locked',
+  retryCount: 6
+}
+[CodeGraph MCP] File watcher degraded — CodeGraph auto-sync failed 6 times in a row; auto-sync disabled. Run `codegraph sync` (or install git sync hooks) to refresh the graph after changes. Last error: database is locked

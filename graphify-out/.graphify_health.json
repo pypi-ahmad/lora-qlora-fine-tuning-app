@@ -1,0 +1,193 @@
+{
+  "node_count": 436,
+  "unverified_node_count": 0,
+  "raw_edge_count": 1103,
+  "non_object_edges": 0,
+  "missing_endpoint_edges": 0,
+  "dangling_endpoint_edges": 152,
+  "self_loop_edges": 0,
+  "valid_candidate_edges": 951,
+  "exact_duplicate_edges": 9,
+  "directed_unique_endpoint_pairs": 911,
+  "directed_same_endpoint_collapsed_edges": 40,
+  "undirected_unique_endpoint_pairs": 909,
+  "undirected_same_endpoint_collapsed_edges": 42,
+  "same_endpoint_group_count": 38,
+  "relation_variant_groups": 19,
+  "source_file_variant_groups": 0,
+  "source_location_variant_groups": 3,
+  "context_variant_groups": 9,
+  "post_build_graph_type": "Graph",
+  "post_build_node_count": 436,
+  "post_build_edge_count": 909,
+  "post_build_error": "",
+  "producer_suppression": {
+    "path": "C:\\Users\\ahmad\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",
+    "total_sites": 11,
+    "sites": [
+      {
+        "line": 1099,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids = {n[\"id\"] for n in nodes}"
+      },
+      {
+        "line": 1253,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids = {n[\"id\"] for n in nodes}"
+      },
+      {
+        "line": 1255,
+        "name": "seen_doc_refs",
+        "tuple_arity": 0,
+        "sample": "seen_doc_refs: set[str] = set()"
+      },
+      {
+        "line": 1600,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = {n[\"id\"] for n in nodes}"
+      },
+      {
+        "line": 2069,
+        "name": "seen_keys",
+        "tuple_arity": 0,
+        "sample": "seen_keys: set[tuple] = set()"
+      },
+      {
+        "line": 2228,
+        "name": "seen_keys",
+        "tuple_arity": 0,
+        "sample": "seen_keys: set[tuple] = set()"
+      },
+      {
+        "line": 3272,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = set()"
+      },
+      {
+        "line": 3380,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = set()"
+      },
+      {
+        "line": 3459,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = set()"
+      },
+      {
+        "line": 3974,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = set()"
+      },
+      {
+        "line": 3975,
+        "name": "seen_edges",
+        "tuple_arity": 4,
+        "sample": "seen_edges: set[tuple[str, str, str, str | None]] = set()"
+      }
+    ],
+    "error": ""
+  },
+  "examples": [
+    {
+      "source": "src_lora_finetune_studio_hardware_detect_hardware",
+      "target": "src_lora_finetune_studio_models_hardwareprofile",
+      "edge_count": 3,
+      "relations": [
+        "calls",
+        "references"
+      ],
+      "source_files": [
+        "src/lora_finetune_studio/hardware.py"
+      ],
+      "source_locations": [
+        "L139",
+        "L168"
+      ],
+      "contexts": [
+        "call",
+        "return_type"
+      ]
+    },
+    {
+      "source": "src_lora_finetune_studio_training_split_dataset",
+      "target": "src_lora_finetune_studio_training_py_dataset",
+      "edge_count": 3,
+      "relations": [
+        "references"
+      ],
+      "source_files": [
+        "src/lora_finetune_studio/training.py"
+      ],
+      "source_locations": [
+        "L141"
+      ],
+      "contexts": [
+        "generic_arg",
+        "parameter_type"
+      ]
+    },
+    {
+      "source": "app_pages_ollama",
+      "target": "src_lora_finetune_studio_ollama",
+      "edge_count": 2,
+      "relations": [
+        "imports_from"
+      ],
+      "source_files": [
+        "app_pages/ollama.py"
+      ],
+      "source_locations": [
+        "L7",
+        "L8"
+      ],
+      "contexts": [
+        "import"
+      ]
+    },
+    {
+      "source": "scripts_build_tutorial_load_course",
+      "target": "scripts_build_tutorial_chapter",
+      "edge_count": 2,
+      "relations": [
+        "calls",
+        "references"
+      ],
+      "source_files": [
+        "scripts/build_tutorial.py"
+      ],
+      "source_locations": [
+        "L146",
+        "L166"
+      ],
+      "contexts": [
+        "call",
+        "generic_arg"
+      ]
+    },
+    {
+      "source": "scripts_build_tutorial_chapter_content",
+      "target": "scripts_build_tutorial_chapter",
+      "edge_count": 2,
+      "relations": [
+        "references"
+      ],
+      "source_files": [
+        "scripts/build_tutorial.py"
+      ],
+      "source_locations": [
+        "L283"
+      ],
+      "contexts": [
+        "generic_arg",
+        "parameter_type"
+      ]
+    }
+  ]
+}

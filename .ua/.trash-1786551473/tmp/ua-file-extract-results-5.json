@@ -1,0 +1,236 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "tests/test_sources.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "test_parse_hf_repo",
+          "startLine": 26,
+          "endLine": 27,
+          "params": [
+            "value",
+            "repo_type",
+            "expected"
+          ]
+        },
+        {
+          "name": "test_parse_hf_repo_rejects_unsafe_locations",
+          "startLine": 39,
+          "endLine": 41,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "test_inspect_dataset_detects_messages",
+          "startLine": 44,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "test_upload_validation_and_content_addressing",
+          "startLine": 53,
+          "endLine": 59,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_upload_rejects_unknown_type",
+          "startLine": 62,
+          "endLine": 64,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_parse_hf_repo",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "test_parse_hf_repo_rejects_unsafe_locations",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "test_inspect_dataset_detects_messages",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "test_upload_validation_and_content_addressing",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "test_upload_rejects_unknown_type",
+          "line": 62,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_parse_hf_repo",
+          "callee": "parse_hf_repo",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_parse_hf_repo_rejects_unsafe_locations",
+          "callee": "pytest.raises",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_parse_hf_repo_rejects_unsafe_locations",
+          "callee": "parse_hf_repo",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_inspect_dataset_detects_messages",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_inspect_dataset_detects_messages",
+          "callee": "inspect_dataset",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_upload_validation_and_content_addressing",
+          "callee": "save_upload",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_upload_validation_and_content_addressing",
+          "callee": "path.read_bytes",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_upload_validation_and_content_addressing",
+          "callee": "validate_upload",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_upload_validation_and_content_addressing",
+          "callee": "len",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_upload_rejects_unknown_type",
+          "callee": "pytest.raises",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_upload_rejects_unknown_type",
+          "callee": "validate_upload",
+          "lineNumber": 64
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_training.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "test_normalize_prompt_completion_columns",
+          "startLine": 7,
+          "endLine": 23,
+          "params": []
+        },
+        {
+          "name": "test_small_dataset_skips_eval_split",
+          "startLine": 26,
+          "endLine": 33,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_normalize_prompt_completion_columns",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "test_small_dataset_skips_eval_split",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_normalize_prompt_completion_columns",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_normalize_prompt_completion_columns",
+          "callee": "TrainingConfig",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_normalize_prompt_completion_columns",
+          "callee": "DatasetSpec",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_normalize_prompt_completion_columns",
+          "callee": "_normalize_dataset",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_small_dataset_skips_eval_split",
+          "callee": "Dataset.from_dict",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_small_dataset_skips_eval_split",
+          "callee": "TrainingConfig",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_small_dataset_skips_eval_split",
+          "callee": "_split_dataset",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_small_dataset_skips_eval_split",
+          "callee": "len",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {
+      "id": "pipeline:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "ci.yml",
+      "filePath": ".github/workflows/ci.yml",
+      "summary": "GitHub Actions quality workflow that runs on pushes and pull requests across Ubuntu and Windows. It installs Python dependencies with uv, then verifies formatting, linting, type checks, tests, and tutorial generation.",
+      "tags": ["ci-cd", "quality-gates", "github-actions", "cross-platform"],
+      "complexity": "simple",
+      "languageNotes": "Uses a GitHub Actions matrix to run the same uv-based validation commands on Ubuntu and Windows runners."
+    }
+  ],
+  "edges": []
+}
