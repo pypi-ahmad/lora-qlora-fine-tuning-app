@@ -69,3 +69,11 @@
   retryCount: 6
 }
 [CodeGraph MCP] File watcher degraded — CodeGraph auto-sync failed 6 times in a row; auto-sync disabled. Run `codegraph sync` (or install git sync hooks) to refresh the graph after changes. Last error: database is locked
+[CodeGraph daemon] Shutting down (idle timeout; clients=0).
+[CodeGraph daemon] Listening on \\.\pipe\codegraph-e858b70b969a45cb (pid 32380, v1.5.0). Idle timeout 300000ms.
+[CodeGraph MCP] File watcher active — graph will auto-sync on changes
+[CodeGraph MCP] Query pool: up to 15 worker thread(s) for concurrent reads.
+[CodeGraph daemon] Listening on \\.\pipe\codegraph-e858b70b969a45cb (pid 33996, v1.5.0). Idle timeout 300000ms.
+[CodeGraph MCP] File watcher active — graph will auto-sync on changes
+[CodeGraph MCP] Query pool: up to 15 worker thread(s) for concurrent reads.
+[CodeGraph daemon] Another daemon (pid 33996) already holds the lock; exiting.
