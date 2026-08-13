@@ -1,6 +1,6 @@
 [project]
 name = "lora-finetune-studio"
-version = "0.5.0"
+version = "0.5.1"
 description = "Local Streamlit studio for parameter-efficient LLM post-training"
 readme = "README.md"
 authors = [

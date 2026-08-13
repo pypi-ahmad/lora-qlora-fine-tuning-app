@@ -7,6 +7,8 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-08-13
+
 ### Changed
 
 - Documented the read-only showcase, Community Cloud entry point, and portable tutorial checks in
@@ -101,7 +103,8 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Limited dataset uploads to approved formats and 200 MB.
 - Added path validation and atomic run-status updates.
 
-[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.2.0...v0.3.0
