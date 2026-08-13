@@ -32,6 +32,9 @@ cd lora-qlora-fine-tuning-app
 uv sync --group dev
 ```
 
+Work from `main`, not the `v0.5.1` release tag. Users who only want the published tree should follow
+[SETUP.md](SETUP.md).
+
 The unit and Streamlit startup tests do not require Ollama or a training-capable GPU.
 
 ## Workflow

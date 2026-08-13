@@ -144,9 +144,11 @@ should live, and run:
 ```bash
 git clone https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app.git
 cd lora-qlora-fine-tuning-app
+git checkout v0.5.1
 ```
 
-GitHub's official explanation is available in
+The tag is the published v0.5.1 release. Stay on `main` if you are developing against the latest
+commit. GitHub's official explanation is available in
 [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
 If Git cannot be installed, use **Code → Download ZIP** on GitHub and extract the archive. A ZIP
@@ -543,6 +545,13 @@ Stop the app, open a terminal in the repository, and run:
 
 ```text
 git pull --ff-only
+```
+
+To move a clone onto the published release instead of `main`:
+
+```text
+git fetch --tags
+git checkout v0.5.1
 ```
 
 Then run the platform launcher again. Its locked sync updates the environments when the committed

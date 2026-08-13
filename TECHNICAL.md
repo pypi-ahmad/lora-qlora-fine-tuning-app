@@ -1,6 +1,6 @@
 # Technical Handbook
 
-This is the implementation reference for LoRA Fine-tune Studio `0.5.x`. It begins
+This is the implementation reference for LoRA Fine-tune Studio `0.5.1`. It begins
 with the concepts needed to understand the application and ends with the contracts,
 flows, and extension points needed to maintain it.
 

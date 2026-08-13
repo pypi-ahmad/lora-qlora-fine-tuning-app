@@ -7,6 +7,10 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Pointed the README and setup guide at the published `v0.5.1` tag for clones and updates.
+
 ## [0.5.1] - 2026-08-13
 
 ### Changed

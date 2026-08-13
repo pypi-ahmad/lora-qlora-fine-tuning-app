@@ -12,6 +12,10 @@ result with the base model from one interface.
 > LoRA Fine-tune Studio is designed for local, single-user learning and experimentation. It is not
 > a hosted training service or a multi-user production platform.
 
+The current release is [v0.5.1](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases/tag/v0.5.1).
+It documents the read-only showcase and the portable tutorial checks. Training behavior is unchanged
+from v0.5.0. See [CHANGELOG.md](CHANGELOG.md).
+
 ## Interactive showcase
 
 [![LoRA Fine-tune Studio model configuration](docs/images/training-studio.png)](demo/streamlit_app.py)
@@ -95,7 +99,10 @@ Clone the repository:
 ```bash
 git clone https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app.git
 cd lora-qlora-fine-tuning-app
+git checkout v0.5.1
 ```
+
+Omit the checkout to follow `main`. Use the tag when you want the published v0.5.1 tree.
 
 Launch on Windows:
 

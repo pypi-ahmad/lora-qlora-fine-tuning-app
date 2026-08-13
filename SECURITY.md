@@ -2,11 +2,13 @@
 
 ## Supported versions
 
-Security fixes are provided for the latest `0.5.x` release and the current `main` branch.
+Security fixes are provided for the latest `0.5.x` release (currently `0.5.1`) and the current
+`main` branch.
 
 | Version | Supported |
 | --- | --- |
-| `0.5.x` | Yes |
+| `0.5.1` | Yes |
+| Other `0.5.x` | Yes |
 | Older versions | No |
 
 Update to the latest release before confirming or reporting a problem.
