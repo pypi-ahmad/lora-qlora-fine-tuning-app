@@ -180,3 +180,5 @@ private vulnerability reporting.
 ## License
 
 [MIT](LICENSE) © 2026 Ahmad Mujtaba.
+
+<p align="center">Made with ❤️ by Ahmad Mujtaba</p>
