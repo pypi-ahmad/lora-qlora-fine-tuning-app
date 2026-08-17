@@ -848,7 +848,7 @@ def read_manifest(root: Path) -> set[str]:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
         return set(data.get("files", {})) | {MANIFEST_NAME}
-    except (OSError, ValueError, TypeError):
+    except OSError, ValueError, TypeError:
         return set()
 
 
