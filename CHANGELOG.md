@@ -7,9 +7,19 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.5.2] - 2026-08-17
+
+### Added
+
+- `SUPPORT.md` and `DISCLAIMER.md`, and GitHub issue/pull-request templates
+  (`.github/ISSUE_TEMPLATE/bug_report.md`, `feature_request.md`, `.github/PULL_REQUEST_TEMPLATE.md`).
+
 ### Changed
 
 - Pointed the README and setup guide at the published `v0.5.1` tag for clones and updates.
+- Stated in the README and `CONTRIBUTING.md` that the project wants no donations, sponsorships, or
+  other financial support, and linked `SUPPORT.md`/`DISCLAIMER.md`.
+- Added a repository link and a table of contents to the README.
 
 ## [0.5.1] - 2026-08-13
 

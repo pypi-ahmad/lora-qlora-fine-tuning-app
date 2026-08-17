@@ -144,10 +144,10 @@ should live, and run:
 ```bash
 git clone https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app.git
 cd lora-qlora-fine-tuning-app
-git checkout v0.5.1
+git checkout v0.5.2
 ```
 
-The tag is the published v0.5.1 release. Stay on `main` if you are developing against the latest
+The tag is the published v0.5.2 release. Stay on `main` if you are developing against the latest
 commit. GitHub's official explanation is available in
 [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
@@ -551,7 +551,7 @@ To move a clone onto the published release instead of `main`:
 
 ```text
 git fetch --tags
-git checkout v0.5.1
+git checkout v0.5.2
 ```
 
 Then run the platform launcher again. Its locked sync updates the environments when the committed
