@@ -1,0 +1,179 @@
+{
+  "nodes": [
+    {
+      "id": "file:.gitattributes",
+      "type": "file",
+      "name": ".gitattributes",
+      "filePath": ".gitattributes",
+      "summary": "Sets repository-wide LF normalization, treats PDF and PNG files as binary, and stores the Codegraph SQLite database in Git LFS.",
+      "tags": [
+        "configuration",
+        "repository",
+        "git-lfs",
+        "tooling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:demo/fixtures/showcase.json",
+      "type": "config",
+      "name": "showcase.json",
+      "filePath": "demo/fixtures/showcase.json",
+      "summary": "Synthetic read-only fixture with a smoke-test TrainingConfig, completed JobStatus, four conversational preview rows, and an illustrative relative-loss series.",
+      "tags": [
+        "fixture",
+        "training-config",
+        "job-status",
+        "demo",
+        "showcase",
+        "tested"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:demo/requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "demo/requirements.txt",
+      "summary": "Pins Streamlit 1.61.1 as the only dependency for the public Community Cloud showcase entry point.",
+      "tags": [
+        "documentation",
+        "dependencies",
+        "streamlit",
+        "demo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:demo/streamlit_app.py",
+      "type": "file",
+      "name": "streamlit_app.py",
+      "filePath": "demo/streamlit_app.py",
+      "summary": "Read-only Streamlit showcase that renders Dataset, Configure, Review, and Monitor tabs from fixture data and never trains, downloads, uploads, or persists state.",
+      "tags": [
+        "streamlit",
+        "demo",
+        "showcase",
+        "read-only",
+        "ui",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/assets/search-index.js",
+      "type": "file",
+      "name": "search-index.js",
+      "filePath": "docs/assets/search-index.js",
+      "summary": "Generated handbook search corpus assigned to window.HANDBOOK_SEARCH, with title, URL, summary, headings, and full text for each tutorial chapter.",
+      "tags": [
+        "documentation",
+        "search",
+        "generated",
+        "handbook",
+        "frontend"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:demo/streamlit_app.py",
+      "target": "config:demo/fixtures/showcase.json",
+      "type": "reads_from",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:demo/streamlit_app.py",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:demo/fixtures/showcase.json",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:demo/streamlit_app.py",
+      "target": "file:tests/test_demo.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:demo/fixtures/showcase.json",
+      "target": "file:tests/test_demo.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:demo/requirements.txt",
+      "target": "file:demo/streamlit_app.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:demo/fixtures/showcase.json",
+      "target": "file:examples/sft_sample.jsonl",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "file:docs/assets/search-index.js",
+      "type": "writes_to",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:docs/assets/site.js",
+      "target": "file:docs/assets/search-index.js",
+      "type": "reads_from",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:docs/assets/search-index.js",
+      "target": "document:TUTORIAL.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:SETUP.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TECHNICAL.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

@@ -1,0 +1,2398 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "scripts/build_tutorial.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 956,
+      "nonEmptyLines": 874,
+      "functions": [
+        {
+          "name": "slugify",
+          "startLine": 85,
+          "endLine": 88,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "split_source",
+          "startLine": 91,
+          "endLine": 102,
+          "params": [
+            "source"
+          ]
+        },
+        {
+          "name": "render_markdown",
+          "startLine": 105,
+          "endLine": 111,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "plain_text",
+          "startLine": 114,
+          "endLine": 115,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "pdf_safe",
+          "startLine": 118,
+          "endLine": 134,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "chapter_summary",
+          "startLine": 137,
+          "endLine": 143,
+          "params": [
+            "rendered"
+          ]
+        },
+        {
+          "name": "load_course",
+          "startLine": 146,
+          "endLine": 175,
+          "params": []
+        },
+        {
+          "name": "nav_items",
+          "startLine": 178,
+          "endLine": 189,
+          "params": [
+            "chapters",
+            "current"
+          ]
+        },
+        {
+          "name": "site_shell",
+          "startLine": 192,
+          "endLine": 250,
+          "params": [
+            "title",
+            "description",
+            "content",
+            "chapters",
+            "current",
+            "page_class"
+          ]
+        },
+        {
+          "name": "index_content",
+          "startLine": 253,
+          "endLine": 280,
+          "params": [
+            "preamble_html",
+            "chapters"
+          ]
+        },
+        {
+          "name": "chapter_content",
+          "startLine": 283,
+          "endLine": 301,
+          "params": [
+            "chapter",
+            "chapters"
+          ]
+        },
+        {
+          "name": "rewrite_root_links",
+          "startLine": 304,
+          "endLine": 317,
+          "params": [
+            "rendered"
+          ]
+        },
+        {
+          "name": "build_search_index",
+          "startLine": 320,
+          "endLine": 338,
+          "params": [
+            "chapters"
+          ]
+        },
+        {
+          "name": "build_site_files",
+          "startLine": 341,
+          "endLine": 370,
+          "params": [
+            "preamble_html",
+            "chapters",
+            "pdf_bytes"
+          ]
+        },
+        {
+          "name": "pdf_styles",
+          "startLine": 441,
+          "endLine": 531,
+          "params": []
+        },
+        {
+          "name": "inline_markup",
+          "startLine": 534,
+          "endLine": 549,
+          "params": [
+            "node"
+          ]
+        },
+        {
+          "name": "paragraph_from_tag",
+          "startLine": 552,
+          "endLine": 554,
+          "params": [
+            "tag",
+            "style"
+          ]
+        },
+        {
+          "name": "table_flowable",
+          "startLine": 557,
+          "endLine": 596,
+          "params": [
+            "table_tag",
+            "styles",
+            "width"
+          ]
+        },
+        {
+          "name": "list_flowable",
+          "startLine": 599,
+          "endLine": 629,
+          "params": [
+            "tag",
+            "styles"
+          ]
+        },
+        {
+          "name": "html_to_flowables",
+          "startLine": 632,
+          "endLine": 702,
+          "params": [
+            "rendered",
+            "styles",
+            "width",
+            "bookmark_prefix"
+          ]
+        },
+        {
+          "name": "cover_flowables",
+          "startLine": 705,
+          "endLine": 773,
+          "params": [
+            "styles",
+            "chapter_count"
+          ]
+        },
+        {
+          "name": "build_pdf",
+          "startLine": 776,
+          "endLine": 825,
+          "params": [
+            "chapters",
+            "target"
+          ]
+        },
+        {
+          "name": "file_digest",
+          "startLine": 828,
+          "endLine": 829,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "manifest_bytes",
+          "startLine": 832,
+          "endLine": 841,
+          "params": [
+            "files"
+          ]
+        },
+        {
+          "name": "read_manifest",
+          "startLine": 844,
+          "endLine": 852,
+          "params": [
+            "root"
+          ]
+        },
+        {
+          "name": "write_site",
+          "startLine": 855,
+          "endLine": 866,
+          "params": [
+            "files",
+            "root"
+          ]
+        },
+        {
+          "name": "portable_text_bytes",
+          "startLine": 869,
+          "endLine": 873,
+          "params": [
+            "data",
+            "relative"
+          ]
+        },
+        {
+          "name": "compare_files",
+          "startLine": 876,
+          "endLine": 892,
+          "params": [
+            "expected",
+            "root"
+          ]
+        },
+        {
+          "name": "pdf_content_signature",
+          "startLine": 895,
+          "endLine": 906,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "run",
+          "startLine": 909,
+          "endLine": 941,
+          "params": [
+            "check"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 944,
+          "endLine": 952,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "Chapter",
+          "startLine": 72,
+          "endLine": 82,
+          "methods": [
+            "filename"
+          ],
+          "properties": [
+            "number",
+            "title",
+            "slug",
+            "markdown",
+            "html",
+            "summary"
+          ]
+        },
+        {
+          "name": "HandbookDocTemplate",
+          "startLine": 373,
+          "endLine": 438,
+          "methods": [
+            "__init__",
+            "_metadata",
+            "_cover_page",
+            "_body_page",
+            "afterFlowable"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Chapter",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "slugify",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "split_source",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "render_markdown",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "plain_text",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "pdf_safe",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "chapter_summary",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "load_course",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "nav_items",
+          "line": 178,
+          "isDefault": false
+        },
+        {
+          "name": "site_shell",
+          "line": 192,
+          "isDefault": false
+        },
+        {
+          "name": "index_content",
+          "line": 253,
+          "isDefault": false
+        },
+        {
+          "name": "chapter_content",
+          "line": 283,
+          "isDefault": false
+        },
+        {
+          "name": "rewrite_root_links",
+          "line": 304,
+          "isDefault": false
+        },
+        {
+          "name": "build_search_index",
+          "line": 320,
+          "isDefault": false
+        },
+        {
+          "name": "build_site_files",
+          "line": 341,
+          "isDefault": false
+        },
+        {
+          "name": "HandbookDocTemplate",
+          "line": 373,
+          "isDefault": false
+        },
+        {
+          "name": "pdf_styles",
+          "line": 441,
+          "isDefault": false
+        },
+        {
+          "name": "inline_markup",
+          "line": 534,
+          "isDefault": false
+        },
+        {
+          "name": "paragraph_from_tag",
+          "line": 552,
+          "isDefault": false
+        },
+        {
+          "name": "table_flowable",
+          "line": 557,
+          "isDefault": false
+        },
+        {
+          "name": "list_flowable",
+          "line": 599,
+          "isDefault": false
+        },
+        {
+          "name": "html_to_flowables",
+          "line": 632,
+          "isDefault": false
+        },
+        {
+          "name": "cover_flowables",
+          "line": 705,
+          "isDefault": false
+        },
+        {
+          "name": "build_pdf",
+          "line": 776,
+          "isDefault": false
+        },
+        {
+          "name": "file_digest",
+          "line": 828,
+          "isDefault": false
+        },
+        {
+          "name": "manifest_bytes",
+          "line": 832,
+          "isDefault": false
+        },
+        {
+          "name": "read_manifest",
+          "line": 844,
+          "isDefault": false
+        },
+        {
+          "name": "write_site",
+          "line": 855,
+          "isDefault": false
+        },
+        {
+          "name": "portable_text_bytes",
+          "line": 869,
+          "isDefault": false
+        },
+        {
+          "name": "compare_files",
+          "line": 876,
+          "isDefault": false
+        },
+        {
+          "name": "pdf_content_signature",
+          "line": 895,
+          "isDefault": false
+        },
+        {
+          "name": "run",
+          "line": 909,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 944,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "slugify",
+          "callee": "value.lower().replace",
+          "lineNumber": 86
+        },
+        {
+          "caller": "slugify",
+          "callee": "value.lower",
+          "lineNumber": 86
+        },
+        {
+          "caller": "slugify",
+          "callee": "re.sub(r\"[^a-z0-9]+\", \"-\", value).strip",
+          "lineNumber": 87
+        },
+        {
+          "caller": "slugify",
+          "callee": "re.sub",
+          "lineNumber": 87
+        },
+        {
+          "caller": "split_source",
+          "callee": "list",
+          "lineNumber": 92
+        },
+        {
+          "caller": "split_source",
+          "callee": "re.finditer",
+          "lineNumber": 92
+        },
+        {
+          "caller": "split_source",
+          "callee": "ValueError",
+          "lineNumber": 94
+        },
+        {
+          "caller": "split_source",
+          "callee": "source[: headings[0].start()].strip",
+          "lineNumber": 95
+        },
+        {
+          "caller": "split_source",
+          "callee": "headings[0].start",
+          "lineNumber": 95
+        },
+        {
+          "caller": "split_source",
+          "callee": "enumerate",
+          "lineNumber": 97
+        },
+        {
+          "caller": "split_source",
+          "callee": "headings[index + 1].start",
+          "lineNumber": 98
+        },
+        {
+          "caller": "split_source",
+          "callee": "len",
+          "lineNumber": 98
+        },
+        {
+          "caller": "split_source",
+          "callee": "len",
+          "lineNumber": 98
+        },
+        {
+          "caller": "split_source",
+          "callee": "match.group(1).strip",
+          "lineNumber": 99
+        },
+        {
+          "caller": "split_source",
+          "callee": "match.group",
+          "lineNumber": 99
+        },
+        {
+          "caller": "split_source",
+          "callee": "source[match.end() : end].strip",
+          "lineNumber": 100
+        },
+        {
+          "caller": "split_source",
+          "callee": "match.end",
+          "lineNumber": 100
+        },
+        {
+          "caller": "split_source",
+          "callee": "sections.append",
+          "lineNumber": 101
+        },
+        {
+          "caller": "render_markdown",
+          "callee": "markdown",
+          "lineNumber": 106
+        },
+        {
+          "caller": "plain_text",
+          "callee": "\" \".join",
+          "lineNumber": 115
+        },
+        {
+          "caller": "plain_text",
+          "callee": "BeautifulSoup(value, \"html.parser\").get_text(\" \").split",
+          "lineNumber": 115
+        },
+        {
+          "caller": "plain_text",
+          "callee": "BeautifulSoup(value, \"html.parser\").get_text",
+          "lineNumber": 115
+        },
+        {
+          "caller": "plain_text",
+          "callee": "BeautifulSoup",
+          "lineNumber": 115
+        },
+        {
+          "caller": "pdf_safe",
+          "callee": "\"\".join",
+          "lineNumber": 134
+        },
+        {
+          "caller": "pdf_safe",
+          "callee": "replacements.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "BeautifulSoup",
+          "lineNumber": 138
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "soup.find_all",
+          "lineNumber": 139
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "\" \".join",
+          "lineNumber": 140
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "paragraph.get_text(\" \").split",
+          "lineNumber": 140
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "paragraph.get_text",
+          "lineNumber": 140
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "len",
+          "lineNumber": 141
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "text[:237].rstrip",
+          "lineNumber": 142
+        },
+        {
+          "caller": "chapter_summary",
+          "callee": "len",
+          "lineNumber": 142
+        },
+        {
+          "caller": "load_course",
+          "callee": "SOURCE.read_text",
+          "lineNumber": 147
+        },
+        {
+          "caller": "load_course",
+          "callee": "split_source",
+          "lineNumber": 148
+        },
+        {
+          "caller": "load_course",
+          "callee": "render_markdown",
+          "lineNumber": 149
+        },
+        {
+          "caller": "load_course",
+          "callee": "set",
+          "lineNumber": 151
+        },
+        {
+          "caller": "load_course",
+          "callee": "enumerate",
+          "lineNumber": 152
+        },
+        {
+          "caller": "load_course",
+          "callee": "slugify",
+          "lineNumber": 153
+        },
+        {
+          "caller": "load_course",
+          "callee": "re.sub",
+          "lineNumber": 154
+        },
+        {
+          "caller": "load_course",
+          "callee": "used_slugs.add",
+          "lineNumber": 163
+        },
+        {
+          "caller": "load_course",
+          "callee": "render_markdown",
+          "lineNumber": 164
+        },
+        {
+          "caller": "load_course",
+          "callee": "chapters.append",
+          "lineNumber": 165
+        },
+        {
+          "caller": "load_course",
+          "callee": "Chapter",
+          "lineNumber": 166
+        },
+        {
+          "caller": "load_course",
+          "callee": "chapter_summary",
+          "lineNumber": 172
+        },
+        {
+          "caller": "nav_items",
+          "callee": "html.escape",
+          "lineNumber": 184
+        },
+        {
+          "caller": "nav_items",
+          "callee": "parts.append",
+          "lineNumber": 185
+        },
+        {
+          "caller": "nav_items",
+          "callee": "\"\\n\".join",
+          "lineNumber": 189
+        },
+        {
+          "caller": "site_shell",
+          "callee": "html.escape",
+          "lineNumber": 201
+        },
+        {
+          "caller": "site_shell",
+          "callee": "html.escape",
+          "lineNumber": 202
+        },
+        {
+          "caller": "site_shell",
+          "callee": "nav_items",
+          "lineNumber": 203
+        },
+        {
+          "caller": "site_shell",
+          "callee": "html.escape",
+          "lineNumber": 216
+        },
+        {
+          "caller": "index_content",
+          "callee": "\"\\n\".join",
+          "lineNumber": 254
+        },
+        {
+          "caller": "index_content",
+          "callee": "html.escape",
+          "lineNumber": 258
+        },
+        {
+          "caller": "index_content",
+          "callee": "html.escape",
+          "lineNumber": 259
+        },
+        {
+          "caller": "index_content",
+          "callee": "html.escape",
+          "lineNumber": 269
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "len",
+          "lineNumber": 285
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "html.escape",
+          "lineNumber": 287
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "html.escape",
+          "lineNumber": 292
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "rewrite_root_links",
+          "lineNumber": 296
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "len",
+          "lineNumber": 298
+        },
+        {
+          "caller": "chapter_content",
+          "callee": "len",
+          "lineNumber": 298
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "BeautifulSoup",
+          "lineNumber": 306
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "soup.find_all",
+          "lineNumber": 307
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "str",
+          "lineNumber": 308
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "href.startswith",
+          "lineNumber": 309
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "href.partition",
+          "lineNumber": 311
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "(ROOT / path).exists",
+          "lineNumber": 312
+        },
+        {
+          "caller": "rewrite_root_links",
+          "callee": "str",
+          "lineNumber": 317
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "BeautifulSoup",
+          "lineNumber": 323
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "heading.get_text",
+          "lineNumber": 325
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "soup.find_all",
+          "lineNumber": 326
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "records.append",
+          "lineNumber": 328
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "\" | \".join",
+          "lineNumber": 333
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "\" \".join",
+          "lineNumber": 334
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "soup.get_text(\" \").split",
+          "lineNumber": 334
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "soup.get_text",
+          "lineNumber": 334
+        },
+        {
+          "caller": "build_search_index",
+          "callee": "json.dumps",
+          "lineNumber": 337
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "site_shell",
+          "lineNumber": 346
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "index_content",
+          "lineNumber": 349
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "index.encode",
+          "lineNumber": 354
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "site_shell",
+          "lineNumber": 356
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "chapter_content",
+          "lineNumber": 359
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "page.encode",
+          "lineNumber": 364
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "(ASSET_SOURCE / asset_name).read_text",
+          "lineNumber": 366
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "asset_text.replace(\"\\r\\n\", \"\\n\").encode",
+          "lineNumber": 367
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "asset_text.replace",
+          "lineNumber": 367
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "build_search_index(chapters).encode",
+          "lineNumber": 368
+        },
+        {
+          "caller": "build_site_files",
+          "callee": "build_search_index",
+          "lineNumber": 368
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 375
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 375
+        },
+        {
+          "caller": "__init__",
+          "callee": "Frame",
+          "lineNumber": 377
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.addPageTemplates",
+          "lineNumber": 388
+        },
+        {
+          "caller": "__init__",
+          "callee": "PageTemplate",
+          "lineNumber": 390
+        },
+        {
+          "caller": "__init__",
+          "callee": "PageTemplate",
+          "lineNumber": 391
+        },
+        {
+          "caller": "_metadata",
+          "callee": "canvas.setTitle",
+          "lineNumber": 396
+        },
+        {
+          "caller": "_metadata",
+          "callee": "canvas.setAuthor",
+          "lineNumber": 397
+        },
+        {
+          "caller": "_metadata",
+          "callee": "canvas.setSubject",
+          "lineNumber": 398
+        },
+        {
+          "caller": "_metadata",
+          "callee": "canvas.setKeywords",
+          "lineNumber": 399
+        },
+        {
+          "caller": "_cover_page",
+          "callee": "self._metadata",
+          "lineNumber": 403
+        },
+        {
+          "caller": "_body_page",
+          "callee": "self._metadata",
+          "lineNumber": 406
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.saveState",
+          "lineNumber": 407
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.setStrokeColor",
+          "lineNumber": 408
+        },
+        {
+          "caller": "_body_page",
+          "callee": "colors.HexColor",
+          "lineNumber": 408
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.setLineWidth",
+          "lineNumber": 409
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.line",
+          "lineNumber": 410
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.setFillColor",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_body_page",
+          "callee": "colors.HexColor",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.setFont",
+          "lineNumber": 414
+        },
+        {
+          "caller": "_body_page",
+          "callee": "stringWidth",
+          "lineNumber": 417
+        },
+        {
+          "caller": "_body_page",
+          "callee": "len",
+          "lineNumber": 417
+        },
+        {
+          "caller": "_body_page",
+          "callee": "heading[:-2].rstrip",
+          "lineNumber": 418
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.drawString",
+          "lineNumber": 419
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.drawRightString",
+          "lineNumber": 420
+        },
+        {
+          "caller": "_body_page",
+          "callee": "str",
+          "lineNumber": 421
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.getPageNumber",
+          "lineNumber": 421
+        },
+        {
+          "caller": "_body_page",
+          "callee": "canvas.restoreState",
+          "lineNumber": 423
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "isinstance",
+          "lineNumber": 426
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "flowable.getPlainText",
+          "lineNumber": 432
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "getattr",
+          "lineNumber": 433
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "self.canv.bookmarkPage",
+          "lineNumber": 434
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "self.canv.addOutlineEntry",
+          "lineNumber": 435
+        },
+        {
+          "caller": "afterFlowable",
+          "callee": "self.notify",
+          "lineNumber": 436
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "getSampleStyleSheet",
+          "lineNumber": 442
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 443
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 444
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 445
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 447
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 458
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 466
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 472
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 477
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 488
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 494
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 499
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 505
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "colors.HexColor",
+          "lineNumber": 506
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 513
+        },
+        {
+          "caller": "pdf_styles",
+          "callee": "ParagraphStyle",
+          "lineNumber": 521
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "isinstance",
+          "lineNumber": 535
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "html.escape",
+          "lineNumber": 536
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "pdf_safe",
+          "lineNumber": 536
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "str",
+          "lineNumber": 536
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "\"\".join",
+          "lineNumber": 537
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "inline_markup",
+          "lineNumber": 537
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "html.escape",
+          "lineNumber": 545
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "str",
+          "lineNumber": 545
+        },
+        {
+          "caller": "inline_markup",
+          "callee": "node.get",
+          "lineNumber": 545
+        },
+        {
+          "caller": "paragraph_from_tag",
+          "callee": "\"\".join(inline_markup(child) for child in tag.children).strip",
+          "lineNumber": 553
+        },
+        {
+          "caller": "paragraph_from_tag",
+          "callee": "\"\".join",
+          "lineNumber": 553
+        },
+        {
+          "caller": "paragraph_from_tag",
+          "callee": "inline_markup",
+          "lineNumber": 553
+        },
+        {
+          "caller": "paragraph_from_tag",
+          "callee": "Paragraph",
+          "lineNumber": 554
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "enumerate",
+          "lineNumber": 561
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "table_tag.find_all",
+          "lineNumber": 561
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "row.find_all",
+          "lineNumber": 562
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "\"\".join(inline_markup(child) for child in cell.children).strip",
+          "lineNumber": 565
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 565
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "inline_markup",
+          "lineNumber": 565
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "row_values.append",
+          "lineNumber": 568
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 568
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "rows.append",
+          "lineNumber": 570
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "Table",
+          "lineNumber": 572
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "max",
+          "lineNumber": 573
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "len",
+          "lineNumber": 573
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "row.extend",
+          "lineNumber": 575
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 575
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "range",
+          "lineNumber": 575
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "len",
+          "lineNumber": 575
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "Table",
+          "lineNumber": 580
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "result.setStyle",
+          "lineNumber": 581
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "TableStyle",
+          "lineNumber": 582
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "colors.HexColor",
+          "lineNumber": 584
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "colors.HexColor",
+          "lineNumber": 585
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "colors.HexColor",
+          "lineNumber": 586
+        },
+        {
+          "caller": "table_flowable",
+          "callee": "colors.HexColor",
+          "lineNumber": 587
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "tag.find_all",
+          "lineNumber": 602
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "isinstance",
+          "lineNumber": 606
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "direct_text.append",
+          "lineNumber": 607
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "html.escape",
+          "lineNumber": 607
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "str",
+          "lineNumber": 607
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join(direct_text).strip",
+          "lineNumber": 609
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 609
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "blocks.append",
+          "lineNumber": 610
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 610
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 610
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "blocks.append",
+          "lineNumber": 612
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "list_flowable",
+          "lineNumber": 612
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "direct_text.append",
+          "lineNumber": 614
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "inline_markup",
+          "lineNumber": 614
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join(direct_text).strip",
+          "lineNumber": 615
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 615
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "blocks.insert",
+          "lineNumber": 616
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 616
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "\"\".join",
+          "lineNumber": 616
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "items.append",
+          "lineNumber": 617
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "ListItem",
+          "lineNumber": 617
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "Paragraph",
+          "lineNumber": 617
+        },
+        {
+          "caller": "list_flowable",
+          "callee": "ListFlowable",
+          "lineNumber": 629
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "BeautifulSoup",
+          "lineNumber": 638
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "isinstance",
+          "lineNumber": 642
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "isinstance",
+          "lineNumber": 642
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "pdf_safe",
+          "lineNumber": 652
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "node.get_text",
+          "lineNumber": 652
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "slugify",
+          "lineNumber": 654
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 656
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "html.escape",
+          "lineNumber": 657
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 661
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 663
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "paragraph_from_tag",
+          "lineNumber": 663
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 665
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "list_flowable",
+          "lineNumber": 665
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "pdf_safe",
+          "lineNumber": 667
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "node.get_text().rstrip",
+          "lineNumber": 667
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "node.get_text",
+          "lineNumber": 667
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 668
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "XPreformatted",
+          "lineNumber": 668
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "html.escape",
+          "lineNumber": 668
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.extend",
+          "lineNumber": 670
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Spacer",
+          "lineNumber": 671
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "table_flowable",
+          "lineNumber": 671
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Spacer",
+          "lineNumber": 671
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "paragraph_from_tag",
+          "lineNumber": 675
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "node.find_all",
+          "lineNumber": 676
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Table",
+          "lineNumber": 678
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "callout.setStyle",
+          "lineNumber": 679
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "TableStyle",
+          "lineNumber": 680
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 682
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 683
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.extend",
+          "lineNumber": 691
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "Spacer",
+          "lineNumber": 691
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "flowables.append",
+          "lineNumber": 693
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "HRFlowable",
+          "lineNumber": 694
+        },
+        {
+          "caller": "html_to_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 697
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "ParagraphStyle",
+          "lineNumber": 706
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 713
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "ParagraphStyle",
+          "lineNumber": 716
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 721
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "ParagraphStyle",
+          "lineNumber": 724
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 730
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Table",
+          "lineNumber": 734
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 736
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 737
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 738
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "html.escape",
+          "lineNumber": 738
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 740
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "panel.setStyle",
+          "lineNumber": 749
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "TableStyle",
+          "lineNumber": 750
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 752
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 757
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Paragraph",
+          "lineNumber": 761
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "ParagraphStyle",
+          "lineNumber": 763
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "colors.HexColor",
+          "lineNumber": 770
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Spacer",
+          "lineNumber": 773
+        },
+        {
+          "caller": "cover_flowables",
+          "callee": "Spacer",
+          "lineNumber": 773
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "target.parent.mkdir",
+          "lineNumber": 777
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "pdf_styles",
+          "lineNumber": 778
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "HandbookDocTemplate",
+          "lineNumber": 779
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "str",
+          "lineNumber": 780
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "cover_flowables",
+          "lineNumber": 790
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "len",
+          "lineNumber": 790
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.extend",
+          "lineNumber": 791
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "NextPageTemplate",
+          "lineNumber": 791
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "PageBreak",
+          "lineNumber": 791
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.append",
+          "lineNumber": 792
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "Paragraph",
+          "lineNumber": 793
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "ParagraphStyle",
+          "lineNumber": 795
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "TableOfContents",
+          "lineNumber": 803
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "ParagraphStyle",
+          "lineNumber": 806
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "colors.HexColor",
+          "lineNumber": 813
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.extend",
+          "lineNumber": 816
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "PageBreak",
+          "lineNumber": 816
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "enumerate",
+          "lineNumber": 817
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.append",
+          "lineNumber": 819
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "PageBreak",
+          "lineNumber": 819
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "html_to_flowables",
+          "lineNumber": 820
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "story.extend",
+          "lineNumber": 824
+        },
+        {
+          "caller": "build_pdf",
+          "callee": "doc.multiBuild",
+          "lineNumber": 825
+        },
+        {
+          "caller": "file_digest",
+          "callee": "hashlib.sha256(data).hexdigest",
+          "lineNumber": 829
+        },
+        {
+          "caller": "file_digest",
+          "callee": "hashlib.sha256",
+          "lineNumber": 829
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "file_digest",
+          "lineNumber": 836
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "sorted",
+          "lineNumber": 837
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "files.items",
+          "lineNumber": 837
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "(json.dumps(manifest, indent=2, sort_keys=True) + \"\\n\").encode",
+          "lineNumber": 841
+        },
+        {
+          "caller": "manifest_bytes",
+          "callee": "json.dumps",
+          "lineNumber": 841
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "path.is_file",
+          "lineNumber": 846
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "set",
+          "lineNumber": 847
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "json.loads",
+          "lineNumber": 849
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "path.read_text",
+          "lineNumber": 849
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "set",
+          "lineNumber": 850
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "data.get",
+          "lineNumber": 850
+        },
+        {
+          "caller": "read_manifest",
+          "callee": "set",
+          "lineNumber": 852
+        },
+        {
+          "caller": "write_site",
+          "callee": "read_manifest",
+          "lineNumber": 856
+        },
+        {
+          "caller": "write_site",
+          "callee": "dict",
+          "lineNumber": 857
+        },
+        {
+          "caller": "write_site",
+          "callee": "manifest_bytes",
+          "lineNumber": 858
+        },
+        {
+          "caller": "write_site",
+          "callee": "complete.items",
+          "lineNumber": 859
+        },
+        {
+          "caller": "write_site",
+          "callee": "destination.parent.mkdir",
+          "lineNumber": 861
+        },
+        {
+          "caller": "write_site",
+          "callee": "destination.write_bytes",
+          "lineNumber": 862
+        },
+        {
+          "caller": "write_site",
+          "callee": "old_files.difference",
+          "lineNumber": 863
+        },
+        {
+          "caller": "write_site",
+          "callee": "stale.is_file",
+          "lineNumber": 865
+        },
+        {
+          "caller": "write_site",
+          "callee": "stale.unlink",
+          "lineNumber": 866
+        },
+        {
+          "caller": "portable_text_bytes",
+          "callee": "Path(relative).suffix.lower",
+          "lineNumber": 871
+        },
+        {
+          "caller": "portable_text_bytes",
+          "callee": "Path",
+          "lineNumber": 871
+        },
+        {
+          "caller": "portable_text_bytes",
+          "callee": "data.replace(b\"\\r\\n\", b\"\\n\").replace",
+          "lineNumber": 872
+        },
+        {
+          "caller": "portable_text_bytes",
+          "callee": "data.replace",
+          "lineNumber": 872
+        },
+        {
+          "caller": "compare_files",
+          "callee": "dict",
+          "lineNumber": 877
+        },
+        {
+          "caller": "compare_files",
+          "callee": "manifest_bytes",
+          "lineNumber": 878
+        },
+        {
+          "caller": "compare_files",
+          "callee": "sorted",
+          "lineNumber": 880
+        },
+        {
+          "caller": "compare_files",
+          "callee": "complete.items",
+          "lineNumber": 880
+        },
+        {
+          "caller": "compare_files",
+          "callee": "current.is_file",
+          "lineNumber": 882
+        },
+        {
+          "caller": "compare_files",
+          "callee": "differences.append",
+          "lineNumber": 883
+        },
+        {
+          "caller": "compare_files",
+          "callee": "current.relative_to",
+          "lineNumber": 883
+        },
+        {
+          "caller": "compare_files",
+          "callee": "portable_text_bytes",
+          "lineNumber": 884
+        },
+        {
+          "caller": "compare_files",
+          "callee": "current.read_bytes",
+          "lineNumber": 884
+        },
+        {
+          "caller": "compare_files",
+          "callee": "portable_text_bytes",
+          "lineNumber": 884
+        },
+        {
+          "caller": "compare_files",
+          "callee": "differences.append",
+          "lineNumber": 887
+        },
+        {
+          "caller": "compare_files",
+          "callee": "current.relative_to",
+          "lineNumber": 887
+        },
+        {
+          "caller": "compare_files",
+          "callee": "sorted",
+          "lineNumber": 888
+        },
+        {
+          "caller": "compare_files",
+          "callee": "read_manifest(root).difference",
+          "lineNumber": 888
+        },
+        {
+          "caller": "compare_files",
+          "callee": "read_manifest",
+          "lineNumber": 888
+        },
+        {
+          "caller": "compare_files",
+          "callee": "differences.append",
+          "lineNumber": 889
+        },
+        {
+          "caller": "compare_files",
+          "callee": "(root / relative).relative_to",
+          "lineNumber": 890
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "PdfReader",
+          "lineNumber": 896
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "tuple",
+          "lineNumber": 898
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "float",
+          "lineNumber": 900
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "float",
+          "lineNumber": 901
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "\" \".join",
+          "lineNumber": 902
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "(page.extract_text() or \"\").split",
+          "lineNumber": 902
+        },
+        {
+          "caller": "pdf_content_signature",
+          "callee": "page.extract_text",
+          "lineNumber": 902
+        },
+        {
+          "caller": "run",
+          "callee": "load_course",
+          "lineNumber": 910
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.is_file",
+          "lineNumber": 913
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 914
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 915
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.relative_to",
+          "lineNumber": 915
+        },
+        {
+          "caller": "run",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 917
+        },
+        {
+          "caller": "run",
+          "callee": "Path",
+          "lineNumber": 918
+        },
+        {
+          "caller": "run",
+          "callee": "build_pdf",
+          "lineNumber": 920
+        },
+        {
+          "caller": "run",
+          "callee": "build_site_files",
+          "lineNumber": 921
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.read_bytes",
+          "lineNumber": 922
+        },
+        {
+          "caller": "run",
+          "callee": "compare_files",
+          "lineNumber": 924
+        },
+        {
+          "caller": "run",
+          "callee": "pdf_content_signature",
+          "lineNumber": 925
+        },
+        {
+          "caller": "run",
+          "callee": "pdf_content_signature",
+          "lineNumber": 925
+        },
+        {
+          "caller": "run",
+          "callee": "differences.append",
+          "lineNumber": 926
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.relative_to",
+          "lineNumber": 926
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 928
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 930
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 932
+        },
+        {
+          "caller": "run",
+          "callee": "len",
+          "lineNumber": 932
+        },
+        {
+          "caller": "run",
+          "callee": "PDF_ROOT.mkdir",
+          "lineNumber": 935
+        },
+        {
+          "caller": "run",
+          "callee": "build_pdf",
+          "lineNumber": 937
+        },
+        {
+          "caller": "run",
+          "callee": "build_site_files",
+          "lineNumber": 938
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.read_bytes",
+          "lineNumber": 938
+        },
+        {
+          "caller": "run",
+          "callee": "write_site",
+          "lineNumber": 939
+        },
+        {
+          "caller": "run",
+          "callee": "print",
+          "lineNumber": 940
+        },
+        {
+          "caller": "run",
+          "callee": "len",
+          "lineNumber": 940
+        },
+        {
+          "caller": "run",
+          "callee": "canonical_pdf.relative_to",
+          "lineNumber": 940
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 945
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 946
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 951
+        },
+        {
+          "caller": "main",
+          "callee": "run",
+          "lineNumber": 952
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 33,
+        "functionCount": 31,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "tests/test_demo.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "test_showcase_fixture_matches_production_contracts",
+          "startLine": 14,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "test_showcase_is_read_only_and_starts_without_services",
+          "startLine": 39,
+          "endLine": 55,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_showcase_fixture_matches_production_contracts",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "test_showcase_is_read_only_and_starts_without_services",
+          "line": 39,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_showcase_fixture_matches_production_contracts",
+          "callee": "json.loads",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_showcase_fixture_matches_production_contracts",
+          "callee": "FIXTURE_PATH.read_text",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_showcase_fixture_matches_production_contracts",
+          "callee": "TrainingConfig.from_dict",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_showcase_fixture_matches_production_contracts",
+          "callee": "JobStatus.from_dict",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_showcase_fixture_matches_production_contracts",
+          "callee": "config.validate",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_showcase_fixture_matches_production_contracts",
+          "callee": "json.loads",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_showcase_fixture_matches_production_contracts",
+          "callee": "(ROOT / \"examples\" / \"sft_sample.jsonl\")\n        .read_text(encoding=\"utf-8\")\n        .splitlines",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_showcase_fixture_matches_production_contracts",
+          "callee": "(ROOT / \"examples\" / \"sft_sample.jsonl\")\n        .read_text",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_showcase_is_read_only_and_starts_without_services",
+          "callee": "AppTest.from_file(\n        ROOT / \"demo\" / \"streamlit_app.py\", default_timeout=30\n    ).run",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_showcase_is_read_only_and_starts_without_services",
+          "callee": "AppTest.from_file",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_showcase_is_read_only_and_starts_without_services",
+          "callee": "any",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_showcase_is_read_only_and_starts_without_services",
+          "callee": "len",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_showcase_is_read_only_and_starts_without_services",
+          "callee": "next",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

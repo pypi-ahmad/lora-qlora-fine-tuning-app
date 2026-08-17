@@ -1,76 +1,16 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "973f3b540d60de8f09325ed3a135f19b74e84370",
-  "generatedAt": "2026-08-13T10:48:51.073Z",
+  "gitCommitHash": "41f0b62a63dff2610a261bd6e967f8af0bb16a2c",
+  "generatedAt": "2026-08-13T14:56:38.820Z",
   "files": {
-    ".firecrawl/search-unsloth-auto-docstring.json": {
-      "filePath": ".firecrawl/search-unsloth-auto-docstring.json",
-      "contentHash": "189de581189469ad7ceacc356ad19fbbc2061f121f287fd025e3816ffe32b80e",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 1,
-      "hasStructuralAnalysis": true
-    },
-    ".firecrawl/search-unsloth-windows-nodeps.json": {
-      "filePath": ".firecrawl/search-unsloth-windows-nodeps.json",
-      "contentHash": "aa798b8dfc8dededda11750f17b9d6ea4401de5c3c8d518ea05bacb46f9e152d",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 1,
-      "hasStructuralAnalysis": true
-    },
-    ".firecrawl/search-unsloth-windows-torchao.json": {
-      "filePath": ".firecrawl/search-unsloth-windows-torchao.json",
-      "contentHash": "a8fee6cf2354118644fd56e74ea14f65eaa1011a6d7901f57534091de727d197",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 1,
-      "hasStructuralAnalysis": true
-    },
-    ".firecrawl/search-unsloth-windows-versions.json": {
-      "filePath": ".firecrawl/search-unsloth-windows-versions.json",
-      "contentHash": "d35697f29bba4b83a7f8b6510e8fc8e7c0d5c3919c6d5a862b17605e7f1fb433",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 1,
-      "hasStructuralAnalysis": true
-    },
-    ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md": {
-      "filePath": ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md",
-      "contentHash": "f33494f5d255d3b6145fe9c28eed889d1b1583e794d0eb30e01298fac9a3660a",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 396,
-      "hasStructuralAnalysis": true
-    },
-    ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md": {
-      "filePath": ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md",
-      "contentHash": "bb8588cf1fcb54ebc7222a9b823b09abc29b498b11263e143c8795ebb9380185",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 513,
-      "hasStructuralAnalysis": true
-    },
     ".gitattributes": {
       "filePath": ".gitattributes",
-      "contentHash": "a7907bafca6bad71b49b20a8f229ceefde0b871f42dc5986277d26bbea76cb85",
+      "contentHash": "6a09409e9e4d83c37b3d233c098293f4cc52ad46d6aaf98ceb07d54e337adc5c",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 6,
+      "totalLines": 5,
       "hasStructuralAnalysis": false
     },
     ".github/workflows/ci.yml": {
@@ -105,12 +45,12 @@
     },
     "CHANGELOG.md": {
       "filePath": "CHANGELOG.md",
-      "contentHash": "d5f640f38b92dd2ce260f36bc0ecebb8a18f78d33daa8822b71b60ad3ccacb76",
+      "contentHash": "2305f47998b436e6e8d107066f77b7fe305abba9869387703892d85c740b4051",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 93,
+      "totalLines": 117,
       "hasStructuralAnalysis": true
     },
     "CODE_OF_CONDUCT.md": {
@@ -125,12 +65,12 @@
     },
     "CONTRIBUTING.md": {
       "filePath": "CONTRIBUTING.md",
-      "contentHash": "530a4388f6e6518f55fd5e3c8c2d93178bb912bb0091fb01ae64f76d5a900e02",
+      "contentHash": "535e913543cc53d6eb244c86ce7ee2f2b616ba0f0dac6f78d51eda6eaeab7d7a",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 98,
+      "totalLines": 114,
       "hasStructuralAnalysis": true
     },
     "Launch LoRA Studio.cmd": {
@@ -155,62 +95,62 @@
     },
     "README.md": {
       "filePath": "README.md",
-      "contentHash": "955906f3e7ea1a2eec6443e94f55d7715f9514d08ff32eec67f21d8738c09dcc",
+      "contentHash": "6c6664b969d001e944dcf1317069954c1a149ed7f1ce96591c283b4dc2dd6fba",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 147,
+      "totalLines": 183,
       "hasStructuralAnalysis": true
     },
     "SECURITY.md": {
       "filePath": "SECURITY.md",
-      "contentHash": "4c9971fefeb5412ef016aa3cf4e8e1ec1f59a27d13b27711007c3a9ae52b3829",
+      "contentHash": "86eaa89e0521c76f254baf20aa24ca6c6c5635d5fba3acdd974c652ac3db7d80",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 99,
+      "totalLines": 106,
       "hasStructuralAnalysis": true
     },
     "SETUP.md": {
       "filePath": "SETUP.md",
-      "contentHash": "47c81f457799dae70eb266b9e7bb73edf2c1c77834caea8b6241d923c6a9cc86",
+      "contentHash": "781aad4a57530b3003af500f6b40344b29fea363f53de6a2cdac8e82b245aa6e",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 690,
+      "totalLines": 732,
       "hasStructuralAnalysis": true
     },
     "TECHNICAL.md": {
       "filePath": "TECHNICAL.md",
-      "contentHash": "9bf60e913ef52feea7c0f34ec51767c1e8006be1bc14660bbfcc25cda2fa1b6d",
+      "contentHash": "1f963d01a4253ebcf4669675a52a0d14c420e37a1bcd02fc1d0a4e82a455a22c",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 819,
+      "totalLines": 843,
       "hasStructuralAnalysis": true
     },
     "TUTORIAL.md": {
       "filePath": "TUTORIAL.md",
-      "contentHash": "65e1b56a0d35bda5771e5c51634e7da2651e8b4b846fd6b3400b729c5b606ca1",
+      "contentHash": "2469ef4d7248f9f1c44e2670684d894d74364d62213b52aaaae3e253adce4e20",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 1882,
+      "totalLines": 1891,
       "hasStructuralAnalysis": true
     },
     "USAGE.md": {
       "filePath": "USAGE.md",
-      "contentHash": "46f3d0e59319ccc6b5ff8f40393cb053ae834759c47187a948b2d1d0abafc2ac",
+      "contentHash": "eff869cc316df496619bed0b6507198602e6c212b27f86a41ece11bf1e1c8842",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 390,
+      "totalLines": 409,
       "hasStructuralAnalysis": true
     },
     "app_pages/dataset.py": {
@@ -651,6 +591,55 @@
       "totalLines": 365,
       "hasStructuralAnalysis": true
     },
+    "demo/fixtures/showcase.json": {
+      "filePath": "demo/fixtures/showcase.json",
+      "contentHash": "ab46c13f3fd9223325cc5bbfec9e12c2d143d3233f44e7667cb55a424f74977f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "demo/requirements.txt": {
+      "filePath": "demo/requirements.txt",
+      "contentHash": "df68bef1ab905bf2387139ac0219c5eee8c9564a3808d6b99956f17c9acecb18",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "demo/streamlit_app.py": {
+      "filePath": "demo/streamlit_app.py",
+      "contentHash": "62417dbeba0bd917f8c9713433e3fc2a54c94036bb72c63ef8e7b5a5bdc362f6",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 109,
+      "hasStructuralAnalysis": true
+    },
     "docs/.nojekyll": {
       "filePath": "docs/.nojekyll",
       "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -663,7 +652,7 @@
     },
     "docs/.tutorial-build.json": {
       "filePath": "docs/.tutorial-build.json",
-      "contentHash": "a339dca9b974daca8776c8109f26b56f6fe4620cd48237c55ecdebbd250b00dd",
+      "contentHash": "089debce84a4e447e705270a71f1173b2a966edf4811658ffc7cf2d615448ef7",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -673,12 +662,12 @@
     },
     "docs/01-learn-the-map-before-the-territory.html": {
       "filePath": "docs/01-learn-the-map-before-the-territory.html",
-      "contentHash": "75d44d9c292ebfc7dbf38ecd6bc07d9441f0ba09bfb2e2ace098a98e17e74776",
+      "contentHash": "11683434c9bf5e1361721bebf4c633cd3771356c118527742206be111a81cc93",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 164,
+      "totalLines": 168,
       "hasStructuralAnalysis": false
     },
     "docs/02-natural-language-becomes-model-input.html": {
@@ -823,12 +812,12 @@
     },
     "docs/16-read-and-extend-the-repository.html": {
       "filePath": "docs/16-read-and-extend-the-repository.html",
-      "contentHash": "ac814e8c7e7cafa6514d0053d07601975273a9d2913935130d582b6fb4688c47",
+      "contentHash": "9d4969328371e547d1db415e318d2a6353b1d6de2c429ab7766c23df017a1722",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 176,
+      "totalLines": 189,
       "hasStructuralAnalysis": false
     },
     "docs/17-capstone-train-a-defensible-specialist.html": {
@@ -893,7 +882,7 @@
     },
     "docs/assets/search-index.js": {
       "filePath": "docs/assets/search-index.js",
-      "contentHash": "8502ce08b7aa3a0d5d15e85992112e05af4b006f6add4283c7571cace73da14c",
+      "contentHash": "48594c9683a375f6093961be1a0580b40b7ab399f0a4b7b44d0e2d6b6ffe3986",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -953,7 +942,7 @@
     },
     "pyproject.toml": {
       "filePath": "pyproject.toml",
-      "contentHash": "917093eccf83999b5f0babbdd9189fa69e70a94926a6f547ecf27fa5a43514e6",
+      "contentHash": "82aa7c83c1b1018d3edce5d6d6dbcbf8f51c2092012202fca0181ef379bd660c",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -963,7 +952,7 @@
     },
     "scripts/build_tutorial.py": {
       "filePath": "scripts/build_tutorial.py",
-      "contentHash": "0fb6864fd4a6a8631bb72e1d19d342ba09f116acc6c7c01c070bc2b2817baf77",
+      "contentHash": "9c8f0ca2eadd1d2b78060f0cbc85dd347429a547ce61eb8369c93bd521d92147",
       "functions": [
         {
           "name": "slugify",
@@ -1216,6 +1205,16 @@
           "lineCount": 12
         },
         {
+          "name": "portable_text_bytes",
+          "params": [
+            "data",
+            "relative"
+          ],
+          "returnType": "bytes",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
           "name": "compare_files",
           "params": [
             "expected",
@@ -1223,7 +1222,7 @@
           ],
           "returnType": "list[str]",
           "exported": true,
-          "lineCount": 15
+          "lineCount": 17
         },
         {
           "name": "pdf_content_signature",
@@ -1455,12 +1454,13 @@
         "manifest_bytes",
         "read_manifest",
         "write_site",
+        "portable_text_bytes",
         "compare_files",
         "pdf_content_signature",
         "run",
         "main"
       ],
-      "totalLines": 948,
+      "totalLines": 957,
       "hasStructuralAnalysis": true
     },
     "scripts/tutorial_assets/site.css": {
@@ -3163,6 +3163,60 @@
       "totalLines": 197,
       "hasStructuralAnalysis": true
     },
+    "tests/test_demo.py": {
+      "filePath": "tests/test_demo.py",
+      "contentHash": "c4c1c623b0e80857e45591efdf44495e403d21e859813205695b803818a97e96",
+      "functions": [
+        {
+          "name": "test_showcase_fixture_matches_production_contracts",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "test_showcase_is_read_only_and_starts_without_services",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "streamlit.testing.v1",
+          "specifiers": [
+            "AppTest"
+          ]
+        },
+        {
+          "source": "lora_finetune_studio.models",
+          "specifiers": [
+            "JobStatus",
+            "TrainingConfig"
+          ]
+        }
+      ],
+      "exports": [
+        "test_showcase_fixture_matches_production_contracts",
+        "test_showcase_is_read_only_and_starts_without_services"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
     "tests/test_hardware.py": {
       "filePath": "tests/test_hardware.py",
       "contentHash": "bef9b4e8dc512aec3cc1393fa466350fb9d9da144738f8d38f63cbcc114fe5f4",
@@ -4205,8 +4259,17 @@
     },
     "tests/test_tutorial.py": {
       "filePath": "tests/test_tutorial.py",
-      "contentHash": "a181f4dcc29b50e616630e728a1f80855dd7c28739f3330c630243ffcd626498",
+      "contentHash": "11e769331fe821107ac213aa85ab18ca3bfe753ad87eadc010cdefd3c03a6548",
       "functions": [
+        {
+          "name": "portable_bytes",
+          "params": [
+            "path"
+          ],
+          "returnType": "bytes",
+          "exported": true,
+          "lineCount": 5
+        },
         {
           "name": "sha256",
           "params": [
@@ -4238,11 +4301,20 @@
           "lineCount": 11
         },
         {
+          "name": "test_text_digest_is_stable_across_line_endings",
+          "params": [
+            "tmp_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
           "name": "test_generated_text_assets_use_portable_line_endings",
           "params": [],
           "returnType": "None",
           "exported": true,
-          "lineCount": 3
+          "lineCount": 6
         },
         {
           "name": "test_generated_pages_have_valid_local_links",
@@ -4312,15 +4384,17 @@
       ],
       "exports": [
         "PageParser",
+        "portable_bytes",
         "sha256",
         "test_tutorial_has_complete_progression",
         "test_preference_lab_dataset_is_well_formed",
         "test_generated_manifest_matches_files",
+        "test_text_digest_is_stable_across_line_endings",
         "test_generated_text_assets_use_portable_line_endings",
         "test_generated_pages_have_valid_local_links",
         "test_published_and_canonical_pdfs_are_identical"
       ],
-      "totalLines": 125,
+      "totalLines": 143,
       "hasStructuralAnalysis": true
     },
     "tests/test_worker.py": {

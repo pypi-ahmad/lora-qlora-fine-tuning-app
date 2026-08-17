@@ -1,0 +1,110 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "Begin with the README to understand the studio's goal: local parameter-efficient LLM post-training on NVIDIA GPUs. It introduces supported recipes, system requirements, a smoke test, and the guides that provide deeper operational context.",
+    "nodeIds": [
+      "document:README.md"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "Read-only showcase",
+    "description": "Inspect the CUDA-free Streamlit showcase and its contract-checked synthetic fixtures before the production training UI.",
+    "nodeIds": [
+      "file:demo/streamlit_app.py",
+      "config:demo/fixtures/showcase.json",
+      "file:tests/test_demo.py"
+    ]
+  },
+  {
+    "order": 3,
+    "title": "Streamlit Entry Point",
+    "description": "The application entry point initializes shared session state, advances queued work, configures navigation, and handles graceful shutdown. It turns the project described in Step 1 into one guided interface for the local training workflow.",
+    "nodeIds": [
+      "file:streamlit_app.py"
+    ]
+  },
+  {
+    "order": 4,
+    "title": "Runtime Setup",
+    "description": "The package manifest defines supported Python versions, dependencies, the build backend, the console entry point, and the CUDA PyTorch source used by uv. The Windows launcher operationalizes those choices by preparing both the main environment and the native-Unsloth environment before health-checking Streamlit.",
+    "nodeIds": [
+      "config:pyproject.toml",
+      "file:Launch LoRA Studio.cmd"
+    ],
+    "languageLesson": "A Python project manifest separates declared dependencies from the lockfile-resolved environment, while a platform launcher can compose repeatable setup and startup steps for local users."
+  },
+  {
+    "order": 5,
+    "title": "Training Domain Model",
+    "description": "The domain model defines validated training choices, presets, dataset specifications, hardware information, and persisted job records. Its high fan-in makes it the common vocabulary shared by the interface, source handling, trainer, and queue.",
+    "nodeIds": [
+      "file:src/lora_finetune_studio/models.py"
+    ]
+  },
+  {
+    "order": 6,
+    "title": "Dataset Intake",
+    "description": "The dataset page lets a user inspect, validate, and combine compatible sources before training. The source layer backs that UI with Hugging Face and local-input validation, dataset loading, and metadata extraction, so later stages receive a known schema.",
+    "nodeIds": [
+      "file:app_pages/dataset.py",
+      "file:src/lora_finetune_studio/sources.py"
+    ],
+    "languageLesson": "Boundary validation is a useful Python pattern: turn UI, uploaded-file, and remote-repository inputs into validated domain objects before passing them to the core runtime."
+  },
+  {
+    "order": 7,
+    "title": "Training Choices",
+    "description": "The training page presents only supported combinations of training approach and PEFT method, then records the selected settings. The review page uses those saved choices to surface blockers and either launch a run immediately or add it to the queue.",
+    "nodeIds": [
+      "file:app_pages/training.py",
+      "file:app_pages/review.py"
+    ]
+  },
+  {
+    "order": 8,
+    "title": "Recipe Training Engine",
+    "description": "The training runtime normalizes and combines the prepared datasets, configures a PEFT or Unsloth model, and executes the selected objective. This is the point where the contracts from Steps 4 through 6 become a concrete adapter-training operation.",
+    "nodeIds": [
+      "file:src/lora_finetune_studio/training.py"
+    ],
+    "languageLesson": "Recipe-driven dispatch centralizes differences among objectives and adapter methods while allowing shared data preparation, logging, and artifact handling to stay in one pipeline."
+  },
+  {
+    "order": 9,
+    "title": "Durable Job Queue",
+    "description": "The job manager persists training runs and coordinates them through an on-disk FIFO queue and isolated worker processes. The worker executes one job, records its result, and then hands control to the next queued run, making recovery and cancellation visible system behaviors rather than transient UI state.",
+    "nodeIds": [
+      "file:src/lora_finetune_studio/jobs.py",
+      "file:src/lora_finetune_studio/worker.py"
+    ]
+  },
+  {
+    "order": 10,
+    "title": "Monitor And Compare",
+    "description": "The monitor exposes progress, queue controls, checkpoint recovery, and testing controls for completed adapters. The inference module provides the short-lived quantized comparison path, loading an adapter for local generation and releasing resources afterward.",
+    "nodeIds": [
+      "file:app_pages/monitor.py",
+      "file:src/lora_finetune_studio/inference.py"
+    ]
+  },
+  {
+    "order": 11,
+    "title": "Technical Reference",
+    "description": "The technical handbook ties the architecture together by documenting data contracts, pipeline stages, lifecycle behavior, trust boundaries, and extension points. Read it after the implementation tour to connect the individual components to their intended operational guarantees.",
+    "nodeIds": [
+      "document:TECHNICAL.md"
+    ]
+  },
+  {
+    "order": 12,
+    "title": "Quality Automation",
+    "description": "The training tests verify dataset normalization and combination, PEFT and Unsloth loading, trainer configuration, precision settings, and conversation formatting. The cross-platform CI workflow installs the locked environment and runs Ruff, ty, pytest, and tutorial-generation checks on every push and pull request.",
+    "nodeIds": [
+      "file:tests/test_training.py",
+      "pipeline:.github/workflows/ci.yml"
+    ],
+    "languageLesson": "GitHub Actions use triggers, jobs, and sequential steps; executing the same quality checks on Windows and Ubuntu protects the app's native local-development support."
+  }
+]

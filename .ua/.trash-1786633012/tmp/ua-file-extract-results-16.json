@@ -1,0 +1,479 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 1,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 1,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "tests/test_tutorial.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 114,
+      "functions": [
+        {
+          "name": "portable_bytes",
+          "startLine": 36,
+          "endLine": 40,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "sha256",
+          "startLine": 43,
+          "endLine": 44,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "test_tutorial_has_complete_progression",
+          "startLine": 47,
+          "endLine": 69,
+          "params": []
+        },
+        {
+          "name": "test_preference_lab_dataset_is_well_formed",
+          "startLine": 72,
+          "endLine": 84,
+          "params": []
+        },
+        {
+          "name": "test_generated_manifest_matches_files",
+          "startLine": 87,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "test_text_digest_is_stable_across_line_endings",
+          "startLine": 100,
+          "endLine": 105,
+          "params": [
+            "tmp_path"
+          ]
+        },
+        {
+          "name": "test_generated_text_assets_use_portable_line_endings",
+          "startLine": 108,
+          "endLine": 113,
+          "params": []
+        },
+        {
+          "name": "test_generated_pages_have_valid_local_links",
+          "startLine": 116,
+          "endLine": 133,
+          "params": []
+        },
+        {
+          "name": "test_published_and_canonical_pdfs_are_identical",
+          "startLine": 136,
+          "endLine": 142,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageParser",
+          "startLine": 16,
+          "endLine": 33,
+          "methods": [
+            "__init__",
+            "handle_starttag"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageParser",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "portable_bytes",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "sha256",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "test_tutorial_has_complete_progression",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "test_preference_lab_dataset_is_well_formed",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "test_generated_manifest_matches_files",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "test_text_digest_is_stable_across_line_endings",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "test_generated_text_assets_use_portable_line_endings",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "test_generated_pages_have_valid_local_links",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "test_published_and_canonical_pdfs_are_identical",
+          "line": 136,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 18
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 18
+        },
+        {
+          "caller": "__init__",
+          "callee": "set",
+          "lineNumber": 19
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "dict",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "attributes.get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "self.ids.add",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "attributes.get",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "self.hrefs.append",
+          "lineNumber": 29
+        },
+        {
+          "caller": "portable_bytes",
+          "callee": "path.read_bytes",
+          "lineNumber": 37
+        },
+        {
+          "caller": "portable_bytes",
+          "callee": "path.suffix.lower",
+          "lineNumber": 38
+        },
+        {
+          "caller": "portable_bytes",
+          "callee": "data.replace(b\"\\r\\n\", b\"\\n\").replace",
+          "lineNumber": 39
+        },
+        {
+          "caller": "portable_bytes",
+          "callee": "data.replace",
+          "lineNumber": 39
+        },
+        {
+          "caller": "sha256",
+          "callee": "hashlib.sha256(portable_bytes(path)).hexdigest",
+          "lineNumber": 44
+        },
+        {
+          "caller": "sha256",
+          "callee": "hashlib.sha256",
+          "lineNumber": 44
+        },
+        {
+          "caller": "sha256",
+          "callee": "portable_bytes",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "SOURCE.read_text",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "re.findall",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "len",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "headings[0].startswith",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "any",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "heading.startswith",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "any",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "heading.startswith",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "any",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "heading.startswith",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_tutorial_has_complete_progression",
+          "callee": "headings[-1].startswith",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "json.loads",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "path.read_text(encoding=\"utf-8\").splitlines",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "path.read_text",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "len",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "set",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "all",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "isinstance",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "value.strip",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_preference_lab_dataset_is_well_formed",
+          "callee": "record.values",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_generated_manifest_matches_files",
+          "callee": "json.loads",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_generated_manifest_matches_files",
+          "callee": "(DOCS / \".tutorial-build.json\").read_text",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_generated_manifest_matches_files",
+          "callee": "len",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_generated_manifest_matches_files",
+          "callee": "path.endswith",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_generated_manifest_matches_files",
+          "callee": "manifest[\"files\"].items",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_generated_manifest_matches_files",
+          "callee": "path.is_file",
+          "lineNumber": 96
+        },
+        {
+          "caller": "test_generated_manifest_matches_files",
+          "callee": "sha256",
+          "lineNumber": 97
+        },
+        {
+          "caller": "test_text_digest_is_stable_across_line_endings",
+          "callee": "lf.write_bytes",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_text_digest_is_stable_across_line_endings",
+          "callee": "crlf.write_bytes",
+          "lineNumber": 104
+        },
+        {
+          "caller": "test_text_digest_is_stable_across_line_endings",
+          "callee": "sha256",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_text_digest_is_stable_across_line_endings",
+          "callee": "sha256",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_generated_text_assets_use_portable_line_endings",
+          "callee": "portable_bytes",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_generated_text_assets_use_portable_line_endings",
+          "callee": "portable_bytes",
+          "lineNumber": 111
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "sorted",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "DOCS.glob",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "len",
+          "lineNumber": 118
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "PageParser",
+          "lineNumber": 121
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "parser.feed",
+          "lineNumber": 122
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "page.read_text",
+          "lineNumber": 122
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "urlsplit",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "unquote",
+          "lineNumber": 129
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "(page.parent / target_path).resolve",
+          "lineNumber": 130
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "target.exists",
+          "lineNumber": 131
+        },
+        {
+          "caller": "test_generated_pages_have_valid_local_links",
+          "callee": "page.resolve",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_published_and_canonical_pdfs_are_identical",
+          "callee": "canonical.read_bytes().startswith",
+          "lineNumber": 140
+        },
+        {
+          "caller": "test_published_and_canonical_pdfs_are_identical",
+          "callee": "canonical.read_bytes",
+          "lineNumber": 140
+        },
+        {
+          "caller": "test_published_and_canonical_pdfs_are_identical",
+          "callee": "canonical.stat",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_published_and_canonical_pdfs_are_identical",
+          "callee": "canonical.read_bytes",
+          "lineNumber": 142
+        },
+        {
+          "caller": "test_published_and_canonical_pdfs_are_identical",
+          "callee": "published.read_bytes",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 9,
+        "classCount": 1
+      }
+    }
+  ]
+}

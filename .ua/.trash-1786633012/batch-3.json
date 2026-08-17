@@ -1,0 +1,280 @@
+{
+  "nodes": [
+    {
+      "id": "document:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "CHANGELOG.md",
+      "summary": "Keep a Changelog and SemVer history from 0.1.0 through 0.5.1, covering the read-only showcase, FIFO training queue, Zero-to-Mastery course, Unsloth runtime, and original security controls.",
+      "tags": [
+        "documentation",
+        "release-notes",
+        "versioning"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING.md",
+      "filePath": "CONTRIBUTING.md",
+      "summary": "Contributor workflow for the local Streamlit studio: uv development setup, models.py contract rules, required Ruff/ty/pytest and tutorial-builder checks, showcase isolation, and a pull-request checklist.",
+      "tags": [
+        "documentation",
+        "contributing",
+        "development",
+        "quality-checks"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview for LoRA Fine-tune Studio 0.5.1, including the CUDA-free demo showcase, recipe matrix, eight-page workflow, launcher quick start, smoke test, and links to the handbook builder outputs.",
+      "tags": [
+        "documentation",
+        "overview",
+        "quick-start",
+        "showcase"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "Security policy for the 0.5.x line describing private disclosure, the local single-user trust model, input and token controls, and why Community Cloud must stay on the read-only demo entry point.",
+      "tags": [
+        "documentation",
+        "security",
+        "responsible-disclosure",
+        "trust-boundaries"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SETUP.md",
+      "type": "document",
+      "name": "SETUP.md",
+      "filePath": "SETUP.md",
+      "summary": "Windows and Linux installation handbook covering dual uv runtimes, Hugging Face tokens, launchers, the CUDA-free showcase, verification, developer tutorial-build checks, and troubleshooting.",
+      "tags": [
+        "documentation",
+        "installation",
+        "windows",
+        "linux",
+        "unsloth"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:TECHNICAL.md",
+      "type": "document",
+      "name": "TECHNICAL.md",
+      "filePath": "TECHNICAL.md",
+      "summary": "Implementation handbook for architecture, models.py contracts, dataset and training pipelines, job lifecycle, the production versus demo Streamlit entry points, and the tutorial website/PDF builder.",
+      "tags": [
+        "documentation",
+        "architecture",
+        "training",
+        "streamlit",
+        "technical-reference"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:TUTORIAL.md",
+      "type": "document",
+      "name": "TUTORIAL.md",
+      "filePath": "TUTORIAL.md",
+      "summary": "Zero-to-Mastery course teaching NLP, transformers, LoRA/QLoRA, dataset and training labs, then how streamlit_app.py, models.py, the demo showcase, and scripts/build_tutorial.py implement the studio.",
+      "tags": [
+        "documentation",
+        "tutorial",
+        "fine-tuning",
+        "education",
+        "llm-training"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:USAGE.md",
+      "type": "document",
+      "name": "USAGE.md",
+      "filePath": "USAGE.md",
+      "summary": "Operational guide for launching the production app or demo showcase, preparing datasets and recipes, queueing and monitoring jobs, locating artifacts, and resolving common runtime problems.",
+      "tags": [
+        "documentation",
+        "usage",
+        "training",
+        "operations",
+        "showcase"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "pyproject.toml",
+      "summary": "Package metadata for lora-finetune-studio 0.5.1: Python 3.14, PEFT/TRL/Streamlit runtime, CLI entry point, uv CUDA 13.0 PyTorch index, and dev/docs dependency groups.",
+      "tags": [
+        "configuration",
+        "python",
+        "uv",
+        "dependencies",
+        "build-system"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:README.md",
+      "target": "file:streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:scripts/build_tutorial.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:USAGE.md",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:SETUP.md",
+      "target": "file:streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:SETUP.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:SETUP.md",
+      "target": "file:scripts/build_tutorial.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TECHNICAL.md",
+      "target": "file:streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TECHNICAL.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TECHNICAL.md",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TECHNICAL.md",
+      "target": "file:scripts/build_tutorial.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TUTORIAL.md",
+      "target": "file:streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TUTORIAL.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TUTORIAL.md",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TUTORIAL.md",
+      "target": "file:scripts/build_tutorial.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:TUTORIAL.md",
+      "target": "file:tests/test_tutorial.py",
+      "type": "tested_by",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CONTRIBUTING.md",
+      "target": "file:streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CONTRIBUTING.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CONTRIBUTING.md",
+      "target": "file:src/lora_finetune_studio/models.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CONTRIBUTING.md",
+      "target": "file:scripts/build_tutorial.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:SECURITY.md",
+      "target": "file:streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "document:SECURITY.md",
+      "target": "file:demo/streamlit_app.py",
+      "type": "documents",
+      "weight": 0.5
+    }
+  ]
+}

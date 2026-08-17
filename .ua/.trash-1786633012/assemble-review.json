@@ -1,0 +1,8 @@
+{
+  "notes": [
+    "Merge applied 12 mechanical corrections and dropped 5 invalid tested_by edges.",
+    "Unknown folder node types were rewritten to file nodes.",
+    "Incremental update covered docs, demo showcase, tutorial builder, and tutorial tests."
+  ],
+  "issues": []
+}

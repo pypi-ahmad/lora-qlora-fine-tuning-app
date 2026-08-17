@@ -1,0 +1,351 @@
+{
+  "nodes": [
+    {
+      "id": "file:tests/test_tutorial.py",
+      "type": "file",
+      "name": "test_tutorial.py",
+      "filePath": "tests/test_tutorial.py",
+      "summary": "Pytest suite that checks TUTORIAL.md progression, preference JSONL shape, generated site hashes, portable line endings, local HTML links, and matching published PDFs.",
+      "tags": [
+        "test",
+        "documentation",
+        "tutorial",
+        "artifacts"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/test_tutorial.py:PageParser",
+      "type": "class",
+      "name": "PageParser",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        16,
+        33
+      ],
+      "summary": "HTMLParser that records element ids, local hrefs, and whether generated pages include main and title tags.",
+      "tags": [
+        "test",
+        "html-parser",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:portable_bytes",
+      "type": "function",
+      "name": "portable_bytes",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        36,
+        40
+      ],
+      "summary": "Reads a file as bytes and normalizes CR/LF line endings for HTML, CSS, JS, and JSON assets.",
+      "tags": [
+        "test",
+        "utility",
+        "normalization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:sha256",
+      "type": "function",
+      "name": "sha256",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        43,
+        44
+      ],
+      "summary": "Returns the SHA-256 hex digest of a path after applying portable line-ending normalization.",
+      "tags": [
+        "test",
+        "utility",
+        "hashing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_tutorial_has_complete_progression",
+      "type": "function",
+      "name": "test_tutorial_has_complete_progression",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        47,
+        69
+      ],
+      "summary": "Asserts TUTORIAL.md has 22 module headings plus required SFT, preference, and adapter topics.",
+      "tags": [
+        "test",
+        "verification",
+        "tutorial"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_preference_lab_dataset_is_well_formed",
+      "type": "function",
+      "name": "test_preference_lab_dataset_is_well_formed",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        72,
+        84
+      ],
+      "summary": "Asserts examples/preference_sample.jsonl has 20 prompt/chosen/rejected records with distinct non-empty strings.",
+      "tags": [
+        "test",
+        "verification",
+        "dataset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_generated_manifest_matches_files",
+      "type": "function",
+      "name": "test_generated_manifest_matches_files",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        87,
+        97
+      ],
+      "summary": "Asserts docs/.tutorial-build.json lists the expected HTML and PDF files and matching SHA-256 digests.",
+      "tags": [
+        "test",
+        "verification",
+        "manifest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_text_digest_is_stable_across_line_endings",
+      "type": "function",
+      "name": "test_text_digest_is_stable_across_line_endings",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        100,
+        105
+      ],
+      "summary": "Asserts LF and CRLF copies of the same CSS produce identical portable SHA-256 digests.",
+      "tags": [
+        "test",
+        "verification",
+        "normalization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_generated_text_assets_use_portable_line_endings",
+      "type": "function",
+      "name": "test_generated_text_assets_use_portable_line_endings",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        108,
+        113
+      ],
+      "summary": "Asserts published site.css and site.js match the source tutorial assets and contain no CR bytes.",
+      "tags": [
+        "test",
+        "verification",
+        "assets"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_generated_pages_have_valid_local_links",
+      "type": "function",
+      "name": "test_generated_pages_have_valid_local_links",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        116,
+        133
+      ],
+      "summary": "Parses generated HTML pages and asserts each local href and same-page fragment target exists.",
+      "tags": [
+        "test",
+        "verification",
+        "html"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_tutorial.py:test_published_and_canonical_pdfs_are_identical",
+      "type": "function",
+      "name": "test_published_and_canonical_pdfs_are_identical",
+      "filePath": "tests/test_tutorial.py",
+      "lineRange": [
+        136,
+        142
+      ],
+      "summary": "Asserts the canonical output PDF is a substantial PDF and byte-identical to the published download.",
+      "tags": [
+        "test",
+        "verification",
+        "pdf"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "class:tests/test_tutorial.py:PageParser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "class:tests/test_tutorial.py:PageParser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:portable_bytes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:portable_bytes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:sha256",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:sha256",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_tutorial_has_complete_progression",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_tutorial_has_complete_progression",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_preference_lab_dataset_is_well_formed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_preference_lab_dataset_is_well_formed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_manifest_matches_files",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_manifest_matches_files",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_text_digest_is_stable_across_line_endings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_text_digest_is_stable_across_line_endings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_text_assets_use_portable_line_endings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_text_assets_use_portable_line_endings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_pages_have_valid_local_links",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_generated_pages_have_valid_local_links",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_published_and_canonical_pdfs_are_identical",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_tutorial.py",
+      "target": "function:tests/test_tutorial.py:test_published_and_canonical_pdfs_are_identical",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:TUTORIAL.md",
+      "target": "file:tests/test_tutorial.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "file:tests/test_tutorial.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:docs/.tutorial-build.json",
+      "target": "file:tests/test_tutorial.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path": ".gitattributes", "language": "unknown", "sizeLines": 4, "fileCategory": "code"},
+    {"path": "demo/fixtures/showcase.json", "language": "json", "sizeLines": 59, "fileCategory": "config"},
+    {"path": "demo/requirements.txt", "language": "txt", "sizeLines": 1, "fileCategory": "docs"},
+    {"path": "demo/streamlit_app.py", "language": "python", "sizeLines": 108, "fileCategory": "code"},
+    {"path": "docs/assets/search-index.js", "language": "javascript", "sizeLines": 1, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    ".gitattributes": [],
+    "demo/fixtures/showcase.json": [],
+    "demo/requirements.txt": [],
+    "demo/streamlit_app.py": [],
+    "docs/assets/search-index.js": []
+  }
+}

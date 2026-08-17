@@ -1,0 +1,13 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path": "docs/.tutorial-build.json", "language": "json", "sizeLines": 33, "fileCategory": "config"},
+    {"path": "docs/01-learn-the-map-before-the-territory.html", "language": "html", "sizeLines": 167, "fileCategory": "markup"},
+    {"path": "docs/16-read-and-extend-the-repository.html", "language": "html", "sizeLines": 188, "fileCategory": "markup"}
+  ],
+  "batchImportData": {
+    "docs/.tutorial-build.json": [],
+    "docs/01-learn-the-map-before-the-territory.html": [],
+    "docs/16-read-and-extend-the-repository.html": []
+  }
+}

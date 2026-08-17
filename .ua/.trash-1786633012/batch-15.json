@@ -1,0 +1,456 @@
+{
+  "nodes": [
+    {
+      "id": "file:scripts/build_tutorial.py",
+      "type": "file",
+      "name": "build_tutorial.py",
+      "filePath": "scripts/build_tutorial.py",
+      "summary": "Builds the Zero to Mastery handbook from TUTORIAL.md into a static HTML site under docs/ and a verified PDF under output/pdf, with a --check mode that compares portable text and PDF content signatures.",
+      "tags": [
+        "tutorial",
+        "build-tool",
+        "documentation",
+        "pdf",
+        "static-site"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:scripts/build_tutorial.py:Chapter",
+      "type": "class",
+      "name": "Chapter",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        72,
+        82
+      ],
+      "summary": "Immutable record of one tutorial chapter: number, title, slug, markdown, rendered HTML, summary, and generated HTML filename.",
+      "tags": [
+        "python",
+        "class",
+        "data-model",
+        "tutorial"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:scripts/build_tutorial.py:HandbookDocTemplate",
+      "type": "class",
+      "name": "HandbookDocTemplate",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        373,
+        438
+      ],
+      "summary": "ReportLab document template that sets PDF metadata, draws cover and body page chrome, and registers heading bookmarks for the table of contents.",
+      "tags": [
+        "python",
+        "class",
+        "pdf",
+        "reportlab"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:load_course",
+      "type": "function",
+      "name": "load_course",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        146,
+        175
+      ],
+      "summary": "Reads TUTORIAL.md, splits level-two sections, renders Markdown, and returns unique-slug Chapter records plus preamble HTML.",
+      "tags": [
+        "python",
+        "parser",
+        "tutorial",
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:build_site_files",
+      "type": "function",
+      "name": "build_site_files",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        341,
+        370
+      ],
+      "summary": "Assembles the generated site map: index and chapter HTML, copied assets, search index, and the downloaded PDF bytes.",
+      "tags": [
+        "python",
+        "static-site",
+        "tutorial"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:build_pdf",
+      "type": "function",
+      "name": "build_pdf",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        776,
+        825
+      ],
+      "summary": "Renders chapters through HandbookDocTemplate into a multi-pass A4 PDF with cover, table of contents, and outlined headings.",
+      "tags": [
+        "python",
+        "pdf",
+        "tutorial"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:portable_text_bytes",
+      "type": "function",
+      "name": "portable_text_bytes",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        869,
+        873
+      ],
+      "summary": "Normalizes HTML, CSS, JS, and JSON bytes to LF so Windows checkouts compare equal to committed artifacts.",
+      "tags": [
+        "python",
+        "utility",
+        "line-endings"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:compare_files",
+      "type": "function",
+      "name": "compare_files",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        876,
+        892
+      ],
+      "summary": "Diffs expected generated files against a directory using portable text comparison and reports missing, stale, or unexpected paths.",
+      "tags": [
+        "python",
+        "verification",
+        "build-tool"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:pdf_content_signature",
+      "type": "function",
+      "name": "pdf_content_signature",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        895,
+        906
+      ],
+      "summary": "Returns a metadata-and-normalized-page-text tuple used to compare PDF content without depending on raw bytes.",
+      "tags": [
+        "python",
+        "pdf",
+        "verification"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:run",
+      "type": "function",
+      "name": "run",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        909,
+        941
+      ],
+      "summary": "Orchestrates the tutorial build or --check verification: load the course, build PDF and site, compare files, and compare PDF signatures.",
+      "tags": [
+        "python",
+        "orchestration",
+        "build-tool"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:scripts/build_tutorial.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "scripts/build_tutorial.py",
+      "lineRange": [
+        944,
+        952
+      ],
+      "summary": "Parses the --check flag and delegates to run.",
+      "tags": [
+        "python",
+        "cli"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_demo.py",
+      "type": "file",
+      "name": "test_demo.py",
+      "filePath": "tests/test_demo.py",
+      "summary": "Validates the public Streamlit showcase fixture against production TrainingConfig and JobStatus contracts and asserts the demo starts read-only without services.",
+      "tags": [
+        "test",
+        "streamlit",
+        "demo",
+        "showcase"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/test_demo.py:test_showcase_fixture_matches_production_contracts",
+      "type": "function",
+      "name": "test_showcase_fixture_matches_production_contracts",
+      "filePath": "tests/test_demo.py",
+      "lineRange": [
+        14,
+        36
+      ],
+      "summary": "Loads demo/fixtures/showcase.json, validates TrainingConfig and a completed JobStatus, and checks the dataset preview matches examples/sft_sample.jsonl.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_demo.py:test_showcase_is_read_only_and_starts_without_services",
+      "type": "function",
+      "name": "test_showcase_is_read_only_and_starts_without_services",
+      "filePath": "tests/test_demo.py",
+      "lineRange": [
+        39,
+        55
+      ],
+      "summary": "Starts demo/streamlit_app.py via AppTest and asserts no exception, a disabled Start training button, no file uploader, and the four workflow tabs.",
+      "tags": [
+        "test",
+        "verification",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "folder:docs",
+      "type": "folder",
+      "name": "docs",
+      "filePath": "docs",
+      "summary": "Generated GitHub Pages site for the Zero to Mastery tutorial, including chapter HTML, assets, and the downloaded handbook PDF.",
+      "tags": [
+        "tutorial",
+        "static-site",
+        "generated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "folder:output/pdf",
+      "type": "folder",
+      "name": "pdf",
+      "filePath": "output/pdf",
+      "summary": "Canonical output directory for the generated tutorial handbook PDF.",
+      "tags": [
+        "tutorial",
+        "pdf",
+        "generated"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "class:scripts/build_tutorial.py:Chapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "class:scripts/build_tutorial.py:HandbookDocTemplate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:load_course",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:build_site_files",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:build_pdf",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:portable_text_bytes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:compare_files",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:pdf_content_signature",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "function:scripts/build_tutorial.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_demo.py",
+      "target": "function:tests/test_demo.py:test_showcase_fixture_matches_production_contracts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/test_demo.py",
+      "target": "function:tests/test_demo.py:test_showcase_is_read_only_and_starts_without_services",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:main",
+      "target": "function:scripts/build_tutorial.py:run",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:run",
+      "target": "function:scripts/build_tutorial.py:load_course",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:run",
+      "target": "function:scripts/build_tutorial.py:build_pdf",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:run",
+      "target": "function:scripts/build_tutorial.py:build_site_files",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:run",
+      "target": "function:scripts/build_tutorial.py:compare_files",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:run",
+      "target": "function:scripts/build_tutorial.py:pdf_content_signature",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:compare_files",
+      "target": "function:scripts/build_tutorial.py:portable_text_bytes",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:load_course",
+      "target": "document:TUTORIAL.md",
+      "type": "reads_from",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "folder:docs",
+      "type": "writes_to",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:scripts/build_tutorial.py",
+      "target": "folder:output/pdf",
+      "type": "writes_to",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:run",
+      "target": "folder:docs",
+      "type": "writes_to",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:run",
+      "target": "folder:output/pdf",
+      "type": "writes_to",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:scripts/build_tutorial.py:build_pdf",
+      "target": "folder:output/pdf",
+      "type": "writes_to",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:demo/streamlit_app.py",
+      "target": "file:tests/test_demo.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lora_finetune_studio/models.py",
+      "target": "file:tests/test_demo.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

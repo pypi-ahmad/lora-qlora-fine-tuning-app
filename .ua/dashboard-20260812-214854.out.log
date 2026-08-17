@@ -1,0 +1,19 @@
+Port 5173 is in use, trying another one...
+Port 5174 is in use, trying another one...
+Port 5175 is in use, trying another one...
+
+  🔑  Dashboard URL: http://127.0.0.1:5176/?token=81f0f7fc805d4f6d5da7588ed4abc6ff
+
+
+  [32m[1mVITE[22m v6.4.3[39m  [2mready in [0m[1m599[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5176[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m9:54:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css, /src/components/KnowledgeGraphView.tsx, /src/components/LayerLegend.tsx, /src/components/PersonaSelector.tsx, /src/components/SearchBar.tsx, /src/components/FilterPanel.tsx, /src/components/FileExplorer.tsx, /src/components/DomainGraphView.tsx, /src/components/MobileLayout.tsx, /src/components/GraphView.tsx, /src/components/DiffToggle.tsx, /src/components/ExportMenu.tsx, /src/components/ProjectOverview.tsx, /src/components/NodeInfo.tsx, /src/components/DomainClusterNode.tsx, /src/components/StepNode.tsx, /src/components/Breadcrumb.tsx, /src/components/FlowNode.tsx, /src/components/MobileDrawer.tsx, /src/components/LearnPanel.tsx[22m
+[2m9:54:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[2m9:54:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/LayerLegend.tsx[22m Could not Fast Refresh ("LAYER_PALETTE" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:54:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css, /src/components/PortalNode.tsx, /src/components/ContainerNode.tsx, /src/components/LayerClusterNode.tsx, /src/components/MobileDrawer.tsx[22m
+[2m9:54:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/GraphView.tsx[22m Could not Fast Refresh ("STRUCTURAL_VISIBLE_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:54:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css, /src/components/MobileLayout.tsx[22m
+[2m10:03:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css, /src/components/KnowledgeGraphView.tsx, /src/components/LayerLegend.tsx, /src/components/PersonaSelector.tsx, /src/components/SearchBar.tsx, /src/components/FilterPanel.tsx, /src/components/FileExplorer.tsx, /src/components/DomainGraphView.tsx, /src/components/MobileLayout.tsx, /src/components/GraphView.tsx, /src/components/DiffToggle.tsx, /src/components/ExportMenu.tsx, /src/components/ProjectOverview.tsx, /src/components/NodeInfo.tsx, /src/components/DomainClusterNode.tsx, /src/components/StepNode.tsx, /src/components/Breadcrumb.tsx, /src/components/FlowNode.tsx, /src/components/MobileDrawer.tsx, /src/components/LearnPanel.tsx[22m
+[2m10:03:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m

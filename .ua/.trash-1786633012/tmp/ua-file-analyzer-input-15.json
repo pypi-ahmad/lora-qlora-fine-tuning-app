@@ -1,0 +1,11 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path": "scripts/build_tutorial.py", "language": "python", "sizeLines": 956, "fileCategory": "code"},
+    {"path": "tests/test_demo.py", "language": "python", "sizeLines": 55, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "scripts/build_tutorial.py": [],
+    "tests/test_demo.py": []
+  }
+}

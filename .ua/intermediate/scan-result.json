@@ -1,25 +1,37 @@
 {
-  "name": "lora-finetune-studio",
-  "description": "Local Streamlit studio for parameter-efficient LLM post-training.",
-  "languages": [
-    "batch",
-    "css",
-    "html",
-    "javascript",
-    "json",
-    "jsonl",
-    "markdown",
-    "python",
-    "shell",
-    "toml",
-    "unknown",
-    "yaml"
-  ],
-  "frameworks": [
-    "Pytest",
-    "GitHub Actions"
-  ],
+  "scriptCompleted": true,
+  "contentDigest": "c1e0a5e950146f6e62eab3412d47d66109c573cd12b42d5212862ac34a6b7d97",
   "files": [
+    {
+      "path": ".code-review-graph/graph.db",
+      "language": "db",
+      "sizeLines": 9719,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".codegraph/codegraph.db",
+      "language": "db",
+      "sizeLines": 827419,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".codegraph/codegraph.db-shm",
+      "language": "db-shm",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".codegraph/codegraph.db-wal",
+      "language": "db-wal",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".codegraph/daemon.pid",
+      "language": "pid",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
     {
       "path": ".firecrawl/search-unsloth-auto-docstring.json",
       "language": "json",
@@ -59,7 +71,7 @@
     {
       "path": ".gitattributes",
       "language": "unknown",
-      "sizeLines": 5,
+      "sizeLines": 4,
       "fileCategory": "code"
     },
     {
@@ -83,7 +95,7 @@
     {
       "path": "CHANGELOG.md",
       "language": "markdown",
-      "sizeLines": 92,
+      "sizeLines": 116,
       "fileCategory": "docs"
     },
     {
@@ -95,7 +107,7 @@
     {
       "path": "CONTRIBUTING.md",
       "language": "markdown",
-      "sizeLines": 97,
+      "sizeLines": 113,
       "fileCategory": "docs"
     },
     {
@@ -113,37 +125,37 @@
     {
       "path": "README.md",
       "language": "markdown",
-      "sizeLines": 146,
+      "sizeLines": 182,
       "fileCategory": "docs"
     },
     {
       "path": "SECURITY.md",
       "language": "markdown",
-      "sizeLines": 98,
+      "sizeLines": 105,
       "fileCategory": "docs"
     },
     {
       "path": "SETUP.md",
       "language": "markdown",
-      "sizeLines": 689,
+      "sizeLines": 731,
       "fileCategory": "docs"
     },
     {
       "path": "TECHNICAL.md",
       "language": "markdown",
-      "sizeLines": 818,
+      "sizeLines": 842,
       "fileCategory": "docs"
     },
     {
       "path": "TUTORIAL.md",
       "language": "markdown",
-      "sizeLines": 1881,
+      "sizeLines": 1890,
       "fileCategory": "docs"
     },
     {
       "path": "USAGE.md",
       "language": "markdown",
-      "sizeLines": 389,
+      "sizeLines": 408,
       "fileCategory": "docs"
     },
     {
@@ -195,6 +207,24 @@
       "fileCategory": "code"
     },
     {
+      "path": "demo/fixtures/showcase.json",
+      "language": "json",
+      "sizeLines": 59,
+      "fileCategory": "config"
+    },
+    {
+      "path": "demo/requirements.txt",
+      "language": "txt",
+      "sizeLines": 1,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "demo/streamlit_app.py",
+      "language": "python",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
       "path": "docs/.nojekyll",
       "language": "unknown",
       "sizeLines": 0,
@@ -209,7 +239,7 @@
     {
       "path": "docs/01-learn-the-map-before-the-territory.html",
       "language": "html",
-      "sizeLines": 163,
+      "sizeLines": 167,
       "fileCategory": "markup"
     },
     {
@@ -299,7 +329,7 @@
     {
       "path": "docs/16-read-and-extend-the-repository.html",
       "language": "html",
-      "sizeLines": 175,
+      "sizeLines": 188,
       "fileCategory": "markup"
     },
     {
@@ -375,6 +405,732 @@
       "fileCategory": "code"
     },
     {
+      "path": "graphify-out/.graphify_health.json",
+      "language": "json",
+      "sizeLines": 192,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/.graphify_labels.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/.graphify_python",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "graphify-out/.graphify_root",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "graphify-out/GRAPH_REPORT.md",
+      "language": "markdown",
+      "sizeLines": 171,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/00a741c04a87768e5318625c7d8f21c1d19ab36d83690c25cb1bd8867a77e790.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/018d550eea34cf147afcd6af5495d9aa8591662d4a768199e3d2650a8988e180.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/01f32163df1d04a9735c40364ceb84cef99984a8bd018d2052c7f085325b4181.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/037e7abcce538d69faace476b9eefd704565b50dd6c0322750ee650100908534.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/09a8c3f5e1da328a4e1da9eb0e1e49bb0395f438da12772ade45f369e053fd8d.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/102b50c4741920fa379d005de4ddbb3106342103516bc63f617d641362f0cd76.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/10ba8e59e9aa3899de6a6a5771463bd2c5e0c86c7cd0dc4f24bc55dc6a588058.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/137c76918070140df9c13cec22e518aadbb63707121c9d6fea3119935c8a39f0.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/17c09e990d36de699cef1a85ee8063528fbf6fc14d76e842da63d32f1af5a591.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/182035aa9df2ade54f917ce5eb8fc864dc6411dfa8ea4a24875abac8efa67fee.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/1936f76a49cc0320a54e44b5191ab54f163dfd4a4a65bc766675d9af6425e0c2.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/1c6182281ec8a786bf0eb223f51d7a45bde44501854215423d4b97ac0f102d29.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/21f5c132a9b6803a609e71500c58e653aefa06dfe2aa53d7aa44885b3a303b0b.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/249420e268fb2543c59a83d812aa3d308cb370db684436d9ffd389f04418354a.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/306465ebdc8fe3b197dea4b107f7dd861e6b04c83348620f6ec0e766f4fafabb.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/32052bf19c7c5e489106350bcb75b118ef6960594264e914fd4af2cb02ff3ad4.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/35a43ef20cf776a9c4c75a47155359f5dfa143d815eb632bb716824e9d135b16.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/36ac216a26813523180197bdab482a58a1db975c23ea127b1edfd098887978f6.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/385355e8bbdb8fa9007b1982da262330107684d6a1d25fc405a29187007823c4.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/3864b1c2e86164dbfcab026fc8b09de4b3753cef1cc558734784cd425d4c3e7f.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/5023fb565c704d6f7770bda11c447d2dcdafd95ad502ce3fa5d7189d725d8a01.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/5614095541d3cc155be71b25aa6402c770716247ca311ffb67a0c4fe632f21b6.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/6384df0ec869962f4e6c53d5a12479383a71beb356090f91b818dccaeada5a74.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/7112b84ff780820e98b01a43cd3e6b3a7ee34858011ae5deba7aed42ff1be71a.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/7449d1204be4e616b00c3361c4f9e8f4df7ae9c6302da213d445feb748b1d3c7.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/7c2f4165d0da9dee7ebc43da1e3e2454e023f57827d589562efc09002b32c668.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/7d156e52827e3626dbece22c42309f4bc7c1a7609e956f2daec4ac5333defaaa.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/8467bc4d516926c6d6d0543dbf573737c9d4722c39ba387d9565f7fc287ea96e.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/85cf141c6a96e78c2a29502f58728c5da03d5e4369cb03c5ee9c0272d4cb0185.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/85dae1af381aa398e9aa7b53c6d35c5f3a5d48f9d049018cb78060b74439bc9f.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/867e878fc59502bc8b2cffae6d19e7f1087cbb4ccb8f1e19457e5037e44d9278.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/86eed59c8e56653f88078dfbd5414fe524aae677a11cdd7b3d5a87ca7d2eb3c2.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/87fe0bd6c003aecd5a1e19ccefe4a680733b9cc1bf19fee6611184653b8092a7.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/8c67163d5ae73f2a5ed7a54ec8934dad7fe0c368263426074836c06601cf990e.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/997b1f4cf187da83bc8946517cdd572067045953b977c1109dced57c01905af4.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/9c89fe337a9bd7d063b74c18efc7316518cdcc369f15a2c26272f1d74f79ebce.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/9e5a7540ffc4a0fc570187985db8e0d13276836973d289674f76a0d053e1495e.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/9ea4fe65a964c2e0efe2de63d3d0176c755bf4832a3cf6486b2e793562e01f12.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/a10966b2046ebdc51846c8ed145b74ed7485b269f2153817766501536871096c.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/ab957c2c35e6ad24fe37c8ac05ed513b5c0808d8e3986c324bdb3272ad766227.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/ae70750596d0581bde89d42b95c054adf2f06251275e4c404c3b039d6b483114.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/b244e36fc22a897c7e7ea7acd31fef89cbdd02be3b49d49a578edde293752bca.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/b59090a90481171b0d6881d49c95802a8b5365584f29f7337e7cd7e1897d35ab.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/c48d0cfc8764bf10af8cc50a03ebaaa878054a6599ad69828f89538422b8e10e.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/c65c0e65adc64a1adc9597b447aaf831acebf792c22c20da6acc7e73ed8b579c.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/ce0ac1bff637a090e7131448f34328627399980ba98917d49c84dd4bdd0f1163.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/d3a3b01222345f2c5c319068fd668e63752ac8fc775864c92a81367bc5a97c6d.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/d3f1e02928fe5e5277fe1b3d79ba775b0523ea1cf72a786cf133a817fba1cd61.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/d692d7e9ebef0dbadb1ac556d65a3e3e30e9d84e4faf7b7a56149b442049458b.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/dba4b83ddb43db87869f7cc754fd8fa33a12a366530e9020176da1c0bb800e94.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/dcc495e851493c7ea1141d0a4c8506fd566ba4e67e4fcec1f42fda95f90ce16d.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/dd56ac9495d9c4e7fa0c147abee8ca9f55cb0f3a4d842084a5ceffe8ef62e0b4.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/dddffe43fa948fa79063552f71dcef7bd926e2767db4c012b35122ecdce7bfbe.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/df56f72ee1506cce02654b44c69198454e8a6cd9561eb61a1be882d43f7d98e9.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/e288cc0ea04b1a9d75c38677dc351c874fcefa227d2cbf68bb4787f355e37b5b.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/e3a89bdffc3e56a3bd2c97c9e71fe17bb202425c711be545c60a9ab2246198f2.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/e7699df31d2eef46117794f86b9b331f5725ef97031d1d07e0110d54884682ab.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/ea5ba29955c3a6146af71c50502743a59143c3b5bfe7886c4b8a091e356e3b60.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/ec9f8daf2bff4e62bf47bc752dd3eb70ea8a09130854cd2d7352432a0f31bfd7.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/eea7bc0b8766b3e0e10ce1f9b6d77975f0e239a003ea5d4ee8dff496a2ba9e9a.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/f6b9fcfea181de5a3115606fa488ea29c2e294cbf3aef4149436db939e59b65c.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/f6e7cb8936ee26f0c7d23a51d266ca345e252238990ecefee35cc31939bef2a5.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/f9bcec2425bf4af8bf0e263157daea1b8f98af6708a0df99d84826be0edfd766.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/fa414a3e59f03552d3456eac67a566322afdde7f9d16f9f789bc2977e24e9509.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/ast/v0.9.35/ff035d5a38e84ab7a501ed0a38660a02c941cfe5320190ce42457dfb3feb4312.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/1f80585c3b8096c0f8b6009b2fc11342dd18f7f1af6bb440c368606ac7a5cfaf.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/20ef0aa0de610386898f7b04d9a076a1d14dd795915d8f57088ccb47550f4285.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/255a9bcb641890c818372ec75baeebfd064a1baaecebe3ddfa15f6ab1531ecc9.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/3216a60de6023a264c896b53c69f8c8bf655036eecd8e902eba396da7e4bb3e1.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/3974f5a088175e4fd289e4d76fc6ed38d066d7d04024f4b9d6414c6fedae8900.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/3dde16393b2e38c8b8a5fabd7339719290479862bcca56e5b9ca0f4ffe1f26fe.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/3ef282deb92ae0a0a56ce4e6ef701a2692f9383c95186ba652caf83960b2f0bc.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/416c1d7b407e191413011adc4dffa71e692227220e642425bdb250e984766f85.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/478d2e9a392d7c00955184a210cdba8d1a40aaca77bcd86dbefcd37e74c96f50.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/4f169872edccf68b9a4840384bb40fa6309df6b1dd64b3509e465318d2e1911a.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/50baf98bf5f8c7636bd8d08b83601a6e293b5b266ed187cda566c45008f5e90c.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/5264215ede4d6f547efeaede70c5047f4f82ee92f53945c85d7f002dd2e61a90.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/543dd11542067575938fe6659b1c1e7f7b35d00da872a2cf115b8c65ece53eb3.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/5f20f23cde84ad8c8777a9698d3c14ac6330df429c49dd325769ae62a5ac94bc.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/5f56fba6c54fc7e131f5f9500b83f8bd896952c0e0cf2abe2e1ec57d654238b3.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/62c008acdbaf6e53ae5318c5ee656a49610af709627acdd2a6962b4ac5c4ee40.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/71a9d2177fd13afceb9f7572fea41e4cd7446c08a25d82b9acfbe29dbf5a6173.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/72b7a4f8a27c23ee96f3749b8c73a6a9c7cb0b2ca36a8426bb13d72c70120a73.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/77f2876e2262388daff17f38c7a18ecd622a2ac716ec5834b2e20a4612c0a99f.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/7d9611cc5554037639c3de45067eacf92aa53a9327109f424ff037fecdb475d9.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/7f68a9eedf2fe8cc968e60544c721216b74553cc9c8d91279e1e88556997731e.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/7f7e1d3c834c105014173f40eb5ba541aec04fc8098b17c135f69d6ce5a95dfa.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/80bc58d738cf8b32f32640b375a6b2bed04315195bb812cf935761d2099b9991.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/84820a0defb2c1c82766673a30e6de30e796a16e588bb75b610a5ef1c6d769de.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/84bed10ab3fafeea65ab3c6557077e2bea7c722391a22146851bd2e04f8ffb74.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/8fd5e2e7ae9962234897f8ddcf34b144482b371def5b7d03fd39c1d71bb80af2.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/94dac23654333a63361fd8dea69f444bc4febc262354f37b18543731ddb63f19.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/9d25ad4d2c99e373695b0739337210ffb78d93fa68590002ec81f84240d3f17e.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/9d61ffcde6d8bbd87a42d75906060e622cdf8eba08ba9c81671ac51f8d0d3c1f.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/a0aff96b37e82902645fb3971fbc89784e2d91ef7e61424a66dbbb3bed8ef1d6.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/a717750f5888c11b838c9c42a911b49b60c33de8aae994305f68a2b0449f581d.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/a9b3f3f419995f60e7b6901cd8b4cbdebc098ab8303b91a04cb8e13a967ad2d9.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/b53ec65d7da5b671f4d299fa6bd4c7ab4889a11e4404e100e30bd39024df1e17.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/bbd5982117ae16c5395db4809ba45bcb6bf81c5071e1fbb75547b292e0c34e3e.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/bd25ee7676e2d0721d7d286adabc01de5a87ac49870ed7f077a9f8c9f03059eb.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/bf19ea06377271f37cfda298f86d6fc7a0c8bd2da1ec0dcfd6e2aa6cf5e2af4a.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/c6af610becf98a210a2571dab599c40d0707f6e053298379544e8d974a94eead.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/d96496b78a7e9cd4a4de786199e7c59f1be1c300b756f89b1ec7049d25f45db7.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/de46c678af4685c7bc2c1731663473b7929a7bed197e7fb81a7e9fc759651339.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/de9fb895d340e9417919ed05c81394639a34a4f932f1086ce721c45a3cc15efb.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/deaea449b127f35ad51f7f40af9c138a24f858e5f9cacedfa1d3bc13f456f255.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/e2932edb0c385cb43e607bbb48d8684517bd85e28949326fee79cebd7c6259ca.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/f550b8cd839d3919e2c8ab5d76fd765e1922c38168bf3972e78efe45efcae635.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/f99b0d4085e86932510c819fff3fc09bf5bf1004a009211f7fcdfa90d343e4fb.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/fae2fb661b492f5525442a5f2fefd9b451da601041cd813ea4400da80ddc9e36.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/semantic/ffe0ff26f9e2ecf9eb255665b0e00c0e67c76c495c0fc44eaaaaf087ecefda38.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cache/stat-index.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/cost.json",
+      "language": "json",
+      "sizeLines": 29,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/graph.html",
+      "language": "html",
+      "sizeLines": 319,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "graphify-out/graph.json",
+      "language": "json",
+      "sizeLines": 15496,
+      "fileCategory": "config"
+    },
+    {
+      "path": "graphify-out/manifest.json",
+      "language": "json",
+      "sizeLines": 421,
+      "fileCategory": "config"
+    },
+    {
       "path": "pyproject.toml",
       "language": "toml",
       "sizeLines": 49,
@@ -383,7 +1139,7 @@
     {
       "path": "scripts/build_tutorial.py",
       "language": "python",
-      "sizeLines": 947,
+      "sizeLines": 956,
       "fileCategory": "code"
     },
     {
@@ -489,6 +1245,12 @@
       "fileCategory": "code"
     },
     {
+      "path": "tests/test_demo.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
       "path": "tests/test_hardware.py",
       "language": "python",
       "sizeLines": 118,
@@ -545,7 +1307,7 @@
     {
       "path": "tests/test_tutorial.py",
       "language": "python",
-      "sizeLines": 124,
+      "sizeLines": 142,
       "fileCategory": "code"
     },
     {
@@ -561,117 +1323,37 @@
       "fileCategory": "config"
     }
   ],
-  "totalFiles": 90,
+  "totalFiles": 220,
   "filteredByIgnore": 0,
-  "estimatedComplexity": "moderate",
-  "importMap": {
-    ".firecrawl/search-unsloth-auto-docstring.json": [],
-    ".firecrawl/search-unsloth-windows-nodeps.json": [],
-    ".firecrawl/search-unsloth-windows-torchao.json": [],
-    ".firecrawl/search-unsloth-windows-versions.json": [],
-    ".firecrawl/unsloth.ai-docs-get-started-install-pip-install.md": [],
-    ".firecrawl/unsloth.ai-docs-get-started-install-windows-installation.md": [],
-    ".gitattributes": [],
-    ".github/workflows/ci.yml": [],
-    ".python-version": [],
-    ".streamlit/config.toml": [],
-    "CHANGELOG.md": [],
-    "CODE_OF_CONDUCT.md": [],
-    "CONTRIBUTING.md": [],
-    "Launch LoRA Studio.cmd": [],
-    "Launch LoRA Studio.sh": [],
-    "README.md": [],
-    "SECURITY.md": [],
-    "SETUP.md": [],
-    "TECHNICAL.md": [],
-    "TUTORIAL.md": [],
-    "USAGE.md": [],
-    "app_pages/dataset.py": [],
-    "app_pages/gpu_memory.py": [],
-    "app_pages/model.py": [],
-    "app_pages/monitor.py": [],
-    "app_pages/ollama.py": [],
-    "app_pages/review.py": [],
-    "app_pages/system.py": [],
-    "app_pages/training.py": [],
-    "docs/.nojekyll": [],
-    "docs/.tutorial-build.json": [],
-    "docs/01-learn-the-map-before-the-territory.html": [],
-    "docs/02-natural-language-becomes-model-input.html": [],
-    "docs/03-neural-networks-learn-with-vectors-and-gradients.html": [],
-    "docs/04-build-a-transformer-from-attention-blocks.html": [],
-    "docs/05-understand-the-llm-lifecycle.html": [],
-    "docs/06-choose-a-tuning-family.html": [],
-    "docs/07-master-lora-qlora-oft-and-qoft.html": [],
-    "docs/08-engineer-datasets-that-teach-the-intended-behavior.html": [],
-    "docs/09-select-the-post-training-objective.html": [],
-    "docs/10-prepare-the-local-training-system.html": [],
-    "docs/11-translate-intent-into-app-settings.html": [],
-    "docs/12-lab-a-complete-an-sft-smoke-run.html": [],
-    "docs/13-lab-b-preference-training-safely.html": [],
-    "docs/14-evaluate-like-an-experimenter.html": [],
-    "docs/15-operate-jobs-and-use-artifacts.html": [],
-    "docs/16-read-and-extend-the-repository.html": [],
-    "docs/17-capstone-train-a-defensible-specialist.html": [],
-    "docs/18-checkpoint-answers.html": [],
-    "docs/19-formula-and-settings-reference.html": [],
-    "docs/20-troubleshooting-by-boundary.html": [],
-    "docs/21-glossary.html": [],
-    "docs/22-official-references.html": [],
-    "docs/assets/search-index.js": [],
-    "docs/assets/site.css": [],
-    "docs/assets/site.js": [],
-    "docs/index.html": [],
-    "examples/preference_sample.jsonl": [],
-    "examples/sft_sample.jsonl": [],
-    "pyproject.toml": [],
-    "scripts/build_tutorial.py": [],
-    "scripts/tutorial_assets/site.css": [],
-    "scripts/tutorial_assets/site.js": [],
-    "src/lora_finetune_studio/__init__.py": [],
-    "src/lora_finetune_studio/cli.py": [],
-    "src/lora_finetune_studio/hardware.py": [
-      "src/lora_finetune_studio/models.py"
-    ],
-    "src/lora_finetune_studio/inference.py": [
-      "src/lora_finetune_studio/hardware.py"
-    ],
-    "src/lora_finetune_studio/jobs.py": [
-      "src/lora_finetune_studio/models.py",
-      "src/lora_finetune_studio/unsloth_runtime.py"
-    ],
-    "src/lora_finetune_studio/lifecycle.py": [],
-    "src/lora_finetune_studio/models.py": [],
-    "src/lora_finetune_studio/ollama.py": [],
-    "src/lora_finetune_studio/queue_dispatcher.py": [
-      "src/lora_finetune_studio/jobs.py"
-    ],
-    "src/lora_finetune_studio/sources.py": [],
-    "src/lora_finetune_studio/training.py": [
-      "src/lora_finetune_studio/jobs.py",
-      "src/lora_finetune_studio/models.py",
-      "src/lora_finetune_studio/sources.py"
-    ],
-    "src/lora_finetune_studio/unsloth_runtime.py": [],
-    "src/lora_finetune_studio/worker.py": [
-      "src/lora_finetune_studio/jobs.py",
-      "src/lora_finetune_studio/models.py",
-      "src/lora_finetune_studio/queue_dispatcher.py",
-      "src/lora_finetune_studio/sources.py"
-    ],
-    "streamlit_app.py": [],
-    "tests/test_app.py": [],
-    "tests/test_hardware.py": [],
-    "tests/test_inference.py": [],
-    "tests/test_jobs.py": [],
-    "tests/test_lifecycle.py": [],
-    "tests/test_models.py": [],
-    "tests/test_queue_dispatcher.py": [],
-    "tests/test_queue_ui.py": [],
-    "tests/test_sources.py": [],
-    "tests/test_training.py": [],
-    "tests/test_tutorial.py": [],
-    "tests/test_worker.py": [],
-    "unsloth-runtime/pyproject.toml": []
+  "estimatedComplexity": "large",
+  "stats": {
+    "filesScanned": 220,
+    "byCategory": {
+      "code": 52,
+      "config": 126,
+      "docs": 13,
+      "infra": 1,
+      "script": 2,
+      "markup": 26
+    },
+    "byLanguage": {
+      "db": 2,
+      "db-shm": 1,
+      "db-wal": 1,
+      "pid": 1,
+      "json": 123,
+      "markdown": 12,
+      "unknown": 5,
+      "yaml": 1,
+      "toml": 3,
+      "batch": 1,
+      "shell": 1,
+      "python": 37,
+      "txt": 1,
+      "html": 24,
+      "javascript": 3,
+      "css": 2,
+      "jsonl": 2
+    }
   }
 }

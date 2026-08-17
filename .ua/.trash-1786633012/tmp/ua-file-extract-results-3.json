@@ -1,0 +1,2092 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 9,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 9
+    }
+  },
+  "results": [
+    {
+      "path": "CHANGELOG.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 116,
+      "nonEmptyLines": 86,
+      "sections": [
+        {
+          "heading": "Changelog",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "[Unreleased]",
+          "level": 2,
+          "line": 8
+        },
+        {
+          "heading": "Changed",
+          "level": 3,
+          "line": 10
+        },
+        {
+          "heading": "[0.5.1] - 2026-08-13",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Changed",
+          "level": 3,
+          "line": 16
+        },
+        {
+          "heading": "[0.5.0] - 2026-08-13",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Added",
+          "level": 3,
+          "line": 23
+        },
+        {
+          "heading": "Fixed",
+          "level": 3,
+          "line": 27
+        },
+        {
+          "heading": "[0.4.0] - 2026-08-13",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Added",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "[0.3.0] - 2026-08-13",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Added",
+          "level": 3,
+          "line": 42
+        },
+        {
+          "heading": "[0.2.0] - 2026-08-12",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Added",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Changed",
+          "level": 3,
+          "line": 72
+        },
+        {
+          "heading": "[0.1.0] - 2026-08-12",
+          "level": 2,
+          "line": 83
+        },
+        {
+          "heading": "Added",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Security",
+          "level": 3,
+          "line": 102
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 113,
+      "nonEmptyLines": 84,
+      "sections": [
+        {
+          "heading": "Contributing",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Before starting",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Development setup",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "Engineering expectations",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Required checks",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Pull-request checklist",
+          "level": 2,
+          "line": 103
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 182,
+      "nonEmptyLines": 138,
+      "sections": [
+        {
+          "heading": "LoRA Fine-tune Studio",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Interactive showcase",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "Highlights",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Training support",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Requirements",
+          "level": 2,
+          "line": 90
+        },
+        {
+          "heading": "Quick start",
+          "level": 2,
+          "line": 102
+        },
+        {
+          "heading": "First smoke test",
+          "level": 2,
+          "line": 133
+        },
+        {
+          "heading": "Documentation",
+          "level": 2,
+          "line": 147
+        },
+        {
+          "heading": "Project boundaries",
+          "level": 2,
+          "line": 162
+        },
+        {
+          "heading": "Help and contributing",
+          "level": 2,
+          "line": 171
+        },
+        {
+          "heading": "License",
+          "level": 2,
+          "line": 180
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "SECURITY.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 105,
+      "nonEmptyLines": 83,
+      "sections": [
+        {
+          "heading": "Security Policy",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Supported versions",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Report a vulnerability privately",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Project security model",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "Existing controls",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "Safe operation",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Not security vulnerabilities",
+          "level": 2,
+          "line": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "SETUP.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 731,
+      "nonEmptyLines": 518,
+      "sections": [
+        {
+          "heading": "Setup Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Understand the two runtimes",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "2. System requirements",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "Supported operating systems",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "GPU and driver",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Memory, storage, and network",
+          "level": 3,
+          "line": 66
+        },
+        {
+          "heading": "Required system tools",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "3. Install Git",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "Windows",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "Linux",
+          "level": 3,
+          "line": 116
+        },
+        {
+          "heading": "4. Clone the application",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "4.1 Read-only showcase, no CUDA",
+          "level": 3,
+          "line": 171
+        },
+        {
+          "heading": "5. Configure Hugging Face access",
+          "level": 2,
+          "line": 184
+        },
+        {
+          "heading": "Windows PowerShell",
+          "level": 3,
+          "line": 193
+        },
+        {
+          "heading": "Linux Bash",
+          "level": 3,
+          "line": 210
+        },
+        {
+          "heading": "Streamlit secrets alternative",
+          "level": 3,
+          "line": 221
+        },
+        {
+          "heading": "6. Recommended automatic installation",
+          "level": 2,
+          "line": 234
+        },
+        {
+          "heading": "Windows",
+          "level": 3,
+          "line": 246
+        },
+        {
+          "heading": "Linux",
+          "level": 3,
+          "line": 271
+        },
+        {
+          "heading": "7. Manual installation and launch",
+          "level": 2,
+          "line": 292
+        },
+        {
+          "heading": "Install `uv` manually",
+          "level": 3,
+          "line": 297
+        },
+        {
+          "heading": "Prepare the main runtime on Windows or Linux",
+          "level": 3,
+          "line": 317
+        },
+        {
+          "heading": "Prepare native Unsloth manually on Windows",
+          "level": 3,
+          "line": 344
+        },
+        {
+          "heading": "8. Dependency inventory",
+          "level": 2,
+          "line": 368
+        },
+        {
+          "heading": "Main runtime",
+          "level": 3,
+          "line": 374
+        },
+        {
+          "heading": "Windows Unsloth runtime",
+          "level": 3,
+          "line": 396
+        },
+        {
+          "heading": "Development dependencies",
+          "level": 3,
+          "line": 413
+        },
+        {
+          "heading": "Documentation dependencies",
+          "level": 3,
+          "line": 423
+        },
+        {
+          "heading": "9. Verify the installation",
+          "level": 2,
+          "line": 434
+        },
+        {
+          "heading": "Main interpreter and packages",
+          "level": 3,
+          "line": 436
+        },
+        {
+          "heading": "Application health",
+          "level": 3,
+          "line": 455
+        },
+        {
+          "heading": "Windows Unsloth",
+          "level": 3,
+          "line": 465
+        },
+        {
+          "heading": "10. Run a small end-to-end smoke test",
+          "level": 2,
+          "line": 475
+        },
+        {
+          "heading": "11. Files, caches, logs, and ports",
+          "level": 2,
+          "line": 494
+        },
+        {
+          "heading": "12. Stop, restart, and update",
+          "level": 2,
+          "line": 525
+        },
+        {
+          "heading": "Stop safely",
+          "level": 3,
+          "line": 527
+        },
+        {
+          "heading": "Update a Git clone",
+          "level": 3,
+          "line": 542
+        },
+        {
+          "heading": "Re-create a broken environment",
+          "level": 3,
+          "line": 560
+        },
+        {
+          "heading": "13. Optional Ollama playground",
+          "level": 2,
+          "line": 582
+        },
+        {
+          "heading": "14. Troubleshooting",
+          "level": 2,
+          "line": 591
+        },
+        {
+          "heading": "`git` is not recognized",
+          "level": 3,
+          "line": 593
+        },
+        {
+          "heading": "`uv` could not be installed",
+          "level": 3,
+          "line": 598
+        },
+        {
+          "heading": "Locked synchronization fails",
+          "level": 3,
+          "line": 604
+        },
+        {
+          "heading": "`nvidia-smi` is missing or reports an old driver",
+          "level": 3,
+          "line": 611
+        },
+        {
+          "heading": "PyTorch reports `CUDA available False`",
+          "level": 3,
+          "line": 616
+        },
+        {
+          "heading": "The GPU is detected but QLoRA fails",
+          "level": 3,
+          "line": 621
+        },
+        {
+          "heading": "Windows Unsloth is unavailable",
+          "level": 3,
+          "line": 627
+        },
+        {
+          "heading": "Unsloth is unavailable on Linux",
+          "level": 3,
+          "line": 633
+        },
+        {
+          "heading": "Port 8504 is already in use",
+          "level": 3,
+          "line": 638
+        },
+        {
+          "heading": "The browser does not open",
+          "level": 3,
+          "line": 644
+        },
+        {
+          "heading": "Hugging Face returns 401 or 403",
+          "level": 3,
+          "line": 649
+        },
+        {
+          "heading": "Setup or downloads run out of disk space",
+          "level": 3,
+          "line": 655
+        },
+        {
+          "heading": "Where to read the actual failure",
+          "level": 3,
+          "line": 661
+        },
+        {
+          "heading": "15. Developer setup",
+          "level": 2,
+          "line": 671
+        },
+        {
+          "heading": "16. Security notes",
+          "level": 2,
+          "line": 701
+        },
+        {
+          "heading": "Official references",
+          "level": 2,
+          "line": 714
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 56
+      }
+    },
+    {
+      "path": "TECHNICAL.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 842,
+      "nonEmptyLines": 667,
+      "sections": [
+        {
+          "heading": "Technical Handbook",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. What the application does",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "2. Concepts from zero",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "2.1 Pre-training versus post-training",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "2.2 Adapter methods",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "2.3 Training approaches",
+          "level": 3,
+          "line": 72
+        },
+        {
+          "heading": "3. Supported recipe matrix",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "4. System architecture",
+          "level": 2,
+          "line": 104
+        },
+        {
+          "heading": "5. Repository map",
+          "level": 2,
+          "line": 147
+        },
+        {
+          "heading": "6. Runtime and dependencies",
+          "level": 2,
+          "line": 174
+        },
+        {
+          "heading": "6.1 Two isolated Python environments",
+          "level": 3,
+          "line": 176
+        },
+        {
+          "heading": "6.2 Dependency roles",
+          "level": 3,
+          "line": 191
+        },
+        {
+          "heading": "6.3 Startup paths",
+          "level": 3,
+          "line": 216
+        },
+        {
+          "heading": "7. Streamlit execution model",
+          "level": 2,
+          "line": 240
+        },
+        {
+          "heading": "8. Shared data contracts",
+          "level": 2,
+          "line": 278
+        },
+        {
+          "heading": "8.1 `DatasetSpec`",
+          "level": 3,
+          "line": 283
+        },
+        {
+          "heading": "8.2 `TrainingConfig`",
+          "level": 3,
+          "line": 301
+        },
+        {
+          "heading": "8.3 Presets",
+          "level": 3,
+          "line": 340
+        },
+        {
+          "heading": "8.4 `JobStatus`",
+          "level": 3,
+          "line": 353
+        },
+        {
+          "heading": "9. Dataset pipeline",
+          "level": 2,
+          "line": 365
+        },
+        {
+          "heading": "9.1 Network and upload boundaries",
+          "level": 3,
+          "line": 385
+        },
+        {
+          "heading": "9.2 Detection and canonical shapes",
+          "level": 3,
+          "line": 397
+        },
+        {
+          "heading": "9.3 Multiple datasets and sampling",
+          "level": 3,
+          "line": 430
+        },
+        {
+          "heading": "10. Training pipeline",
+          "level": 2,
+          "line": 444
+        },
+        {
+          "heading": "10.1 Compute type",
+          "level": 3,
+          "line": 462
+        },
+        {
+          "heading": "10.2 Quantization and adapter construction",
+          "level": 3,
+          "line": 475
+        },
+        {
+          "heading": "10.3 Standard model loading",
+          "level": 3,
+          "line": 490
+        },
+        {
+          "heading": "10.4 Unsloth model loading",
+          "level": 3,
+          "line": 500
+        },
+        {
+          "heading": "10.5 TRL configuration",
+          "level": 3,
+          "line": 518
+        },
+        {
+          "heading": "10.6 Metrics and reproducibility",
+          "level": 3,
+          "line": 537
+        },
+        {
+          "heading": "11. Job lifecycle and persistence",
+          "level": 2,
+          "line": 545
+        },
+        {
+          "heading": "12. Storage and artifacts",
+          "level": 2,
+          "line": 592
+        },
+        {
+          "heading": "13. Hardware and memory behavior",
+          "level": 2,
+          "line": 624
+        },
+        {
+          "heading": "14. Post-training inference",
+          "level": 2,
+          "line": 647
+        },
+        {
+          "heading": "15. Credentials, network, and trust boundaries",
+          "level": 2,
+          "line": 668
+        },
+        {
+          "heading": "15.1 Hugging Face token",
+          "level": 3,
+          "line": 670
+        },
+        {
+          "heading": "15.2 Network destinations",
+          "level": 3,
+          "line": 682
+        },
+        {
+          "heading": "15.3 Filesystem and code trust",
+          "level": 3,
+          "line": 695
+        },
+        {
+          "heading": "16. Failure behavior and troubleshooting map",
+          "level": 2,
+          "line": 709
+        },
+        {
+          "heading": "17. Testing and continuous integration",
+          "level": 2,
+          "line": 728
+        },
+        {
+          "heading": "18. Extension playbooks",
+          "level": 2,
+          "line": 769
+        },
+        {
+          "heading": "Add a training approach",
+          "level": 3,
+          "line": 771
+        },
+        {
+          "heading": "Add an adapter method",
+          "level": 3,
+          "line": 783
+        },
+        {
+          "heading": "Add a dataset shape",
+          "level": 3,
+          "line": 791
+        },
+        {
+          "heading": "Add a configuration field",
+          "level": 3,
+          "line": 802
+        },
+        {
+          "heading": "Add a Streamlit page",
+          "level": 3,
+          "line": 812
+        },
+        {
+          "heading": "Change job persistence",
+          "level": 3,
+          "line": 820
+        },
+        {
+          "heading": "19. Upstream references",
+          "level": 2,
+          "line": 826
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 48
+      }
+    },
+    {
+      "path": "TUTORIAL.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1890,
+      "nonEmptyLines": 1326,
+      "sections": [
+        {
+          "heading": "LoRA Fine-tune Studio: Zero to Mastery",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Module 1 - Learn the map before the territory",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 27
+        },
+        {
+          "heading": "The result is an adapter, not a new foundation model",
+          "level": 3,
+          "line": 32
+        },
+        {
+          "heading": "The end-to-end learning loop",
+          "level": 3,
+          "line": 53
+        },
+        {
+          "heading": "A vocabulary preview",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Choose your path",
+          "level": 3,
+          "line": 78
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Module 2 - Natural language becomes model input",
+          "level": 2,
+          "line": 96
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "What NLP systems do",
+          "level": 3,
+          "line": 103
+        },
+        {
+          "heading": "Corpus, example, field, and label",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "Tokenization",
+          "level": 3,
+          "line": 127
+        },
+        {
+          "heading": "Vocabulary and context",
+          "level": 3,
+          "line": 143
+        },
+        {
+          "heading": "Embeddings: two meanings people confuse",
+          "level": 3,
+          "line": 154
+        },
+        {
+          "heading": "Data is behavior specification",
+          "level": 3,
+          "line": 167
+        },
+        {
+          "heading": "Mini exercise: estimate tokens",
+          "level": 3,
+          "line": 174
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 180
+        },
+        {
+          "heading": "Module 3 - Neural networks learn with vectors and gradients",
+          "level": 2,
+          "line": 187
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 189
+        },
+        {
+          "heading": "Tensors and linear layers",
+          "level": 3,
+          "line": 194
+        },
+        {
+          "heading": "Forward pass and loss",
+          "level": 3,
+          "line": 207
+        },
+        {
+          "heading": "Backpropagation and gradient descent",
+          "level": 3,
+          "line": 228
+        },
+        {
+          "heading": "Batches, accumulation, steps, and epochs",
+          "level": 3,
+          "line": 247
+        },
+        {
+          "heading": "Gradient clipping and checkpointing",
+          "level": 3,
+          "line": 273
+        },
+        {
+          "heading": "Where GPU memory goes",
+          "level": 3,
+          "line": 284
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 298
+        },
+        {
+          "heading": "Module 4 - Build a transformer from attention blocks",
+          "level": 2,
+          "line": 304
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 306
+        },
+        {
+          "heading": "From token IDs to hidden states",
+          "level": 3,
+          "line": 312
+        },
+        {
+          "heading": "Scaled dot-product attention",
+          "level": 3,
+          "line": 328
+        },
+        {
+          "heading": "Causal masking",
+          "level": 3,
+          "line": 350
+        },
+        {
+          "heading": "Multi-head attention",
+          "level": 3,
+          "line": 356
+        },
+        {
+          "heading": "The feed-forward network",
+          "level": 3,
+          "line": 363
+        },
+        {
+          "heading": "Residuals and normalization",
+          "level": 3,
+          "line": 371
+        },
+        {
+          "heading": "Logits and decoding",
+          "level": 3,
+          "line": 377
+        },
+        {
+          "heading": "Why adapter targets matter",
+          "level": 3,
+          "line": 390
+        },
+        {
+          "heading": "Exercise: trace one token",
+          "level": 3,
+          "line": 396
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 402
+        },
+        {
+          "heading": "Module 5 - Understand the LLM lifecycle",
+          "level": 2,
+          "line": 409
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 411
+        },
+        {
+          "heading": "Pre-training",
+          "level": 3,
+          "line": 416
+        },
+        {
+          "heading": "Supervised instruction tuning",
+          "level": 3,
+          "line": 425
+        },
+        {
+          "heading": "Preference alignment",
+          "level": 3,
+          "line": 431
+        },
+        {
+          "heading": "Inference and serving",
+          "level": 3,
+          "line": 439
+        },
+        {
+          "heading": "Prompting, RAG, or fine-tuning?",
+          "level": 3,
+          "line": 446
+        },
+        {
+          "heading": "Baseline before adaptation",
+          "level": 3,
+          "line": 462
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 469
+        },
+        {
+          "heading": "Module 6 - Choose a tuning family",
+          "level": 2,
+          "line": 475
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 477
+        },
+        {
+          "heading": "Full tuning",
+          "level": 3,
+          "line": 482
+        },
+        {
+          "heading": "Freeze tuning",
+          "level": 3,
+          "line": 491
+        },
+        {
+          "heading": "Parameter-efficient fine-tuning",
+          "level": 3,
+          "line": 499
+        },
+        {
+          "heading": "Adapter lifecycle",
+          "level": 3,
+          "line": 512
+        },
+        {
+          "heading": "Method and objective are independent axes",
+          "level": 3,
+          "line": 523
+        },
+        {
+          "heading": "Decision table",
+          "level": 3,
+          "line": 529
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 540
+        },
+        {
+          "heading": "Module 7 - Master LoRA, QLoRA, OFT, and QOFT",
+          "level": 2,
+          "line": 546
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 548
+        },
+        {
+          "heading": "LoRA",
+          "level": 3,
+          "line": 553
+        },
+        {
+          "heading": "QLoRA",
+          "level": 3,
+          "line": 578
+        },
+        {
+          "heading": "OFT",
+          "level": 3,
+          "line": 596
+        },
+        {
+          "heading": "QOFT",
+          "level": 3,
+          "line": 610
+        },
+        {
+          "heading": "Standard versus Unsloth settings",
+          "level": 3,
+          "line": 616
+        },
+        {
+          "heading": "Compute type resolution",
+          "level": 3,
+          "line": 629
+        },
+        {
+          "heading": "Exercise: count a LoRA layer",
+          "level": 3,
+          "line": 642
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 651
+        },
+        {
+          "heading": "Module 8 - Engineer datasets that teach the intended behavior",
+          "level": 2,
+          "line": 657
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 659
+        },
+        {
+          "heading": "Supported source boundaries",
+          "level": 3,
+          "line": 664
+        },
+        {
+          "heading": "Canonical SFT shapes",
+          "level": 3,
+          "line": 675
+        },
+        {
+          "heading": "Canonical preference shape",
+          "level": 3,
+          "line": 695
+        },
+        {
+          "heading": "Inspection and mapping",
+          "level": 3,
+          "line": 705
+        },
+        {
+          "heading": "Multiple datasets",
+          "level": 3,
+          "line": 716
+        },
+        {
+          "heading": "Quality dimensions",
+          "level": 3,
+          "line": 729
+        },
+        {
+          "heading": "Leakage and memorization",
+          "level": 3,
+          "line": 744
+        },
+        {
+          "heading": "Data sizing",
+          "level": 3,
+          "line": 754
+        },
+        {
+          "heading": "Lab preparation",
+          "level": 3,
+          "line": 761
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 770
+        },
+        {
+          "heading": "Module 9 - Select the post-training objective",
+          "level": 2,
+          "line": 776
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 778
+        },
+        {
+          "heading": "Supervised Fine-Tuning",
+          "level": 3,
+          "line": 783
+        },
+        {
+          "heading": "Reward Modeling",
+          "level": 3,
+          "line": 794
+        },
+        {
+          "heading": "Direct Preference Optimization",
+          "level": 3,
+          "line": 813
+        },
+        {
+          "heading": "KTO",
+          "level": 3,
+          "line": 823
+        },
+        {
+          "heading": "ORPO",
+          "level": 3,
+          "line": 829
+        },
+        {
+          "heading": "PPO and the classic RLHF pipeline",
+          "level": 3,
+          "line": 836
+        },
+        {
+          "heading": "SimPO and other objectives",
+          "level": 3,
+          "line": 850
+        },
+        {
+          "heading": "Recipe table implemented by the app",
+          "level": 3,
+          "line": 857
+        },
+        {
+          "heading": "Objective selection",
+          "level": 3,
+          "line": 867
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 877
+        },
+        {
+          "heading": "Module 10 - Prepare the local training system",
+          "level": 2,
+          "line": 883
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 885
+        },
+        {
+          "heading": "Supported environment",
+          "level": 3,
+          "line": 890
+        },
+        {
+          "heading": "What the System page checks",
+          "level": 3,
+          "line": 906
+        },
+        {
+          "heading": "Conservative GPU recommendations",
+          "level": 3,
+          "line": 913
+        },
+        {
+          "heading": "Hugging Face access",
+          "level": 3,
+          "line": 926
+        },
+        {
+          "heading": "Standard backend versus Unsloth",
+          "level": 3,
+          "line": 935
+        },
+        {
+          "heading": "Before any lab",
+          "level": 3,
+          "line": 951
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 959
+        },
+        {
+          "heading": "Module 11 - Translate intent into app settings",
+          "level": 2,
+          "line": 965
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 967
+        },
+        {
+          "heading": "The eight-page workflow",
+          "level": 3,
+          "line": 972
+        },
+        {
+          "heading": "Presets",
+          "level": 3,
+          "line": 983
+        },
+        {
+          "heading": "Core controls",
+          "level": 3,
+          "line": 995
+        },
+        {
+          "heading": "Advanced controls",
+          "level": 3,
+          "line": 1015
+        },
+        {
+          "heading": "Review-time blockers",
+          "level": 3,
+          "line": 1032
+        },
+        {
+          "heading": "One-variable experiments",
+          "level": 3,
+          "line": 1042
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 1054
+        },
+        {
+          "heading": "Module 12 - Lab A: complete an SFT smoke run",
+          "level": 2,
+          "line": 1060
+        },
+        {
+          "heading": "Goal",
+          "level": 3,
+          "line": 1062
+        },
+        {
+          "heading": "Lab configuration",
+          "level": 3,
+          "line": 1067
+        },
+        {
+          "heading": "Step 1: define a baseline",
+          "level": 3,
+          "line": 1080
+        },
+        {
+          "heading": "Step 2: inspect the dataset",
+          "level": 3,
+          "line": 1086
+        },
+        {
+          "heading": "Step 3: inspect the model",
+          "level": 3,
+          "line": 1097
+        },
+        {
+          "heading": "Step 4: save training settings",
+          "level": 3,
+          "line": 1103
+        },
+        {
+          "heading": "Step 5: review and launch",
+          "level": 3,
+          "line": 1108
+        },
+        {
+          "heading": "Step 6: read the monitor",
+          "level": 3,
+          "line": 1117
+        },
+        {
+          "heading": "Step 7: compare outputs",
+          "level": 3,
+          "line": 1130
+        },
+        {
+          "heading": "Step 8: inspect artifacts",
+          "level": 3,
+          "line": 1136
+        },
+        {
+          "heading": "Optional experiment: Unsloth",
+          "level": 3,
+          "line": 1148
+        },
+        {
+          "heading": "Lab report",
+          "level": 3,
+          "line": 1161
+        },
+        {
+          "heading": "Module 13 - Lab B: preference training safely",
+          "level": 2,
+          "line": 1166
+        },
+        {
+          "heading": "Goal",
+          "level": 3,
+          "line": 1168
+        },
+        {
+          "heading": "Important limitation",
+          "level": 3,
+          "line": 1173
+        },
+        {
+          "heading": "Step 1: inspect preference quality",
+          "level": 3,
+          "line": 1179
+        },
+        {
+          "heading": "Step 2: create a preference baseline",
+          "level": 3,
+          "line": 1191
+        },
+        {
+          "heading": "Step 3: run DPO",
+          "level": 3,
+          "line": 1197
+        },
+        {
+          "heading": "Step 4: evaluate DPO",
+          "level": 3,
+          "line": 1215
+        },
+        {
+          "heading": "Variation A: Reward Modeling",
+          "level": 3,
+          "line": 1227
+        },
+        {
+          "heading": "Variation B: KTO",
+          "level": 3,
+          "line": 1235
+        },
+        {
+          "heading": "Variation C: ORPO",
+          "level": 3,
+          "line": 1241
+        },
+        {
+          "heading": "Preference-data failure modes",
+          "level": 3,
+          "line": 1247
+        },
+        {
+          "heading": "Lab report",
+          "level": 3,
+          "line": 1257
+        },
+        {
+          "heading": "Module 14 - Evaluate like an experimenter",
+          "level": 2,
+          "line": 1263
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 1265
+        },
+        {
+          "heading": "Evaluation starts with a product claim",
+          "level": 3,
+          "line": 1270
+        },
+        {
+          "heading": "Three evaluation layers",
+          "level": 3,
+          "line": 1279
+        },
+        {
+          "heading": "Training, validation, and test",
+          "level": 3,
+          "line": 1287
+        },
+        {
+          "heading": "Read loss curves carefully",
+          "level": 3,
+          "line": 1296
+        },
+        {
+          "heading": "Useful metrics",
+          "level": 3,
+          "line": 1309
+        },
+        {
+          "heading": "Hyperparameter strategy",
+          "level": 3,
+          "line": 1322
+        },
+        {
+          "heading": "Reproducibility record",
+          "level": 3,
+          "line": 1334
+        },
+        {
+          "heading": "Exercise: design an evaluation card",
+          "level": 3,
+          "line": 1349
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 1355
+        },
+        {
+          "heading": "Module 15 - Operate jobs and use artifacts",
+          "level": 2,
+          "line": 1361
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 1363
+        },
+        {
+          "heading": "Why training runs in another process",
+          "level": 3,
+          "line": 1368
+        },
+        {
+          "heading": "Durable run layout",
+          "level": 3,
+          "line": 1381
+        },
+        {
+          "heading": "State machine",
+          "level": 3,
+          "line": 1398
+        },
+        {
+          "heading": "Logs and error handling",
+          "level": 3,
+          "line": 1421
+        },
+        {
+          "heading": "Base-versus-adapter comparison",
+          "level": 3,
+          "line": 1428
+        },
+        {
+          "heading": "Publishing to Hugging Face",
+          "level": 3,
+          "line": 1435
+        },
+        {
+          "heading": "Ollama boundary",
+          "level": 3,
+          "line": 1441
+        },
+        {
+          "heading": "GPU memory cleanup",
+          "level": 3,
+          "line": 1447
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 1454
+        },
+        {
+          "heading": "Module 16 - Read and extend the repository",
+          "level": 2,
+          "line": 1460
+        },
+        {
+          "heading": "Objectives",
+          "level": 3,
+          "line": 1462
+        },
+        {
+          "heading": "Runtime architecture",
+          "level": 3,
+          "line": 1467
+        },
+        {
+          "heading": "Contract-first flow",
+          "level": 3,
+          "line": 1486
+        },
+        {
+          "heading": "Dataset boundary",
+          "level": 3,
+          "line": 1501
+        },
+        {
+          "heading": "Trainer boundary",
+          "level": 3,
+          "line": 1507
+        },
+        {
+          "heading": "Job boundary",
+          "level": 3,
+          "line": 1514
+        },
+        {
+          "heading": "Security controls",
+          "level": 3,
+          "line": 1520
+        },
+        {
+          "heading": "Testing layers",
+          "level": 3,
+          "line": 1533
+        },
+        {
+          "heading": "Maintainer exercise",
+          "level": 3,
+          "line": 1552
+        },
+        {
+          "heading": "Checkpoint",
+          "level": 3,
+          "line": 1559
+        },
+        {
+          "heading": "Module 17 - Capstone: train a defensible specialist",
+          "level": 2,
+          "line": 1565
+        },
+        {
+          "heading": "Goal",
+          "level": 3,
+          "line": 1567
+        },
+        {
+          "heading": "Deliverable 1: task charter",
+          "level": 3,
+          "line": 1572
+        },
+        {
+          "heading": "Deliverable 2: baseline and evaluation",
+          "level": 3,
+          "line": 1584
+        },
+        {
+          "heading": "Deliverable 3: data card",
+          "level": 3,
+          "line": 1590
+        },
+        {
+          "heading": "Deliverable 4: experiment plan",
+          "level": 3,
+          "line": 1598
+        },
+        {
+          "heading": "Deliverable 5: execution record",
+          "level": 3,
+          "line": 1604
+        },
+        {
+          "heading": "Deliverable 6: evaluation report",
+          "level": 3,
+          "line": 1609
+        },
+        {
+          "heading": "Deliverable 7: release decision",
+          "level": 3,
+          "line": 1615
+        },
+        {
+          "heading": "Mastery rubric",
+          "level": 3,
+          "line": 1626
+        },
+        {
+          "heading": "Appendix A - Checkpoint answers",
+          "level": 2,
+          "line": 1639
+        },
+        {
+          "heading": "Module 1",
+          "level": 3,
+          "line": 1641
+        },
+        {
+          "heading": "Module 2",
+          "level": 3,
+          "line": 1648
+        },
+        {
+          "heading": "Module 3",
+          "level": 3,
+          "line": 1656
+        },
+        {
+          "heading": "Module 4",
+          "level": 3,
+          "line": 1663
+        },
+        {
+          "heading": "Module 5",
+          "level": 3,
+          "line": 1669
+        },
+        {
+          "heading": "Module 6",
+          "level": 3,
+          "line": 1676
+        },
+        {
+          "heading": "Module 7",
+          "level": 3,
+          "line": 1682
+        },
+        {
+          "heading": "Module 8",
+          "level": 3,
+          "line": 1688
+        },
+        {
+          "heading": "Module 9",
+          "level": 3,
+          "line": 1694
+        },
+        {
+          "heading": "Module 10",
+          "level": 3,
+          "line": 1700
+        },
+        {
+          "heading": "Module 11",
+          "level": 3,
+          "line": 1706
+        },
+        {
+          "heading": "Module 14",
+          "level": 3,
+          "line": 1713
+        },
+        {
+          "heading": "Module 15",
+          "level": 3,
+          "line": 1719
+        },
+        {
+          "heading": "Module 16",
+          "level": 3,
+          "line": 1725
+        },
+        {
+          "heading": "Appendix B - Formula and settings reference",
+          "level": 2,
+          "line": 1731
+        },
+        {
+          "heading": "Appendix C - Troubleshooting by boundary",
+          "level": 2,
+          "line": 1759
+        },
+        {
+          "heading": "Appendix D - Glossary",
+          "level": 2,
+          "line": 1776
+        },
+        {
+          "heading": "Appendix E - Official references",
+          "level": 2,
+          "line": 1863
+        },
+        {
+          "heading": "Further foundational papers",
+          "level": 3,
+          "line": 1883
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 197
+      }
+    },
+    {
+      "path": "USAGE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 408,
+      "nonEmptyLines": 284,
+      "sections": [
+        {
+          "heading": "Usage Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Prepare the computer",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "2. Configure Hugging Face access",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "3. Launch the application",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Read-only showcase",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Platform launch",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Manual launch",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "4. Read the System and GPU memory pages",
+          "level": 2,
+          "line": 107
+        },
+        {
+          "heading": "5. Select a dataset and model",
+          "level": 2,
+          "line": 144
+        },
+        {
+          "heading": "Model",
+          "level": 3,
+          "line": 146
+        },
+        {
+          "heading": "Hugging Face dataset",
+          "level": 3,
+          "line": 156
+        },
+        {
+          "heading": "Uploaded dataset",
+          "level": 3,
+          "line": 162
+        },
+        {
+          "heading": "Inspect before continuing",
+          "level": 3,
+          "line": 168
+        },
+        {
+          "heading": "6. Configure training",
+          "level": 2,
+          "line": 212
+        },
+        {
+          "heading": "Choose Approach and Method",
+          "level": 3,
+          "line": 217
+        },
+        {
+          "heading": "Choose the training backend",
+          "level": 3,
+          "line": 230
+        },
+        {
+          "heading": "Choose a preset",
+          "level": 3,
+          "line": 238
+        },
+        {
+          "heading": "Optional Hub upload",
+          "level": 3,
+          "line": 272
+        },
+        {
+          "heading": "7. Start and monitor a run",
+          "level": 2,
+          "line": 278
+        },
+        {
+          "heading": "Cancel",
+          "level": 3,
+          "line": 297
+        },
+        {
+          "heading": "Stop LoRA Studio",
+          "level": 3,
+          "line": 303
+        },
+        {
+          "heading": "Resume",
+          "level": 3,
+          "line": 315
+        },
+        {
+          "heading": "8. Find the results",
+          "level": 2,
+          "line": 320
+        },
+        {
+          "heading": "9. Compare base and adapter",
+          "level": 2,
+          "line": 338
+        },
+        {
+          "heading": "10. Use the Ollama playground",
+          "level": 2,
+          "line": 347
+        },
+        {
+          "heading": "Troubleshooting",
+          "level": 2,
+          "line": 354
+        },
+        {
+          "heading": "The launcher cannot install `uv`",
+          "level": 3,
+          "line": 356
+        },
+        {
+          "heading": "The browser does not open",
+          "level": 3,
+          "line": 362
+        },
+        {
+          "heading": "Hugging Face returns 401 or 403",
+          "level": 3,
+          "line": 366
+        },
+        {
+          "heading": "Dataset format is not detected",
+          "level": 3,
+          "line": 371
+        },
+        {
+          "heading": "CUDA is not detected",
+          "level": 3,
+          "line": 376
+        },
+        {
+          "heading": "CUDA runs out of memory",
+          "level": 3,
+          "line": 384
+        },
+        {
+          "heading": "Resume says no checkpoint is available",
+          "level": 3,
+          "line": 391
+        },
+        {
+          "heading": "Ollama shows no models",
+          "level": 3,
+          "line": 396
+        },
+        {
+          "heading": "Safe use",
+          "level": 2,
+          "line": 400
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 35
+      }
+    },
+    {
+      "path": "pyproject.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 49,
+      "nonEmptyLines": 44,
+      "sections": [
+        {
+          "heading": "project",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "project.scripts",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "build-system",
+          "level": 1,
+          "line": 26
+        },
+        {
+          "heading": "[[tool.uv.index]]",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "tool.uv.sources",
+          "level": 3,
+          "line": 35
+        },
+        {
+          "heading": "dependency-groups",
+          "level": 1,
+          "line": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    }
+  ]
+}

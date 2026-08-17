@@ -1,0 +1,92 @@
+{
+  "nodes": [
+    {
+      "id": "config:docs/.tutorial-build.json",
+      "type": "config",
+      "name": ".tutorial-build.json",
+      "filePath": "docs/.tutorial-build.json",
+      "summary": "Generated-docs manifest: SHA-256 digests for handbook HTML, site assets, and the PDF, with TUTORIAL.md recorded as the source.",
+      "tags": [
+        "configuration",
+        "tutorial",
+        "build-manifest",
+        "integrity-hashes"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:docs/01-learn-the-map-before-the-territory.html",
+      "type": "file",
+      "name": "01-learn-the-map-before-the-territory.html",
+      "filePath": "docs/01-learn-the-map-before-the-territory.html",
+      "summary": "Generated Module 1 page: the studio trains PEFT adapters (LoRA, QLoRA, OFT, QOFT) on a frozen Hugging Face causal LM using SFT, RM, DPO, KTO, or ORPO; covers the learning loop, vocabulary, and recommended course paths.",
+      "tags": [
+        "tutorial",
+        "static-site",
+        "orientation",
+        "peft",
+        "adapters"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/16-read-and-extend-the-repository.html",
+      "type": "file",
+      "name": "16-read-and-extend-the-repository.html",
+      "filePath": "docs/16-read-and-extend-the-repository.html",
+      "summary": "Generated Module 16 page tracing UI to TrainingConfig, jobs, worker, and training; documents dataset, trainer, and job boundaries, security controls, test layers, and CI including build_tutorial.py --check.",
+      "tags": [
+        "tutorial",
+        "static-site",
+        "architecture",
+        "security",
+        "testing"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:docs/01-learn-the-map-before-the-territory.html",
+      "target": "document:TUTORIAL.md",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/01-learn-the-map-before-the-territory.html",
+      "target": "file:scripts/build_tutorial.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/16-read-and-extend-the-repository.html",
+      "target": "document:TUTORIAL.md",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/16-read-and-extend-the-repository.html",
+      "target": "file:scripts/build_tutorial.py",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:docs/.tutorial-build.json",
+      "target": "file:docs/01-learn-the-map-before-the-territory.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/.tutorial-build.json",
+      "target": "file:docs/16-read-and-extend-the-repository.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

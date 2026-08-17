@@ -1,0 +1,25 @@
+{
+  "projectRoot": "D:\\AI\\Github\\lora-qlora-fine-tuning-app",
+  "batchFiles": [
+    {"path": "CHANGELOG.md", "language": "markdown", "sizeLines": 116, "fileCategory": "docs"},
+    {"path": "CONTRIBUTING.md", "language": "markdown", "sizeLines": 113, "fileCategory": "docs"},
+    {"path": "README.md", "language": "markdown", "sizeLines": 182, "fileCategory": "docs"},
+    {"path": "SECURITY.md", "language": "markdown", "sizeLines": 105, "fileCategory": "docs"},
+    {"path": "SETUP.md", "language": "markdown", "sizeLines": 731, "fileCategory": "docs"},
+    {"path": "TECHNICAL.md", "language": "markdown", "sizeLines": 842, "fileCategory": "docs"},
+    {"path": "TUTORIAL.md", "language": "markdown", "sizeLines": 1890, "fileCategory": "docs"},
+    {"path": "USAGE.md", "language": "markdown", "sizeLines": 408, "fileCategory": "docs"},
+    {"path": "pyproject.toml", "language": "toml", "sizeLines": 49, "fileCategory": "config"}
+  ],
+  "batchImportData": {
+    "CHANGELOG.md": [],
+    "CONTRIBUTING.md": [],
+    "README.md": [],
+    "SECURITY.md": [],
+    "SETUP.md": [],
+    "TECHNICAL.md": [],
+    "TUTORIAL.md": [],
+    "USAGE.md": [],
+    "pyproject.toml": []
+  }
+}

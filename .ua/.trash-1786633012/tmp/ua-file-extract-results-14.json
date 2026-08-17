@@ -1,0 +1,83 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [
+    ".gitattributes",
+    "demo/requirements.txt"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "results": [
+    {
+      "path": "demo/fixtures/showcase.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 59,
+      "nonEmptyLines": 59,
+      "sections": [
+        {
+          "heading": "training_config",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "job_status",
+          "level": 1,
+          "line": 33
+        },
+        {
+          "heading": "dataset_preview",
+          "level": 1,
+          "line": 40
+        },
+        {
+          "heading": "relative_loss",
+          "level": 1,
+          "line": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
+      }
+    },
+    {
+      "path": "demo/streamlit_app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 108,
+      "nonEmptyLines": 96,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "docs/assets/search-index.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}
