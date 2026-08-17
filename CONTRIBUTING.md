@@ -111,3 +111,10 @@ datasets, adapters, checkpoints, or analysis output.
 - [ ] The pull request describes user impact and known limitations.
 
 Maintainers may request changes to keep the project secure, understandable, and within scope.
+
+## No financial contributions
+
+This project does not want or accept donations, sponsorships, or any other financial support, and
+never will. LoRA Fine-tune Studio is free and community-driven. The most valuable way to give back
+is a well-written bug report, a focused pull request, or a documentation fix — see
+[SUPPORT.md](SUPPORT.md).

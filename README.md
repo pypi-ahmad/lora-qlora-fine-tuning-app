@@ -157,6 +157,8 @@ production-quality adapter.
 | [PDF handbook](docs/downloads/lora-finetune-studio-zero-to-mastery.pdf) | Complete 50-page course for offline reading |
 | [Contributing guide](CONTRIBUTING.md) | Development workflow, checks, and pull-request requirements |
 | [Security policy](SECURITY.md) | Security model and private vulnerability reporting |
+| [Support](SUPPORT.md) | Where to ask usage questions and what response time to expect |
+| [Disclaimer](DISCLAIMER.md) | Data and model responsibility, no warranty, no financial support wanted |
 | [Changelog](CHANGELOG.md) | User-visible release history |
 
 ## Project boundaries
@@ -170,12 +172,27 @@ production-quality adapter.
 
 ## Help and contributing
 
+This project is free, open-source, and community-driven. Cloning, running, testing, filing bugs,
+suggesting features, and sending pull requests are all welcome.
+
 Use [GitHub Issues](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/issues) for reproducible
 bugs and focused feature requests. Before contributing, read [CONTRIBUTING.md](CONTRIBUTING.md) and
-the [Code of Conduct](CODE_OF_CONDUCT.md).
+the [Code of Conduct](CODE_OF_CONDUCT.md). For usage questions, see [SUPPORT.md](SUPPORT.md).
 
 Do not publish vulnerabilities or credentials in an issue. Follow [SECURITY.md](SECURITY.md) for
 private vulnerability reporting.
+
+> [!NOTE]
+> This project does not want or accept donations, sponsorships, or any other financial support, and
+> never will. It's free to use and free to modify. If you'd like to give back, the most valuable
+> thing you can do is contribute code, tests, docs, or a well-written bug report.
+
+## You run it — you own the risk
+
+You run this application on your own machine with your own Hugging Face token. All data and models
+you upload, download, train on, or push to the Hugging Face Hub are 100% your own responsibility —
+see [DISCLAIMER.md](DISCLAIMER.md) for the full terms and [SECURITY.md](SECURITY.md) for the trust
+boundaries this application crosses.
 
 ## License
 
