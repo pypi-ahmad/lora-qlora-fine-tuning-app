@@ -4,6 +4,8 @@
 [![Release](https://img.shields.io/github/v/release/pypi-ahmad/lora-qlora-fine-tuning-app)](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2457D6.svg)](LICENSE)
 
+Repository: [github.com/pypi-ahmad/lora-qlora-fine-tuning-app](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app)
+
 A local, guided Streamlit application for parameter-efficient LLM post-training on NVIDIA GPUs.
 Prepare datasets, configure a supported recipe, train an adapter, monitor the run, and compare the
 result with the base model from one interface.
@@ -15,6 +17,21 @@ result with the base model from one interface.
 The current release is [v0.5.1](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases/tag/v0.5.1).
 It documents the read-only showcase and the portable tutorial checks. Training behavior is unchanged
 from v0.5.0. See [CHANGELOG.md](CHANGELOG.md).
+
+## Contents
+
+- [Interactive showcase](#interactive-showcase)
+- [Highlights](#highlights)
+- [Training support](#training-support)
+- [Workflow](#workflow)
+- [Requirements](#requirements)
+- [Quick start](#quick-start)
+- [First smoke test](#first-smoke-test)
+- [Documentation](#documentation)
+- [Project boundaries](#project-boundaries)
+- [Help and contributing](#help-and-contributing)
+- [You run it — you own the risk](#you-run-it--you-own-the-risk)
+- [License](#license)
 
 ## Interactive showcase
 
