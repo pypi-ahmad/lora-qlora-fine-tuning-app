@@ -246,14 +246,14 @@ controllers.
 
 The eight sidebar pages are:
 
-1. System — runtime, GPU, software, Unsloth, and token readiness;
-2. Dataset — source inspection, mapping, and the ordered dataset collection;
-3. Model — model ID/revision validation and parameter-count inspection;
-4. GPU memory — live allocator figures and safe cache cleanup;
-5. Training — linked approach/method choices and trainer settings;
-6. Review & run — effective configuration, blockers, and FIFO submission;
-7. Monitor — queue order, two-second status polling, logs, cancellation, resume, and evaluation;
-8. Ollama playground — chat with an already-installed local Ollama model.
+1. System: runtime, GPU, software, Unsloth, and token readiness;
+2. Dataset: source inspection, mapping, and the ordered dataset collection;
+3. Model: model ID/revision validation and parameter-count inspection;
+4. GPU memory: live allocator figures and safe cache cleanup;
+5. Training: linked approach/method choices and trainer settings;
+6. Review & run: effective configuration, blockers, and FIFO submission;
+7. Monitor: queue order, two-second status polling, logs, cancellation, resume, and evaluation;
+8. Ollama playground: chat with an already-installed local Ollama model.
 
 Important session-state groups:
 
