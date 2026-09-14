@@ -1,5 +1,15 @@
 """Build the tutorial website and PDF from TUTORIAL.md.
 
+`run(check=False)` regenerates docs/*.html and output/pdf/*.pdf in place.
+`run(check=True)` (used by CI) instead rebuilds into a temporary directory
+and diffs the result against the committed output, so a stale commit fails
+the check rather than silently passing. PDF bytes are not expected to be
+byte-identical across builds (ReportLab isn't that deterministic even with
+rl_config.invariant set — see below), so the check compares PDF pages by
+extracted text/size/metadata (pdf_content_signature) and compares generated
+HTML/CSS/JS/JSON only after CRLF normalization (portable_text_bytes), never
+by raw bytes.
+
 Usage:
     uv run --group docs python scripts/build_tutorial.py
     uv run --group docs python scripts/build_tutorial.py --check
@@ -21,6 +31,10 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 from markdown import markdown
 from reportlab import rl_config
 
+# Must run before any PDF is built: enables ReportLab's deterministic output
+# mode (fixed document IDs/dates) so repeated builds are closer to
+# reproducible. Import order below matters too — this has to execute before
+# reportlab.platypus is imported.
 rl_config.invariant = 1
 
 from pypdf import PdfReader
@@ -88,6 +102,10 @@ def slugify(value: str) -> str:
     return value or "chapter"
 
 
+# Format contract on TUTORIAL.md: every level-two ("## ") heading becomes one
+# chapter; content before the first such heading becomes the index-page
+# preamble. Adding a "## " heading not meant as a chapter boundary will
+# silently create an extra chapter.
 def split_source(source: str) -> tuple[str, list[tuple[str, str]]]:
     headings = list(re.finditer(r"(?m)^## (.+?)\s*$", source))
     if not headings:
@@ -422,6 +440,11 @@ class HandbookDocTemplate(BaseDocTemplate):
         )
         canvas.restoreState()
 
+    # ReportLab calls this after every flowable is drawn. The "TOCEntry"
+    # notification is consumed by the TableOfContents flowable across
+    # BaseDocTemplate.multiBuild's multiple passes to compute page numbers,
+    # while bookmarkPage/addOutlineEntry build the PDF's own outline/bookmark
+    # pane independently of that TOC page.
     def afterFlowable(self, flowable: Any) -> None:
         if not isinstance(flowable, Paragraph):
             return
@@ -873,6 +896,10 @@ def portable_text_bytes(data: bytes, relative: str) -> bytes:
     return data
 
 
+# Checks both directions: files that should exist but are missing/stale, and
+# files present under root's manifest that expected no longer accounts for
+# (e.g. a chapter renamed or removed from TUTORIAL.md leaving its old .html
+# behind).
 def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
     complete = dict(expected)
     complete[MANIFEST_NAME] = manifest_bytes(complete)

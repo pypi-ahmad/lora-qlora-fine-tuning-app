@@ -1,6 +1,6 @@
 # Support
 
-This is a free, open-source, community-driven project maintained in spare time — there is no paid support tier, no SLA, and no dedicated support staff.
+This is a free, open-source, community-driven project maintained in spare time. There is no paid support tier, no SLA, and no dedicated support staff.
 
 ## Getting help
 
@@ -11,7 +11,7 @@ This is a free, open-source, community-driven project maintained in spare time �
 
 ## What to expect
 
-Responses come as time allows — there's no guaranteed turnaround. A well-described issue (the exact error, your OS/GPU/driver/CUDA version, and whether the readiness checks on **System** passed) gets resolved faster simply because there's less back-and-forth needed.
+Responses come as time allows; there's no guaranteed turnaround. A well-described issue (the exact error, your OS/GPU/driver/CUDA version, and whether the readiness checks on **System** passed) gets resolved faster simply because there's less back-and-forth needed.
 
 ## No financial support needed or wanted
 

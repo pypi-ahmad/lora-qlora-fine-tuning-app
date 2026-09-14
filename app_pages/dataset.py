@@ -1,4 +1,15 @@
-"""Dataset collection, inspection, and mapping page."""
+"""Dataset collection, inspection, and mapping page.
+
+Owns the per-session working list of DatasetSpec/DatasetInspection pairs
+(st.session_state.dataset_specs / dataset_inspections) that training.py
+later reads. A dataset only joins that saved list once inspection succeeds
+and any required column mapping is confirmed via save_pending_dataset;
+until then it lives in the separate pending_dataset_* slot so a
+half-configured dataset never contaminates the saved list.
+
+Read next: lora_finetune_studio/sources.py for inspect_dataset/format
+detection, or app_pages/training.py for how the saved list is consumed.
+"""
 
 from __future__ import annotations
 
@@ -36,6 +47,9 @@ def source_label(spec: DatasetSpec) -> str:
     return Path(source).name if spec.local_path else source
 
 
+# Identity deliberately excludes format/column mapping: two specs that point
+# at the same source, config, and split are the same dataset even if one is
+# still unmapped, so duplicate-selection checks below compare on this tuple.
 def source_identity(
     spec: DatasetSpec,
 ) -> tuple[str, str | None, str | None, str | None, str]:
@@ -72,6 +86,10 @@ def save_pending_dataset(spec: DatasetSpec, inspection: DatasetInspection) -> No
         raise ValueError("This dataset source is already selected.")
     if spec.format not in recipe.dataset_formats:
         raise ValueError(f"{approach} does not support `{spec.format}` datasets.")
+    # Invariant enforced here (not by DatasetSpec itself): every dataset saved
+    # for this session must share one canonical format. Why that's required
+    # on the consuming side is not visible from this file; see
+    # lora_finetune_studio/training.py's dataset-loading step.
     compatible_formats = {item.format for item in other_specs if is_compatible(item)}
     if compatible_formats and spec.format not in compatible_formats:
         expected = next(iter(compatible_formats))

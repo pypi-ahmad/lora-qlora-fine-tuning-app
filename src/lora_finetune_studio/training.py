@@ -1,4 +1,14 @@
-"""Recipe-driven TRL training worker implementation."""
+"""Recipe-driven TRL training worker implementation.
+
+Runs only inside the isolated worker subprocess (see worker.py), never in the main
+Streamlit process — it imports torch/transformers/peft/trl, and optionally unsloth,
+which the main process must not load. train() is the single entry point: it
+validates the config, loads and normalizes datasets, builds the quantized/adapter
+model, selects the matching TRL trainer, trains, evaluates, saves, and optionally
+pushes to the Hub. Two backends share this file: standard PEFT/TRL (both platforms)
+and optional Unsloth acceleration (Windows only, LoRA/QLoRA only) — most functions
+branch on config.use_unsloth to pick between them.
+"""
 
 from __future__ import annotations
 
@@ -36,17 +46,30 @@ _QOFT_PEFT_PATCHED = False
 
 
 class StatusCallback(TrainerCallback):
+    """Mirrors TRL's per-step logs into the durable status.json the UI polls.
+
+    on_log fires on the trainer's own logging cadence (logging_steps=1 here), so
+    this is called frequently during training; each call fully overwrites
+    status.json's progress/message/metrics rather than accumulating history.
+    """
+
     def __init__(self, status_path: Path) -> None:
         self.status_path = status_path
 
     def on_log(self, args, state, control, logs=None, **kwargs):
         del args, control, kwargs
         logs = logs or {}
+        # Only numeric log values are forwarded; TRL's logs dict can include
+        # non-numeric entries (e.g. a formatted "epoch" string in some versions)
+        # that would not survive round-tripping through JobStatus.metrics as floats.
         metrics = {
             key: float(value)
             for key, value in logs.items()
             if isinstance(value, (int, float))
         }
+        # Best-effort progress fraction for the Monitor page's progress bar; not an
+        # ETA, and max_steps defaults to 1 here only to avoid a division by zero
+        # before the trainer has computed its real max_steps.
         progress = min(state.global_step / max(state.max_steps, 1), 1.0)
         status = JobStatus(
             state=JobState.RUNNING,
@@ -59,6 +82,14 @@ class StatusCallback(TrainerCallback):
 
 
 def _normalize_dataset(dataset: Dataset, spec: DatasetSpec) -> Dataset:
+    """Map one loaded dataset onto its saved canonical column shape.
+
+    spec.format was already decided at inspection time (sources.inspect_dataset) or
+    by explicit user mapping; this trusts that decision and only renames/selects
+    columns to match it. Every branch drops columns not part of the canonical shape,
+    which is why the multiple datasets combined in _load_and_combine_datasets can be
+    concatenated afterward — they are guaranteed the same schema.
+    """
     if spec.format == "text" and spec.text_column and spec.text_column != "text":
         return dataset.map(
             lambda row: {"text": str(row[spec.text_column])},
@@ -122,6 +153,8 @@ def _load_and_combine_datasets(config: TrainingConfig, token: str | None) -> Dat
     if not normalized:
         raise ValueError("At least one dataset is required.")
     try:
+        # Concatenation, not interleaving or balancing: each source contributes rows
+        # in proportion to its own row count, with no per-source weighting.
         combined = (
             concatenate_datasets(normalized) if len(normalized) > 1 else normalized[0]
         )
@@ -129,9 +162,13 @@ def _load_and_combine_datasets(config: TrainingConfig, token: str | None) -> Dat
         raise ValueError(
             "Selected datasets have incompatible schemas after normalization."
         ) from error
+    # Multiple sources are shuffled up front so concatenation order does not bias
+    # which rows survive a later max_samples cap or an eval split.
     if len(normalized) > 1:
         combined = combined.shuffle(seed=config.seed)
     if config.max_samples and len(combined) > config.max_samples:
+        # A single source is shuffled here (not above) only when it is actually
+        # being truncated, so a single fully-used dataset keeps its original order.
         if len(normalized) == 1:
             combined = combined.shuffle(seed=config.seed)
         combined = combined.select(range(config.max_samples))
@@ -141,6 +178,9 @@ def _load_and_combine_datasets(config: TrainingConfig, token: str | None) -> Dat
 def _split_dataset(
     dataset: Dataset, config: TrainingConfig
 ) -> tuple[Dataset, Dataset | None]:
+    # The 10-row floor is a practical guard, not a statistical guarantee: below it,
+    # eval_ratio (default 0.1) could produce a 0- or 1-row eval set, so evaluation is
+    # skipped entirely rather than running on a near-empty split.
     if not config.eval_enabled or len(dataset) < 10:
         return dataset, None
     split = dataset.train_test_split(test_size=config.eval_ratio, seed=config.seed)
@@ -148,10 +188,19 @@ def _split_dataset(
 
 
 def _format_conversations(examples: dict[str, Any], tokenizer: Any) -> list[str]:
+    """SFTTrainer formatting_func for the "messages" dataset format.
+
+    TRL calls this with either one example's fields or a batch, so the same
+    examples["messages"] value can be a single conversation (list of role/content
+    dicts) or a list of conversations. isinstance(messages[0], dict) distinguishes
+    the two shapes without relying on a batch-size hint from the caller.
+    """
     messages = examples["messages"]
     conversations = (
         [messages] if messages and isinstance(messages[0], dict) else messages
     )
+    # No generation prompt is appended: this formats complete conversations for
+    # training, not a prompt to generate a continuation for.
     return [
         tokenizer.apply_chat_template(
             conversation,
@@ -163,6 +212,13 @@ def _format_conversations(examples: dict[str, Any], tokenizer: Any) -> list[str]
 
 
 def _quantization_config(config: TrainingConfig, dtype: torch.dtype) -> Any | None:
+    """Return a 4-bit NF4 config for the quantized modes, else None (full precision).
+
+    dtype here is the *compute* dtype used for the dequantized math (BF16/FP16), not
+    the storage dtype: bnb_4bit_compute_dtype controls that separately from the 4-bit
+    NF4 storage, which is why QLoRA/QOFT still train in BF16/FP16 despite loading
+    weights in 4 bits.
+    """
     if config.peft_mode not in {PeftMode.QLORA, PeftMode.QOFT}:
         return None
     return BitsAndBytesConfig(
@@ -174,6 +230,10 @@ def _quantization_config(config: TrainingConfig, dtype: torch.dtype) -> Any | No
 
 
 def _peft_config(config: TrainingConfig) -> LoraConfig | OFTConfig:
+    # Reward Modeling adds a classification head ("score") on top of the base model;
+    # modules_to_save keeps it fully trainable (not just adapter-wrapped) and ensures
+    # it is saved alongside the adapter, since a fresh head has no pretrained weights
+    # to fall back to.
     reward_modules = ["score"] if config.approach is TrainingApproach.REWARD else None
     task_type = "SEQ_CLS" if config.approach is TrainingApproach.REWARD else "CAUSAL_LM"
     if config.peft_mode in {PeftMode.LORA, PeftMode.QLORA}:
@@ -197,7 +257,15 @@ def _peft_config(config: TrainingConfig) -> LoraConfig | OFTConfig:
 
 
 def _patch_qoft_peft_compatibility() -> None:
-    """Bridge PEFT 0.20's mismatched 4-bit OFT dispatcher argument name."""
+    """Bridge PEFT 0.20's mismatched 4-bit OFT dispatcher argument name.
+
+    PEFT's own 4-bit OFT dispatch code passes the config under a different keyword
+    (config vs oft_config) than Linear4bit.__init__ was written to accept for this
+    installed version; this monkeypatch accepts either without touching PEFT itself.
+    Guarded by a module-level flag rather than reapplying the patch each call: it
+    patches the class (not an instance), so re-patching would just wrap the already
+    -patched __init__ again on every QOFT run in this process.
+    """
     global _QOFT_PEFT_PATCHED
 
     from peft.tuners.oft.bnb import Linear4bit
@@ -232,6 +300,14 @@ def _patch_qoft_peft_compatibility() -> None:
 def _load_model_and_tokenizer(
     config: TrainingConfig, token: str | None, compute_dtype: torch.dtype
 ) -> tuple[Any, Any, LoraConfig | OFTConfig | None]:
+    """Load the base model/tokenizer and, for the standard path, a PEFT config.
+
+    Returns a non-None peft_config only for the standard backend: TRL applies that
+    config itself. The Unsloth path instead injects the adapter here directly (via
+    FastLanguageModel.get_peft_model / get_peft_model) and always returns None,
+    since Unsloth's model object already carries its own adapter by the time this
+    returns.
+    """
     if config.use_unsloth:
         if config.peft_mode not in {PeftMode.LORA, PeftMode.QLORA}:
             raise ValueError("Unsloth acceleration supports only LoRA and QLoRA.")
@@ -243,11 +319,17 @@ def _load_model_and_tokenizer(
             "load_in_4bit": config.peft_mode is PeftMode.QLORA,
             "load_in_16bit": config.peft_mode is PeftMode.LORA,
             "token": token,
+            # use_exact_model_name/revision pairing follows Unsloth's own
+            # FastLanguageModel.from_pretrained API (external package, not vendored
+            # here); revision is passed only for a non-default value, with
+            # use_exact_model_name flipped to match.
             "revision": (
                 config.model_revision if config.model_revision != "main" else None
             ),
             "use_exact_model_name": config.model_revision != "main",
             "trust_remote_code": False,
+            # Unsloth's own optimized gradient checkpointing implementation is
+            # selected by passing the string "unsloth" (not True) to this flag.
             "use_gradient_checkpointing": (
                 "unsloth" if config.gradient_checkpointing else False
             ),
@@ -256,6 +338,11 @@ def _load_model_and_tokenizer(
             load_options["num_labels"] = 1
         model, tokenizer = fast_language_model.from_pretrained(**load_options)
         if config.approach is TrainingApproach.REWARD:
+            # Reward Modeling uses plain PEFT's get_peft_model with the shared
+            # _peft_config (SEQ_CLS task type, "score" head in modules_to_save)
+            # instead of Unsloth's own get_peft_model below, so the classification
+            # head PEFT expects is preserved rather than replaced by Unsloth's
+            # generative-model adapter injection.
             model = get_peft_model(model, _peft_config(config))
             return model, tokenizer, None
         model = fast_language_model.get_peft_model(
@@ -313,6 +400,9 @@ def _load_model_and_tokenizer(
 
 
 def _apply_unsloth_trainer_patch(approach: TrainingApproach) -> None:
+    # getattr with a None default, not a plain attribute access: not every installed
+    # Unsloth release exposes both patch functions, and this call site treats an
+    # absent patch as "nothing to do" rather than a hard failure.
     if approach not in {TrainingApproach.DPO, TrainingApproach.KTO}:
         return
     unsloth = import_module("unsloth")
@@ -326,6 +416,13 @@ def _apply_unsloth_trainer_patch(approach: TrainingApproach) -> None:
 
 
 def _trainer_components(approach: TrainingApproach) -> tuple[type, type]:
+    """Resolve the TRL config/trainer classes for an approach across TRL versions.
+
+    Some trainers have moved between TRL's top-level namespace and
+    trl.experimental.<name> across releases; checking the top level first and
+    falling back to the experimental module lets this work against more than one
+    pinned TRL version without a hard-coded version check.
+    """
     trl = import_module("trl")
     names = {
         TrainingApproach.SFT: ("SFTConfig", "SFTTrainer"),
@@ -365,6 +462,9 @@ def _trainer_config(
         "save_total_limit": 2,
         "report_to": "none",
         "seed": config.seed,
+        # Always False here: this app's own explicit push_to_hub step at the end of
+        # train() is what actually uploads, deliberately after local save and
+        # evaluation succeed. TRL must never push on its own from inside training.
         "push_to_hub": False,
         "hub_model_id": config.hub_model_id,
     }
@@ -377,6 +477,10 @@ def _trainer_config(
     }:
         options["beta"] = config.beta
     if config.use_unsloth:
+        # optim="adamw_8bit" pairs with Unsloth's recommended 8-bit optimizer.
+        # dataset_num_proc=1 forces single-process dataset mapping only on the
+        # Unsloth path; unclear from this file why multiprocess mapping is avoided
+        # here specifically (the standard backend sets no such override).
         options.update(optim="adamw_8bit", dataset_num_proc=1)
     return options
 
@@ -393,6 +497,9 @@ def _resolve_compute_dtype(
 
 
 def train(config: TrainingConfig, status_path: Path) -> dict[str, Any]:
+    # Re-validated here even though the UI already validated on save: config.json is
+    # untrusted once it round-trips through a file (e.g. an older or hand-edited run
+    # file), and this worker process must not assume the caller already checked it.
     errors = config.validate()
     if errors:
         raise ValueError(" ".join(errors))
@@ -464,6 +571,9 @@ def train(config: TrainingConfig, status_path: Path) -> dict[str, Any]:
     (output_dir / "training_config.json").write_text(
         json.dumps(config.to_dict(), indent=2), encoding="utf-8"
     )
+    # Hub publication happens last and only after local save/evaluation succeeded,
+    # so a network or auth failure here never prevents the local adapter from
+    # existing (see the push_to_hub=False note in _trainer_config above).
     if config.push_to_hub and config.hub_model_id:
         trained_model: Any = trainer.model
         trained_model.push_to_hub(config.hub_model_id, token=token)

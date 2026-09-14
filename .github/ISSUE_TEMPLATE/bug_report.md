@@ -6,7 +6,7 @@ labels: bug
 assignees: ''
 ---
 
-Thanks for taking the time to report this — please fill in as much as you can, but don't let a missing field stop you from posting.
+Thanks for taking the time to report this. Please fill in as much as you can, but don't let a missing field stop you from posting.
 
 ## What happened
 

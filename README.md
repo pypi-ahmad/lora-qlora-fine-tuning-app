@@ -207,8 +207,8 @@ private vulnerability reporting.
 ## You run it — you own the risk
 
 You run this application on your own machine with your own Hugging Face token. All data and models
-you upload, download, train on, or push to the Hugging Face Hub are 100% your own responsibility —
-see [DISCLAIMER.md](DISCLAIMER.md) for the full terms and [SECURITY.md](SECURITY.md) for the trust
+you upload, download, train on, or push to the Hugging Face Hub are 100% your own responsibility.
+See [DISCLAIMER.md](DISCLAIMER.md) for the full terms and [SECURITY.md](SECURITY.md) for the trust
 boundaries this application crosses.
 
 ## License

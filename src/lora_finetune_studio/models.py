@@ -1,4 +1,17 @@
-"""Shared data contracts for the UI and training worker."""
+"""Shared data contracts for the UI and training worker.
+
+These dataclasses are the JSON process boundary: the Streamlit process serializes
+TrainingConfig/JobStatus to config.json/status.json, and the training worker
+subprocess (a separate interpreter, possibly the isolated Unsloth environment)
+deserializes them back. Keep this module free of torch/transformers/streamlit
+imports so it stays cheap to import from either side of that boundary.
+
+Enum string values (not just names) are persisted to disk and read back by
+from_dict — renaming or removing one breaks resumability of existing run files
+under .runs/, not just in-memory state.
+
+Next file to read: jobs.py, which owns reading/writing these as durable run state.
+"""
 
 from __future__ import annotations
 
@@ -158,12 +171,18 @@ class TrainingConfig:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> TrainingConfig:
         values = dict(data)
+        # setdefault calls here backfill fields added to TrainingConfig after a run's
+        # config.json was first written, so older saved/resumable runs keep loading
+        # instead of raising a missing-argument error.
         values.setdefault("use_unsloth", False)
         values.setdefault("approach", TrainingApproach.SFT)
         values.setdefault("beta", 0.1)
         values.setdefault("compute_type", ComputeType.AUTO)
         values.setdefault("max_grad_norm", 1.0)
         dataset_values = values.pop("datasets", None)
+        # Legacy shape migration: early config.json files stored one singular
+        # "dataset" object instead of a "datasets" list. Wrap it into a one-item list
+        # so old run files remain loadable and resumable.
         legacy_dataset = values.pop("dataset", None)
         if dataset_values is None:
             dataset_values = [legacy_dataset] if legacy_dataset else []
@@ -187,6 +206,9 @@ class TrainingConfig:
             errors.append("Unsloth acceleration supports only LoRA and QLoRA.")
         if self.use_unsloth and self.compute_type is ComputeType.FP32:
             errors.append("Unsloth acceleration does not support FP32 compute.")
+        # A dataset's identity is its source coordinates, not object identity, so the
+        # same Hub repo/split (or the same uploaded file) added twice is rejected
+        # even though each DatasetSpec instance is otherwise distinct.
         identities: set[tuple[str, str | None, str | None, str | None, str]] = set()
         formats: set[str] = set()
         for index, dataset in enumerate(self.datasets, start=1):
@@ -341,6 +363,11 @@ def apply_preset(config: TrainingConfig, preset: Preset) -> TrainingConfig:
 
 
 def run_path(run_id: str, root: Path = Path(".runs")) -> Path:
+    # Trust boundary: run_id ends up in a filesystem path join below, so it is
+    # restricted to a fixed lowercase-alphanumeric-and-hyphen charset before that
+    # join happens. This blocks path traversal (e.g. "../") and absolute-path
+    # injection from any run_id that did not originate from jobs.create_run's own
+    # uuid4 generation (for example, one echoed back from a URL or form field).
     if not run_id or any(
         char not in "abcdefghijklmnopqrstuvwxyz0123456789-" for char in run_id
     ):

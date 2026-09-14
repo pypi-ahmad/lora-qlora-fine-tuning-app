@@ -1,4 +1,13 @@
-"""Live GPU memory page."""
+"""Live GPU memory page.
+
+Read-only allocator inspection plus a manual cache-release action. Cleanup
+is disabled while a job is active (see running_job below) because it can
+only release memory this Streamlit process holds, not memory owned by the
+isolated training worker process.
+
+Read next: lora_finetune_studio/hardware.py for cuda_memory_stats/
+release_unused_cuda_memory.
+"""
 
 import streamlit as st
 
@@ -39,6 +48,9 @@ elif clear_memory:
     try:
         release_unused_cuda_memory()
         memory_after = cuda_memory_stats()
+        # Clamped to 0: free VRAM can also drop between the two snapshots from
+        # unrelated allocations, in which case a "negative release" isn't
+        # meaningful to show.
         released_gb = max(
             0.0,
             memory_after.free_gb

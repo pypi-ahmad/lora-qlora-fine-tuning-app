@@ -1,4 +1,11 @@
-"""Hugging Face and local dataset boundary validation."""
+"""Hugging Face and local dataset boundary validation.
+
+This module is the trust boundary between user-supplied input (repository IDs/URLs,
+uploaded files) and the rest of the app: every Hub identifier and uploaded file used
+elsewhere is expected to have passed through parse_hf_repo/validate_upload first.
+Next file to read: training.py, which reloads and normalizes whatever this module
+resolved, inside the isolated worker process.
+"""
 
 from __future__ import annotations
 
@@ -28,6 +35,11 @@ def get_hf_token() -> str | None:
 
 
 def parse_hf_repo(value: str, *, repo_type: str) -> str:
+    # Untrusted input: this accepts either a bare "owner/name" ID or a full Hub URL,
+    # but deliberately rejects anything else (other hosts, non-HTTPS, nested file or
+    # revision paths, query strings, fragments) so callers only ever receive a plain
+    # two-segment repo ID, never a URL with attacker-controlled path segments to
+    # thread through to a filesystem or subprocess call downstream.
     candidate = value.strip().rstrip("/")
     if not candidate:
         raise ValueError("Repository is required.")
@@ -44,6 +56,10 @@ def parse_hf_repo(value: str, *, repo_type: str) -> str:
     }:
         raise ValueError("Only https://huggingface.co repository URLs are allowed.")
     parts = [unquote(part) for part in parsed.path.split("/") if part]
+    # Hub dataset URLs are prefixed with "datasets/" (e.g. huggingface.co/datasets/x/y)
+    # while model URLs are not; strip that segment only for the type it belongs to,
+    # and treat a dataset URL supplied where a model is expected as an explicit error
+    # rather than silently accepting it.
     if repo_type == "dataset" and parts[:1] == ["datasets"]:
         parts = parts[1:]
     if repo_type == "model" and parts[:1] in (["models"], ["datasets"]):
@@ -84,6 +100,10 @@ def validate_upload(filename: str, size: int) -> str:
 
 
 def save_upload(filename: str, content: bytes, root: Path = Path(".uploads")) -> Path:
+    # The caller-supplied filename is used only to derive/validate the extension; it
+    # never becomes part of the stored path. Storage name is a content hash instead,
+    # which both prevents path-injection via a crafted filename and deduplicates
+    # identical uploads (re-uploading the same bytes reuses the existing file).
     suffix = validate_upload(filename, len(content))
     root.mkdir(parents=True, exist_ok=True)
     digest = hashlib.sha256(content).hexdigest()[:16]
@@ -114,6 +134,10 @@ def load_training_dataset(
 
 def inspect_dataset(dataset: Dataset, limit: int = 5) -> DatasetInspection:
     columns = list(dataset.column_names)
+    # Priority order matters: a dataset could satisfy more than one shape's column
+    # requirements (e.g. it might have both "messages" and "text" columns), and this
+    # order is the single source of truth for which canonical format wins. Keep this
+    # in sync with training._normalize_dataset, which assumes the same priority.
     if {"prompt", "chosen", "rejected"}.issubset(columns):
         detected = "preference"
     elif "messages" in columns:

@@ -1,4 +1,12 @@
-"""Training review and launch page."""
+"""Training review and launch page.
+
+Re-validates the saved TrainingConfig against current runtime state (CUDA
+availability, HF token, Unsloth readiness, queue occupancy) since those can
+change between saving Training settings and pressing start here.
+
+Read next: lora_finetune_studio/jobs.py for enqueue_run/active_run/
+queued_runs, or app_pages/monitor.py for the page this hands off to.
+"""
 
 import streamlit as st
 
@@ -18,6 +26,9 @@ if config is None:
     st.stop()
 
 profile = st.session_state.hardware_profile
+# What was requested (config.compute_type, e.g. Auto) can differ from what
+# will actually run (e.g. FP16 when BF16 isn't supported) — both are shown
+# below so a reviewer isn't surprised by the effective dtype.
 effective_compute_type = resolve_compute_type(
     config.compute_type, bf16_supported=profile.bf16_supported
 )

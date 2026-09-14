@@ -1,4 +1,11 @@
-"""Model selection and inspection page."""
+"""Model selection and inspection page.
+
+Validates and inspects exactly one base model per session
+(model_id/model_revision/model_parameters/model_ready in session state).
+
+Read next: lora_finetune_studio/hardware.py for model_size_warning, or
+app_pages/training.py for how model_ready gates that page.
+"""
 
 import streamlit as st
 
@@ -40,6 +47,10 @@ if inspect_submitted:
         st.session_state.model_revision = revision or "main"
         st.session_state.model_parameters = parameters
         st.session_state.model_ready = True
+        # A saved training_config and the large-model acknowledgement are only
+        # valid for the model they were made against; a new inspection
+        # invalidates both rather than letting review silently proceed with a
+        # stale config/acknowledgement pointed at the old model.
         st.session_state.training_config = None
         st.session_state.acknowledge_large_model = False
     except Exception as error:  # noqa: BLE001

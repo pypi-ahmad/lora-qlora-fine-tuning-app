@@ -1,4 +1,16 @@
-"""Training monitor and completed-adapter evaluation page."""
+"""Training monitor and completed-adapter evaluation page.
+
+The training_monitor() fragment below reruns on its own 2-second timer
+(st.fragment(run_every="2s")) independently of full-page reruns, so its
+status/queue/log reads must stay side-effect-free apart from the explicit
+cancel/resume button actions. dispatch_next_run() is also called here (as it
+is in streamlit_app.py) so the FIFO queue keeps advancing while a user is
+simply watching this page.
+
+Read next: lora_finetune_studio/jobs.py for the run lifecycle this page
+polls, or lora_finetune_studio/inference.py for the base-vs-adapter
+comparison below.
+"""
 
 from pathlib import Path
 
@@ -132,6 +144,9 @@ def training_monitor(selected_run_id: str) -> None:
                 st.rerun(scope="fragment")
             except (FileNotFoundError, RuntimeError) as error:
                 st.error(str(error))
+        # Log contents are only read when the expander is actually open, so
+        # this 2-second fragment doesn't re-read (potentially large) log
+        # files on every tick while the section is collapsed.
         log_expander = st.expander("Training log", on_change="rerun")
         if log_expander.open:
             with log_expander:
@@ -160,6 +175,8 @@ if status and status.state is JobState.COMPLETED and status.artifact_dir:
         "Comparison prompt", placeholder="Write a concise explanation of LoRA."
     )
     if st.button("Compare base and adapter", disabled=not bool(prompt)):
+        # Base and adapter responses are generated one after the other, not
+        # concurrently — see inference.py's generate_text for why.
         adapter_path = str(Path(status.artifact_dir) / "adapter")
         with st.spinner("Generating base response..."):
             base_response = generate_text(

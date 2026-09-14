@@ -1,4 +1,15 @@
-"""Read-only public showcase for LoRA Fine-tune Studio."""
+"""Read-only public showcase for LoRA Fine-tune Studio.
+
+Deliberately isolated entry point meant for environments without a GPU
+(e.g. Streamlit Community Cloud reviewers): it must never import
+lora_finetune_studio, start a training worker, read HF_TOKEN, or touch
+.runs/.uploads. Everything rendered below comes from the bundled fixture
+file, not from a live run.
+
+Read next: fixtures/showcase.json for the data this page renders, or
+../streamlit_app.py for the real (CUDA-required) entry point this file
+stays decoupled from.
+"""
 
 from __future__ import annotations
 
@@ -7,6 +18,8 @@ from pathlib import Path
 
 import streamlit as st
 
+# Sole data source for this page — see the module docstring on why this must
+# stay the only input instead of reaching into the real app's state.
 FIXTURE_PATH = Path(__file__).parent / "fixtures" / "showcase.json"
 SHOWCASE = json.loads(FIXTURE_PATH.read_text(encoding="utf-8"))
 CONFIG = SHOWCASE["training_config"]

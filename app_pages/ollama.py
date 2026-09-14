@@ -1,4 +1,12 @@
-"""Independent local Ollama playground page."""
+"""Independent local Ollama playground page.
+
+Deliberately decoupled from the training system: never reads HF_TOKEN or
+.runs/, and never imports the trained adapter — it only talks to a local
+Ollama server. ollama_messages in session state is chat history for this
+page alone.
+
+Read next: lora_finetune_studio/ollama.py for the HTTP client used below.
+"""
 
 from urllib.error import URLError
 
@@ -33,6 +41,8 @@ else:
         try:
             response = ollama_generate(ollama_model, ollama_prompt)
         except Exception as error:  # noqa: BLE001
+            # Broad catch is intentional: any client failure becomes a chat
+            # message instead of crashing the page.
             response = f"Ollama request failed: {error}"
         with st.chat_message("assistant"):
             st.write(response)

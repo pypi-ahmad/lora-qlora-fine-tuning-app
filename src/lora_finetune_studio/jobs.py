@@ -1,4 +1,17 @@
-"""Single-job process manager with durable, token-free status files."""
+"""Single-job process manager with durable, token-free status files.
+
+Owns the entire lifecycle of a training run as plain files under .runs/: creating,
+queuing, launching, cancelling, and resuming. There is no database or message
+broker — queue.json plus per-run config.json/status.json are the durable state, and
+a cross-process lock file (.queue.lock) serializes concurrent access from Streamlit,
+worker processes, and the queue-handoff process in queue_dispatcher.py.
+
+Deliberately excludes credentials: HF_TOKEN is never written into a config.json or
+status.json file (see sources.get_hf_token for where it actually comes from), and
+this module never imports torch/transformers so it stays lightweight to import from
+the main Streamlit process. Next file to read: worker.py, which is what launch_run
+actually starts as a subprocess.
+"""
 
 from __future__ import annotations
 
@@ -30,6 +43,11 @@ BASE_PYTHON_ENV = "LORA_STUDIO_PYTHON"
 
 
 def write_json_atomic(path: Path, data: dict[str, Any]) -> None:
+    # Write to a temp file in the same directory, then os.replace over the target.
+    # os.replace is atomic on both Windows and POSIX, so a concurrent reader (the
+    # Monitor page polling status.json, or another process) never observes a
+    # partially written file — it sees either the old content or the new content,
+    # never a truncated/interleaved one.
     path.parent.mkdir(parents=True, exist_ok=True)
     descriptor, temporary_name = tempfile.mkstemp(dir=path.parent, suffix=".tmp")
     try:
@@ -37,17 +55,29 @@ def write_json_atomic(path: Path, data: dict[str, Any]) -> None:
             json.dump(data, handle, indent=2)
         os.replace(temporary_name, path)
     except BaseException:
+        # Catches BaseException (not just Exception) so the temp file is still
+        # cleaned up on KeyboardInterrupt/SystemExit, then re-raises unchanged.
         Path(temporary_name).unlink(missing_ok=True)
         raise
 
 
 @contextmanager
 def _queue_lock() -> Iterator[None]:
+    """Hold an exclusive, cross-process lock serializing all queue mutations.
+
+    Every function that reads-then-writes queue.json (or relies on that read being
+    consistent with concurrent status.json changes) must do so inside this context
+    manager. Without it, two processes — e.g. the Streamlit app and a
+    queue_dispatcher handoff process — could interleave reads and writes and lose an
+    enqueued or cancelled run.
+    """
     RUNS_ROOT.mkdir(parents=True, exist_ok=True)
     lock_path = RUNS_ROOT / ".queue.lock"
     with lock_path.open("a+b") as handle:
         handle.seek(0, os.SEEK_END)
         if handle.tell() == 0:
+            # msvcrt.locking requires a non-empty byte range to lock; this placeholder
+            # byte exists only so the file has something to lock on a fresh file.
             handle.write(b"\0")
             handle.flush()
         handle.seek(0)
@@ -77,6 +107,15 @@ def _write_queue_unlocked(run_ids: list[str]) -> None:
 
 
 def _read_queue_unlocked() -> list[str]:
+    """Reconcile queue.json against on-disk status.json files and return the result.
+
+    Must only be called while holding _queue_lock(); the name/leading underscore
+    marks the missing locking, not missing importance. Self-healing: queue.json is
+    treated as a cache of ordering, not ground truth, so a run whose status.json says
+    QUEUED but is missing from queue.json (e.g. after a crash between writes) is
+    recovered here, appended in filesystem mtime order after any explicitly ordered
+    entries.
+    """
     queue_path = RUNS_ROOT / "queue.json"
     if queue_path.exists():
         data = json.loads(queue_path.read_text(encoding="utf-8"))
@@ -160,7 +199,14 @@ def read_config(run_id: str) -> TrainingConfig:
 
 
 def _is_training_worker(pid: int, config_path: Path) -> bool:
-    """Return whether a PID is this run's isolated training worker."""
+    """Return whether a PID is this run's isolated training worker.
+
+    A stored PID alone is not sufficient evidence: operating systems reuse PIDs
+    after a process exits, so a PID recorded in status.json could now belong to an
+    unrelated process. This additionally checks the command line for the worker
+    module invocation and this specific run's resolved config path before treating
+    the PID as "alive" for liveness checks or termination.
+    """
     try:
         command = psutil.Process(pid).cmdline()
     except PROCESS_LOOKUP_ERRORS:
@@ -225,6 +271,10 @@ def launch_run(run_id: str) -> int:
     creation_flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
     config = read_config(run_id)
     worker_environment = os.environ.copy()
+    # BASE_PYTHON_ENV records the main-environment interpreter path so that, when a
+    # completed Unsloth worker starts queue_dispatcher.py to hand off to the next
+    # run, that handoff process (and a subsequently launched non-Unsloth run) uses
+    # the main .venv rather than inheriting sys.executable from inside .venv-unsloth.
     worker_python = worker_environment.get(BASE_PYTHON_ENV, sys.executable)
     worker_environment[BASE_PYTHON_ENV] = worker_python
     if config.use_unsloth:
@@ -233,6 +283,9 @@ def launch_run(run_id: str) -> int:
             log_handle.close()
             raise RuntimeError(runtime.detail)
         worker_python = str(runtime.python)
+        # The isolated .venv-unsloth environment does not have this repository's
+        # package installed into it, so its interpreter needs src/ on PYTHONPATH to
+        # be able to `import lora_finetune_studio` at all.
         source_path = str(PROJECT_ROOT / "src")
         existing_python_path = worker_environment.get("PYTHONPATH")
         worker_environment["PYTHONPATH"] = (
@@ -331,6 +384,8 @@ def cancel_run(run_id: str, *, dispatch_next: bool = True) -> None:
                     "Refusing to stop a process that is not this run's training worker."
                 )
             process = psutil.Process(status.pid)
+            # Graceful terminate() first so the worker can release the GPU/model
+            # cleanly; escalate to kill() only if it does not exit within 10 seconds.
             process.terminate()
             try:
                 process.wait(timeout=10)
@@ -355,6 +410,8 @@ def cancel_active_run(*, dispatch_next: bool = True) -> str | None:
 
 def resume_run(run_id: str) -> str:
     directory = run_path(run_id, RUNS_ROOT)
+    # Sort by the numeric suffix, not lexicographically — a string sort would put
+    # "checkpoint-10" before "checkpoint-2".
     checkpoints = sorted(
         (directory / "output").glob("checkpoint-*"),
         key=lambda path: int(path.name.rsplit("-", 1)[-1]),
