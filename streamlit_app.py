@@ -1,4 +1,14 @@
-"""Streamlit entry point for LoRA Fine-tune Studio."""
+"""Streamlit entry point for LoRA Fine-tune Studio.
+
+Streamlit reruns this whole script top-to-bottom on every page load and every
+widget interaction, so this module owns the one-time-per-session setup that
+must exist before any page script runs: session-state defaults, the
+HF_TOKEN fallback, opportunistic queue dispatch, and page
+registration/navigation.
+
+Read next: app_pages/system.py (first sidebar page) or
+lora_finetune_studio/jobs.py (the run queue this file dispatches).
+"""
 
 from __future__ import annotations
 
@@ -24,6 +34,10 @@ st.set_page_config(
 )
 
 st.session_state.setdefault("inspection", None)
+# One-time migration from the earlier single-dataset session shape
+# (dataset_spec/inspection) to today's ordered dataset_specs/dataset_inspections
+# lists, so a session that started before the multi-dataset feature existed
+# doesn't lose its in-progress selection on the next rerun.
 if (
     "dataset_specs" not in st.session_state
     or "dataset_inspections" not in st.session_state
@@ -68,12 +82,17 @@ if "training_peft_mode" not in st.session_state:
 
 token = get_hf_token()
 if not token:
+    # Environment variable takes priority; st.secrets (.streamlit/secrets.toml)
+    # is only a fallback so a token there can be exported for child worker
+    # processes, which inherit os.environ but not Streamlit's secrets store.
     try:
         token = str(st.secrets["HF_TOKEN"])
         os.environ["HF_TOKEN"] = token
     except FileNotFoundError, KeyError:
         pass
 
+# Runs on every page load (not just via a background scheduler), so the FIFO
+# queue keeps advancing even if a user never opens Monitor.
 try:
     dispatch_next_run()
 except (OSError, RuntimeError, ValueError) as error:
@@ -172,6 +191,9 @@ with st.sidebar:
                     if cancelled_run:
                         message += f" after cancelling training run {cancelled_run}"
                     st.info(f"{message}. You may close this browser tab.")
+                    # schedule_application_exit() (lifecycle.py) delays the actual
+                    # process exit so this confirmation renders before the server
+                    # goes away; st.stop() then halts this rerun immediately after.
                     schedule_application_exit()
                     st.stop()
 

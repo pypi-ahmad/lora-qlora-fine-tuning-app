@@ -1,4 +1,16 @@
-"""Training configuration page."""
+"""Training configuration page.
+
+Builds a draft TrainingConfig from per-session widget state and freezes it
+into st.session_state.training_config only when "Save training settings" is
+submitted and config.validate() passes; later widget changes do not
+retroactively alter that saved snapshot. Switching approach/method/compute
+type carries side effects (see the *_changed callbacks below) because an
+incompatible combination silently resets a value or disables Unsloth rather
+than blocking the form outright.
+
+Read next: lora_finetune_studio/models.py for TrainingConfig/TrainingRecipe/
+Preset, or app_pages/review.py for how the saved config is consumed.
+"""
 
 import streamlit as st
 
@@ -37,6 +49,11 @@ st.dataframe(
 )
 
 
+# Widget on_change callbacks: each keeps the form consistent with the newly
+# selected recipe/method/compute type rather than leaving a now-invalid
+# combination (wrong learning-rate default, too-small batch size, an
+# incompatible saved method, or Unsloth left enabled where it isn't
+# supported) for validate() to reject later.
 def approach_changed() -> None:
     selected = TrainingApproach(st.session_state.training_approach)
     recipe = TRAINING_RECIPES[selected]
@@ -52,6 +69,9 @@ def approach_changed() -> None:
 
 def method_changed() -> None:
     selected = PeftMode(st.session_state.training_peft_mode)
+    # Unsloth acceleration only supports LoRA/QLoRA (see unsloth_supported
+    # below); switching to OFT/QOFT must force the toggle off rather than
+    # leaving a stale "enabled" value that no longer applies.
     if selected in {PeftMode.OFT, PeftMode.QOFT}:
         st.session_state.training_use_unsloth = False
     st.session_state.training_config = None
@@ -59,6 +79,8 @@ def method_changed() -> None:
 
 def compute_type_changed() -> None:
     selected = ComputeType(st.session_state.training_compute_type)
+    # FP32 is unsupported by Unsloth's optimized kernels (see the warning
+    # rendered below), so it must also force Unsloth off.
     if selected is ComputeType.FP32:
         st.session_state.training_use_unsloth = False
     st.session_state.training_config = None
@@ -95,8 +117,13 @@ elif any(spec.format not in recipe.dataset_formats for spec in dataset_specs):
 if missing:
     for message in missing:
         st.info(message)
+    # Halts this rerun entirely (Streamlit-specific control flow) — nothing
+    # below executes until a model and a compatible dataset are both present.
     st.stop()
 
+# Seeds per-session draft defaults exactly once; each is then live-edited by
+# the widget below sharing the same session-state key (Streamlit's
+# key-bound-widget pattern), not reassigned here on later reruns.
 st.session_state.setdefault("training_preset", Preset.STANDARD)
 st.session_state.setdefault("training_show_advanced", False)
 st.session_state.setdefault("training_push_to_hub", False)

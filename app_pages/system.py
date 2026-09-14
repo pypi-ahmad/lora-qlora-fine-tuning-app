@@ -1,4 +1,14 @@
-"""Read-only system readiness page."""
+"""Read-only system readiness page.
+
+Surfaces OS/CUDA/Unsloth/token checks computed elsewhere (hardware.py,
+unsloth_runtime.py, sources.py); performs no installs and mutates no state.
+Note profile (st.session_state.hardware_profile) is captured once per
+session in streamlit_app.py, while scan/token/unsloth_runtime below are
+recomputed fresh on every rerun of this page — so profile can go briefly
+stale relative to the other readouts.
+
+Read next: lora_finetune_studio/hardware.py for how these checks are computed.
+"""
 
 import streamlit as st
 
@@ -46,7 +56,7 @@ if profile.cuda_available:
     try:
         free_vram_gb = cuda_memory_stats().free_gb
     except RuntimeError:
-        pass
+        pass  # Left as None; treated below as "CUDA GPU not detected".
 if free_vram_gb is None:
     st.error("QLoRA training is unavailable because a CUDA GPU was not detected.")
 elif free_vram_gb < MIN_QLORA_FREE_VRAM_GB:
@@ -125,6 +135,9 @@ with st.container(border=True):
     st.subheader("Hugging Face access")
     if token:
         st.badge("HF_TOKEN found", icon=":material/check:", color="green")
+        # Identity is only ever fetched on this explicit click, and only the
+        # boolean "configured" state is shown elsewhere on this page — the
+        # token value itself is never displayed.
         if st.button("Verify Hugging Face token", icon=":material/verified_user:"):
             try:
                 st.success(f"Authenticated as {token_identity(token)}")
