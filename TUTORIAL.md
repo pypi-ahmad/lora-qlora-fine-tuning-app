@@ -1567,7 +1567,8 @@ changes.
 ### Goal
 
 Design, execute, and report one complete adapter experiment. Mastery means making
-defensible decisions and recognizing uncertainty, not merely finishing a GPU run.
+defensible decisions and recognizing uncertainty; finishing a GPU run does not by
+itself demonstrate either.
 
 ### Deliverable 1: task charter
 
