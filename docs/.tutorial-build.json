@@ -17,17 +17,17 @@
     "14-evaluate-like-an-experimenter.html": "52773d45911fc83325ed282f773cb614220f2da3bc872244918cd7d055087ab4",
     "15-operate-jobs-and-use-artifacts.html": "bd949329fca3eaab9bb2f9b4f58e142923c7ac7d5eb6a65a2927c7a283aa3b9d",
     "16-read-and-extend-the-repository.html": "9d4969328371e547d1db415e318d2a6353b1d6de2c429ab7766c23df017a1722",
-    "17-capstone-train-a-defensible-specialist.html": "41d945262cef62a70cc7481f1497d44540a9ce7bc613d1a9478386e9957125af",
+    "17-capstone-train-a-defensible-specialist.html": "c47e05d281404c7faa1053292871a5fe3bb7946bcafe2cd3d571cb057641a954",
     "18-checkpoint-answers.html": "5cbd3b5c8a40d1b5226869426e70348c5b8b3d2b9a33bbc300ebc836a14c291d",
     "19-formula-and-settings-reference.html": "6eb17d8ed0562b149a770381fbb4a88d3dab6b6b788a31f63afb2716ed2f8b34",
     "20-troubleshooting-by-boundary.html": "1162b9d4cabeeb22bbaf8f31020f7cd9ad907bb0354d66a779e08b038d34c94a",
     "21-glossary.html": "a7228bc0c0777e89c864b079e262d4705b0e69358db4b4603fb9b84c8a596c97",
     "22-official-references.html": "0c10733b52fceb21ff4a39c813e69abc01c1af58825ac9da52220035112ff108",
-    "assets/search-index.js": "48594c9683a375f6093961be1a0580b40b7ab399f0a4b7b44d0e2d6b6ffe3986",
+    "assets/search-index.js": "757bb238a7289b5bd074814c996c502300ae1481490a07153e45a9dbb44cdf2f",
     "assets/site.css": "0a3c0afa2bd4bf918a2a7920a727eeade0612e95a9183c89875d6ec6957663cb",
     "assets/site.js": "c209f03719b5cbe0f51971f767258d953ef61391f8f062c47fbbd337cabe9a75",
-    "downloads/lora-finetune-studio-zero-to-mastery.pdf": "7998af0f1b5ee375b403d8d01b755bae75b5e4c57a15b27ac06b3a1cdbaf2779",
-    "index.html": "c7caf3797a8b3944a01adb09c32a481dc47ee8401d68c29b447ab304bdda7b7d"
+    "downloads/lora-finetune-studio-zero-to-mastery.pdf": "7f6e45c4b8ded0497a7e9ae78eae521c05c9b4cad388cd507d9381c9bdae99a4",
+    "index.html": "917e9c17d8f7aa4ca171e81da5e1398321ec79eda350ecceed294322440865e6"
   },
   "source": "TUTORIAL.md"
 }
