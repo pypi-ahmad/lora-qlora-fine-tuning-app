@@ -6,7 +6,7 @@ labels: enhancement
 assignees: ''
 ---
 
-Thanks for the suggestion! Check [CHANGELOG.md](../../CHANGELOG.md)'s `Unreleased` section first in case it's already planned — feel free to open this anyway if you want to add detail or a different angle.
+Thanks for the suggestion! Check [CHANGELOG.md](../../CHANGELOG.md)'s `Unreleased` section first in case it's already planned. Feel free to open this anyway if you want to add detail or a different angle.
 
 ## What problem does this solve?
 
