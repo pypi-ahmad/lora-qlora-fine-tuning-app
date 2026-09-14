@@ -1,4 +1,10 @@
-"""Small Ollama HTTP client; no additional dependency required."""
+"""Small Ollama HTTP client; no additional dependency required.
+
+Talks only to a local Ollama service for the Ollama playground page. This is a
+deliberately separate trust domain from the rest of the app: no Hugging Face token,
+model config, or `.runs/` state is ever read or sent here, and this module knows
+nothing about trained adapters (it cannot load or merge one).
+"""
 
 from __future__ import annotations
 

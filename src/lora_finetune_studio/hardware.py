@@ -1,4 +1,11 @@
-"""Local hardware detection and conservative training recommendations."""
+"""Local hardware detection and conservative training recommendations.
+
+Everything here is read-only inspection (CUDA/RAM/disk/software presence); nothing
+in this module starts a process, writes a file, or mutates training state. Consumed
+by the System and GPU memory pages, and by models.HardwareProfile for the initial
+recommendation shown on Training. Next file to read: jobs.py, which is where actual
+training work is launched based on these numbers.
+"""
 
 from __future__ import annotations
 
@@ -132,6 +139,11 @@ def release_unused_cuda_memory() -> None:
     """Release unreachable objects and unused PyTorch CUDA cache blocks."""
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA GPU is not available.")
+    # gc.collect() first so any Python-side tensor references dropped this rerun
+    # become collectible before we ask PyTorch to return its cached allocator blocks.
+    # This cannot reclaim memory held by the isolated training worker process, by
+    # Ollama, or by any other process sharing the GPU — only this process's own
+    # unused cache. Callers must not invoke this while a training run is active.
     gc.collect()
     torch.cuda.empty_cache()
 
@@ -154,6 +166,10 @@ def detect_hardware(workspace: Path | None = None) -> HardwareProfile:
     max_billions = 0.0
     warning: str | None = None
 
+    # Conservative VRAM-only thresholds for QLoRA specifically. These are warnings,
+    # not capacity guarantees: sequence length, batch size, optimizer state,
+    # checkpointing, and other GPU processes all affect whether a given model
+    # actually fits, and this function does not account for any of them.
     if not cuda_available:
         warning = "CUDA GPU not detected. Local training is disabled."
     elif vram_gb < 6:
