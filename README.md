@@ -24,6 +24,7 @@ templates). Training behavior is unchanged from v0.5.0. See [CHANGELOG.md](CHANG
 - [Highlights](#highlights)
 - [Training support](#training-support)
 - [Workflow](#workflow)
+- [Architecture diagrams](#architecture-diagrams)
 - [Requirements](#requirements)
 - [Quick start](#quick-start)
 - [First smoke test](#first-smoke-test)
@@ -103,6 +104,15 @@ OFT and QOFT use the standard PEFT/TRL backend.
 7. **Monitor** — inspect queue order, progress bar and percentage, logs, metrics, cancellation, and
    recovery.
 8. **Ollama playground** — chat with models already served by a local Ollama installation.
+
+## Architecture diagrams
+
+- [LoRA Studio system architecture](diagrams/system-architecture.html) — application components
+  and their relationships.
+- [Dataset processing and ingestion pipeline](diagrams/dataset-pipeline.html) — dataset intake,
+  schema handling, and preparation flow.
+- [Training job lifecycle and state machine](diagrams/job-lifecycle.html) — queued job states and
+  lifecycle transitions.
 
 ## Requirements
 
