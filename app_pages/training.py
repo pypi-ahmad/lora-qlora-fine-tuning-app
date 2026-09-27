@@ -351,12 +351,48 @@ with st.form("training_settings_form"):
         batch_size = recipe.minimum_batch_size
         accumulation = int(defaults["gradient_accumulation_steps"])
         gradient_checkpointing = True
+    loss_scope = "auto"
+    rank, alpha, dropout, targets = 16, 32, None, None
+    packing, best, patience = False, True, None
+    if show_advanced:
+        if approach is TrainingApproach.SFT:
+            loss_scope = st.selectbox(
+                "SFT loss scope",
+                ["auto", "full", "assistant", "completion"],
+                help="Auto preserves full-conversation loss for messages and completion-only loss for prompt/completion pairs.",
+            )
+            packing = st.checkbox(
+                "Enable packing",
+                help="Requires verified FlashAttention 2 or 3; unsupported runtimes reject the job.",
+            )
+        if peft_mode in {PeftMode.LORA, PeftMode.QLORA}:
+            rank = st.number_input("LoRA rank", 1, 256, 16)
+            alpha = st.number_input("LoRA alpha", 1, 1024, 32)
+            if st.checkbox("Override backend dropout"):
+                dropout = st.number_input("LoRA dropout", 0.0, 0.99, 0.05)
+            modules = st.text_input(
+                "Target modules",
+                help="Comma-separated module names. Blank keeps backend defaults.",
+            )
+            targets = [v.strip() for v in modules.split(",")] if modules else None
+        best = st.checkbox("Save best validation checkpoint", value=True)
+        if st.checkbox("Enable early stopping"):
+            patience = st.number_input("Early-stopping patience", 1, 20, 2)
     save_submitted = st.form_submit_button(
         "Save training settings", type="primary", icon=":material/save:"
     )
 
 if save_submitted:
     config = TrainingConfig(
+        loss_scope=loss_scope,
+        lora_rank=int(rank),
+        lora_alpha=int(alpha),
+        lora_dropout=dropout,
+        target_modules=targets,
+        packing=packing,
+        select_best_checkpoint=best,
+        early_stopping_patience=int(patience) if patience else None,
+        validation_datasets=list(st.session_state.get("validation_specs", [])),
         model_id=st.session_state.model_id,
         model_revision=st.session_state.model_revision,
         datasets=list(dataset_specs),
@@ -385,6 +421,7 @@ if save_submitted:
             st.error(error)
     else:
         st.session_state.training_config = config
+        st.session_state.pop("quality_report", None)
         st.success("Training settings saved. Continue to Review & run.")
 
 if st.session_state.training_config:

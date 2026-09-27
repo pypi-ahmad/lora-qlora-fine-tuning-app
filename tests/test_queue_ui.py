@@ -26,6 +26,7 @@ def test_review_adds_training_to_queue_while_worker_is_active(
     monkeypatch.setattr(jobs, "_is_training_worker", lambda _pid, _path: True)
     config = TrainingConfig(
         model_id="owner/model",
+        input_fingerprint="reviewed-fixture",
         datasets=[
             DatasetSpec(
                 source="hub",
@@ -35,6 +36,9 @@ def test_review_adds_training_to_queue_while_worker_is_active(
             )
         ],
     )
+    from lora_finetune_studio import provenance
+
+    monkeypatch.setattr(provenance, "prepare_run", lambda *_args: None)
     active_id = jobs.enqueue_run(config)
 
     app_path = Path(__file__).parents[1] / "streamlit_app.py"
@@ -63,3 +67,48 @@ def test_review_adds_training_to_queue_while_worker_is_active(
     assert any(item.value == "Training queue" for item in app.subheader)
     assert any(selectbox.label == "Selected run" for selectbox in app.selectbox)
     assert any(button.label == "Remove from queue" for button in app.button)
+
+
+def test_monitor_queues_chat_evaluation_without_loading_a_model(tmp_path, monkeypatch):
+    from lora_finetune_studio.models import JobState, JobStatus
+
+    monkeypatch.setattr(jobs, "RUNS_ROOT", tmp_path)
+    monkeypatch.setattr(jobs, "dispatch_next_run", lambda: None)
+    parent = jobs.create_run(
+        TrainingConfig(
+            model_id="owner/model",
+            datasets=[DatasetSpec(source="upload", format="messages")],
+        )
+    )
+    parent_config = jobs.read_config(parent)
+    jobs.write_json_atomic(
+        tmp_path / parent / "status.json",
+        JobStatus(
+            state=JobState.COMPLETED,
+            message="done",
+            artifact_dir=parent_config.output_dir,
+        ).to_dict(),
+    )
+    app = AppTest.from_file(
+        Path(__file__).parents[1] / "streamlit_app.py", default_timeout=60
+    ).run()
+    app.session_state["run_id"] = parent
+    app.switch_page("app_pages/monitor.py").run()
+    assert not app.exception
+    next(item for item in app.selectbox if item.label == "AI judge model").set_value(
+        "agnes-3.0-flash"
+    )
+    next(item for item in app.text_area if item.label == "Comparison prompt").set_value(
+        "Explain LoRA."
+    )
+    next(item for item in app.button if item.label == "Queue evaluation").click().run()
+    assert not app.exception
+    evaluation_id = app.session_state["run_id"]
+    evaluation = jobs.read_config(evaluation_id)
+    assert evaluation.job_kind == "evaluation"
+    assert evaluation.parent_run_id == parent
+    assert evaluation.evaluation.mode == "chat"
+    assert not evaluation.evaluation.held_out
+    assert not evaluation.evaluation.judge_enabled
+    assert evaluation.evaluation.judge_model == "agnes-3.0-flash"
+    assert jobs.read_status(evaluation_id).state is JobState.QUEUED

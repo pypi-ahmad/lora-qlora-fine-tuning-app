@@ -12,24 +12,27 @@ polls, or lora_finetune_studio/inference.py for the base-vs-adapter
 comparison below.
 """
 
+import json
+from dataclasses import replace
 from pathlib import Path
 
 import streamlit as st
 
-from lora_finetune_studio.inference import generate_text
 from lora_finetune_studio.jobs import (
     active_run,
     cancel_run,
     dispatch_next_run,
+    enqueue_run,
     list_runs,
     queued_runs,
     read_config,
     read_log,
     read_status,
     resume_run,
+    retry_evaluation,
+    write_json_atomic,
 )
-from lora_finetune_studio.models import JobState, TrainingApproach
-from lora_finetune_studio.sources import get_hf_token
+from lora_finetune_studio.models import EvaluationConfig, JobState, TrainingApproach
 
 st.caption(
     "Follow training, inspect the FIFO queue, recover checkpoints, and test adapters."
@@ -55,7 +58,7 @@ for candidate_id in run_ids:
         candidate_status = read_status(candidate_id)
         candidate_config = read_config(candidate_id)
         run_labels[candidate_id] = (
-            f"{candidate_id} · {candidate_status.state.value} · "
+            f"{candidate_id} · {candidate_config.job_kind} · {candidate_status.state.value} · "
             f"{candidate_config.model_id}"
         )
     except OSError, ValueError:
@@ -96,6 +99,7 @@ def training_monitor(selected_run_id: str) -> None:
                 {
                     "Position": position,
                     "Run": waiting_id,
+                    "Job": waiting_config.job_kind,
                     "Model": waiting_config.model_id,
                     "Approach": waiting_config.approach.value,
                     "Method": waiting_config.peft_mode.value,
@@ -112,6 +116,14 @@ def training_monitor(selected_run_id: str) -> None:
     except (OSError, ValueError) as error:
         st.error(f"Cannot read job status: {error}")
         return
+    state_key = f"monitor_state_{selected_run_id}"
+    previous_state = st.session_state.get(state_key)
+    st.session_state[state_key] = status.state.value
+    if previous_state in {
+        JobState.RUNNING.value,
+        JobState.QUEUED.value,
+    } and status.state in {JobState.COMPLETED, JobState.FAILED, JobState.CANCELLED}:
+        st.rerun()
     with st.container(border=True):
         st.badge(
             status.state.value,
@@ -136,8 +148,10 @@ def training_monitor(selected_run_id: str) -> None:
         ):
             cancel_run(selected_run_id)
             st.rerun(scope="fragment")
-        if status.state in {JobState.CANCELLED, JobState.FAILED} and st.button(
-            "Queue latest checkpoint", icon=":material/playlist_add:"
+        if (
+            read_config(selected_run_id).job_kind == "training"
+            and status.state in {JobState.CANCELLED, JobState.FAILED}
+            and st.button("Queue latest checkpoint", icon=":material/playlist_add:")
         ):
             try:
                 resume_run(selected_run_id)
@@ -162,39 +176,178 @@ try:
     status = read_status(run_id)
 except OSError, ValueError:
     status = None
-if status and status.state is JobState.COMPLETED and status.artifact_dir:
+if status and status.artifact_dir:
     run_config = read_config(run_id)
-    if run_config.approach is TrainingApproach.REWARD:
-        st.info(
-            "Reward-model adapters produce preference scores rather than text, "
-            "so generative comparison is unavailable."
+    if run_config.schema_version < 2:
+        st.caption("Legacy run: input and runtime provenance were not recorded.")
+    root = Path(status.artifact_dir).parent
+    history_path = root / "metrics_history.jsonl"
+    if history_path.exists():
+        history = []
+        for line in history_path.read_text(encoding="utf-8").splitlines():
+            try:
+                history.append(json.loads(line))
+            except ValueError:
+                continue
+        if history:
+            st.subheader("Learning curves")
+            series = [
+                key
+                for key in (
+                    "loss",
+                    "eval_loss",
+                    "learning_rate",
+                    "tokens_per_second",
+                    "peak_allocated_gb",
+                )
+                if any(key in row for row in history)
+            ]
+            selected_series = st.selectbox("Metric history", series) if series else None
+            if selected_series:
+                st.line_chart(
+                    [
+                        {"step": row["step"], selected_series: row[selected_series]}
+                        for row in history
+                        if selected_series in row
+                    ],
+                    x="step",
+                    y=selected_series,
+                )
+    result_path = Path(status.artifact_dir) / "evaluation.json"
+    if run_config.job_kind == "evaluation" and result_path.exists():
+        result = json.loads(result_path.read_text(encoding="utf-8"))
+        st.subheader("Evaluation results")
+        st.caption(result.get("provenance", ""))
+        st.json(result.get("metrics", {}))
+        st.download_button(
+            "Download evaluation JSON",
+            result_path.read_bytes(),
+            file_name=f"{run_id}-evaluation.json",
+            mime="application/json",
         )
-        st.stop()
-    st.subheader("Evaluate adapter")
-    prompt = st.text_area(
-        "Comparison prompt", placeholder="Write a concise explanation of LoRA."
-    )
-    if st.button("Compare base and adapter", disabled=not bool(prompt)):
-        # Base and adapter responses are generated one after the other, not
-        # concurrently — see inference.py's generate_text for why.
-        adapter_path = str(Path(status.artifact_dir) / "adapter")
-        with st.spinner("Generating base response..."):
-            base_response = generate_text(
-                run_config.model_id,
-                prompt,
-                token=get_hf_token(),
-                revision=run_config.model_revision,
+        st.dataframe(result["results"])
+        rating_path = Path(status.artifact_dir) / "human_ratings.json"
+        saved_ratings = (
+            json.loads(rating_path.read_text(encoding="utf-8")).get("ratings", [])
+            if rating_path.exists()
+            else []
+        )
+        if not saved_ratings:
+            saved_ratings = [
+                {"example": i + 1, "preference": "unrated", "note": ""}
+                for i in range(len(result["results"]))
+            ]
+        ratings = st.data_editor(
+            saved_ratings,
+            key=f"human_ratings_{run_id}",
+            disabled=["example"],
+            column_config={
+                "preference": st.column_config.SelectboxColumn(
+                    options=["unrated", "base", "adapter", "tie", "abstain"]
+                )
+            },
+        )
+        if st.button("Save human ratings"):
+            write_json_atomic(rating_path, {"ratings": ratings})
+            st.success("Ratings saved locally.")
+    if run_config.job_kind == "evaluation" and st.button(
+        "Retry unfinished evaluation",
+        disabled=status.state in {JobState.RUNNING, JobState.QUEUED},
+    ):
+        retry_evaluation(run_id)
+        st.rerun()
+    if status.state is JobState.COMPLETED and run_config.job_kind == "training":
+        st.subheader("Evaluate adapter")
+        reward = run_config.approach is TrainingApproach.REWARD
+        with st.form("evaluation_form"):
+            mode = (
+                "reward"
+                if reward
+                else st.selectbox(
+                    "Input mode",
+                    ["chat", "text"],
+                    index=0
+                    if any(d.format == "messages" for d in run_config.datasets)
+                    else 1,
+                    format_func=lambda value: {
+                        "chat": "Chat",
+                        "text": "Text completion",
+                    }[value],
+                )
             )
-        with st.spinner("Generating adapter response..."):
-            adapter_response = generate_text(
-                run_config.model_id,
-                prompt,
-                token=get_hf_token(),
-                revision=run_config.model_revision,
-                adapter_path=adapter_path,
+            prompt = st.text_area("Comparison prompt")
+            chosen = st.text_area("Chosen response") if reward else ""
+            rejected = st.text_area("Rejected response") if reward else ""
+            uploaded = st.file_uploader(
+                "Saved test set (JSONL)",
+                type=["jsonl"],
+                help="Use prompt or messages, with optional reference. Reward rows use prompt/chosen/rejected.",
             )
-        left, right = st.columns(2)
-        left.subheader("Base model")
-        left.write(base_response)
-        right.subheader("Fine-tuned adapter")
-        right.write(adapter_response)
+            count = st.number_input("Evaluation sample count", 1, value=20)
+            max_tokens = st.number_input("Maximum new tokens", 1, 4096, 128)
+            schema_text = st.text_area("Expected JSON Schema (optional)")
+            judge_model = st.selectbox(
+                "AI judge model", ["gpt-6-luna", "agnes-3.0-flash"], disabled=reward
+            )
+            use_judge = st.checkbox(
+                "Send selected examples and both responses to the selected AI judge",
+                disabled=reward,
+            )
+            st.caption(
+                "GPT uses medium effort and your configured endpoint. Agnes uses its own endpoint and default reasoning settings. Selected prompts, references, and answers are sent to the selected provider."
+            )
+            rubric = st.text_area(
+                "Judge rubric",
+                value="Evaluate instruction following, correctness, and clarity.",
+            )
+            submitted = st.form_submit_button("Queue evaluation")
+        if submitted:
+            try:
+                from lora_finetune_studio.evaluation import (
+                    validate_rows,
+                    validate_schema,
+                )
+
+                if uploaded:
+                    rows = [
+                        json.loads(line)
+                        for line in uploaded.getvalue().decode("utf-8").splitlines()
+                        if line.strip()
+                    ]
+                else:
+                    rows = (
+                        [{"prompt": prompt, "chosen": chosen, "rejected": rejected}]
+                        if reward
+                        else [{"prompt": prompt}]
+                    )
+                schema = json.loads(schema_text) if schema_text.strip() else None
+                validate_rows(rows, mode)
+                validate_schema(schema)
+                options = EvaluationConfig(
+                    rows=rows,
+                    mode=mode,
+                    sample_limit=int(count),
+                    max_new_tokens=int(max_tokens),
+                    judge_enabled=use_judge,
+                    judge_model=judge_model,
+                    rubric=rubric,
+                    expected_schema=schema,
+                    held_out=uploaded is not None,
+                )
+                evaluation = replace(
+                    run_config,
+                    job_kind="evaluation",
+                    parent_run_id=run_id,
+                    evaluation=options,
+                    resume_from_checkpoint=None,
+                    push_to_hub=False,
+                    use_unsloth=False,
+                )
+                errors = evaluation.validate()
+                if errors:
+                    raise ValueError(" ".join(errors))
+                st.session_state.run_id = enqueue_run(evaluation)
+                st.session_state.monitor_selected_run = st.session_state.run_id
+                st.rerun()
+            except Exception as error:  # noqa: BLE001
+                st.error(f"Could not queue evaluation: {error}")
