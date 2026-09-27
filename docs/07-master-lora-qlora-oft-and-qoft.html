@@ -73,8 +73,8 @@ scaling = alpha / r
 <p>When rank <code>r</code> is much smaller than either dimension, the reduction is large. Higher
 rank increases capacity and cost. <code>alpha</code> controls update scale, target modules select
 where updates are inserted, and dropout regularizes the adapter branch.</p>
-<p>The standard backend in this repository uses rank 16, alpha 32, dropout 0.05, no bias,
-and <code>target_modules="all-linear"</code>.</p>
+<p>The standard backend defaults to rank 16, alpha 32, dropout 0.05, no bias,
+and <code>target_modules="all-linear"</code>. Advanced settings expose rank, alpha, dropout, and targets.</p>
 <h3 id="qlora">QLoRA</h3>
 <p>QLoRA keeps LoRA adapters trainable in a floating-point compute type while loading the
 frozen base weights in four-bit representation. This repository uses:</p>

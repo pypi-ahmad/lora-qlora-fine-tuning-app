@@ -133,9 +133,8 @@ statistically strong conclusion.</p>
 <h3 id="variation-a-reward-modeling">Variation A: Reward Modeling</h3>
 <p>Select Reward Modeling with default learning rate <code>1e-3</code>. The model path changes to a
 one-label sequence classifier. After training, inspect artifacts and metrics. The
-Monitor page will explain that generative comparison is unavailable. A complete reward
-evaluation tool would score held-out chosen/rejected pairs and measure ranking accuracy;
-that UI is not implemented.</p>
+Monitor page queues reward evaluation on held-out chosen/rejected pairs and reports
+ranking accuracy. It evaluates the trained scoring head without a random base-head comparison.</p>
 <h3 id="variation-b-kto">Variation B: KTO</h3>
 <p>Select KTO and observe that the minimum per-device batch becomes 2. Keep accumulation
 and memory constraints in mind. Compare trainer behavior and metrics, but do not assume

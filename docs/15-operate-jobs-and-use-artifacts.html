@@ -103,10 +103,11 @@ exact HF token redacted; the log receives the traceback. Treat logs as potential
 sensitive because third-party diagnostics can contain paths, repository names, or data
 details.</p>
 <h3 id="base-versus-adapter-comparison">Base-versus-adapter comparison</h3>
-<p>For generative approaches, the app loads the base in four-bit NF4, generates
-deterministically, releases memory, then repeats with <code>PeftModel</code> attached. Sequential
-loading avoids holding two base models simultaneously. The comparison is qualitative;
-use Module 14 for a proper evaluation suite.</p>
+<p>For generative approaches, the evaluation worker generates deterministically, releases
+memory, then repeats with <code>PeftModel</code> attached. QLoRA/QOFT use four-bit NF4; LoRA/OFT
+use BF16 or FP16. Chat mode applies the saved template; text mode preserves raw input.
+Sequential loading avoids holding two base models simultaneously. Saved test sets support
+local metrics and an optional blinded AI judge. Use Module 14 to design the evaluation suite.</p>
 <h3 id="publishing-to-hugging-face">Publishing to Hugging Face</h3>
 <p>When enabled, a successful run pushes trainer model/adapter state and tokenizer to the
 configured repository using <code>HF_TOKEN</code>. It does not publish a merged full model. Review
