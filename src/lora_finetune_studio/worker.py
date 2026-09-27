@@ -17,13 +17,13 @@ import sys
 import traceback
 from pathlib import Path
 
-from .jobs import write_json_atomic
+from .jobs import _queue_lock, write_json_atomic
 from .models import JobState, JobStatus, TrainingConfig
 from .queue_dispatcher import schedule_queue_handoff
 from .sources import get_hf_token
 
 
-def main() -> int:
+def _main() -> int:
     if len(sys.argv) != 2:
         print("Usage: python -m lora_finetune_studio.worker CONFIG_PATH")
         return 2
@@ -32,6 +32,12 @@ def main() -> int:
     config = TrainingConfig.from_dict(
         json.loads(config_path.read_text(encoding="utf-8"))
     )
+    with _queue_lock():
+        _write_started(status_path, config)
+    return _execute(config, status_path)
+
+
+def _write_started(status_path, config):
     write_json_atomic(
         status_path,
         JobStatus(
@@ -41,35 +47,52 @@ def main() -> int:
             artifact_dir=config.output_dir,
         ).to_dict(),
     )
+
+
+def _execute(config, status_path):
+    label = {
+        "training": "Training",
+        "evaluation": "Evaluation",
+        "fit_check": "Fit check",
+    }[config.job_kind]
     try:
         # Unsloth must be imported before transformers/peft/trl get pulled in by
         # .training, because Unsloth patches those libraries at import time; doing
         # this import here (rather than at module top) keeps it conditional on
         # config.use_unsloth so a standard run never touches the optional package.
-        if config.use_unsloth:
+        if config.use_unsloth and config.job_kind != "evaluation":
             __import__("unsloth")
-        from .training import train
+        if config.job_kind == "evaluation":
+            from .evaluation import evaluate
 
-        metrics = train(config, status_path)
+            metrics = evaluate(config, status_path)
+        else:
+            from .training import train
+
+            metrics = train(config, status_path)
     except Exception as error:  # noqa: BLE001
         # Broad catch is deliberate: this is the top-level boundary of an isolated
         # subprocess, so any exception must become a FAILED status write rather than
         # an unhandled crash the UI would never see. The HF token, if any, is
         # stripped from the short message shown in status.json/the UI; the
-        # unredacted traceback still goes to training.log for debugging.
+        # redacted traceback goes to training.log for debugging.
         token = get_hf_token()
         message = str(error).replace(token, "[REDACTED]") if token else str(error)
         write_json_atomic(
             status_path,
             JobStatus(
                 state=JobState.FAILED,
-                message="Training failed",
+                message=f"{label} failed",
                 pid=os.getpid(),
                 error=message,
                 artifact_dir=config.output_dir,
             ).to_dict(),
         )
-        traceback.print_exc()
+        print(
+            traceback.format_exc().replace(token, "[REDACTED]")
+            if token
+            else traceback.format_exc()
+        )
         # Best-effort: if spawning the handoff process itself fails, this run's own
         # FAILED status above is already durable, but the next queued run will not
         # be auto-dispatched until something else calls dispatch_next_run (e.g. the
@@ -83,7 +106,7 @@ def main() -> int:
         status_path,
         JobStatus(
             state=JobState.COMPLETED,
-            message="Training completed",
+            message=f"{label} completed",
             progress=1.0,
             pid=os.getpid(),
             metrics=metrics,
@@ -95,6 +118,15 @@ def main() -> int:
     except OSError:
         traceback.print_exc()
     return 0
+
+
+def main() -> int:
+    try:
+        with _queue_lock(".gpu.lock", blocking=False):
+            return _main()
+    except OSError:
+        print("GPU is reserved by another worker.")
+        return 1
 
 
 if __name__ == "__main__":

@@ -31,7 +31,7 @@ import psutil
 from .models import JobState, JobStatus, TrainingConfig, run_path
 from .unsloth_runtime import PROJECT_ROOT, inspect_unsloth_runtime
 
-RUNS_ROOT = Path(".runs")
+RUNS_ROOT = Path(os.environ.get("LORA_STUDIO_RUNS_ROOT", ".runs"))
 PROCESS_LOOKUP_ERRORS = (
     psutil.AccessDenied,
     psutil.NoSuchProcess,
@@ -62,7 +62,7 @@ def write_json_atomic(path: Path, data: dict[str, Any]) -> None:
 
 
 @contextmanager
-def _queue_lock() -> Iterator[None]:
+def _queue_lock(name: str = ".queue.lock", *, blocking: bool = True) -> Iterator[None]:
     """Hold an exclusive, cross-process lock serializing all queue mutations.
 
     Every function that reads-then-writes queue.json (or relies on that read being
@@ -72,7 +72,8 @@ def _queue_lock() -> Iterator[None]:
     enqueued or cancelled run.
     """
     RUNS_ROOT.mkdir(parents=True, exist_ok=True)
-    lock_path = RUNS_ROOT / ".queue.lock"
+    lock_path = (PROJECT_ROOT / ".runs" if name == ".gpu.lock" else RUNS_ROOT) / name
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
     with lock_path.open("a+b") as handle:
         handle.seek(0, os.SEEK_END)
         if handle.tell() == 0:
@@ -84,11 +85,15 @@ def _queue_lock() -> Iterator[None]:
         if os.name == "nt":
             import msvcrt
 
-            msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+            msvcrt.locking(
+                handle.fileno(), msvcrt.LK_LOCK if blocking else msvcrt.LK_NBLCK, 1
+            )
         else:
             import fcntl
 
-            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+            fcntl.flock(
+                handle.fileno(), fcntl.LOCK_EX | (0 if blocking else fcntl.LOCK_NB)
+            )
         try:
             yield
         finally:
@@ -271,13 +276,15 @@ def launch_run(run_id: str) -> int:
     creation_flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
     config = read_config(run_id)
     worker_environment = os.environ.copy()
+    worker_environment["PYTHONUNBUFFERED"] = "1"
+    worker_environment["PYTHONFAULTHANDLER"] = "1"
     # BASE_PYTHON_ENV records the main-environment interpreter path so that, when a
     # completed Unsloth worker starts queue_dispatcher.py to hand off to the next
     # run, that handoff process (and a subsequently launched non-Unsloth run) uses
     # the main .venv rather than inheriting sys.executable from inside .venv-unsloth.
     worker_python = worker_environment.get(BASE_PYTHON_ENV, sys.executable)
     worker_environment[BASE_PYTHON_ENV] = worker_python
-    if config.use_unsloth:
+    if config.use_unsloth and config.job_kind != "evaluation":
         runtime = inspect_unsloth_runtime()
         if not runtime.available:
             log_handle.close()
@@ -391,6 +398,7 @@ def cancel_run(run_id: str, *, dispatch_next: bool = True) -> None:
                 process.wait(timeout=10)
             except psutil.TimeoutExpired:
                 process.kill()
+                process.wait(timeout=10)
         status.state = JobState.CANCELLED
         status.message = "Cancelled by user"
         status.progress = 0.0
@@ -410,6 +418,8 @@ def cancel_active_run(*, dispatch_next: bool = True) -> str | None:
 
 def resume_run(run_id: str) -> str:
     directory = run_path(run_id, RUNS_ROOT)
+    if read_config(run_id).job_kind != "training":
+        raise ValueError("Only training jobs support checkpoint resume.")
     # Sort by the numeric suffix, not lexicographically — a string sort would put
     # "checkpoint-10" before "checkpoint-2".
     checkpoints = sorted(
@@ -447,3 +457,23 @@ def read_log(run_id: str, max_chars: int = 12_000) -> str:
         return ""
     content = path.read_text(encoding="utf-8", errors="replace")
     return content[-max_chars:]
+
+
+def retry_evaluation(run_id: str) -> None:
+    """Retry only unfinished evaluation work, keeping saved generations."""
+    with _queue_lock():
+        config = read_config(run_id)
+        status = read_status(run_id)
+        if config.job_kind != "evaluation" or status.state in {
+            JobState.RUNNING,
+            JobState.QUEUED,
+        }:
+            raise ValueError("Select a terminal evaluation job to retry.")
+        queue = _read_queue_unlocked()
+        status.state = JobState.QUEUED
+        status.message = "Waiting to retry unfinished evaluation"
+        status.pid = None
+        status.error = None
+        write_json_atomic(run_path(run_id, RUNS_ROOT) / "status.json", status.to_dict())
+        _write_queue_unlocked([*queue, run_id])
+    dispatch_next_run()
