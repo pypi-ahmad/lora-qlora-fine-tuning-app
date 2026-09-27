@@ -135,6 +135,35 @@ class DatasetSpec:
     completion_column: str | None = None
     chosen_column: str | None = None
     rejected_column: str | None = None
+    revision: str = "main"
+    group_column: str | None = None
+
+
+@dataclass(slots=True)
+class EvaluationConfig:
+    rows: list[dict[str, Any]] = field(default_factory=list)
+    mode: str = "chat"
+    max_new_tokens: int = 128
+    sample_limit: int = 20
+    judge_enabled: bool = False
+    judge_model: str = "gpt-6-luna"
+    expected_schema: dict[str, Any] | None = None
+    rubric: str = "Evaluate instruction following, correctness, and clarity."
+    held_out: bool = True
+
+    def validate(self) -> list[str]:
+        errors = []
+        if self.judge_model not in {"gpt-6-luna", "agnes-3.0-flash"}:
+            errors.append("Unknown judge model.")
+        if self.mode not in {"chat", "text", "reward"}:
+            errors.append("Unknown evaluation mode.")
+        if not self.rows:
+            errors.append("Evaluation requires at least one example.")
+        if not 1 <= self.max_new_tokens <= 4096 or self.sample_limit < 1:
+            errors.append("Evaluation token and sample limits are invalid.")
+        if self.mode == "reward" and self.judge_enabled:
+            errors.append("AI judging requires generated responses, not reward scores.")
+        return errors
 
 
 @dataclass(slots=True)
@@ -164,6 +193,23 @@ class TrainingConfig:
     push_to_hub: bool = False
     hub_model_id: str | None = None
     resume_from_checkpoint: str | None = None
+    schema_version: int = 2
+    job_kind: str = "training"
+    parent_run_id: str | None = None
+    evaluation: EvaluationConfig | None = None
+    validation_datasets: list[DatasetSpec] = field(default_factory=list)
+    loss_scope: str = "auto"
+    lora_rank: int = 16
+    lora_alpha: int = 32
+    lora_dropout: float | None = None
+    target_modules: list[str] | None = None
+    packing: bool = False
+    select_best_checkpoint: bool = True
+    early_stopping_patience: int | None = None
+    cleanup_invalid: bool = False
+    cleanup_duplicates: bool = False
+    input_fingerprint: str | None = None
+    checkpoint_steps: int | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -187,6 +233,14 @@ class TrainingConfig:
         if dataset_values is None:
             dataset_values = [legacy_dataset] if legacy_dataset else []
         values["datasets"] = [DatasetSpec(**item) for item in dataset_values]
+        values["validation_datasets"] = [
+            DatasetSpec(**item) for item in values.get("validation_datasets", [])
+        ]
+        if values.get("evaluation") is not None:
+            values["evaluation"] = EvaluationConfig(**values["evaluation"])
+        if "schema_version" not in values:
+            values["schema_version"] = 1
+            values.setdefault("select_best_checkpoint", False)
         values["approach"] = TrainingApproach(values["approach"])
         values["peft_mode"] = PeftMode(values["peft_mode"])
         values["compute_type"] = ComputeType(values["compute_type"])
@@ -195,6 +249,56 @@ class TrainingConfig:
 
     def validate(self) -> list[str]:
         errors: list[str] = []
+        if self.schema_version not in {1, 2}:
+            errors.append("Unsupported configuration version.")
+        if self.job_kind not in {"training", "evaluation", "fit_check"}:
+            errors.append("Unknown job kind.")
+        if self.job_kind == "evaluation":
+            if not self.parent_run_id:
+                errors.append("Evaluation requires a completed parent run.")
+            return errors + (
+                self.evaluation.validate()
+                if self.evaluation
+                else ["Missing evaluation settings."]
+            )
+        if self.loss_scope not in {"auto", "full", "assistant", "completion"}:
+            errors.append("Unknown SFT loss scope.")
+        if self.loss_scope != "auto" and self.approach is not TrainingApproach.SFT:
+            errors.append("Loss scope is available only for SFT.")
+        if self.loss_scope == "assistant" and self.use_unsloth:
+            errors.append(
+                "Assistant-only loss requires the standard backend; this Unsloth runtime does not preserve assistant masks."
+            )
+        if not 1 <= self.lora_rank <= 256 or not 1 <= self.lora_alpha <= 1024:
+            errors.append("LoRA rank or alpha is outside the supported range.")
+        if self.lora_dropout is not None and not 0 <= self.lora_dropout < 1:
+            errors.append("LoRA dropout must be between zero and one.")
+        if self.target_modules is not None and (
+            not self.target_modules or any(not x.strip() for x in self.target_modules)
+        ):
+            errors.append("Target modules must contain non-empty names.")
+        if not 0 < self.eval_ratio < 1 or self.gradient_accumulation_steps < 1:
+            errors.append("Evaluation ratio or gradient accumulation is invalid.")
+        if self.early_stopping_patience is not None and (
+            self.early_stopping_patience < 1
+            or not self.select_best_checkpoint
+            or not self.eval_enabled
+        ):
+            errors.append(
+                "Early stopping requires evaluation, best-checkpoint selection, and positive patience."
+            )
+        if self.packing and self.approach is not TrainingApproach.SFT:
+            errors.append("Packing is supported only for SFT.")
+        if self.checkpoint_steps is not None and self.checkpoint_steps < 1:
+            errors.append("Checkpoint steps must be positive.")
+        if self.loss_scope == "assistant" and any(
+            d.format == "text" for d in self.datasets
+        ):
+            errors.append("Assistant-only loss requires conversational data.")
+        if self.loss_scope == "completion" and any(
+            d.format != "prompt_completion" for d in self.datasets
+        ):
+            errors.append("Completion-only loss requires prompt/completion data.")
         if not self.model_id:
             errors.append("Model repository is required.")
         if not self.datasets:
@@ -304,6 +408,17 @@ class TrainingConfig:
             )
         if self.push_to_hub and not self.hub_model_id:
             errors.append("Hub output repository is required when upload is enabled.")
+        if self.validation_datasets:
+            from dataclasses import replace
+
+            validation_config = replace(
+                self, datasets=self.validation_datasets, validation_datasets=[]
+            )
+            errors.extend(
+                f"Validation: {item}" for item in validation_config.validate()
+            )
+            if {item.format for item in self.validation_datasets} != formats:
+                errors.append("Training and validation formats must match.")
         return errors
 
 

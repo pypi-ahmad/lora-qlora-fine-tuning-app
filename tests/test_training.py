@@ -382,3 +382,14 @@ def test_format_conversations_applies_chat_template_to_single_and_batch() -> Non
         "First",
         "Second",
     ]
+
+
+def test_loss_scope_preserves_native_completion_default_for_assistant_masks():
+    config = TrainingConfig(model_id="owner/model", loss_scope="assistant")
+    options = _trainer_config(config, torch.bfloat16, has_evaluation=False)
+    assert options["assistant_only_loss"] is True
+    assert "completion_only_loss" not in options
+    config.use_unsloth = True
+    assert any(
+        "does not preserve assistant masks" in error for error in config.validate()
+    )
