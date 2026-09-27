@@ -55,6 +55,7 @@ st.dataframe(
 # incompatible saved method, or Unsloth left enabled where it isn't
 # supported) for validate() to reject later.
 def approach_changed() -> None:
+    """Reset recipe defaults and invalidate the saved training configuration."""
     selected = TrainingApproach(st.session_state.training_approach)
     recipe = TRAINING_RECIPES[selected]
     st.session_state.training_learning_rate_mode = "Default"
@@ -68,6 +69,7 @@ def approach_changed() -> None:
 
 
 def method_changed() -> None:
+    """Turn off incompatible Unsloth use after an adapter method change."""
     selected = PeftMode(st.session_state.training_peft_mode)
     # Unsloth acceleration only supports LoRA/QLoRA (see unsloth_supported
     # below); switching to OFT/QOFT must force the toggle off rather than
@@ -78,6 +80,7 @@ def method_changed() -> None:
 
 
 def compute_type_changed() -> None:
+    """Turn off Unsloth for FP32 and invalidate the saved configuration."""
     selected = ComputeType(st.session_state.training_compute_type)
     # FP32 is unsupported by Unsloth's optimized kernels (see the warning
     # rendered below), so it must also force Unsloth off.
@@ -150,6 +153,7 @@ st.session_state.setdefault("training_gradient_checkpointing", True)
 
 
 def apply_preset_defaults() -> None:
+    """Copy selected preset values into the editable session controls."""
     defaults = PRESETS[st.session_state.training_preset]
     st.session_state.training_max_length = int(defaults["max_length"])
     st.session_state.training_epochs_mode = "Default"

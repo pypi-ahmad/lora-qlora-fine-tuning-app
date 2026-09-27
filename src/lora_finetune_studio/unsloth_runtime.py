@@ -22,6 +22,8 @@ UNSLOTH_PYTHON = PROJECT_ROOT / ".venv-unsloth" / "Scripts" / "python.exe"
 
 @dataclass(frozen=True, slots=True)
 class UnslothRuntimeStatus:
+    """Availability, interpreter path, and probe detail for native Unsloth."""
+
     available: bool
     python: Path
     version: str | None = None
@@ -30,6 +32,10 @@ class UnslothRuntimeStatus:
 
 @lru_cache(maxsize=1)
 def inspect_unsloth_runtime() -> UnslothRuntimeStatus:
+    """Probe the fixed Windows runtime path once per application process.
+
+    A restart is needed after installing or repairing the optional environment.
+    """
     # Cached for the lifetime of the Streamlit process: the result will not reflect
     # an Unsloth runtime installed or repaired after this process started (a restart
     # is required to pick that up, e.g. after re-running the Windows launcher).

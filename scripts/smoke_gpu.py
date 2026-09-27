@@ -14,6 +14,7 @@ from pathlib import Path
 
 
 def main() -> int:
+    """Run the bounded GPU compatibility matrix and return a failing status on errors."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--minutes", type=float, default=60)
     parser.add_argument("--report", type=Path, default=Path(".runs/compatibility.json"))

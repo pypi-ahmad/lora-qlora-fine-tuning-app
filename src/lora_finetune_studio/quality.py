@@ -16,12 +16,23 @@ from .sources import load_training_dataset
 
 
 def digest(value: Any) -> str:
+    """Hash a JSON-compatible value with stable key order.
+
+    Args:
+        value: Data whose content identity is needed.
+    """
     return hashlib.sha256(
         json.dumps(value, sort_keys=True, ensure_ascii=False, default=str).encode()
     ).hexdigest()
 
 
 def messages_valid(value: Any, *, assistant: bool = False) -> bool:
+    """Check a nonempty conversation and optionally require an assistant turn.
+
+    Args:
+        value: Candidate list of role/content dictionaries.
+        assistant: Require at least one assistant message when true.
+    """
     return (
         isinstance(value, list)
         and bool(value)
@@ -37,12 +48,27 @@ def messages_valid(value: Any, *, assistant: bool = False) -> bool:
 
 
 def content_valid(value: Any, *, assistant: bool = False) -> bool:
+    """Accept nonempty text or a valid message sequence.
+
+    Args:
+        value: Candidate text or conversation.
+        assistant: Require an assistant turn for conversational responses.
+    """
     return (isinstance(value, str) and bool(value.strip())) or messages_valid(
         value, assistant=assistant
     )
 
 
 def normalize_row(row: dict, spec: DatasetSpec) -> dict:
+    """Map and validate one raw row into the selected training schema.
+
+    Args:
+        row: Uncoerced dataset record.
+        spec: Reviewed format and column mapping.
+
+    Raises:
+        ValueError: Required content is missing, malformed, or contradictory.
+    """
     mapping = {
         "text": {"text": spec.text_column or "text"},
         "messages": {"messages": "messages"},
@@ -82,6 +108,11 @@ def normalize_row(row: dict, spec: DatasetSpec) -> dict:
 
 
 def prompt_identity(row: dict) -> str:
+    """Hash a row's prompt for cross-format split and test overlap checks.
+
+    Args:
+        row: Canonical text, messages, or prompt record.
+    """
     if "prompt" in row:
         prompt = row["prompt"]
     elif "messages" in row:
@@ -101,6 +132,8 @@ def prompt_identity(row: dict) -> str:
 
 @dataclass
 class PreparedData:
+    """Selected train/validation datasets with review and membership evidence."""
+
     train: Dataset
     validation: Dataset | None
     report: dict[str, Any]
@@ -108,6 +141,15 @@ class PreparedData:
 
 
 def prepare_data(config: TrainingConfig, token: str | None = None) -> PreparedData:
+    """Review every source row, apply explicit cleanup, and build safe splits.
+
+    Args:
+        config: Source mappings, sample cap, grouping, and cleanup choices.
+        token: Hugging Face token for gated datasets, if needed.
+
+    Returns:
+        Prepared rows, issues, fingerprint, and selected row identities.
+    """
     report: dict[str, Any] = {
         "sources": [],
         "issues": [],
@@ -273,6 +315,18 @@ def prepare_data(config: TrainingConfig, token: str | None = None) -> PreparedDa
 
 
 def token_report(dataset: Dataset, tokenizer: Any, config: TrainingConfig) -> dict:
+    """Report token lengths and supervised coverage for prepared rows.
+
+    Preference rows inspect both responses; their trainer loss is not computed here.
+
+    Args:
+        dataset: Prepared train or validation rows.
+        tokenizer: Selected model tokenizer and chat template.
+        config: Loss scope and maximum sequence length.
+
+    Raises:
+        ValueError: Required chat template or assistant masks are unavailable.
+    """
     lengths, supervised, examples = [], [], []
 
     def with_eos(text: str) -> str:

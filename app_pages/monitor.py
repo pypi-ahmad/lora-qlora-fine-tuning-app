@@ -80,6 +80,11 @@ st.session_state.run_id = run_id
 
 @st.fragment(run_every="2s")
 def training_monitor(selected_run_id: str) -> None:
+    """Refresh the selected run, shared queue, and evaluation controls.
+
+    Args:
+        selected_run_id: Run currently selected in the browser session.
+    """
     try:
         dispatch_next_run()
         waiting_ids = queued_runs()

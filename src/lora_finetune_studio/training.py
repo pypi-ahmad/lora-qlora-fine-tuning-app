@@ -61,6 +61,7 @@ class StatusCallback(TrainerCallback):
         self.started_at = time.monotonic()
 
     def on_log(self, args, state, control, logs=None, **kwargs):
+        """Append numeric trainer logs and replace the monitor status snapshot."""
         del control, kwargs
         logs = logs or {}
         # Only numeric log values are forwarded; TRL's logs dict can include
@@ -530,6 +531,19 @@ def _resolve_compute_dtype(
 
 
 def train(config: TrainingConfig, status_path: Path) -> dict[str, Any]:
+    """Execute a validated training or two-step fit job in a CUDA worker.
+
+    Args:
+        config: Saved recipe, data, adapter, and output settings.
+        status_path: Worker status file updated during training.
+
+    Returns:
+        Numeric trainer metrics for the completed job.
+
+    Raises:
+        ValueError: Configuration, reviewed data, or model features are incompatible.
+        RuntimeError: CUDA is unavailable.
+    """
     # Re-validated here even though the UI already validated on save: config.json is
     # untrusted once it round-trips through a file (e.g. an older or hand-edited run
     # file), and this worker process must not assume the caller already checked it.

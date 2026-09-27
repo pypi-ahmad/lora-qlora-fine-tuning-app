@@ -16,6 +16,7 @@ from streamlit.web import cli as stcli
 
 
 def main() -> None:
+    """Start the Streamlit entry point with the current Python environment."""
     app = Path(__file__).parents[2] / "streamlit_app.py"
     # Streamlit's CLI reads its arguments from sys.argv rather than accepting them as
     # a function call, so we rewrite argv before delegating to it.

@@ -84,6 +84,8 @@ MARKDOWN_EXTENSIONS = [
 
 @dataclass(frozen=True, slots=True)
 class Chapter:
+    """One parsed handbook chapter and its rendered site metadata."""
+
     number: int
     title: str
     slug: str
@@ -93,10 +95,12 @@ class Chapter:
 
     @property
     def filename(self) -> str:
+        """Return the numbered HTML filename for this chapter."""
         return f"{self.number:02d}-{self.slug}.html"
 
 
 def slugify(value: str) -> str:
+    """Turn a heading into a stable ASCII path component."""
     value = value.lower().replace("&", " and ")
     value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
     return value or "chapter"
@@ -107,6 +111,11 @@ def slugify(value: str) -> str:
 # preamble. Adding a "## " heading not meant as a chapter boundary will
 # silently create an extra chapter.
 def split_source(source: str) -> tuple[str, list[tuple[str, str]]]:
+    """Split Markdown into index preamble and level-two chapters.
+
+    Raises:
+        ValueError: The source has no chapter headings.
+    """
     headings = list(re.finditer(r"(?m)^## (.+?)\s*$", source))
     if not headings:
         raise ValueError("TUTORIAL.md must contain at least one level-two chapter.")
@@ -121,6 +130,7 @@ def split_source(source: str) -> tuple[str, list[tuple[str, str]]]:
 
 
 def render_markdown(value: str) -> str:
+    """Render handbook Markdown with the site's supported extensions."""
     return markdown(
         value,
         extensions=MARKDOWN_EXTENSIONS,
@@ -130,6 +140,7 @@ def render_markdown(value: str) -> str:
 
 
 def plain_text(value: str) -> str:
+    """Collapse rendered HTML into whitespace-normalized text."""
     return " ".join(BeautifulSoup(value, "html.parser").get_text(" ").split())
 
 
@@ -153,6 +164,7 @@ def pdf_safe(value: str) -> str:
 
 
 def chapter_summary(rendered: str) -> str:
+    """Select the first substantive paragraph for search and navigation."""
     soup = BeautifulSoup(rendered, "html.parser")
     for paragraph in soup.find_all("p"):
         text = " ".join(paragraph.get_text(" ").split())
@@ -162,6 +174,7 @@ def chapter_summary(rendered: str) -> str:
 
 
 def load_course() -> tuple[str, str, list[Chapter]]:
+    """Read the canonical Markdown and render its ordered chapter records."""
     source = SOURCE.read_text(encoding="utf-8")
     preamble_markdown, raw_sections = split_source(source)
     preamble_html = render_markdown(preamble_markdown)
@@ -194,6 +207,7 @@ def load_course() -> tuple[str, str, list[Chapter]]:
 
 
 def nav_items(chapters: list[Chapter], current: str | None = None) -> str:
+    """Build the navigation list and mark the current chapter."""
     parts: list[str] = []
     for chapter in chapters:
         active = (
@@ -216,6 +230,7 @@ def site_shell(
     current: str | None,
     page_class: str,
 ) -> str:
+    """Wrap one page's content in the shared accessible site layout."""
     escaped_title = html.escape(title)
     escaped_description = html.escape(description)
     nav = nav_items(chapters, current)
@@ -269,6 +284,7 @@ def site_shell(
 
 
 def index_content(preamble_html: str, chapters: list[Chapter]) -> str:
+    """Build the course home page from its introduction and chapter cards."""
     cards = "\n".join(
         f"""<article class="chapter-card">
   <a href="{chapter.filename}">
@@ -299,6 +315,7 @@ def index_content(preamble_html: str, chapters: list[Chapter]) -> str:
 
 
 def chapter_content(chapter: Chapter, chapters: list[Chapter]) -> str:
+    """Build one chapter body with previous and next links."""
     previous = chapters[chapter.number - 2] if chapter.number > 1 else None
     next_chapter = chapters[chapter.number] if chapter.number < len(chapters) else None
     previous_link = (
@@ -336,6 +353,7 @@ def rewrite_root_links(rendered: str) -> str:
 
 
 def build_search_index(chapters: list[Chapter]) -> str:
+    """Serialize chapter headings and text for browser-side search."""
     records: list[dict[str, str]] = []
     for chapter in chapters:
         soup = BeautifulSoup(chapter.html, "html.parser")
@@ -359,6 +377,7 @@ def build_search_index(chapters: list[Chapter]) -> str:
 def build_site_files(
     preamble_html: str, chapters: list[Chapter], pdf_bytes: bytes
 ) -> dict[str, bytes]:
+    """Assemble all generated site assets and the published PDF copy."""
     files: dict[str, bytes] = {}
     files[".nojekyll"] = b""
     index = site_shell(
@@ -389,6 +408,8 @@ def build_site_files(
 
 
 class HandbookDocTemplate(BaseDocTemplate):
+    """ReportLab template with cover, body pages, bookmarks, and contents."""
+
     def __init__(self, filename: str | Path, **kwargs: Any) -> None:
         super().__init__(filename, **kwargs)
         self.current_heading = TITLE
@@ -446,6 +467,7 @@ class HandbookDocTemplate(BaseDocTemplate):
     # while bookmarkPage/addOutlineEntry build the PDF's own outline/bookmark
     # pane independently of that TOC page.
     def afterFlowable(self, flowable: Any) -> None:
+        """Record chapter and section paragraphs in the PDF outline and TOC."""
         if not isinstance(flowable, Paragraph):
             return
         style_name = flowable.style.name
@@ -462,6 +484,7 @@ class HandbookDocTemplate(BaseDocTemplate):
 
 
 def pdf_styles() -> dict[str, ParagraphStyle]:
+    """Create the named ReportLab styles used by the handbook."""
     sample = getSampleStyleSheet()
     ink = colors.HexColor("#1D2230")
     muted = colors.HexColor("#5D6475")
@@ -555,6 +578,7 @@ def pdf_styles() -> dict[str, ParagraphStyle]:
 
 
 def inline_markup(node: Tag | NavigableString) -> str:
+    """Convert supported inline HTML into escaped ReportLab paragraph markup."""
     if isinstance(node, NavigableString):
         return html.escape(pdf_safe(str(node)))
     inner = "".join(inline_markup(child) for child in node.children)
@@ -573,6 +597,7 @@ def inline_markup(node: Tag | NavigableString) -> str:
 
 
 def paragraph_from_tag(tag: Tag, style: ParagraphStyle) -> Paragraph:
+    """Render an HTML element as one styled PDF paragraph."""
     content = "".join(inline_markup(child) for child in tag.children).strip()
     return Paragraph(content or "&#160;", style)
 
@@ -580,6 +605,7 @@ def paragraph_from_tag(tag: Tag, style: ParagraphStyle) -> Paragraph:
 def table_flowable(
     table_tag: Tag, styles: dict[str, ParagraphStyle], width: float
 ) -> Table:
+    """Convert an HTML table to a styled PDF table at the given width."""
     rows: list[list[Paragraph]] = []
     for row_index, row in enumerate(table_tag.find_all("tr")):
         cells = row.find_all(["th", "td"], recursive=False)
@@ -620,6 +646,7 @@ def table_flowable(
 
 
 def list_flowable(tag: Tag, styles: dict[str, ParagraphStyle]) -> ListFlowable:
+    """Convert a nested HTML list into ReportLab list items."""
     ordered = tag.name == "ol"
     items: list[ListItem] = []
     for item in tag.find_all("li", recursive=False):
@@ -658,6 +685,7 @@ def html_to_flowables(
     width: float,
     bookmark_prefix: str,
 ) -> list[Any]:
+    """Convert chapter HTML blocks into PDF flowables and bookmarks."""
     soup = BeautifulSoup(rendered, "html.parser")
     flowables: list[Any] = []
     heading_counter = 0
@@ -726,6 +754,7 @@ def html_to_flowables(
 
 
 def cover_flowables(styles: dict[str, ParagraphStyle], chapter_count: int) -> list[Any]:
+    """Build the PDF cover from the current title and chapter count."""
     title_style = ParagraphStyle(
         "CoverTitle",
         parent=styles["chapter"],
@@ -797,6 +826,7 @@ def cover_flowables(styles: dict[str, ParagraphStyle], chapter_count: int) -> li
 
 
 def build_pdf(chapters: list[Chapter], target: Path) -> None:
+    """Write the canonical handbook PDF with contents and outline entries."""
     target.parent.mkdir(parents=True, exist_ok=True)
     styles = pdf_styles()
     doc = HandbookDocTemplate(
@@ -849,10 +879,12 @@ def build_pdf(chapters: list[Chapter], target: Path) -> None:
 
 
 def file_digest(data: bytes) -> str:
+    """Hash generated asset bytes for the site manifest."""
     return hashlib.sha256(data).hexdigest()
 
 
 def manifest_bytes(files: dict[str, bytes]) -> bytes:
+    """Encode the generated-file manifest with content hashes."""
     manifest = {
         "source": "TUTORIAL.md",
         "files": {
@@ -865,6 +897,7 @@ def manifest_bytes(files: dict[str, bytes]) -> bytes:
 
 
 def read_manifest(root: Path) -> set[str]:
+    """Read paths managed by the last successful site build."""
     path = root / MANIFEST_NAME
     if not path.is_file():
         return set()
@@ -876,6 +909,7 @@ def read_manifest(root: Path) -> set[str]:
 
 
 def write_site(files: dict[str, bytes], root: Path) -> None:
+    """Write generated assets and remove only stale manifest-owned files."""
     old_files = read_manifest(root)
     complete = dict(files)
     complete[MANIFEST_NAME] = manifest_bytes(complete)
@@ -901,6 +935,7 @@ def portable_text_bytes(data: bytes, relative: str) -> bytes:
 # (e.g. a chapter renamed or removed from TUTORIAL.md leaving its old .html
 # behind).
 def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
+    """Report missing, stale, or unexpected generated files in a site root."""
     complete = dict(expected)
     complete[MANIFEST_NAME] = manifest_bytes(complete)
     differences: list[str] = []
@@ -920,6 +955,7 @@ def compare_files(expected: dict[str, bytes], root: Path) -> list[str]:
 
 
 def pdf_content_signature(path: Path) -> tuple[object, ...]:
+    """Compare PDF metadata, geometry, and extracted text across builds."""
     reader = PdfReader(path)
     metadata = reader.metadata
     pages = tuple(
@@ -934,6 +970,7 @@ def pdf_content_signature(path: Path) -> tuple[object, ...]:
 
 
 def run(check: bool) -> int:
+    """Build the handbook or check its committed assets without editing them."""
     _, preamble_html, chapters = load_course()
     if check:
         canonical_pdf = PDF_ROOT / PDF_NAME
@@ -969,6 +1006,7 @@ def run(check: bool) -> int:
 
 
 def main() -> int:
+    """Parse the optional check flag and return the build status."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--check",

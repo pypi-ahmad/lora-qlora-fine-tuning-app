@@ -15,6 +15,15 @@ from .quality import PreparedData, digest, prepare_data
 
 
 def pin_revisions(config: TrainingConfig, token: str | None = None) -> None:
+    """Replace Hub model and dataset revisions with immutable commit hashes.
+
+    Args:
+        config: Run configuration updated in place.
+        token: Hugging Face token for gated repositories, if needed.
+
+    Raises:
+        ValueError: Hub metadata omits a model or dataset commit.
+    """
     api = HfApi(token=token)
     revision = api.model_info(config.model_id, revision=config.model_revision).sha
     if not revision:
@@ -29,6 +38,15 @@ def pin_revisions(config: TrainingConfig, token: str | None = None) -> None:
 
 
 def prepare_run(config: TrainingConfig, token: str | None = None) -> PreparedData:
+    """Pin sources and reject data that differs from the reviewed fingerprint.
+
+    Args:
+        config: New-format training or fit-check configuration.
+        token: Hugging Face token passed to source loading.
+
+    Raises:
+        ValueError: Data review fails or inputs changed after review.
+    """
     pin_revisions(config, token)
     prepared = prepare_data(config, token)
     if prepared.report["errors"]:
@@ -47,6 +65,17 @@ def prepare_run(config: TrainingConfig, token: str | None = None) -> PreparedDat
 def save_manifest(
     config: TrainingConfig, prepared: PreparedData, tokenizer, model
 ) -> None:
+    """Persist provenance once and reject changes before checkpoint resume.
+
+    Args:
+        config: Configuration whose output directory identifies the run.
+        prepared: Reviewed datasets, report, and split membership.
+        tokenizer: Loaded tokenizer used to hash the chat template.
+        model: Loaded model whose PEFT settings are recorded.
+
+    Raises:
+        ValueError: Saved membership or runtime inputs differ on resume.
+    """
     import json
 
     import torch

@@ -40,6 +40,19 @@ SCHEMA = {
 def judge_pair(
     row: dict, base: str, adapter: str, *, seed: int, rubric: str, model: str = MODEL
 ) -> dict:
+    """Request one blinded comparison from the selected provider.
+
+    Args:
+        row: Evaluation task and optional reference.
+        base: Base model response text.
+        adapter: Adapter response text.
+        seed: Reproducible A/B response order.
+        rubric: Criteria supplied to the judge.
+        model: Supported OpenAI or Agnes judge model ID.
+
+    Returns:
+        A locally validated judgment or an explicit error record.
+    """
     from openai import DefaultHttpxClient, OpenAI
 
     if model not in {MODEL, AGNES_MODEL}:

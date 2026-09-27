@@ -149,6 +149,11 @@ def release_unused_cuda_memory() -> None:
 
 
 def detect_hardware(workspace: Path | None = None) -> HardwareProfile:
+    """Summarize device 0, host resources, and conservative QLoRA capacity.
+
+    Args:
+        workspace: Directory whose free disk space is reported; defaults to cwd.
+    """
     workspace = workspace or Path.cwd()
     cuda_available = torch.cuda.is_available()
     gpu_name: str | None = None
@@ -197,6 +202,12 @@ def detect_hardware(workspace: Path | None = None) -> HardwareProfile:
 def model_size_warning(
     parameter_count: int | None, profile: HardwareProfile
 ) -> str | None:
+    """Warn when a model exceeds the profile's estimated parameter limit.
+
+    Args:
+        parameter_count: Model parameter count, when Hub metadata supplies one.
+        profile: Local hardware estimate from :func:`detect_hardware`.
+    """
     if parameter_count is None or profile.recommended_max_billions == 0:
         return None
     billions = parameter_count / 1_000_000_000

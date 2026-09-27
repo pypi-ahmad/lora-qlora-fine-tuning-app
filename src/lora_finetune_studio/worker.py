@@ -121,6 +121,7 @@ def _execute(config, status_path):
 
 
 def main() -> int:
+    """Run the configured GPU job and return its process exit status."""
     try:
         with _queue_lock(".gpu.lock", blocking=False):
             return _main()

@@ -29,11 +29,25 @@ def _request(
 
 
 def list_models() -> list[str]:
+    """Return names reported by the local Ollama tags endpoint.
+
+    Raises:
+        URLError: The local Ollama service cannot be reached.
+    """
     response = _request("/api/tags")
     return [str(item["name"]) for item in response.get("models", [])]
 
 
 def generate(model: str, prompt: str) -> str:
+    """Generate one response with a model already installed in Ollama.
+
+    Args:
+        model: Installed Ollama model name.
+        prompt: Text sent to the local generation endpoint.
+
+    Returns:
+        The response text, or an empty string when the response omits it.
+    """
     response = _request(
         "/api/generate", {"model": model, "prompt": prompt, "stream": False}, 120
     )

@@ -43,6 +43,12 @@ BASE_PYTHON_ENV = "LORA_STUDIO_PYTHON"
 
 
 def write_json_atomic(path: Path, data: dict[str, Any]) -> None:
+    """Replace a JSON file atomically using a temporary file beside it.
+
+    Args:
+        path: Destination file, including its parent directory.
+        data: JSON-serializable object to persist.
+    """
     # Write to a temp file in the same directory, then os.replace over the target.
     # os.replace is atomic on both Windows and POSIX, so a concurrent reader (the
     # Monitor page polling status.json, or another process) never observes a
@@ -194,11 +200,21 @@ def list_runs() -> list[str]:
 
 
 def read_status(run_id: str) -> JobStatus:
+    """Load the current durable status for a validated run ID.
+
+    Args:
+        run_id: Existing run identifier under ``RUNS_ROOT``.
+    """
     path = run_path(run_id, RUNS_ROOT) / "status.json"
     return JobStatus.from_dict(json.loads(path.read_text(encoding="utf-8")))
 
 
 def read_config(run_id: str) -> TrainingConfig:
+    """Load a run configuration, including legacy defaults.
+
+    Args:
+        run_id: Existing run identifier under ``RUNS_ROOT``.
+    """
     path = run_path(run_id, RUNS_ROOT) / "config.json"
     return TrainingConfig.from_dict(json.loads(path.read_text(encoding="utf-8")))
 
@@ -228,6 +244,7 @@ def _is_training_worker(pid: int, config_path: Path) -> bool:
 
 
 def active_run() -> str | None:
+    """Find the live worker whose PID and command line match saved run state."""
     if not RUNS_ROOT.exists():
         return None
     for status_path in RUNS_ROOT.glob("*/status.json"):
@@ -247,6 +264,11 @@ def active_run() -> str | None:
 
 
 def create_run(config: TrainingConfig) -> str:
+    """Persist a new queued run and return its generated identifier.
+
+    Args:
+        config: Job settings whose output directory is set in place.
+    """
     with _queue_lock():
         queue = _read_queue_unlocked()
         run_id = uuid.uuid4().hex[:12]
@@ -268,6 +290,18 @@ def create_run(config: TrainingConfig) -> str:
 
 
 def launch_run(run_id: str) -> int:
+    """Start one queued job with the main or optional Unsloth interpreter.
+
+    Args:
+        run_id: Persisted job to launch.
+
+    Returns:
+        Spawned worker process ID.
+
+    Raises:
+        FileNotFoundError: The saved configuration is absent.
+        RuntimeError: The requested Unsloth runtime is unavailable.
+    """
     directory = run_path(run_id, RUNS_ROOT)
     config_path = directory / "config.json"
     if not config_path.is_file():
@@ -380,6 +414,15 @@ def _fail_stale_running_jobs_unlocked() -> None:
 
 
 def cancel_run(run_id: str, *, dispatch_next: bool = True) -> None:
+    """Cancel an owned worker or waiting job and optionally advance the queue.
+
+    Args:
+        run_id: Job to cancel.
+        dispatch_next: Launch the next queued job after cancellation.
+
+    Raises:
+        RuntimeError: A live PID does not belong to this job's worker.
+    """
     with _queue_lock():
         status = read_status(run_id)
         if status.state not in {JobState.QUEUED, JobState.RUNNING}:
@@ -417,6 +460,15 @@ def cancel_active_run(*, dispatch_next: bool = True) -> str | None:
 
 
 def resume_run(run_id: str) -> str:
+    """Queue the newest numeric checkpoint of a training job under the same ID.
+
+    Args:
+        run_id: Failed or cancelled training run to resume.
+
+    Raises:
+        ValueError: The run is not a training job.
+        FileNotFoundError: No checkpoint exists.
+    """
     directory = run_path(run_id, RUNS_ROOT)
     if read_config(run_id).job_kind != "training":
         raise ValueError("Only training jobs support checkpoint resume.")
@@ -452,6 +504,12 @@ def resume_run(run_id: str) -> str:
 
 
 def read_log(run_id: str, max_chars: int = 12_000) -> str:
+    """Return the tail of a worker log without reading it into the UI in full.
+
+    Args:
+        run_id: Run whose log is requested.
+        max_chars: Maximum trailing characters returned.
+    """
     path = run_path(run_id, RUNS_ROOT) / "training.log"
     if not path.exists():
         return ""

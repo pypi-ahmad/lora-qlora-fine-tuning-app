@@ -27,6 +27,19 @@ def generate_text(
     adapter_path: str | None = None,
     max_new_tokens: int = 128,
 ) -> str:
+    """Generate one text response and release this process's unused CUDA cache.
+
+    Args:
+        model_id: Base model repository ID.
+        prompt: Raw text completion prompt.
+        token: Hugging Face access token, if needed.
+        revision: Model revision to load.
+        adapter_path: Optional saved PEFT adapter directory.
+        max_new_tokens: Generation output limit.
+
+    Raises:
+        RuntimeError: CUDA is unavailable.
+    """
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA GPU is required for model comparison.")
     try:
@@ -70,6 +83,16 @@ def _generate_text(
 
 
 def format_inputs(tokenizer: Any, row: dict, mode: str):
+    """Tokenize one chat or text row for generation.
+
+    Args:
+        tokenizer: Base or saved adapter tokenizer.
+        row: Evaluation row with messages or a prompt.
+        mode: ``chat`` applies a generation prompt; other modes use raw text.
+
+    Raises:
+        ValueError: Chat mode lacks a tokenizer chat template.
+    """
     if mode == "chat":
         if not tokenizer.chat_template:
             raise ValueError(

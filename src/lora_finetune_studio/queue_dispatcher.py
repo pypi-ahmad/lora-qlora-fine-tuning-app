@@ -73,6 +73,7 @@ def wait_for_parent_and_dispatch(parent_pid: int) -> int:
 
 
 def main() -> int:
+    """Wait for the previous worker to exit, then dispatch the next queued job."""
     if len(sys.argv) != 2:
         return 2
     try:

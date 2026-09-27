@@ -16,6 +16,15 @@ from .sources import get_hf_token
 
 
 def validate_schema(schema: dict | None) -> None:
+    """Validate a JSON Schema and reject references outside that schema.
+
+    Args:
+        schema: Optional Draft 2020-12 schema for generated JSON.
+
+    Raises:
+        ValueError: A reference points outside the supplied schema.
+        SchemaError: The schema itself is invalid.
+    """
     if schema is None:
         return
     Draft202012Validator.check_schema(schema)
@@ -40,6 +49,16 @@ def validate_schema(schema: dict | None) -> None:
 
 
 def validate_rows(rows: list[dict], mode: str) -> None:
+    """Check every evaluation row against its chat, text, or reward shape.
+
+    Args:
+        rows: Uploaded or manually entered evaluation examples.
+        mode: ``chat``, ``text``, or ``reward``.
+
+    Raises:
+        TypeError: A row is not an object.
+        ValueError: A row has invalid content or a non-string reference.
+    """
     for index, row in enumerate(rows):
         if not isinstance(row, dict):
             raise TypeError(f"Evaluation row {index + 1} must be an object.")
@@ -76,6 +95,15 @@ def validate_rows(rows: list[dict], mode: str) -> None:
 
 
 def local_metrics(row: dict, response: str, schema: dict | None) -> dict:
+    """Score exact match and JSON validity for one generated response.
+
+    Missing references do not contribute an exact-match score.
+
+    Args:
+        row: Evaluation example with an optional reference.
+        response: Generated response text.
+        schema: Optional local JSON Schema for the parsed response.
+    """
     metrics = {}
     if "reference" in row:
         metrics["exact_match"] = float(response.strip() == row["reference"].strip())
@@ -97,6 +125,18 @@ def local_metrics(row: dict, response: str, schema: dict | None) -> dict:
 
 
 def evaluate(config: TrainingConfig, status_path: Path) -> dict:
+    """Evaluate a completed adapter and persist resumable row-level results.
+
+    Args:
+        config: Evaluation job with parent run and sample settings.
+        status_path: File updated with evaluation progress.
+
+    Returns:
+        Aggregated local and optional judge metrics.
+
+    Raises:
+        ValueError: Inputs, parent state, schema, or held-out membership fail checks.
+    """
     from .hardware import release_unused_cuda_memory
     from .inference import generate_rows
     from .judge import judge_pair

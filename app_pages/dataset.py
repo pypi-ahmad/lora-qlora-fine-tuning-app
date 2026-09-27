@@ -43,6 +43,7 @@ st.session_state.setdefault("pending_dataset_replace_index", None)
 
 
 def source_label(spec: DatasetSpec) -> str:
+    """Return a short display name for a selected dataset source."""
     source = spec.repo_id or spec.local_path or "Not configured"
     return Path(source).name if spec.local_path else source
 
@@ -53,6 +54,7 @@ def source_label(spec: DatasetSpec) -> str:
 def source_identity(
     spec: DatasetSpec,
 ) -> tuple[str, str | None, str | None, str | None, str]:
+    """Identify a dataset by source coordinates, independent of its column mapping."""
     return (
         spec.source,
         spec.repo_id,
@@ -63,20 +65,32 @@ def source_identity(
 
 
 def source_key(spec: DatasetSpec) -> str:
+    """Return a stable short key for widgets tied to a dataset source."""
     return hashlib.sha256(repr(source_identity(spec)).encode()).hexdigest()[:12]
 
 
 def is_compatible(spec: DatasetSpec) -> bool:
+    """Check the selected source format against the current training recipe."""
     return spec.format in recipe.dataset_formats
 
 
 def clear_pending() -> None:
+    """Discard the in-progress dataset inspection and replacement target."""
     st.session_state.pending_dataset_spec = None
     st.session_state.pending_dataset_inspection = None
     st.session_state.pending_dataset_replace_index = None
 
 
 def save_pending_dataset(spec: DatasetSpec, inspection: DatasetInspection) -> None:
+    """Save or replace an inspected dataset and invalidate training settings.
+
+    Args:
+        spec: Mapped dataset source to keep in session state.
+        inspection: Source preview shown to the user.
+
+    Raises:
+        ValueError: The source is duplicated or incompatible with selected data.
+    """
     selected: list[DatasetSpec] = st.session_state.dataset_specs
     replace_index = st.session_state.pending_dataset_replace_index
     other_specs = [

@@ -31,6 +31,8 @@ MAX_UPLOAD_BYTES = 200 * 1024 * 1024
 
 @dataclass(slots=True)
 class DatasetInspection:
+    """Detected columns, format, size, and preview for one dataset source."""
+
     columns: list[str]
     format: str
     rows: int
@@ -38,10 +40,20 @@ class DatasetInspection:
 
 
 def get_hf_token() -> str | None:
+    """Read the Hub token from the worker process environment."""
     return os.getenv("HF_TOKEN")
 
 
 def parse_hf_repo(value: str, *, repo_type: str) -> str:
+    """Accept a Hub repository ID or root HTTPS URL and return ``owner/name``.
+
+    Args:
+        value: User-entered ID or repository root URL.
+        repo_type: ``model`` or ``dataset`` for URL path handling.
+
+    Raises:
+        ValueError: The value is empty, malformed, or points outside a Hub root.
+    """
     # Untrusted input: this accepts either a bare "owner/name" ID or a full Hub URL,
     # but deliberately rejects anything else (other hosts, non-HTTPS, nested file or
     # revision paths, query strings, fragments) so callers only ever receive a plain
@@ -81,6 +93,11 @@ def parse_hf_repo(value: str, *, repo_type: str) -> str:
 
 
 def token_identity(token: str | None = None) -> str | None:
+    """Return the authenticated Hub account name without exposing its token.
+
+    Args:
+        token: Access token; absent values skip the network request.
+    """
     if not token:
         return None
     details = HfApi(token=token).whoami()
@@ -90,6 +107,13 @@ def token_identity(token: str | None = None) -> str | None:
 def model_parameter_count(
     repo_id: str, revision: str = "main", token: str | None = None
 ) -> int | None:
+    """Read a model's safetensors parameter count from Hub metadata.
+
+    Args:
+        repo_id: Hub model ID.
+        revision: Requested model revision.
+        token: Access token for gated models, if needed.
+    """
     info = HfApi(token=token).model_info(
         repo_id, revision=revision, expand=["safetensors"]
     )
@@ -98,6 +122,15 @@ def model_parameter_count(
 
 
 def validate_upload(filename: str, size: int) -> str:
+    """Return an allowed dataset suffix within the 200 MB upload limit.
+
+    Args:
+        filename: Client name used only to inspect its suffix.
+        size: Uploaded byte count.
+
+    Raises:
+        ValueError: The suffix or size violates the upload policy.
+    """
     suffix = Path(filename).suffix.lower()
     if suffix not in ALLOWED_UPLOAD_SUFFIXES:
         raise ValueError("Dataset upload must be CSV, JSON, or JSONL.")
@@ -107,6 +140,13 @@ def validate_upload(filename: str, size: int) -> str:
 
 
 def save_upload(filename: str, content: bytes, root: Path = Path(".uploads")) -> Path:
+    """Store upload bytes under a content-derived name and return its path.
+
+    Args:
+        filename: Source name used for suffix validation, never as a path.
+        content: Uploaded dataset bytes.
+        root: Local upload storage directory.
+    """
     # The caller-supplied filename is used only to derive/validate the extension; it
     # never becomes part of the stored path. Storage name is a content hash instead,
     # which both prevents path-injection via a crafted filename and deduplicates
@@ -129,6 +169,19 @@ def load_training_dataset(
     token: str | None = None,
     revision: str = "main",
 ) -> Dataset:
+    """Load one pinned Hub split or validated local CSV/JSON dataset.
+
+    Args:
+        repo_id: Hub dataset repository, when using a remote source.
+        local_path: Path to a previously saved upload.
+        config_name: Optional Hub configuration name.
+        split: Requested Hub split.
+        token: Hub access token, if needed.
+        revision: Hub revision to load.
+
+    Raises:
+        ValueError: Neither source exists or the local file is unsupported.
+    """
     if repo_id:
         return load_dataset(
             repo_id, config_name, split=split, token=token, revision=revision
@@ -143,6 +196,12 @@ def load_training_dataset(
 
 
 def inspect_dataset(dataset: Dataset, limit: int = 5) -> DatasetInspection:
+    """Detect a canonical shape and preview the first ``limit`` rows.
+
+    Args:
+        dataset: Loaded Hugging Face Dataset.
+        limit: Maximum preview rows.
+    """
     columns = list(dataset.column_names)
     # Priority order matters: a dataset could satisfy more than one shape's column
     # requirements (e.g. it might have both "messages" and "text" columns), and this

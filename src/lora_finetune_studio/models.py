@@ -23,6 +23,8 @@ from typing import Any
 
 
 class PeftMode(StrEnum):
+    """Persisted PEFT adapter and base-model loading methods."""
+
     LORA = "LoRA"
     QLORA = "QLoRA"
     OFT = "OFT"
@@ -30,6 +32,8 @@ class PeftMode(StrEnum):
 
 
 class TrainingApproach(StrEnum):
+    """Persisted objectives supported by the trainer recipe registry."""
+
     SFT = "Supervised Fine-Tuning"
     REWARD = "Reward Modeling"
     DPO = "DPO Training"
@@ -38,6 +42,8 @@ class TrainingApproach(StrEnum):
 
 
 class ComputeType(StrEnum):
+    """Requested compute precision before hardware-dependent resolution."""
+
     AUTO = "Default (Auto)"
     BF16 = "BF16"
     FP16 = "FP16"
@@ -47,6 +53,12 @@ class ComputeType(StrEnum):
 def resolve_compute_type(
     compute_type: ComputeType, *, bf16_supported: bool
 ) -> ComputeType:
+    """Resolve automatic or unsupported BF16 requests to an available dtype.
+
+    Args:
+        compute_type: Precision selected in the run configuration.
+        bf16_supported: Whether the current CUDA device supports BF16.
+    """
     if compute_type in {ComputeType.AUTO, ComputeType.BF16}:
         return ComputeType.BF16 if bf16_supported else ComputeType.FP16
     return compute_type
@@ -54,6 +66,8 @@ def resolve_compute_type(
 
 @dataclass(frozen=True, slots=True)
 class TrainingRecipe:
+    """Allowed adapters, data formats, and defaults for one training objective."""
+
     methods: tuple[PeftMode, ...]
     dataset_formats: tuple[str, ...]
     learning_rate: float
@@ -96,12 +110,16 @@ TRAINING_RECIPES: dict[TrainingApproach, TrainingRecipe] = {
 
 
 class Preset(StrEnum):
+    """Named bundles of training defaults exposed in the UI."""
+
     SMOKE = "Smoke test"
     STANDARD = "Standard"
     QUALITY = "Quality"
 
 
 class JobState(StrEnum):
+    """Durable states shared by training, fit, and evaluation jobs."""
+
     QUEUED = "queued"
     RUNNING = "running"
     COMPLETED = "completed"
@@ -111,6 +129,8 @@ class JobState(StrEnum):
 
 @dataclass(slots=True)
 class HardwareProfile:
+    """CUDA and host capacity snapshot used for UI recommendations."""
+
     cuda_available: bool
     gpu_name: str | None
     vram_gb: float
@@ -124,6 +144,8 @@ class HardwareProfile:
 
 @dataclass(slots=True)
 class DatasetSpec:
+    """One inspected Hub or uploaded dataset with its saved column mapping."""
+
     source: str
     repo_id: str | None = None
     local_path: str | None = None
@@ -141,6 +163,8 @@ class DatasetSpec:
 
 @dataclass(slots=True)
 class EvaluationConfig:
+    """Persisted evaluation examples, generation settings, and judge selection."""
+
     rows: list[dict[str, Any]] = field(default_factory=list)
     mode: str = "chat"
     max_new_tokens: int = 128
@@ -152,6 +176,7 @@ class EvaluationConfig:
     held_out: bool = True
 
     def validate(self) -> list[str]:
+        """Return errors in mode, sample, token, or judge settings."""
         errors = []
         if self.judge_model not in {"gpt-6-luna", "agnes-3.0-flash"}:
             errors.append("Unknown judge model.")
@@ -168,6 +193,8 @@ class EvaluationConfig:
 
 @dataclass(slots=True)
 class TrainingConfig:
+    """JSON-safe process contract for training, fit, and evaluation workers."""
+
     model_id: str
     model_revision: str = "main"
     datasets: list[DatasetSpec] = field(default_factory=list)
@@ -212,10 +239,12 @@ class TrainingConfig:
     checkpoint_steps: int | None = None
 
     def to_dict(self) -> dict[str, Any]:
+        """Serialize the configuration for the worker process."""
         return asdict(self)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> TrainingConfig:
+        """Load a run file, filling legacy defaults and dataset shape."""
         values = dict(data)
         # setdefault calls here backfill fields added to TrainingConfig after a run's
         # config.json was first written, so older saved/resumable runs keep loading
@@ -248,6 +277,7 @@ class TrainingConfig:
         return cls(**values)
 
     def validate(self) -> list[str]:
+        """Return configuration errors before a job is queued or executed."""
         errors: list[str] = []
         if self.schema_version not in {1, 2}:
             errors.append("Unsupported configuration version.")
@@ -424,6 +454,8 @@ class TrainingConfig:
 
 @dataclass(slots=True)
 class JobStatus:
+    """Atomic status snapshot read by the monitor and queue controller."""
+
     state: JobState
     message: str
     progress: float = 0.0
@@ -433,10 +465,12 @@ class JobStatus:
     artifact_dir: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
+        """Serialize the current status for an atomic JSON write."""
         return asdict(self)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> JobStatus:
+        """Load a persisted status and restore its state enum."""
         values = dict(data)
         values["state"] = JobState(values["state"])
         return cls(**values)
@@ -471,6 +505,12 @@ PRESETS: dict[Preset, dict[str, Any]] = {
 
 
 def apply_preset(config: TrainingConfig, preset: Preset) -> TrainingConfig:
+    """Return a copy of a run configuration with the selected preset defaults.
+
+    Args:
+        config: Existing configuration to copy.
+        preset: Preset whose values override matching fields.
+    """
     values = config.to_dict()
     values.update(PRESETS[preset])
     values["preset"] = preset
@@ -478,6 +518,15 @@ def apply_preset(config: TrainingConfig, preset: Preset) -> TrainingConfig:
 
 
 def run_path(run_id: str, root: Path = Path(".runs")) -> Path:
+    """Resolve a safe run directory beneath the configured runs root.
+
+    Args:
+        run_id: Lowercase letters, digits, and hyphens only.
+        root: Base directory for run state.
+
+    Raises:
+        ValueError: The ID could escape the intended path grammar.
+    """
     # Trust boundary: run_id ends up in a filesystem path join below, so it is
     # restricted to a fixed lowercase-alphanumeric-and-hyphen charset before that
     # join happens. This blocks path traversal (e.g. "../") and absolute-path
