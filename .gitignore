@@ -11,3 +11,5 @@ __pycache__/
 .codegraph/
 .code-review-graph/
 .firecrawl/
+graphify-out/cache/last_query_stamp
+diagrams/*.visual-check.*

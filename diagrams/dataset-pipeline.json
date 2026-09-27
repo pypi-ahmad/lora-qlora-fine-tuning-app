@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Dataset preparation and training",
+    "output": "dataset-pipeline.html",
+    "quality_profile": "showcase",
+    "viewBox": [
+      820,
+      500
+    ]
+  },
+  "lanes": [
+    {
+      "id": "intake",
+      "label": "Source intake"
+    },
+    {
+      "id": "mapping",
+      "label": "Map and review"
+    },
+    {
+      "id": "execution",
+      "label": "Worker preparation"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "inspect",
+    "map",
+    "review",
+    "worker",
+    "trainer"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "lane": "intake",
+      "col": 0,
+      "type": "external",
+      "label": "Source",
+      "sublabel": "Hub ID or upload"
+    },
+    {
+      "id": "inspect",
+      "lane": "intake",
+      "col": 1,
+      "type": "security",
+      "label": "Inspect",
+      "sublabel": "source and columns"
+    },
+    {
+      "id": "map",
+      "lane": "mapping",
+      "col": 2,
+      "type": "backend",
+      "label": "Map schema",
+      "sublabel": "DatasetSpec"
+    },
+    {
+      "id": "review",
+      "lane": "mapping",
+      "col": 3,
+      "type": "security",
+      "label": "Review rows",
+      "sublabel": "cleanup and split"
+    },
+    {
+      "id": "worker",
+      "lane": "execution",
+      "col": 4,
+      "type": "backend",
+      "label": "Reload",
+      "sublabel": "pin + fingerprint"
+    },
+    {
+      "id": "trainer",
+      "lane": "execution",
+      "col": 5,
+      "type": "backend",
+      "label": "Trainer",
+      "sublabel": "selected rows"
+    },
+    {
+      "id": "manual",
+      "lane": "mapping",
+      "col": 0,
+      "type": "frontend",
+      "label": "Manual map",
+      "sublabel": "choose columns"
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-inspect",
+      "from": "input",
+      "to": "inspect"
+    },
+    {
+      "id": "inspect-map",
+      "from": "inspect",
+      "to": "map",
+      "variant": "emphasis"
+    },
+    {
+      "id": "map-review",
+      "from": "map",
+      "to": "review"
+    },
+    {
+      "id": "review-worker",
+      "from": "review",
+      "to": "worker",
+      "variant": "emphasis"
+    },
+    {
+      "id": "worker-trainer",
+      "from": "worker",
+      "to": "trainer",
+      "variant": "emphasis"
+    },
+    {
+      "id": "inspect-manual",
+      "from": "inspect",
+      "to": "manual",
+      "label": "unknown shape",
+      "variant": "dashed",
+      "labelAt": [130, 170]
+    },
+    {
+      "id": "manual-map",
+      "from": "manual",
+      "to": "map",
+      "variant": "dashed",
+      "route": "straight"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Input boundary",
+      "items": [
+        "Remote sources use Hugging Face repository roots; uploads accept CSV, JSON, or JSONL up to 200 MB."
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Explicit review",
+      "items": [
+        "Malformed rows and train/validation overlap block launch; cleanup applies only after review."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Worker check",
+      "items": [
+        "The worker reloads pinned sources, verifies the review fingerprint, and prepares trainer splits."
+      ]
+    }
+  ]
+}

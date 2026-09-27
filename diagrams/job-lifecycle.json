@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "GPU job lifecycle",
+    "output": "job-lifecycle.html",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1040,
+      566
+    ]
+  },
+  "lanes": [
+    {
+      "id": "main",
+      "label": "Active lifecycle"
+    },
+    {
+      "id": "exceptions",
+      "label": "Terminal and recovery"
+    }
+  ],
+  "states": [
+    {
+      "id": "queued",
+      "type": "start",
+      "label": "Queued",
+      "sublabel": "durable FIFO",
+      "lane": "main",
+      "col": 0,
+      "step": "01",
+      "tag": "waiting"
+    },
+    {
+      "id": "running",
+      "type": "active",
+      "label": "Running",
+      "sublabel": "GPU worker",
+      "lane": "main",
+      "col": 2,
+      "step": "02",
+      "tag": "owned PID"
+    },
+    {
+      "id": "completed",
+      "type": "success",
+      "label": "Completed",
+      "sublabel": "output saved",
+      "lane": "main",
+      "col": 4,
+      "step": "03",
+      "tag": "terminal"
+    },
+    {
+      "id": "failed",
+      "type": "failure",
+      "label": "Failed",
+      "sublabel": "error recorded",
+      "lane": "exceptions",
+      "col": 1,
+      "tag": "terminal"
+    },
+    {
+      "id": "cancelled",
+      "type": "neutral",
+      "label": "Cancelled",
+      "sublabel": "verified stop",
+      "lane": "exceptions",
+      "col": 2,
+      "tag": "terminal"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "job-failed",
+      "from": "running",
+      "to": "failed",
+      "variant": "security",
+      "route": "drop",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "retry-failed",
+      "from": "failed",
+      "to": "queued",
+      "label": "checkpoint resume",
+      "variant": "emphasis",
+      "route": "auto"
+    },
+    {
+      "id": "job-cancelled",
+      "from": "running",
+      "to": "cancelled",
+      "variant": "dashed",
+      "route": "drop",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "requeue-cancelled",
+      "from": "cancelled",
+      "to": "queued",
+      "label": "checkpoint resume",
+      "variant": "default",
+      "route": "bottom-channel",
+      "fromSide": "bottom",
+      "toSide": "bottom"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Shared queue",
+      "items": [
+        "Training, fit checks, and evaluations wait for the same GPU lock."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Failure handling",
+      "items": [
+        "Worker errors and unexpected exits are recorded; the next queued job waits for process exit."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Recovery limits",
+      "items": [
+        "Only failed or cancelled training jobs with a checkpoint can resume; evaluations retry unfinished work."
+      ]
+    }
+  ]
+}

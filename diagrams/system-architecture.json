@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "LoRA Fine-tune Studio architecture",
+    "output": "system-architecture.html",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1260,
+      640
+    ]
+  },
+  "components": [
+    {
+      "id": "browser",
+      "type": "external",
+      "label": "Browser",
+      "sublabel": "Local user",
+      "pos": [
+        30,
+        260
+      ],
+      "size": [
+        130,
+        68
+      ]
+    },
+    {
+      "id": "ui",
+      "type": "frontend",
+      "label": "Streamlit pages",
+      "sublabel": "session drafts",
+      "pos": [
+        220,
+        260
+      ],
+      "size": [
+        130,
+        68
+      ]
+    },
+    {
+      "id": "review",
+      "type": "security",
+      "label": "Data review",
+      "sublabel": "quality.py",
+      "pos": [
+        420,
+        260
+      ],
+      "size": [
+        130,
+        68
+      ]
+    },
+    {
+      "id": "queue",
+      "type": "database",
+      "label": "jobs.py",
+      "sublabel": "durable FIFO queue",
+      "pos": [
+        620,
+        260
+      ],
+      "size": [
+        130,
+        68
+      ]
+    },
+    {
+      "id": "worker",
+      "type": "backend",
+      "label": "worker.py",
+      "sublabel": "GPU subprocess",
+      "pos": [
+        820,
+        260
+      ],
+      "size": [
+        130,
+        68
+      ]
+    },
+    {
+      "id": "runs",
+      "type": "database",
+      "label": ".runs artifacts",
+      "sublabel": "status and output",
+      "pos": [
+        1080,
+        260
+      ],
+      "size": [
+        145,
+        68
+      ]
+    },
+    {
+      "id": "hf",
+      "type": "external",
+      "label": "Hugging Face",
+      "sublabel": "models and data",
+      "brand": "hugging-face",
+      "pos": [
+        420,
+        70
+      ],
+      "size": [
+        145,
+        68
+      ]
+    },
+    {
+      "id": "training",
+      "type": "backend",
+      "label": "training.py",
+      "sublabel": "PEFT / TRL",
+      "pos": [
+        820,
+        70
+      ],
+      "size": [
+        130,
+        68
+      ]
+    },
+    {
+      "id": "ollama",
+      "type": "external",
+      "label": "Local Ollama",
+      "sublabel": "playground only",
+      "pos": [
+        220,
+        450
+      ],
+      "size": [
+        130,
+        68
+      ]
+    },
+    {
+      "id": "evaluation",
+      "type": "backend",
+      "label": "evaluation.py",
+      "sublabel": "local metrics",
+      "pos": [
+        820,
+        450
+      ],
+      "size": [
+        130,
+        68
+      ]
+    },
+    {
+      "id": "judge",
+      "type": "external",
+      "label": "OpenAI or Agnes",
+      "sublabel": "optional judge",
+      "pos": [
+        1080,
+        450
+      ],
+      "size": [
+        145,
+        68
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "browser-ui",
+      "from": "browser",
+      "to": "ui",
+      "label": "HTTP / WS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ui-review",
+      "from": "ui",
+      "to": "review",
+      "label": "preview + apply",
+      "labelAt": [385, 245]
+    },
+    {
+      "id": "review-queue",
+      "from": "review",
+      "to": "queue",
+      "label": "enqueue"
+    },
+    {
+      "id": "queue-worker",
+      "from": "queue",
+      "to": "worker",
+      "label": "dispatch",
+      "variant": "emphasis"
+    },
+    {
+      "id": "worker-runs",
+      "from": "worker",
+      "to": "runs",
+      "label": "status + logs",
+      "labelAt": [1060, 245]
+    },
+    {
+      "id": "hf-review",
+      "from": "hf",
+      "to": "review",
+      "label": "dataset rows",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "worker-training",
+      "from": "worker",
+      "to": "training",
+      "label": "train"
+    },
+    {
+      "id": "hf-training",
+      "from": "hf",
+      "to": "training",
+      "label": "base model"
+    },
+    {
+      "id": "training-runs",
+      "from": "training",
+      "to": "runs",
+      "label": "adapter + checkpoints"
+    },
+    {
+      "id": "worker-evaluation",
+      "from": "worker",
+      "to": "evaluation",
+      "label": "evaluate",
+      "labelAt": [885, 350]
+    },
+    {
+      "id": "evaluation-runs",
+      "from": "evaluation",
+      "to": "runs",
+      "label": "metrics"
+    },
+    {
+      "id": "evaluation-judge",
+      "from": "evaluation",
+      "to": "judge",
+      "label": "optional request",
+      "labelAt": [1015, 530]
+    },
+    {
+      "id": "ui-ollama",
+      "from": "ui",
+      "to": "ollama",
+      "label": "playground",
+      "labelAt": [285, 350]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Review before launch",
+      "items": [
+        "Dataset choices are reviewed in the UI and rechecked by the worker."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "One GPU worker",
+      "items": [
+        "Training, fit checks, and evaluations share the durable FIFO queue and GPU lock."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Local and optional services",
+      "items": [
+        "Adapters and evaluation results stay under .runs; judging sends selected examples to a provider."
+      ]
+    }
+  ]
+}
