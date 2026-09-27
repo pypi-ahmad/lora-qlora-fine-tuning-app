@@ -7,6 +7,20 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Reviewed dataset cleanup, explicit validation sources, grouped splits, provenance manifests,
+  configurable SFT loss and adapter settings, and a two-step GPU fit check.
+- Queued completed-adapter evaluation with local metrics, human ratings, and optional
+  `gpt-6-luna` or `agnes-3.0-flash` judging.
+
+### Changed
+
+- Training, fit checks, and evaluations share one persistent GPU queue with worker handoff and
+  recovery checks.
+- Added Python API docstrings, contributor onboarding, a developer guide, and a contributor
+  runbook; expanded the handbook's code lab.
+
 ## [0.5.2] - 2026-08-17
 
 ### Added
@@ -117,7 +131,8 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Limited dataset uploads to approved formats and 200 MB.
 - Added path validation and atomic run-status updates.
 
-[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/compare/v0.3.0...v0.4.0

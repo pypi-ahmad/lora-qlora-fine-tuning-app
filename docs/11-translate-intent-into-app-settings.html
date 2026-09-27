@@ -143,10 +143,14 @@ usually remain enabled on constrained GPUs.</p>
 <h3 id="review-time-blockers">Review-time blockers</h3>
 <p>Review prevents launch when configuration validation fails, CUDA is missing, a large
 model warning is unacknowledged, Unsloth is requested but unavailable, Hub publishing
-lacks a token, or another owned job is active.</p>
+lacks a token, or reviewed data settings are missing or have changed. When another GPU
+job is active, a valid training configuration can wait in the durable queue.</p>
 <p>The Review page displays requested and effective compute types. Read the entire JSON
 summary before starting because that saved configuration becomes the durable run
-contract.</p>
+contract. Run <strong>Check quality / preview cleanup</strong>, inspect invalid rows, duplicates,
+training/validation separation, and supervised-token coverage, then select <strong>Apply
+reviewed data settings</strong> before launch. You can queue a two-step GPU fit check to measure
+the selected recipe without saving an adapter.</p>
 <h3 id="one-variable-experiments">One-variable experiments</h3>
 <p>Hold model, data, seed, and evaluation fixed. Change one important variable per run.
 Record the hypothesis before training. A useful order is:</p>

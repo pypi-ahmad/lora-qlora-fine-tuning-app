@@ -72,11 +72,16 @@ the main interpreter; Unsloth jobs use <code>.venv-unsloth</code> with repositor
 |-- config.json
 |-- status.json
 |-- training.log
+|-- manifest.json
+|-- split_membership.json
+|-- quality_report.json
+|-- metrics_history.jsonl
 `-- output/
     |-- checkpoint-*/
     |-- adapter/
     |-- metrics.json
-    `-- training_config.json
+    |-- training_config.json
+    `-- evaluation.json (evaluation jobs)
 </code></pre>
 <p>Status JSON is written to a temporary file and atomically replaced, so the two-second
 Monitor poll does not read half-written state.</p>
@@ -96,7 +101,8 @@ run. The queue survives app restarts and continues after failures. Confirmed app
 the active worker without starting another; waiting runs resume when the app starts again.</p>
 <p>Resume chooses the numerically latest <code>checkpoint-*</code>, writes its absolute path into the existing
 config, and appends the same run ID to the queue. Resume cannot recover work done before the first
-saved checkpoint.</p>
+saved checkpoint. New-format runs also reject changes to reviewed inputs, split membership,
+tokenizer template, or package versions.</p>
 <h3 id="logs-and-error-handling">Logs and error handling</h3>
 <p>Worker stdout/stderr append to <code>training.log</code>. The status stores a short error with the
 exact HF token redacted; the log receives the traceback. Treat logs as potentially

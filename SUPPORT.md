@@ -1,18 +1,18 @@
 # Support
 
-This is a free, open-source, community-driven project maintained in spare time. There is no paid support tier, no SLA, and no dedicated support staff.
+LoRA Fine-tune Studio is free, community-driven, and maintained in spare time. There is no paid support tier, SLA, or dedicated support staff.
 
 ## Getting help
 
-- **Something's broken?** Open a bug report via [GitHub Issues](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/issues/new/choose).
-- **Have a question about using the app?** Check [USAGE.md](USAGE.md) and [SETUP.md](SETUP.md) first — they cover the full workflow, driver requirements, and troubleshooting. If it's still unclear, open an issue; questions are welcome, not just bug reports.
-- **Want a new feature?** Open a feature request via [GitHub Issues](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/issues/new/choose).
-- **Found a security issue?** See [SECURITY.md](SECURITY.md) — please don't report those as regular issues.
+- For a bug, open a report through [GitHub Issues](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/issues/new/choose).
+- For a usage question, check [USAGE.md](USAGE.md) and [SETUP.md](SETUP.md) for the workflow, driver requirements, and troubleshooting. If the answer is still unclear, open an issue. Questions are welcome.
+- For a feature suggestion, open a request through [GitHub Issues](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/issues/new/choose).
+- For a security issue, follow [SECURITY.md](SECURITY.md) instead of opening a regular issue.
 
 ## What to expect
 
-Responses come as time allows; there's no guaranteed turnaround. A well-described issue (the exact error, your OS/GPU/driver/CUDA version, and whether the readiness checks on **System** passed) gets resolved faster simply because there's less back-and-forth needed.
+Responses come as time allows, with no guaranteed turnaround. Include the exact error, your OS, GPU, driver and CUDA versions, and whether the readiness checks on **System** passed. Those details make it easier to investigate the issue.
 
 ## No financial support needed or wanted
 
-This project does not want or accept donations, sponsorships, or any other financial support, and never will. It costs nothing to use and nothing to maintain beyond time. If you want to give back, the most helpful things you can do are: report bugs clearly, suggest features, improve the documentation, or contribute code — see [CONTRIBUTING.md](CONTRIBUTING.md).
+This project does not want or accept donations, sponsorships, or other financial support, and never will. It costs nothing to use and nothing to maintain beyond time. You can help by reporting bugs clearly, suggesting features, improving the documentation, or contributing code. See [CONTRIBUTING.md](CONTRIBUTING.md).

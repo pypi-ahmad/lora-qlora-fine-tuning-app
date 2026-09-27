@@ -88,7 +88,8 @@ TRL arguments. Defaults in <code>from_dict</code> preserve old run compatibility
 </ol>
 <h3 id="dataset-boundary">Dataset boundary</h3>
 <p><code>sources.py</code> validates repository roots, uploads, loading, and inspection.
-<code>training.py</code> normalizes the saved mapping. Add a new shape to both sides and test the
+<code>quality.py</code> normalizes and reviews the saved mapping, while <code>provenance.py</code> pins revisions and
+checks the review fingerprint. Add a new shape to both sides and test the
 round trip; otherwise the UI can accept data the worker cannot consume.</p>
 <h3 id="trainer-boundary">Trainer boundary</h3>
 <p><code>training.py</code> resolves quantization, PEFT configuration, model type, TRL trainer, and
@@ -133,6 +134,22 @@ logs harmless. Use normal supply-chain, privacy, and access-control practices.</
 <td>normalization, splits, adapters, quantization, trainers</td>
 </tr>
 <tr>
+<td><code>test_quality.py</code></td>
+<td>row review, explicit cleanup, grouped splits, loss masks</td>
+</tr>
+<tr>
+<td><code>test_provenance.py</code></td>
+<td>manifest persistence and resume drift</td>
+</tr>
+<tr>
+<td><code>test_evaluation.py</code></td>
+<td>metrics, schemas, judges, and legacy defaults</td>
+</tr>
+<tr>
+<td><code>test_gpu_jobs.py</code></td>
+<td>GPU lock exclusion, mixed queue, evaluation retry</td>
+</tr>
+<tr>
 <td><code>test_jobs.py</code></td>
 <td>atomic files, ownership, lifecycle, resume</td>
 </tr>
@@ -167,6 +184,30 @@ hardware smoke test.</p>
 saved <code>TrainingConfig</code>, <code>config.json</code>, worker deserialization, TRL config, and
 <code>training_config.json</code>. Repeat for <code>use_unsloth</code> and identify where the interpreter
 changes.</p>
+<h3 id="guided-code-lab-prove-a-data-boundary">Guided code lab: prove a data boundary</h3>
+<p>This lab needs the locked project environment but no training GPU. Start with the
+<a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/ONBOARDING.md">onboarding guide</a> if the checkout is new to you.</p>
+<ol>
+<li>In <code>app_pages/review.py</code>, find the action that creates the quality report and the
+   separate action that applies reviewed settings. Explain why a preview alone cannot
+   authorize row removal.</li>
+<li>In <code>quality.py</code>, follow a raw row through <code>normalize_row</code>, the optional removal
+   choice, the grouped validation split, and the input fingerprint. Identify which
+   records are retained in <code>split_membership.json</code>.</li>
+<li>In <code>provenance.py</code>, find the comparison that rejects inputs changed after review.
+   Follow the worker call from <code>training.py</code> to confirm the check runs again after
+   the configuration crosses the JSON process boundary.</li>
+<li>Run the focused tests:</li>
+</ol>
+<p><code>powershell
+   uv run pytest tests/test_quality.py tests/test_provenance.py</code></p>
+<ol start="5">
+<li>Read the test for an explicit validation overlap. State which source file would
+   need to change if the overlap rule changed, and which user guide would need an
+   update. Use the <a href="https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/blob/main/DEVELOPER_GUIDE.md">developer guide</a> for the wider change map.</li>
+</ol>
+<p>The tests verify row selection and rejection behavior. They do not download a model
+or establish that a CUDA training recipe fits on your GPU.</p>
 <h3 id="checkpoint">Checkpoint</h3>
 <ol>
 <li>Why is <code>TrainingConfig</code> the central boundary?</li>

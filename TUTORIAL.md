@@ -4,7 +4,7 @@ An applied course in natural language processing, transformers, parameter-effici
 fine-tuning, preference optimization, evaluation, and the implementation of this
 repository.
 
-This handbook is designed for three readers at once:
+The modules serve different readers:
 
 - a beginner who needs every important term explained;
 - an ML practitioner who wants to design and evaluate useful training runs; and
@@ -754,8 +754,8 @@ carefully held-out external evaluation suite.
 ### Data sizing
 
 More data helps only when additional examples add signal. A few dozen clean examples
-can demonstrate pipeline correctness. A robust behavior change usually needs broader
-coverage and repeated evaluation. Start small, inspect failures, and add examples that
+can demonstrate pipeline correctness. A behavior change that holds across cases usually needs
+broader coverage and repeated evaluation. Start small, inspect failures, and add examples that
 address observed gaps rather than collecting volume blindly.
 
 ### Lab preparation
@@ -1033,11 +1033,15 @@ usually remain enabled on constrained GPUs.
 
 Review prevents launch when configuration validation fails, CUDA is missing, a large
 model warning is unacknowledged, Unsloth is requested but unavailable, Hub publishing
-lacks a token, or another owned job is active.
+lacks a token, or reviewed data settings are missing or have changed. When another GPU
+job is active, a valid training configuration can wait in the durable queue.
 
 The Review page displays requested and effective compute types. Read the entire JSON
 summary before starting because that saved configuration becomes the durable run
-contract.
+contract. Run **Check quality / preview cleanup**, inspect invalid rows, duplicates,
+training/validation separation, and supervised-token coverage, then select **Apply
+reviewed data settings** before launch. You can queue a two-step GPU fit check to measure
+the selected recipe without saving an adapter.
 
 ### One-variable experiments
 
@@ -1142,6 +1146,10 @@ Open `.runs/<run-id>/output/` and identify:
 - `metrics.json`;
 - `training_config.json`; and
 - any `checkpoint-*` directory.
+
+At the run root, inspect `quality_report.json`, `split_membership.json`, and
+`manifest.json`. The manifest records pinned sources, settings, template, runtime,
+and GPU information for this run.
 
 Explain why `adapter_model.safetensors` is much smaller than the base model and why it
 cannot generate by itself.
@@ -1293,6 +1301,11 @@ The claim determines data, rubric, metrics, and reviewers.
 Repeatedly checking the test set and tuning to it turns it into validation data. Keep a
 final blind set or collect new cases before a release claim.
 
+The app checks uploaded test prompts against saved training and validation membership
+for new runs. A manual comparison is marked as a spot check, while a legacy run without
+membership cannot establish that a test set is held out. Related examples can be kept
+together with the Dataset page's grouping column.
+
 ### Read loss curves carefully
 
 | Observation | Possible interpretation | Next check |
@@ -1318,6 +1331,14 @@ loss 0.7 as if the smaller number identifies the better model.
 
 Automated LLM judges can scale review but introduce model bias, prompt sensitivity, and
 correlated errors. Calibrate them against human labels.
+
+The Monitor page can queue a completed-adapter evaluation. A JSONL test set supplies chat,
+text, or reward examples; generative references are optional. Local results include trimmed
+case-sensitive exact match, JSON validity, optional local JSON Schema validity, latency, and
+token counts. Reward evaluation scores the trained adapter on chosen/rejected pairs.
+`gpt-6-luna` and `agnes-3.0-flash` are optional judges for generative comparisons. Selecting
+one and enabling sending transmits the chosen prompts, references, and both responses to
+that provider. Keep human ratings and the raw evaluation JSON alongside any summary.
 
 ### Hyperparameter strategy
 
@@ -1385,11 +1406,16 @@ the main interpreter; Unsloth jobs use `.venv-unsloth` with repository `src/` ad
 |-- config.json
 |-- status.json
 |-- training.log
+|-- manifest.json
+|-- split_membership.json
+|-- quality_report.json
+|-- metrics_history.jsonl
 `-- output/
     |-- checkpoint-*/
     |-- adapter/
     |-- metrics.json
-    `-- training_config.json
+    |-- training_config.json
+    `-- evaluation.json (evaluation jobs)
 ```
 
 Status JSON is written to a temporary file and atomically replaced, so the two-second
@@ -1416,7 +1442,8 @@ the active worker without starting another; waiting runs resume when the app sta
 
 Resume chooses the numerically latest `checkpoint-*`, writes its absolute path into the existing
 config, and appends the same run ID to the queue. Resume cannot recover work done before the first
-saved checkpoint.
+saved checkpoint. New-format runs also reject changes to reviewed inputs, split membership,
+tokenizer template, or package versions.
 
 ### Logs and error handling
 
@@ -1502,7 +1529,8 @@ When adding a setting:
 ### Dataset boundary
 
 `sources.py` validates repository roots, uploads, loading, and inspection.
-`training.py` normalizes the saved mapping. Add a new shape to both sides and test the
+`quality.py` normalizes and reviews the saved mapping, while `provenance.py` pins revisions and
+checks the review fingerprint. Add a new shape to both sides and test the
 round trip; otherwise the UI can accept data the worker cannot consume.
 
 ### Trainer boundary
@@ -1538,6 +1566,10 @@ logs harmless. Use normal supply-chain, privacy, and access-control practices.
 | `test_models.py` | contracts, migration, validation, presets, run paths |
 | `test_sources.py` | URLs, uploads, inspection, loading |
 | `test_training.py` | normalization, splits, adapters, quantization, trainers |
+| `test_quality.py` | row review, explicit cleanup, grouped splits, loss masks |
+| `test_provenance.py` | manifest persistence and resume drift |
+| `test_evaluation.py` | metrics, schemas, judges, and legacy defaults |
+| `test_gpu_jobs.py` | GPU lock exclusion, mixed queue, evaluation retry |
 | `test_jobs.py` | atomic files, ownership, lifecycle, resume |
 | `test_hardware.py` | scans, capacity guidance, allocator behavior |
 | `test_inference.py` | adapter loading, generation, cleanup |
@@ -1556,6 +1588,33 @@ Trace `learning_rate` from its recipe default through Streamlit session state, t
 saved `TrainingConfig`, `config.json`, worker deserialization, TRL config, and
 `training_config.json`. Repeat for `use_unsloth` and identify where the interpreter
 changes.
+
+### Guided code lab: prove a data boundary
+
+This lab needs the locked project environment but no training GPU. Start with the
+[onboarding guide](ONBOARDING.md) if the checkout is new to you.
+
+1. In `app_pages/review.py`, find the action that creates the quality report and the
+   separate action that applies reviewed settings. Explain why a preview alone cannot
+   authorize row removal.
+2. In `quality.py`, follow a raw row through `normalize_row`, the optional removal
+   choice, the grouped validation split, and the input fingerprint. Identify which
+   records are retained in `split_membership.json`.
+3. In `provenance.py`, find the comparison that rejects inputs changed after review.
+   Follow the worker call from `training.py` to confirm the check runs again after
+   the configuration crosses the JSON process boundary.
+4. Run the focused tests:
+
+   ```powershell
+   uv run pytest tests/test_quality.py tests/test_provenance.py
+   ```
+
+5. Read the test for an explicit validation overlap. State which source file would
+   need to change if the overlap rule changed, and which user guide would need an
+   update. Use the [developer guide](DEVELOPER_GUIDE.md) for the wider change map.
+
+The tests verify row selection and rejection behavior. They do not download a model
+or establish that a CUDA training recipe fits on your GPU.
 
 ### Checkpoint
 
@@ -1891,8 +1950,3 @@ provide broader theory and library details:
 - Qiu et al., [Controlling Text-to-Image Diffusion by Orthogonal Finetuning](https://arxiv.org/abs/2306.07280)
 - Ouyang et al., [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155)
 - Rafailov et al., [Direct Preference Optimization](https://arxiv.org/abs/2305.18290)
-
-
-### Dataset quality and evaluation updates
-
-See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the reviewed-data launch gate, validation sources, loss scopes, adapter controls, queued evaluation, optional `gpt-6-luna` judge, and run manifests. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.

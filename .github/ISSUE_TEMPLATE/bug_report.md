@@ -6,7 +6,7 @@ labels: bug
 assignees: ''
 ---
 
-Thanks for taking the time to report this. Please fill in as much as you can, but don't let a missing field stop you from posting.
+Describe what went wrong. Fill in what you know; you can post the report even if a field is missing.
 
 ## What happened
 
@@ -34,6 +34,6 @@ shown in the UI, terminal, or run logs, here.
 
 ## Anything else
 
-Any other context — dataset/model size, screenshots, logs.
+Add any other context, such as dataset or model size, screenshots, or logs.
 
 > Please don't paste your `HF_TOKEN`, private dataset contents, or proprietary model weights into this issue.

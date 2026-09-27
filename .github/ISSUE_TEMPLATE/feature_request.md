@@ -6,7 +6,7 @@ labels: enhancement
 assignees: ''
 ---
 
-Thanks for the suggestion! Check [CHANGELOG.md](../../CHANGELOG.md)'s `Unreleased` section first in case it's already planned. Feel free to open this anyway if you want to add detail or a different angle.
+Check the `Unreleased` section in [CHANGELOG.md](../../CHANGELOG.md) for related plans. You can still open a request to add detail or suggest another approach.
 
 ## What problem does this solve?
 
@@ -14,7 +14,7 @@ What are you trying to do that the app doesn't currently support, or does awkwar
 
 ## Proposed solution
 
-What would you like to see happen? Be as concrete as you can — a sketch of the UI change, a new training approach/adapter method, or a runtime path you have in mind.
+Describe what you would like to see, such as a UI change, a training approach or adapter method, or a runtime path.
 
 ## Alternatives considered
 

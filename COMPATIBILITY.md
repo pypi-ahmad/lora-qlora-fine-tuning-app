@@ -55,7 +55,9 @@ These short checks establish execution for this fixture and machine. They do not
 
 ### Agnes judge addition
 
-`agnes-3.0-flash` was added as an optional judge using its [documented Chat Completions endpoint](https://wiki.agnes-ai.com/en/docs/agnes-30-flash) and `AGNESAI_API_KEY`. Fifteen focused tests passed across judge routing/validation, evaluation retry, Streamlit model selection, and the demo. Ruff and ty passed. A live synthetic comparison returned a schema-valid judgment selecting the correct answer. An earlier malformed response was rejected explicitly; Agnes uses local schema validation rather than an assumed server-side JSON guarantee. Evidence is saved in `.runs/agnes-judge-smoke.json`. No additional GPU training was required for this API-only addition.
+`agnes-3.0-flash` was added as an optional judge using its [documented Chat Completions endpoint](https://wiki.agnes-ai.com/en/docs/agnes-30-flash) and `AGNESAI_API_KEY`. Fifteen focused tests passed across judge routing and validation, evaluation retry, Streamlit model selection, and the demo. Ruff and ty passed.
+
+A live synthetic comparison returned a schema-valid judgment selecting the correct answer. An earlier malformed response was rejected explicitly. Agnes responses receive local schema validation; the integration does not assume a server-side JSON guarantee. Evidence is saved in `.runs/agnes-judge-smoke.json`. No additional GPU training was required for this API-only addition.
 
 - `.runs/compatibility.json`: final matrix, per-case run IDs, metrics, manifests, and initial failed attempts.
 - `.runs/compatibility-first-pass.json` and `.runs/compatibility-retries.json`: original outcomes and retry evidence.

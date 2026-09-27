@@ -1,10 +1,9 @@
 # Setup Guide
 
-This guide explains how to clone, install, verify, run, update, and troubleshoot LoRA Fine-tune
-Studio on native Windows 11 and x86-64 Linux. It covers the normal application runtime, the
-optional Windows Unsloth runtime, Hugging Face access, development tools, and every direct project
-dependency. To inspect the guided workflow without a GPU or the CUDA stack, use the
-[read-only showcase](#41-read-only-showcase-no-cuda) after cloning.
+Install and run LoRA Fine-tune Studio on native Windows 11 or x86-64 Linux with the steps below.
+The guide also covers updates, troubleshooting, the optional Windows Unsloth runtime, Hugging Face
+access, development tools, and direct project dependencies. To inspect the guided workflow without
+a GPU or the CUDA stack, use the [read-only showcase](#41-read-only-showcase-no-cuda) after cloning.
 
 Repository: <https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app>
 
@@ -230,6 +229,34 @@ Never commit this file, paste a real token into documentation, or share it in lo
 If a token is exposed, revoke it immediately in Hugging Face settings. The official environment
 variable behavior is documented in the
 [`huggingface_hub` environment-variable reference](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables).
+
+### Optional AI judge credentials
+
+Training and local evaluation do not need judge credentials. If you explicitly enable AI
+judging on **Monitor**, configure the provider selected there before starting the app.
+The current GPT path requires both `OPENAI_API_KEY` and `OPENAI_BASE_URL`; set the latter to
+the base URL for the endpoint that serves `gpt-6-luna`. Agnes requires `AGNESAI_API_KEY`
+and uses its fixed endpoint.
+
+For persistent Windows user variables, set only the credentials you intend to use:
+
+```powershell
+[Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "replace_with_your_key", "User")
+[Environment]::SetEnvironmentVariable("OPENAI_BASE_URL", "https://your-provider.example/v1", "User")
+[Environment]::SetEnvironmentVariable("AGNESAI_API_KEY", "replace_with_your_key", "User")
+```
+
+On Linux, export the corresponding variables in the shell that launches the app:
+
+```bash
+export OPENAI_API_KEY="replace_with_your_key"
+export OPENAI_BASE_URL="https://your-provider.example/v1"
+export AGNESAI_API_KEY="replace_with_your_key"
+```
+
+Restart an already running app after changing these variables. Evaluation sends the
+selected prompts, references, and generated responses to that provider. Do not commit
+real credentials or place them in run configuration files.
 
 ## 6. Recommended automatic installation
 
@@ -485,7 +512,8 @@ Use the repository's small local fixture so the test does not depend on a large 
    disabled on Linux.
 7. Keep compute type, learning rate, epochs, maximum gradient norm, and maximum samples at their
    preset/default values for the first test.
-8. Save the settings, validate **Review & run**, and start training.
+8. Save the settings. On **Review & run**, select **Check quality / preview cleanup**, inspect the
+   report, and **Apply reviewed data settings** before starting training.
 9. Follow the run on **Monitor** until it completes or reports a concrete error.
 
 The first use of a model downloads it into the Hugging Face cache, so it is slower than later runs.
@@ -501,6 +529,8 @@ A successful smoke test writes an adapter under `.runs/<run-id>/output/adapter`.
 | `.runs/streamlit.err.log` | Background Streamlit errors |
 | `.runs/streamlit.pid` | Linux background server PID |
 | `.runs/<run-id>` | Saved run configuration, status, logs, checkpoints, and output |
+| `.runs/<run-id>/manifest.json` | Pinned sources, input fingerprint, runtime, and model provenance for new training runs |
+| `.runs/<run-id>/split_membership.json` | Selected training and validation identities used for overlap checks |
 | `.uploads` | App-managed uploaded datasets |
 | `demo/` | Isolated read-only showcase, fixture, and Community Cloud requirements |
 | `docs/` | Generated Zero-to-Mastery website and published PDF |
@@ -733,4 +763,6 @@ See [SECURITY.md](SECURITY.md) for the complete project security policy.
 
 ## Dataset quality and evaluation updates
 
-See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the reviewed-data launch gate, validation sources, loss scopes, adapter controls, queued evaluation, optional `gpt-6-luna` judge, and run manifests. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.
+See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for validation sources, loss
+scopes, adapter controls, queued evaluation, optional OpenAI or Agnes judging, and run manifests.
+See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.

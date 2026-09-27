@@ -82,6 +82,10 @@ and avoids unsupported troubleshooting steps more often than the prompted base m
 </ul>
 <p>Repeatedly checking the test set and tuning to it turns it into validation data. Keep a
 final blind set or collect new cases before a release claim.</p>
+<p>The app checks uploaded test prompts against saved training and validation membership
+for new runs. A manual comparison is marked as a spot check, while a legacy run without
+membership cannot establish that a test set is held out. Related examples can be kept
+together with the Dataset page's grouping column.</p>
 <h3 id="read-loss-curves-carefully">Read loss curves carefully</h3>
 <table>
 <thead>
@@ -133,6 +137,13 @@ loss 0.7 as if the smaller number identifies the better model.</p>
 </ul>
 <p>Automated LLM judges can scale review but introduce model bias, prompt sensitivity, and
 correlated errors. Calibrate them against human labels.</p>
+<p>The Monitor page can queue a completed-adapter evaluation. A JSONL test set supplies chat,
+text, or reward examples; generative references are optional. Local results include trimmed
+case-sensitive exact match, JSON validity, optional local JSON Schema validity, latency, and
+token counts. Reward evaluation scores the trained adapter on chosen/rejected pairs.
+<code>gpt-6-luna</code> and <code>agnes-3.0-flash</code> are optional judges for generative comparisons. Selecting
+one and enabling sending transmits the chosen prompts, references, and both responses to
+that provider. Keep human ratings and the raw evaluation JSON alongside any summary.</p>
 <h3 id="hyperparameter-strategy">Hyperparameter strategy</h3>
 <p>Use a small, fixed evaluation suite and change one variable. Recommended search order:</p>
 <ol>

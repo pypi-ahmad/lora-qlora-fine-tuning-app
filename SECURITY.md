@@ -2,12 +2,12 @@
 
 ## Supported versions
 
-Security fixes are provided for the latest `0.5.x` release (currently `0.5.1`) and the current
+Security fixes are provided for the latest `0.5.x` release (currently `0.5.2`) and the current
 `main` branch.
 
 | Version | Supported |
 | --- | --- |
-| `0.5.1` | Yes |
+| `0.5.2` | Yes |
 | Other `0.5.x` | Yes |
 | Older versions | No |
 
@@ -49,6 +49,8 @@ The application crosses these trust boundaries:
 - writes uploads, worker configuration, logs, checkpoints, metrics, and adapters to local disk;
 - starts a local Streamlit web server and a hidden training worker;
 - optionally calls Ollama at `http://localhost:11434`;
+- optionally sends selected evaluation prompts, references, and both responses to OpenAI or Agnes
+  when the user enables AI judging;
 - downloads the `uv` installer when the one-click launcher cannot find `uv`; and
 - can host `demo/streamlit_app.py` as a read-only Community Cloud showcase that loads only
   committed synthetic fixtures and does not accept uploads, tokens, or training starts.
@@ -67,8 +69,9 @@ should also be reported to that upstream project through its security process.
 - Uploads use content-derived filenames rather than the supplied path.
 - Run IDs reject path traversal characters.
 - Job-status JSON is replaced atomically.
-- `HF_TOKEN` is read at runtime and is not written to saved training configuration or worker logs.
-- Only one live training worker is permitted by the local job manager.
+- `HF_TOKEN`, `OPENAI_API_KEY`, and `AGNESAI_API_KEY` are read at runtime and are not written to
+  saved run configurations; treat worker logs as potentially sensitive third-party diagnostics.
+- One GPU worker holds an OS lock across training, fit checks, and evaluations.
 
 These controls reduce risk; they do not make arbitrary models or datasets trustworthy.
 
@@ -95,6 +98,8 @@ These controls reduce risk; they do not make arbitrary models or datasets trustw
 - Protect `.uploads`, `.runs`, Hugging Face caches, checkpoints, adapters, and logs. They may contain
   source data, generated text, paths, or memorized information.
 - Review repository visibility and token scope before enabling **Push adapter to Hugging Face Hub**.
+- Review the selected provider's data policy before enabling AI judging; the selected evaluation
+  examples and generated responses leave the machine.
 - Back up important adapters before deleting a run directory.
 
 ## Not security vulnerabilities

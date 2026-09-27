@@ -1,6 +1,6 @@
 # Usage Guide
 
-This guide explains how to install and operate LoRA Fine-tune Studio. For concepts and business
+Use this guide to install and operate LoRA Fine-tune Studio. For concepts and business
 context, open the [zero-to-hero handbook](docs/index.html). For implementation details, see
 [TECHNICAL.md](TECHNICAL.md).
 
@@ -209,6 +209,10 @@ The worker uses every row once per epoch and shuffles the combined dataset deter
 Larger datasets therefore contribute proportionally more examples. A preset's `max_samples` value
 caps the combined dataset, not each source individually.
 
+Use **Validation sources and grouping** to reserve a separately inspected source for validation
+or choose a grouping column that keeps related examples in one split. The quality review checks
+malformed rows, exact duplicates, and training/validation overlap before you launch a job.
+
 ## 6. Configure training
 
 Open **Training**, choose the settings below, then select **Save training settings**. Starting a
@@ -269,6 +273,11 @@ backend because Unsloth's optimized kernels require FP16 or BF16.
 The app validates these values before a job can start.
 KTO requires a per-device batch size of at least two.
 
+Advanced settings also include SFT loss scope, LoRA rank, alpha, dropout, target modules,
+packing, best-checkpoint selection, and early stopping. Assistant-only loss requires a chat
+template that supplies assistant masks and the standard backend. Packing requires a model using
+FlashAttention 2 or 3. See [IMPROVEMENTS.md](IMPROVEMENTS.md) before enabling either option.
+
 ### Optional Hub upload
 
 Enable **Push adapter to Hugging Face Hub**, enter a destination repository, and use a token with
@@ -282,6 +291,10 @@ select **Check quality / preview cleanup**, inspect the report, and **Apply revi
 Then select **Start training** when idle or **Add to queue** while another run is active. The app
 switches to **Monitor** automatically. One worker remains active while additional jobs wait in
 first-in-first-out order.
+
+The review shows row issues, duplicates, token lengths, and supervised-token coverage. Cleanup
+removes rows only after your explicit choice; original sources stay unchanged. You can queue a
+**two-step GPU fit check** from this page to measure the selected recipe without saving an adapter.
 
 The monitor refreshes every two seconds and shows:
 
@@ -317,6 +330,8 @@ first waiting job starts automatically.
 
 For a failed or cancelled run, select **Queue latest checkpoint**. Resume requires at least one
 `checkpoint-*` directory. The highest numeric checkpoint is selected and appended to the queue.
+New-format runs also reject changes to reviewed inputs, split membership, templates, and package
+versions.
 
 ## 8. Find the results
 
@@ -326,6 +341,10 @@ Each run is stored under `.runs/<run-id>`:
 config.json
 status.json
 training.log
+manifest.json
+split_membership.json
+quality_report.json
+metrics_history.jsonl
 output/
 ├── checkpoint-*/
 ├── adapter/
@@ -346,6 +365,19 @@ QLoRA/QOFT use quantized evaluation; LoRA/OFT use BF16 or FP16.
 A single prompt is a spot check. Saved held-out datasets provide local metrics, optional
 `gpt-6-luna` or `agnes-3.0-flash` judgments, and human ratings. Use a task-specific rubric before claiming an
 improvement. Evaluate accuracy, formatting, hallucination, safety, latency, and regressions.
+
+Upload a JSONL test set in the selected chat, text, or reward format. For generative evaluation,
+optional `reference` values support trimmed case-sensitive exact match; JSON validity and an
+optional local JSON Schema are checked separately. The default sample limit is 20. The worker
+rejects uploaded prompts that overlap saved training or validation membership. Manually entered
+prompts are marked as comparisons rather than held-out tests. Reward evaluation scores the
+trained reward adapter on chosen/rejected pairs without a base-model scoring-head comparison.
+
+Select **AI judge model** and explicitly enable sending examples if you want model judgments.
+`gpt-6-luna` requires `OPENAI_API_KEY` and `OPENAI_BASE_URL`; `agnes-3.0-flash` uses
+`AGNESAI_API_KEY` and Agnes's endpoint. Selected prompts, references, and both generated responses
+are sent to the chosen provider. Download the saved evaluation JSON from **Monitor**, add human
+ratings there, or use **Retry unfinished evaluation** to keep completed generations and judgments.
 
 ## 10. Use the Ollama playground
 
@@ -413,4 +445,5 @@ Start Ollama and install a model. This does not affect Hugging Face training.
 
 ## Dataset quality and evaluation updates
 
-See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the reviewed-data launch gate, validation sources, loss scopes, adapter controls, queued evaluation, optional `gpt-6-luna` judge, and run manifests. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.
+See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the complete data and evaluation
+contracts. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.

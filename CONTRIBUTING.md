@@ -32,10 +32,13 @@ cd lora-qlora-fine-tuning-app
 uv sync --group dev
 ```
 
-Work from `main`, not the `v0.5.1` release tag. Users who only want the published tree should follow
+Work from `main`, not the `v0.5.2` release tag. Users who only want the published tree should follow
 [SETUP.md](SETUP.md).
 
 The unit and Streamlit startup tests do not require Ollama or a training-capable GPU.
+For a first contribution, follow [ONBOARDING.md](ONBOARDING.md). The
+[developer guide](DEVELOPER_GUIDE.md) maps source ownership, and the
+[contributor runbook](CONTRIBUTOR_RUNBOOK.md) gives the check sequence.
 
 ## Workflow
 
@@ -68,6 +71,8 @@ branch other people use.
 - Keep shared UI/worker data serializable through the contracts in `models.py`.
 - Treat model IDs, dataset IDs, uploads, paths, and process IDs as untrusted input.
 - Never serialize or log `HF_TOKEN`.
+- Keep judge credentials in the process environment; never serialize `OPENAI_API_KEY` or
+  `AGNESAI_API_KEY` in run configurations or fixture output.
 - Keep `trust_remote_code=False` and safetensors-only model loading unless a reviewed proposal
   justifies changing that security boundary.
 - Avoid unrelated cleanup, generated abstractions, or speculative options.
@@ -79,12 +84,15 @@ uv run ruff format --check .
 uv run ruff check .
 uv run ty check src
 uv run pytest
+uv run --group docs python scripts/build_tutorial.py --check
 ```
 
-When changing `TUTORIAL.md`, `scripts/build_tutorial.py`, or generated `docs/` output, also run:
+When changing `TUTORIAL.md`, `scripts/build_tutorial.py`, or generated `docs/` output, prepare the
+documentation dependencies and rebuild the handbook before rerunning the check:
 
 ```powershell
 uv sync --group docs
+uv run --group docs python scripts/build_tutorial.py
 uv run --group docs python scripts/build_tutorial.py --check
 ```
 
@@ -104,7 +112,7 @@ datasets, adapters, checkpoints, or analysis output.
 
 - [ ] The change solves one clearly described problem.
 - [ ] Tests cover new or corrected behavior.
-- [ ] Ruff, ty, and pytest pass.
+- [ ] Ruff, ty, pytest, and the handbook check pass.
 - [ ] Documentation and `CHANGELOG.md` are updated when needed.
 - [ ] No credentials, private data, generated artifacts, or unrelated changes are included.
 - [ ] GPU/Ollama verification status is stated when relevant.
@@ -116,5 +124,5 @@ Maintainers may request changes to keep the project secure, understandable, and 
 
 This project does not want or accept donations, sponsorships, or any other financial support, and
 never will. LoRA Fine-tune Studio is free and community-driven. The most valuable way to give back
-is a well-written bug report, a focused pull request, or a documentation fix — see
+is a clear bug report, a focused pull request, or a documentation fix. See
 [SUPPORT.md](SUPPORT.md).

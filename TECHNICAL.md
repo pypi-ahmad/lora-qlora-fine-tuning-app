@@ -1,8 +1,7 @@
 # Technical Handbook
 
-This is the implementation reference for LoRA Fine-tune Studio `0.5.1`. It begins
-with the concepts needed to understand the application and ends with the contracts,
-flows, and extension points needed to maintain it.
+This reference covers LoRA Fine-tune Studio `0.5.1`, from the concepts behind the
+application to its contracts, flows, and extension points.
 
 - To install the application, use [SETUP.md](SETUP.md).
 - To operate the UI, use [USAGE.md](USAGE.md).
@@ -30,7 +29,7 @@ Implemented capabilities:
 - durable job status, logs, cancellation, and checkpoint resume;
 - optional adapter publishing to the Hugging Face Hub;
 - local base-versus-adapter generation; and
-- a separate playground for models already installed in Ollama; and
+- a separate playground for models already installed in Ollama;
 - a CUDA-free, read-only Streamlit showcase that renders synthetic fixtures without starting a
   worker.
 
@@ -103,6 +102,8 @@ or FP16 compute on native Windows.
 
 ## 4. System architecture
 
+> **Interactive diagram:** [diagrams/system-architecture.html](diagrams/system-architecture.html)
+
 ```mermaid
 flowchart LR
     User[Browser] --> Entry[streamlit_app.py]
@@ -117,9 +118,12 @@ flowchart LR
     Sources <--> HF[(Hugging Face)]
     Training <--> HF
     Training --> Runs[(.runs artifacts)]
-    Pages --> Inference[inference.py]
+    Worker --> Evaluation[evaluation.py]
+    Evaluation --> Inference[inference.py]
+    Evaluation --> Judge[judge.py]
     Inference --> Runs
     Inference <--> HF
+    Judge --> Providers[OpenAI or Agnes]
     Pages --> Ollama[ollama.py]
     Ollama --> LocalOllama[localhost:11434]
 ```
@@ -133,8 +137,8 @@ The architecture has four practical layers:
    boundaries.
 3. **Job control:** `jobs.py`, `worker.py`, and `lifecycle.py` isolate long work from
    Streamlit reruns and manage application shutdown.
-4. **ML execution:** `training.py` and `inference.py` use Datasets, Transformers, PEFT,
-   TRL, bitsandbytes, PyTorch, and optionally Unsloth.
+4. **ML execution:** `quality.py`, `provenance.py`, `training.py`, `inference.py`,
+   `evaluation.py`, and `judge.py` prepare data, train adapters, and evaluate results.
 
 The application deliberately uses JSON files, an atomically updated local queue manifest, and one
 GPU worker instead of a database or message broker. This keeps local operation inspectable and
@@ -157,6 +161,10 @@ tests, and never imports the job manager, worker, Hugging Face clients, or CUDA 
 | `src/lora_finetune_studio/worker.py` | Child-process entry point and terminal job-state handling |
 | `src/lora_finetune_studio/training.py` | Dataset normalization, model construction, trainer selection, training, evaluation, and publishing |
 | `src/lora_finetune_studio/inference.py` | Sequential base/adapter generation and reward scoring |
+| `src/lora_finetune_studio/quality.py` | Row validation, explicit cleanup, grouped splits, and token-loss reports |
+| `src/lora_finetune_studio/provenance.py` | Immutable Hub revisions, input fingerprints, and resume manifests |
+| `src/lora_finetune_studio/evaluation.py` | Held-out checks, local metrics, saved results, and retry |
+| `src/lora_finetune_studio/judge.py` | Optional OpenAI or Agnes judgment with local output validation |
 | `src/lora_finetune_studio/ollama.py` | Dependency-free client for two local Ollama HTTP endpoints |
 | `src/lora_finetune_studio/unsloth_runtime.py` | Discovery and version check for `.venv-unsloth` |
 | `src/lora_finetune_studio/lifecycle.py` | Delayed Streamlit process exit |
@@ -295,6 +303,8 @@ again.
 | `completion_column` | `None` | Source column mapped to `completion` |
 | `chosen_column` | `None` | Source column mapped to `chosen` |
 | `rejected_column` | `None` | Source column mapped to `rejected` |
+| `revision` | `main` | Hub source revision pinned to a commit for new runs |
+| `group_column` | `None` | Optional identity keeping related rows in one split |
 
 `auto` and `needs_mapping` are inspection states, not trainable saved formats.
 
@@ -327,6 +337,17 @@ again.
 | `push_to_hub` | `False` | Requires `hub_model_id` and a token at review time |
 | `hub_model_id` | `None` | Destination adapter repository |
 | `resume_from_checkpoint` | `None` | Set internally to the newest checkpoint on resume |
+| `schema_version` | `2` | New run contract; missing version loads as legacy version 1 |
+| `job_kind` | `training` | Training, evaluation, or two-step fit check |
+| `parent_run_id`, `evaluation` | `None` | Completed parent run and settings for an evaluation job |
+| `validation_datasets` | Empty list | Separately inspected validation sources |
+| `loss_scope` | `auto` | Full, completion-only, or assistant-only SFT loss when supported |
+| `lora_rank`, `lora_alpha`, `lora_dropout`, `target_modules` | `16`, `32`, `None`, `None` | Adapter construction controls |
+| `packing` | `False` | Requires SFT and a compatible FlashAttention implementation |
+| `select_best_checkpoint`, `early_stopping_patience` | `True`, `None` | Validation-loss checkpoint selection and optional stop patience |
+| `cleanup_invalid`, `cleanup_duplicates` | `False`, `False` | Explicit reviewed removal choices |
+| `input_fingerprint` | `None` | Detects changed sources or settings after review |
+| `checkpoint_steps` | `None` | Optional checkpoint interval |
 
 Deserialization supplies defaults for fields introduced after the first format and
 migrates the legacy singular `dataset` object into a one-item `datasets` list. This
@@ -364,6 +385,8 @@ batch size, accumulation, and gradient checkpointing.
 
 ## 9. Dataset pipeline
 
+> **Interactive diagram:** [diagrams/dataset-pipeline.html](diagrams/dataset-pipeline.html)
+
 ```mermaid
 flowchart TD
     Input[Hub ID/URL or upload] --> Validate[Validate boundary]
@@ -373,13 +396,14 @@ flowchart TD
     Detect -->|no| Manual[User maps columns]
     Manual --> Map
     Map --> Collection[Ordered compatible DatasetSpec list]
-    Collection --> WorkerLoad[Worker reloads every source]
+    Collection --> Review[Review every row and choose cleanup]
+    Review --> WorkerLoad[Worker reloads pinned sources]
     WorkerLoad --> Normalize[Normalize each to one schema]
-    Normalize --> Concatenate[Concatenate in collection order]
-    Concatenate --> Shuffle[Seeded shuffle when multiple sources]
-    Shuffle --> Cap[Apply global max_samples]
-    Cap --> Split[Optional seeded train/eval split]
-    Split --> Trainer[TRL trainer]
+    Normalize --> Concatenate[Combine in source order]
+    Concatenate --> Cap[Seeded global max_samples]
+    Cap --> Split[Explicit validation or grouped split]
+    Split --> Fingerprint[Check reviewed fingerprint]
+    Fingerprint --> Trainer[TRL trainer]
 ```
 
 ### 9.1 Network and upload boundaries
@@ -424,7 +448,7 @@ Canonical records are:
 
 The worker drops unrelated columns while normalizing. For `messages`, SFT applies the
 selected tokenizer's chat template with no generation prompt. New runs validate every
-row before coercion, report malformed content and duplicate identities, and inspect
+row before coercion, report malformed content and exact duplicates, and inspect
 token lengths and supervised masks. Cleanup requires an explicit reviewed choice.
 
 ### 9.3 Multiple datasets and sampling
@@ -434,8 +458,8 @@ position and label. The normalized datasets are concatenated rather than interle
 or balanced. A source therefore contributes in proportion to its row count.
 
 The global sample cap uses seeded sampling over the combined normalized rows.
-Every selected row appears once per epoch. There is no oversampling or per-source
-weight control.
+There is no oversampling or per-source weight control. The review and worker preparation
+must agree on the resulting input fingerprint before training starts.
 
 Explicit validation sources are checked for row, prompt, and group overlap. Otherwise,
 when evaluation is enabled and at least ten rows remain, connected prompt/group
@@ -546,6 +570,8 @@ GPU, driver, CUDA, library, model, or kernel changes, even with the same seed.
 
 ## 11. Job lifecycle and persistence
 
+> **Interactive diagram:** [diagrams/job-lifecycle.html](diagrams/job-lifecycle.html)
+
 ```mermaid
 stateDiagram-v2
     [*] --> queued: enqueue_run
@@ -583,8 +609,9 @@ the module worker invocation and the expected resolved configuration path. It re
 to stop a PID that merely happens to reuse a stored number. A verified process receives
 terminate, gets ten seconds to exit, and is killed only after timeout.
 
-Resume numerically sorts `output/checkpoint-*`, writes the newest absolute path into the existing
-configuration, and appends the same run ID to the queue. It fails only when no checkpoint exists.
+Only training jobs support resume. Resume numerically sorts `output/checkpoint-*`, writes the
+newest absolute path into the existing configuration, and appends the same run ID to the queue.
+The worker checks the saved manifest and split membership before resuming a new-format run.
 
 The worker catches ordinary exceptions, removes the current token from the short error
 message, writes a failed status, and sends the full traceback to `training.log`. The
@@ -607,11 +634,17 @@ as potentially sensitive operational data.
     ├── config.json               # Durable launch/resume contract
     ├── status.json               # Atomic current job state
     ├── training.log              # Worker stdout and stderr
+    ├── manifest.json              # Input, runtime, and model provenance for new training runs
+    ├── split_membership.json      # Selected train/validation row identities
+    ├── quality_report.json        # Reviewed data report
+    ├── metrics_history.jsonl      # Trainer learning-curve records
     └── output/
         ├── checkpoint-*/         # At most two trainer checkpoints
         ├── adapter/              # PEFT weights/config and tokenizer
         ├── metrics.json          # Final numeric metrics
-        └── training_config.json  # Configuration used for the run
+        ├── training_config.json  # Configuration used for the run
+        ├── evaluation.json       # Evaluation jobs only
+        └── human_ratings.json    # Ratings added in Monitor
 ```
 
 The adapter directory normally contains `adapter_model.safetensors`,
@@ -659,7 +692,10 @@ Base and adapter generation run sequentially rather than keeping two models resi
 Cleanup occurs in `finally`, including failed loads or generations. Remote model code
 is disabled and safetensors are required. Reward adapters score chosen/rejected pairs
 and report preference accuracy. Evaluation persists local metrics, optional AI judge
-results, and human ratings; see [IMPROVEMENTS.md](IMPROVEMENTS.md) for the contracts.
+results, and human ratings. Uploaded held-out prompts are checked against saved train and
+validation membership. A manual comparison is marked as such; legacy runs without membership
+cannot prove separation. The judge choices are `gpt-6-luna` and `agnes-3.0-flash`;
+see [IMPROVEMENTS.md](IMPROVEMENTS.md) for the contracts.
 
 The Ollama playground is independent. Its standard-library client sends:
 
@@ -748,6 +784,10 @@ Tests are organized by boundary:
 | `test_demo.py` | Showcase fixture contracts and read-only Streamlit startup |
 | `test_tutorial.py` | Handbook structure, portable generated-asset hashes, and local links |
 | `test_worker.py` | Child-process entry behavior |
+| `test_quality.py` | Explicit cleanup, grouped splits, and loss-mask checks |
+| `test_provenance.py` | Manifest persistence and resume drift rejection |
+| `test_evaluation.py` | Local metrics, schema checks, judge contracts, and legacy defaults |
+| `test_gpu_jobs.py` | GPU lock exclusion, mixed queue, and evaluation retry |
 
 GitHub Actions runs the following on both `ubuntu-latest` and `windows-latest` with
 Python 3.14:
@@ -848,4 +888,6 @@ repository.
 
 ## Dataset quality and evaluation updates
 
-See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the reviewed-data launch gate, validation sources, loss scopes, adapter controls, queued evaluation, optional `gpt-6-luna` judge, and run manifests. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.
+See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for validation sources, loss
+scopes, adapter controls, queued evaluation, optional OpenAI or Agnes judging, and run manifests.
+See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.

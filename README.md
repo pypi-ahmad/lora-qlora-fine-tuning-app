@@ -15,8 +15,10 @@ result with the base model from one interface.
 > a hosted training service or a multi-user production platform.
 
 The current release is [v0.5.2](https://github.com/pypi-ahmad/lora-qlora-fine-tuning-app/releases/tag/v0.5.2).
-It adds the open-source community scaffold (`SUPPORT.md`, `DISCLAIMER.md`, issue and pull-request
-templates). Training behavior is unchanged from v0.5.0. See [CHANGELOG.md](CHANGELOG.md).
+The tagged release adds the community scaffold (`SUPPORT.md`, `DISCLAIMER.md`, issue and
+pull-request templates); its training behavior is unchanged from v0.5.0. The `main` branch also
+contains the unreleased data-quality and evaluation work described below. See
+[CHANGELOG.md](CHANGELOG.md).
 
 ## Contents
 
@@ -38,7 +40,7 @@ templates). Training behavior is unchanged from v0.5.0. See [CHANGELOG.md](CHANG
 
 [![LoRA Fine-tune Studio model configuration](docs/images/training-studio.png)](demo/streamlit_app.py)
 
-The deployment-ready showcase presents the dataset, configuration, review, and monitor workflow
+The showcase presents the dataset, configuration, review, and monitor workflow
 with synthetic fixtures. It is read-only: it performs no training, model downloads, uploads,
 network requests, or persistence.
 
@@ -59,11 +61,14 @@ entrypoint-local `demo/requirements.txt` installs only Streamlit. No secrets are
   and adapter review.
 - Combines multiple Hugging Face or uploaded CSV, JSON, and JSONL datasets in one deterministic
   training run.
-- Validates conversational, text, prompt/completion, and paired-preference schemas before training.
+- Validates conversational, text, prompt/completion, and paired-preference rows before training;
+  reviewed cleanup and grouped validation splits keep data selection explicit.
 - Provides Smoke test, Standard, and High quality presets with optional controls for learning rate,
   epochs, sample limits, gradient norm, precision, sequence length, and batching.
-- Queues multiple training configurations while one isolated GPU worker runs, with live logs,
-  cancellation, checkpoint recovery, and automatic FIFO continuation.
+- Queues training, two-step GPU fit checks, and completed-adapter evaluations behind one GPU worker,
+  with live logs, cancellation, checkpoint recovery, and automatic FIFO continuation.
+- Compares base and adapter outputs on saved test sets with local metrics, human ratings, and
+  optional `gpt-6-luna` or `agnes-3.0-flash` judging.
 - Supports optional native Windows acceleration through a repository-managed Unsloth Core runtime.
 - Saves portable PEFT adapters locally and can optionally upload completed adapters to the
   Hugging Face Hub.
@@ -95,24 +100,24 @@ OFT and QOFT use the standard PEFT/TRL backend.
 
 ## Workflow
 
-1. **System** — verify the operating system, CUDA GPU, memory, storage, and integrations.
-2. **Dataset** — inspect, map, and combine compatible local or Hugging Face datasets.
-3. **Model** — inspect the base model and estimate whether it fits the available VRAM.
-4. **GPU memory** — review live CUDA use and release unused PyTorch cache when safe.
-5. **Training** — select the approach, adapter method, backend, preset, and optional overrides.
-6. **Review & run** — validate the configuration, then start it or add it to the durable queue.
-7. **Monitor** — inspect queue order, progress bar and percentage, logs, metrics, cancellation, and
+1. On **System**, verify the operating system, CUDA GPU, memory, storage, and integrations.
+2. On **Dataset**, inspect, map, and combine compatible local or Hugging Face datasets.
+3. On **Model**, inspect the base model and estimate whether it fits the available VRAM.
+4. On **GPU memory**, review live CUDA use and release unused PyTorch cache when safe.
+5. On **Training**, select the approach, adapter method, backend, preset, and optional overrides.
+6. On **Review & run**, validate the configuration, then start it or add it to the durable queue.
+7. On **Monitor**, inspect queue order, progress bar and percentage, logs, metrics, cancellation, and
    recovery.
-8. **Ollama playground** — chat with models already served by a local Ollama installation.
+8. On **Ollama playground**, chat with models already served by a local Ollama installation.
 
 ## Architecture diagrams
 
-- [LoRA Studio system architecture](diagrams/system-architecture.html) — application components
-  and their relationships.
-- [Dataset processing and ingestion pipeline](diagrams/dataset-pipeline.html) — dataset intake,
-  schema handling, and preparation flow.
-- [Training job lifecycle and state machine](diagrams/job-lifecycle.html) — queued job states and
-  lifecycle transitions.
+- [LoRA Studio system architecture](diagrams/system-architecture.html) shows the application
+  components and their relationships.
+- [Dataset processing and ingestion pipeline](diagrams/dataset-pipeline.html) traces dataset intake,
+  schema handling, and preparation.
+- [Training job lifecycle and state machine](diagrams/job-lifecycle.html) shows queued job states
+  and lifecycle transitions.
 
 ## Requirements
 
@@ -164,7 +169,8 @@ For manual setup, token configuration, update instructions, and a full dependenc
 3. Inspect `Qwen/Qwen3-0.6B` on **Model**.
 4. Select **Supervised Fine-Tuning**, **QLoRA**, and **Smoke test** on **Training**.
 5. On Windows, optionally enable **Use Unsloth** after the runtime reports ready.
-6. Validate the configuration on **Review & run**, then start training.
+6. On **Review & run**, select **Check quality / preview cleanup**, inspect the report, and
+   **Apply reviewed data settings** before starting training.
 7. Follow the run on **Monitor** and find the adapter under
    `.runs/<run-id>/output/adapter`.
 
@@ -181,9 +187,12 @@ production-quality adapter.
 | [Usage guide](USAGE.md) | Complete application workflow, showcase, and operational guidance |
 | [Read-only showcase](demo/streamlit_app.py) | CUDA-free Streamlit walkthrough of dataset, configure, review, and monitor |
 | [Technical reference](TECHNICAL.md) | Architecture, contracts, lifecycle, storage, and extension points |
+| [Contributor onboarding](ONBOARDING.md) | First checkout, CPU-safe checks, and a guided source trace |
+| [Developer guide](DEVELOPER_GUIDE.md) | Runtime boundaries, code ownership, and focused verification |
+| [Contributor runbook](CONTRIBUTOR_RUNBOOK.md) | Change, test, documentation, and pull-request procedure |
 | [Zero-to-Mastery course](TUTORIAL.md) | Canonical NLP, transformer, fine-tuning, labs, evaluation, and capstone curriculum |
 | [Interactive handbook](docs/index.html) | Searchable multipage course for local reading or GitHub Pages |
-| [PDF handbook](docs/downloads/lora-finetune-studio-zero-to-mastery.pdf) | Complete 50-page course for offline reading |
+| [PDF handbook](docs/downloads/lora-finetune-studio-zero-to-mastery.pdf) | Complete course for offline reading |
 | [Contributing guide](CONTRIBUTING.md) | Development workflow, checks, and pull-request requirements |
 | [Security policy](SECURITY.md) | Security model and private vulnerability reporting |
 | [Support](SUPPORT.md) | Where to ask usage questions and what response time to expect |
@@ -194,7 +203,8 @@ production-quality adapter.
 
 - PPO, full tuning, freeze tuning, pre-training, and distributed training are not implemented.
 - Native Unsloth integration currently targets Windows; Linux uses the standard backend.
-- Only one local training job runs at a time; additional jobs wait in the persistent FIFO queue.
+- Only one local GPU job runs at a time; training, fit checks, and evaluations share the persistent
+  FIFO queue.
 - The application has no authentication and must not be exposed to an untrusted network.
 - The Ollama playground does not merge, convert, or import trained adapters.
 - GitHub Pages and Streamlit Community Cloud cannot access a user's local GPU or Ollama service.

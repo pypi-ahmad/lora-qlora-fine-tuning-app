@@ -41,7 +41,12 @@ Download the complete JSON result or add human preferences and notes. Retrying u
 
 ### Optional AI judge
 
-Choose **AI judge model**, then select the explicit sending option. Available judges are `gpt-6-luna` (the default, medium reasoning effort) and `agnes-3.0-flash` (provider-default reasoning). GPT reads `OPENAI_API_KEY` and `OPENAI_BASE_URL`. Agnes reads `AGNESAI_API_KEY` through Python's process environment and uses `https://apihub.agnes-ai.com/v1`. Credentials remain server-side and are never included in run configurations. Existing saved evaluations default to GPT; use a new evaluation to change the judge.
+Choose **AI judge model**, then enable sending to the selected provider. The choices are
+`gpt-6-luna` (the default, with medium reasoning effort) and `agnes-3.0-flash` (with the
+provider's default reasoning setting). GPT requires `OPENAI_API_KEY` and `OPENAI_BASE_URL`;
+Agnes requires `AGNESAI_API_KEY` and uses `https://apihub.agnes-ai.com/v1`.
+Credentials stay in the server process and are absent from run configurations. Existing
+saved evaluations default to GPT. Create a new evaluation to change the judge.
 
 The judge sees anonymous A/B responses in seeded randomized order. It scores instruction following, correctness, and clarity, and returns a winner, tie, or abstention with a brief justification. Correctness is unavailable when the supplied evidence is insufficient. These are model judgments, not ground truth.
 
