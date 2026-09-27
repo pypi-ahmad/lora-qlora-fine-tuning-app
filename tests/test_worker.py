@@ -3,8 +3,16 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
-from lora_finetune_studio import worker
+import pytest
+
+from lora_finetune_studio import jobs, worker
 from lora_finetune_studio.models import DatasetSpec, JobState, JobStatus, TrainingConfig
+
+
+@pytest.fixture(autouse=True)
+def isolated_worker_locks(tmp_path, monkeypatch):
+    monkeypatch.setattr(jobs, "RUNS_ROOT", tmp_path)
+    monkeypatch.setattr(jobs, "PROJECT_ROOT", tmp_path)
 
 
 def test_worker_schedules_queue_handoff_after_terminal_status(

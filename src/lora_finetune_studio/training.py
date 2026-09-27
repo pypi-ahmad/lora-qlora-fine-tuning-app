@@ -14,6 +14,8 @@ from __future__ import annotations
 
 import json
 import os
+import time
+from dataclasses import replace
 from importlib import import_module
 from pathlib import Path
 from typing import Any, cast
@@ -26,6 +28,7 @@ from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
     BitsAndBytesConfig,
+    EarlyStoppingCallback,
     TrainerCallback,
 )
 
@@ -55,9 +58,10 @@ class StatusCallback(TrainerCallback):
 
     def __init__(self, status_path: Path) -> None:
         self.status_path = status_path
+        self.started_at = time.monotonic()
 
     def on_log(self, args, state, control, logs=None, **kwargs):
-        del args, control, kwargs
+        del control, kwargs
         logs = logs or {}
         # Only numeric log values are forwarded; TRL's logs dict can include
         # non-numeric entries (e.g. a formatted "epoch" string in some versions)
@@ -70,6 +74,19 @@ class StatusCallback(TrainerCallback):
         # Best-effort progress fraction for the Monitor page's progress bar; not an
         # ETA, and max_steps defaults to 1 here only to avoid a division by zero
         # before the trainer has computed its real max_steps.
+        metrics["elapsed_seconds"] = time.monotonic() - self.started_at
+        tokens = getattr(state, "num_input_tokens_seen", 0)
+        if tokens:
+            metrics["tokens_per_second"] = tokens / max(
+                metrics["elapsed_seconds"], 0.001
+            )
+        if torch.cuda.is_available():
+            metrics["peak_allocated_gb"] = torch.cuda.max_memory_allocated() / 1024**3
+            metrics["peak_reserved_gb"] = torch.cuda.max_memory_reserved() / 1024**3
+        with self.status_path.with_name("metrics_history.jsonl").open(
+            "a", encoding="utf-8"
+        ) as history:
+            history.write(json.dumps({"step": state.global_step, **metrics}) + "\n")
         progress = min(state.global_step / max(state.max_steps, 1), 1.0)
         status = JobStatus(
             state=JobState.RUNNING,
@@ -77,6 +94,7 @@ class StatusCallback(TrainerCallback):
             progress=progress,
             pid=os.getpid(),
             metrics=metrics,
+            artifact_dir=args.output_dir,
         )
         write_json_atomic(self.status_path, status.to_dict())
 
@@ -239,10 +257,10 @@ def _peft_config(config: TrainingConfig) -> LoraConfig | OFTConfig:
     if config.peft_mode in {PeftMode.LORA, PeftMode.QLORA}:
         return LoraConfig(
             task_type=task_type,
-            r=16,
-            lora_alpha=32,
-            lora_dropout=0.05,
-            target_modules="all-linear",
+            r=config.lora_rank,
+            lora_alpha=config.lora_alpha,
+            lora_dropout=0.05 if config.lora_dropout is None else config.lora_dropout,
+            target_modules=config.target_modules or "all-linear",
             bias="none",
             modules_to_save=reward_modules,
         )
@@ -250,7 +268,7 @@ def _peft_config(config: TrainingConfig) -> LoraConfig | OFTConfig:
         task_type=task_type,
         oft_block_size=32,
         use_cayley_neumann=True,
-        target_modules="all-linear",
+        target_modules=config.target_modules or "all-linear",
         bias="none",
         modules_to_save=reward_modules,
     )
@@ -347,8 +365,9 @@ def _load_model_and_tokenizer(
             return model, tokenizer, None
         model = fast_language_model.get_peft_model(
             model,
-            r=16,
-            target_modules=[
+            r=config.lora_rank,
+            target_modules=config.target_modules
+            or [
                 "q_proj",
                 "k_proj",
                 "v_proj",
@@ -357,8 +376,8 @@ def _load_model_and_tokenizer(
                 "up_proj",
                 "down_proj",
             ],
-            lora_alpha=32,
-            lora_dropout=0,
+            lora_alpha=config.lora_alpha,
+            lora_dropout=0 if config.lora_dropout is None else config.lora_dropout,
             bias="none",
             modules_to_save=(
                 ["score"] if config.approach is TrainingApproach.REWARD else None
@@ -462,6 +481,10 @@ def _trainer_config(
         "save_total_limit": 2,
         "report_to": "none",
         "seed": config.seed,
+        "include_num_input_tokens_seen": True,
+        "load_best_model_at_end": has_evaluation and config.select_best_checkpoint,
+        "metric_for_best_model": "eval_loss",
+        "greater_is_better": False,
         # Always False here: this app's own explicit push_to_hub step at the end of
         # train() is what actually uploads, deliberately after local save and
         # evaluation succeed. TRL must never push on its own from inside training.
@@ -470,6 +493,16 @@ def _trainer_config(
     }
     if config.approach is TrainingApproach.SFT:
         options["dataset_text_field"] = "text"
+        options["assistant_only_loss"] = config.loss_scope == "assistant"
+        if config.loss_scope in {"full", "completion"}:
+            options["completion_only_loss"] = config.loss_scope == "completion"
+        options["packing"] = config.packing
+    if config.checkpoint_steps:
+        options.update(save_strategy="steps", save_steps=config.checkpoint_steps)
+        if has_evaluation:
+            options.update(eval_strategy="steps", eval_steps=config.checkpoint_steps)
+    if config.job_kind == "fit_check":
+        options.update(save_strategy="no", load_best_model_at_end=False)
     if config.approach in {
         TrainingApproach.DPO,
         TrainingApproach.KTO,
@@ -511,8 +544,47 @@ def train(config: TrainingConfig, status_path: Path) -> dict[str, Any]:
     if config.use_unsloth:
         _apply_unsloth_trainer_patch(config.approach)
 
-    dataset = _load_and_combine_datasets(config, token)
-    train_dataset, eval_dataset = _split_dataset(dataset, config)
+    prepared = None
+    if config.schema_version >= 2:
+        from .provenance import prepare_run
+        from .quality import token_report
+
+        prepared = prepare_run(config, token)
+        preview_tokenizer = AutoTokenizer.from_pretrained(
+            config.model_id,
+            revision=config.model_revision,
+            token=token,
+            trust_remote_code=False,
+        )
+        for role, data in (
+            ("train", prepared.train),
+            ("validation", prepared.validation),
+        ):
+            if data is not None:
+                prepared.report[role + "_tokens"] = token_report(
+                    data, preview_tokenizer, config
+                )
+                if prepared.report[role + "_tokens"]["zero_supervised_rows"]:
+                    raise ValueError(
+                        "Truncation removes all supervised tokens from one or more examples."
+                    )
+        train_dataset, eval_dataset = prepared.train, prepared.validation
+    else:
+        dataset = _load_and_combine_datasets(config, token)
+        train_dataset, eval_dataset = _split_dataset(dataset, config)
+    if config.early_stopping_patience and eval_dataset is None:
+        raise ValueError("Early stopping requires an actual validation set.")
+    if config.job_kind == "fit_check":
+        config = replace(
+            config,
+            max_steps=2,
+            push_to_hub=False,
+            eval_enabled=False,
+            select_best_checkpoint=False,
+            early_stopping_patience=None,
+        )
+        eval_dataset = None
+    torch.cuda.reset_peak_memory_stats()
     compute_dtype = _resolve_compute_dtype(
         config.compute_type,
         bf16_supported=torch.cuda.is_bf16_supported(),
@@ -520,6 +592,13 @@ def train(config: TrainingConfig, status_path: Path) -> dict[str, Any]:
     model, tokenizer, peft_config = _load_model_and_tokenizer(
         config, token, compute_dtype
     )
+    if config.packing and getattr(model.config, "_attn_implementation", "") not in {
+        "flash_attention_2",
+        "flash_attention_3",
+    }:
+        raise ValueError(
+            "Packing requires verified FlashAttention 2 or 3 support; this runtime is unsupported."
+        )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -542,21 +621,36 @@ def train(config: TrainingConfig, status_path: Path) -> dict[str, Any]:
     if peft_config is not None:
         trainer_options["peft_config"] = peft_config
     if (
-        config.approach is TrainingApproach.SFT
+        config.use_unsloth
+        and config.approach is TrainingApproach.SFT
         and "messages" in train_dataset.column_names
     ):
         trainer_options["formatting_func"] = lambda examples: _format_conversations(
             examples, tokenizer
         )
+    if config.early_stopping_patience:
+        cast(list[TrainerCallback], trainer_options["callbacks"]).append(
+            EarlyStoppingCallback(
+                early_stopping_patience=config.early_stopping_patience
+            )
+        )
     trainer = trainer_class(**trainer_options)
+    if prepared is not None:
+        from .provenance import save_manifest
+
+        save_manifest(config, prepared, tokenizer, trainer.model)
+        write_json_atomic(status_path.with_name("config.json"), config.to_dict())
     result = trainer.train(resume_from_checkpoint=config.resume_from_checkpoint)
-    trainer.save_model(str(output_dir / "adapter"))
-    tokenizer.save_pretrained(output_dir / "adapter")
+    if config.job_kind != "fit_check":
+        trainer.save_model(str(output_dir / "adapter"))
+        tokenizer.save_pretrained(output_dir / "adapter")
     metrics = {
         key: float(value)
         for key, value in result.metrics.items()
         if isinstance(value, (int, float))
     }
+    metrics["peak_allocated_gb"] = torch.cuda.max_memory_allocated() / 1024**3
+    metrics["peak_reserved_gb"] = torch.cuda.max_memory_reserved() / 1024**3
     if eval_dataset is not None:
         metrics.update(
             {

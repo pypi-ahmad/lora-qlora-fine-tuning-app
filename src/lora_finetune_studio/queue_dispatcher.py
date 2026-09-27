@@ -63,11 +63,11 @@ def wait_for_parent_and_dispatch(parent_pid: int) -> int:
         psutil.Process(parent_pid).wait(timeout=60)
     except psutil.NoSuchProcess:
         pass
-    except psutil.AccessDenied, psutil.TimeoutExpired:
+    except (psutil.AccessDenied, psutil.TimeoutExpired):
         return 1
     try:
         dispatch_next_run()
-    except OSError, RuntimeError, ValueError:
+    except (OSError, RuntimeError, ValueError):
         return 1
     return 0
 

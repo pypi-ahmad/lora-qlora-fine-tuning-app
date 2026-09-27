@@ -572,8 +572,8 @@ When rank `r` is much smaller than either dimension, the reduction is large. Hig
 rank increases capacity and cost. `alpha` controls update scale, target modules select
 where updates are inserted, and dropout regularizes the adapter branch.
 
-The standard backend in this repository uses rank 16, alpha 32, dropout 0.05, no bias,
-and `target_modules="all-linear"`.
+The standard backend defaults to rank 16, alpha 32, dropout 0.05, no bias,
+and `target_modules="all-linear"`. Advanced settings expose rank, alpha, dropout, and targets.
 
 ### QLoRA
 
@@ -771,7 +771,7 @@ Open `examples/sft_sample.jsonl` and `examples/preference_sample.jsonl`. For eac
 
 1. Why must all combined datasets share a canonical format?
 2. Does the app balance multiple datasets automatically?
-3. Why is a random automatic split insufficient for a final product claim?
+3. Why is an automatic validation split insufficient for a final product claim?
 
 ## Module 9 - Select the post-training objective
 
@@ -876,7 +876,7 @@ path, controls, artifacts, tests, and documentation. These methods are **context
 
 ### Checkpoint
 
-1. Why can a Reward Modeling adapter not be evaluated with the current generation UI?
+1. Why does a Reward Modeling adapter need pair scoring rather than text generation?
 2. How does DPO differ operationally from reward-model-plus-PPO training?
 3. What does `beta` influence?
 
@@ -976,7 +976,7 @@ boundary.
 3. **Model:** validate repository/revision and inspect parameter count.
 4. **GPU memory:** view global and process-local CUDA memory.
 5. **Training:** select approach, method, backend, preset, and controls.
-6. **Review & run:** inspect effective settings, then start or queue the run.
+6. **Review & run:** inspect effective settings, check dataset quality, apply reviewed settings, then start or queue the run.
 7. **Monitor:** inspect FIFO order, follow status/logs, cancel, resume, and evaluate.
 8. **Ollama playground:** use models already installed in local Ollama.
 
@@ -1109,7 +1109,8 @@ first run so the exercise applies to Windows and Linux. Save the settings.
 
 On Review & run, verify model, dataset, backend, effective compute type, method, length,
 20-step cap, sample cap, learning rate, batching, and Hub upload disabled. Acknowledge a
-model-size warning only after understanding it.
+model-size warning only after understanding it. Select **Check quality / preview cleanup**,
+inspect the report, then **Apply reviewed data settings** before launch.
 
 Start training. The browser switches to Monitor while a child process runs. Additional experiments
 can be submitted from Review & run; they remain in a durable first-in-first-out queue.
@@ -1228,9 +1229,8 @@ statistically strong conclusion.
 
 Select Reward Modeling with default learning rate `1e-3`. The model path changes to a
 one-label sequence classifier. After training, inspect artifacts and metrics. The
-Monitor page will explain that generative comparison is unavailable. A complete reward
-evaluation tool would score held-out chosen/rejected pairs and measure ranking accuracy;
-that UI is not implemented.
+Monitor page queues reward evaluation on held-out chosen/rejected pairs and reports
+ranking accuracy. It evaluates the trained scoring head without a random base-head comparison.
 
 ### Variation B: KTO
 
@@ -1427,10 +1427,11 @@ details.
 
 ### Base-versus-adapter comparison
 
-For generative approaches, the app loads the base in four-bit NF4, generates
-deterministically, releases memory, then repeats with `PeftModel` attached. Sequential
-loading avoids holding two base models simultaneously. The comparison is qualitative;
-use Module 14 for a proper evaluation suite.
+For generative approaches, the evaluation worker generates deterministically, releases
+memory, then repeats with `PeftModel` attached. QLoRA/QOFT use four-bit NF4; LoRA/OFT
+use BF16 or FP16. Chat mode applies the saved template; text mode preserves raw input.
+Sequential loading avoids holding two base models simultaneously. Saved test sets support
+local metrics and an optional blinded AI judge. Use Module 14 to design the evaluation suite.
 
 ### Publishing to Hugging Face
 
@@ -1690,7 +1691,8 @@ Do not choose release because training completed or because one output looks imp
 
 1. Concatenation and the selected trainer require one compatible schema.
 2. No; contribution follows row count.
-3. Random splits can leak related examples and do not represent a final external test.
+3. Grouping prevents matching prompts from crossing splits, but validation is still used
+   during training and cannot replace a separate final test.
 
 ### Module 9
 
@@ -1889,3 +1891,8 @@ provide broader theory and library details:
 - Qiu et al., [Controlling Text-to-Image Diffusion by Orthogonal Finetuning](https://arxiv.org/abs/2306.07280)
 - Ouyang et al., [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155)
 - Rafailov et al., [Direct Preference Optimization](https://arxiv.org/abs/2305.18290)
+
+
+### Dataset quality and evaluation updates
+
+See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the reviewed-data launch gate, validation sources, loss scopes, adapter controls, queued evaluation, optional `gpt-6-luna` judge, and run manifests. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.

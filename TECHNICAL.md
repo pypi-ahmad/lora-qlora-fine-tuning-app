@@ -156,7 +156,7 @@ tests, and never imports the job manager, worker, Hugging Face clients, or CUDA 
 | `src/lora_finetune_studio/jobs.py` | Atomic run files, worker launch, ownership checks, cancellation, resume, and log tails |
 | `src/lora_finetune_studio/worker.py` | Child-process entry point and terminal job-state handling |
 | `src/lora_finetune_studio/training.py` | Dataset normalization, model construction, trainer selection, training, evaluation, and publishing |
-| `src/lora_finetune_studio/inference.py` | Sequential four-bit base and adapter comparison |
+| `src/lora_finetune_studio/inference.py` | Sequential base/adapter generation and reward scoring |
 | `src/lora_finetune_studio/ollama.py` | Dependency-free client for two local Ollama HTTP endpoints |
 | `src/lora_finetune_studio/unsloth_runtime.py` | Discovery and version check for `.venv-unsloth` |
 | `src/lora_finetune_studio/lifecycle.py` | Delayed Streamlit process exit |
@@ -423,9 +423,9 @@ Canonical records are:
 ```
 
 The worker drops unrelated columns while normalizing. For `messages`, SFT applies the
-selected tokenizer's chat template with no generation prompt. Value-level semantic
-validation is delegated to Datasets, the tokenizer, and the selected TRL trainer; the
-application primarily validates source and column structure.
+selected tokenizer's chat template with no generation prompt. New runs validate every
+row before coercion, report malformed content and duplicate identities, and inspect
+token lengths and supervised masks. Cleanup requires an explicit reviewed choice.
 
 ### 9.3 Multiple datasets and sampling
 
@@ -433,13 +433,14 @@ Each source is loaded and normalized independently so failures can name the sour
 position and label. The normalized datasets are concatenated rather than interleaved
 or balanced. A source therefore contributes in proportion to its row count.
 
-With multiple sources, the combined dataset is shuffled with `seed` before applying
-the global sample cap. With one source, it is shuffled only when truncation is needed.
+The global sample cap uses seeded sampling over the combined normalized rows.
 Every selected row appears once per epoch. There is no oversampling or per-source
 weight control.
 
-Evaluation is skipped when disabled by the preset or when fewer than ten rows remain.
-Otherwise `train_test_split(test_size=eval_ratio, seed=seed)` creates the two datasets.
+Explicit validation sources are checked for row, prompt, and group overlap. Otherwise,
+when evaluation is enabled and at least ten rows remain, connected prompt/group
+identities define a deterministic validation split. A single independent group cannot
+be split. Legacy run configurations retain their original random-split behavior.
 
 ## 10. Training pipeline
 
@@ -479,7 +480,8 @@ double quantization, and the effective compute dtype. Quantized models are place
 the current CUDA device.
 
 The standard LoRA configuration uses causal-LM or sequence-classification task type,
-rank 16, alpha 32, dropout `0.05`, no bias, and all linear target modules. OFT uses
+rank 16, alpha 32, dropout `0.05`, no bias, and all linear target modules by default.
+Advanced settings expose LoRA rank, alpha, dropout, and target modules. OFT uses
 block size 32, Cayley-Neumann transformations, no bias, and all linear targets. Reward
 runs keep the `score` module trainable and save it with the adapter.
 
@@ -504,7 +506,7 @@ required import order. `FastLanguageModel.from_pretrained` loads QLoRA in four b
 LoRA in 16 bits, passes the maximum sequence length and effective dtype, disables remote
 code, and uses optimized gradient checkpointing when enabled.
 
-Generative runs then inject rank-16, alpha-32 adapters with zero dropout into
+By default, generative runs inject rank-16, alpha-32 adapters with zero dropout into
 `q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, and `down_proj`.
 Reward Modeling uses the shared PEFT configuration after Unsloth model loading so the
 classification head is preserved. DPO and KTO invoke an Unsloth trainer patch when the
@@ -646,16 +648,18 @@ cleanup while a training run is active.
 
 ## 14. Post-training inference
 
-For generative approaches, Monitor can compare the base model and trained adapter. Each
-call loads the base model in four-bit NF4, chooses BF16 when supported and FP16
-otherwise, tokenizes the prompt, and performs deterministic generation with
+Monitor queues evaluation in the same FIFO queue as training and fit checks. The
+worker applies the saved tokenizer's chat template in chat mode or raw text in text
+mode. QLoRA/QOFT evaluation uses four-bit NF4; LoRA/OFT evaluation uses BF16 when
+supported and FP16 otherwise. Both candidates use deterministic generation with
 `do_sample=False` and 128 new tokens by default. The adapter call attaches
 `PeftModel.from_pretrained` before generation.
 
 Base and adapter generation run sequentially rather than keeping two models resident.
 Cleanup occurs in `finally`, including failed loads or generations. Remote model code
-is disabled and safetensors are required. Reward-model adapters are excluded because
-the current comparison interface generates text rather than displaying scalar scores.
+is disabled and safetensors are required. Reward adapters score chosen/rejected pairs
+and report preference accuracy. Evaluation persists local metrics, optional AI judge
+results, and human ratings; see [IMPROVEMENTS.md](IMPROVEMENTS.md) for the contracts.
 
 The Ollama playground is independent. Its standard-library client sends:
 
@@ -840,3 +844,8 @@ architectural replacement rather than a local refactor.
 These links explain the underlying libraries. The exact behavior exposed by this
 application is the narrower contract documented above and implemented in this
 repository.
+
+
+## Dataset quality and evaluation updates
+
+See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the reviewed-data launch gate, validation sources, loss scopes, adapter controls, queued evaluation, optional `gpt-6-luna` judge, and run manifests. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.

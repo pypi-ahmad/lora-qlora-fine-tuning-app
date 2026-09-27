@@ -729,3 +729,8 @@ See [SECURITY.md](SECURITY.md) for the complete project security policy.
 - [Unsloth installation](https://unsloth.ai/docs/get-started/install-and-update)
 - [Unsloth native Windows installation](https://unsloth.ai/docs/get-started/install/windows-installation)
 - [Ollama downloads](https://ollama.com/download)
+
+
+## Dataset quality and evaluation updates
+
+See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the reviewed-data launch gate, validation sources, loss scopes, adapter controls, queued evaluation, optional `gpt-6-luna` judge, and run manifests. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.

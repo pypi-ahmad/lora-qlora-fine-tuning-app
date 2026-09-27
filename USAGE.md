@@ -278,7 +278,8 @@ tokenizer, not a merged full model.
 ## 7. Start and monitor a run
 
 Open **Review & run**, review warnings, acknowledge an above-recommendation model when applicable,
-then select **Start training** when idle or **Add to queue** while another run is active. The app
+select **Check quality / preview cleanup**, inspect the report, and **Apply reviewed data settings**.
+Then select **Start training** when idle or **Add to queue** while another run is active. The app
 switches to **Monitor** automatically. One worker remains active while additional jobs wait in
 first-in-first-out order.
 
@@ -337,11 +338,13 @@ base model.
 
 ## 9. Compare base and adapter
 
-On **Monitor**, after a completed run, enter a representative prompt. The app generates a
-deterministic response from the quantized base model, then from the same base model with the
-adapter attached.
+On **Monitor**, after a completed run, choose chat or text mode and queue a representative
+prompt or uploaded JSONL test set. The worker generates deterministic responses from the base
+model, then the same model with the adapter attached. Reward runs score chosen/rejected pairs.
+QLoRA/QOFT use quantized evaluation; LoRA/OFT use BF16 or FP16.
 
-This is a spot check. Use a held-out dataset and task-specific rubric before claiming an
+A single prompt is a spot check. Saved held-out datasets provide local metrics, optional
+`gpt-6-luna` or `agnes-3.0-flash` judgments, and human ratings. Use a task-specific rubric before claiming an
 improvement. Evaluate accuracy, formatting, hallucination, safety, latency, and regressions.
 
 ## 10. Use the Ollama playground
@@ -406,3 +409,8 @@ Start Ollama and install a model. This does not affect Hugging Face training.
 - Review model and dataset licenses before training or redistribution.
 - Protect `.uploads`, `.runs`, model caches, checkpoints, adapters, and logs.
 - Report security problems through [SECURITY.md](SECURITY.md).
+
+
+## Dataset quality and evaluation updates
+
+See [Quality, evaluation, and reproducibility](IMPROVEMENTS.md) for the reviewed-data launch gate, validation sources, loss scopes, adapter controls, queued evaluation, optional `gpt-6-luna` judge, and run manifests. See [Compatibility evidence](COMPATIBILITY.md) for measured verification limits.

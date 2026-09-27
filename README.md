@@ -175,6 +175,8 @@ production-quality adapter.
 
 | Document | Purpose |
 | --- | --- |
+| [Quality and evaluation](IMPROVEMENTS.md) | Dataset checks, loss masks, evaluation, judging, and provenance |
+| [Compatibility evidence](COMPATIBILITY.md) | Version-specific verification results and limits |
 | [Setup guide](SETUP.md) | Windows, Linux, dependencies, verification, and troubleshooting |
 | [Usage guide](USAGE.md) | Complete application workflow, showcase, and operational guidance |
 | [Read-only showcase](demo/streamlit_app.py) | CUDA-free Streamlit walkthrough of dataset, configure, review, and monitor |

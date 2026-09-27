@@ -107,7 +107,8 @@
 <ol>
 <li>Concatenation and the selected trainer require one compatible schema.</li>
 <li>No; contribution follows row count.</li>
-<li>Random splits can leak related examples and do not represent a final external test.</li>
+<li>Grouping prevents matching prompts from crossing splits, but validation is still used
+   during training and cannot replace a separate final test.</li>
 </ol>
 <h3 id="module-9">Module 9</h3>
 <ol>

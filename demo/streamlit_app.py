@@ -74,6 +74,9 @@ with configure_tab:
 
 with review_tab:
     st.subheader("Validate the complete run contract")
+    st.caption(
+        "The local app also requires a dataset quality review, with explicit cleanup and token-mask previews."
+    )
     st.success(
         "The synthetic configuration satisfies the production validation contract.",
         icon=":material/check_circle:",
@@ -89,6 +92,9 @@ with review_tab:
 
 with monitor_tab:
     st.subheader("Inspect a run")
+    st.caption(
+        "The local app queues Chat or Text completion comparisons, saves evaluation results, and offers optional gpt-6-luna or agnes-3.0-flash judging. This showcase makes no API calls."
+    )
     status, progress, artifacts = st.columns(3)
     status.metric("Fixture state", "Completed preview")
     progress.metric("Configured steps", "20")

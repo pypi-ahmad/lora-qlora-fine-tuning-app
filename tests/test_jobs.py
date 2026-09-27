@@ -299,6 +299,28 @@ def test_cancel_run_stops_only_its_training_worker(tmp_path: Path, monkeypatch) 
     assert jobs.read_status(run_id).state is JobState.CANCELLED
 
 
+def test_forced_cancellation_waits_for_exit_before_handoff(tmp_path, monkeypatch):
+    run_id, _ = _running_test_run(tmp_path, monkeypatch)
+    events = []
+
+    def wait(timeout):
+        events.append("wait")
+        if events.count("wait") == 1:
+            raise jobs.psutil.TimeoutExpired(timeout)
+
+    process = SimpleNamespace(
+        terminate=lambda: events.append("terminate"),
+        kill=lambda: events.append("kill"),
+        wait=wait,
+    )
+    monkeypatch.setattr(jobs.psutil, "pid_exists", lambda _: True)
+    monkeypatch.setattr(jobs.psutil, "Process", lambda _: process)
+    monkeypatch.setattr(jobs, "_is_training_worker", lambda *_: True)
+    monkeypatch.setattr(jobs, "dispatch_next_run", lambda: events.append("dispatch"))
+    jobs.cancel_run(run_id)
+    assert events == ["terminate", "wait", "kill", "wait", "dispatch"]
+
+
 def test_cancel_run_rejects_unrelated_process(tmp_path: Path, monkeypatch) -> None:
     run_id, _config_path = _running_test_run(tmp_path, monkeypatch)
     process = FakeWorkerProcess(["python", "unrelated.py"])

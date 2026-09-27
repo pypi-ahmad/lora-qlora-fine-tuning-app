@@ -8,6 +8,8 @@ Read next: lora_finetune_studio/jobs.py for enqueue_run/active_run/
 queued_runs, or app_pages/monitor.py for the page this hands off to.
 """
 
+from dataclasses import replace
+
 import streamlit as st
 
 from lora_finetune_studio.hardware import model_size_warning
@@ -88,7 +90,82 @@ if warning:
 else:
     acknowledge_large_model = True
 
+st.subheader("Dataset quality")
+with st.expander(
+    "Inspect data and preview cleanup", expanded=not bool(config.input_fingerprint)
+):
+    remove_invalid = st.checkbox(
+        "Remove malformed rows in a derived dataset", value=config.cleanup_invalid
+    )
+    remove_duplicates = st.checkbox(
+        "Remove exact duplicates in a derived dataset", value=config.cleanup_duplicates
+    )
+    if st.button("Check quality / preview cleanup"):
+        try:
+            from transformers import AutoTokenizer
+
+            from lora_finetune_studio.provenance import pin_revisions
+            from lora_finetune_studio.quality import prepare_data, token_report
+            from lora_finetune_studio.sources import get_hf_token
+
+            draft = replace(
+                config,
+                cleanup_invalid=remove_invalid,
+                cleanup_duplicates=remove_duplicates,
+                input_fingerprint=None,
+            )
+            pin_revisions(draft, get_hf_token())
+            report_data = prepare_data(draft, get_hf_token())
+            tokenizer = AutoTokenizer.from_pretrained(
+                draft.model_id,
+                revision=draft.model_revision,
+                token=get_hf_token(),
+                trust_remote_code=False,
+            )
+            for role, data in (
+                ("train", report_data.train),
+                ("validation", report_data.validation),
+            ):
+                if data is not None and len(data):
+                    report_data.report[role + "_tokens"] = token_report(
+                        data, tokenizer, draft
+                    )
+                    if report_data.report[role + "_tokens"]["zero_supervised_rows"]:
+                        report_data.report["errors"].append(
+                            "Some rows have no supervised tokens after truncation."
+                        )
+            st.session_state.quality_report = report_data.report
+            draft.input_fingerprint = report_data.report["fingerprint"]
+            st.session_state.quality_draft = draft
+        except Exception as error:  # noqa: BLE001
+            st.error(f"Quality check failed: {error}")
+    report = st.session_state.get("quality_report")
+    if report:
+        st.json(report)
+        if st.button("Apply reviewed data settings", disabled=bool(report["errors"])):
+            st.session_state.training_config = st.session_state.quality_draft
+            st.rerun()
+
 errors = config.validate()
+if config.schema_version >= 2 and not config.input_fingerprint:
+    errors.append(
+        "Run the dataset quality check and apply the reviewed settings before starting."
+    )
+st.json(
+    {
+        "loss_scope": config.loss_scope,
+        "rank": config.lora_rank,
+        "alpha": config.lora_alpha,
+        "dropout": config.lora_dropout
+        if config.lora_dropout is not None
+        else (0 if config.use_unsloth else 0.05),
+        "targets": config.target_modules
+        or ("projection layers" if config.use_unsloth else "all-linear"),
+        "packing": config.packing,
+        "best_checkpoint": config.select_best_checkpoint,
+        "early_stopping_patience": config.early_stopping_patience,
+    }
+)
 if config.use_unsloth:
     unsloth_runtime = inspect_unsloth_runtime()
     if not unsloth_runtime.available:
@@ -117,6 +194,14 @@ if errors:
     for error in errors:
         st.error(error)
 
+if st.button("Queue two-step GPU fit check", disabled=bool(errors)):
+    try:
+        fit = replace(config, job_kind="fit_check", push_to_hub=False)
+        st.session_state.run_id = enqueue_run(fit)
+        st.switch_page("app_pages/monitor.py")
+    except Exception as error:  # noqa: BLE001
+        st.error(f"Could not queue fit check: {error}")
+
 with st.container(horizontal=True):
     start_run = st.button(
         "Add to queue" if running_job or waiting_jobs else "Start training",
@@ -141,6 +226,11 @@ if open_monitor:
 
 if start_run:
     try:
+        if config.schema_version >= 2:
+            from lora_finetune_studio.provenance import prepare_run
+            from lora_finetune_studio.sources import get_hf_token
+
+            prepare_run(config, get_hf_token())
         run_id = enqueue_run(config)
         st.session_state.run_id = run_id
         st.switch_page("app_pages/monitor.py")

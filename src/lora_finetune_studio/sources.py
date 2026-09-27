@@ -11,12 +11,19 @@ from __future__ import annotations
 
 import hashlib
 import os
+import ssl
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
+import httpx
 from datasets import Dataset, load_dataset
-from huggingface_hub import HfApi
+from huggingface_hub import HfApi, set_client_factory
+
+# Honor the operating system's trusted certificates, including managed Windows hosts.
+set_client_factory(
+    lambda: httpx.Client(verify=ssl.create_default_context(), follow_redirects=True)
+)
 
 ALLOWED_UPLOAD_SUFFIXES = {".csv", ".json", ".jsonl"}
 MAX_UPLOAD_BYTES = 200 * 1024 * 1024
@@ -120,9 +127,12 @@ def load_training_dataset(
     config_name: str | None = None,
     split: str = "train",
     token: str | None = None,
+    revision: str = "main",
 ) -> Dataset:
     if repo_id:
-        return load_dataset(repo_id, config_name, split=split, token=token)
+        return load_dataset(
+            repo_id, config_name, split=split, token=token, revision=revision
+        )
     if not local_path:
         raise ValueError("Dataset source is missing.")
     path = Path(local_path).resolve()

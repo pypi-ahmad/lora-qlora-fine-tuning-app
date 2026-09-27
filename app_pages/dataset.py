@@ -179,6 +179,7 @@ with st.form("dataset_source_form"):
     dataset_value = ""
     dataset_config = ""
     dataset_split = "train"
+    dataset_revision = "main"
     uploaded = None
     if source_mode == "Hugging Face":
         dataset_value = st.text_input(
@@ -193,6 +194,7 @@ with st.form("dataset_source_form"):
             key="dataset_config_input",
             persist_state="session",
         )
+        dataset_revision = st.text_input("Dataset revision", value="main")
         dataset_split = st.text_input(
             "Dataset split",
             value="train",
@@ -212,6 +214,7 @@ if inspect_submitted:
                 source="hub",
                 repo_id=parse_hf_repo(dataset_value, repo_type="dataset"),
                 config_name=dataset_config or None,
+                revision=dataset_revision or "main",
                 split=dataset_split,
             )
         else:
@@ -228,6 +231,7 @@ if inspect_submitted:
                 config_name=pending_spec.config_name,
                 split=pending_spec.split,
                 token=get_hf_token(),
+                revision=pending_spec.revision,
             )
             pending_inspection = inspect_dataset(dataset)
         pending_spec.format = pending_inspection.format
@@ -376,3 +380,45 @@ if pending_spec and pending_inspection:
                 st.rerun()
             except ValueError as error:
                 st.error(str(error))
+
+
+with st.expander("Validation sources and grouping"):
+    st.caption(
+        "Select already inspected sources as validation data. They are removed from the training list only when you apply this choice."
+    )
+    specs = st.session_state.dataset_specs
+    selected_validation = st.multiselect(
+        "Use as validation sources",
+        range(len(specs)),
+        format_func=lambda i: source_label(specs[i]),
+    )
+    group_column = st.text_input(
+        "Optional group column",
+        help="Rows sharing a group stay in the same split. This column must exist in every selected source.",
+    )
+    if st.button("Apply validation sources and grouping", disabled=not specs):
+        if len(selected_validation) == len(specs):
+            st.error("Keep at least one training source.")
+        else:
+            st.session_state.validation_specs = [
+                replace(specs[i], group_column=group_column or None)
+                for i in selected_validation
+            ]
+            st.session_state.dataset_specs = [
+                replace(spec, group_column=group_column or None)
+                for i, spec in enumerate(specs)
+                if i not in selected_validation
+            ]
+            st.session_state.dataset_inspections = [
+                item
+                for i, item in enumerate(st.session_state.dataset_inspections)
+                if i not in selected_validation
+            ]
+            st.session_state.training_config = None
+            st.success("Sources saved. Save training settings again.")
+    if st.session_state.get("validation_specs"):
+        st.write([source_label(spec) for spec in st.session_state.validation_specs])
+        if st.button("Clear validation sources"):
+            st.session_state.validation_specs = []
+            st.session_state.training_config = None
+            st.rerun()
